@@ -43,6 +43,14 @@ button.primary{background:var(--accent);color:var(--bg);border-color:var(--accen
 .deal .due{font-size:12px}
 .overdue{color:var(--warn)}
 .deal.hs{border-style:dashed}
+#net .nd rect{fill:var(--card);stroke:var(--line);stroke-width:1.5}
+#net .nd text{fill:var(--ink);font:600 14px ui-sans-serif,system-ui,sans-serif}
+#net .nd .sub{fill:var(--mute);font:400 11px ui-monospace,Menlo,monospace}
+#net .nd.me rect{fill:var(--ink)}#net .nd.me text{fill:var(--bg)}
+#net path{fill:none;stroke-width:2.2}
+#net .ok{stroke:var(--ok)}#net .warn{stroke:var(--warn)}#net .off{stroke:var(--mute);stroke-dasharray:5 5;opacity:.7}
+#net .lbl{font:11px ui-monospace,Menlo,monospace;fill:var(--mute);stroke:var(--card);stroke-width:5px;paint-order:stroke}
+#net a:hover rect{stroke:var(--ink)}
 .empty{color:var(--mute);font-size:12px}
 ul.check{list-style:none;margin:0;padding:0}
 ul.check li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
@@ -81,6 +89,12 @@ input,select,textarea{width:100%;font:inherit;font-size:14px;padding:7px 9px;bor
   <div class="card s3 kpi"><div class="l">Pipeline value</div><div class="n" id="k-pipe">$0</div></div>
   <div class="card s3 kpi"><div class="l">Monthly recurring</div><div class="n" id="k-mrr">$0</div></div>
   <div class="card s3 kpi"><div class="l">Next steps due</div><div class="n" id="k-due">0</div></div>
+
+  <div class="card s12">
+    <h2>Connections</h2>
+    <svg id="net" viewBox="0 0 1240 390" role="img" aria-label="How MLP's tools connect" style="width:100%;height:auto;display:block"></svg>
+    <p class="foot" style="margin-top:6px"><span style="color:var(--ok)">━</span> working &nbsp; <span style="color:var(--warn)">━</span> needs attention &nbsp; <span style="color:var(--mute)">┅</span> not set up yet. Lines into the dashboard are checked live; the rest reflect your setup list.</p>
+  </div>
 
   <div class="card s12" id="live-card" hidden>
     <h2>Upcoming bookings <span id="live-at" class="pill"></span></h2>
@@ -237,7 +251,45 @@ async function loadLive(){
   }catch(e){LIVE={error:"Couldn't reach mlpconsults.com"}}
   render();
 }
+const NODES={
+ gh:[20,30,"GitHub","site code","https://github.com/mylesparslow-collab/mlpconsults"],
+ gbp:[20,170,"Google Business","verification","https://business.google.com"],
+ site:[260,100,"mlpconsults.com","Cloudflare Pages","https://mlpconsults.com"],
+ w3f:[500,20,"Web3Forms","contact form","https://app.web3forms.com"],
+ fm:[760,20,"Fastmail","myles@mlpconsults.com","https://app.fastmail.com"],
+ cal:[500,150,"Cal.com","free check-up","https://app.cal.com/bookings/upcoming"],
+ gcal:[760,110,"Google Calendar","your schedule","https://calendar.google.com"],
+ hub:[260,300,"HubSpot","Clients pipeline","https://app-na2.hubspot.com/contacts/247871007/objects/0-3/views/all/board"],
+ api:[760,215,"Data feed","mlpconsults.com/api",""],
+ kv:[760,320,"Sync","app + web match",""],
+ me:[1020,265,"This dashboard","Mac app + web",""]};
+function edgeState(){
+  const conn=!!getKey(),sy=$("sync").textContent;
+  const live=x=>!conn?"off":!LIVE.at?"off":(x&&!x.error)?"ok":"warn";
+  return [
+   ["gh","site","ok","auto-deploy"],["gbp","site",S.done.gbp?"ok":"warn",S.done.gbp?"":"verify"],
+   ["site","w3f","ok","form"],["w3f","fm","ok","email"],["site","cal","ok","book"],
+   ["cal","gcal","ok",""],["cal","hub",S.done.calhook?"ok":"off",S.done.calhook?"":"not linked"],
+   ["cal","api",live(LIVE.cal),""],["hub","api",live(LIVE.hubspot),LIVE.hubspot&&LIVE.hubspot.error?"key":""],
+   ["api","me",!conn?"off":LIVE.error?"warn":LIVE.at?"ok":"off",""],
+   ["kv","me",!conn?"off":sy==="Synced"?"ok":"warn",""]];
+}
+function renderNet(){
+  const W=200,H=54,c=k=>{const n=NODES[k];return[n[0]+W/2,n[1]+H/2]};
+  let out="";
+  for(const [a,b,st,l] of edgeState()){
+    const [x1,y1]=c(a),[x2,y2]=c(b);const sx=x1<x2?NODES[a][0]+W:x1>x2?NODES[a][0]:x1,ex=x1<x2?NODES[b][0]:x1>x2?NODES[b][0]+W:x2;
+    const mx=(sx+ex)/2;
+    out+=`<path class="${st}" d="M${sx} ${y1} C${mx} ${y1},${mx} ${y2},${ex} ${y2}"/>`+(l?`<text class="lbl" x="${mx}" y="${(y1+y2)/2-6}" text-anchor="middle">${l}</text>`:"");
+  }
+  for(const [k,[x,y,t,sub,u]] of Object.entries(NODES)){
+    const g=`<g class="nd${k==="me"?" me":""}"><rect x="${x}" y="${y}" width="${W}" height="${H}" rx="10"/><text x="${x+14}" y="${y+23}">${t}</text><text class="sub" x="${x+14}" y="${y+41}">${sub}</text></g>`;
+    out+=u?`<a href="${u}" target="_blank" rel="noopener">${g}</a>`:g;
+  }
+  $("net").innerHTML=out;
+}
 function renderLive(){
+  renderNet();
   const on=!!getKey();$("live-card").hidden=!on;if(!on)return;
   $("live-at").textContent=LIVE.at?"updated "+new Date(LIVE.at).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}):(LIVE.error?"error":"loading");
   const errs=[LIVE.error,LIVE.cal&&LIVE.cal.error,LIVE.hubspot&&LIVE.hubspot.error].filter(Boolean);
