@@ -75,6 +75,7 @@ input,select,textarea{width:100%;font:inherit;font-size:14px;padding:7px 9px;bor
 .plist td:last-child{white-space:nowrap;vertical-align:top;padding-left:12px}
 .rules{margin:0;padding-left:18px;font-size:13px;display:grid;gap:6px}
 @media (max-width:900px){.plist{grid-template-columns:1fr}}
+.vt td+td{text-align:right;width:90px}
 .foot{margin-top:24px;font-size:12px;color:var(--mute)}
 </style>
 </head>
@@ -106,6 +107,12 @@ input,select,textarea{width:100%;font:inherit;font-size:14px;padding:7px 9px;bor
   <div class="card s12" id="live-card" hidden>
     <h2>Upcoming bookings <span id="live-at" class="pill"></span></h2>
     <ul class="check" id="bookings"></ul>
+  </div>
+
+  <div class="card s12" id="views-card" hidden>
+    <h2>Demo views <span class="pill">last 30 days</span></h2>
+    <table id="views" class="vt"></table>
+    <p class="foot" style="margin-top:10px">Counted by Cloudflare Web Analytics: no cookies, no personal data, so these are page views, not people. Roughly 10% sampled after 7 days.</p>
   </div>
 
   <div class="card s12">
@@ -331,7 +338,15 @@ function renderNet(){
   }
   $("net").innerHTML=out;
 }
+function renderViews(){
+  const v=LIVE.views,on=!!getKey()&&!!v;$("views-card").hidden=!on;if(!on)return;
+  const t=$("views");
+  if(v.error){t.innerHTML=`<tr><td class="overdue">${esc(v.error)}</td></tr>`;return}
+  const rows=v.demos||[];
+  t.innerHTML=(rows.length?'<tr><td class="note">Demo</td><td class="note">7 days</td><td class="note">30 days</td></tr>'+rows.map(x=>`<tr><td>${esc(x.path)}</td><td>${x.d7}</td><td>${x.d30}</td></tr>`).join(""):'<tr><td class="empty">No demo views yet.</td></tr>')+`<tr><td class="note">Whole site</td><td class="note">${v.site7}</td><td class="note">${v.site30}</td></tr>`;
+}
 function renderLive(){
+  renderViews();
   renderNet();
   const on=!!getKey();$("live-card").hidden=!on;if(!on)return;
   $("live-at").textContent=LIVE.at?"updated "+new Date(LIVE.at).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}):(LIVE.error?"error":"loading");
