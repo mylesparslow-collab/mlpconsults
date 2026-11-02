@@ -378,5 +378,6 @@ if(!getKey())setTimeout(connectLive,300);else{loadLive();pullState()}
 addEventListener("focus",()=>{if(getKey()){loadLive();pullState()}});
 if("serviceWorker"in navigator&&/^https:$/.test(location.protocol))navigator.serviceWorker.register("/dash/sw.js",{scope:"/dash/"});
 </script>
+<script src="/preview-highlights.js"></script>
 </body>
 </html>
