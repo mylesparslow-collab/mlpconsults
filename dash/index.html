@@ -184,7 +184,7 @@ const SETUP=[
  ["gbp","Record Google Business Profile verification video","wait","Then add the Cal.com link and check the logo"],
  ["cards","Order business cards (two batches)","wait","Card A Survey, foil on name only"],
  ["live","Live Cal.com and HubSpot data in this dashboard","live",""],
- ["calhook","Connect Cal.com bookings to HubSpot","wait","Optional: auto-creates a Booked call deal"],
+ ["calhook","Cal.com bookings flow into HubSpot","live","Cal.com HubSpot app: creates contact + meeting"],
  ["llc","Form LLC after Jan 1, 2027","wait","Check if a Fictitious Business Name filing is needed first"]
 ];
 const K="mlp-dash-v1";
@@ -269,7 +269,7 @@ function edgeState(){
   return [
    ["gh","site","ok","auto-deploy"],["gbp","site",S.done.gbp?"ok":"warn",S.done.gbp?"":"verify"],
    ["site","w3f","ok","form"],["w3f","fm","ok","email"],["site","cal","ok","book"],
-   ["cal","gcal","ok",""],["cal","hub",S.done.calhook?"ok":"off",S.done.calhook?"":"not linked"],
+   ["cal","gcal","ok",""],["cal","hub","ok","contacts"],
    ["cal","api",live(LIVE.cal),""],["hub","api",live(LIVE.hubspot),LIVE.hubspot&&LIVE.hubspot.error?"key":""],
    ["api","me",!conn?"off":LIVE.error?"warn":LIVE.at?"ok":"off",""],
    ["kv","me",!conn?"off":sy==="Synced"?"ok":"warn",""]];
