@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en" data-pal="mono">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta property="og:title" content="MLP Consulting">
+<meta property="og:description" content="Websites, lead follow-up and AI tools for owner-run businesses in any industry.">
+<meta property="og:url" content="https://mlpconsults.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0b0b'/%3E%3Ctext x='16' y='21' font-family='Georgia,serif' font-size='13' fill='%23fff' text-anchor='middle'%3EMLP%3C/text%3E%3C/svg%3E">
+<title>MLP Consulting</title>
+<meta name="description" content="Websites, lead follow-up and AI tools for owner-run businesses in any industry.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a living topographic map behind the hero (your business as terrain), then services, a scroll-lit statement, numbers, steps, industries, collapsible work, principles, about, and a contact band on the same map. */
+:root{--display:"Instrument Serif","Iowan Old Style",Georgia,serif; --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace; --night:#f3f3f1; --night-2:#e9e9e6; --on-night:#0b0b0b; --on-night-2:#3a3a3a; --night-muted:#6b6b6b; --night-line:rgba(0,0,0,.1); --paper:#ffffff; --mist:#f4f4f2; --ink:#0b0b0b; --muted:#5f5f5f; --line:#e2e2df; --card:#ffffff; --brass:#0b0b0b; --brass-hi:#0b0b0b; --brass-soft:#ededea; --accent-ink:#ffffff; --map1:#f3f3f1; --map2:#ebebe8; --map3:#c9c9c4; --map4:#111111; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--night:#090909; --night-2:#121212; --on-night:#f4f4f4; --on-night-2:#c4c4c4; --night-muted:#8d8d8d; --night-line:rgba(255,255,255,.12); --paper:#0c0c0c; --mist:#131313; --ink:#f1f1f1; --muted:#a0a0a0; --line:#262626; --card:#161616; --brass:#ffffff; --brass-hi:#ffffff; --brass-soft:#1f1f1f; --accent-ink:#0a0a0a; --map1:#090909; --map2:#141414; --map3:#2c2c2c; --map4:#e6e6e6; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
+:root[data-theme="dark"]{--night:#090909; --night-2:#121212; --on-night:#f4f4f4; --on-night-2:#c4c4c4; --night-muted:#8d8d8d; --night-line:rgba(255,255,255,.12); --paper:#0c0c0c; --mist:#131313; --ink:#f1f1f1; --muted:#a0a0a0; --line:#262626; --card:#161616; --brass:#ffffff; --brass-hi:#ffffff; --brass-soft:#1f1f1f; --accent-ink:#0a0a0a; --map1:#090909; --map2:#141414; --map3:#2c2c2c; --map4:#e6e6e6; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
+:root[data-pal="cobalt"]{--night:#eef0fb; --night-2:#e3e7fa; --on-night:#101218; --on-night-2:#3b4157; --night-muted:#646a80; --night-line:rgba(16,18,24,.1); --paper:#fbfbfd; --mist:#f1f3f9; --ink:#101218; --muted:#5d6273; --line:#e1e4ee; --card:#ffffff; --brass:#2b44c7; --brass-hi:#2b44c7; --brass-soft:#e8ecfd; --accent-ink:#ffffff; --map1:#eef0fb; --map2:#e1e6fb; --map3:#bfc8f3; --map4:#2b44c7; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
+@media (prefers-color-scheme: dark){:root[data-pal="cobalt"]:not([data-theme="light"]){--night:#0a0b10; --night-2:#12141c; --on-night:#f2f3f7; --on-night-2:#c3c8d8; --night-muted:#9a9fb0; --night-line:rgba(255,255,255,.12); --paper:#0d0e13; --mist:#13151c; --ink:#eceef4; --muted:#9ea3b4; --line:#252833; --card:#16181f; --brass:#8fa0ff; --brass-hi:#8fa0ff; --brass-soft:#1a1f3d; --accent-ink:#0a0b10; --map1:#0a0b10; --map2:#151a36; --map3:#2c3460; --map4:#6f84ff; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
+:root[data-pal="cobalt"][data-theme="dark"]{--night:#0a0b10; --night-2:#12141c; --on-night:#f2f3f7; --on-night-2:#c3c8d8; --night-muted:#9a9fb0; --night-line:rgba(255,255,255,.12); --paper:#0d0e13; --mist:#13151c; --ink:#eceef4; --muted:#9ea3b4; --line:#252833; --card:#16181f; --brass:#8fa0ff; --brass-hi:#8fa0ff; --brass-soft:#1a1f3d; --accent-ink:#0a0b10; --map1:#0a0b10; --map2:#151a36; --map3:#2c3460; --map4:#6f84ff; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
+:root[data-pal="forest"]{--night:#eee9da; --night-2:#e5dfcb; --on-night:#14231b; --on-night-2:#3b4a40; --night-muted:#6a7468; --night-line:rgba(20,35,27,.12); --paper:#faf8f1; --mist:#f1ede1; --ink:#14231b; --muted:#5c675e; --line:#e2dccb; --card:#fffdf7; --brass:#2f5d46; --brass-hi:#2f5d46; --brass-soft:#e3ebe2; --accent-ink:#ffffff; --map1:#eee9da; --map2:#e4ddc8; --map3:#cbc2a2; --map4:#2f5d46; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
+@media (prefers-color-scheme: dark){:root[data-pal="forest"]:not([data-theme="light"]){--night:#0d1813; --night-2:#13221b; --on-night:#eee9dc; --on-night-2:#c6c3b4; --night-muted:#949a8c; --night-line:rgba(238,233,220,.12); --paper:#0f1914; --mist:#14211a; --ink:#ebe7da; --muted:#a3a898; --line:#24332b; --card:#16241d; --brass:#b5d1a8; --brass-hi:#b5d1a8; --brass-soft:#1d2f24; --accent-ink:#0d1813; --map1:#0d1813; --map2:#15281e; --map3:#2b4636; --map4:#d8cda8; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
+:root[data-pal="forest"][data-theme="dark"]{--night:#0d1813; --night-2:#13221b; --on-night:#eee9dc; --on-night-2:#c6c3b4; --night-muted:#949a8c; --night-line:rgba(238,233,220,.12); --paper:#0f1914; --mist:#14211a; --ink:#ebe7da; --muted:#a3a898; --line:#24332b; --card:#16241d; --brass:#b5d1a8; --brass-hi:#b5d1a8; --brass-soft:#1d2f24; --accent-ink:#0d1813; --map1:#0d1813; --map2:#15281e; --map3:#2b4636; --map4:#d8cda8; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
+:root[data-pal="terra"]{--night:#f4ece2; --night-2:#ece0d2; --on-night:#1e1714; --on-night-2:#4a3d36; --night-muted:#7a6b62; --night-line:rgba(30,23,20,.12); --paper:#fbf8f3; --mist:#f3ece3; --ink:#1e1714; --muted:#6a5d55; --line:#e6dccf; --card:#fffdf9; --brass:#b4532a; --brass-hi:#b4532a; --brass-soft:#f6e6dc; --accent-ink:#ffffff; --map1:#f4ece2; --map2:#ede0d1; --map3:#d8c2ac; --map4:#b4532a; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
+@media (prefers-color-scheme: dark){:root[data-pal="terra"]:not([data-theme="light"]){--night:#141110; --night-2:#1d1917; --on-night:#f3ede6; --on-night-2:#cfc5bb; --night-muted:#9e948b; --night-line:rgba(243,237,230,.12); --paper:#161312; --mist:#1d1917; --ink:#f0e9e2; --muted:#a89d94; --line:#2e2723; --card:#211c19; --brass:#ec9465; --brass-hi:#ec9465; --brass-soft:#33231b; --accent-ink:#141110; --map1:#141110; --map2:#221b17; --map3:#3e3029; --map4:#e58a5a; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
+:root[data-pal="terra"][data-theme="dark"]{--night:#141110; --night-2:#1d1917; --on-night:#f3ede6; --on-night-2:#cfc5bb; --night-muted:#9e948b; --night-line:rgba(243,237,230,.12); --paper:#161312; --mist:#1d1917; --ink:#f0e9e2; --muted:#a89d94; --line:#2e2723; --card:#211c19; --brass:#ec9465; --brass-hi:#ec9465; --brass-soft:#33231b; --accent-ink:#141110; --map1:#141110; --map2:#221b17; --map3:#3e3029; --map4:#e58a5a; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased;margin:0}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass-hi);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h2{font-size:clamp(40px,5.4vw,68px);line-height:1}
+h2 em,h1 em{font-style:italic;color:var(--brass)}
+p{margin:0}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
+.lead{font-size:19px;color:var(--muted);max-width:58ch}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--body);padding:16px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .25s,border-color .25s,color .25s,transform .25s}
+.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;transition:transform .25s}
+.btn:hover svg{transform:translateX(3px)}
+.btn.gold{background:var(--brass-hi);color:var(--accent-ink)}
+.btn.gold:hover{filter:brightness(1.15)}
+.btn.line{border-color:color-mix(in srgb,var(--on-night) 30%,transparent);color:var(--on-night)}
+.btn.line:hover{border-color:var(--on-night)}
+.btn.ink{background:var(--ink);color:var(--paper)}
+.btn.ink:hover{background:var(--brass)}
+section{padding-block:120px}
+.mist{background:var(--mist)}
+.head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:end;margin-bottom:64px}
+.head > div{display:grid;gap:20px}
+@media (max-width:860px){.head{grid-template-columns:minmax(0,1fr);gap:20px;margin-bottom:44px}section{padding-block:88px}}
+
+/* reveal on scroll (only when JS runs) */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--night)}
+header.top{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:6;color:var(--on-night);transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
+header.top.solid{background:color-mix(in srgb,var(--night) 95%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom-color:var(--night-line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:18px}
+.mark{display:flex;align-items:center;gap:12px;text-decoration:none}
+.mark .mono{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--brass-hi);color:var(--brass-hi);font:400 15px/1 var(--display);letter-spacing:.04em;border-radius:50%}
+.mark b{font:400 23px/1 var(--display);letter-spacing:.005em}
+.mark b span{color:var(--night-muted)}
+nav.links{display:flex;gap:28px;align-items:center;font-size:15px}
+nav.links a{text-decoration:none;color:var(--night-muted);transition:color .2s}
+nav.links a:hover{color:var(--on-night)}
+nav.links .btn{padding:11px 18px;font-size:14px}
+@media (max-width:920px){nav.links a:not(.btn){display:none}}
+@media (max-width:420px){.mark b span{display:none}.hero .eyebrow{font-size:10.5px;letter-spacing:.1em}}
+
+/* hero */
+.hero{position:relative;background:var(--night);color:var(--on-night);min-height:min(940px,100svh);display:grid;align-items:center;overflow:hidden;padding-block:150px 110px}
+.hero canvas,.cta-band canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .scrim{position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb,var(--night) 92%,transparent) 0%,color-mix(in srgb,var(--night) 72%,transparent) 42%,color-mix(in srgb,var(--night) 15%,transparent) 100%),linear-gradient(0deg,color-mix(in srgb,var(--night) 85%,transparent),transparent 30%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:64px;align-items:center;width:100%}
+.hero h1{font-size:clamp(56px,8.4vw,124px);line-height:.92;letter-spacing:-.025em;margin:26px 0 28px}
+.hero h1 em{color:var(--brass-hi)}
+.hero h1 .ln{display:block;overflow:hidden;padding:0 .08em .22em 0;margin-bottom:-.16em}
+.hero h1 .ln > span{display:inline-block}
+.js .hero h1 .ln > span{transform:translateY(105%);animation:rise 1.1s cubic-bezier(.2,.7,.2,1) forwards}
+.js .hero h1 .ln:nth-child(2) > span{animation-delay:.14s}
+@keyframes rise{to{transform:none}}
+.hero .lead{color:var(--on-night-2);font-size:20px}
+.hero .eyebrow{color:var(--brass-hi)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.note{font-size:14px;color:var(--night-muted);margin-top:24px;display:flex;gap:10px;align-items:center}
+.note i{width:7px;height:7px;border-radius:50%;background:#7fd3a6;box-shadow:0 0 0 4px rgba(127,211,166,.18);flex:none}
+.coord{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:26px;font:400 11px/1 var(--mono);letter-spacing:.12em;color:var(--night-muted);text-transform:uppercase}
+@media (max-width:980px){.hero .wrap{grid-template-columns:minmax(0,1fr);gap:48px}.hero .scrim{background:linear-gradient(0deg,color-mix(in srgb,var(--night) 94%,transparent) 10%,color-mix(in srgb,var(--night) 55%,transparent))}.coord{display:none}}
+
+.sheet{background:rgba(251,250,247,.97);color:#101218;border-radius:14px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(0,0,0,.08);font-size:14px;min-width:0;overflow:hidden}
+.js .sheet{opacity:0;transform:translateY(24px);animation:sheetIn 1.2s .5s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes sheetIn{to{opacity:1;transform:none}}
+.sheet .sh-top{display:flex;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid #e2dfd6}
+.sheet .sh-top b{font:500 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.sheet .sh-top span{font:400 11px/1.4 var(--mono);color:#596476}
+.sheet ol{list-style:none;margin:0;padding:0}
+.sheet li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 16px;padding:13px 20px;border-bottom:1px solid #ebe8e0}
+.sheet .k{font-weight:600}
+.sheet .v{font:500 12.5px/1.4 var(--mono);font-variant-numeric:tabular-nums;text-align:right}
+.sheet .d{grid-column:1/-1;color:#596476;font-size:13px}
+.pill{display:inline-block;font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:99px}
+.pill.flag{background:#fbeae2;color:#b4410f}
+.pill.ok{background:#e3f2ea;color:#1f6b4a}
+.sheet .sh-foot{padding:12px 20px;font:400 11px/1.4 var(--mono);color:#596476;background:#f2f0ea}
+
+/* ticker */
+.ticker{background:var(--night);color:var(--night-muted);border-top:1px solid var(--night-line);overflow:hidden;padding-block:20px}
+.track{display:flex;width:max-content;gap:0;animation:tick 48s linear infinite}
+.ticker:hover .track{animation-play-state:paused}
+.track span{font:400 26px/1 var(--display);white-space:nowrap;padding-right:44px;display:flex;align-items:center;gap:44px}
+.track span::after{content:"✦";font-size:13px;color:var(--brass-hi)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;box-shadow:var(--shadow);transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s}
+.svc:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--brass) 55%,var(--line))}
+.svc .pic{aspect-ratio:16/9;overflow:hidden;background:var(--mist);border-bottom:1px solid var(--line)}
+.svc .pic img{width:100%;height:100%;object-fit:cover;object-position:0 0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.svc:hover .pic img{transform:scale(1.045)}
+.svc .num{position:absolute;top:14px;left:14px;font:500 11px/1 var(--mono);letter-spacing:.1em;background:rgba(10,11,16,.82);color:#f1efe9;padding:7px 10px;border-radius:99px;backdrop-filter:blur(6px)}
+.svc .body{padding:30px 32px 32px;display:grid;gap:14px;align-content:start}
+.svc .q{font:italic 400 22px/1.3 var(--display);color:var(--muted)}
+.svc h3{font-size:36px;line-height:1.02}
+.svc p{color:var(--muted);font-size:15.5px}
+.svc ul{list-style:none;margin:6px 0 0;padding:0;border-top:1px solid var(--line)}
+.svc li{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;display:flex;gap:12px}
+.svc li::before{content:"";flex:0 0 6px;height:6px;margin-top:9px;background:var(--brass);transform:rotate(45deg)}
+@media (max-width:860px){.services{grid-template-columns:minmax(0,1fr)}.svc .body{padding:24px 22px 26px}}
+
+/* statement lit by scroll */
+.statement{background:var(--night);color:var(--on-night);padding-block:0}
+.statement .pin{position:relative}
+.statement .stick{padding-block:140px}
+.statement p{font:400 clamp(34px,4.8vw,66px)/1.12 var(--display);letter-spacing:-.01em;max-width:22ch}
+.statement .w{color:color-mix(in srgb,var(--on-night) 16%,transparent);transition:color .25s}
+.statement .w.on{color:var(--on-night)}
+.statement .w.on.gold{color:var(--brass-hi);font-style:italic}
+.statement .eyebrow{color:var(--brass-hi);margin-bottom:34px}
+@media (prefers-reduced-motion: reduce){.statement .pin{height:auto}.statement .stick{position:static}.statement .w{color:var(--on-night)}}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+.nums div{padding:30px 24px 8px 0;display:grid;gap:10px;align-content:start}
+.nums div + div{padding-left:24px;border-left:1px solid var(--line)}
+.nums b{font:400 clamp(56px,6.4vw,88px)/.9 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.nums b small{font-size:.5em;color:var(--brass)}
+.nums span{font-size:15px;color:var(--muted);max-width:24ch}
+@media (max-width:860px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.nums div:nth-child(3){padding-left:0;border-left:0}.nums div{border-bottom:1px solid var(--line);padding-bottom:26px}}
+.numsec{padding-block:96px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;counter-reset:s;position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:23px;height:1px;background:var(--line)}
+.step{padding:0 28px 0 0;display:grid;gap:12px;align-content:start;position:relative}
+.step .dot{width:47px;height:47px;border-radius:50%;background:var(--paper);border:1px solid var(--brass);display:grid;place-items:center;font:400 20px/1 var(--display);color:var(--brass);margin-bottom:14px;position:relative}
+.mist .step .dot{background:var(--mist)}
+.step h3{font-size:32px;line-height:1}
+.step .price{font:500 13px/1.3 var(--mono);color:var(--brass);letter-spacing:.04em;text-transform:uppercase}
+.step p{color:var(--muted);font-size:15px}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:44px}.steps::before{display:none}}
+@media (max-width:560px){.steps{grid-template-columns:minmax(0,1fr)}}
+
+/* industries */
+.inds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.ind{padding:28px 28px 30px 0;border-bottom:1px solid var(--line);display:grid;gap:8px;align-content:start;transition:background .3s}
+.ind:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--line)}
+.ind .n{font:400 11px/1 var(--mono);color:var(--brass);letter-spacing:.1em}
+.ind h3{font-size:30px;line-height:1.05}
+.ind p{color:var(--muted);font-size:15px}
+@media (max-width:860px){.inds{grid-template-columns:minmax(0,1fr)}.ind,.ind:not(:nth-child(3n+1)){padding:22px 0;border-left:0}}
+.fine{font-size:14px;color:var(--muted);margin-top:22px}
+
+/* case studies */
+.cases{display:grid;gap:16px}
+details.case{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+details.case summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:220px minmax(0,1fr) auto;gap:30px;align-items:center;padding:20px 26px 20px 20px}
+details.case summary::-webkit-details-marker{display:none}
+.thumb{aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:var(--mist);border:1px solid var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+summary:hover .thumb img{transform:scale(1.05)}
+.sum-text{display:grid;gap:8px}
+.sum-text h3{font-size:34px;line-height:1.05;transition:color .2s}
+.sum-text p{color:var(--muted);font-size:15.5px}
+.tagrow{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.tag.live{background:var(--ok-soft);border-color:transparent;color:var(--ok)}
+.tag.built{background:var(--brass-soft);border-color:transparent;color:var(--brass)}
+.toggle{display:inline-flex;align-items:center;gap:10px;font:600 14px/1 var(--body);white-space:nowrap}
+.toggle i{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;font-style:normal;font-size:20px;line-height:1;transition:transform .35s,border-color .2s,color .2s}
+details[open] .toggle i{transform:rotate(45deg);border-color:var(--brass);color:var(--brass)}
+.toggle .open-t{display:none}
+details[open] .toggle .open-t{display:inline}
+details[open] .toggle .closed-t{display:none}
+summary:hover h3{color:var(--brass)}
+.case-body{display:grid;gap:32px;border-top:1px solid var(--line);margin:0 26px 0 20px;padding-block:32px}
+details[open] .case-body{animation:open .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes open{from{opacity:0;transform:translateY(-8px)}}
+.cb-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
+.cb-grid h4{font-size:26px;margin-bottom:10px}
+.cb-grid p{color:var(--muted);font-size:15.5px}
+.cb-grid ul{margin:0;padding-left:18px;color:var(--muted);font-size:15.5px;display:grid;gap:6px}
+.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.gal figure{margin:0;display:grid;gap:8px;align-content:start}
+.gal .shot{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--mist);aspect-ratio:16/10}
+.gal .shot img{width:100%;height:100%;object-fit:cover;object-position:0 0}
+.gal figcaption{font-size:13px;color:var(--muted)}
+.kv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.kv div{padding:18px 18px 18px 0;display:grid;gap:4px}
+.kv div + div{padding-left:18px;border-left:1px solid var(--line)}
+.kv b{font:400 38px/1 var(--display);font-variant-numeric:tabular-nums}
+.kv span{font-size:13.5px;color:var(--muted)}
+@media (max-width:860px){
+  details.case summary{grid-template-columns:minmax(0,1fr);gap:16px;padding:18px}
+  .cb-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kv{grid-template-columns:repeat(2,minmax(0,1fr))}.kv div:nth-child(3){padding-left:0;border-left:0}.kv div{border-bottom:1px solid var(--line)}
+  .case-body{margin:0 18px}
+}
+
+/* principles */
+.principles{background:var(--night);color:var(--on-night)}
+.principles h2{color:var(--on-night)}
+.principles h2 em,.principles .eyebrow{color:var(--brass-hi)}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-top:60px}
+.pgrid div{border-top:1px solid var(--night-line);padding-top:26px;display:grid;gap:10px}
+.pgrid .n{font:400 11px/1 var(--mono);color:var(--brass-hi);letter-spacing:.1em}
+.pgrid h3{font-size:32px;color:var(--on-night)}
+.pgrid p{color:var(--night-muted);font-size:15.5px}
+@media (max-width:860px){.pgrid{grid-template-columns:minmax(0,1fr);gap:30px}}
+
+/* about */
+.about .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px;align-items:start}
+.portrait{margin:0;display:grid;gap:12px}
+.portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);transition:filter .5s}
+:root[data-pal="mono"] .portrait img,:root:not([data-pal]) .portrait img{filter:grayscale(1) contrast(1.05)}
+.portrait figcaption{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.about h2{margin:18px 0 26px}
+.about .body{display:grid;gap:16px;color:var(--muted);max-width:62ch}
+.slot{border:1px dashed var(--brass);background:var(--brass-soft);border-radius:12px;padding:16px 18px;font-size:14.5px;color:var(--ink)}
+.slot b{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brass);display:block;margin-bottom:8px}
+@media (max-width:860px){.about .wrap{grid-template-columns:minmax(0,1fr);gap:40px}.portrait{max-width:320px}}
+
+/* contact band */
+.cta-band{position:relative;background:var(--night);color:var(--on-night);overflow:hidden}
+.cta-band .scrim{position:absolute;inset:0;background:color-mix(in srgb,var(--night) 62%,transparent);pointer-events:none}
+.cta-band .wrap{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start}
+.cta-band h2{color:var(--on-night);margin:18px 0 22px}
+.cta-band h2 em,.cta-band .eyebrow{color:var(--brass-hi)}
+.cta-band .lead{color:var(--on-night-2)}
+.direct{margin-top:40px;padding-top:28px;border-top:1px solid var(--night-line);display:grid;gap:12px}
+.mailrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.addr{font:500 18px/1.4 var(--mono);user-select:all;overflow-wrap:anywhere}
+.copy{padding:9px 16px;font-size:13px;border:1px solid color-mix(in srgb,var(--on-night) 30%,transparent);background:transparent;color:var(--on-night)}
+.copy:hover{border-color:var(--brass-hi);color:var(--brass-hi)}
+.refnote{font-size:15px;color:var(--night-muted)}
+form{background:var(--card);color:var(--ink);border-radius:18px;padding:36px;display:grid;gap:20px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);min-width:0}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+label{display:grid;gap:7px;font-size:13px;font-weight:600;letter-spacing:.02em}
+label small{font-weight:400;color:var(--muted)}
+input,select,textarea{font:400 16px/1.4 var(--body);color:var(--ink);background:var(--mist);border:1px solid var(--line);border-radius:10px;padding:13px 14px;width:100%}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--brass);outline-offset:0;border-color:var(--brass)}
+input[aria-invalid="true"]{border-color:var(--flag)}
+.done{border:1px solid var(--ok);background:var(--ok-soft);color:var(--ink);border-radius:10px;padding:14px 16px;font-size:15px}
+@media (max-width:860px){.cta-band .wrap{grid-template-columns:minmax(0,1fr);gap:40px}.row2{grid-template-columns:minmax(0,1fr)}form{padding:24px}}
+
+footer{background:var(--night);color:var(--night-muted);font-size:14px;border-top:1px solid var(--night-line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-block:36px}
+footer b{color:var(--on-night);font:400 22px/1 var(--display)}
+
+
+.mock{position:fixed;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;padding:8px;border-radius:999px;background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:0 18px 40px -16px rgba(0,0,0,.45);max-width:calc(100% - 32px);font:500 13px/1 var(--body)}
+.mock .lbl{font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 6px 0 10px}
+.seg{display:flex;gap:2px;background:var(--mist);border-radius:999px;padding:3px}
+.seg button{font:inherit;border:0;background:none;color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.seg button i{width:10px;height:10px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(127,127,127,.4)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+@media (max-width:640px){.mock{border-radius:18px}.mock .lbl{display:none}.seg button{padding:8px 9px}.seg button span{display:none}}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv,.js .sheet,.js .hero h1 .ln > span{opacity:1;transform:none}
+}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<header class="top" id="hdr">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="MLP Consulting, home"><span class="mono">MLP</span><b>MLP <span>Consulting</span></b></a>
+    <nav class="links" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a class="btn gold" href="#contact">Free assessment</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="hero-title">
+  <canvas id="map-hero" aria-hidden="true"></canvas>
+  <div class="scrim"></div>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Websites · Lead follow-up · AI tools</div>
+      <h1 id="hero-title"><span class="ln"><span>More customers.</span></span><span class="ln"><span><em>Fewer late nights.</em></span></span></h1>
+      <p class="lead">I build the websites, follow-up systems and AI tools that owner-run businesses never have time to build for themselves. Leads get answered in minutes, your site earns trust on sight, and the paperwork handles itself. You approve everything that goes out.</p>
+      <div class="cta">
+        <a class="btn gold" href="#contact">Get a free assessment <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn line" href="#services">See what I build</a>
+      </div>
+      <p class="note"><i aria-hidden="true"></i>Taking new clients now. Most come through someone they know.</p>
+    </div>
+
+    <aside class="sheet" aria-label="Sample free assessment">
+      <div class="sh-top"><b>Free assessment</b><span>Sample · public pages only</span></div>
+      <ol>
+        <li><span class="k">Website software</span><span class="v"><span class="pill flag">18 months behind</span></span><span class="d">The most common way small sites get hacked.</span></li>
+        <li><span class="k">Reply to a web inquiry</span><span class="v">9 hr 40 min</span><span class="d">The first business to answer usually wins the job.</span></li>
+        <li><span class="k">Google reviews</span><span class="v">14 · last in March</span><span class="d">No routine for asking happy customers.</span></li>
+        <li><span class="k">Found by AI search</span><span class="v"><span class="pill flag">Not mentioned</span></span><span class="d">ChatGPT recommended three competitors instead.</span></li>
+        <li><span class="k">Quote form</span><span class="v"><span class="pill ok">Working</span></span><span class="d">Captures leads, but nobody is alerted after hours.</span></li>
+      </ol>
+      <div class="sh-foot">Example only. Yours is written for your business.</div>
+    </aside>
+  </div>
+  <div class="coord" aria-hidden="true">Survey of a growing business · contours live</div>
+</section>
+
+<div class="ticker" aria-label="Industries served">
+  <div class="track" aria-hidden="true">
+    <span>Remodelers</span><span>Real estate</span><span>Restaurants</span><span>Landscapers</span><span>Dental and medical</span><span>Retail shops</span><span>Accountants</span><span>Fitness studios</span><span>Contractors</span><span>Salons and spas</span><span>Property managers</span><span>Law firms</span>
+    <span>Remodelers</span><span>Real estate</span><span>Restaurants</span><span>Landscapers</span><span>Dental and medical</span><span>Retail shops</span><span>Accountants</span><span>Fitness studios</span><span>Contractors</span><span>Salons and spas</span><span>Property managers</span><span>Law firms</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head">
+      <div class="rv"><div class="eyebrow">Services</div><h2>Six problems I fix <em>for good.</em></h2></div>
+      <p class="lead rv d1">Every one starts with something owners tell me in the first five minutes. Pick one or combine several; each is built around how your business actually runs.</p>
+    </div>
+    <div class="services">
+      <article class="svc rv">
+        <span class="num">01</span>
+        <div class="pic"><img src="img/brokerage-site.jpg" width="1280" height="800" alt="A redesigned business website" loading="lazy"></div>
+        <div class="body">
+          <p class="q">"Our website is old and I'm afraid to touch it."</p>
+          <h3>A website you're proud to send people to</h3>
+          <p>Fast, secure and as good as your work. I keep what already works and turn visitors into inquiries.</p>
+          <ul><li>Redesign, or a careful rebuild of your current site</li><li>Security cleanup for hacked or outdated sites</li><li>Quote and booking forms that reach you instantly</li><li>Hosting, backups and ongoing care</li></ul>
+        </div>
+      </article>
+      <article class="svc rv d1">
+        <span class="num">02</span>
+        <div class="pic"><img src="img/lead-responder.jpg" width="1280" height="800" alt="A lead responder answering a new inquiry" loading="lazy"></div>
+        <div class="body">
+          <p class="q">"Leads come in and we answer them the next day."</p>
+          <h3>Every lead answered in minutes</h3>
+          <p>Inquiries land in one place and get a reply right away, with the best ones flagged first and nobody forgotten.</p>
+          <ul><li>Instant replies by text or email that book a time</li><li>Leads graded so you call the right ones first</li><li>Follow-ups at the right moments until it's a yes or no</li><li>Review requests after every job or sale</li></ul>
+        </div>
+      </article>
+      <article class="svc rv">
+        <span class="num">03</span>
+        <div class="pic"><img src="img/blog-library.jpg" width="1280" height="800" alt="A library of local guides written for search" loading="lazy"></div>
+        <div class="body">
+          <p class="q">"Nobody finds us on Google."</p>
+          <h3>Found on Google, and named by AI</h3>
+          <p>Show up when local customers search, and get recommended when they ask ChatGPT or Google's AI who to call.</p>
+          <ul><li>Google Business Profile set up and kept current</li><li>Service and area pages that match real searches</li><li>Helpful guides that answer customers' questions</li><li>Listings kept consistent across every directory</li></ul>
+        </div>
+      </article>
+      <article class="svc rv d1">
+        <span class="num">04</span>
+        <div class="pic"><img src="img/ad-studio.jpg" width="1280" height="800" alt="Short vertical video ads in claymation and blueprint styles" loading="lazy"></div>
+        <div class="body">
+          <p class="q">"I know we should post, but there's no time."</p>
+          <h3>Marketing that makes itself</h3>
+          <p>Short videos, posts and emails made from your real work, drafted for you to approve in minutes.</p>
+          <ul><li>Vertical video ads for TikTok, Reels and Facebook</li><li>A week of posts, approved in one sitting</li><li>Emails that bring past customers back</li><li>Paid ads with a clear cost per lead</li></ul>
+        </div>
+      </article>
+      <article class="svc rv">
+        <span class="num">05</span>
+        <div class="pic"><img src="img/remodel-office.jpg" width="1280" height="800" alt="An office app listing what needs the owner's attention today" loading="lazy"></div>
+        <div class="body">
+          <p class="q">"I do the paperwork at night."</p>
+          <h3>Your evenings back</h3>
+          <p>Tools that read your email, track jobs and money, and draft the routine documents for you.</p>
+          <ul><li>Receipts, payments and inquiries sorted from your inbox</li><li>Estimates, proposals and invoices drafted for you</li><li>Reminders for late payments and next steps</li><li>Works with tools you already use, like QuickBooks</li></ul>
+        </div>
+      </article>
+      <article class="svc rv d1">
+        <span class="num">06</span>
+        <div class="pic"><img src="img/team-hub.jpg" width="1280" height="800" alt="A team dashboard with leads, approvals and weekly numbers" loading="lazy"></div>
+        <div class="body">
+          <p class="q">"I don't know which marketing is actually working."</p>
+          <h3>Know what's working, every week</h3>
+          <p>One place to see leads, approvals and results, plus AI assistants your staff can use safely every day.</p>
+          <ul><li>A weekly scorecard: leads, wins and where they came from</li><li>One dashboard where your team approves what goes out</li><li>Custom AI assistants trained on how you work</li><li>Staff training and simple written guides</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="statement" aria-label="Why this matters">
+  <div class="pin" id="pin">
+    <div class="stick"><div class="wrap">
+      <div class="eyebrow">The short version</div>
+      <p id="lit">You don't need more software. You need the leads you already get answered fast, a website that wins trust, and your evenings back.</p>
+    </div></div>
+  </div>
+</section>
+
+<section class="numsec" aria-label="Results from recent work">
+  <div class="wrap">
+    <div class="nums">
+      <div class="rv"><b data-count="1" data-prefix="&lt;"><small>&lt;</small>1<small> min</small></b><span>To answer a new lead, day or night</span></div>
+      <div class="rv d1"><b data-count="57">57</b><span>Local guides published for one client</span></div>
+      <div class="rv d2"><b data-count="8">8</b><span>AI tools built for a single brokerage</span></div>
+      <div class="rv d3"><b data-count="0">0</b><span>Messages sent without the owner's approval</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="mist">
+  <div class="wrap">
+    <div class="head">
+      <div class="rv"><div class="eyebrow">How it works</div><h2>Start small. <em>Keep only what pays.</em></h2></div>
+      <p class="lead rv d1">Each step stands on its own, priced before work starts. Stop after any of them and keep everything you've paid for.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="dot">1</span><h3>Assessment</h3><div class="price">Free</div><p>A look at your website, search presence, reviews and lead handling, with the three changes that matter most.</p></div>
+      <div class="step rv d1"><span class="dot">2</span><h3>Growth plan</h3><div class="price">From $1,500</div><p>A researched plan with working demos in your own brand, so you see it before you buy it. Credited toward the build.</p></div>
+      <div class="step rv d2"><span class="dot">3</span><h3>Build</h3><div class="price">From $3,000</div><p>The services you choose, set up and tested on your real business, with your team shown how to use them.</p></div>
+      <div class="step rv d3"><span class="dot">4</span><h3>Ongoing support</h3><div class="price">From $500 a month</div><p>Hosting, security, fresh content, steady improvements and a weekly scorecard.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="wrap">
+    <div class="head">
+      <div class="rv"><div class="eyebrow">Industries</div><h2>Same toolkit. <em>Your business.</em></h2></div>
+      <p class="lead rv d1">Every business wins customers, keeps them and runs on its owner's time. What changes is how the tools fit your day.</p>
+    </div>
+    <div class="inds">
+      <div class="ind rv"><span class="n">TRADES</span><h3>Trades and home services</h3><p>Leads graded by crew availability, job tracking with real labor costs, review requests, project videos.</p></div>
+      <div class="ind rv d1"><span class="n">REAL ESTATE</span><h3>Real estate</h3><p>Around-the-clock replies that book showings, listing marketing from one form, market reports, past-client email.</p></div>
+      <div class="ind rv d2"><span class="n">HOSPITALITY</span><h3>Restaurants and retail</h3><p>Fast answers to booking and stock questions, weekly posts, win-back emails for regulars who drifted away.</p></div>
+      <div class="ind rv"><span class="n">HEALTH</span><h3>Health and wellness</h3><p>Online booking and reminders that cut no-shows, reviews after visits, privacy rules from day one.</p></div>
+      <div class="ind rv d1"><span class="n">SERVICES</span><h3>Professional services</h3><p>Proposals drafted from a short call, smooth client onboarding, a newsletter written from your own notes.</p></div>
+      <div class="ind rv d2"><span class="n">LEGAL</span><h3>Law firms</h3><p>Client intake and consult booking with confidentiality built in, through my legal practice, Sidebar.</p></div>
+    </div>
+    <p class="fine">Don't see your field? It's very likely still a fit. Ask.</p>
+  </div>
+</section>
+
+<section id="work" class="mist">
+  <div class="wrap">
+    <div class="head">
+      <div class="rv"><div class="eyebrow">Selected work</div><h2>Two businesses, <em>built end to end.</em></h2></div>
+      <p class="lead rv d1">Client names stay private. Open either one to see what was built.</p>
+    </div>
+    <div class="cases">
+      <details class="case rv" id="case-remodeler">
+        <summary>
+          <div class="thumb"><img src="img/remodel-deck.jpg" width="724" height="738" alt="A finished rear deck" loading="lazy"></div>
+          <div class="sum-text">
+            <div class="tagrow"><span class="tag live">Client · live</span><span class="tag">Home improvement</span></div>
+            <h3>A design-build remodeling company</h3>
+            <p>Office app, website, lead follow-up and a video ad studio for a small crew doing kitchens, baths and decks.</p>
+          </div>
+          <span class="toggle"><span class="closed-t">View</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
+        </summary>
+        <div class="case-body">
+          <div class="cb-grid">
+            <div><h4>The situation</h4><p>Jobs, payments and expenses lived in a spreadsheet. Receipts and new leads arrived by email, estimates were written by hand, and nobody knew what a job cost in labor until it was over. More inquiries came in than the owner had time to answer well.</p></div>
+            <div><h4>What I built</h4><ul><li>An office app on the owner's own computer that reads the inbox and turns receipts, payments and leads into items to approve</li><li>Job tracking with real profit once crew hours are counted</li><li>Lead grading, follow-ups and review requests</li><li>A website with 57 local guides, and short video ads in six styles</li></ul></div>
+          </div>
+          <div class="kv">
+            <div><b>57</b><span>Local guides published</span></div>
+            <div><b>A–C</b><span>Every lead graded on arrival</span></div>
+            <div><b>6</b><span>Video ad styles</span></div>
+            <div><b>0</b><span>Messages sent without approval</span></div>
+          </div>
+          <div class="gal">
+            <figure><div class="shot"><img src="img/remodel-job.jpg" width="1024" height="754" alt="Job page with stages and profit" loading="lazy"></div><figcaption>Every job shows its stage and real profit.</figcaption></figure>
+            <figure><div class="shot"><img src="img/remodel-inbox.jpg" width="1280" height="800" alt="Inbox items to review" loading="lazy"></div><figcaption>Receipts and leads read from email, approved in one click.</figcaption></figure>
+            <figure><div class="shot"><img src="img/ad-studio.jpg" width="1280" height="800" alt="Claymation and blueprint video ads" loading="lazy"></div><figcaption>Claymation and blueprint video ads.</figcaption></figure>
+          </div>
+          <p class="fine" style="margin:0">Screens show sample jobs and people.</p>
+        </div>
+      </details>
+
+      <details class="case rv d1" id="case-brokerage">
+        <summary>
+          <div class="thumb"><img src="img/brokerage-site.jpg" width="1280" height="800" alt="A redesigned real estate website" loading="lazy"></div>
+          <div class="sum-text">
+            <div class="tagrow"><span class="tag built">Proposal · built in full</span><span class="tag">Real estate</span></div>
+            <h3>An independent boutique brokerage</h3>
+            <p>Website rebuild and security fix, a modern redesign, and eight AI tools for agents in one Team Hub.</p>
+          </div>
+          <span class="toggle"><span class="closed-t">View</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
+        </summary>
+        <div class="case-body">
+          <div class="cb-grid">
+            <div><h4>The situation</h4><p>A respected firm with a dated website. While rebuilding it, I found hackers had quietly injected spam links across its pages. The team was proud of what it had built, so the plan added to it rather than starting over.</p></div>
+            <div><h4>What I built</h4><ul><li>The existing site rebuilt page for page, with the spam removed</li><li>An optional modern redesign with listing search</li><li>A 24/7 lead responder, listing kit, review engine, social and video tools, and market reports</li><li>A Team Hub where agents approve everything</li></ul></div>
+          </div>
+          <div class="kv">
+            <div><b>48</b><span>Pages rebuilt and cleaned</span></div>
+            <div><b>&lt;1 min</b><span>To answer a new lead</span></div>
+            <div><b>8</b><span>AI tools for agents</span></div>
+            <div><b>48</b><span>Buyer and area guides</span></div>
+          </div>
+          <div class="gal">
+            <figure><div class="shot"><img src="img/security-report.jpg" width="1280" height="800" alt="Security report" loading="lazy"></div><figcaption>Security findings in plain English.</figcaption></figure>
+            <figure><div class="shot"><img src="img/launch-kit.jpg" width="1280" height="800" alt="Listing launch kit" loading="lazy"></div><figcaption>A full listing campaign from one form.</figcaption></figure>
+            <figure><div class="shot"><img src="img/market-reports.jpg" width="1280" height="800" alt="Market reports" loading="lazy"></div><figcaption>Monthly market reports.</figcaption></figure>
+          </div>
+          <p class="fine" style="margin:0">Names, photos and figures changed; tools shown with sample data.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="principles">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">How I work</div>
+    <h2 style="margin-top:20px">Three promises, <em>in writing.</em></h2></div>
+    <div class="pgrid">
+      <div class="rv"><span class="n">01</span><h3>You stay in control</h3><p>Nothing goes to a customer under your name without your approval. AI drafts; people decide.</p></div>
+      <div class="rv d1"><span class="n">02</span><h3>You own everything</h3><p>Your domain, accounts, data and customer list stay yours, documented so anyone can maintain it.</p></div>
+      <div class="rv d2"><span class="n">03</span><h3>Results you can check</h3><p>Progress measured in real leads, replies and wins. No inflated claims, ever.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <figure class="portrait rv"><img src="img/myles.jpg" width="720" height="900" alt="Myles Parslow" loading="lazy"><figcaption>Myles Parslow · Founder</figcaption></figure>
+    <div class="rv d1">
+      <div class="eyebrow">About</div>
+      <h2>Myles Parslow</h2>
+      <div class="body">
+        <p>I've spent more than four years inside AmLaw firms in conflicts and risk, where I now lead the daily conflicts workflow, sit on the firm's AI Task Force and serve as AI lead for the Risk Department. One human-reviewed AI workflow I built there cut turnaround on conflict waivers by 90%.</p>
+        <p>On my own I've built a portfolio of 15 working AI tools for legal work, including a full law-firm operations suite. All of them follow the rules I bring to every client: the AI shows its sources, gets checked in code where it can, and a person approves anything that matters.</p>
+        <p>Now I build the same kind of tools for owner-run businesses. Recent projects include an office app, website and video ad studio for a design-build remodeling company, a website and AI toolkit designed for a real estate brokerage, and AI advisory for law firms through Sidebar. I studied philosophy at USC in the Thematic Option honors program and I'm based in Southern California. You deal with me from first call to launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <canvas id="map-cta" aria-hidden="true"></canvas>
+  <div class="scrim"></div>
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Contact</div>
+      <h2>See where you're <em>leaving money.</em></h2>
+      <p class="lead">Tell me about your business and what you'd most like to fix. I'll review your public pages and send your free assessment within one business day.</p>
+      <div class="direct">
+        <div class="eyebrow">Or email directly</div>
+        <div class="mailrow"><span class="addr" id="addr">myles@mlpconsults.com</span><button class="btn copy" type="button" id="copy">Copy</button></div>
+        <p class="refnote">Referred by someone? Mention their name so I can thank them.</p>
+      </div>
+    </div>
+    <form id="intake" class="rv d1" novalidate>
+      <div class="row2">
+        <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+        <label for="f-biz">Business<input id="f-biz" name="business" autocomplete="organization" required></label>
+      </div>
+      <div class="row2">
+        <label for="f-ind">Industry
+          <select id="f-ind" name="industry"><option>Trades and home services</option><option>Real estate</option><option>Restaurant or retail</option><option>Health and wellness</option><option>Professional services</option><option>Legal</option><option>Other</option></select>
+        </label>
+        <label for="f-site"><span>Website <small>(optional)</small></span><input id="f-site" name="website" inputmode="url" placeholder="yourbusiness.com"></label>
+      </div>
+      <label for="f-pain">What would you most like to fix?<textarea id="f-pain" name="goal" placeholder="For example: we miss calls while we're on jobs, and our website hasn't changed in years."></textarea></label>
+      <div class="row2">
+        <label for="f-contact">Email or phone<input id="f-contact" name="contact" required></label>
+        <label for="f-ref"><span>Referred by <small>(optional)</small></span><input id="f-ref" name="referrer"></label>
+      </div>
+      <button class="btn ink" type="submit" style="justify-self:start">Request my free assessment</button>
+      <div class="done" id="done" hidden>Your email app should open with this filled in. Just press send. If it didn't open, email myles@mlpconsults.com.</div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><b>MLP Consulting</b><span>Websites, lead follow-up and AI tools for owner-run businesses · myles@mlpconsults.com</span></div>
+</footer>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Living contour map (adapted from Specimen Room No. 0322, Flowing Contours, MIT) ---- */
+  var FRAG = [
+  'precision highp float;',
+  'uniform float u_time; uniform vec2 u_res; uniform vec2 u_m; uniform float u_act;',
+  'uniform vec3 u_c1,u_c2,u_c3,u_c4; uniform float u_scale;',
+  'float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
+  'float vn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1.,0.)),f.x),mix(h21(i+vec2(0.,1.)),h21(i+vec2(1.,1.)),f.x),f.y);}',
+  'float fbm(vec2 p){float a=.5,s=0.;mat2 m=mat2(.8,.6,-.6,.8)*2.02;for(int i=0;i<5;i++){s+=a*vn(p);p=m*p;a*=.5;}return s*1.03;}',
+  'vec2 pc(vec2 fc){return (fc*2.-u_res)/min(u_res.x,u_res.y);}',
+  'float hf(vec2 p){float t=u_time*.05;float h=fbm(p*.9+vec2(t,-t*.7)+1.5*vec2(fbm(p*.5+t),fbm(p*.5-t+3.)));',
+  ' vec2 m=pc(u_m*u_res);h+=.14*u_act*exp(-dot(p/(1.6*u_scale)-m,p/(1.6*u_scale)-m)*3.);return h;}',
+  'void main(){vec2 p=pc(gl_FragCoord.xy)*1.6*u_scale;float e=.01;float h=hf(p);',
+  ' vec2 g=vec2(hf(p+vec2(e,0.))-h,hf(p+vec2(0.,e))-h)/e;float lv=h*15.;float idx=floor(lv);float d=abs(fract(lv)-.5);',
+  ' float dist=(.5-d)/(length(g)*15.+.0001);float ln=1.-smoothstep(0.,.0045,dist);float major=mod(idx,5.)<.5?1.:0.;',
+  ' vec3 col=mix(u_c1,u_c2,smoothstep(.25,.8,h));col=mix(col,u_c3,ln*.6);col=mix(col,u_c4,ln*major*.9);',
+  ' vec2 q=gl_FragCoord.xy/u_res-.5;col*=1.-.4*dot(q,q);col+=(h21(gl_FragCoord.xy+fract(u_time)*31.)-.5)/180.;',
+  ' gl_FragColor=vec4(clamp(col,0.,1.),1.);}'].join('\n');
+  var maps=[];
+  var hex = function(h){return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16)/255;});};
+
+  function contour(cv, opts){
+    var gl = cv.getContext('webgl',{antialias:false,premultipliedAlpha:false});
+    if(!gl) return;
+    function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o;}
+    var pr=gl.createProgram();
+    try{gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FRAG));}catch(e){console.error(e);return;}
+    gl.linkProgram(pr);gl.useProgram(pr);
+    gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    var loc=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    var U=function(n){return gl.getUniformLocation(pr,n);};
+    function cols(){var cs=getComputedStyle(document.documentElement);[1,2,3,4].forEach(function(i){gl.uniform3fv(U('u_c'+i),hex(cs.getPropertyValue('--map'+i).trim()));});}cols();
+    gl.uniform1f(U('u_scale'),opts.scale||1);
+    var m=[.7,.5],tm=[.7,.5],act=0,tact=0,visible=true,raf=0,t0=performance.now()-(opts.offset||0);
+    var zone=cv.parentElement;
+    zone.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];tact=1;});
+    zone.addEventListener('pointerleave',function(){tact=0;});
+    function fit(){var d=Math.min(1.5,devicePixelRatio||1);cv.width=Math.max(1,cv.clientWidth*d|0);cv.height=Math.max(1,cv.clientHeight*d|0);gl.viewport(0,0,cv.width,cv.height);}
+    function draw(now){
+      m[0]+=(tm[0]-m[0])*.06;m[1]+=(tm[1]-m[1])*.06;act+=(tact-act)*.04;
+      gl.uniform1f(U('u_time'),reduce?40:(now-t0)/1000*(opts.speed||1));
+      gl.uniform2f(U('u_res'),cv.width,cv.height);gl.uniform2f(U('u_m'),m[0],m[1]);gl.uniform1f(U('u_act'),act);
+      gl.drawArrays(gl.TRIANGLES,0,3);
+    }
+    function tick(now){raf=0;draw(now);if(!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
+    function kick(){if(!raf&&!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
+    new ResizeObserver(function(){fit();draw(performance.now());}).observe(cv);
+    new IntersectionObserver(function(es){visible=es[es.length-1].isIntersecting;kick();}).observe(cv);
+    document.addEventListener('visibilitychange',kick);
+    fit();draw(performance.now());kick();
+    maps.push(function(){cols();draw(performance.now());});
+  }
+  contour(document.getElementById('map-hero'),{scale:1,speed:1});
+  contour(document.getElementById('map-cta'),{scale:1.3,speed:.8,offset:60000});
+
+
+  /* ---- theme: monochrome, follows the visitor's light/dark setting ---- */
+  document.documentElement.dataset.pal='mono';
+  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){maps.forEach(function(f){f();});});}catch(e){}
+
+  /* ---- header turns solid after the hero ---- */
+  var hdr=document.getElementById('hdr');
+  function onScroll(){hdr.classList.toggle('solid',scrollY>40);lightWords();}
+  addEventListener('scroll',onScroll,{passive:true});
+
+  /* ---- reveal on scroll ---- */
+  var rvs=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    rvs.forEach(function(el){io.observe(el);});
+  } else rvs.forEach(function(el){el.classList.add('in');});
+
+  /* ---- statement lit word by word ---- */
+  var lit=document.getElementById('lit'),pin=document.getElementById('pin'),words=[];
+  var gold={'fast,':1,'trust,':1,'evenings':1,'back.':1};
+  lit.innerHTML=lit.textContent.split(' ').map(function(w){return '<span class="w'+(gold[w]?' gold':'')+'">'+w+'</span>';}).join(' ');
+  words=lit.querySelectorAll('.w');
+  function lightWords(){
+    if(reduce){words.forEach(function(w){w.classList.add('on');});return;}
+    var r=lit.getBoundingClientRect();
+    var p=Math.min(1,Math.max(0,(innerHeight*.9-r.top)/(innerHeight*.45+r.height*.5)));
+    var n=Math.round(p*words.length);
+    words.forEach(function(w,i){w.classList.toggle('on',i<n);});
+  }
+
+  /* ---- counting numbers ---- */
+  var nums=document.querySelectorAll('[data-count]');
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;cio.unobserve(e.target);
+    var el=e.target,to=+el.dataset.count;if(reduce||to<2)return;
+    var t0=performance.now(),dur=1400;
+    (function step(now){var k=Math.min(1,(now-t0)/dur);k=1-Math.pow(1-k,3);el.firstChild.nodeType===3?el.firstChild.nodeValue=Math.round(to*k):el.textContent=Math.round(to*k);if(k<1)requestAnimationFrame(step);})(t0);
+  });},{threshold:.6});
+  nums.forEach(function(n){cio.observe(n);});
+
+  onScroll();
+
+  /* ---- form and copy ---- */
+  document.getElementById('intake').addEventListener('submit',function(e){
+    e.preventDefault();
+    var need=['f-name','f-biz','f-contact'].map(function(id){return document.getElementById(id);}).filter(function(el){el.removeAttribute('aria-invalid');return !el.value.trim();});
+    if(need.length){need.forEach(function(el){el.setAttribute('aria-invalid','true');});need[0].focus();return;}
+    var v=function(id){return document.getElementById(id).value.trim();};
+    var body='Name: '+v('f-name')+'\nBusiness: '+v('f-biz')+'\nIndustry: '+v('f-ind')+'\nWebsite: '+v('f-site')+'\nContact: '+v('f-contact')+'\nReferred by: '+v('f-ref')+'\n\nWhat I want to fix:\n'+v('f-pain');
+    location.href='mailto:myles@mlpconsults.com?subject='+encodeURIComponent('Free assessment: '+v('f-biz'))+'&body='+encodeURIComponent(body);
+    document.getElementById('done').hidden=false;
+  });
+  document.getElementById('copy').addEventListener('click',function(){
+    var b=this,a=document.getElementById('addr');
+    function sel(){var r=document.createRange();r.selectNodeContents(a);var x=getSelection();x.removeAllRanges();x.addRange(r);b.textContent='Selected';}
+    try{navigator.clipboard.writeText(a.textContent).then(function(){b.textContent='Copied';},sel);}catch(e){sel();}
+  });
+})();
+</script>
+
+<style>
+/* screenshot viewer: click any screenshot to see it large, with a caption */
+.zm{cursor:zoom-in}
+.zw{position:relative;display:block}
+.zw::after{content:"⤢  View";position:absolute;right:10px;bottom:10px;font:500 11px/1 system-ui,sans-serif;letter-spacing:.04em;padding:7px 9px;border-radius:99px;background:rgba(10,10,12,.78);color:#fff;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s;pointer-events:none}
+.zw:hover::after,.zw:focus-within::after{opacity:1;transform:none}
+@media (hover:none){.zw::after{opacity:1;transform:none}}
+dialog.lb{border:0;padding:0;margin:auto;background:transparent;max-width:min(1400px,calc(100vw - 32px));max-height:calc(100vh - 32px);width:100%;overflow:visible;color:#f4f4f2}
+dialog.lb::backdrop{background:rgba(6,6,8,.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.lb figure{margin:0;display:grid;gap:14px;justify-items:center}
+.lb img{max-width:100%;max-height:calc(100vh - 170px);width:auto;height:auto;border-radius:10px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9);background:#111}
+.lb figcaption{max-width:72ch;text-align:center;font:400 15px/1.5 system-ui,-apple-system,sans-serif;color:#e9e9e6}
+.lb figcaption b{display:block;font-weight:600;color:#fff;margin-bottom:2px}
+.lb .lbn{font:400 12px/1 ui-monospace,Menlo,monospace;color:#9a9a96}
+.lb .lbx,.lb .lbp,.lb .lbq{position:fixed;border:1px solid rgba(255,255,255,.25);background:rgba(20,20,22,.7);color:#fff;width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer;display:grid;place-items:center}
+.lb .lbx{top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px))}
+.lb .lbp{left:calc(16px + env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb .lbq{right:calc(16px + env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+.lb button:hover{background:rgba(255,255,255,.15)}
+@media (max-width:700px){.lb .lbp,.lb .lbq{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:none}}
+</style>
+<dialog class="lb" id="lb" aria-label="Screenshot viewer">
+  <button class="lbx" type="button" aria-label="Close">✕</button>
+  <button class="lbp" type="button" aria-label="Previous screenshot">←</button>
+  <button class="lbq" type="button" aria-label="Next screenshot">→</button>
+  <figure><img id="lbi" alt=""><figcaption><b id="lbt"></b><span id="lbc"></span><br><span class="lbn" id="lbn"></span></figcaption></figure>
+</dialog>
+<script>
+(function(){
+  var CAP={
+    'brokerage-site':['Brokerage website redesign','The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed.'],
+    'lead-responder':['24/7 lead responder','A Saturday-night web inquiry gets a personal, on-brand reply and a booked showing within seconds, with a handoff waiting for the agent in the morning.'],
+    'blog-library':['Local guide library','Buyer and neighborhood guides written to show up in Google and get cited by ChatGPT and other AI search.'],
+    'ad-studio':['Video ad studio','Short vertical ads for TikTok, Reels and Facebook in claymation and 3D blueprint styles, rendered from the client’s real projects.'],
+    'remodel-office':['Office app: today’s list','What needs the owner’s attention today, pulled automatically from the business inbox and job list. Sample data.'],
+    'team-hub':['Team Hub','One dashboard where staff approve leads, posts and emails before anything goes out, with the week’s numbers at a glance. Sample data.'],
+    'remodel-deck':['A finished rear deck','Completed work from the remodeling company’s portfolio.'],
+    'remodel-job':['Office app: job page','Each job’s stage, next step, payments and real profit once crew hours are counted. Sample job.'],
+    'remodel-inbox':['Office app: inbox review','Receipts, payments and new leads read from email, each waiting for a one-click approval. Sample data.'],
+    'security-report':['Website security report','Hidden spam links and out-of-date software found on the brokerage’s old site, explained in plain English with the fix for each.'],
+    'launch-kit':['Listing launch kit','One short form produces the listing page, social posts, an email blast and print pieces for a new listing.'],
+    'market-reports':['Monthly market reports','Neighborhood prices and trends, drafted each month for agents to review and send to their clients.']
+  };
+  var lb=document.getElementById('lb'),li=document.getElementById('lbi'),lt=document.getElementById('lbt'),lc=document.getElementById('lbc'),ln=document.getElementById('lbn'),list=[],cur=0;
+  function key(src){var m=/img\/([a-z-]+)\.jpg/.exec(src||'');return m?m[1]:'';}
+  document.querySelectorAll('img').forEach(function(im){
+    var k=key(im.getAttribute('src'));
+    if(!CAP[k]||im.closest('summary')||im.closest('.peek')||im.closest('#lb'))return;
+    list.push(im);im.classList.add('zm');im.tabIndex=0;im.setAttribute('role','button');
+    im.setAttribute('aria-label','View larger: '+CAP[k][0]);
+    var p=im.parentElement;if(p&&p.children.length===1)p.classList.add('zw');
+  });
+  function show(i){cur=(i+list.length)%list.length;var im=list[cur],c=CAP[key(im.getAttribute('src'))];li.src=im.currentSrc||im.src;li.alt=c[0];lt.textContent=c[0];lc.textContent=c[1];ln.textContent=(cur+1)+' of '+list.length;}
+  function open(im){show(list.indexOf(im));if(!lb.open)lb.showModal();}
+  list.forEach(function(im){
+    im.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();open(im);});
+    im.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(im);}});
+  });
+  lb.querySelector('.lbx').onclick=function(){lb.close();};
+  lb.querySelector('.lbp').onclick=function(){show(cur-1);};
+  lb.querySelector('.lbq').onclick=function(){show(cur+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
+  lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')show(cur-1);else if(e.key==='ArrowRight')show(cur+1);});
+})();
+</script>
+
+</body>
+</html>
