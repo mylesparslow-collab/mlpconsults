@@ -223,6 +223,9 @@ details[open] .case-body{animation:open .5s cubic-bezier(.2,.7,.2,1)}
 .gal .shot{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--mist);aspect-ratio:16/10}
 .gal .shot img{width:100%;height:100%;object-fit:cover;object-position:0 0}
 .gal figcaption{font-size:13px;color:var(--muted)}
+.gal-sites{grid-template-columns:repeat(5,minmax(0,1fr))}
+.gal-sites figcaption b{color:var(--ink);font-weight:600}
+@media (max-width:1100px){.gal-sites{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .kv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .kv div{padding:18px 18px 18px 0;display:grid;gap:4px}
 .kv div + div{padding-left:18px;border-left:1px solid var(--line)}
@@ -486,7 +489,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
   <div class="wrap">
     <div class="head">
       <div class="rv"><div class="eyebrow">Selected work</div><h2>Two businesses, <em>built end to end.</em></h2></div>
-      <p class="lead rv d1">Client names stay private. Open either one to see what was built.</p>
+      <p class="lead rv d1">Client names stay private. Open either one to see what was built, or browse the sample websites below them.</p>
     </div>
     <div class="cases">
       <details class="case rv" id="case-remodeler">
@@ -546,6 +549,37 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
             <figure><div class="shot"><img src="img/market-reports.jpg" width="1280" height="800" alt="Market reports" loading="lazy"></div><figcaption>Monthly market reports.</figcaption></figure>
           </div>
           <p class="fine" style="margin:0">Names, photos and figures changed; tools shown with sample data.</p>
+        </div>
+      </details>
+
+      <details class="case rv d2" id="case-sites">
+        <summary>
+          <div class="thumb"><img src="img/site-bellwood.jpg" width="1600" height="1000" alt="A dental office website on desktop and phone" loading="lazy"></div>
+          <div class="sum-text">
+            <div class="tagrow"><span class="tag built">Sample sites</span><span class="tag">Local businesses</span></div>
+            <h3>Ten websites for local businesses</h3>
+            <p>A med spa, a boba shop, a bakery, a dental office and six more, each with its own layout and the tools its customers actually use.</p>
+          </div>
+          <span class="toggle"><span class="closed-t">View</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
+        </summary>
+        <div class="case-body">
+          <div class="cb-grid">
+            <div><h4>The idea</h4><p>Most small-business sites are a template with a phone number. These show what yours could be instead: a site that looks like nobody else’s and does real work, so customers can book, order or ask without picking up the phone.</p></div>
+            <div><h4>What they have in common</h4><ul><li>A design built around the business, not a theme</li><li>Booking, ordering or inquiries that work on the page</li><li>Prices and hours where people look for them</li><li>Fast, clean and easy to use on a phone</li></ul></div>
+          </div>
+          <div class="gal gal-sites">
+            <figure><div class="shot"><img src="img/site-quietwell.jpg" width="1600" height="1000" alt="Quietwell Aesthetics website on desktop and phone" loading="lazy"></div><figcaption><b>Quietwell Aesthetics</b> · Med spa</figcaption></figure>
+            <figure><div class="shot"><img src="img/site-bellwood.jpg" width="1600" height="1000" alt="Bellwood Family Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Bellwood Family Dental</b> · Dental office</figcaption></figure>
+            <figure><div class="shot"><img src="img/site-little-orbit.jpg" width="1600" height="1000" alt="Little Orbit Tea website on desktop and phone" loading="lazy"></div><figcaption><b>Little Orbit Tea</b> · Boba shop</figcaption></figure>
+            <figure><div class="shot"><img src="img/site-coffee.jpg" width="1600" height="1000" alt="Kestrel Hill Coffee Roasters website on desktop and phone" loading="lazy"></div><figcaption><b>Kestrel Hill Coffee Roasters</b> · Coffee roaster</figcaption></figure>
+            <figure><div class="shot"><img src="img/site-halden.jpg" width="1600" height="1000" alt="Halden &amp; Rye Bakery website on desktop and phone" loading="lazy"></div><figcaption><b>Halden &amp; Rye Bakery</b> · Bakery</figcaption></figure>
+            <figure><div class="shot"><img src="img/site-cedarline.jpg" width="1600" height="1000" alt="Cedarline Kitchen website on desktop and phone" loading="lazy"></div><figcaption><b>Cedarline Kitchen</b> · Restaurant</figcaption></figure>
+            <figure><div class="shot"><img src="img/site-hollis.jpg" width="1600" height="1000" alt="Hollis Flower House website on desktop and phone" loading="lazy"></div><figcaption><b>Hollis Flower House</b> · Florist</figcaption></figure>
+            <figure><div class="shot"><img src="img/site-salon.jpg" width="1600" height="1000" alt="Ostrander Hair Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Ostrander Hair Studio</b> · Hair salon</figcaption></figure>
+            <figure><div class="shot"><img src="img/site-pilates.jpg" width="1600" height="1000" alt="Springline Reformer Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Springline Reformer Studio</b> · Pilates studio</figcaption></figure>
+            <figure><div class="shot"><img src="img/site-boutique.jpg" width="1600" height="1000" alt="Fig &amp; Fennimore website on desktop and phone" loading="lazy"></div><figcaption><b>Fig &amp; Fennimore</b> · Clothing boutique</figcaption></figure>
+          </div>
+          <p class="fine" style="margin:0">Sample sites designed to show what is possible. Business names and details are fictional.</p>
         </div>
       </details>
     </div>
@@ -772,6 +806,16 @@ dialog.lb::backdrop{background:rgba(6,6,8,.88);backdrop-filter:blur(6px);-webkit
 <script>
 (function(){
   var CAP={
+    'site-quietwell':['Quietwell Aesthetics · Med spa','Book in under a minute, a treatment menu with prices on it, a membership plan, and a text line for clients who would rather not call. Sample site; the business is fictional.'],
+    'site-bellwood':['Bellwood Family Dental · Dental office','Next open appointments right on the home page, an insurance check, clear prices for patients without insurance, and a same-day emergency line. Sample site; the business is fictional.'],
+    'site-little-orbit':['Little Orbit Tea · Boba shop','Real online ordering: build a drink, choose pickup or delivery, check out and follow the order, plus a rewards card. Sample site; the business is fictional.'],
+    'site-coffee':['Kestrel Hill Coffee Roasters · Coffee roaster','Order ahead to skip the line, a bean club subscription for fresh bags, and live open hours in the header. Sample site; the business is fictional.'],
+    'site-halden':['Halden & Rye Bakery · Bakery','Today’s bake counted down live as it sells, a four-step cake builder, and weekly standing orders for bread. Sample site; the business is fictional.'],
+    'site-cedarline':['Cedarline Kitchen · Restaurant','Table reservations, tonight’s menu, and a private dining inquiry for rehearsal dinners, offsites and birthdays. Sample site; the business is fictional.'],
+    'site-hollis':['Hollis Flower House · Florist','Same-day delivery with a ZIP check and order cutoff, weekly flower subscriptions, and wedding inquiries. Sample site; the business is fictional.'],
+    'site-salon':['Ostrander Hair Studio · Hair salon','Pick a service, then a stylist and a time, with straightforward pricing, a texting line and a first-visit offer. Sample site; the business is fictional.'],
+    'site-pilates':['Springline Reformer Studio · Pilates studio','A live class schedule with spots left, intro packs, and membership plans, with an app-style tab bar on phones. Sample site; the business is fictional.'],
+    'site-boutique':['Fig & Fennimore · Clothing boutique','A seasonal lookbook, new arrivals with a cart, a fitting room you can book with a stylist, and an early-look email list. Sample site; the business is fictional.'],
     'brokerage-site':['Brokerage website redesign','The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed.'],
     'lead-responder':['A seller inquiry, answered right away','A homeowner asks a brokerage for a pricing analysis and sees a confirmation immediately, while the agent gets the request with every detail filled in.'],
     'blog-library':['Local guide library','Buyer and neighborhood guides written to show up in Google and get cited by ChatGPT and other AI search.'],
