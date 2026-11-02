@@ -188,6 +188,15 @@ nav.links .btn{padding:11px 18px;font-size:14px}
 .ind p{color:var(--muted);font-size:15px}
 @media (max-width:860px){.inds{grid-template-columns:minmax(0,1fr)}.ind,.ind:not(:nth-child(3n+1)){padding:22px 0;border-left:0}}
 .fine{font-size:14px;color:var(--muted);margin-top:22px}
+.quick{margin-top:56px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center;padding:32px 36px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.quick .price{font:500 13px/1.3 var(--mono);color:var(--brass);letter-spacing:.04em;text-transform:uppercase;margin:10px 0 12px}
+.quick h3{font-size:32px;line-height:1.05}
+.quick p{color:var(--muted);font-size:15px}
+.quick ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.quick li{padding-left:22px;position:relative;font-size:15px}
+.quick li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;border:1px solid var(--brass)}
+.quick .founding{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;font-size:14px;color:var(--muted)}
+@media (max-width:760px){.quick{grid-template-columns:1fr;padding:24px 20px;gap:20px}}
 
 /* case studies */
 .cases{display:grid;gap:16px}
@@ -464,6 +473,20 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       <div class="step rv d2"><span class="dot">3</span><h3>Build</h3><div class="price">From $2,000</div><p>The services you choose, set up and tested on your real business, with your team shown how to use them.</p></div>
       <div class="step rv d3"><span class="dot">4</span><h3>Ongoing support</h3><div class="price">From $200 a month</div><p>Hosting, security, fresh content, steady improvements and a weekly scorecard.</p></div>
     </div>
+    <div class="quick rv">
+      <div>
+        <div class="eyebrow">Not ready for a full plan?</div>
+        <h3>Quick Win</h3>
+        <div class="price">$500 flat · live in one week</div>
+        <p>Pick one fix and I'll set it up on your real business, test it and show you how it works. If you want more later, the $500 is credited toward a build.</p>
+      </div>
+      <ul>
+        <li>Online booking with automatic reminders</li>
+        <li>Review requests sent after every job or visit</li>
+        <li>Instant replies to every website inquiry, day or night</li>
+      </ul>
+      <p class="founding">Founding clients: my first three clients get 20% off their first build in exchange for an honest review once it's live.</p>
+    </div>
   </div>
 </section>
 
@@ -607,7 +630,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       <div class="body">
         <p>I studied philosophy at USC in the Thematic Option honors program, and I'm based in Southern California. I learned to break a messy problem into clear steps, and that's still how I approach every project.</p>
         <p>I build AI tools for owner-run businesses. Recent projects include an office app, website and video ad studio for a design-build remodeling company, a website and AI toolkit designed for a real estate brokerage, and AI advisory for law firms through Sidebar. On my own I've also built a portfolio of 15 working AI tools for legal work, including a full law-firm operations suite. All of them follow the rules I bring to every client: the AI shows its sources, gets checked in code where it can, and a person approves anything that matters.</p>
-        <p>By day, I've spent more than four years inside AmLaw firms in conflicts and risk, where I now lead the daily conflicts workflow, sit on the firm's AI Task Force and serve as AI lead for the Risk Department. One human-reviewed AI workflow I built there cut turnaround on conflict waivers by 90%. You deal with me from first call to launch.</p>
+        <p>My background is risk management at large law firms, where mistakes are expensive. I lead a daily conflicts workflow, sit on an AI Task Force and serve as AI lead for a Risk Department. One human-reviewed AI workflow I built there cut turnaround on conflict waivers by 90%. I bring that same care to every small business I work with, and you deal with me directly from first call to launch.</p>
       </div>
     </div>
   </div>
@@ -624,6 +647,8 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       <div class="direct">
         <div class="eyebrow">Or email directly</div>
         <div class="mailrow"><span class="addr" id="addr">myles@mlpconsults.com</span><button class="btn copy" type="button" id="copy">Copy</button></div>
+        <div class="eyebrow" style="margin-top:8px">Or call or text</div>
+        <div class="mailrow"><a class="addr" href="tel:+15183069403" style="color:inherit;text-decoration:none">(518) 306-9403</a></div>
         <p class="refnote">Referred by someone? Mention their name so I can thank them.</p>
       </div>
     </div>
@@ -651,7 +676,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 </main>
 
 <footer>
-  <div class="wrap"><b>MLP Consulting</b><span>Websites, lead follow-up and AI tools for owner-run businesses · myles@mlpconsults.com</span></div>
+  <div class="wrap"><b>MLP Consulting</b><span>Websites, lead follow-up and AI tools for owner-run businesses · myles@mlpconsults.com · <a href="tel:+15183069403" style="color:inherit">(518) 306-9403</a></span></div>
 </footer>
 
 <script>
