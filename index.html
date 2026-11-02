@@ -601,7 +601,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
         <label for="f-ref"><span>Referred by <small>(optional)</small></span><input id="f-ref" name="referrer"></label>
       </div>
       <button class="btn ink" type="submit" style="justify-self:start">Request my free assessment</button>
-      <div class="done" id="done" hidden>Your email app should open with this filled in. Just press send. If it didn't open, email myles@mlpconsults.com.</div>
+      <div class="done" id="done" role="status" hidden>Thank you. Your request is in, and I will reply within one business day. If you would rather email, write to myles@mlpconsults.com.</div>
     </form>
   </div>
 </section>
@@ -717,9 +717,13 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
     var need=['f-name','f-biz','f-contact'].map(function(id){return document.getElementById(id);}).filter(function(el){el.removeAttribute('aria-invalid');return !el.value.trim();});
     if(need.length){need.forEach(function(el){el.setAttribute('aria-invalid','true');});need[0].focus();return;}
     var v=function(id){return document.getElementById(id).value.trim();};
+    var btn=e.target.querySelector('button[type=submit]'),done=document.getElementById('done');
     var body='Name: '+v('f-name')+'\nBusiness: '+v('f-biz')+'\nIndustry: '+v('f-ind')+'\nWebsite: '+v('f-site')+'\nContact: '+v('f-contact')+'\nReferred by: '+v('f-ref')+'\n\nWhat I want to fix:\n'+v('f-pain');
-    location.href='mailto:myles@mlpconsults.com?subject='+encodeURIComponent('Free assessment: '+v('f-biz'))+'&body='+encodeURIComponent(body);
-    document.getElementById('done').hidden=false;
+    btn.disabled=true;btn.textContent='Sending...';
+    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:'c3cd3264-8d14-478c-ba2a-afb3df8e7b03',subject:'Free assessment: '+v('f-biz'),from_name:'MLP Consulting site',name:v('f-name'),message:body})})
+      .then(function(r){return r.json();})
+      .then(function(j){if(!j.success)throw new Error('fail');e.target.reset();btn.textContent='Request sent';done.hidden=false;})
+      .catch(function(){btn.disabled=false;btn.textContent='Request my free assessment';done.textContent='Sorry, that did not go through. Please email myles@mlpconsults.com instead.';done.hidden=false;});
   });
   document.getElementById('copy').addEventListener('click',function(){
     var b=this,a=document.getElementById('addr');
