@@ -24,7 +24,7 @@ function sameKey(a, b) {
 async function cal(env) {
   if (!env.CAL_API_KEY) return { error: "CAL_API_KEY not set" };
   const r = await fetch("https://api.cal.com/v2/bookings?status=upcoming&take=20", {
-    headers: { Authorization: `Bearer ${env.CAL_API_KEY}`, "cal-api-version": "2024-08-13" },
+    headers: { Authorization: `Bearer ${env.CAL_API_KEY.trim()}`, "cal-api-version": "2024-08-13" },
   });
   if (!r.ok) return { error: `Cal.com ${r.status}` };
   const { data = [] } = await r.json();
@@ -43,12 +43,17 @@ async function cal(env) {
 
 async function hubspot(env) {
   if (!env.HUBSPOT_TOKEN) return { error: "HUBSPOT_TOKEN not set" };
-  const h = { Authorization: `Bearer ${env.HUBSPOT_TOKEN}` };
+  const h = { Authorization: `Bearer ${env.HUBSPOT_TOKEN.trim()}` };
   const [p, d] = await Promise.all([
     fetch("https://api.hubapi.com/crm/v3/pipelines/deals", { headers: h }),
     fetch("https://api.hubapi.com/crm/v3/objects/deals?limit=100&properties=dealname,amount,dealstage,closedate", { headers: h }),
   ]);
-  if (!p.ok || !d.ok) return { error: `HubSpot ${p.ok ? d.status : p.status}` };
+  if (!p.ok || !d.ok) {
+    const bad = p.ok ? d : p;
+    let msg = "";
+    try { msg = (await bad.json()).message || ""; } catch {}
+    return { error: `HubSpot ${bad.status}${msg ? ": " + msg.slice(0, 160) : ""}` };
+  }
   const stages = {};
   for (const pl of (await p.json()).results || []) for (const s of pl.stages || []) stages[s.id] = s.label;
   const deals = ((await d.json()).results || []).map((x) => ({
