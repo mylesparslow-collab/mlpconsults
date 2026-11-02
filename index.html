@@ -788,6 +788,14 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
     var btn=e.target.querySelector('button[type=submit]'),done=document.getElementById('done');
     var body='Name: '+v('f-name')+'\nBusiness: '+v('f-biz')+'\nIndustry: '+v('f-ind')+'\nWebsite: '+v('f-site')+'\nContact: '+v('f-contact')+'\nReferred by: '+v('f-ref')+'\n\nWhat I want to fix:\n'+v('f-pain');
     btn.disabled=true;btn.textContent='Sending...';
+    /* copy the lead into the HubSpot CRM (best effort; the email below is the source of truth) */
+    try{
+      var c=v('f-contact'),isMail=c.indexOf('@')>0,hutk=(document.cookie.match(/hubspotutk=([^;]+)/)||[])[1];
+      var hs=[['firstname',v('f-name')],['company',v('f-biz')],['website',v('f-site')],[isMail?'email':'phone',c],['message','Industry: '+v('f-ind')+'\nReferred by: '+v('f-ref')+'\n\n'+v('f-pain')]]
+        .filter(function(x){return x[1];}).map(function(x){return {objectTypeId:'0-1',name:x[0],value:x[1]};});
+      var ctx={pageUri:location.href,pageName:document.title};if(hutk)ctx.hutk=hutk;
+      fetch('https://api.hsforms.com/submissions/v3/integration/submit/247871007/41028eeb-eade-4ad2-af4f-d77729628ba6',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:hs,context:ctx})}).catch(function(){});
+    }catch(err){}
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:'c3cd3264-8d14-478c-ba2a-afb3df8e7b03',subject:'Free assessment: '+v('f-biz'),from_name:'MLP Consulting site',name:v('f-name'),message:body})})
       .then(function(r){return r.json();})
       .then(function(j){if(!j.success)throw new Error('fail');e.target.reset();btn.textContent='Request sent';done.hidden=false;})
@@ -877,5 +885,7 @@ dialog.lb::backdrop{background:rgba(6,6,8,.88);backdrop-filter:blur(6px);-webkit
 })();
 </script>
 
+<!-- HubSpot: captures contact form submissions into the CRM -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247871007.js"></script>
 </body>
 </html>
