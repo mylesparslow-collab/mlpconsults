@@ -68,6 +68,13 @@ dialog::backdrop{background:rgba(0,0,0,.4)}
 label{display:block;font-size:12px;color:var(--mute);margin:10px 0 4px}
 input,select,textarea{width:100%;font:inherit;font-size:14px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
 .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.plist{display:grid;gap:24px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.plist h3{font:600 13px/1.3 ui-serif,Georgia,serif;margin:0 0 6px}
+.plist table+h3{margin-top:18px}
+.plist td .note{display:block;font-size:12px;color:var(--mute)}
+.plist td:last-child{white-space:nowrap;vertical-align:top;padding-left:12px}
+.rules{margin:0;padding-left:18px;font-size:13px;display:grid;gap:6px}
+@media (max-width:900px){.plist{grid-template-columns:1fr}}
 .foot{margin-top:24px;font-size:12px;color:var(--mute)}
 </style>
 </head>
@@ -107,7 +114,7 @@ input,select,textarea{width:100%;font:inherit;font-size:14px;padding:7px 9px;bor
     <p class="foot" style="margin-top:10px">Click a deal to edit or move it. Deals marked HubSpot come from your CRM and open there.</p>
   </div>
 
-  <div class="card s8">
+  <div class="card s12">
     <h2>Open everything</h2>
     <div class="links">
       <a href="https://app.cal.com/bookings/upcoming" target="_blank" rel="noopener"><b>Cal.com bookings</b><span>Upcoming check-ups</span></a>
@@ -127,16 +134,52 @@ input,select,textarea{width:100%;font:inherit;font-size:14px;padding:7px 9px;bor
     </div>
   </div>
 
-  <div class="card s4">
-    <h2>Prices</h2>
-    <table>
-      <tr><td>Free AI check-up (30 min)</td><td>$0</td></tr>
-      <tr><td>Quick Win (one fix, live in a week)</td><td>$500</td></tr>
-      <tr><td>Growth package</td><td>from $1,000</td></tr>
-      <tr><td>Build package</td><td>from $2,000</td></tr>
-      <tr><td>Ongoing support</td><td>$200/mo</td></tr>
-    </table>
-    <p class="foot" style="margin-top:10px">Quick Win is credited toward a Build. First 3 clients: 20% off first build for an honest review.</p>
+  <div class="card s12" id="prices">
+    <h2>Price list <span class="pill">internal · ranges</span></h2>
+    <div class="plist">
+      <div>
+        <h3>Start here</h3>
+        <table>
+          <tr><td>Free AI check-up (30 min)<span class="note">Every client starts here</span></td><td>$0</td></tr>
+          <tr><td>Quick Win<span class="note">One fix, live in a week, credited to a build</span></td><td>$500</td></tr>
+          <tr><td>Growth plan<span class="note">Plan + working demos, credited to the build</span></td><td>$1–1.5k</td></tr>
+        </table>
+        <h3>Front Office (client system)</h3>
+        <table>
+          <tr><td>Essentials<span class="note">Booking, HubSpot pipeline, everything flowing in</span></td><td>~$1.5k</td></tr>
+          <tr><td>Complete<span class="note">+ live dashboard, email, Google profile, booking page</span></td><td>~$3k</td></tr>
+          <tr><td>Custom<span class="note">+ follow-ups, reminders, lead grading, weekly summary</span></td><td>$5k+</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>Build, by service</h3>
+        <table>
+          <tr><td>Website<span class="note">Redesign or rebuild, forms, security cleanup</span></td><td>$1.5–4k</td></tr>
+          <tr><td>Every lead answered<span class="note">Instant replies, grading, follow-ups, review requests</span></td><td>$1–2.5k</td></tr>
+          <tr><td>Found on Google<span class="note">Google profile, service and area pages, starter guides</span></td><td>$750–2k</td></tr>
+          <tr><td>Marketing<span class="note">Video ad styles, post and email templates, set up once</span></td><td>$1–2.5k</td></tr>
+          <tr><td>Evenings back<span class="note">Inbox sorting, estimates, invoices, QuickBooks</span></td><td>$2–5k</td></tr>
+          <tr><td>Know what's working<span class="note">Dashboard, AI assistants, staff training</span></td><td>$1.5–4k</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>Monthly</h3>
+        <table>
+          <tr><td>Care<span class="note">Hosting, backups, security, monthly check, fixes, small edits</span></td><td>$200</td></tr>
+          <tr><td>Care, bigger setups<span class="note">Several sites or many connected tools</span></td><td>$300–500</td></tr>
+          <tr><td>Fresh content<span class="note">Ads, posts, guides and emails made each month</span></td><td>$300–800</td></tr>
+        </table>
+        <h3>Rules of thumb</h3>
+        <ul class="rules">
+          <li>Top of the range: many pages, writing all the content, several tools or locations, moving old data, sensitive records, rush jobs.</li>
+          <li>Two or more services together: about 10% off the total.</li>
+          <li>Smaller budget: cut the scope, not the rate. One price list everywhere.</li>
+          <li>Outside a quote: roughly $100–150 an hour, approved first.</li>
+          <li>Terms: Quick Win paid upfront; builds 50% to start, 50% at launch.</li>
+          <li>First 3 clients: 20% off their first build for an honest review.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <div class="card s6">
