@@ -188,6 +188,15 @@ nav.links .btn{padding:11px 18px;font-size:14px}
 .ind p{color:var(--muted);font-size:15px}
 @media (max-width:860px){.inds{grid-template-columns:minmax(0,1fr)}.ind,.ind:not(:nth-child(3n+1)){padding:22px 0;border-left:0}}
 .fine{font-size:14px;color:var(--muted);margin-top:22px}
+.quick{margin-top:56px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center;padding:32px 36px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.quick .price{font:500 13px/1.3 var(--mono);color:var(--brass);letter-spacing:.04em;text-transform:uppercase;margin:10px 0 12px}
+.quick h3{font-size:32px;line-height:1.05}
+.quick p{color:var(--muted);font-size:15px}
+.quick ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.quick li{padding-left:22px;position:relative;font-size:15px}
+.quick li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;border:1px solid var(--brass)}
+.quick .founding{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;font-size:14px;color:var(--muted)}
+@media (max-width:760px){.quick{grid-template-columns:1fr;padding:24px 20px;gap:20px}}
 
 /* case studies */
 .cases{display:grid;gap:16px}
@@ -464,6 +473,20 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       <div class="step rv d2"><span class="dot">3</span><h3>Build</h3><div class="price">From $2,000</div><p>The services you choose, set up and tested on your real business, with your team shown how to use them.</p></div>
       <div class="step rv d3"><span class="dot">4</span><h3>Ongoing support</h3><div class="price">From $200 a month</div><p>Hosting, security, fresh content, steady improvements and a weekly scorecard.</p></div>
     </div>
+    <div class="quick rv">
+      <div>
+        <div class="eyebrow">Not ready for a full plan?</div>
+        <h3>Quick Win</h3>
+        <div class="price">$500 flat · live in one week</div>
+        <p>Pick one fix and I'll set it up on your real business, test it and show you how it works. If you want more later, the $500 is credited toward a build.</p>
+      </div>
+      <ul>
+        <li>Online booking with automatic reminders</li>
+        <li>Review requests sent after every job or visit</li>
+        <li>Instant replies to every website inquiry, day or night</li>
+      </ul>
+      <p class="founding">Founding-client rate: 20% off your first build in exchange for an honest review once it's live.</p>
+    </div>
   </div>
 </section>
 
@@ -621,9 +644,12 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       <div class="eyebrow">Contact</div>
       <h2>See where you're <em>leaving money.</em></h2>
       <p class="lead">Tell me about your business and what you'd most like to fix. I'll review your public pages and send your free assessment within one business day.</p>
+      <p style="margin:22px 0 4px"><a class="btn gold" href="https://cal.com/mlpconsults/free-check-up" target="_blank" rel="noopener">Book a free 30-minute call <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></p>
       <div class="direct">
         <div class="eyebrow">Or email directly</div>
         <div class="mailrow"><span class="addr" id="addr">myles@mlpconsults.com</span><button class="btn copy" type="button" id="copy">Copy</button></div>
+        <div class="eyebrow" style="margin-top:8px">Or call or text</div>
+        <div class="mailrow"><a class="addr" href="tel:+15183069403" style="color:inherit;text-decoration:none">(518) 306-9403</a></div>
       </div>
     </div>
     <form id="intake" class="rv d1" novalidate>
@@ -650,7 +676,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 </main>
 
 <footer>
-  <div class="wrap"><b>MLP Consulting</b><span>Websites, lead follow-up and AI tools for owner-run businesses · myles@mlpconsults.com</span></div>
+  <div class="wrap"><b>MLP Consulting</b><span>Websites, lead follow-up and AI tools for owner-run businesses · myles@mlpconsults.com · <a href="tel:+15183069403" style="color:inherit">(518) 306-9403</a></span></div>
 </footer>
 
 <script>
@@ -762,6 +788,14 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
     var btn=e.target.querySelector('button[type=submit]'),done=document.getElementById('done');
     var body='Name: '+v('f-name')+'\nBusiness: '+v('f-biz')+'\nIndustry: '+v('f-ind')+'\nWebsite: '+v('f-site')+'\nContact: '+v('f-contact')+'\nReferred by: '+v('f-ref')+'\n\nWhat I want to fix:\n'+v('f-pain');
     btn.disabled=true;btn.textContent='Sending...';
+    /* copy the lead into the HubSpot CRM (best effort; the email below is the source of truth) */
+    try{
+      var c=v('f-contact'),isMail=c.indexOf('@')>0,hutk=(document.cookie.match(/hubspotutk=([^;]+)/)||[])[1];
+      var hs=[['firstname',v('f-name')],['company',v('f-biz')],['website',v('f-site')],[isMail?'email':'phone',c],['message','Industry: '+v('f-ind')+'\nReferred by: '+v('f-ref')+'\n\n'+v('f-pain')]]
+        .filter(function(x){return x[1];}).map(function(x){return {objectTypeId:'0-1',name:x[0],value:x[1]};});
+      var ctx={pageUri:location.href,pageName:document.title};if(hutk)ctx.hutk=hutk;
+      fetch('https://api.hsforms.com/submissions/v3/integration/submit/247871007/41028eeb-eade-4ad2-af4f-d77729628ba6',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:hs,context:ctx})}).catch(function(){});
+    }catch(err){}
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:'c3cd3264-8d14-478c-ba2a-afb3df8e7b03',subject:'Free assessment: '+v('f-biz'),from_name:'MLP Consulting site',name:v('f-name'),message:body})})
       .then(function(r){return r.json();})
       .then(function(j){if(!j.success)throw new Error('fail');e.target.reset();btn.textContent='Request sent';done.hidden=false;})
@@ -851,5 +885,7 @@ dialog.lb::backdrop{background:rgba(6,6,8,.88);backdrop-filter:blur(6px);-webkit
 })();
 </script>
 
+<!-- HubSpot: captures contact form submissions into the CRM -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247871007.js"></script>
 </body>
 </html>
