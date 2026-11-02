@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MLP Dashboard</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="manifest" href="/dash/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MLP Dashboard">
+<meta name="theme-color" content="#111111">
+<style>
+:root{--bg:#f6f6f4;--card:#fff;--ink:#111;--mute:#6b6b6b;--line:#e2e2de;--ok:#1f7a4d;--warn:#a15c00;--accent:#111}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e0e0e;--card:#171717;--ink:#f1f1ef;--mute:#9a9a96;--line:#2a2a28;--ok:#5cc28c;--warn:#e0a24a;--accent:#f1f1ef}}
+:root[data-theme=dark]{--bg:#0e0e0e;--card:#171717;--ink:#f1f1ef;--mute:#9a9a96;--line:#2a2a28;--ok:#5cc28c;--warn:#e0a24a;--accent:#f1f1ef}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 60px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+h1{font:600 22px/1.2 ui-serif,Georgia,serif;margin:0;letter-spacing:.01em}
+h1 small{display:block;font:13px ui-monospace,Menlo,monospace;color:var(--mute);margin-top:4px}
+h2{font:600 12px ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.12em;color:var(--mute);margin:0 0 12px}
+button,.btn{font:inherit;font-size:13px;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;text-decoration:none;display:inline-block}
+button:hover,.btn:hover{border-color:var(--ink)}
+button.primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(12,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.s12{grid-column:span 12}.s8{grid-column:span 8}.s6{grid-column:span 6}.s4{grid-column:span 4}.s3{grid-column:span 3}
+@media (max-width:900px){.s8,.s6,.s4{grid-column:span 12}.s3{grid-column:span 6}}
+.kpi .n{font:600 28px/1 ui-serif,Georgia,serif;margin-top:6px}
+.kpi .l{font-size:12px;color:var(--mute)}
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.links a{display:block;border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--ink);text-decoration:none}
+.links a:hover{border-color:var(--ink)}
+.links b{display:block;font-weight:600}
+.links span{font-size:12px;color:var(--mute)}
+.board{display:grid;grid-template-columns:repeat(5,minmax(170px,1fr));gap:10px;overflow-x:auto}
+.col{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;min-height:120px}
+.col h3{font:600 12px ui-monospace,Menlo,monospace;margin:0 0 8px;display:flex;justify-content:space-between}
+.deal{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:8px;font-size:13px;cursor:pointer}
+.deal .v{color:var(--mute);font-size:12px}
+.deal .due{font-size:12px}
+.overdue{color:var(--warn)}
+.deal.hs{border-style:dashed}
+#net .nd rect{fill:var(--card);stroke:var(--line);stroke-width:1.5}
+#net .nd text{fill:var(--ink);font:600 14px ui-sans-serif,system-ui,sans-serif}
+#net .nd .sub{fill:var(--mute);font:400 11px ui-monospace,Menlo,monospace}
+#net .nd.me rect{fill:var(--ink)}#net .nd.me text{fill:var(--bg)}
+#net path{fill:none;stroke-width:2.2}
+#net .ok{stroke:var(--ok)}#net .warn{stroke:var(--warn)}#net .off{stroke:var(--mute);stroke-dasharray:5 5;opacity:.7}
+#net .lbl{font:11px ui-monospace,Menlo,monospace;fill:var(--mute);stroke:var(--card);stroke-width:5px;paint-order:stroke}
+#net a:hover rect{stroke:var(--ink)}
+.empty{color:var(--mute);font-size:12px}
+ul.check{list-style:none;margin:0;padding:0}
+ul.check li{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+ul.check li:last-child{border:0}
+ul.check input{margin-top:3px}
+ul.check .note{display:block;font-size:12px;color:var(--mute)}
+ul.check li.done .t{text-decoration:line-through;color:var(--mute)}
+.pill{font:11px ui-monospace,Menlo,monospace;border:1px solid var(--line);border-radius:99px;padding:1px 8px;margin-left:6px;white-space:nowrap}
+.pill.live{color:var(--ok);border-color:currentColor}.pill.wait{color:var(--warn);border-color:currentColor}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td{padding:7px 0;border-bottom:1px solid var(--line)}td:last-child{text-align:right;font-family:ui-monospace,Menlo,monospace}
+tr:last-child td{border:0}
+dialog{border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);padding:20px;width:min(440px,92vw)}
+dialog::backdrop{background:rgba(0,0,0,.4)}
+label{display:block;font-size:12px;color:var(--mute);margin:10px 0 4px}
+input,select,textarea{width:100%;font:inherit;font-size:14px;padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.foot{margin-top:24px;font-size:12px;color:var(--mute)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>MLP Consulting <small><span id="today"></span> · <span id="sync">Not connected</span></small></h1>
+  <div class="row" style="margin:0">
+    <button class="primary" onclick="openDeal()">+ Deal</button>
+    <button onclick="exportData()">Export</button>
+    <label class="btn" style="margin:0;color:var(--ink);font-size:13px">Import<input type="file" accept=".json" hidden onchange="importData(this)"></label>
+    <button id="b-live" onclick="connectLive()">Connect live data</button>
+    <button onclick="toggleTheme()">Day / night</button>
+  </div>
+</header>
+
+<div class="grid">
+  <div class="card s3 kpi"><div class="l">Open deals</div><div class="n" id="k-open">0</div></div>
+  <div class="card s3 kpi"><div class="l">Pipeline value</div><div class="n" id="k-pipe">$0</div></div>
+  <div class="card s3 kpi"><div class="l">Monthly recurring</div><div class="n" id="k-mrr">$0</div></div>
+  <div class="card s3 kpi"><div class="l">Next steps due</div><div class="n" id="k-due">0</div></div>
+
+  <div class="card s12">
+    <h2>Connections</h2>
+    <svg id="net" viewBox="0 0 1240 390" role="img" aria-label="How MLP's tools connect" style="width:100%;height:auto;display:block"></svg>
+    <p class="foot" style="margin-top:6px"><span style="color:var(--ok)">━</span> working &nbsp; <span style="color:var(--warn)">━</span> needs attention &nbsp; <span style="color:var(--mute)">┅</span> not set up yet. Lines into the dashboard are checked live; the rest reflect your setup list.</p>
+  </div>
+
+  <div class="card s12" id="live-card" hidden>
+    <h2>Upcoming bookings <span id="live-at" class="pill"></span></h2>
+    <ul class="check" id="bookings"></ul>
+  </div>
+
+  <div class="card s12">
+    <h2>Pipeline</h2>
+    <div class="board" id="board"></div>
+    <p class="foot" style="margin-top:10px">Click a deal to edit or move it. Deals marked HubSpot come from your CRM and open there.</p>
+  </div>
+
+  <div class="card s8">
+    <h2>Open everything</h2>
+    <div class="links">
+      <a href="https://app.cal.com/bookings/upcoming" target="_blank" rel="noopener"><b>Cal.com bookings</b><span>Upcoming check-ups</span></a>
+      <a href="https://cal.com/mlpconsults/free-check-up" target="_blank" rel="noopener"><b>Booking link</b><span>cal.com/mlpconsults/free-check-up</span></a>
+      <a href="https://app-na2.hubspot.com/contacts/247871007/objects/0-3/views/all/board" target="_blank" rel="noopener"><b>HubSpot CRM</b><span>Contacts and deals</span></a>
+      <a href="https://app.fastmail.com" target="_blank" rel="noopener"><b>Fastmail</b><span>myles@mlpconsults.com</span></a>
+      <a href="https://app.web3forms.com" target="_blank" rel="noopener"><b>Web3Forms</b><span>Site contact form</span></a>
+      <a href="https://mlpconsults.com" target="_blank" rel="noopener"><b>mlpconsults.com</b><span>Live site</span></a>
+      <a href="https://github.com/mylesparslow-collab/mlpconsults" target="_blank" rel="noopener"><b>Site repo</b><span>Push to main deploys</span></a>
+      <a href="https://github.com/mylesparslow-collab/mlpconsults/pulls" target="_blank" rel="noopener"><b>Site pull requests</b><span>Changes waiting on you</span></a>
+      <a href="https://dash.cloudflare.com" target="_blank" rel="noopener"><b>Cloudflare</b><span>Pages, domains, DNS</span></a>
+      <a href="https://business.google.com" target="_blank" rel="noopener"><b>Google Business Profile</b><span>Reviews, verification</span></a>
+      <a href="https://claude.ai/artifact/TwPjWMJJ7HKr3Nbg2kDu3m" target="_blank" rel="noopener"><b>First clients plan</b><span>Outreach playbook</span></a>
+      <a href="https://claude.ai/artifact/GrmEdinTwET6zSywpsLmNx" target="_blank" rel="noopener"><b>Irvine prospect list</b><span>20 businesses</span></a>
+      <a href="https://claude.ai/artifact/XowF8i7DWTAhxi8ezDMrcQ" target="_blank" rel="noopener"><b>Card Studio</b><span>Business card files</span></a>
+      <a href="https://claude.ai/artifact/MYFyVnFmHv6AKUUmFcL3hE" target="_blank" rel="noopener"><b>Portfolio hub</b><span>Case study work</span></a>
+    </div>
+  </div>
+
+  <div class="card s4">
+    <h2>Prices</h2>
+    <table>
+      <tr><td>Free AI check-up (30 min)</td><td>$0</td></tr>
+      <tr><td>Quick Win (one fix, live in a week)</td><td>$500</td></tr>
+      <tr><td>Growth package</td><td>from $1,000</td></tr>
+      <tr><td>Build package</td><td>from $2,000</td></tr>
+      <tr><td>Ongoing support</td><td>$200/mo</td></tr>
+    </table>
+    <p class="foot" style="margin-top:10px">Quick Win is credited toward a Build. First 3 clients: 20% off first build for an honest review.</p>
+  </div>
+
+  <div class="card s6">
+    <h2>Setup status</h2>
+    <ul class="check" id="setup"></ul>
+  </div>
+
+  <div class="card s6">
+    <h2>Next steps by date</h2>
+    <ul class="check" id="next"></ul>
+  </div>
+</div>
+
+<p class="foot">Your deals and checkmarks sync through mlpconsults.com, so the Mac app and the web version always match. Export makes a backup file.</p>
+</div>
+
+<dialog id="dlg">
+  <form method="dialog" id="f">
+    <h2 id="dlg-t">New deal</h2>
+    <label>Business</label><input name="biz" required>
+    <label>Contact</label><input name="contact" placeholder="Name, email or phone">
+    <label>Stage</label><select name="stage"></select>
+    <label>Value ($, one-time) or monthly for Ongoing</label><input name="value" type="number" min="0" step="50">
+    <label>Next step</label><input name="next">
+    <label>Due</label><input name="due" type="date">
+    <label>Notes</label><textarea name="notes" rows="3"></textarea>
+    <div class="row">
+      <button class="primary" value="save">Save</button>
+      <button value="cancel" formnovalidate>Cancel</button>
+      <button value="won" id="b-won" formnovalidate>Mark closed</button>
+      <button value="del" id="b-del" formnovalidate>Delete</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+const STAGES=["Booked call","Assessment sent","Quick Win","Build","Ongoing"];
+const SETUP=[
+ ["site","mlpconsults.com live, auto-deploys from GitHub","live",""],
+ ["mail","myles@mlpconsults.com on Fastmail","live","Copies to mzpprojects1@gmail.com"],
+ ["form","Contact form via Web3Forms","live","Free tier, 250 submissions a month"],
+ ["cal","Cal.com free check-up booking link","live",""],
+ ["pr1","Site update: Quick Win, founding offer, phone","live",""],
+ ["hub","HubSpot CRM with Clients pipeline","live",""],
+ ["gbp","Record Google Business Profile verification video","wait","Then add the Cal.com link and check the logo"],
+ ["cards","Order business cards (two batches)","wait","Card A Survey, foil on name only"],
+ ["live","Live Cal.com and HubSpot data in this dashboard","live",""],
+ ["calhook","Connect Cal.com bookings to HubSpot","wait","Optional: auto-creates a Booked call deal"],
+ ["llc","Form LLC after Jan 1, 2027","wait","Check if a Fictitious Business Name filing is needed first"]
+];
+const K="mlp-dash-v1";
+let S={deals:[],done:{}};
+try{S=Object.assign(S,JSON.parse(localStorage.getItem(K))||{})}catch(e){}
+let syncT;
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}
+  const k=getKey();if(!k)return;clearTimeout(syncT);
+  syncT=setTimeout(()=>fetch(BASE+"/api/state",{method:"PUT",headers:{"X-Dash-Key":k,"Content-Type":"application/json"},body:JSON.stringify({deals:S.deals,done:S.done})}).then(r=>{$("sync").textContent=r.ok?"Synced":"Not synced"}).catch(()=>{$("sync").textContent="Offline, saved here"}),400);
+};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const money=n=>"$"+Math.round(n||0).toLocaleString();
+const todayISO=new Date().toLocaleDateString("en-CA");
+$("today").textContent=new Date().toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric",year:"numeric"});
+const sel=document.querySelector("select[name=stage]");
+STAGES.forEach(s=>sel.add(new Option(s,s)));
+
+function render(){
+  const hs=(LIVE.hubspot&&LIVE.hubspot.deals||[]).map(d=>({...d,stage:({"Ongoing client":"Ongoing"})[d.stage]||d.stage})).filter(d=>!/closed|not now/i.test(d.stage||"")).map(d=>({id:"hs"+d.id,hs:d.id,biz:d.name,value:d.amount,stage:d.stage,next:d.close?"Close date":"",due:d.close}));
+  const open=S.deals.filter(d=>!d.closed).concat(hs);
+  const cols=STAGES.concat([...new Set(hs.map(d=>d.stage))].filter(x=>x&&!STAGES.includes(x)));
+  $("board").style.gridTemplateColumns=`repeat(${cols.length},minmax(170px,1fr))`;
+  $("board").innerHTML=cols.map(st=>{
+    const ds=open.filter(d=>d.stage===st);
+    return `<div class="col"><h3>${st}<span>${ds.length}</span></h3>${ds.length?ds.map(d=>`<div class="deal${d.hs?" hs":""}" onclick="${d.hs?`window.open('${HUB?`https://app-na2.hubspot.com/contacts/${HUB}/record/0-3/${d.hs}`:'https://app.hubspot.com'}','_blank')`:`openDeal('${d.id}')`}"><b>${esc(d.biz)}</b>${d.hs?'<span class="pill">HubSpot</span>':""}<div class="v">${d.value?money(d.value)+(st==="Ongoing"?"/mo":""):""}</div>${d.next?`<div class="due ${d.due&&d.due<todayISO?"overdue":""}">${esc(d.next)}${d.due?" · "+d.due:""}</div>`:""}</div>`).join(""):'<div class="empty">None yet</div>'}</div>`}).join("");
+  $("k-open").textContent=open.length;
+  $("k-pipe").textContent=money(open.filter(d=>d.stage!=="Ongoing").reduce((a,d)=>a+(+d.value||0),0));
+  $("k-mrr").textContent=money(open.filter(d=>d.stage==="Ongoing").reduce((a,d)=>a+(+d.value||0),0));
+  const due=open.filter(d=>d.next).sort((a,b)=>(a.due||"9")<(b.due||"9")?-1:1);
+  $("k-due").textContent=due.filter(d=>d.due&&d.due<=todayISO).length;
+  $("next").innerHTML=due.length?due.map(d=>`<li><span class="t"><b>${esc(d.biz)}</b>: ${esc(d.next)} <span class="pill ${d.due&&d.due<todayISO?"wait":""}">${d.due||"no date"}</span><span class="note">${esc(d.stage)}</span></span></li>`).join(""):'<li class="empty">Add a deal with a next step and it shows up here.</li>';
+  renderLive();
+  $("setup").innerHTML=SETUP.map(([id,t,st,n])=>{const done=st==="live"||S.done[id];return `<li class="${S.done[id]?"done":""}"><input type="checkbox" ${done?"checked":""} ${st==="live"?"disabled":""} onchange="S.done['${id}']=this.checked;save();render()"><span class="t">${t}<span class="pill ${done?"live":"wait"}">${done?"done":"to do"}</span>${n?`<span class="note">${n}</span>`:""}</span></li>`}).join("");
+}
+let LIVE={};let HUB="";
+try{HUB=localStorage.getItem(K+"-hub")||""}catch(e){}
+HUB=HUB||"247871007";
+const BASE=/^https?:$/.test(location.protocol)?location.origin:"https://mlpconsults.com";
+const API=BASE+"/api/dash";
+async function pullState(){
+  const k=getKey();if(!k)return;
+  try{const r=await fetch(BASE+"/api/state",{headers:{"X-Dash-Key":k}});
+    if(r.ok){const x=await r.json();
+      if(!x.saved&&(S.deals.length||Object.keys(S.done).length)){save()}
+      else{S.deals=x.deals||[];S.done=x.done||{};try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+      $("sync").textContent="Synced";render();}
+    else $("sync").textContent="Not synced";
+  }catch(e){$("sync").textContent="Offline, showing last copy"}
+}
+function getKey(){try{return localStorage.getItem(K+"-key")||""}catch(e){return ""}}
+function connectLive(){
+  const k=prompt("Dashboard key (the DASH_KEY you set in Cloudflare). Leave empty to disconnect.",getKey());
+  if(k===null)return;
+  try{k?localStorage.setItem(K+"-key",k.trim()):localStorage.removeItem(K+"-key")}catch(e){}
+  LIVE={};loadLive();pullState();
+}
+async function loadLive(){
+  const k=getKey();$("b-live").textContent=k?"Live data: refresh":"Connect live data";
+  if(!k){render();return}
+  try{
+    const r=await fetch(API,{headers:{"X-Dash-Key":k}});
+    LIVE=await r.json();if(!r.ok)LIVE={error:LIVE.error||("Error "+r.status)};
+  }catch(e){LIVE={error:"Couldn't reach mlpconsults.com"}}
+  render();
+}
+const NODES={
+ gh:[20,30,"GitHub","site code","https://github.com/mylesparslow-collab/mlpconsults"],
+ gbp:[20,170,"Google Business","verification","https://business.google.com"],
+ site:[260,100,"mlpconsults.com","Cloudflare Pages","https://mlpconsults.com"],
+ w3f:[500,20,"Web3Forms","contact form","https://app.web3forms.com"],
+ fm:[760,20,"Fastmail","myles@mlpconsults.com","https://app.fastmail.com"],
+ cal:[500,150,"Cal.com","free check-up","https://app.cal.com/bookings/upcoming"],
+ gcal:[760,110,"Google Calendar","your schedule","https://calendar.google.com"],
+ hub:[260,300,"HubSpot","Clients pipeline","https://app-na2.hubspot.com/contacts/247871007/objects/0-3/views/all/board"],
+ api:[760,215,"Data feed","mlpconsults.com/api",""],
+ kv:[760,320,"Sync","app + web match",""],
+ me:[1020,265,"This dashboard","Mac app + web",""]};
+function edgeState(){
+  const conn=!!getKey(),sy=$("sync").textContent;
+  const live=x=>!conn?"off":!LIVE.at?"off":(x&&!x.error)?"ok":"warn";
+  return [
+   ["gh","site","ok","auto-deploy"],["gbp","site",S.done.gbp?"ok":"warn",S.done.gbp?"":"verify"],
+   ["site","w3f","ok","form"],["w3f","fm","ok","email"],["site","cal","ok","book"],
+   ["cal","gcal","ok",""],["cal","hub",S.done.calhook?"ok":"off",S.done.calhook?"":"not linked"],
+   ["cal","api",live(LIVE.cal),""],["hub","api",live(LIVE.hubspot),LIVE.hubspot&&LIVE.hubspot.error?"key":""],
+   ["api","me",!conn?"off":LIVE.error?"warn":LIVE.at?"ok":"off",""],
+   ["kv","me",!conn?"off":sy==="Synced"?"ok":"warn",""]];
+}
+function renderNet(){
+  const W=200,H=54,c=k=>{const n=NODES[k];return[n[0]+W/2,n[1]+H/2]};
+  let out="";
+  for(const [a,b,st,l] of edgeState()){
+    const [x1,y1]=c(a),[x2,y2]=c(b);const sx=x1<x2?NODES[a][0]+W:x1>x2?NODES[a][0]:x1,ex=x1<x2?NODES[b][0]:x1>x2?NODES[b][0]+W:x2;
+    const mx=(sx+ex)/2;
+    out+=`<path class="${st}" d="M${sx} ${y1} C${mx} ${y1},${mx} ${y2},${ex} ${y2}"/>`+(l?`<text class="lbl" x="${mx}" y="${(y1+y2)/2-6}" text-anchor="middle">${l}</text>`:"");
+  }
+  for(const [k,[x,y,t,sub,u]] of Object.entries(NODES)){
+    const g=`<g class="nd${k==="me"?" me":""}"><rect x="${x}" y="${y}" width="${W}" height="${H}" rx="10"/><text x="${x+14}" y="${y+23}">${t}</text><text class="sub" x="${x+14}" y="${y+41}">${sub}</text></g>`;
+    out+=u?`<a href="${u}" target="_blank" rel="noopener">${g}</a>`:g;
+  }
+  $("net").innerHTML=out;
+}
+function renderLive(){
+  renderNet();
+  const on=!!getKey();$("live-card").hidden=!on;if(!on)return;
+  $("live-at").textContent=LIVE.at?"updated "+new Date(LIVE.at).toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}):(LIVE.error?"error":"loading");
+  const errs=[LIVE.error,LIVE.cal&&LIVE.cal.error,LIVE.hubspot&&LIVE.hubspot.error].filter(Boolean);
+  const bk=(LIVE.cal&&LIVE.cal.bookings)||[];
+  $("bookings").innerHTML=errs.map(e=>`<li class="overdue">${esc(e)}</li>`).join("")+(bk.length?bk.map(b=>{const f=b.fields||{},biz=Object.entries(f).filter(([k])=>/business|company/i.test(k)).map(([,v])=>v)[0];return `<li><span class="t"><b>${esc(new Date(b.start).toLocaleString([], {weekday:"short",month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}))}</b> ${esc(b.who)}${biz?" · "+esc(biz):""}${b.url?` · <a href="${esc(b.url)}" target="_blank" rel="noopener">join</a>`:""}<span class="note">${esc(b.title)}${b.email?" · "+esc(b.email):""}</span></span></li>`}).join(""):(LIVE.cal&&!LIVE.cal.error?'<li class="empty">No upcoming bookings.</li>':""));
+}
+let editing=null;
+function openDeal(id){
+  editing=id?S.deals.find(d=>d.id===id):null;
+  const f=$("f");f.reset();
+  $("dlg-t").textContent=editing?"Edit deal":"New deal";
+  $("b-del").hidden=$("b-won").hidden=!editing;
+  if(editing)for(const k of["biz","contact","stage","value","next","due","notes"])f.elements[k].value=editing[k]??"";
+  $("dlg").showModal();
+}
+$("dlg").addEventListener("close",()=>{
+  const v=$("dlg").returnValue,f=$("f");
+  if(v==="save"){
+    const d=editing||{id:Date.now().toString(36),created:todayISO};
+    for(const k of["biz","contact","stage","value","next","due","notes"])d[k]=f.elements[k].value.trim();
+    if(!editing)S.deals.push(d);
+  }else if(v==="del"&&editing){S.deals=S.deals.filter(d=>d!==editing)}
+  else if(v==="won"&&editing){editing.closed=todayISO}
+  save();render();
+});
+function exportData(){
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(S,null,2)],{type:"application/json"}));
+  a.download="mlp-dashboard-"+todayISO+".json";a.click();
+}
+function importData(inp){
+  const r=new FileReader();
+  r.onload=()=>{try{const x=JSON.parse(r.result);if(Array.isArray(x.deals)){S=Object.assign({deals:[],done:{}},x);save();render()}}catch(e){}};
+  r.readAsText(inp.files[0]);inp.value="";
+}
+function toggleTheme(){
+  const r=document.documentElement,dark=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+  r.dataset.theme=dark?"light":"dark";try{localStorage.setItem(K+"-theme",r.dataset.theme)}catch(e){}
+}
+try{const t=localStorage.getItem(K+"-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}
+render();
+if(!getKey())setTimeout(connectLive,300);else{loadLive();pullState()}
+addEventListener("focus",()=>{if(getKey()){loadLive();pullState()}});
+if("serviceWorker"in navigator&&/^https:$/.test(location.protocol))navigator.serviceWorker.register("/dash/sw.js",{scope:"/dash/"});
+</script>
+</body>
+</html>
