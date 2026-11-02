@@ -82,7 +82,20 @@ nav.links{display:flex;gap:28px;align-items:center;font-size:15px}
 nav.links a{text-decoration:none;color:var(--night-muted);transition:color .2s}
 nav.links a:hover{color:var(--on-night)}
 nav.links .btn{padding:11px 18px;font-size:14px}
-@media (max-width:920px){nav.links a:not(.btn){display:none}}
+.menu-btn{display:none;align-items:center;gap:8px;background:none;border:1px solid var(--night-line);color:var(--on-night);font:600 14px/1 var(--body);padding:11px 16px;border-radius:999px;cursor:pointer}
+.menu-btn i{display:grid;gap:4px;width:14px}.menu-btn i::before,.menu-btn i::after{content:"";height:1.5px;background:currentColor;border-radius:2px;transition:transform .25s}
+.menu-open .menu-btn i::before{transform:translateY(2.75px) rotate(45deg)}.menu-open .menu-btn i::after{transform:translateY(-2.75px) rotate(-45deg)}
+.navr{display:flex;align-items:center;gap:10px}
+nav.links .btn{white-space:nowrap}
+@media (max-width:420px){header.top .wrap{gap:12px}.navr{gap:8px}nav.links .btn{padding:11px 15px;font-size:13.5px}.menu-btn{padding:11px 13px}.menu-btn span{display:none}}
+@media (max-width:920px){
+  nav.links a:not(.btn){display:none}
+  .menu-btn{display:inline-flex}
+  header.top.menu-open{background:var(--night);border-bottom-color:var(--night-line)}
+  .menu-open nav.links{position:absolute;top:100%;left:0;right:0;display:grid;gap:0;background:var(--night);border-bottom:1px solid var(--night-line);padding:6px max(20px,env(safe-area-inset-left,0px)) 18px}
+  .menu-open nav.links a:not(.btn){display:block;padding:15px 0;border-bottom:1px solid var(--night-line);color:var(--on-night);font-size:17px}
+  .menu-open nav.links .btn{justify-self:start;margin-top:16px}
+}
 @media (max-width:420px){.mark b span{display:none}.hero .eyebrow{font-size:10.5px;letter-spacing:.1em}}
 
 /* hero */
@@ -192,6 +205,7 @@ nav.links .btn{padding:11px 18px;font-size:14px}
 .quick .price{font:500 13px/1.3 var(--mono);color:var(--brass);letter-spacing:.04em;text-transform:uppercase;margin:10px 0 12px}
 .quick h3{font-size:32px;line-height:1.05}
 .quick p{color:var(--muted);font-size:15px}
+.quick .btn{margin-top:20px}
 .quick ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .quick li{padding-left:22px;position:relative;font-size:15px}
 .quick li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;border:1px solid var(--brass)}
@@ -200,6 +214,8 @@ nav.links .btn{padding:11px 18px;font-size:14px}
 
 /* case studies */
 .cases{display:grid;gap:16px}
+.grp{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:22px 0 2px}
+.grp:first-child{margin-top:0}
 details.case{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
 details.case summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:220px minmax(0,1fr) auto;gap:30px;align-items:center;padding:20px 26px 20px 20px}
 details.case summary::-webkit-details-marker{display:none}
@@ -344,13 +360,16 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 <header class="top" id="hdr">
   <div class="wrap">
     <a class="mark" href="#top" aria-label="MLP Consulting, home"><img class="logo" src="/img/logo-mark.png" width="44" height="44" alt=""><b>MLP <span>Consulting</span></b></a>
-    <nav class="links" aria-label="Main">
+    <div class="navr">
+    <nav class="links" id="nav" aria-label="Main">
       <a href="#services">Services</a>
       <a href="#how">How it works</a>
       <a href="#work">Work</a>
       <a href="#about">About</a>
       <a class="btn gold" href="#contact">Free assessment</a>
     </nav>
+    <button class="menu-btn" type="button" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Menu"><i aria-hidden="true"></i><span>Menu</span></button>
+    </div>
   </div>
 </header>
 
@@ -365,9 +384,9 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       <p class="lead">I build the websites, follow-up systems and AI tools that owner-run businesses never have time to build for themselves. Leads get answered in minutes, your site earns trust on sight, and the paperwork handles itself. You approve the templates and rules up front, and anything personal waits for your OK.</p>
       <div class="cta">
         <a class="btn gold" href="#contact">Get a free assessment <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a class="btn line" href="#services">See what I build</a>
+        <a class="btn line" href="https://cal.com/mlpconsults/free-check-up" target="_blank" rel="noopener">Book a free call <span aria-hidden="true">↗</span></a>
       </div>
-      <p class="note"><i aria-hidden="true"></i>Taking new clients now.</p>
+      <p class="note"><i aria-hidden="true"></i>Irvine, CA &amp; remote · Taking new clients now.</p>
     </div>
 
     <aside class="sheet" aria-label="Sample free assessment">
@@ -401,7 +420,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
     <div class="services">
       <article class="svc rv">
         <span class="num">01</span>
-        <div class="pic"><img src="img/brokerage-site.jpg" width="1280" height="800" alt="A redesigned business website" loading="lazy"></div>
+        <div class="pic"><img src="img/site-cedarline.webp" width="1600" height="1000" alt="A restaurant website with table reservations, on desktop and phone" loading="lazy"></div>
         <div class="body">
           <p class="q">"Our website is old and I'm afraid to touch it."</p>
           <h3>A website you're proud to send people to</h3>
@@ -411,7 +430,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       </article>
       <article class="svc rv d1">
         <span class="num">02</span>
-        <div class="pic"><img src="img/lead-responder.jpg" width="1280" height="800" alt="A brokerage site's home valuation form with an instant confirmation to the seller" loading="lazy"></div>
+        <div class="pic"><img src="img/lead-responder.webp" width="1280" height="800" alt="A brokerage site's home valuation form with an instant confirmation to the seller" loading="lazy"></div>
         <div class="body">
           <p class="q">"Leads come in and we answer them the next day."</p>
           <h3>Every lead answered in minutes</h3>
@@ -421,17 +440,17 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       </article>
       <article class="svc rv">
         <span class="num">03</span>
-        <div class="pic"><img src="img/blog-library.jpg" width="1280" height="800" alt="A library of local guides written for search" loading="lazy"></div>
+        <div class="pic"><img src="img/blog-library.webp" width="1280" height="800" alt="A library of local guides written for search" loading="lazy"></div>
         <div class="body">
           <p class="q">"Nobody finds us on Google."</p>
-          <h3>Found on Google, and named by AI</h3>
-          <p>Show up when local customers search, and get recommended when they ask ChatGPT or Google's AI who to call.</p>
+          <h3>Found on Google, and structured for AI search</h3>
+          <p>Show up when local customers search, with a site, reviews and guides structured so ChatGPT and Google's AI can find and cite your business.</p>
           <ul><li>Google Business Profile set up and kept current</li><li>Service and area pages that match real searches</li><li>Helpful guides that answer customers' questions</li><li>Listings kept consistent across every directory</li></ul>
         </div>
       </article>
       <article class="svc rv d1">
         <span class="num">04</span>
-        <div class="pic"><img src="img/ad-studio.jpg" width="1280" height="800" alt="Short vertical video ads in claymation and blueprint styles" loading="lazy"></div>
+        <div class="pic"><img src="img/ad-studio.webp" width="1280" height="800" alt="Short vertical video ads in claymation and blueprint styles" loading="lazy"></div>
         <div class="body">
           <p class="q">"I know we should post, but there's no time."</p>
           <h3>Marketing that makes itself</h3>
@@ -441,7 +460,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       </article>
       <article class="svc rv">
         <span class="num">05</span>
-        <div class="pic"><img src="img/remodel-office.jpg" width="1280" height="800" alt="An office app listing what needs the owner's attention today" loading="lazy"></div>
+        <div class="pic"><img src="img/remodel-office.webp" width="1280" height="800" alt="An office app listing what needs the owner's attention today" loading="lazy"></div>
         <div class="body">
           <p class="q">"I do the paperwork at night."</p>
           <h3>Your evenings back</h3>
@@ -451,7 +470,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       </article>
       <article class="svc rv d1">
         <span class="num">06</span>
-        <div class="pic"><img src="img/team-hub.jpg" width="1280" height="800" alt="A team dashboard with leads, approvals and weekly numbers" loading="lazy"></div>
+        <div class="pic"><img src="img/team-hub.webp" width="1280" height="800" alt="A team dashboard with leads, approvals and weekly numbers" loading="lazy"></div>
         <div class="body">
           <p class="q">"I don't know which marketing is actually working."</p>
           <h3>Know what's working, every week</h3>
@@ -486,8 +505,8 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 <section id="how" class="mist">
   <div class="wrap">
     <div class="head">
-      <div class="rv"><div class="eyebrow">How it works</div><h2>Start small. <em>Keep only what pays.</em></h2></div>
-      <p class="lead rv d1">Each step stands on its own, priced before work starts. Stop after any of them and keep everything you've paid for.</p>
+      <div class="rv"><div class="eyebrow">How it works</div><h2>Start with one fix, <em>or build the full system.</em></h2></div>
+      <p class="lead rv d1">Every step is flat-rate and priced before work starts. No long contracts, and everything you pay for is yours to keep.</p>
     </div>
     <div class="steps">
       <div class="step rv"><span class="dot">1</span><h3>Assessment</h3><div class="price">Free</div><p>A look at your website, search presence, reviews and lead handling, with the three changes that matter most.</p></div>
@@ -500,14 +519,15 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
         <div class="eyebrow">Not ready for a full plan?</div>
         <h3>Quick Win</h3>
         <div class="price">$500 flat · live in one week</div>
-        <p>Pick one fix and I'll set it up on your real business, test it and show you how it works. If you want more later, the $500 is credited toward a build.</p>
+        <p>Pick one fix and I'll set it up on your real business, test it and show you how it works. No growth plan needed. If you want more later, the $500 is credited toward a build.</p>
+        <a class="btn gold" href="#contact">Claim a $500 Quick Win <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       </div>
       <ul>
         <li>Online booking with automatic reminders</li>
         <li>Review requests sent after every job or visit</li>
         <li>Instant replies to every website inquiry, day or night</li>
       </ul>
-      <p class="founding">Founding-client rate: 20% off your first build in exchange for an honest review once it's live.</p>
+      <p class="founding">Case-study rate: 20% off your first build when you let me publish a before-and-after write-up of the results.</p>
     </div>
   </div>
 </section>
@@ -524,7 +544,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       <div class="ind rv d2"><span class="n">HOSPITALITY</span><h3>Restaurants and retail</h3><p>Fast answers to booking and stock questions, weekly posts, win-back emails for regulars who drifted away.</p></div>
       <div class="ind rv"><span class="n">HEALTH</span><h3>Health and wellness</h3><p>Online booking and reminders that cut no-shows, reviews after visits, privacy rules from day one.</p></div>
       <div class="ind rv d1"><span class="n">SERVICES</span><h3>Professional services</h3><p>Proposals drafted from a short call, smooth client onboarding, a newsletter written from your own notes.</p></div>
-      <div class="ind rv d2"><span class="n">LEGAL</span><h3>Law firms</h3><p>Client intake and consult booking with confidentiality built in, through my legal technology consultancy, Sidebar.</p></div>
+      <div class="ind rv d2"><span class="n">LEGAL</span><h3>Law firms</h3><p>Client intake, conflict-aware consult booking and confidential document workflows for solo and small-firm practices.</p></div>
     </div>
     <p class="fine">Don't see your field? It's very likely still a fit. Ask.</p>
   </div>
@@ -534,12 +554,13 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
   <div class="wrap">
     <div class="head">
       <div class="rv"><div class="eyebrow">Selected work</div><h2>Two businesses, <em>built end to end.</em></h2></div>
-      <p class="lead rv d1">Client names stay private. Open either one to see what was built, then try the sample websites and the sample client system for yourself.</p>
+      <p class="lead rv d1">Real client work comes first, with names kept private. Below it are sample websites and a sample client system you can try for yourself.</p>
     </div>
     <div class="cases">
-      <details class="case rv" id="case-remodeler">
+      <div class="grp rv">Client work</div>
+      <details class="case rv" id="case-remodeler" open>
         <summary>
-          <div class="thumb"><img src="img/remodel-deck.jpg" width="724" height="738" alt="A finished rear deck" loading="lazy"></div>
+          <div class="thumb"><img src="img/remodel-deck.webp" width="724" height="738" alt="A finished rear deck" loading="lazy"></div>
           <div class="sum-text">
             <div class="tagrow"><span class="tag live">Client · in progress</span><span class="tag">Home improvement</span></div>
             <h3>A design-build remodeling company</h3>
@@ -574,9 +595,9 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
             <div><b>Owner</b><span>Approves before anything is sent</span></div>
           </div>
           <div class="gal">
-            <figure><div class="shot"><img src="img/remodel-job.jpg" width="1024" height="754" alt="Job page with stages and profit, sample data" loading="lazy"></div><figcaption>A job's stage and real profit. Sample job.</figcaption></figure>
-            <figure><div class="shot"><img src="img/remodel-inbox.jpg" width="1280" height="800" alt="Inbox items to review, sample data" loading="lazy"></div><figcaption>Receipts and leads waiting for approval. Sample data.</figcaption></figure>
-            <figure><div class="shot"><img src="img/ad-studio.jpg" width="1280" height="800" alt="Claymation and blueprint video ads" loading="lazy"></div><figcaption>Claymation and blueprint video ads.</figcaption></figure>
+            <figure><div class="shot"><img src="img/remodel-job.webp" width="1024" height="754" alt="Job page with stages and profit, sample data" loading="lazy"></div><figcaption>A job's stage and real profit. Sample job.</figcaption></figure>
+            <figure><div class="shot"><img src="img/remodel-inbox.webp" width="1280" height="800" alt="Inbox items to review, sample data" loading="lazy"></div><figcaption>Receipts and leads waiting for approval. Sample data.</figcaption></figure>
+            <figure><div class="shot"><img src="img/ad-studio.webp" width="1280" height="800" alt="Claymation and blueprint video ads" loading="lazy"></div><figcaption>Claymation and blueprint video ads.</figcaption></figure>
           </div>
           <div><h4 class="nx">What we'll measure next</h4><p class="fine" style="margin:8px 0 0">Time to prepare an estimate, the share of jobs with crew hours logged, how fast new leads get a reply, website inquiries, and the owner's own feedback.</p></div>
           <p class="fine" style="margin:0">Work in progress, updated as each piece launches. App screens show sample jobs and people.</p>
@@ -585,7 +606,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 
       <details class="case rv d1" id="case-brokerage">
         <summary>
-          <div class="thumb"><img src="img/brokerage-site.jpg" width="1280" height="800" alt="A redesigned real estate website" loading="lazy"></div>
+          <div class="thumb"><img src="img/brokerage-site.webp" width="1280" height="800" alt="A redesigned real estate website" loading="lazy"></div>
           <div class="sum-text">
             <div class="tagrow"><span class="tag built">Proposal · built in full</span><span class="tag">Real estate</span></div>
             <h3>An independent boutique brokerage</h3>
@@ -605,18 +626,19 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
             <div><b>48</b><span>Buyer and area guides</span></div>
           </div>
           <div class="gal">
-            <figure><div class="shot"><img src="img/security-report.jpg" width="1280" height="800" alt="Security report" loading="lazy"></div><figcaption>Security findings in plain English. <a class="demo-a" href="/work/brokerage/security/" target="_blank" rel="noopener">Open report <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/launch-kit.jpg" width="1280" height="800" alt="Listing launch kit" loading="lazy"></div><figcaption>A full listing campaign from one form. <a class="demo-a" href="/work/brokerage/launch/" target="_blank" rel="noopener">Open launch kit <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/market-reports.jpg" width="1280" height="800" alt="Market reports" loading="lazy"></div><figcaption>Monthly market reports. <a class="demo-a" href="/work/brokerage/reports/" target="_blank" rel="noopener">Open reports <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/security-report.webp" width="1280" height="800" alt="Security report" loading="lazy"></div><figcaption>Security findings in plain English. <a class="demo-a" href="/work/brokerage/security/" target="_blank" rel="noopener">Open report <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/launch-kit.webp" width="1280" height="800" alt="Listing launch kit" loading="lazy"></div><figcaption>A full listing campaign from one form. <a class="demo-a" href="/work/brokerage/launch/" target="_blank" rel="noopener">Open launch kit <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/market-reports.webp" width="1280" height="800" alt="Market reports" loading="lazy"></div><figcaption>Monthly market reports. <a class="demo-a" href="/work/brokerage/reports/" target="_blank" rel="noopener">Open reports <span aria-hidden="true">↗</span></a></figcaption></figure>
           </div>
           <div class="demos"><span class="demos-l">Try the live demos</span><a href="/work/brokerage/site/" target="_blank" rel="noopener">Redesigned website <span aria-hidden="true">↗</span></a><a href="/work/brokerage/hub/" target="_blank" rel="noopener">Team Hub <span aria-hidden="true">↗</span></a><a href="/work/brokerage/responder/" target="_blank" rel="noopener">Lead responder <span aria-hidden="true">↗</span></a><a href="/work/brokerage/reviews/" target="_blank" rel="noopener">Review engine <span aria-hidden="true">↗</span></a><a href="/work/brokerage/launch/" target="_blank" rel="noopener">Listing launch kit <span aria-hidden="true">↗</span></a><a href="/work/brokerage/social/" target="_blank" rel="noopener">Content engine <span aria-hidden="true">↗</span></a><a href="/work/brokerage/ads/" target="_blank" rel="noopener">Listing ads <span aria-hidden="true">↗</span></a><a href="/work/brokerage/staging/" target="_blank" rel="noopener">Virtual staging <span aria-hidden="true">↗</span></a><a href="/work/brokerage/nurture/" target="_blank" rel="noopener">Home value notes <span aria-hidden="true">↗</span></a><a href="/work/brokerage/reports/" target="_blank" rel="noopener">Market reports <span aria-hidden="true">↗</span></a><a href="/work/brokerage/security/" target="_blank" rel="noopener">Site protection <span aria-hidden="true">↗</span></a></div>
           <p class="fine" style="margin:0">Names, photos and figures changed; the demos run on sample data.</p>
         </div>
       </details>
 
+      <div class="grp rv">Samples you can try</div>
       <details class="case rv d2" id="case-sites">
         <summary>
-          <div class="thumb"><img src="img/site-bellwood.jpg" width="1600" height="1000" alt="A dental office website on desktop and phone" loading="lazy"></div>
+          <div class="thumb"><img src="img/site-bellwood.webp" width="1600" height="1000" alt="A dental office website on desktop and phone" loading="lazy"></div>
           <div class="sum-text">
             <div class="tagrow"><span class="tag built">Sample sites</span><span class="tag">Local businesses</span></div>
             <h3>Ten websites for local businesses</h3>
@@ -630,16 +652,16 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
             <div><h4>What they have in common</h4><ul><li>A design built around the business, not a theme</li><li>Booking, ordering or inquiries that work on the page</li><li>Prices and hours where people look for them</li><li>Fast, clean and easy to use on a phone</li></ul></div>
           </div>
           <div class="gal gal-sites">
-            <figure><div class="shot"><img src="img/site-quietwell.jpg" width="1600" height="1000" alt="Quietwell Aesthetics website on desktop and phone" loading="lazy"></div><figcaption><b>Quietwell Aesthetics</b> · Med spa <a class="demo-a" href="/work/sites/quietwell/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-bellwood.jpg" width="1600" height="1000" alt="Bellwood Family Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Bellwood Family Dental</b> · Dental office <a class="demo-a" href="/work/sites/bellwood/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-little-orbit.jpg" width="1600" height="1000" alt="Little Orbit Tea website on desktop and phone" loading="lazy"></div><figcaption><b>Little Orbit Tea</b> · Boba shop <a class="demo-a" href="/work/sites/little-orbit/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-coffee.jpg" width="1600" height="1000" alt="Kestrel Hill Coffee Roasters website on desktop and phone" loading="lazy"></div><figcaption><b>Kestrel Hill Coffee Roasters</b> · Coffee roaster <a class="demo-a" href="/work/sites/coffee/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-halden.jpg" width="1600" height="1000" alt="Halden &amp; Rye Bakery website on desktop and phone" loading="lazy"></div><figcaption><b>Halden &amp; Rye Bakery</b> · Bakery <a class="demo-a" href="/work/sites/halden/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-cedarline.jpg" width="1600" height="1000" alt="Cedarline Kitchen website on desktop and phone" loading="lazy"></div><figcaption><b>Cedarline Kitchen</b> · Restaurant <a class="demo-a" href="/work/sites/cedarline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-hollis.jpg" width="1600" height="1000" alt="Hollis Flower House website on desktop and phone" loading="lazy"></div><figcaption><b>Hollis Flower House</b> · Florist <a class="demo-a" href="/work/sites/hollis/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-salon.jpg" width="1600" height="1000" alt="Ostrander Hair Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Ostrander Hair Studio</b> · Hair salon <a class="demo-a" href="/work/sites/salon/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-pilates.jpg" width="1600" height="1000" alt="Springline Reformer Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Springline Reformer Studio</b> · Pilates studio <a class="demo-a" href="/work/sites/pilates/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-boutique.jpg" width="1600" height="1000" alt="Fig &amp; Fennimore website on desktop and phone" loading="lazy"></div><figcaption><b>Fig &amp; Fennimore</b> · Clothing boutique <a class="demo-a" href="/work/sites/boutique/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-quietwell.webp" width="1600" height="1000" alt="Quietwell Aesthetics website on desktop and phone" loading="lazy"></div><figcaption><b>Quietwell Aesthetics</b> · Med spa <a class="demo-a" href="/work/sites/quietwell/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-bellwood.webp" width="1600" height="1000" alt="Bellwood Family Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Bellwood Family Dental</b> · Dental office <a class="demo-a" href="/work/sites/bellwood/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-little-orbit.webp" width="1600" height="1000" alt="Little Orbit Tea website on desktop and phone" loading="lazy"></div><figcaption><b>Little Orbit Tea</b> · Boba shop <a class="demo-a" href="/work/sites/little-orbit/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-coffee.webp" width="1600" height="1000" alt="Kestrel Hill Coffee Roasters website on desktop and phone" loading="lazy"></div><figcaption><b>Kestrel Hill Coffee Roasters</b> · Coffee roaster <a class="demo-a" href="/work/sites/coffee/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-halden.webp" width="1600" height="1000" alt="Halden &amp; Rye Bakery website on desktop and phone" loading="lazy"></div><figcaption><b>Halden &amp; Rye Bakery</b> · Bakery <a class="demo-a" href="/work/sites/halden/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-cedarline.webp" width="1600" height="1000" alt="Cedarline Kitchen website on desktop and phone" loading="lazy"></div><figcaption><b>Cedarline Kitchen</b> · Restaurant <a class="demo-a" href="/work/sites/cedarline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-hollis.webp" width="1600" height="1000" alt="Hollis Flower House website on desktop and phone" loading="lazy"></div><figcaption><b>Hollis Flower House</b> · Florist <a class="demo-a" href="/work/sites/hollis/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-salon.webp" width="1600" height="1000" alt="Ostrander Hair Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Ostrander Hair Studio</b> · Hair salon <a class="demo-a" href="/work/sites/salon/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-pilates.webp" width="1600" height="1000" alt="Springline Reformer Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Springline Reformer Studio</b> · Pilates studio <a class="demo-a" href="/work/sites/pilates/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-boutique.webp" width="1600" height="1000" alt="Fig &amp; Fennimore website on desktop and phone" loading="lazy"></div><figcaption><b>Fig &amp; Fennimore</b> · Clothing boutique <a class="demo-a" href="/work/sites/boutique/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
           </div>
           <p class="fine" style="margin:0">Every site is live: open one and book, order or browse like a customer would. Sample sites designed to show what is possible; business names and details are fictional.</p>
         </div>
@@ -647,7 +669,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 
       <details class="case rv d3" id="case-system">
         <summary>
-          <div class="thumb"><img src="img/system-dashboard.jpg" width="1600" height="1000" alt="A client dashboard with bookings, pipeline value and connected tools" loading="lazy"></div>
+          <div class="thumb"><img src="img/system-dashboard.webp" width="1600" height="1000" alt="A client dashboard with bookings, pipeline value and connected tools" loading="lazy"></div>
           <div class="sum-text">
             <div class="tagrow"><span class="tag built">Sample automation</span><span class="tag">Any business</span></div>
             <h3>A client system, from first click to paid</h3>
@@ -667,9 +689,9 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
             <div><b>Web + Mac</b><span>Dashboard on any screen</span></div>
           </div>
           <div class="gal">
-            <figure><div class="shot"><img src="img/system-dashboard.jpg" width="1600" height="1000" alt="Dashboard with open deals, pipeline value and connected tools" loading="lazy"></div><figcaption>Deals, revenue and every connected tool at a glance. <a class="demo-a" href="/work/client-system/" target="_blank" rel="noopener">Open dashboard <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/system-pipeline.jpg" width="1600" height="1000" alt="Upcoming bookings above a pipeline board" loading="lazy"></div><figcaption>New bookings appear on their own, above the pipeline. <a class="demo-a" href="/work/client-system/" target="_blank" rel="noopener">Open dashboard <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/system-connections.jpg" width="1600" height="1000" alt="Map of the connected tools with live status lines" loading="lazy"></div><figcaption>A live map shows each connection is working. <a class="demo-a" href="/work/client-system/" target="_blank" rel="noopener">Open dashboard <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/system-dashboard.webp" width="1600" height="1000" alt="Dashboard with open deals, pipeline value and connected tools" loading="lazy"></div><figcaption>Deals, revenue and every connected tool at a glance. <a class="demo-a" href="/work/client-system/" target="_blank" rel="noopener">Open dashboard <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/system-pipeline.webp" width="1600" height="1000" alt="Upcoming bookings above a pipeline board" loading="lazy"></div><figcaption>New bookings appear on their own, above the pipeline. <a class="demo-a" href="/work/client-system/" target="_blank" rel="noopener">Open dashboard <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/system-connections.webp" width="1600" height="1000" alt="Map of the connected tools with live status lines" loading="lazy"></div><figcaption>A live map shows each connection is working. <a class="demo-a" href="/work/client-system/" target="_blank" rel="noopener">Open dashboard <span aria-hidden="true">↗</span></a></figcaption></figure>
           </div>
           <div class="demos"><a class="demos-main" href="/work/client-system/" target="_blank" rel="noopener">Try the live dashboard <span aria-hidden="true">↗</span></a><span class="demos-l">Add a deal, move it through the pipeline, tick off setup steps.</span></div>
           <p class="fine" style="margin:0">Sample automation shown with fictional businesses and bookings.</p>
@@ -693,7 +715,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 
 <section class="about" id="about">
   <div class="wrap">
-    <figure class="portrait rv"><img src="img/myles.jpg?v=2" width="720" height="1080" alt="Myles Parslow" loading="lazy"><figcaption>Myles Parslow · Founder</figcaption></figure>
+    <figure class="portrait rv"><img src="img/myles.webp" width="720" height="1080" alt="Myles Parslow" loading="lazy"><figcaption>Myles Parslow · Founder</figcaption></figure>
     <div class="rv d1">
       <div class="eyebrow">About</div>
       <h2>Myles Parslow</h2>
@@ -837,7 +859,11 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
   try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){maps.forEach(function(f){f();});});}catch(e){}
 
   /* ---- header turns solid after the hero ---- */
-  var hdr=document.getElementById('hdr');
+  var hdr=document.getElementById('hdr'),mb=document.getElementById('menu');
+  function setMenu(o){hdr.classList.toggle('menu-open',o);mb.setAttribute('aria-expanded',o);}
+  mb.addEventListener('click',function(){setMenu(!hdr.classList.contains('menu-open'));});
+  document.querySelectorAll('#nav a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false);});
   function onScroll(){hdr.classList.toggle('solid',scrollY>40);lightWords();}
   addEventListener('scroll',onScroll,{passive:true});
 
@@ -958,7 +984,7 @@ dialog.lb::backdrop{background:rgba(6,6,8,.88);backdrop-filter:blur(6px);-webkit
     'site-boutique':['Fig & Fennimore · Clothing boutique','A seasonal lookbook, new arrivals with a cart, a fitting room you can book with a stylist, and an early-look email list. Sample site; the business is fictional.'],
     'brokerage-site':['Brokerage website redesign','The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed.'],
     'lead-responder':['A seller inquiry, answered right away','A homeowner asks a brokerage for a pricing analysis and sees a confirmation immediately, while the agent gets the request with every detail filled in.'],
-    'blog-library':['Local guide library','Buyer and neighborhood guides written to show up in Google and get cited by ChatGPT and other AI search.'],
+    'blog-library':['Local guide library','Buyer and neighborhood guides written for Google and structured for ChatGPT and other AI search.'],
     'ad-studio':['Video ad studio','Short vertical ads for TikTok, Reels and Facebook in claymation and 3D blueprint styles, rendered from the client’s real projects.'],
     'remodel-office':['Office app: today’s list','What needs the owner’s attention today, pulled automatically from the business inbox and job list. Sample data.'],
     'team-hub':['Team Hub','One dashboard where staff approve leads, posts and emails before anything goes out, with the week’s numbers at a glance. Sample data.'],
@@ -970,7 +996,7 @@ dialog.lb::backdrop{background:rgba(6,6,8,.88);backdrop-filter:blur(6px);-webkit
     'market-reports':['Monthly market reports','Neighborhood prices and trends, drafted each month for agents to review and send to their clients.']
   };
   var lb=document.getElementById('lb'),li=document.getElementById('lbi'),lt=document.getElementById('lbt'),lc=document.getElementById('lbc'),ln=document.getElementById('lbn'),list=[],cur=0;
-  function key(src){var m=/img\/([a-z-]+)\.jpg/.exec(src||'');return m?m[1]:'';}
+  function key(src){var m=/img\/([a-z-]+)\.(?:jpg|webp)/.exec(src||'');return m?m[1]:'';}
   document.querySelectorAll('img').forEach(function(im){
     var k=key(im.getAttribute('src'));
     if(!CAP[k]||im.closest('summary')||im.closest('.peek')||im.closest('#lb'))return;
