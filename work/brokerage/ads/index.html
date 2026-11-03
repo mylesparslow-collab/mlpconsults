@@ -44,10 +44,10 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
 #a1 .stage{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;overflow:hidden;background:#000;color:#fff;font-family:var(--font)}
 /* ---------- stage pieces ---------- */
 #a1 .scene{position:absolute;inset:0;opacity:0;animation:scene var(--d) linear var(--s) both}
-#a1 .scene svg.art{position:absolute;left:50%;top:50%;width:2900px;height:1934px;max-width:none;transform:translate(-50%,-50%) scale(1.03);object-fit:cover;animation:kb var(--d) linear var(--s) both}
-#a1 .scene.sq svg.art{width:1934px;height:1934px}
+#a1 .scene .art{position:absolute;left:50%;top:50%;width:2900px;height:1934px;max-width:none;transform:translate(-50%,-50%) scale(1.03);object-fit:cover;animation:kb var(--d) linear var(--s) both}
+#a1 .scene.sq .art{width:1934px;height:1934px}
 #a1 .scene::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0) 55%,rgba(0,0,0,.62) 100%)}
-#a1 .scene.z-out svg.art{animation-name:kbout}
+#a1 .scene.z-out .art{animation-name:kbout}
 @keyframes scene{0%{opacity:0}6%{opacity:1}94%{opacity:1}100%{opacity:0}}
 @keyframes kb{from{transform:translate(-50%,-50%) scale(1.0)}to{transform:translate(-50%,-50%) scale(1.06)}}
 @keyframes kbout{from{transform:translate(-50%,-50%) scale(1.07)}to{transform:translate(-50%,-50%) scale(1.01)}}
@@ -120,7 +120,7 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
 /* a beat = photo card + number + lines, all timed off --s (start) and --e (end) */
 #a2 .beat{position:absolute;inset:0}
 #a2 .card{position:absolute;left:60px;top:150px;width:960px;height:1040px;overflow:hidden;border:10px solid #fff;background:#222;opacity:0;animation:cardin .5s cubic-bezier(.2,1.3,.3,1) var(--s) both, fade .25s ease var(--e) forwards}
-#a2 .card svg.art{width:100%;height:100%;object-fit:cover;max-width:100%;display:block;transform:scale(1.02);animation:drift 4s linear var(--s) both}
+#a2 .card .art{width:100%;height:100%;object-fit:cover;max-width:100%;display:block;transform:scale(1.02);animation:drift 4s linear var(--s) both}
 @keyframes cardin{from{opacity:0;transform:rotate(-6deg) scale(.8) translateY(80px)}to{opacity:1;transform:rotate(-1.5deg)}}
 @keyframes drift{from{transform:scale(1.02) translateX(-6px)}to{transform:scale(1.05) translateX(6px)}}
 @keyframes fade{from{opacity:1}to{opacity:0}}
@@ -158,11 +158,11 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
 #a3{ --bg:#FBF9F5; --fg:#2b2826; --muted:#5E6676; --green:#e44326; --green-cta:#be3118; --font:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif; --serif:"Fraunces",Georgia,serif }
 #a3 .stage{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0;overflow:hidden;background:#000;color:#fff;font-family:var(--font)}
 #a3 .shot{position:absolute;inset:0;opacity:0;animation:shot var(--d) linear var(--s) both}
-#a3 .shot svg.art{position:absolute;left:50%;top:50%;width:2880px;height:1920px;max-width:none;object-fit:cover;transform:translate(-50%,-50%) scale(1.0);animation:zoom var(--d) linear var(--s) both}
-#a3 .shot.tall svg.art{width:1080px;height:1920px}
+#a3 .shot .art{position:absolute;left:50%;top:50%;width:2880px;height:1920px;max-width:none;object-fit:cover;transform:translate(-50%,-50%) scale(1.0);animation:zoom var(--d) linear var(--s) both}
+#a3 .shot.tall .art{width:1080px;height:1920px}
 @keyframes shot{0%{opacity:0}18%{opacity:1}85%{opacity:1}100%{opacity:0}}
 @keyframes zoom{from{transform:translate(-50%,-50%) scale(1.0)}to{transform:translate(-50%,-50%) scale(1.045)}}
-#a3 .shot.out svg.art{animation-name:zoomout}
+#a3 .shot.out .art{animation-name:zoomout}
 @keyframes zoomout{from{transform:translate(-50%,-50%) scale(1.045)}to{transform:translate(-50%,-50%) scale(1.0)}}
 #a3 .vig{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at center,rgba(0,0,0,0) 45%,rgba(0,0,0,.55) 100%),linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 30%,rgba(0,0,0,0) 60%,rgba(0,0,0,.7))}
 #a3 .box{position:absolute;left:0;right:0;height:150px;background:#000;z-index:3}
@@ -213,7 +213,7 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
 #a4 .claim .mf span{display:inline-block;padding:6px 26px;border:6px solid currentColor;margin-right:22px}
 /* reveal block: photo + stamp + proof line */
 #a4 .rev{position:absolute;inset:0;opacity:0;animation:cut .01s linear var(--s) both, fade .01s linear var(--e) forwards}
-#a4 .rev svg.art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:100%;animation:snap .35s cubic-bezier(.2,1.1,.3,1) var(--s) both}
+#a4 .rev .art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:100%;animation:snap .35s cubic-bezier(.2,1.1,.3,1) var(--s) both}
 #a4 .rev::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.75) 100%)}
 #a4 .stamp{position:absolute;left:50%;top:640px;z-index:2;transform:translateX(-50%);font-size:150px;font-weight:900;letter-spacing:.02em;line-height:1;padding:10px 50px;border:18px solid currentColor;border-radius:30px;opacity:0;animation:stamp .4s cubic-bezier(.1,1.3,.3,1) calc(var(--s) + .35s) both;mix-blend-mode:normal;text-shadow:none}
 #a4 .stamp.fact{color:#ff8670;background:rgba(0,0,0,.45)}
@@ -236,7 +236,7 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
 #a4 .end .eho{width:64px;height:64px;justify-self:center;opacity:0;animation:up4 .4s ease var(--s5) both}
 
 .portnote{background:rgba(127,127,127,.12);border-bottom:1px solid var(--line);font-size:12px;color:var(--muted);text-align:center;padding:6px 16px}
-#a1 .scene svg.art,#a3 .shot svg.art{display:block}
+#a1 .scene .art,#a3 .shot .art{display:block}
 .device .art{display:block}
 @media (prefers-reduced-motion:reduce){ .stage *{animation-duration:.01s!important} }
 </style></head><body>
@@ -274,12 +274,12 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
   <div class="device"><button type="button" class="play" aria-label="Play ad"><span></span></button><div class="stage">
 
   <!-- 0.0–3.2  hook: twilight exterior -->
-  <div class="scene" style="--s:0s;--d:3.3s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-ext-dusk-modern" width="450" height="300"/></svg></div>
+  <div class="scene" style="--s:0s;--d:3.3s"><img class="art" src="/work/brokerage/img/nf-a1-1.webp" alt="Twilight exterior of the home" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="t lg top out" style="--s:.25s;--e:3.0s">This new build has a <span class="hl">secret</span></div>
   <div class="t sm low out" style="--s:1.1s;--e:3.0s">most houses don't.</div>
 
   <!-- 3.2–7.2  kitchen + counting stats -->
-  <div class="scene" style="--s:3.2s;--d:4.1s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-kitchen-island" width="450" height="300"/></svg></div>
+  <div class="scene" style="--s:3.2s;--d:4.1s"><img class="art" src="/work/brokerage/img/nf-a1-2.webp" alt="Updated kitchen with an island" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="caption out" style="--s:3.5s;--e:7.0s">Cedar Ridge · Built 2024</div>
   <div class="stats">
     <div class="stat" style="--s:3.6s" data-to="4"><b>0</b><span>bedrooms</span></div>
@@ -289,25 +289,25 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
   </div>
 
   <!-- 7.2–10.2  living room -->
-  <div class="scene" style="--s:7.2s;--d:3.1s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-living" width="450" height="300"/></svg></div>
+  <div class="scene" style="--s:7.2s;--d:3.1s"><img class="art" src="/work/brokerage/img/nf-a1-3.webp" alt="Bright living room" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="t md low out" style="--s:7.5s;--e:10.0s">Hardwood on every level.<br><span class="wh">Yes, every level.</span></div>
 
   <!-- 10.2–11.1  wipe -->
   <div class="wipe" style="--s:9.9s"></div>
 
   <!-- 10.3–14.6  the secret: two primary suites -->
-  <div class="scene" style="--s:10.3s;--d:4.4s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-bedroom" width="450" height="300"/></svg></div>
+  <div class="scene" style="--s:10.3s;--d:4.4s"><img class="art" src="/work/brokerage/img/nf-a1-4.webp" alt="Primary suite" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="t md top out" style="--s:10.6s;--e:14.4s">The secret: <span class="hl">two</span> primary suites</div>
   <div class="arrow" style="--s:11.5s;top:1160px"><span class="ico">▲</span> one upstairs</div>
   <div class="arrow" style="--s:12.0s;top:1290px"><span class="ico">▼</span> one on the main level</div>
   <div class="t sm low out" style="--s:12.8s;--e:14.4s">No stairs required. No rancher required.</div>
 
   <!-- 14.6–17.8  screened porch -->
-  <div class="scene z-out" style="--s:14.6s;--d:3.3s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-porch-screened" width="450" height="300"/></svg></div>
+  <div class="scene z-out" style="--s:14.6s;--d:3.3s"><img class="art" src="/work/brokerage/img/nf-a1-5.webp" alt="Covered porch" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="t md low out" style="--s:14.9s;--e:17.6s">Screened porch.<br><span class="hl">Built-in grill.</span></div>
 
   <!-- 17.8–21.4  lower level + word cycle -->
-  <div class="scene" style="--s:17.8s;--d:3.7s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-basement" width="450" height="300"/></svg></div>
+  <div class="scene" style="--s:17.8s;--d:3.7s"><img class="art" src="/work/brokerage/img/nf-a1-6.webp" alt="Lower level living space" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="caption out" style="--s:18.1s;--e:21.2s">Finished lower level · full bath</div>
   <div class="cycle">
     <span class="w" style="--s:18.2s">Home gym?</span>
@@ -317,7 +317,7 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
   </div>
 
   <!-- 21.4–24.4  exterior day + acre -->
-  <div class="scene z-out" style="--s:21.4s;--d:3.1s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-ext-day-modern" width="450" height="300"/></svg></div>
+  <div class="scene z-out" style="--s:21.4s;--d:3.1s"><img class="art" src="/work/brokerage/img/nf-a1-7.webp" alt="The home in daylight" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="t md low out" style="--s:21.7s;--e:24.2s">All of it on <span class="hl">1.04 acres</span><br><span style="font-size:56px;font-weight:600">minutes from the main road</span></div>
 
   <!-- 24.4–27.6  price -->
@@ -349,41 +349,41 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
   <div class="prog"></div>
 
   <div class="beat hook">
-    <div class="card" style="--s:0s;--e:3.1s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-ext-day-ranch" width="450" height="300"/></svg></div>
+    <div class="card" style="--s:0s;--e:3.1s"><img class="art" src="/work/brokerage/img/nf-a2-1.webp" alt="The house at sunset" width="900" height="975" loading="lazy" decoding="async"></div>
     <div class="big"><i>5</i> things<br>you'd never<br>guess</div>
     <div class="sub">about this $339,000 house in Willow Bend</div>
   </div>
 
   <div class="beat" style="--s:3.2s;--s2:3.4s;--s3:3.6s;--e:6.9s">
-    <div class="card"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-openplan" width="450" height="300"/></svg></div>
+    <div class="card"><img class="art" src="/work/brokerage/img/nf-a2-2.webp" alt="Single-level home exterior" width="900" height="975" loading="lazy" decoding="async"></div>
     <div class="num">5</div>
     <div class="line">It's all on one level<small>3,140 square feet. Not one stair.</small></div>
     <div class="kicker">58 Aspen Ln</div>
   </div>
 
   <div class="beat" style="--s:7.0s;--s2:7.2s;--s3:7.4s;--e:10.7s">
-    <div class="card"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-woods" width="450" height="300"/></svg></div>
+    <div class="card"><img class="art" src="/work/brokerage/img/nf-a2-3.webp" alt="Home surrounded by trees" width="900" height="975" loading="lazy" decoding="async"></div>
     <div class="num">4</div>
     <div class="line">Two wooded acres<small>1.98 acres, trees on every side.</small></div>
     <div class="kicker">Willow Bend · wooded edge of town</div>
   </div>
 
   <div class="beat" style="--s:10.8s;--s2:11.0s;--s3:11.2s;--e:14.5s">
-    <div class="card"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-kitchen-sink" width="450" height="300"/></svg></div>
+    <div class="card"><img class="art" src="/work/brokerage/img/nf-a2-4.webp" alt="Kitchen with white cabinets" width="900" height="975" loading="lazy" decoding="async"></div>
     <div class="num">3</div>
     <div class="line">That sink<small>36-inch farmhouse sink. Butcher-block counters. White cabinets.</small></div>
     <div class="kicker">Updated kitchen</div>
   </div>
 
   <div class="beat" style="--s:14.6s;--s2:14.8s;--s3:15.0s;--e:18.3s">
-    <div class="card"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-dining" width="450" height="300"/></svg></div>
+    <div class="card"><img class="art" src="/work/brokerage/img/nf-a2-5.webp" alt="Porch and yard" width="900" height="975" loading="lazy" decoding="async"></div>
     <div class="num">2</div>
     <div class="line">Breakfast in the trees<small>Plus a wood-burning stove, covered porch and deck.</small></div>
     <div class="kicker">4 bed · 3 bath</div>
   </div>
 
   <div class="beat" style="--s:18.4s;--s2:18.6s;--s3:18.8s;--e:22.1s">
-    <div class="card"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-office" width="450" height="300"/></svg></div>
+    <div class="card"><img class="art" src="/work/brokerage/img/nf-a2-6.webp" alt="Home among mature trees" width="900" height="975" loading="lazy" decoding="async"></div>
     <div class="num">1</div>
     <div class="line">Two additions<small>Office, studio, gym or guest suite. You pick.</small></div>
     <div class="kicker">Room to grow</div>
@@ -410,25 +410,25 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
 </section>
 <section class="ad" id="a3">
   <div class="device"><button type="button" class="play" aria-label="Play ad"><span></span></button><div class="stage">
-  <div class="shot" style="--s:0s;--d:4.6s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-ext-dusk-colonial" width="450" height="300"/></svg></div>
+  <div class="shot" style="--s:0s;--d:4.6s"><img class="art" src="/work/brokerage/img/nf-a3-1.webp" alt="Home at dusk" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="title"><div class="y">1938<small>Reimagined · 2025</small></div></div>
 
-  <div class="shot out" style="--s:4.2s;--d:4.4s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-front-porch" width="450" height="300"/></svg></div>
+  <div class="shot out" style="--s:4.2s;--d:4.4s"><img class="art" src="/work/brokerage/img/nf-a3-2.webp" alt="Front porch" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="cap" style="--s:4.9s;--e:8.0s"><div class="k">77 Birchwood Dr</div><div class="rule"></div><div class="l">The porch is where it <i>starts.</i></div></div>
 
-  <div class="shot" style="--s:8.2s;--d:4.4s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-openplan" width="450" height="300"/></svg></div>
+  <div class="shot" style="--s:8.2s;--d:4.4s"><img class="art" src="/work/brokerage/img/nf-a3-3.webp" alt="Open main level" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="cap" style="--s:8.9s;--e:12.0s"><div class="k">Main level</div><div class="rule"></div><div class="l">Open from the front door to the <i>kitchen.</i></div></div>
 
-  <div class="shot out" style="--s:12.2s;--d:4.4s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-kitchen-island" width="450" height="300"/></svg></div>
+  <div class="shot out" style="--s:12.2s;--d:4.4s"><img class="art" src="/work/brokerage/img/nf-a3-4.webp" alt="Kitchen island" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="cap" style="--s:12.9s;--e:16.0s"><div class="k">Kitchen</div><div class="rule"></div><div class="l">An island built for the whole <i>conversation.</i></div></div>
 
-  <div class="shot" style="--s:16.2s;--d:4.4s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-bedroom" width="450" height="300"/></svg></div>
+  <div class="shot" style="--s:16.2s;--d:4.4s"><img class="art" src="/work/brokerage/img/nf-a3-5.webp" alt="Primary suite" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="cap" style="--s:16.9s;--e:20.0s"><div class="k">Primary suite</div><div class="rule"></div><div class="l">Two closets. A bath of its <i>own.</i></div></div>
 
-  <div class="shot out" style="--s:20.2s;--d:4.4s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-backyard" width="450" height="300"/></svg></div>
+  <div class="shot out" style="--s:20.2s;--d:4.4s"><img class="art" src="/work/brokerage/img/nf-a3-6.webp" alt="Backyard lawn" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="cap" style="--s:20.9s;--e:24.0s"><div class="k">Out back</div><div class="rule"></div><div class="l">A firepit below. A new roof <i>above.</i></div></div>
 
-  <div class="shot" style="--s:24.2s;--d:5.4s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-ext-day-colonial" width="450" height="300"/></svg></div>
+  <div class="shot" style="--s:24.2s;--d:5.4s"><img class="art" src="/work/brokerage/img/nf-a3-7.webp" alt="Finished exterior" width="1500" height="1000" loading="lazy" decoding="async"></div>
   <div class="price" style="--s:25.0s;--s2:25.5s;--s3:26.2s;--e:29.0s"><div class="p">$398,000</div><div class="a">4 BED · 3.5 BATH · 2,210 SQ FT · DETACHED GARAGE</div><div class="oh">Open house · Sun Nov 15 · 12 to 2</div></div>
 
   <div class="vig"></div><div class="box t"></div><div class="box b"></div>
@@ -450,19 +450,19 @@ footer{margin-top:36px;font-size:12.5px;color:var(--muted);display:grid;gap:4px}
   <div class="device"><button type="button" class="play" aria-label="Play ad"><span></span></button><div class="stage">
 
   <div class="claim g" style="--s:0s;--e:2.6s"><div class="n">Townhome myths</div><div class="q">A city townhome for under $220K?</div><div class="mf"><span>Myth</span> or <span>Fact</span></div></div>
-  <div class="rev" style="--s:2.6s;--e:6.0s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-townhome" width="450" height="300"/></svg><div class="stamp fact">FACT</div><div class="proof"><span class="hl">$219,000</span><small>32 Tanner Pl · Larkfield, near the park</small></div></div>
+  <div class="rev" style="--s:2.6s;--e:6.0s"><img class="art" src="/work/brokerage/img/nf-a4-1.webp" alt="Brick townhomes" width="720" height="1280" loading="lazy" decoding="async"><div class="stamp fact">FACT</div><div class="proof"><span class="hl">$219,000</span><small>32 Tanner Pl · Larkfield, near the park</small></div></div>
 
   <div class="claim w" style="--s:6.0s;--e:8.3s"><div class="n">Claim no. 2</div><div class="q">Two bedrooms means it's tiny.</div><div class="mf"><span>Myth</span> or <span>Fact</span></div></div>
-  <div class="rev" style="--s:8.3s;--e:11.7s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-stairs" width="450" height="300"/></svg><div class="stamp myth">MYTH</div><div class="proof"><span class="hl">1,720 sq ft</span> on three levels<small>End unit. One of the largest floor plans in the community.</small></div></div>
+  <div class="rev" style="--s:8.3s;--e:11.7s"><img class="art" src="/work/brokerage/img/nf-a4-2.webp" alt="Compact two-bedroom interior" width="720" height="1280" loading="lazy" decoding="async"><div class="stamp myth">MYTH</div><div class="proof"><span class="hl">1,720 sq ft</span> on three levels<small>End unit. One of the largest floor plans in the community.</small></div></div>
 
   <div class="claim d" style="--s:11.7s;--e:14.0s"><div class="n">Claim no. 3</div><div class="q">Condos don't come with outdoor space.</div><div class="mf"><span>Myth</span> or <span>Fact</span></div></div>
-  <div class="rev" style="--s:14.0s;--e:17.4s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-patio" width="450" height="300"/></svg><div class="stamp myth">MYTH</div><div class="proof">Private fenced patio<small>with a gate straight onto a big green space, plus a community pool and tennis courts.</small></div></div>
+  <div class="rev" style="--s:14.0s;--e:17.4s"><img class="art" src="/work/brokerage/img/nf-a4-3.webp" alt="Condo building with balconies" width="720" height="1280" loading="lazy" decoding="async"><div class="stamp myth">MYTH</div><div class="proof">Private fenced patio<small>with a gate straight onto a big green space, plus a community pool and tennis courts.</small></div></div>
 
   <div class="claim g" style="--s:17.4s;--e:19.7s"><div class="n">Claim no. 4</div><div class="q">Need a third bedroom? Out of luck.</div><div class="mf"><span>Myth</span> or <span>Fact</span></div></div>
-  <div class="rev" style="--s:19.7s;--e:23.1s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-office" width="450" height="300"/></svg><div class="stamp myth">MYTH</div><div class="proof">The upstairs office <span class="hl">converts</span><small>Built-ins, a skylight, and room for a bed when you need it.</small></div></div>
+  <div class="rev" style="--s:19.7s;--e:23.1s"><img class="art" src="/work/brokerage/img/nf-a4-4.webp" alt="Bedroom" width="720" height="1280" loading="lazy" decoding="async"><div class="stamp myth">MYTH</div><div class="proof">The upstairs office <span class="hl">converts</span><small>Built-ins, a skylight, and room for a bed when you need it.</small></div></div>
 
   <div class="claim w" style="--s:23.1s;--e:25.4s"><div class="n">Claim no. 5</div><div class="q">Parking is included.</div><div class="mf"><span>Myth</span> or <span>Fact</span></div></div>
-  <div class="rev" style="--s:25.4s;--e:28.8s"><svg class="art" viewBox="0 0 450 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#sc-garage" width="450" height="300"/></svg><div class="stamp fact">FACT</div><div class="proof">Covered garage space<small>2 bed · 2.5 bath · updated kitchen · walkout lower-level den</small></div></div>
+  <div class="rev" style="--s:25.4s;--e:28.8s"><img class="art" src="/work/brokerage/img/nf-a4-5.webp" alt="Home with a two-car garage" width="720" height="1280" loading="lazy" decoding="async"><div class="stamp fact">FACT</div><div class="proof">Covered garage space<small>2 bed · 2.5 bath · updated kitchen · walkout lower-level den</small></div></div>
 
   <div class="end" style="--s:28.8s;--s1:29.0s;--s2:29.4s;--s3:29.8s;--s4:30.0s;--s5:30.3s">
     <div class="logo">NORTHFIELD <i>REALTY</i><small>Independent · boutique</small></div>
