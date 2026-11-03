@@ -204,7 +204,7 @@ details.json pre{margin:8px 0 0;background:var(--bg-2);padding:10px;border-radiu
 @media (max-width:819px){.flow .arrow{transform:rotate(90deg);height:24px}}
 .steps{margin:28px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
 .steps li{display:grid;grid-template-columns:1fr;gap:4px 24px;padding:16px 0;border-bottom:1px solid var(--line);font-size:.94rem}
-@media (min-width:760px){.steps li{grid-template-columns:2fr 1fr 1fr}}
+@media (min-width:760px){.steps li{grid-template-columns:3fr 1fr}}
 .steps li b{font-weight:600;color:var(--ink)}
 .steps li span{color:var(--muted);font-size:.86rem}
 .steps li .st{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green-text)}
@@ -341,12 +341,12 @@ details.json pre{margin:8px 0 0;background:var(--bg-2);padding:10px;border-radiu
 
   <h3 style="margin-top:44px">What it takes to go live</h3>
   <ol class="steps">
-    <li><div><b>Forward portal leads</b><br><span>Listing portals can send each inquiry to an email or webhook. One setting in each dashboard.</span></div><span>Dana, 20 minutes</span><span class="st todo">Needs Dana</span></li>
-    <li><div><b>Texting number and registration</b><br><span>A dedicated local number through an SMS provider and the required business texting registration. Costs about a dollar a month plus a cent or so per text; registration takes a few business days.</span></div><span>Us, with the brokerage's EIN and address</span><span class="st todo">Needs Dana</span></li>
-    <li><div><b>Consent on every form</b><br><span>A "text me about my inquiry" checkbox on the site forms. Already supported by the lead layer; the copy is ready.</span></div><span>Us</span><span class="st">Ready</span></li>
-    <li><div><b>Agent calendars and on-call rotation</b><br><span>Connect Google or Outlook calendars for showing and call openings; set who takes buyer and listing leads each week.</span></div><span>Team, 30 minutes</span><span class="st todo">Needs team</span></li>
-    <li><div><b>CRM connection</b><br><span>A CRM or a shared inbox. The handoff JSON above fits any of them; we map fields once.</span></div><span>Us, once we know the CRM</span><span class="st todo">Open question</span></li>
-    <li><div><b>Playbook review with Dana</b><br><span>She reads every scripted reply and the guardrails, edits the voice, and signs off before anything is switched on. Two-week pilot on website leads only, then portals.</span></div><span>Dana and us, 1 hour</span><span class="st todo">Before launch</span></li>
+    <li><div><b>Forward portal leads</b><br><span>Listing portals can send each inquiry to an email or webhook. One setting in each dashboard.</span></div><span>Dana, 20 minutes</span></li>
+    <li><div><b>Texting number and registration</b><br><span>A dedicated local number through an SMS provider and the required business texting registration. Costs about a dollar a month plus a cent or so per text; registration takes a few business days.</span></div><span>Us, with the brokerage's EIN and address</span></li>
+    <li><div><b>Consent on every form</b><br><span>A "text me about my inquiry" checkbox on the site forms. Already supported by the lead layer; the copy is ready.</span></div><span>Us</span></li>
+    <li><div><b>Agent calendars and on-call rotation</b><br><span>Connect Google or Outlook calendars for showing and call openings; set who takes buyer and listing leads each week.</span></div><span>Team, 30 minutes</span></li>
+    <li><div><b>CRM connection</b><br><span>A CRM or a shared inbox. The handoff JSON above fits any of them; we map fields once.</span></div><span>Us, once</span></li>
+    <li><div><b>Playbook review with Dana</b><br><span>She reads every scripted reply and the guardrails, edits the voice, and signs off before anything is switched on. Two-week pilot on website leads only, then portals.</span></div><span>Dana and us, 1 hour</span></li>
   </ol>
   <p class="disclaimer">This page is a working demonstration built for a consulting proposal. The conversation engine runs entirely in the browser with scripted replies; no messages are sent and nothing is stored. Lead names and messages are fictional. Equal Housing Opportunity.</p>
 </section>
