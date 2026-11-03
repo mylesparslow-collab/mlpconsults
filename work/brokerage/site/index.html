@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Northfield Realty Demo</title>
-<meta name="description" content="A fictional boutique brokerage website with sample data. Portfolio demo by Myles Parslow.">
+<meta name="description" content="A boutique brokerage website for the city and surrounding neighborhoods.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap">
@@ -469,7 +469,7 @@ footer.site{padding-block:clamp(56px,6vw,88px) 40px}
 </style>
 </head>
 <body>
-<div class="demo-banner" role="note">Portfolio demo &middot; fictional brokerage, sample data. Built by Myles Parslow.</div>
+
 
 <header class="site-header" id="top">
   <div class="wrap">
@@ -759,7 +759,7 @@ footer.site{padding-block:clamp(56px,6vw,88px) 40px}
         <p class="label">About Northfield</p>
         <h2 id="aboutTitle">An independent firm, built around clients.</h2>
         <p class="pull">Good advice starts with listening, and it ends with a clean closing.</p>
-        <p>Northfield Realty is a fictional independent brokerage created for this portfolio demo. The site shows how a small, owner-led firm might present its approach to pricing, negotiation and communication in a clear, unhurried way.</p>
+        <p>Northfield Realty is an independent, owner-led brokerage that approaches pricing, negotiation and communication in a clear, unhurried way.</p>
         <p>The team is a small group of local agents who each focus on a handful of neighborhoods, so clients get real familiarity with the streets, the schools of thought on value and the rhythm of the market.</p>
         <ul class="creds">
           <li><strong>Model</strong>Independent boutique brokerage</li>
@@ -911,7 +911,7 @@ footer.site{padding-block:clamp(56px,6vw,88px) 40px}
       <h2 id="faqTitle">Frequently asked questions</h2>
     </div>
     <div class="faq">
-      <details class="faq-item"><summary><h3>Who is Northfield Realty?</h3></summary><p>Northfield Realty is a fictional, independent boutique real estate brokerage in a mid-size city. It exists as a portfolio demo, and every name, listing and figure on this page is sample data.</p></details>
+      <details class="faq-item"><summary><h3>Who is Northfield Realty?</h3></summary><p>Northfield Realty is an independent boutique real estate brokerage serving a mid-size city.</p></details>
       <details class="faq-item"><summary><h3>What areas does Northfield serve?</h3></summary><p>The firm represents buyers and sellers across the city and nearby suburbs, including Elm Hollow, Brookside, Cedar Ridge, Stonebridge, Highview, Ashford Park, Larkfield and Willow Bend.</p></details>
       <details class="faq-item"><summary><h3>How does the selling process work?</h3></summary><p>An agent prepares a pricing analysis from recent comparable sales, plans photography and staging, lists the home on the local MLS and manages showings, offers and the path to closing. Compensation is discussed and agreed with you up front.</p></details>
       <details class="faq-item"><summary><h3>How do I find out what my home is worth?</h3></summary><p>Request a free home valuation using the form on this page. An agent prepares a personal pricing analysis based on recent comparable sales near your home, usually within 24 hours.</p></details>
@@ -1041,7 +1041,7 @@ footer.site{padding-block:clamp(56px,6vw,88px) 40px}
     <div class="legal">
       <svg class="eho" viewBox="0 0 64 64" role="img" aria-label="Equal Housing Opportunity"><path d="M32 6 4 30h6v26h44V30h6L32 6zm0 6.4L48 26v24H16V26l16-13.6z" fill="currentColor"/><rect x="22" y="31" width="20" height="4" fill="currentColor"/><rect x="22" y="39" width="20" height="4" fill="currentColor"/></svg>
       <div>
-        <p><b>Northfield Realty</b> &middot; Fictional brokerage for portfolio demonstration &middot; Sample data only. REALTOR&reg; is a federally registered collective membership mark that identifies a real estate professional who is a member of the National Association of REALTORS&reg; and subscribes to its strict Code of Ethics.</p>
+        <p><b>Northfield Realty</b> REALTOR&reg; is a federally registered collective membership mark that identifies a real estate professional who is a member of the National Association of REALTORS&reg; and subscribes to its strict Code of Ethics.</p>
         <p>Northfield Realty is committed to the letter and spirit of U.S. policy for the achievement of equal housing opportunity throughout the nation. We encourage and support an affirmative advertising and marketing program in which there are no barriers to obtaining housing because of race, color, religion, sex, handicap, familial status, national origin, sexual orientation, gender identity or source of income.</p>
         <p>On a live site, listing information would be provided courtesy of the local MLS through its Internet Data Exchange program and is deemed reliable but not guaranteed. Information is for consumers' personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Everything on this demo page is fictional.</p>
         <p>We are committed to making this website accessible to everyone. If you have difficulty using any part of it, please call or email us using the contact details above and we will assist you.</p>
@@ -1055,8 +1055,7 @@ footer.site{padding-block:clamp(56px,6vw,88px) 40px}
       </div>
     </div>
     <div class="copy">
-      <span>&copy; 2026 Northfield Realty (fictional). All rights reserved.</span>
-      <span>Portfolio demo &middot; sample content only.</span>
+      <span>&copy; 2026 Northfield Realty. All rights reserved.</span>
     </div>
   </div>
 </footer>
@@ -1181,7 +1180,7 @@ footer.site{padding-block:clamp(56px,6vw,88px) 40px}
       (missing[0]||email).focus();return;
     }
     confirm.className='confirm show';
-    confirm.innerHTML='<strong>Thank you, '+clean(name.value.trim().split(' ')[0])+'.</strong>A Northfield agent would review '+clean(addr.value.trim())+' and send your pricing analysis within 24 hours. This is a portfolio demo, so nothing was sent.';
+    confirm.innerHTML='<strong>Thank you, '+clean(name.value.trim().split(' ')[0])+'.</strong>A Northfield agent would review '+clean(addr.value.trim())+' and send your pricing analysis within 24 hours.';
   });
   // Contact form
   var cf=document.getElementById('contactForm'),cc=document.getElementById('contactConfirm');
@@ -1195,7 +1194,7 @@ footer.site{padding-block:clamp(56px,6vw,88px) 40px}
     if(missing.length||email.validity.typeMismatch){cc.className='confirm show';cc.innerHTML='<strong>A few details are missing</strong>Please add your name and a valid email so we can reply.';(missing[0]||email).focus();return;}
     var ag=document.getElementById('kAgent').value;
     cc.className='confirm show';
-    cc.innerHTML='<strong>Thank you, '+clean(name.value.trim().split(' ')[0])+'.</strong>'+(ag==='No preference'?'A Northfield agent':clean(ag))+' would get back to you, usually the same business day. This is a portfolio demo, so nothing was sent.';
+    cc.innerHTML='<strong>Thank you, '+clean(name.value.trim().split(' ')[0])+'.</strong>'+(ag==='No preference'?'A Northfield agent':clean(ag))+' would get back to you, usually the same business day.';
     cf.querySelector('button[type=submit]').disabled=true;
   });
 

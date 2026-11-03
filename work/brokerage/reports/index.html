@@ -5,7 +5,7 @@
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Northfield Market Reports</title>
-<meta name="description" content="Monthly neighborhood market reports for a fictional brokerage. All statistics are invented sample data for a portfolio demo.">
+<meta name="description" content="Monthly neighborhood market reports from Northfield Realty.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap">
@@ -105,7 +105,7 @@ footer{padding-block:28px 44px;font-size:.8rem;color:var(--muted);border-top:1px
 </style>
 </head>
 <body>
-<div class="demo-banner" role="note">Portfolio demo &middot; fictional brokerage, sample data. Built by Myles Parslow.</div>
+
 <header class="top"><div class="wrap">
   <a class="brand" href="../site/index.html" aria-label="Northfield Realty, home"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 19 20 7l14 12" fill="none" stroke="#ff5537" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20v10h20V20" fill="none" stroke="#fff" stroke-width="2.2" stroke-linejoin="round" opacity=".9"/></svg><span>Northfield<small>Realty</small></span></a>
   <nav aria-label="Primary"><a href="../site/index.html">Home</a><a href="../site/tools/index.html">Calculators</a><a href="../site/blog/index.html">Blog</a><a href="#overview" data-go="overview">All neighborhood reports</a></nav>
@@ -125,8 +125,8 @@ footer{padding-block:28px 44px;font-size:.8rem;color:var(--muted);border-top:1px
 </main>
 
 <footer><div class="wrap">
-  <p>Northfield Realty &middot; fictional brokerage &middot; (555) 010-2040 &middot; hello@example.com</p>
-  <p style="margin-top:8px">All statistics on this page are invented sample data created for a portfolio demonstration. They do not describe any real market. A live report would cite closed-sale data from the local MLS and public sources. This is not a valuation of any property. Equal Housing Opportunity.</p>
+  <p>Northfield Realty &middot; (555) 010-2040 &middot; hello@example.com</p>
+  <p style="margin-top:8px">This is not a valuation of any property. Equal Housing Opportunity.</p>
 </div></footer>
 
 <script>
@@ -261,7 +261,7 @@ footer{padding-block:28px 44px;font-size:.8rem;color:var(--muted);border-top:1px
       '<p class="small read" style="margin-top:16px">Takeaway: more homes are available than a year ago and prices are steady, so both sides have room to negotiate on terms, not just price.</p></section>'+
     '<section class="blk"><h2>Around the neighborhood</h2><p class="read" style="margin-top:12px">'+h.around+'</p></section>'+
     '<section class="blk"><div class="cta"><h2>Curious what your home would sell for today?</h2><p style="margin-top:10px">We will pull the closed sales that matter for your street and walk you through them, no obligation.</p><button class="btn" type="button" data-cta>Request a home value review</button><p class="ok" data-ok role="status" hidden>Demo confirmation: a real site would send this request to a Northfield agent at (555) 010-2040.</p></div></section>'+
-    '<section class="blk sources"><p class="label">Sources and method</p><ol><li>All numbers in this report are invented sample data for a portfolio demo. They are not drawn from any real market, listing service or public dataset.</li><li>A live report would use closed sales from the local MLS for the stated period, with citywide context from public statistics and mortgage rates from a published weekly survey.</li><li>Neighborhood figures come from a small number of sales, so month-to-month swings are normal. Months of supply would be shown at the city level where it is not published per neighborhood.</li></ol>'+
+    '<section class="blk sources"><p class="label">Sources and method</p><ol><li>A live report would use closed sales from the local MLS for the stated period, with citywide context from public statistics and mortgage rates from a published weekly survey.</li><li>Neighborhood figures come from a small number of sales, so month-to-month swings are normal. Months of supply would be shown at the city level where it is not published per neighborhood.</li></ol>'+
       '<p style="margin-top:14px">Other neighborhoods in this series:</p><div class="others">'+others.map(function(o){return '<button type="button" data-id="'+o.id+'">'+o.name+'</button>'}).join("")+'<button type="button" data-id="overview">Overview</button></div></section></div>';
   }
   panels.innerHTML=ov+H.map(panel).join("");
