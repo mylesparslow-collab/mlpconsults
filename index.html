@@ -248,9 +248,19 @@ details[open] .case-body{animation:open .5s cubic-bezier(.2,.7,.2,1)}
 .gal .shot{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--mist);aspect-ratio:16/10}
 .gal .shot img{width:100%;height:100%;object-fit:cover;object-position:0 0}
 .gal figcaption{font-size:13px;color:var(--muted)}
-.gal-sites{grid-template-columns:repeat(5,minmax(0,1fr))}
+.more{margin-top:18px}
+details.more>summary,details.case details.more>summary{width:fit-content;grid-template-columns:none;list-style:none;cursor:pointer;display:inline-flex !important;align-items:center;gap:8px;font:500 13px/1 var(--mono);letter-spacing:.06em;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:12px 20px !important;background:transparent}
+details.more>summary::-webkit-details-marker{display:none}
+.more>summary::after{content:"+";font-size:16px;line-height:1}
+.more[open]>summary::after{content:"\2212"}
+.more>summary:hover{border-color:var(--ink)}
+.more>summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.more .m-open,.more[open] .m-closed{display:none}
+.more[open] .m-open{display:inline}
+.more[open]>.gal{margin-top:18px}
+.more-auto{margin-top:0}.more-auto[open]>summary{margin-bottom:16px}
+.gal-sites{grid-template-columns:repeat(3,minmax(0,1fr))}
 .gal-sites figcaption b{color:var(--ink);font-weight:600}
-@media (max-width:1100px){.gal-sites{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .cb-intro{font-size:17px;color:var(--ink);max-width:70ch;margin:0}
 .status{display:grid;border-top:1px solid var(--line)}
 .status div{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
@@ -558,7 +568,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
     </div>
     <div class="cases">
       <div class="grp rv">Client work</div>
-      <details class="case rv" id="case-remodeler" open>
+      <details class="case rv" id="case-remodeler">
         <summary>
           <div class="thumb"><img src="img/remodel-deck.webp" width="724" height="738" alt="A finished rear deck" loading="lazy"></div>
           <div class="sum-text">
@@ -630,8 +640,8 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
           <div class="thumb"><img src="img/site-bellwood.webp" width="1600" height="1000" alt="A dental office website on desktop and phone" loading="lazy"></div>
           <div class="sum-text">
             <div class="tagrow"><span class="tag built">Sample sites</span><span class="tag">Local businesses</span></div>
-            <h3>Ten websites for local businesses</h3>
-            <p>A med spa, a boba shop, a bakery, a dental office and six more, each with its own layout and the tools its customers actually use.</p>
+            <h3>Websites for local businesses</h3>
+            <p>A med spa, a boba shop, a restaurant, a remodeler and more, each with its own layout and the tools its customers actually use.</p>
           </div>
           <span class="toggle"><span class="closed-t">View</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
         </summary>
@@ -642,18 +652,22 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
           </div>
           <div class="gal gal-sites">
             <figure><div class="shot"><img src="img/site-quietwell.webp" width="1600" height="1000" alt="Quietwell Aesthetics website on desktop and phone" loading="lazy"></div><figcaption><b>Quietwell Aesthetics</b> · Med spa <a class="demo-a" href="/work/sites/quietwell/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-bellwood.webp" width="1600" height="1000" alt="Bellwood Family Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Bellwood Family Dental</b> · Dental office <a class="demo-a" href="/work/sites/bellwood/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
             <figure><div class="shot"><img src="img/site-little-orbit.webp" width="1600" height="1000" alt="Little Orbit Tea website on desktop and phone" loading="lazy"></div><figcaption><b>Little Orbit Tea</b> · Boba shop <a class="demo-a" href="/work/sites/little-orbit/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-cedarline.webp" width="1600" height="1000" alt="Cedarline Kitchen website on desktop and phone" loading="lazy"></div><figcaption><b>Cedarline Kitchen</b> · Restaurant <a class="demo-a" href="/work/sites/cedarline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-crestline.webp" width="1600" height="1000" alt="Crestline Design-Build website on desktop and phone" loading="lazy"></div><figcaption><b>Crestline Design-Build</b> · Remodeling company <a class="demo-a" href="/work/sites/crestline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-hollis.webp" width="1600" height="1000" alt="Hollis Flower House website on desktop and phone" loading="lazy"></div><figcaption><b>Hollis Flower House</b> · Florist <a class="demo-a" href="/work/sites/hollis/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img src="img/site-bellwood.webp" width="1600" height="1000" alt="Bellwood Family Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Bellwood Family Dental</b> · Dental office <a class="demo-a" href="/work/sites/bellwood/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+          </div>
+          <details class="more"><summary><span class="m-closed">See 6 more sites</span><span class="m-open">Show fewer</span></summary>
+          <div class="gal gal-sites">
             <figure><div class="shot"><img src="img/site-coffee.webp" width="1600" height="1000" alt="Kestrel Hill Coffee Roasters website on desktop and phone" loading="lazy"></div><figcaption><b>Kestrel Hill Coffee Roasters</b> · Coffee roaster <a class="demo-a" href="/work/sites/coffee/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
             <figure><div class="shot"><img src="img/site-halden.webp" width="1600" height="1000" alt="Halden &amp; Rye Bakery website on desktop and phone" loading="lazy"></div><figcaption><b>Halden &amp; Rye Bakery</b> · Bakery <a class="demo-a" href="/work/sites/halden/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-cedarline.webp" width="1600" height="1000" alt="Cedarline Kitchen website on desktop and phone" loading="lazy"></div><figcaption><b>Cedarline Kitchen</b> · Restaurant <a class="demo-a" href="/work/sites/cedarline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-hollis.webp" width="1600" height="1000" alt="Hollis Flower House website on desktop and phone" loading="lazy"></div><figcaption><b>Hollis Flower House</b> · Florist <a class="demo-a" href="/work/sites/hollis/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
             <figure><div class="shot"><img src="img/site-salon.webp" width="1600" height="1000" alt="Ostrander Hair Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Ostrander Hair Studio</b> · Hair salon <a class="demo-a" href="/work/sites/salon/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
             <figure><div class="shot"><img src="img/site-pilates.webp" width="1600" height="1000" alt="Springline Reformer Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Springline Reformer Studio</b> · Pilates studio <a class="demo-a" href="/work/sites/pilates/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
             <figure><div class="shot"><img src="img/site-boutique.webp" width="1600" height="1000" alt="Fig &amp; Fennimore website on desktop and phone" loading="lazy"></div><figcaption><b>Fig &amp; Fennimore</b> · Clothing boutique <a class="demo-a" href="/work/sites/boutique/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img src="img/site-crestline.webp" width="1600" height="1000" alt="Crestline Design-Build website on desktop and phone" loading="lazy"></div><figcaption><b>Crestline Design-Build</b> · Remodeling company <a class="demo-a" href="/work/sites/crestline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
             <figure><div class="shot"><img src="img/site-solace.webp" width="1600" height="1000" alt="Solace Studio Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Solace Studio Dental</b> · Dental studio <a class="demo-a" href="/work/sites/solace/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
           </div>
+          </details>
           <p class="fine" style="margin:0">Every site is live: open one and book, order or browse like a customer would. Sample sites designed to show what is possible; business names and details are fictional.</p>
         </div>
       </details>
@@ -710,30 +724,6 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
         </div>
       </details>
 
-      <details class="case rv" id="case-reminders">
-        <summary>
-          <div class="thumb"><img src="img/auto-reminders.webp" width="1600" height="1000" alt="A weekly calendar of appointments with confirmation status" loading="lazy"></div>
-          <div class="sum-text">
-            <div class="tagrow"><span class="tag built">Sample automation</span><span class="tag">Any business</span></div>
-            <h3>Appointments that show up</h3>
-            <p>Reminders and easy rescheduling by text cut no-shows, and a missed visit becomes a rebooking.</p>
-          </div>
-          <span class="toggle"><span class="closed-t">View</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
-        </summary>
-        <div class="case-body">
-          <div class="cb-grid">
-            <div><h4>The idea</h4><p>An empty chair costs real money. Reminders go out ahead of every appointment, customers confirm or move their time with one text, and if someone does miss, a kind note offers new times right away.</p></div>
-            <div><h4>What it does</h4><ul><li>Reminds each customer two days out and the day before</li><li>Confirms or reschedules by reply, no phone tag</li><li>Offers open times when someone needs to move</li><li>Follows up after a missed visit with new options</li></ul></div>
-          </div>
-          <div class="kv">
-            <div><b>2</b><span>Reminders per appointment</span></div><div><b>1 text</b><span>To confirm or move</span></div><div><b>&lt; 1 hr</b><span>To rebook a missed visit</span></div><div><b>You</b><span>Handle only the no-replies</span></div>
-          </div>
-          <div class="gal">
-            <figure><div class="shot"><img src="img/auto-reminders.webp" width="1600" height="1000" alt="A weekly calendar of appointments with confirmation status" loading="lazy"></div><figcaption>The week’s calendar with every confirmation tracked, a missed visit already being rebooked, and a reminder text for anyone who has not replied.</figcaption></figure>
-          </div>
-        </div>
-      </details>
-
       <details class="case rv d1" id="case-reviews">
         <summary>
           <div class="thumb"><img src="img/auto-reviews.webp" width="1600" height="1000" alt="A rating summary with new customer reviews and a monthly request funnel" loading="lazy"></div>
@@ -754,6 +744,32 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
           </div>
           <div class="gal">
             <figure><div class="shot"><img src="img/auto-reviews.webp" width="1600" height="1000" alt="A rating summary with new customer reviews and a monthly request funnel" loading="lazy"></div><figcaption>Your rating, the reviews coming in, and the month’s requests, with any lower rating reaching the owner first.</figcaption></figure>
+          </div>
+        </div>
+      </details>
+
+            <details class="more more-auto"><summary><span class="m-closed">See 2 more automations</span><span class="m-open">Show fewer</span></summary>
+      <div class="cases">
+<details class="case rv" id="case-reminders">
+        <summary>
+          <div class="thumb"><img src="img/auto-reminders.webp" width="1600" height="1000" alt="A weekly calendar of appointments with confirmation status" loading="lazy"></div>
+          <div class="sum-text">
+            <div class="tagrow"><span class="tag built">Sample automation</span><span class="tag">Any business</span></div>
+            <h3>Appointments that show up</h3>
+            <p>Reminders and easy rescheduling by text cut no-shows, and a missed visit becomes a rebooking.</p>
+          </div>
+          <span class="toggle"><span class="closed-t">View</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
+        </summary>
+        <div class="case-body">
+          <div class="cb-grid">
+            <div><h4>The idea</h4><p>An empty chair costs real money. Reminders go out ahead of every appointment, customers confirm or move their time with one text, and if someone does miss, a kind note offers new times right away.</p></div>
+            <div><h4>What it does</h4><ul><li>Reminds each customer two days out and the day before</li><li>Confirms or reschedules by reply, no phone tag</li><li>Offers open times when someone needs to move</li><li>Follows up after a missed visit with new options</li></ul></div>
+          </div>
+          <div class="kv">
+            <div><b>2</b><span>Reminders per appointment</span></div><div><b>1 text</b><span>To confirm or move</span></div><div><b>&lt; 1 hr</b><span>To rebook a missed visit</span></div><div><b>You</b><span>Handle only the no-replies</span></div>
+          </div>
+          <div class="gal">
+            <figure><div class="shot"><img src="img/auto-reminders.webp" width="1600" height="1000" alt="A weekly calendar of appointments with confirmation status" loading="lazy"></div><figcaption>The week’s calendar with every confirmation tracked, a missed visit already being rebooked, and a reminder text for anyone who has not replied.</figcaption></figure>
           </div>
         </div>
       </details>
@@ -780,6 +796,8 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
             <figure><div class="shot"><img src="img/auto-invoices.webp" width="1600" height="1000" alt="An overdue summary, balances by age and a table of open invoices" loading="lazy"></div><figcaption>What is owed and how old it is, with each invoice’s next step queued and a payment link in every message.</figcaption></figure>
           </div>
         </div>
+      </details>
+      </div>
       </details>
     </div>
   </div>
