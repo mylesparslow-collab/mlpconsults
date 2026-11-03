@@ -42,7 +42,7 @@ header{padding-top:48px;display:flex;flex-direction:column;gap:16px;border-botto
 @media (max-width:720px){.rooms{grid-template-columns:1fr}}
 figure{margin:0;display:flex;flex-direction:column;gap:10px}
 .compare{position:relative;border-radius:6px;overflow:hidden;background:var(--line);aspect-ratio:16/10;max-width:100%}
-.compare>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.compare>svg,.compare>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .compare .after{clip-path:inset(0 0 0 var(--cut,50%))}
 .compare .handle{position:absolute;top:0;bottom:0;left:var(--cut,50%);width:2px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.25);pointer-events:none}
 .compare input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
@@ -59,7 +59,7 @@ figcaption b{color:var(--fg);font-weight:600}
 @media (max-width:720px){.steps{grid-template-columns:1fr}}
 .steps figure{counter-increment:d}
 .steps .ph{position:relative;border-radius:6px;overflow:hidden;background:var(--line);aspect-ratio:16/9}
-.steps .ph svg{width:100%;height:100%;display:block}
+.steps .ph svg,.steps .ph img{width:100%;height:100%;object-fit:cover;display:block}
 .steps .ph::before{content:counter(d);position:absolute;top:10px;left:10px;width:26px;height:26px;border-radius:50%;background:var(--btn);color:var(--on-btn);font-family:var(--sans);font-size:13px;font-weight:600;display:grid;place-items:center}
 .steps figcaption{display:block}
 .steps figcaption b{display:block;margin-bottom:2px}
@@ -133,8 +133,7 @@ ol.flow b{font-family:var(--sans);font-weight:600;display:block;margin-bottom:2p
 <section>
   <span class="label">Sample listings</span>
   <h2>Four empty rooms from sample listings</h2>
-  <p class="prose">The illustrations below show how the AI staging process works: drag across each room to compare empty and staged. The original demo ran the real process on photos.</p>
-  <p class="note" style="margin-top:0">Portfolio note: the original demo used real AI-staged photos. For privacy, they are shown here as hand-built illustrations of the same idea. The walls, window and floor are identical in every state; only the furniture changes.</p>
+  <p class="prose">Drag across each room to compare the empty photo with the virtually staged one.</p>
   <div class="rooms" id="rooms"></div>
   <p class="callout" style="margin-top:24px"><b>Why a person reviews every photo.</b> On the first try at a lower-level rec room, the AI quietly removed the staircase. A second try opened the curtains and invented a view with a utility pole. Either one would break MLS rules. Each staged photo gets checked against the original before it goes to the MLS, and that check is part of the service.</p>
 </section>
@@ -142,10 +141,10 @@ ol.flow b{font-family:var(--sans);font-weight:600;display:block;margin-bottom:2p
 <section>
   <span class="label">Not stage-ready yet?</span>
   <h2>Empty the room first, then stage it</h2>
-  <p class="prose">Most sellers are still living in the house when the photos get taken. The same tool that adds furniture can take it away: clear out the boxes, laundry and toys, then stage the clean room. The dining room below is the one from above. Moving-day clutter is shown on it for this demo. The original demo ran the real two-step process on photos; these illustrations show how it works.</p>
+  <p class="prose">Most sellers are still living in the house when the photos get taken. The same tool that adds furniture can take it away: clear out the boxes, laundry and toys, then stage the clean room. The dining room below is the one from above. Here it is mid-move, emptied, then staged.</p>
   <div class="steps" id="steps">
     <figure><div class="ph" id="s1"></div>
-      <figcaption><b>Mid-move</b><span>Boxes, laundry basket, toys, folding table. Clutter was added to the room for this demo.</span></figcaption></figure>
+      <figcaption><b>Mid-move</b><span>Boxes, laundry basket, toys, folding table.</span></figcaption></figure>
     <figure><div class="ph" id="s2"></div>
       <figcaption><b>Emptied by AI</b><span>Every belonging removed and the floor and walls behind them filled in. Walls, trim, doorway and floor untouched.</span></figcaption></figure>
     <figure><div class="ph" id="s3"></div>
@@ -232,169 +231,7 @@ ol.flow b{font-family:var(--sans);font-weight:600;display:block;margin-bottom:2p
 </div>
 
 <script>
-/* ---------- Hand-built SVG room illustrations ----------
-   Every room has one fixed "shell" (walls, window, floor, trim, light).
-   States only change what stands inside it: empty, staged, or mid-move clutter. */
-let UID=0;
-const FLOOR='M0 430 L150 330 L650 330 L800 430 L800 500 L0 500 Z';
-const PAL={
-  front:{wall:'#e4dccd',side:'#d6cdbb',ceil:'#f3eee4',floor:'#b98e63',plank:'#a67c53',trim:'#faf8f3'},
-  dining:{wall:'#cfd9d6',side:'#c0ccc8',ceil:'#eef2f0',floor:'#a8805a',plank:'#94704c',trim:'#faf8f3'},
-  bedroom:{wall:'#e1dedd',side:'#d5d1cf',ceil:'#f5f4f3',floor:'#c4a07a',plank:'#b08d68',trim:'#faf8f3'},
-  rec:{wall:'#d9d4c8',side:'#cbc5b8',ceil:'#ebe8e0',floor:'#9a9fa6',plank:'#8b9097',trim:'#f1efe9'}
-};
-function win(id,x,y,w,h,opt={}){
-  const arch=opt.arch;
-  const glass=arch?`M${x} ${y+h} V${y+w/2} A${w/2} ${w/2} 0 0 1 ${x+w} ${y+w/2} V${y+h} Z`:`M${x} ${y} H${x+w} V${y+h} H${x} Z`;
-  const cx=x+w/2;
-  return `<path d="${glass}" fill="url(#${id}sky)" stroke="#fbfaf6" stroke-width="7" stroke-linejoin="round"/>
-  <clipPath id="${id}w${x}"><path d="${glass}"/></clipPath>
-  <g clip-path="url(#${id}w${x})"><ellipse cx="${x+w*0.25}" cy="${y+h-4}" rx="${w*0.45}" ry="22" fill="#9dbf92"/><ellipse cx="${x+w*0.8}" cy="${y+h}" rx="${w*0.5}" ry="26" fill="#86ad7e"/><circle cx="${x+w*0.72}" cy="${y+h*0.32}" r="${Math.min(w,h)*0.07}" fill="#fff8e1" opacity=".9"/></g>
-  <path d="M${cx} ${y+(arch?w/2-w/2:0)} V${y+h}" stroke="#fbfaf6" stroke-width="5"/>
-  ${arch?'':`<path d="M${x} ${y+h*0.5} H${x+w}" stroke="#fbfaf6" stroke-width="5"/>`}
-  <rect x="${x-8}" y="${y+h+2}" width="${w+16}" height="7" rx="2" fill="#fbfaf6"/>`;
-}
-function shell(t,id){
-  const p=PAL[t];
-  let planks='';
-  for(let x=-700;x<=1500;x+=90){ const x2=x+(400-x)*0.515; planks+=`<line x1="${x}" y1="500" x2="${x2}" y2="330"/>`; }
-  let cross='';
-  [345,365,392,428,474].forEach(y=>{cross+=`<line x1="0" y1="${y}" x2="800" y2="${y}"/>`;});
-  let out=`<defs>
-   <linearGradient id="${id}sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bcd9ee"/><stop offset="1" stop-color="#e9f3f8"/></linearGradient>
-   <linearGradient id="${id}lt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".30"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-   <linearGradient id="${id}sh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".10"/><stop offset=".25" stop-color="#000" stop-opacity="0"/><stop offset=".75" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".10"/></linearGradient>
-   <clipPath id="${id}fl"><path d="${FLOOR}"/></clipPath></defs>
-  <rect width="800" height="500" fill="${p.wall}"/>
-  <polygon points="0,0 800,0 650,70 150,70" fill="${p.ceil}"/>
-  <polygon points="0,0 150,70 150,330 0,430" fill="${p.side}"/>
-  <polygon points="800,0 650,70 650,330 800,430" fill="${p.side}"/>
-  <rect x="150" y="70" width="500" height="260" fill="${p.wall}"/>
-  <path d="${FLOOR}" fill="${p.floor}"/>
-  <g clip-path="url(#${id}fl)" stroke="${p.plank}" stroke-width="2" opacity=".85">${planks}${t==='rec'?'':cross}</g>`;
-  if(t==='front'){ out+=win(id,235,115,110,130)+win(id,455,115,110,130); }
-  if(t==='dining'){ out+=win(id,335,105,130,170,{arch:true})+
-    `<rect x="545" y="150" width="68" height="180" fill="#8e9a96"/><rect x="545" y="150" width="68" height="180" fill="none" stroke="#fbfaf6" stroke-width="7"/><rect x="556" y="170" width="46" height="160" fill="#a9b3b0"/>`; }
-  if(t==='bedroom'){ out+=win(id,545,112,88,128)+
-    `<rect x="170" y="150" width="68" height="180" rx="2" fill="#f4f1ea" stroke="#fbfaf6" stroke-width="5"/><rect x="182" y="162" width="44" height="72" fill="none" stroke="#e1dccf" stroke-width="3"/><rect x="182" y="246" width="44" height="72" fill="none" stroke="#e1dccf" stroke-width="3"/><circle cx="228" cy="245" r="3.5" fill="#b89b5e"/>`; }
-  if(t==='rec'){
-    out+=win(id,345,105,110,50)+
-    `<rect x="214" y="70" width="22" height="260" fill="#c4bfb2"/><rect x="214" y="70" width="22" height="260" fill="none" stroke="#b3ad9f"/>`;
-    let st='';
-    for(let k=0;k<7;k++){ const x=545+k*14, y=330-(k+1)*26; st+=`<rect x="${x}" y="${y}" width="${650-x}" height="26" fill="${k%2?'#8a6d50':'#7c6045'}"/><rect x="${x}" y="${y}" width="${650-x}" height="4" fill="#a98a69"/>`; }
-    out+=`<polygon points="545,330 545,148 650,148 650,330" fill="#a8a294" opacity=".35"/>${st}<line x1="538" y1="330" x2="640" y2="140" stroke="#5e4a38" stroke-width="5"/>`;
-  }
-  // trim and light, identical in every state
-  out+=`<polygon points="0,418 150,318 150,330 0,430" fill="${p.trim}"/><polygon points="800,418 650,318 650,330 800,430" fill="${p.trim}"/><rect x="150" y="318" width="500" height="12" fill="${p.trim}"/>
-  <rect x="150" y="70" width="500" height="6" fill="${p.trim}"/>
-  <polygon points="0,0 800,0 650,70 150,70" fill="url(#${id}lt)"/><rect width="800" height="500" fill="url(#${id}sh)"/>
-  <g clip-path="url(#${id}fl)"><polygon points="${t==='bedroom'?'580,330 700,330 790,500 600,500':'260,330 400,330 470,500 300,500'}" fill="#fff" opacity=".13"/></g>`;
-  return out;
-}
-const sh=(x,y,rx,ry)=>`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="#2b2118" opacity=".16"/>`;
-const rr=(x,y,w,h,r,f,extra='')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${r}" fill="${f}" ${extra}/>`;
-const poly=(pts,f,extra='')=>`<polygon points="${pts}" fill="${f}" ${extra}/>`;
-function plant(x,y,s=1){
-  return `${sh(x,y+2,26*s,6*s)}<g transform="translate(${x} ${y}) scale(${s})"><path d="M-18 0 L-14 -42 H14 L18 0 Z" fill="#c8bba6"/><rect x="-16" y="-46" width="32" height="8" rx="3" fill="#b8a98f"/>
-  <ellipse cx="0" cy="-86" rx="14" ry="40" fill="#5c8a59"/><ellipse cx="-20" cy="-74" rx="12" ry="32" transform="rotate(-28 -20 -74)" fill="#6e9e68"/><ellipse cx="20" cy="-74" rx="12" ry="32" transform="rotate(28 20 -74)" fill="#4f7d4e"/><ellipse cx="-30" cy="-58" rx="9" ry="22" transform="rotate(-58 -30 -58)" fill="#5c8a59"/><ellipse cx="30" cy="-58" rx="9" ry="22" transform="rotate(58 30 -58)" fill="#6e9e68"/></g>`;
-}
-function frame(x,y,w,h,kind){
-  const k=['#d9a54c','#746a65','#c8745a'][kind%3];
-  return `${rr(x,y,w,h,2,'#fbfaf6','stroke="#8d7a5e" stroke-width="3"')}${rr(x+8,y+8,w-16,h-16,1,'#efe7d6')}<circle cx="${x+w*0.35}" cy="${y+h*0.4}" r="${Math.min(w,h)*0.2}" fill="${k}"/><path d="M${x+8} ${y+h-8} L${x+w*0.45} ${y+h*0.5} L${x+w*0.7} ${y+h*0.72} L${x+w-8} ${y+h*0.45} V${y+h-8} Z" fill="${['#5b534f','#7e9a6d','#5d5551'][kind%3]}" opacity=".85"/>`;
-}
-function lamp(x,y){ return `${sh(x,y,16,4)}<rect x="${x-2}" y="${y-84}" width="4" height="84" fill="#5b4a37"/>${poly(`${x-22},${y-82} ${x+22},${y-82} ${x+14},${y-122} ${x-14},${y-122}`,'#f3e3b8')}<ellipse cx="${x}" cy="${y-82}" rx="22" ry="4" fill="#e2cf9c"/>`; }
-
-function staged(t){
-  let s='';
-  if(t==='front'){
-    s+=poly('250,372 550,372 660,478 150,478','#5b5450')+poly('280,380 520,380 610,470 190,470','#716762')+poly('300,388 500,388 560,462 240,462','#5b5450');
-    s+=frame(368,128,64,84,0)+frame(168,165,34,70,1);
-    s+=plant(668,338,1.05)+lamp(196,372);
-    // sofa
-    s+=sh(400,352,150,10)+rr(292,262,216,56,12,'#4e4744')+rr(282,300,236,44,10,'#615854')+rr(268,284,32,64,13,'#4e4744')+rr(500,284,32,64,13,'#4e4744')
-      +rr(304,296,98,36,8,'#726863')+rr(398,296,98,36,8,'#726863')+rr(318,270,52,30,8,'#d6a548')+rr(430,272,52,28,8,'#e9e1d0')
-      +rr(278,344,10,12,3,'#3a2f25')+rr(512,344,10,12,3,'#3a2f25');
-    // coffee table
-    s+=sh(400,420,92,10)+poly('330,388 470,388 492,410 308,410','#8b5e3c')+poly('308,410 492,410 492,418 308,418','#6d4a2e')+rr(316,418,8,26,2,'#5a3d26')+rr(476,418,8,26,2,'#5a3d26')
-      +rr(366,376,36,12,2,'#e9e1d0')+rr(372,370,24,7,2,'#c8745a')+`<ellipse cx="445" cy="395" rx="14" ry="4" fill="#f1ede3"/><path d="M438 395 Q445 372 452 395Z" fill="#5c8a59"/>`;
-    // armchair
-    s+=sh(640,418,52,9)+rr(596,352,88,58,14,'#e44326')+rr(590,382,100,36,12,'#bd9650')+rr(580,372,24,48,10,'#8f6c30')+rr(676,372,24,48,10,'#8f6c30')+rr(600,414,8,14,2,'#3a2f25')+rr(672,414,8,14,2,'#3a2f25');
-  }
-  if(t==='dining'){
-    s+=poly('240,350 560,350 700,480 100,480','#8a5a4c')+poly('270,360 530,360 640,470 160,470','#a06c5a')+poly('290,368 510,368 590,462 210,462','#8a5a4c');
-    // sideboard + mirror
-    s+=`<ellipse cx="240" cy="178" rx="52" ry="62" fill="#f8f4ea" stroke="#b89b5e" stroke-width="7"/><ellipse cx="240" cy="178" rx="45" ry="55" fill="#dfeaee"/><path d="M205 210 Q235 150 270 160" stroke="#fff" stroke-width="5" opacity=".6" fill="none"/>`;
-    s+=sh(240,334,92,8)+rr(166,254,150,78,4,'#6d4a2e')+rr(166,248,150,10,3,'#8b5e3c')+[0,1,2].map(i=>rr(172+i*48,264,42,60,2,'#7d5a3a','stroke="#5a3d26"')+`<circle cx="${193+i*48}" cy="294" r="3" fill="#d4b06a"/>`).join('')+rr(176,334,10,10,2,'#4a3320')+rr(296,334,10,10,2,'#4a3320')
-      +rr(270,222,16,26,4,'#5b5450')+`<path d="M278 222 V204 M278 206 Q268 192 262 196 M278 208 Q290 190 296 194" stroke="#5c8a59" stroke-width="3" fill="none"/>`;
-    s+=plant(618,338,.95);
-    // far chairs
-    [300,378,456].forEach(x=>{ s+=rr(x,296,44,64,6,'#c9a97e')+rr(x+5,302,34,40,4,'#e0c79c')+rr(x+6,356,6,22,2,'#8b6a44')+rr(x+32,356,6,22,2,'#8b6a44'); });
-    // table
-    s+=sh(400,462,200,14)+poly('250,352 550,352 604,396 196,396','#9b6a43')+poly('196,396 604,396 604,408 196,408','#734d30')+rr(210,408,12,56,3,'#5d3d27')+rr(578,408,12,56,3,'#5d3d27')+rr(286,352,10,44,2,'#5d3d27')+rr(504,352,10,44,2,'#5d3d27');
-    [[300,370],[400,370],[500,370],[290,388],[400,388],[510,388]].forEach(([x,y],i)=>{ s+=`<ellipse cx="${x}" cy="${y}" rx="${i<3?24:30}" ry="${i<3?5:6}" fill="#f6f2ea" stroke="#d6cdbb"/>`; });
-    s+=`<rect x="388" y="344" width="24" height="26" rx="6" fill="#5b5450"/><path d="M400 344 Q380 318 372 322 M400 344 Q400 312 400 308 M400 344 Q420 318 430 324" stroke="#5c8a59" stroke-width="4" fill="none"/><circle cx="372" cy="322" r="6" fill="#e78f6b"/><circle cx="400" cy="308" r="6" fill="#e9c35a"/><circle cx="430" cy="324" r="6" fill="#e78f6b"/>`;
-    // end chairs
-    s+=rr(150,332,36,92,6,'#c9a97e')+rr(155,340,24,50,4,'#e0c79c')+rr(158,420,8,40,2,'#8b6a44')+rr(612,332,36,92,6,'#c9a97e')+rr(618,340,24,50,4,'#e0c79c')+rr(634,420,8,40,2,'#8b6a44');
-    // pendant
-    s+=`<line x1="400" y1="70" x2="400" y2="168" stroke="#4a3b2c" stroke-width="3"/>`+poly('352,198 448,198 424,168 376,168','#ff654a')+`<ellipse cx="400" cy="198" rx="48" ry="7" fill="#f6e3a8"/>`;
-  }
-  if(t==='bedroom'){
-    s+=poly('250,350 550,350 690,480 110,480','#c9b99d')+poly('290,362 510,362 620,468 180,468','#e0d4bb');
-    s+=frame(340,118,100,70,2)+frame(462,122,56,40,0);
-    // nightstands
-    s+=sh(256,344,28,5)+rr(238,296,40,50,3,'#8b5e3c')+rr(244,306,28,14,2,'#6d4a2e')+rr(244,324,28,14,2,'#6d4a2e')+sh(556,344,28,5)+rr(536,296,40,50,3,'#8b5e3c')+rr(542,306,28,14,2,'#6d4a2e')+rr(542,324,28,14,2,'#6d4a2e');
-    s+=`<rect x="254" y="268" width="4" height="30" fill="#5b4a37"/>${poly('240,268 272,268 266,244 246,244','#f3e3b8')}<rect x="554" y="268" width="4" height="30" fill="#5b4a37"/>${poly('540,268 572,268 566,244 546,244','#f3e3b8')}`;
-    // bed
-    s+=sh(400,420,170,14)+rr(282,208,236,106,16,'#6b4f3a')+rr(292,218,216,80,10,'#7d5d44')
-      +poly('292,298 508,298 556,384 244,384','#f1ece0')+poly('244,384 556,384 556,424 244,424','#fbf8f1')+poly('244,384 556,384 556,396 244,396','#d9d1bf')
-      +poly('250,350 550,350 556,384 244,384','#5b5450')+poly('250,350 550,350 548,360 252,360','#716762')
-      +rr(304,280,86,32,12,'#fff','stroke="#e4ddcc"')+rr(410,280,86,32,12,'#fff','stroke="#e4ddcc"')+rr(344,326,112,24,8,'#d6a548')
-      +rr(258,424,10,16,2,'#4a3320')+rr(532,424,10,16,2,'#4a3320');
-    s+=plant(690,332,.95);
-    // bench
-    s+=sh(400,462,120,8)+rr(330,436,140,22,6,'#e44326')+rr(338,456,8,16,2,'#4a3320')+rr(454,456,8,16,2,'#4a3320');
-  }
-  if(t==='rec'){
-    s+=poly('230,360 570,360 700,480 100,480','#837771')+poly('260,372 540,372 650,470 150,470','#968b86');
-    // media wall
-    s+=sh(380,334,120,8)+rr(290,300,180,34,3,'#4a3a2e')+rr(298,306,52,22,2,'#5d4a3b')+rr(358,306,52,22,2,'#5d4a3b')+rr(418,306,44,22,2,'#5d4a3b')
-      +rr(300,148,160,96,4,'#17191d')+rr(306,154,148,84,2,'#34302e')+poly('306,154 454,154 306,238','#443f3c')+rr(375,244,10,56,2,'#2a2a2a')
-      +rr(250,200,32,6,2,'#8b5e3c')+rr(488,172,70,6,2,'#8b5e3c')+rr(488,222,70,6,2,'#8b5e3c')+rr(496,142,18,30,2,'#c8745a')+rr(520,152,22,20,2,'#5b5450')+rr(500,196,28,26,2,'#e9e1d0')+rr(540,198,14,24,2,'#d6a548');
-    s+=plant(268,336,.8);
-    // sofa seen from behind + table
-    s+=sh(400,452,170,12)+rr(262,396,276,70,18,'#615854')+rr(258,410,284,52,14,'#564e4a')+rr(272,404,120,10,5,'#796e69')+rr(408,404,120,10,5,'#796e69')+rr(276,462,10,12,2,'#2a2a2a')+rr(514,462,10,12,2,'#2a2a2a');
-    s+=sh(400,396,70,6)+poly('350,376 450,376 470,392 330,392','#8b5e3c')+rr(340,392,6,16,2,'#5a3d26')+rr(454,392,6,16,2,'#5a3d26')+rr(372,366,26,10,2,'#e9e1d0')+`<ellipse cx="428" cy="380" rx="12" ry="3.5" fill="#d6a548"/>`;
-    // bean bag
-    s+=sh(620,440,54,10)+`<path d="M570 438 Q566 392 612 386 Q662 384 672 436 Q620 452 570 438Z" fill="#d6a548"/><path d="M590 400 Q620 392 650 402" stroke="#b78a2e" stroke-width="3" fill="none"/>`;
-    // pendant
-    s+=`<line x1="400" y1="70" x2="400" y2="104" stroke="#4a3b2c" stroke-width="3"/>`+poly('376,126 424,126 414,104 386,104','#423d3a');
-  }
-  return s;
-}
-function messy(){
-  let s='';
-  // folding table piled with stuff
-  s+=sh(420,460,150,12)+poly('270,372 560,372 610,412 220,412','#c9b48a')+poly('220,412 610,412 610,420 220,420','#a89468')+rr(236,420,8,50,2,'#777')+rr(584,420,8,50,2,'#777')+rr(300,380,6,32,2,'#777')+rr(520,380,6,32,2,'#777');
-  s+=rr(300,336,70,40,3,'#b88b55')+rr(308,326,70,36,3,'#c99d66')+rr(300,358,70,6,0,'#e9d7ae')+rr(430,344,56,30,3,'#a9764a')+rr(470,360,70,16,6,'#d96b5f')+rr(262,364,60,12,3,'#5b5450');
-  // stacked boxes left
-  s+=sh(190,440,70,10)+rr(130,380,100,62,3,'#b88b55')+rr(130,402,100,8,0,'#e9d7ae')+rr(142,330,82,52,3,'#c99d66')+rr(142,350,82,7,0,'#e9d7ae')+rr(156,288,62,44,3,'#b88b55')+rr(156,306,62,6,0,'#e9d7ae')
-    +rr(240,410,70,40,3,'#c99d66')+rr(240,428,70,6,0,'#e9d7ae');
-  // laundry basket
-  s+=sh(630,452,60,10)+`<path d="M580 396 H680 L670 450 H590 Z" fill="#f4f1ea" stroke="#cfc8b7" stroke-width="3"/>`+[0,1,2,3].map(i=>`<line x1="${598+i*20}" y1="402" x2="${600+i*18}" y2="446" stroke="#cfc8b7" stroke-width="3"/>`).join('')
-    +`<path d="M584 398 Q600 366 628 384 Q650 362 678 396 Z" fill="#d96b5f"/><path d="M600 396 Q620 372 646 392Z" fill="#5b5450"/><rect x="640" y="372" width="44" height="14" rx="6" transform="rotate(-18 662 379)" fill="#e9c35a"/>`;
-  // toys + bags
-  s+=sh(470,470,70,8)+rr(420,446,22,22,3,'#d96b5f')+rr(446,452,22,22,3,'#e9c35a')+rr(433,426,22,22,3,'#746a65')+`<circle cx="500" cy="462" r="13" fill="#5c8a59"/><circle cx="500" cy="462" r="13" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4 5"/>`
-    +`<path d="M330 450 Q320 410 350 408 Q380 408 372 452 Z" fill="#3b3b44"/><path d="M340 410 Q352 396 364 410" stroke="#2a2a30" stroke-width="3" fill="none"/>`
-    +`<path d="M252 462 H312 L304 500 H258 Z" fill="#e4e0d6" stroke="#bdb8a8"/>`;
-  return s;
-}
-function roomSvg(t,state,label){
-  const id='r'+(++UID);
-  let inner=shell(t,id);
-  if(state==='staged') inner+=staged(t);
-  if(state==='messy') inner+=messy();
-  return `<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${label}" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
-}
+const IMG=(k,alt,cls)=>`<img${cls?` class="${cls}"`:''} src="/work/brokerage/img/nf-stage-${k}.webp" alt="${alt}" width="1200" height="750" loading="lazy" decoding="async">`;
 
 const ROOMS=[
   {key:"front", title:"Front room", addr:"418 Linden Ct", style:"Warm modern living room"},
@@ -406,20 +243,20 @@ const host=document.getElementById("rooms");
 ROOMS.forEach(r=>{
   const f=document.createElement("figure");
   const lbl=`${r.title} at ${r.addr}`;
-  f.innerHTML=`<div class="compare" style="--cut:50%">${roomSvg(r.key,'empty',lbl+', empty')}<div class="after-wrap" style="display:contents"></div>
+  f.innerHTML=`<div class="compare" style="--cut:50%">${IMG(r.key+'-empty',lbl+', empty')}<div class="after-wrap" style="display:contents"></div>
     <input type="range" min="0" max="100" value="50" aria-label="Compare empty and staged ${r.title}"><span class="handle"></span>
     <span class="tag l">Empty</span><span class="tag r">Virtually staged</span></div>`;
   const c=f.querySelector(".compare"), i=f.querySelector("input");
-  const tmp=document.createElement("div"); tmp.innerHTML=roomSvg(r.key,'staged',lbl+', virtually staged (illustration)');
-  const after=tmp.firstChild; after.setAttribute("class","after"); c.insertBefore(after,i);
+  const tmp=document.createElement("div"); tmp.innerHTML=IMG(r.key+'-staged',lbl+', virtually staged','after');
+  c.insertBefore(tmp.firstChild,i);
   i.addEventListener("input",()=>c.style.setProperty("--cut",i.value+"%"));
   const cap=document.createElement("figcaption");
   cap.innerHTML=`<span><b>${r.title}</b> · ${r.addr}</span><span>${r.style}</span>`;
   f.appendChild(cap); host.appendChild(f);
 });
-document.getElementById("s1").innerHTML=roomSvg('dining','messy','Dining room with moving boxes, laundry and toys (illustration)');
-document.getElementById("s2").innerHTML=roomSvg('dining','empty','The same dining room emptied (illustration)');
-document.getElementById("s3").innerHTML=roomSvg('dining','staged','The same dining room virtually staged from the emptied room (illustration)');
+document.getElementById("s1").innerHTML=IMG('dining-messy','Dining room with moving boxes, laundry and toys');
+document.getElementById("s2").innerHTML=IMG('dining-empty','The same dining room emptied');
+document.getElementById("s3").innerHTML=IMG('dining-staged','The same dining room virtually staged from the emptied room');
 document.querySelectorAll("[data-copy]").forEach(b=>b.addEventListener("click",()=>{
   const el=document.getElementById(b.dataset.copy);
   navigator.clipboard.writeText(el.textContent).then(()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy",1500)})
