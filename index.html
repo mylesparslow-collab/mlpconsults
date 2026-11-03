@@ -368,6 +368,14 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv,.js .sheet,.js .hero h1 .ln > span{opacity:1;transform:none}
 }
+:root{--acc:#1d4fd7;--acc-ink:#ffffff}
+:root[data-theme="dark"]{--acc:#7f9dff;--acc-ink:#0a0a0a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--acc:#7f9dff;--acc-ink:#0a0a0a}}
+/* accent: CTAs, key numbers, prices, focus only */
+.btn.gold,form button[type="submit"].btn.ink{background:var(--acc);color:var(--acc-ink)}
+.btn.gold:hover,form button[type="submit"].btn.ink:hover{background:var(--acc);filter:brightness(1.12)}
+.nums b,.step .price,.quick .price{color:var(--acc)}
+:focus-visible,input:focus,select:focus,textarea:focus{outline-color:var(--acc)}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
