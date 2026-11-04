@@ -115,6 +115,15 @@ input,select,textarea{width:100%;font:inherit;font-size:14px;padding:7px 9px;bor
     <p class="foot" style="margin-top:10px">Counted by Cloudflare Web Analytics: no cookies, no personal data, so these are page views, not people. Roughly 10% sampled after 7 days.</p>
   </div>
 
+  <div class="card s12" id="leads-card">
+    <h2>Website leads <span id="leads-n" class="pill"></span></h2>
+    <div id="leads-login">
+      <input id="leads-em" type="email" placeholder="your email" style="font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)">
+      <button onclick="leadsSignIn()">Email me a sign-in link</button> <span class="foot" id="leads-msg"></span>
+    </div>
+    <div id="leads-list" hidden></div>
+  </div>
+
   <div class="card s12">
     <h2>Pipeline</h2>
     <div class="board" id="board"></div>
@@ -392,6 +401,29 @@ render();
 if(!getKey())setTimeout(connectLive,300);else{loadLive();pullState()}
 addEventListener("focus",()=>{if(getKey()){loadLive();pullState()}});
 if("serviceWorker"in navigator&&/^https:$/.test(location.protocol))navigator.serviceWorker.register("/dash/sw.js",{scope:"/dash/"});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+(function(){
+  var sb=supabase.createClient('https://oardvirqbbawklqvwwxc.supabase.co','sb_publishable_Ok4J_FZyuLzHinQ910ktjg_ZD6NgTKo');
+  var $=function(i){return document.getElementById(i)};
+  var esc=function(t){return String(t==null?'':t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})};
+  window.leadsSignIn=async function(){
+    var r=await sb.auth.signInWithOtp({email:$('leads-em').value,options:{emailRedirectTo:location.origin+'/dash/'}});
+    $('leads-msg').textContent=r.error?r.error.message:'Check your email for the link.';
+  };
+  window.leadStatus=function(id,v){sb.from('leads').update({status:v}).eq('id',id).then(function(){})};
+  async function load(){
+    var r=await sb.from('leads').select('*').order('created_at',{ascending:false}).limit(100);
+    if(r.error){$('leads-msg').textContent=r.error.message;return}
+    $('leads-login').hidden=true;$('leads-list').hidden=false;
+    $('leads-n').textContent=r.data.length+' total';
+    $('leads-list').innerHTML=r.data.length?r.data.map(function(l){
+      return '<div style="border-top:1px solid var(--line);padding:10px 0"><b>'+esc(l.name)+'</b>'+(l.business?' · '+esc(l.business):'')+' <span class="foot">'+esc(l.contact)+' · '+new Date(l.created_at).toLocaleDateString()+(l.referred_by?' · referred by '+esc(l.referred_by):'')+'</span><div style="margin:4px 0">'+esc(l.pain)+'</div><select onchange="leadStatus(\''+l.id+'\',this.value)" style="font:inherit;font-size:13px">'+['new','contacted','booked','won','lost'].map(function(x){return '<option'+(x==l.status?' selected':'')+'>'+x+'</option>'}).join('')+'</select></div>';
+    }).join(''):'<p class="foot">No leads yet.</p>';
+  }
+  sb.auth.getSession().then(function(d){if(d.data.session)load()});
+})();
 </script>
 </body>
 </html>
