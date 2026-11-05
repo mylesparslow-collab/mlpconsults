@@ -123,7 +123,7 @@
   <div class="kpi-row">
     <div class="kpi-card">
       <small>Pending Owner Approvals</small>
-      <b id="kpiPending" style="color:var(--amber);">3 Items</b>
+      <b id="kpiPending" style="color:var(--amber);">5 Items</b>
     </div>
     <div class="kpi-card">
       <small>Avg Lead Reply Speed</small>
@@ -173,6 +173,26 @@
         <p style="font-size:0.84rem; color:var(--muted); margin-bottom:0.85rem;">Includes direct 1-tap Google review link and PDF care guide for their new white oak cabinetry.</p>
         <button class="btn-approve" onclick="approveItem('q3')">Approve &amp; Send Review Request</button>
       </div>
+
+      <div class="queue-item" id="q4">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+          <span class="badge badge-receipt">Quote Follow-Up · Day 5 · Quiet 5 Days</span>
+          <small style="color:var(--muted);">Quote #Q-318 · Backyard ADU · $168,000</small>
+        </div>
+        <h4 style="margin-bottom:0.35rem;">Send "any questions?" check-in to Priya &amp; Tom R. (Tustin)</h4>
+        <p style="font-size:0.84rem; color:var(--muted); margin-bottom:0.85rem;">"Hi Priya and Tom, just checking the ADU proposal came through okay. Happy to walk through the timeline or adjust the scope if anything doesn't fit." Stops automatically the moment either of them replies.</p>
+        <button class="btn-approve" onclick="approveItem('q4')">Approve &amp; Send Check-In</button>
+      </div>
+
+      <div class="queue-item" id="q5">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+          <span class="badge badge-receipt">Late Invoice · 12 Days Past Due</span>
+          <small style="color:var(--muted);">INV-207-2 · Milestone 2 · $12,600</small>
+        </div>
+        <h4 style="margin-bottom:0.35rem;">Send friendly payment reminder with pay link to Dana &amp; Luis K. (Newport)</h4>
+        <p style="font-size:0.84rem; color:var(--muted); margin-bottom:0.85rem;">First reminder, no late-fee language. A firmer second reminder is drafted for day 19, and you are alerted at day 26. Marks itself paid when the payment lands.</p>
+        <button class="btn-approve" onclick="approveItem('q5')">Approve &amp; Send Reminder</button>
+      </div>
     </div>
 
     <div class="panel">
@@ -200,8 +220,39 @@
     </div>
   </div>
 
+
+  <div class="dashboard" style="padding-top:0;">
+    <div class="panel">
+      <h2 style="font-size:1.25rem; margin-bottom:0.35rem;">Monday Brief</h2>
+      <p style="font-size:0.84rem; color:var(--muted); margin-bottom:1rem;">Sent to you at 7:00 AM. It talks only to you and never contacts a customer.</p>
+      <div class="job-row" style="display:flex; justify-content:space-between; gap:1rem;"><div><strong>New leads this week</strong><div style="font-size:0.78rem; color:var(--muted);">7 in, all answered. Median reply: 42 seconds. 2 graded A.</div></div><b style="font-size:1.35rem;">7</b></div>
+      <div class="job-row" style="display:flex; justify-content:space-between; gap:1rem;"><div><strong>Quotes out</strong><div style="font-size:0.78rem; color:var(--muted);">4 open. 1 quiet for 5+ days: Q-318 ADU, $168,000.</div></div><b style="font-size:1.35rem; color:var(--amber);">$412k</b></div>
+      <div class="job-row" style="display:flex; justify-content:space-between; gap:1rem;"><div><strong>Overdue</strong><div style="font-size:0.78rem; color:var(--muted);">1 invoice. INV-207-2, 12 days late.</div></div><b style="font-size:1.35rem; color:#F87171;">$12.6k</b></div>
+      <div class="job-row" style="display:flex; justify-content:space-between; gap:1rem; border-bottom:0;"><div><strong>Collected this week</strong><div style="font-size:0.78rem; color:var(--muted);">2 invoices. 3 more not yet due.</div></div><b style="font-size:1.35rem; color:var(--green);">$31.2k</b></div>
+      <div style="margin-top:1rem; padding:0.85rem 1rem; background:var(--panel-alt); border:1px solid var(--border); border-radius:8px; font-size:0.88rem;"><strong style="color:#FCD34D;">One thing first:</strong> approve the Q-318 check-in. It is the largest quote that has gone quiet.</div>
+      <p style="font-size:0.78rem; color:var(--muted); margin-top:0.85rem;">Also handled overnight: 2 missed calls got an approved text-back within a minute and were logged as leads.</p>
+    </div>
+
+    <div class="panel">
+      <h2 style="font-size:1.25rem; margin-bottom:0.35rem;">Approval Rules</h2>
+      <p style="font-size:0.84rem; color:var(--muted); margin-bottom:1rem;">What each automation may do alone, what waits for you, and what it never does.</p>
+      <table style="width:100%; border-collapse:collapse; font-size:0.8rem;">
+        <thead><tr style="text-align:left; color:var(--muted); font-family:'JetBrains Mono',monospace; font-size:0.68rem; text-transform:uppercase;"><th style="padding:0 0.5rem 0.5rem 0;">Automation</th><th style="padding:0 0.5rem 0.5rem 0;">Alone</th><th style="padding:0 0.5rem 0.5rem 0;">Waits</th><th style="padding:0 0 0.5rem;">Never</th></tr></thead>
+        <tbody style="vertical-align:top;">
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.6rem 0.5rem 0.6rem 0;"><strong>Lead reply</strong></td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Thanks, two questions</td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Anything with a price</td><td style="padding:0.6rem 0;">Quotes a price</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.6rem 0.5rem 0.6rem 0;"><strong>Quote follow-up</strong></td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Queues next check-in</td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Each message</td><td style="padding:0.6rem 0;">Offers a discount</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.6rem 0.5rem 0.6rem 0;"><strong>Invoice chase</strong></td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Stops when paid</td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Each reminder</td><td style="padding:0.6rem 0;">Mentions collections</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.6rem 0.5rem 0.6rem 0;"><strong>Review request</strong></td><td style="padding:0.6rem 0.5rem 0.6rem 0;">One ask after the job</td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Anyone with a complaint</td><td style="padding:0.6rem 0;">Asks twice</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.6rem 0.5rem 0.6rem 0;"><strong>Missed call</strong></td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Approved text, daytime</td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Late-night calls</td><td style="padding:0.6rem 0;">Texts a do-not-contact</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.6rem 0.5rem 0.6rem 0;"><strong>Monday brief</strong></td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Reads your numbers</td><td style="padding:0.6rem 0.5rem 0.6rem 0;">Nothing</td><td style="padding:0.6rem 0;">Contacts anyone else</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem; color:var(--muted); margin-top:0.85rem;">A customer's reply stops everything. Every message and approval is logged. Pause any automation, or all of them, in one click.</p>
+    </div>
+  </div>
+
   <script>
-    let pending = 3;
+    let pending = 5;
     function approveItem(id) {
       const el = document.getElementById(id);
       el.innerHTML = '<strong style="color:#34D399;">✓ Approved &amp; Executed — Logged to Owner Audit Trail</strong>';
