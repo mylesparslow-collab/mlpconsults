@@ -100,7 +100,7 @@ nav.links .btn{white-space:nowrap}
 
 /* hero */
 .hero{position:relative;background:var(--night);color:var(--on-night);min-height:min(940px,100svh);display:grid;align-items:center;overflow:hidden;padding-block:150px 110px}
-.hero canvas,.cta-band canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero video,.cta-band video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;pointer-events:none}
 .hero .scrim{position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb,var(--night) 92%,transparent) 0%,color-mix(in srgb,var(--night) 72%,transparent) 42%,color-mix(in srgb,var(--night) 15%,transparent) 100%),linear-gradient(0deg,color-mix(in srgb,var(--night) 85%,transparent),transparent 30%);pointer-events:none}
 .hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:64px;align-items:center;width:100%}
 .hero h1{font-size:clamp(56px,8.4vw,124px);line-height:.92;letter-spacing:-.025em;margin:26px 0 28px}
@@ -393,7 +393,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 
 <main id="top">
 <section class="hero" aria-labelledby="hero-title">
-  <canvas id="map-hero" aria-hidden="true"></canvas>
+  <video class="mapv" id="map-hero" muted loop playsinline autoplay preload="auto" aria-hidden="true" tabindex="-1"></video>
   <div class="scrim"></div>
   <div class="wrap">
     <div>
@@ -767,7 +767,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 </section>
 
 <section class="cta-band" id="contact">
-  <canvas id="map-cta" aria-hidden="true"></canvas>
+  <video class="mapv" id="map-cta" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
   <div class="scrim"></div>
   <div class="wrap">
     <div class="rv">
@@ -813,68 +813,30 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- Living contour map (adapted from Specimen Room No. 0322, Flowing Contours, MIT) ---- */
-  var FRAG = [
-  'precision highp float;',
-  'uniform float u_time; uniform vec2 u_res; uniform vec2 u_m; uniform float u_act;',
-  'uniform vec3 u_c1,u_c2,u_c3,u_c4; uniform float u_scale;',
-  'float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
-  'float vn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1.,0.)),f.x),mix(h21(i+vec2(0.,1.)),h21(i+vec2(1.,1.)),f.x),f.y);}',
-  'float fbm(vec2 p){float a=.5,s=0.;mat2 m=mat2(.8,.6,-.6,.8)*2.02;for(int i=0;i<5;i++){s+=a*vn(p);p=m*p;a*=.5;}return s*1.03;}',
-  'vec2 pc(vec2 fc){return (fc*2.-u_res)/min(u_res.x,u_res.y);}',
-  'float hf(vec2 p){float t=u_time*.05;float h=fbm(p*.9+vec2(t,-t*.7)+1.5*vec2(fbm(p*.5+t),fbm(p*.5-t+3.)));',
-  ' vec2 m=pc(u_m*u_res);h+=.14*u_act*exp(-dot(p/(1.6*u_scale)-m,p/(1.6*u_scale)-m)*3.);return h;}',
-  'void main(){vec2 p=pc(gl_FragCoord.xy)*1.6*u_scale;float e=.01;float h=hf(p);',
-  ' vec2 g=vec2(hf(p+vec2(e,0.))-h,hf(p+vec2(0.,e))-h)/e;float lv=h*15.;float idx=floor(lv);float d=abs(fract(lv)-.5);',
-  ' float dist=(.5-d)/(length(g)*15.+.0001);float ln=1.-smoothstep(0.,.0045,dist);float major=mod(idx,5.)<.5?1.:0.;',
-  ' vec3 col=mix(u_c1,u_c2,smoothstep(.25,.8,h));col=mix(col,u_c3,ln*.6);col=mix(col,u_c4,ln*major*.9);',
-  ' vec2 q=gl_FragCoord.xy/u_res-.5;col*=1.-.4*dot(q,q);col+=(h21(gl_FragCoord.xy+fract(u_time)*31.)-.5)/180.;',
-  ' gl_FragColor=vec4(clamp(col,0.,1.),1.);}'].join('\n');
-  var maps=[],kicks=[],scrolling=false,sT=0,BUDGET=(matchMedia('(pointer:coarse)').matches||innerWidth<700)?420000:900000,FRAME=1000/30;
-  addEventListener('scroll',function(){scrolling=true;clearTimeout(sT);sT=setTimeout(function(){scrolling=false;kicks.forEach(function(k){k();});},140);},{passive:true});
-  var hex = function(h){return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16)/255;});};
-
-  function contour(cv, opts){
-    var gl = cv.getContext('webgl',{antialias:false,premultipliedAlpha:false});
-    if(!gl) return;
-    function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o;}
-    var pr=gl.createProgram();
-    try{gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FRAG));}catch(e){console.error(e);return;}
-    gl.linkProgram(pr);gl.useProgram(pr);
-    gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
-    var loc=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
-    var U=function(n){return gl.getUniformLocation(pr,n);};
-    function cols(){var cs=getComputedStyle(document.documentElement);[1,2,3,4].forEach(function(i){gl.uniform3fv(U('u_c'+i),hex(cs.getPropertyValue('--map'+i).trim()));});}cols();
-    gl.uniform1f(U('u_scale'),opts.scale||1);
-    var m=[.7,.5],tm=[.7,.5],act=0,tact=0,visible=true,raf=0,t0=performance.now()-(opts.offset||0);
-    var zone=cv.parentElement;
-    zone.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];tact=1;});
-    zone.addEventListener('pointerleave',function(){tact=0;});
-    function fit(){var d=Math.min(1.5,devicePixelRatio||1),w=cv.clientWidth,h=cv.clientHeight;/* cap the pixel budget so large or hi-dpi screens don't run the heavy shader on millions of pixels */var px=w*h*d*d;if(px>BUDGET)d*=Math.sqrt(BUDGET/px);cv.width=Math.max(1,w*d|0);cv.height=Math.max(1,h*d|0);gl.viewport(0,0,cv.width,cv.height);}
-    function draw(now){
-      m[0]+=(tm[0]-m[0])*.06;m[1]+=(tm[1]-m[1])*.06;act+=(tact-act)*.04;
-      gl.uniform1f(U('u_time'),reduce?40:(now-t0)/1000*(opts.speed||1));
-      gl.uniform2f(U('u_res'),cv.width,cv.height);gl.uniform2f(U('u_m'),m[0],m[1]);gl.uniform1f(U('u_act'),act);
-      gl.drawArrays(gl.TRIANGLES,0,3);
-    }
-    var last=0;
-    /* ~30fps cap; skip frames entirely while the page is actively scrolling (the drift is slow, so a brief freeze is invisible) */
-    function tick(now){raf=0;if(now-last>=FRAME&&!scrolling){last=now;draw(now);}if(!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
-    function kick(){if(!raf&&!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
-    kicks.push(kick);
-    new ResizeObserver(function(){fit();draw(performance.now());}).observe(cv);
-    new IntersectionObserver(function(es){visible=es[es.length-1].isIntersecting;kick();}).observe(cv);
-    document.addEventListener('visibilitychange',kick);
-    fit();draw(performance.now());kick();
-    maps.push(function(){cols();draw(performance.now());});
+  /* ---- Contour map: a seamless looping video (rendered from the original contour shader), light and dark versions ---- */
+  var mapVids=[].slice.call(document.querySelectorAll('video.mapv'));
+  function isDark(){var t=document.documentElement.dataset.theme;return t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);}
+  function setMap(){
+    var th=isDark()?'dark':'light',sm=innerWidth<700?'-sm':'';
+    mapVids.forEach(function(v){
+      var src='map/map-'+th+sm+'.mp4',post='map/poster-'+th+'.jpg';
+      if(v.getAttribute('poster')!==post)v.setAttribute('poster',post);
+      if(reduce)return;
+      if(v.getAttribute('data-src')!==src){v.setAttribute('data-src',src);v.src=src;if(v._vis)v.play().catch(function(){});}
+    });
   }
-  contour(document.getElementById('map-hero'),{scale:1,speed:1});
-  contour(document.getElementById('map-cta'),{scale:1.3,speed:.8,offset:60000});
+  setMap();
+  if('IntersectionObserver' in window&&!reduce){
+    var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;v._vis=e.isIntersecting;if(v._vis){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();});});
+    mapVids.forEach(function(v){vio.observe(v);});
+  }
+  addEventListener('resize',function(){clearTimeout(setMap.t);setMap.t=setTimeout(setMap,200);});
+
 
 
   /* ---- theme: monochrome, follows the visitor's light/dark setting ---- */
   document.documentElement.dataset.pal='mono';
-  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){maps.forEach(function(f){f();});});}catch(e){}
+  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',setMap);}catch(e){}
 
   /* ---- header turns solid after the hero ---- */
   var hdr=document.getElementById('hdr'),mb=document.getElementById('menu');
@@ -882,7 +844,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
   mb.addEventListener('click',function(){setMenu(!hdr.classList.contains('menu-open'));});
   document.querySelectorAll('#nav a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false);});
-  function onScroll(){hdr.classList.toggle('solid',scrollY>40);lightWords();}
+  var lw=0;function onScroll(){hdr.classList.toggle('solid',scrollY>40);if(!lw)lw=requestAnimationFrame(function(){lw=0;lightWords();});}
   addEventListener('scroll',onScroll,{passive:true});
 
   /* ---- reveal on scroll ---- */
@@ -897,11 +859,11 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
   var gold={'fast,':1,'trust,':1,'evenings':1,'back.':1};
   lit.innerHTML=lit.textContent.split(' ').map(function(w){return '<span class="w'+(gold[w]?' gold':'')+'">'+w+'</span>';}).join(' ');
   words=lit.querySelectorAll('.w');
-  function lightWords(){
+  var lastN=-1;function lightWords(){
     if(reduce){words.forEach(function(w){w.classList.add('on');});return;}
     var r=lit.getBoundingClientRect();
     var p=Math.min(1,Math.max(0,(innerHeight*.9-r.top)/(innerHeight*.45+r.height*.5)));
-    var n=Math.round(p*words.length);
+    var n=Math.round(p*words.length);if(n===lastN)return;lastN=n;
     words.forEach(function(w,i){w.classList.toggle('on',i<n);});
   }
 
