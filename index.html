@@ -372,6 +372,26 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv,.js .sheet,.js .hero h1 .ln > span{opacity:1;transform:none}
 }
+
+/* automations */
+.autos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.auto{padding:28px 28px 30px 0;display:grid;gap:10px;align-content:start;border-bottom:1px solid var(--line)}
+.auto:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--line)}
+.auto .n{font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--muted)}
+.auto h3{font-size:28px;line-height:1.04}
+.auto .when{font:500 12px/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--brass)}
+.auto p{color:var(--muted);font-size:15.5px}
+.auto .you{font-size:14.5px;color:var(--ink);padding-top:10px;margin-top:4px;border-top:1px solid var(--line)}
+.auto .you b{font-weight:600}
+.rules{margin-top:72px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.rules h3{font-size:clamp(30px,3.4vw,44px);line-height:1.02;margin:16px 0 14px}
+.rules > div:first-child p{color:var(--muted);font-size:16px}
+.rtab{width:100%;border-collapse:collapse;font-size:14.5px}
+.rtab th{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 14px 12px 0;border-bottom:1px solid var(--ink)}
+.rtab td{padding:13px 14px 13px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted)}
+.rtab td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+@media (max-width:980px){.autos{grid-template-columns:repeat(2,minmax(0,1fr))}.auto,.auto:not(:nth-child(3n+1)){padding:24px 24px 26px 0;border-left:0}.auto:nth-child(2n){padding-left:24px;border-left:1px solid var(--line)}.rules{grid-template-columns:minmax(0,1fr);gap:32px}}
+@media (max-width:620px){.autos{grid-template-columns:minmax(0,1fr)}.auto,.auto:nth-child(2n){padding:22px 0;border-left:0}.rtab{display:block;overflow-x:auto}.rtab td:first-child{white-space:normal}}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -456,7 +476,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
           <p class="q">"Leads come in and we answer them the next day."</p>
           <h3>Every lead answered in minutes</h3>
           <p>Inquiries land in one place and get a reply right away, with the best ones flagged first and nobody forgotten.</p>
-          <ul><li>Instant replies by text or email, from templates you approve, that book a time</li><li>Leads graded so you call the right ones first</li><li>Follow-ups at the right moments until it's a yes or no</li><li>Review requests after every job or sale</li></ul>
+          <ul><li>Instant replies by text or email, from templates you approve, that book a time</li><li>Leads graded so you call the right ones first</li><li>Follow-ups at the right moments until it's a yes or no</li><li>A text back within a minute when a call is missed</li></ul>
         </div>
       </article>
       <article class="svc rv">
@@ -486,7 +506,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
           <p class="q">"I do the paperwork at night."</p>
           <h3>Your evenings back</h3>
           <p>Tools that read your email, track jobs and money, and draft the routine documents for you.</p>
-          <ul><li>Receipts, payments and inquiries sorted from your inbox</li><li>Estimates, proposals and invoices drafted for you</li><li>Reminders for late payments and next steps</li><li>Works with tools you already use, like QuickBooks</li></ul>
+          <ul><li>Receipts, payments and inquiries sorted from your inbox</li><li>Estimates, proposals and invoices drafted for you</li><li>Quote follow-ups and late-invoice reminders that stop when the customer answers</li><li>Works with tools you already use, like QuickBooks</li></ul>
         </div>
       </article>
       <article class="svc rv d1">
@@ -505,9 +525,46 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
           <p class="q">"I don't know which marketing is actually working."</p>
           <h3>Know what's working, every week</h3>
           <p>One place to see leads, approvals and results, so you can see what is paying off.</p>
-          <ul><li>A weekly scorecard: leads, wins and where they came from</li><li>One dashboard where your team approves what goes out</li><li>Which marketing brings in actual customers</li><li>Staff training and simple written guides</li></ul>
+          <ul><li>A Monday brief: leads, quotes waiting, money overdue and the one thing to do first</li><li>One dashboard where your team approves what goes out</li><li>Which marketing brings in actual customers</li><li>Staff training and simple written guides</li></ul>
         </div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section id="automations">
+  <div class="wrap">
+    <div class="head">
+      <div class="rv"><div class="eyebrow">Automations</div><h2>Six automations, <em>one rulebook.</em></h2></div>
+      <p class="lead rv d1">The same six moves fix most of the leaks in a small business. I set them up on the tools you already use, with your wording, and you decide what goes out.</p>
+    </div>
+    <div class="autos">
+      <div class="auto rv"><span class="n">01</span><h3>Speed-to-lead reply</h3><div class="when">A form, call or message arrives</div><p>A reply goes out within a minute, asks two questions, offers a time to talk, and tells you if it looks like a big one.</p><div class="you"><b>You approve:</b> the first reply, once.</div></div>
+      <div class="auto rv d1"><span class="n">02</span><h3>Quote follow-up</h3><div class="when">A quote goes out</div><p>Friendly nudges on day 2, 5 and 10 that stop the moment the customer answers, with a list of who has gone quiet.</p><div class="you"><b>You approve:</b> each message, until you trust the wording.</div></div>
+      <div class="auto rv d2"><span class="n">03</span><h3>Late-invoice chase</h3><div class="when">An invoice passes its due date</div><p>A polite reminder, then a firmer one, each with a way to pay. You hear about it at two weeks, and it stops when the money lands.</p><div class="you"><b>You approve:</b> the tone, and every call.</div></div>
+      <div class="auto rv"><span class="n">04</span><h3>Review request</h3><div class="when">A job or visit is finished</div><p>A thank-you with a review link the next day. Unhappy replies come to you privately before anything is public.</p><div class="you"><b>You approve:</b> who gets asked.</div></div>
+      <div class="auto rv d1"><span class="n">05</span><h3>Missed-call text-back</h3><div class="when">A call goes unanswered</div><p>A text within a minute asking what's going on and offering a callback time, logged as a lead so no call is lost.</p><div class="you"><b>You approve:</b> the wording, and the hours it runs.</div></div>
+      <div class="auto rv d2"><span class="n">06</span><h3>Monday owner brief</h3><div class="when">Monday, 7 am</div><p>One short message: new leads, quotes waiting, money overdue, and the one thing to do first. It talks only to you.</p><div class="you"><b>You approve:</b> nothing. It never contacts a customer.</div></div>
+    </div>
+    <div class="rules">
+      <div class="rv">
+        <div class="eyebrow">Approval rules</div>
+        <h3>Nothing reaches your customers <em>without your say.</em></h3>
+        <p>Before anything goes live, we write down what each automation may do on its own, what waits for you, and what it never does. Every message and approval is logged, a customer's reply stops everything, and you can pause it all in one click.</p>
+      </div>
+      <div class="rv d1">
+        <table class="rtab">
+          <thead><tr><th>Automation</th><th>Runs on its own</th><th>Waits for you</th><th>Never</th></tr></thead>
+          <tbody>
+            <tr><td>Lead reply</td><td>Thanks and two questions</td><td>Anything with a price or a promise</td><td>Quotes a price</td></tr>
+            <tr><td>Quote follow-up</td><td>Queues the next check-in</td><td>Each message</td><td>Offers a discount</td></tr>
+            <tr><td>Invoice chase</td><td>Stops when paid</td><td>Each reminder</td><td>Mentions collections</td></tr>
+            <tr><td>Review request</td><td>One ask after the job</td><td>Anyone with a complaint</td><td>Asks twice</td></tr>
+            <tr><td>Missed call</td><td>Approved text, business hours</td><td>Late-night calls</td><td>Texts a do-not-contact number</td></tr>
+            <tr><td>Monday brief</td><td>Reads your numbers</td><td>Nothing</td><td>Contacts anyone else</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
@@ -560,6 +617,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
       <ul>
         <li>Online booking with automatic reminders</li>
         <li>Review requests sent after every job or visit</li>
+        <li>A text back within a minute when a call is missed</li>
         <li>Instant replies to every website inquiry, day or night</li>
       </ul>
     </div>
