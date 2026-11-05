@@ -831,37 +831,87 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
   ' vec3 col=mix(u_c1,u_c2,smoothstep(.25,.8,h));col=mix(col,u_c3,ln*.6);col=mix(col,u_c4,ln*major*.9);',
   ' vec2 q=gl_FragCoord.xy/u_res-.5;col*=1.-.4*dot(q,q);col+=(h21(gl_FragCoord.xy+fract(u_time)*31.)-.5)/180.;',
   ' gl_FragColor=vec4(clamp(col,0.,1.),1.);}'].join('\n');
-  var maps=[],kicks=[],BUDGET=(matchMedia('(pointer:coarse)').matches||innerWidth<700)?260000:650000,FRAME=1000/30;
+  var maps=[];
   var hex = function(h){return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16)/255;});};
+
+  /* Fast path: the expensive noise is baked into a small half-float height texture refreshed ~10x/sec (the drift is very slow);
+     a cheap full-resolution pass then draws the contours from that texture every frame. */
+  var NOISE = [
+  'precision highp float;',
+  'float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
+  'float vn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1.,0.)),f.x),mix(h21(i+vec2(0.,1.)),h21(i+vec2(1.,1.)),f.x),f.y);}',
+  'float fbm(vec2 p){float a=.5,s=0.;mat2 m=mat2(.8,.6,-.6,.8)*2.02;for(int i=0;i<5;i++){s+=a*vn(p);p=m*p;a*=.5;}return s*1.03;}'].join('\n');
+  var FIELD = NOISE+'\n'+[
+  'uniform float u_time; uniform vec2 u_tex; uniform vec2 u_ext;',
+  'void main(){vec2 p=((gl_FragCoord.xy/u_tex)*2.-1.)*u_ext;float t=u_time*.05;',
+  ' float h=fbm(p*.9+vec2(t,-t*.7)+1.5*vec2(fbm(p*.5+t),fbm(p*.5-t+3.)));gl_FragColor=vec4(h,0.,0.,1.);}'].join('\n');
+  var DRAW = [
+  'precision highp float;',
+  'uniform sampler2D u_h; uniform float u_time; uniform vec2 u_res; uniform vec2 u_m; uniform float u_act; uniform vec2 u_tex; uniform vec2 u_ext;',
+  'uniform vec3 u_c1,u_c2,u_c3,u_c4; uniform float u_scale;',
+  'float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
+  'vec2 mm;',
+  'float H(vec2 uv){vec2 p=(uv*2.-1.)*u_ext;float h=texture2D(u_h,uv).r;',
+  ' h+=.14*u_act*exp(-dot(p/(1.6*u_scale)-mm,p/(1.6*u_scale)-mm)*3.);return h;}',
+  'void main(){vec2 uv=gl_FragCoord.xy/u_res;mm=(u_m*u_res*2.-u_res)/min(u_res.x,u_res.y);',
+  ' vec2 d=1./u_tex;float h=H(uv);',
+  ' vec2 g=vec2(H(uv+vec2(d.x,0.))-H(uv-vec2(d.x,0.)),H(uv+vec2(0.,d.y))-H(uv-vec2(0.,d.y)))/(2.*d*2.*u_ext);',
+  ' float lv=h*15.;float idx=floor(lv);float dd=abs(fract(lv)-.5);',
+  ' float dist=(.5-dd)/(length(g)*15.+.0001);float ln=1.-smoothstep(0.,.0045,dist);float major=mod(idx,5.)<.5?1.:0.;',
+  ' vec3 col=mix(u_c1,u_c2,smoothstep(.25,.8,h));col=mix(col,u_c3,ln*.6);col=mix(col,u_c4,ln*major*.9);',
+  ' vec2 q=gl_FragCoord.xy/u_res-.5;col*=1.-.4*dot(q,q);col+=(h21(gl_FragCoord.xy+fract(u_time)*31.)-.5)/180.;',
+  ' gl_FragColor=vec4(clamp(col,0.,1.),1.);}'].join('\n');
 
   function contour(cv, opts){
     var gl = cv.getContext('webgl',{antialias:false,premultipliedAlpha:false});
     if(!gl) return;
     function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o;}
-    var pr=gl.createProgram();
-    try{gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FRAG));}catch(e){console.error(e);return;}
-    gl.linkProgram(pr);gl.useProgram(pr);
+    function prog(fs){var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.bindAttribLocation(pr,0,'a');gl.linkProgram(pr);return pr;}
+    var fast=false,hf=gl.getExtension('OES_texture_half_float'),hfl=gl.getExtension('OES_texture_half_float_linear'),cbf=gl.getExtension('EXT_color_buffer_half_float');
+    var pF,pD,pr,tex,fbo,TW=1,TH=1;
+    try{
+      if(hf&&hfl&&cbf){
+        pF=prog(FIELD);pD=prog(DRAW);
+        tex=gl.createTexture();fbo=gl.createFramebuffer();
+        gl.bindTexture(gl.TEXTURE_2D,tex);
+        gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,8,8,0,gl.RGBA,hf.HALF_FLOAT_OES,null);
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+        gl.bindFramebuffer(gl.FRAMEBUFFER,fbo);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,tex,0);
+        fast=gl.checkFramebufferStatus(gl.FRAMEBUFFER)===gl.FRAMEBUFFER_COMPLETE;
+        gl.bindFramebuffer(gl.FRAMEBUFFER,null);
+      }
+      if(!fast)pr=prog(FRAG);
+    }catch(e){console.error(e);return;}
     gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
-    var loc=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
-    var U=function(n){return gl.getUniformLocation(pr,n);};
-    function cols(){var cs=getComputedStyle(document.documentElement);[1,2,3,4].forEach(function(i){gl.uniform3fv(U('u_c'+i),hex(cs.getPropertyValue('--map'+i).trim()));});}cols();
-    gl.uniform1f(U('u_scale'),opts.scale||1);
-    var m=[.7,.5],tm=[.7,.5],act=0,tact=0,visible=true,raf=0,t0=performance.now()-(opts.offset||0);
+    gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
+    var cur;function use(p){cur=p;gl.useProgram(p);}
+    var U=function(n){return gl.getUniformLocation(cur,n);};
+    function cols(){use(fast?pD:pr);var cs=getComputedStyle(document.documentElement);[1,2,3,4].forEach(function(i){gl.uniform3fv(U('u_c'+i),hex(cs.getPropertyValue('--map'+i).trim()));});gl.uniform1f(U('u_scale'),opts.scale||1);}cols();
+    var m=[.7,.5],tm=[.7,.5],act=0,tact=0,visible=true,raf=0,t0=performance.now()-(opts.offset||0),lastField=-1e9,ext=[1,1];
     var zone=cv.parentElement;
     zone.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];tact=1;});
     zone.addEventListener('pointerleave',function(){tact=0;});
-    function fit(){var d=Math.min(1.5,devicePixelRatio||1),w=cv.clientWidth,h=cv.clientHeight;/* cap the pixel budget so large or hi-dpi screens don't run the heavy shader on millions of pixels */var px=w*h*d*d;if(px>BUDGET)d*=Math.sqrt(BUDGET/px);cv.width=Math.max(1,w*d|0);cv.height=Math.max(1,h*d|0);gl.viewport(0,0,cv.width,cv.height);}
+    function fit(){var d=Math.min(1.5,devicePixelRatio||1);cv.width=Math.max(1,cv.clientWidth*d|0);cv.height=Math.max(1,cv.clientHeight*d|0);gl.viewport(0,0,cv.width,cv.height);
+      if(fast){var k=Math.min(cv.width,cv.height);ext=[cv.width/k*1.6*(opts.scale||1),cv.height/k*1.6*(opts.scale||1)];
+        TW=Math.max(64,Math.min(768,Math.round(cv.width/3)));TH=Math.max(64,Math.min(768,Math.round(cv.height/3)));
+        gl.bindTexture(gl.TEXTURE_2D,tex);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,TW,TH,0,gl.RGBA,hf.HALF_FLOAT_OES,null);lastField=-1e9;}}
     function draw(now){
       m[0]+=(tm[0]-m[0])*.06;m[1]+=(tm[1]-m[1])*.06;act+=(tact-act)*.04;
-      gl.uniform1f(U('u_time'),reduce?40:(now-t0)/1000*(opts.speed||1));
+      var T=reduce?40:(now-t0)/1000*(opts.speed||1);
+      if(fast){
+        if(Math.abs(T-lastField)>.1||lastField<-1e8){lastField=T;
+          gl.bindFramebuffer(gl.FRAMEBUFFER,fbo);gl.viewport(0,0,TW,TH);use(pF);
+          gl.uniform1f(U('u_time'),T);gl.uniform2f(U('u_tex'),TW,TH);gl.uniform2f(U('u_ext'),ext[0],ext[1]);
+          gl.drawArrays(gl.TRIANGLES,0,3);gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,cv.width,cv.height);}
+        use(pD);gl.bindTexture(gl.TEXTURE_2D,tex);gl.uniform1i(U('u_h'),0);
+        gl.uniform1f(U('u_time'),T);gl.uniform2f(U('u_tex'),TW,TH);gl.uniform2f(U('u_ext'),ext[0],ext[1]);
+      }else{use(pr);gl.uniform1f(U('u_time'),T);}
       gl.uniform2f(U('u_res'),cv.width,cv.height);gl.uniform2f(U('u_m'),m[0],m[1]);gl.uniform1f(U('u_act'),act);
       gl.drawArrays(gl.TRIANGLES,0,3);
     }
-    var last=0;
-    /* ~30fps cap; keeps animating during scroll */
-    function tick(now){raf=0;if(now-last>=FRAME){last=now;draw(now);}if(!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
+    function tick(now){raf=0;draw(now);if(!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
     function kick(){if(!raf&&!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
-    kicks.push(kick);
     new ResizeObserver(function(){fit();draw(performance.now());}).observe(cv);
     new IntersectionObserver(function(es){visible=es[es.length-1].isIntersecting;kick();}).observe(cv);
     document.addEventListener('visibilitychange',kick);
