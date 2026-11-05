@@ -1,0 +1,11 @@
+# Live runtime probes (2026-11-05, 1440x900, in-app browser)
+- locomotive.ca: Three r165, Lenis, Barba (static), Vue. Fonts HelveticaNowDisplay + custom LocomotiveNew (serif display). Scale 18/36/40px body-ish, all weight 400. Fixed header only "Locomotive® / Menu". Hero: full-bleed WebGL-processed video (red pixel-mosaic face) with two-line wordmark bottom-left "Locomotive® Digital-first Design Agency" + small badges. White bg / black text.
+- immersive-g.com: Three r151, Nuxt/Vue, Howler. Fonts HelveticaNeue (UI 14px) + PSTimes (serif, 28px). bg #e8e8e8, text #030303. Hero = monochrome plaster bas-relief WebGL sculpture, centred serif tagline "Innovative digital experiences studio", tiny corner labels: logo L, Menu TR, "Scroll down" R, "See all projects" BL. 1 screen tall (all in canvas). Loader line first.
+- unseen.co: Three r143, Howler. Neue Montreal only, tiny 10-19px, some UC. Dark loader → blush pink (#eadcd8-ish) gate: cartoon eyes mascot, 3-line blurb, pill "Enter" button (audio-on gate). Full-viewport canvas.
+- obys.agency: single custom font "Obys"; only two sizes: 11px (ls -0.11) and 80px (ls -2.4px = -3%). Black on white. Full canvas. Layout: huge OBYS wordmark TL, tiny project index list left column, vertical filmstrip of project images centre with bracket frame around active, meta text columns top right, footer tiny.
+- malvah.co: Three r173, Nuxt, Lenis, 8 videos, 10 screens tall. NeueHaasGroteskText Pro, 16px body x63 + 52px display. Black bg, text #e6e6e6, grey #595959. Loader "Ma / 0 %".
+- lusion.co: Three r158, Aeonik only, all-caps UI 13-26px, display 86px UC. Loader counter "000". (didn't render in hidden pane)
+- activetheory.net: fully custom engine (no globals), canvas + 2 videos, nbarchitekt + Times, 10-16px. UI = "Toggle Audio / Work / Contact" + song player "<< Song -- Artist >>".
+- abeto.co: Three r161, empty DOM until WebGL boots.
+- aristidebenoist.com: custom font "jws" at 10px ls 0.2px (x290), 2 canvases. Colours sage rgb(186,196,184) #bac4b8, charcoal #1e1e1e, ochre #cc9933. Numbered index "01 / 30", letter-spaced titles "h o u s e o f G u c c I", metadata rows A COMPLETED / B TYPE / C ROLE / D CLIENT, "EXPLORE".
+- louispaquet.com (Independent of Year 2025): Vue, Inter only, ONE size 18px/650, #1f1f1f, no canvas. Plain about-text one-pager. Restraint.
