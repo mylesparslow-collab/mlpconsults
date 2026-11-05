@@ -406,4 +406,5 @@ document.querySelectorAll('.fq button').forEach(b=>b.onclick=()=>{const o=b.getA
  const tabs=[...document.querySelectorAll('.tabs a')];
  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){tabs.forEach(t=>t.classList.toggle('on',t.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
  tabs.forEach(t=>{const el=document.querySelector(t.getAttribute('href'));if(el)io.observe(el)});})();
-</script>
+</script><script src="../../automations.js" defer></script>
+

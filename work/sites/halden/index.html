@@ -435,4 +435,5 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>setQ(
 (function(){const H={0:[7,14],1:null,2:[7,15],3:[7,15],4:[7,15],5:[7,16],6:[7,16]},N=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],t=new Date().getDay(),f=h=>((h+11)%12+1)+(h<12?'am':'pm');
   $('#hrs').innerHTML=[2,3,4,5,6,0,1].map(i=>{const c=i===t?' class="t"':'';return '<span'+c+'>'+N[i]+'</span><span'+c+'>'+(H[i]?f(H[i][0])+' – '+f(H[i][1])+' or sold out':'Closed')+'</span>'}).join('')})();
 $('#news').onsubmit=e=>{e.preventDefault();$('#nnote').textContent='You\'re on the list. The next letter goes out Thursday morning.';e.target.reset()};
-</script>
+</script><script src="../../automations.js" defer></script>
+

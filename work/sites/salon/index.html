@@ -480,4 +480,5 @@ $('#hours').innerHTML=[1,2,3,4,5,6,0].map(i=>'<div class="'+(i===new Date().getD
  const set=v=>{o.classList.toggle('on',v);o.setAttribute('aria-hidden',!v);b.setAttribute('aria-expanded',v);if(v)o.querySelector('a').focus();else b.focus()};
  b.onclick=()=>set(true);$('#menux').onclick=()=>set(false);o.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{o.classList.remove('on');o.setAttribute('aria-hidden','true');b.setAttribute('aria-expanded','false')}));
  addEventListener('keydown',e=>{if(e.key==='Escape'&&o.classList.contains('on'))set(false)});})();
-</script>
+</script><script src="../../automations.js" defer></script>
+
