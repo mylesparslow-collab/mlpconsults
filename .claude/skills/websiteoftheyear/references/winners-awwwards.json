@@ -1,0 +1,1644 @@
+[
+ {
+  "year": 2020,
+  "category": "Site of the Year",
+  "site": "Pioneer - Corn Revolutionized",
+  "live_url": "https://cornrevolution.resn.global/",
+  "studio": "Resn",
+  "awwwards_url": "https://www.awwwards.com/sites/pioneer-corn-revolutionized",
+  "badge": "SOTD",
+  "score_overall": "8.18",
+  "sotd_date": "Site of the Day - Jul 8, 2020",
+  "jury_design_usab_creat_content": [
+   "8.32 / 10",
+   "7.75 / 10",
+   "8.68 / 10",
+   "7.96 / 10"
+  ],
+  "tags": [
+   "Business & Corporate",
+   "Web & Interactive",
+   "Scrolling",
+   "3D"
+  ],
+  "source": "awwwards hall-of-fame/2020 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2020,
+  "category": "Developer Site of the Year",
+  "site": "Kode Sports Club",
+  "live_url": "https://www.kodeclubs.com/",
+  "studio": "Merci Michel",
+  "awwwards_url": "https://www.awwwards.com/sites/kode",
+  "badge": "SOTD",
+  "score_overall": "8.3",
+  "sotd_date": "Site of the Day - Nov 26, 2020",
+  "jury_design_usab_creat_content": [
+   "8.21 / 10",
+   "8.1 / 10",
+   "8.76 / 10",
+   "8.32 / 10"
+  ],
+  "tags": [
+   "Sports",
+   "Animation",
+   "Fullscreen",
+   "3D",
+   "Three.js"
+  ],
+  "source": "awwwards hall-of-fame/2020 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2020,
+  "category": "E-commerce of the Year",
+  "site": "Mammut Expedition Baikal",
+  "live_url": "https://eiger-extreme.mammut.com",
+  "studio": "Build in Amsterdam",
+  "awwwards_url": "https://www.awwwards.com/sites/mammut-expedition-baikal",
+  "badge": "SOTD",
+  "score_overall": "7.78",
+  "sotd_date": "Site of the Day - Dec 7, 2020",
+  "jury_design_usab_creat_content": [
+   "7.95 / 10",
+   "7.46 / 10",
+   "7.76 / 10",
+   "8.1 / 10"
+  ],
+  "tags": [
+   "E-Commerce",
+   "Fashion",
+   "Sports",
+   "Typography",
+   "Unusual Navigation",
+   "Gallery",
+   "Sound-Audio",
+   "Storytelling",
+   "Photo & Video",
+   "Contentful",
+   "next.js",
+   "CSS",
+   "React"
+  ],
+  "source": "awwwards hall-of-fame/2020 + site page",
+  "live_status": "500"
+ },
+ {
+  "year": 2020,
+  "category": "Mobile Site of the Year",
+  "site": "Synchronized studio",
+  "live_url": "https://synchronized.studio/",
+  "studio": "Zhenya Rynzhuk",
+  "awwwards_url": "https://www.awwwards.com/sites/synchronized-studio",
+  "badge": "SOTD",
+  "score_overall": "7.95",
+  "sotd_date": "Site of the Day - Jul 29, 2020",
+  "jury_design_usab_creat_content": [
+   "8.24 / 10",
+   "7.5 / 10",
+   "8.13 / 10",
+   "7.77 / 10"
+  ],
+  "tags": [
+   "Design Agencies",
+   "Promotional",
+   "Web & Interactive",
+   "Animation",
+   "Parallax",
+   "Scrolling",
+   "Typography",
+   "Transitions",
+   "Microinteractions",
+   "CSS",
+   "HTML5",
+   "WebGL",
+   "PixiJS",
+   "Vue.js",
+   "Nuxt.js"
+  ],
+  "source": "awwwards hall-of-fame/2020 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Year Users' Choice",
+  "site": "Dark: Official Netflix Guide",
+  "live_url": "http://darknetflix.io",
+  "studio": "Monks",
+  "awwwards_url": "https://www.awwwards.com/sites/dark-official-netflix-guide",
+  "badge": "SOTD",
+  "score_overall": "7.96",
+  "sotd_date": "Site of the Day - Nov 3, 2020",
+  "jury_design_usab_creat_content": [
+   "8.17 / 10",
+   "7.29 / 10",
+   "8.27 / 10",
+   "8.48 / 10"
+  ],
+  "tags": [
+   "Film & TV",
+   "Promotional",
+   "Web & Interactive",
+   "Transitions",
+   "Data Visualization",
+   "Responsive",
+   "Sound-Audio",
+   "Storytelling",
+   "UI design",
+   "HTML5",
+   "WebGL"
+  ],
+  "source": "awwwards hall-of-fame/2020 + site page",
+  "live_status": "405"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Year",
+  "site": "Prometheus Fuels",
+  "live_url": "https://www.prometheusfuels.com/",
+  "studio": "Active Theory",
+  "awwwards_url": "https://www.awwwards.com/sites/prometheus-fuels",
+  "badge": "SOTD",
+  "score_overall": "8.4",
+  "sotd_date": "Site of the Day - May 4, 2021",
+  "jury_design_usab_creat_content": [
+   "8.5 / 10",
+   "7.77 / 10",
+   "8.94 / 10",
+   "8.79 / 10"
+  ],
+  "tags": [
+   "Business & Corporate",
+   "Technology",
+   "Web & Interactive",
+   "Animation",
+   "Clean",
+   "Colorful",
+   "Fullscreen",
+   "Storytelling",
+   "Filters and Effects",
+   "WebGL"
+  ],
+  "source": "awwwards hall-of-fame/2021 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2021,
+  "category": "Developer Site of the Year",
+  "site": "Umami Land",
+  "live_url": "https://umamiland.withgoogle.com/en",
+  "studio": "Monks",
+  "awwwards_url": "https://www.awwwards.com/sites/umami-land",
+  "badge": "SOTD",
+  "score_overall": "8.23",
+  "sotd_date": "Site of the Day - Feb 1, 2021",
+  "jury_design_usab_creat_content": [
+   "8.49 / 10",
+   "7.58 / 10",
+   "8.75 / 10",
+   "8.1 / 10"
+  ],
+  "tags": [
+   "Art & Illustration",
+   "Culture & Education",
+   "Food & Drink",
+   "Animation",
+   "App Style",
+   "Illustration",
+   "360",
+   "3D",
+   "Interaction Design",
+   "WebGL"
+  ],
+  "source": "awwwards hall-of-fame/2021 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2021,
+  "category": "E-commerce of the Year",
+  "site": "Pangram Pangram Foundry",
+  "live_url": "https://pangrampangram.com/",
+  "studio": "Locomotive",
+  "awwwards_url": "https://www.awwwards.com/sites/pangram-pangram-foundry",
+  "badge": "SOTD",
+  "score_overall": "7.79",
+  "sotd_date": "Site of the Day - Nov 11, 2021",
+  "jury_design_usab_creat_content": [
+   "7.91 / 10",
+   "7.65 / 10",
+   "7.59 / 10",
+   "8.1 / 10"
+  ],
+  "tags": [
+   "Art & Illustration",
+   "E-Commerce",
+   "Promotional",
+   "Clean",
+   "Parallax",
+   "Typography",
+   "Content architecture",
+   "UI design",
+   "CSS",
+   "HTML5",
+   "Shopify",
+   "Javascript",
+   "Locomotive Scroll"
+  ],
+  "source": "awwwards hall-of-fame/2021 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2021,
+  "category": "Mobile Site of the Year",
+  "site": "Chungi Folio",
+  "live_url": "https://www.chungiyoo.com/",
+  "studio": "Synchronized Studio",
+  "awwwards_url": "https://www.awwwards.com/sites/chungi-folio",
+  "badge": "SOTD",
+  "score_overall": "8.03",
+  "sotd_date": "Site of the Day - Jan 7, 2021",
+  "jury_design_usab_creat_content": [
+   "8.38 / 10",
+   "7.48 / 10",
+   "8.24 / 10",
+   "7.91 / 10"
+  ],
+  "tags": [
+   "Art & Illustration",
+   "Promotional",
+   "Web & Interactive",
+   "Animation",
+   "Colorful",
+   "Graphic design",
+   "Illustration",
+   "Microinteractions",
+   "404 pages",
+   "CSS Framework",
+   "HTML5",
+   "GSAP",
+   "Vue.js",
+   "Nuxt.js"
+  ],
+  "source": "awwwards hall-of-fame/2021 + site page",
+  "live_status": "500"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Year Users' Choice",
+  "site": "Star Atlas",
+  "live_url": "https://staratlas.com",
+  "studio": "Hello Monday",
+  "awwwards_url": "https://www.awwwards.com/sites/star-atlas",
+  "badge": "SOTD",
+  "score_overall": "7.78",
+  "sotd_date": "Site of the Day - Nov 3, 2021",
+  "jury_design_usab_creat_content": [
+   "7.97 / 10",
+   "7.36 / 10",
+   "7.96 / 10",
+   "7.95 / 10"
+  ],
+  "tags": [
+   "Games & Entertainment",
+   "Technology",
+   "Web & Interactive",
+   "Storytelling",
+   "3D",
+   "Filters and Effects",
+   "GSAP",
+   "Three.js"
+  ],
+  "source": "awwwards hall-of-fame/2021 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Year",
+  "site": "KPR",
+  "live_url": "https://kprverse.com/",
+  "studio": "Resn",
+  "awwwards_url": "https://www.awwwards.com/sites/kpr",
+  "badge": "SOTD",
+  "score_overall": "7.98",
+  "sotd_date": "Site of the Day - Dec 26, 2022",
+  "jury_design_usab_creat_content": [
+   "8.1 / 10",
+   "7.47 / 10",
+   "8.43 / 10",
+   "8.13 / 10"
+  ],
+  "tags": [
+   "Art & Illustration",
+   "Web & Interactive",
+   "Experimental",
+   "Animation",
+   "Colorful",
+   "Scrolling",
+   "Illustration",
+   "Storytelling",
+   "Interaction Design"
+  ],
+  "source": "awwwards hall-of-fame/2022 + site page",
+  "live_status": "404"
+ },
+ {
+  "year": 2022,
+  "category": "Developer Site of the Year",
+  "site": "Persepolis Reimagined",
+  "live_url": "http://www.getty.edu/persepolis",
+  "studio": "Monks",
+  "awwwards_url": "https://www.awwwards.com/sites/persepolis-reimagined",
+  "badge": "SOTD",
+  "score_overall": "7.96",
+  "sotd_date": "Site of the Day - Jun 1, 2022",
+  "jury_design_usab_creat_content": [
+   "8.11 / 10",
+   "7.41 / 10",
+   "8.36 / 10",
+   "8.23 / 10"
+  ],
+  "tags": [
+   "Architecture",
+   "Culture & Education",
+   "Web & Interactive",
+   "Scrolling",
+   "360",
+   "Data Visualization",
+   "Storytelling",
+   "3D",
+   "HTML5",
+   "WebGL",
+   "GSAP",
+   "Vue.js"
+  ],
+  "source": "awwwards hall-of-fame/2022 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2022,
+  "category": "E-commerce of the Year",
+  "site": "Mr. Pops",
+  "live_url": "https://mrpops.ua/en/",
+  "studio": "advanced team",
+  "awwwards_url": "https://www.awwwards.com/sites/mr-pops",
+  "badge": "SOTD",
+  "score_overall": "7.81",
+  "sotd_date": "Site of the Day - Oct 25, 2022",
+  "jury_design_usab_creat_content": [
+   "7.91 / 10",
+   "7.59 / 10",
+   "7.98 / 10",
+   "7.8 / 10"
+  ],
+  "tags": [
+   "E-Commerce",
+   "Food & Drink",
+   "Big Background Images",
+   "Clean",
+   "Colorful",
+   "Photography",
+   "3D",
+   "Microinteractions",
+   "SVG",
+   "Three.js",
+   "React",
+   "Lottie",
+   "Next.js",
+   "Typescript"
+  ],
+  "source": "awwwards hall-of-fame/2022 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Year Users' Choice",
+  "site": "The Other Side of Truth",
+  "live_url": "https://theothersideoftruth.com",
+  "studio": "The First The Last",
+  "awwwards_url": "https://www.awwwards.com/sites/the-other-side-of-truth",
+  "badge": "SOTD",
+  "score_overall": "7.85",
+  "sotd_date": "Site of the Day - Jun 2, 2022",
+  "jury_design_usab_creat_content": [
+   "7.82 / 10",
+   "7.68 / 10",
+   "8.01 / 10",
+   "8.13 / 10"
+  ],
+  "tags": [
+   "Social responsibility",
+   "Scrolling",
+   "Single page",
+   "404 pages",
+   "WebGL",
+   "GSAP",
+   "PixiJS",
+   "Nuxt.js"
+  ],
+  "source": "awwwards hall-of-fame/2022 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Year + Developer Site of the Year",
+  "site": "Lusion v3",
+  "live_url": "https://lusion.co/",
+  "studio": "Lusion",
+  "awwwards_url": "https://www.awwwards.com/sites/lusion-v3",
+  "badge": "SOTD",
+  "score_overall": "8.25",
+  "sotd_date": "Site of the Day - Oct 2, 2023",
+  "jury_design_usab_creat_content": [
+   "8.26 / 10",
+   "7.95 / 10",
+   "8.65 / 10",
+   "8.26 / 10"
+  ],
+  "tags": [
+   "Design Agencies",
+   "Promotional",
+   "Web & Interactive",
+   "Animation",
+   "Clean",
+   "3D",
+   "About Page"
+  ],
+  "source": "awwwards hall-of-fame/2023 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2023,
+  "category": "E-commerce of the Year",
+  "site": "Mana Yerba Mate",
+  "live_url": "https://en.manayerbamate.com/",
+  "studio": "Louis Paquet",
+  "awwwards_url": "https://www.awwwards.com/sites/mana-yerba-mate",
+  "badge": "SOTD",
+  "score_overall": "8.03",
+  "sotd_date": "Site of the Day - Mar 13, 2023",
+  "jury_design_usab_creat_content": [
+   "8.06 / 10",
+   "7.61 / 10",
+   "8.45 / 10",
+   "8.38 / 10"
+  ],
+  "tags": [
+   "E-Commerce",
+   "Food & Drink",
+   "Promotional",
+   "Animation",
+   "Colorful",
+   "Illustration",
+   "3D",
+   "Footer Design",
+   "404 pages",
+   "Shopify"
+  ],
+  "source": "awwwards hall-of-fame/2023 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Year Users' Choice",
+  "site": "Noomo Agency",
+  "live_url": "https://noomoagency.com",
+  "studio": "Noomo Agency",
+  "awwwards_url": "https://www.awwwards.com/sites/noomo-agency",
+  "badge": "SOTD",
+  "score_overall": "7.72",
+  "sotd_date": "Site of the Day - Sep 21, 2023",
+  "jury_design_usab_creat_content": [
+   "7.93 / 10",
+   "7.41 / 10",
+   "7.73 / 10",
+   "7.79 / 10"
+  ],
+  "tags": [
+   "Design Agencies",
+   "Promotional",
+   "Web & Interactive",
+   "Animation",
+   "Scrolling",
+   "Storytelling",
+   "3D",
+   "Interaction Design",
+   "UI design"
+  ],
+  "source": "awwwards hall-of-fame/2023 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Year + Developer Site of the Year",
+  "site": "Igloo Inc",
+  "live_url": "https://www.igloo.inc/",
+  "studio": "abeto",
+  "awwwards_url": "https://www.awwwards.com/sites/igloo-inc",
+  "badge": "SOTD",
+  "score_overall": "7.92",
+  "sotd_date": "Site of the Day - Jul 23, 2024",
+  "jury_design_usab_creat_content": [
+   "8.05 / 10",
+   "7.5 / 10",
+   "8.31 / 10",
+   "7.91 / 10"
+  ],
+  "tags": [
+   "Web & Interactive",
+   "Animation",
+   "Infinite Scroll",
+   "Transitions",
+   "3D"
+  ],
+  "source": "awwwards hall-of-fame/2024 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2024,
+  "category": "E-commerce of the Year",
+  "site": "Opal Tadpole",
+  "live_url": "https://www.opalcamera.com/opal-tadpole",
+  "studio": "Claudio Guglieri",
+  "awwwards_url": "https://www.awwwards.com/sites/opal-tadpole",
+  "badge": "SOTD",
+  "score_overall": "7.52",
+  "sotd_date": "Site of the Day - Jan 11, 2024",
+  "jury_design_usab_creat_content": [
+   "7.73 / 10",
+   "7.34 / 10",
+   "7.27 / 10",
+   "7.64 / 10"
+  ],
+  "tags": [
+   "E-Commerce",
+   "Technology",
+   "Startups",
+   "Animation",
+   "Photographic",
+   "Single page",
+   "3D",
+   "Interaction Design",
+   "Microinteractions"
+  ],
+  "source": "awwwards hall-of-fame/2024 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Year Users' Choice",
+  "site": "Don't Board Me",
+  "live_url": "https://dontboardme.com",
+  "studio": "The First The Last",
+  "awwwards_url": "https://www.awwwards.com/sites/dont-board-me",
+  "badge": "SOTD",
+  "score_overall": "7.83",
+  "sotd_date": "Site of the Day - Mar 11, 2024",
+  "jury_design_usab_creat_content": [
+   "7.20 / 10",
+   "7.20 / 10",
+   "7.00 / 10",
+   "6.80 / 10"
+  ],
+  "tags": [
+   "Business & Corporate",
+   "Events",
+   "Other",
+   "Colorful",
+   "Graphic design",
+   "Scrolling",
+   "Storytelling",
+   "UI design",
+   "404 pages"
+  ],
+  "source": "awwwards hall-of-fame/2024 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Year + Site of the Year Users' Choice",
+  "site": "Lando Norris",
+  "live_url": "https://landonorris.com/",
+  "studio": "OFF+BRAND.",
+  "awwwards_url": "https://www.awwwards.com/sites/lando-norris",
+  "badge": "SOTD",
+  "score_overall": "8.18",
+  "sotd_date": "Site of the Day - Nov 17, 2025",
+  "jury_design_usab_creat_content": [
+   "8.12 / 10",
+   "7.9 / 10",
+   "8.71 / 10",
+   "8.18 / 10"
+  ],
+  "tags": [
+   "Promotional",
+   "Sports",
+   "Web & Interactive",
+   "Colorful",
+   "3D",
+   "Gestures / Interaction",
+   "WebGL",
+   "GSAP",
+   "Webflow"
+  ],
+  "source": "awwwards hall-of-fame/2025 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2025,
+  "category": "Developer Site of the Year",
+  "site": "Messenger",
+  "live_url": "https://messenger.abeto.co",
+  "studio": "abeto",
+  "awwwards_url": "https://www.awwwards.com/sites/messenger",
+  "badge": "SOTD",
+  "score_overall": "7.92",
+  "sotd_date": "Site of the Day - Nov 10, 2025",
+  "jury_design_usab_creat_content": [
+   "8.04 / 10",
+   "7.46 / 10",
+   "8.23 / 10",
+   "8.15 / 10"
+  ],
+  "tags": [
+   "Art & Illustration",
+   "Games & Entertainment",
+   "Web & Interactive",
+   "Colorful",
+   "Storytelling",
+   "3D",
+   "WebGL",
+   "WebSockets",
+   "Three.js"
+  ],
+  "source": "awwwards hall-of-fame/2025 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2025,
+  "category": "E-commerce of the Year",
+  "site": "Scout Motors",
+  "live_url": "https://www.scoutmotors.com/",
+  "studio": "Locomotive",
+  "awwwards_url": "https://www.awwwards.com/sites/scout-motors",
+  "badge": "SOTD",
+  "score_overall": "7.6",
+  "sotd_date": "Site of the Day - Jan 16, 2025",
+  "jury_design_usab_creat_content": [
+   "7.73 / 10",
+   "7.27 / 10",
+   "7.79 / 10",
+   "7.69 / 10"
+  ],
+  "tags": [
+   "E-Commerce",
+   "Promotional",
+   "Experimental",
+   "Animation",
+   "Storytelling",
+   "Interaction Design",
+   "Photo & Video"
+  ],
+  "source": "awwwards hall-of-fame/2025 + site page",
+  "live_status": "200"
+ },
+ {
+  "year": 2020,
+  "category": "Agency of the Year",
+  "site": "Locomotive",
+  "awwwards_url": "https://www.awwwards.com/locomotive/",
+  "source": "awwwards hall-of-fame/2020"
+ },
+ {
+  "year": 2020,
+  "category": "Studio of the Year",
+  "site": "Immersive Garden",
+  "awwwards_url": "https://www.awwwards.com/immersivegarden/",
+  "source": "awwwards hall-of-fame/2020"
+ },
+ {
+  "year": 2020,
+  "category": "Independent of the Year",
+  "site": "Zhenya Rynzhuk",
+  "awwwards_url": "https://www.awwwards.com/zhenyary/",
+  "source": "awwwards hall-of-fame/2020"
+ },
+ {
+  "year": 2021,
+  "category": "Agency of the Year",
+  "site": "Locomotive",
+  "awwwards_url": "https://www.awwwards.com/locomotive/",
+  "source": "awwwards hall-of-fame/2021"
+ },
+ {
+  "year": 2021,
+  "category": "Studio of the Year",
+  "site": "Unseen Studio",
+  "awwwards_url": "https://www.awwwards.com/unseenstudio/",
+  "source": "awwwards hall-of-fame/2021"
+ },
+ {
+  "year": 2021,
+  "category": "Independent of the Year",
+  "site": "Luis Bizarro",
+  "awwwards_url": "https://www.awwwards.com/bizarro/",
+  "source": "awwwards hall-of-fame/2021"
+ },
+ {
+  "year": 2022,
+  "category": "Agency of the Year",
+  "site": "Locomotive",
+  "awwwards_url": "https://www.awwwards.com/locomotive/",
+  "source": "awwwards hall-of-fame/2022"
+ },
+ {
+  "year": 2022,
+  "category": "Studio of the Year",
+  "site": "Synchronized Studio",
+  "awwwards_url": "https://www.awwwards.com/SynchronizedStudio/",
+  "source": "awwwards hall-of-fame/2022"
+ },
+ {
+  "year": 2022,
+  "category": "Independent of the Year",
+  "site": "Jesper Landberg",
+  "awwwards_url": "https://www.awwwards.com/jesperlandberg/",
+  "source": "awwwards hall-of-fame/2022"
+ },
+ {
+  "year": 2023,
+  "category": "Agency of the Year",
+  "site": "Locomotive",
+  "awwwards_url": "https://www.awwwards.com/locomotive/",
+  "source": "awwwards hall-of-fame/2023"
+ },
+ {
+  "year": 2023,
+  "category": "Studio of the Year",
+  "site": "Obys",
+  "awwwards_url": "https://www.awwwards.com/obys/",
+  "source": "awwwards hall-of-fame/2023"
+ },
+ {
+  "year": 2023,
+  "category": "Independent of the Year",
+  "site": "Aristide Benoist",
+  "awwwards_url": "https://www.awwwards.com/aristidebenoist/",
+  "source": "awwwards hall-of-fame/2023"
+ },
+ {
+  "year": 2024,
+  "category": "Agency of the Year",
+  "site": "Locomotive",
+  "awwwards_url": "https://www.awwwards.com/locomotive/",
+  "source": "awwwards hall-of-fame/2024"
+ },
+ {
+  "year": 2024,
+  "category": "Studio of the Year",
+  "site": "Immersive Garden",
+  "awwwards_url": "https://www.awwwards.com/immersivegarden/",
+  "source": "awwwards hall-of-fame/2024"
+ },
+ {
+  "year": 2024,
+  "category": "Independent of the Year",
+  "site": "Jesper Landberg",
+  "awwwards_url": "https://www.awwwards.com/jesperlandberg/",
+  "source": "awwwards hall-of-fame/2024"
+ },
+ {
+  "year": 2025,
+  "category": "Agency of the Year",
+  "site": "Immersive Garden",
+  "awwwards_url": "https://www.awwwards.com/immersivegarden/",
+  "source": "awwwards hall-of-fame/2025"
+ },
+ {
+  "year": 2025,
+  "category": "Studio of the Year",
+  "site": "Malvah",
+  "awwwards_url": "https://www.awwwards.com/Malvah.Studio/",
+  "source": "awwwards hall-of-fame/2025"
+ },
+ {
+  "year": 2025,
+  "category": "Independent of the Year",
+  "site": "Louis Paquet",
+  "awwwards_url": "https://www.awwwards.com/louispaquet/",
+  "source": "awwwards hall-of-fame/2025"
+ },
+ {
+  "year": 2026,
+  "category": "Site of the Month",
+  "site": "Why Zero",
+  "studio": "Sindhur Dutta",
+  "period": "Sep, 2026",
+  "awwwards_url": "https://www.awwwards.com/sites/why-zero",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2026,
+  "category": "Site of the Month",
+  "site": "ERA Residence",
+  "studio": "The First The Last",
+  "period": "Aug, 2026",
+  "awwwards_url": "https://www.awwwards.com/sites/era-residence",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2026,
+  "category": "Site of the Month",
+  "site": "Lama Lama",
+  "studio": "Lama Lama",
+  "period": "Jul, 2026",
+  "awwwards_url": "https://www.awwwards.com/sites/lama-lama-2",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2026,
+  "category": "Site of the Month",
+  "site": "Son Daven",
+  "studio": "The First The Last",
+  "period": "Jun, 2026",
+  "awwwards_url": "https://www.awwwards.com/sites/son-daven",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2026,
+  "category": "Site of the Month",
+  "site": "Floema",
+  "studio": "B\u00fcrocratik",
+  "period": "May, 2026",
+  "awwwards_url": "https://www.awwwards.com/sites/floema",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2026,
+  "category": "Site of the Month",
+  "site": "Oryzo AI",
+  "studio": "Lusion",
+  "period": "Apr, 2026",
+  "awwwards_url": "https://www.awwwards.com/sites/oryzo-ai",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2026,
+  "category": "Site of the Month",
+  "site": "GQ & AP The Extraordinary Lab",
+  "studio": "Immersive Garden",
+  "period": "Mar, 2026",
+  "awwwards_url": "https://www.awwwards.com/sites/gq-ap-the-extraordinary-lab",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2026,
+  "category": "Site of the Month",
+  "site": "The Renaissance Edition",
+  "studio": "Shopify Design",
+  "period": "Feb, 2026",
+  "awwwards_url": "https://www.awwwards.com/sites/the-renaissance-edition",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2026,
+  "category": "Site of the Month",
+  "site": "Bruno's Portfolio",
+  "studio": "Bruno Simon",
+  "period": "Jan, 2026",
+  "awwwards_url": "https://www.awwwards.com/sites/brunos-portfolio",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "MindMarket",
+  "studio": "Louis Paquet",
+  "period": "Dec, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/mindmarket",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Listed as SOTY badge on SOTM listing",
+  "site": "Lando Norris",
+  "studio": "OFF+BRAND.",
+  "period": "2025",
+  "awwwards_url": "https://www.awwwards.com/sites/lando-norris",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "Ponpon Mania",
+  "studio": "Patrick Heng",
+  "period": "Oct, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/ponpon-mania",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "Terminal Industries",
+  "studio": "REJOUICE\u00ae",
+  "period": "Sep, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/terminal-industries",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "Cartier Watches & Wonders 2025",
+  "studio": "Immersive Garden",
+  "period": "Aug, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/cartier-watches-wonders-2025",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "Tracing Art",
+  "studio": "Resn",
+  "period": "Jul, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/tracing-art",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "Montfort",
+  "studio": "Immersive Garden",
+  "period": "Jun, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/montfort",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "Anime.js",
+  "studio": "Julian Garnier",
+  "period": "May, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/anime-js",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "Navigate",
+  "studio": "Resn",
+  "period": "Apr, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/navigate",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "Siena Film Foundation",
+  "studio": "Niccol\u00f2 Miranda",
+  "period": "Mar, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/siena-film-foundation",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "Dropbox Brand",
+  "studio": "Daybreak Studio",
+  "period": "Feb, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/dropbox-brand",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2025,
+  "category": "Site of the Month",
+  "site": "Immersive Garden website",
+  "studio": "Immersive Garden",
+  "period": "Jan, 2025",
+  "awwwards_url": "https://www.awwwards.com/sites/immersive-garden-website",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "David Whyte Experience",
+  "studio": "Immersive Garden",
+  "period": "Dec, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/david-whyte-experience",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "The Line Studio",
+  "studio": "The Line Studio",
+  "period": "Nov, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/thelinestudio-com",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "Kriss.ai",
+  "studio": "Studio 28K",
+  "period": "Oct, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/kriss-ai",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "Watson",
+  "studio": "Watson Design Group, Inc.",
+  "period": "Sep, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/watson",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "Zentry",
+  "studio": "Resn",
+  "period": "Aug, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/zentry",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Listed as SOTY badge on SOTM listing",
+  "site": "Igloo Inc",
+  "studio": "abeto",
+  "period": "2024",
+  "awwwards_url": "https://www.awwwards.com/sites/igloo-inc",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "Slosh Seltzer",
+  "studio": "Active theory",
+  "period": "Jun, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/slosh-seltzer",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "Inkfish",
+  "studio": "DashDigital",
+  "period": "May, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/inkfish",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "Akaru",
+  "studio": "Akaru",
+  "period": "Apr, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/akaru-2",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "Bennett & Clive",
+  "studio": "Spatzek Studio",
+  "period": "Mar, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/bennett-clive",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "Active Theory V6",
+  "studio": "Active Theory",
+  "period": "Feb, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/active-theory-v6",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2024,
+  "category": "Site of the Month",
+  "site": "AIM \u2014 AI Modernism of Kharkiv",
+  "studio": "Obys",
+  "period": "Jan, 2024",
+  "awwwards_url": "https://www.awwwards.com/sites/aim-ai-modernism-of-kharkiv",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "The Fabulous Cartier Journey",
+  "studio": "Merci Michel",
+  "period": "Dec, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/the-fabulous-cartier-journey",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "Sculpting Harmony",
+  "studio": "Resn",
+  "period": "Nov, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/sculpting-harmony",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Listed as SOTY badge on SOTM listing",
+  "site": "Lusion v3",
+  "studio": "Lusion",
+  "period": "2023",
+  "awwwards_url": "https://www.awwwards.com/sites/lusion-v3",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "\u00d6nnu J\u00f3nu Son",
+  "studio": "Aristide Benoist",
+  "period": "Sep, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/onnu-jonu-son",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "Synchrodogs Portfolio",
+  "studio": "Jason Bradley",
+  "period": "Aug, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/synchrodogs-portfolio",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "Aten7",
+  "studio": "Immersive Garden",
+  "period": "Jul, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/aten7",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "Pasqua Wines",
+  "studio": "Adoratorio Studio",
+  "period": "Jun, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/pasqua-wines",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "C2 Montr\u00e9al",
+  "studio": "Louis Paquet",
+  "period": "May, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/c2-montreal",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "SILENCIO - DIGITAL PRODUCTS",
+  "studio": "SILENCIO",
+  "period": "Apr, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/silencio-digital-products",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "Locomotive\u00ae",
+  "studio": "Locomotive",
+  "period": "Mar, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/locomotive-r",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "Unseen Studio",
+  "studio": "Unseen Studio",
+  "period": "Feb, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/unseen-studio",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2023,
+  "category": "Site of the Month",
+  "site": "The Hall of Zero Limits",
+  "studio": "dogstudio",
+  "period": "Jan, 2023",
+  "awwwards_url": "https://www.awwwards.com/sites/the-hall-of-zero-limits",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Listed as SOTY badge on SOTM listing",
+  "site": "KPR",
+  "studio": "Resn",
+  "period": "2022",
+  "awwwards_url": "https://www.awwwards.com/sites/kpr",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Month",
+  "site": "Adobe X Bowie",
+  "studio": "Dentsu Creative Amsterdam!",
+  "period": "Nov, 2022",
+  "awwwards_url": "https://www.awwwards.com/sites/adobe-x-bowie",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Month",
+  "site": "Spotify - Astrology Club",
+  "studio": "makemepulse",
+  "period": "Oct, 2022",
+  "awwwards_url": "https://www.awwwards.com/sites/spotify-astrology-club",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Month",
+  "site": "B/D\u00ae JAMS",
+  "studio": "BASIC/DEPT\u00ae",
+  "period": "Sep, 2022",
+  "awwwards_url": "https://www.awwwards.com/sites/b-d-r-jams",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Month",
+  "site": "Coastal World",
+  "studio": "Merci Michel",
+  "period": "Aug, 2022",
+  "awwwards_url": "https://www.awwwards.com/sites/coastal-world",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Month",
+  "site": "Unleashing Your Best Version",
+  "studio": "Victor Work",
+  "period": "Jul, 2022",
+  "awwwards_url": "https://www.awwwards.com/sites/unleashing-your-best-version",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Listed as SOTY badge on SOTM listing",
+  "site": "Persepolis Reimagined",
+  "studio": "Monks",
+  "period": "2022",
+  "awwwards_url": "https://www.awwwards.com/sites/persepolis-reimagined",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Month",
+  "site": "Exo Ape",
+  "studio": "Exo Ape",
+  "period": "May, 2022",
+  "awwwards_url": "https://www.awwwards.com/sites/exo-ape",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Month",
+  "site": "HAPE",
+  "studio": "dogstudio",
+  "period": "Apr, 2022",
+  "awwwards_url": "https://www.awwwards.com/sites/hape",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Month",
+  "site": "Welcome To The Continent",
+  "studio": "Monks",
+  "period": "Mar, 2022",
+  "awwwards_url": "https://www.awwwards.com/sites/welcome-to-the-continent",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Month",
+  "site": "Magical Reflections",
+  "studio": "makemepulse",
+  "period": "Feb, 2022",
+  "awwwards_url": "https://www.awwwards.com/sites/magical-reflections",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2022,
+  "category": "Site of the Month",
+  "site": "The Unconventional Gallery",
+  "studio": "makemepulse",
+  "period": "Jan, 2022",
+  "awwwards_url": "https://www.awwwards.com/sites/the-unconventional-gallery",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Month",
+  "site": "20 Years of Xbox Museum",
+  "studio": "Active Theory",
+  "period": "Dec, 2021",
+  "awwwards_url": "https://www.awwwards.com/sites/20-years-of-xbox-museum",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Month",
+  "site": "Miranda \u2013 Paper Portfolio",
+  "studio": "Niccol\u00f2 Miranda",
+  "period": "Nov, 2021",
+  "awwwards_url": "https://www.awwwards.com/sites/miranda-paper-portfolio",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Month",
+  "site": "The Shift",
+  "studio": "Garden Eight",
+  "period": "Oct, 2021",
+  "awwwards_url": "https://www.awwwards.com/sites/the-shift-1",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Month",
+  "site": "Grids",
+  "studio": "Obys",
+  "period": "Sep, 2021",
+  "awwwards_url": "https://www.awwwards.com/sites/grids",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Month",
+  "site": "2021 Virtual Webbys",
+  "studio": "Monks",
+  "period": "Aug, 2021",
+  "awwwards_url": "https://www.awwwards.com/sites/2021-virtual-webbys",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Month",
+  "site": "The Harmonic State",
+  "studio": "Active Theory",
+  "period": "Jul, 2021",
+  "awwwards_url": "https://www.awwwards.com/sites/the-harmonic-state",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Month",
+  "site": "Aristide \u2013 Portfolio 2021",
+  "studio": "Aristide Benoist",
+  "period": "Jun, 2021",
+  "awwwards_url": "https://www.awwwards.com/sites/aristide-portfolio-2021",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Listed as SOTY badge on SOTM listing",
+  "site": "Prometheus Fuels",
+  "studio": "Active Theory",
+  "period": "2021",
+  "awwwards_url": "https://www.awwwards.com/sites/prometheus-fuels",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Month",
+  "site": "Superlist",
+  "studio": "Unseen Studio",
+  "period": "Apr, 2021",
+  "awwwards_url": "https://www.awwwards.com/sites/superlist",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Month",
+  "site": "Into the Storm",
+  "studio": "Monks",
+  "period": "Mar, 2021",
+  "awwwards_url": "https://www.awwwards.com/sites/into-the-storm",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Listed as SOTY badge on SOTM listing",
+  "site": "Umami Land",
+  "studio": "Monks",
+  "period": "2021",
+  "awwwards_url": "https://www.awwwards.com/sites/umami-land",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2021,
+  "category": "Site of the Month",
+  "site": "Sea Shepherd - No fishing net",
+  "studio": "makemepulse",
+  "period": "Jan, 2021",
+  "awwwards_url": "https://www.awwwards.com/sites/sea-shepherd-no-fishing-net",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Month",
+  "site": "Medal of Honor: Above & Beyond",
+  "studio": "Jam3",
+  "period": "Dec, 2020",
+  "awwwards_url": "https://www.awwwards.com/sites/medal-of-honor-above-beyond",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Listed as SOTY badge on SOTM listing",
+  "site": "Kode Sports Club",
+  "studio": "Merci Michel",
+  "period": "2020",
+  "awwwards_url": "https://www.awwwards.com/sites/kode",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Month",
+  "site": "CHILE20",
+  "studio": "Active Theory",
+  "period": "Oct, 2020",
+  "awwwards_url": "https://www.awwwards.com/sites/chile20",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Month",
+  "site": "2\u00b0C EARTH",
+  "studio": "Jingqi Fan",
+  "period": "Sep, 2020",
+  "awwwards_url": "https://www.awwwards.com/sites/2degc-earth",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Month",
+  "site": "Ali Ali",
+  "studio": "Exo Ape",
+  "period": "Aug, 2020",
+  "awwwards_url": "https://www.awwwards.com/sites/ali-ali",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Listed as SOTY badge on SOTM listing",
+  "site": "Pioneer - Corn Revolutionized",
+  "studio": "Resn",
+  "period": "2020",
+  "awwwards_url": "https://www.awwwards.com/sites/pioneer-corn-revolutionized",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Month",
+  "site": "Delassus",
+  "studio": "BONHOMME",
+  "period": "Jun, 2020",
+  "awwwards_url": "https://www.awwwards.com/sites/delassus",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Month",
+  "site": "Alan Menken",
+  "studio": "Hello Monday",
+  "period": "May, 2020",
+  "awwwards_url": "https://www.awwwards.com/sites/alan-menken",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Month",
+  "site": "Powerhouse Company",
+  "studio": "Build in Amsterdam",
+  "period": "Apr, 2020",
+  "awwwards_url": "https://www.awwwards.com/sites/powerhouse-company",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Month",
+  "site": "Madeleine Dalla",
+  "studio": "Marvin Schwaibold",
+  "period": "Mar, 2020",
+  "awwwards_url": "https://www.awwwards.com/sites/madeleine-dalla",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Month",
+  "site": "The Year of Greta",
+  "studio": "Superhero Cheesecake",
+  "period": "Feb, 2020",
+  "awwwards_url": "https://www.awwwards.com/sites/the-year-of-greta",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "year": 2020,
+  "category": "Site of the Month",
+  "site": "Apple AirPods Pro",
+  "studio": "Apple",
+  "period": "Jan, 2020",
+  "awwwards_url": "https://www.awwwards.com/sites/apple-airpods-pro",
+  "source": "awwwards.com/websites/sites_of_the_month/?page=1-6",
+  "live_url": "not fetched (unverified)"
+ },
+ {
+  "notes": "No Portfolio Site of the Year category exists on Awwwards hall-of-fame pages 2020-2025; 2020/2021 have Mobile Site of the Year instead. Nominees not retrieved. No 2026 annual results found. Studio = \"by X\" on Awwwards page. live_status = HTTP code from curl HEAD, bot UAs may cause false 4xx/5xx."
+ }
+]
