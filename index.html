@@ -100,6 +100,7 @@ nav.links .btn{white-space:nowrap}
 
 /* hero */
 .hero{position:relative;background:var(--night);color:var(--on-night);min-height:min(940px,100svh);display:grid;align-items:center;overflow:hidden;padding-block:150px 110px}
+.hero canvas.mapc,.cta-band canvas.mapc{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
 .hero video,.cta-band video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;pointer-events:none}
 .hero .scrim{position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb,var(--night) 92%,transparent) 0%,color-mix(in srgb,var(--night) 72%,transparent) 42%,color-mix(in srgb,var(--night) 15%,transparent) 100%),linear-gradient(0deg,color-mix(in srgb,var(--night) 85%,transparent),transparent 30%);pointer-events:none}
 .hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:64px;align-items:center;width:100%}
@@ -881,21 +882,78 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- Contour map: a seamless looping video (rendered from the original contour shader), light and dark versions ---- */
+  /* ---- Contour map: the live shader (WebGL); a pre-rendered looping video, light and dark, stands in when WebGL is unavailable ---- */
   var mapVids=[].slice.call(document.querySelectorAll('video.mapv'));
   function isDark(){var t=document.documentElement.dataset.theme;return t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);}
   function setMap(){
     var th=isDark()?'dark':'light',sm=innerWidth<700?'-sm':'';
     mapVids.forEach(function(v){
+      if(v._live)return;
       var src='map/map-'+th+sm+'.mp4',post='map/poster-'+th+'.jpg';
       if(v.getAttribute('poster')!==post)v.setAttribute('poster',post);
       if(reduce)return;
       if(v.getAttribute('data-src')!==src){v.setAttribute('data-src',src);v.src=src;if(v._vis)v.play().catch(function(){});}
     });
   }
+  var FRAG = [
+  'precision highp float;',
+  'uniform float u_time; uniform vec2 u_res; uniform vec2 u_m; uniform float u_act;',
+  'uniform vec3 u_c1,u_c2,u_c3,u_c4; uniform float u_scale;',
+  'float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
+  'float vn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1.,0.)),f.x),mix(h21(i+vec2(0.,1.)),h21(i+vec2(1.,1.)),f.x),f.y);}',
+  'float fbm(vec2 p){float a=.5,s=0.;mat2 m=mat2(.8,.6,-.6,.8)*2.02;for(int i=0;i<5;i++){s+=a*vn(p);p=m*p;a*=.5;}return s*1.03;}',
+  'vec2 pc(vec2 fc){return (fc*2.-u_res)/min(u_res.x,u_res.y);}',
+  'float hf(vec2 p){float t=u_time*.05;float h=fbm(p*.9+vec2(t,-t*.7)+1.5*vec2(fbm(p*.5+t),fbm(p*.5-t+3.)));',
+  ' vec2 m=pc(u_m*u_res);h+=.14*u_act*exp(-dot(p/(1.6*u_scale)-m,p/(1.6*u_scale)-m)*3.);return h;}',
+  'void main(){vec2 p=pc(gl_FragCoord.xy)*1.6*u_scale;float e=.01;float h=hf(p);',
+  ' vec2 g=vec2(hf(p+vec2(e,0.))-h,hf(p+vec2(0.,e))-h)/e;float lv=h*15.;float idx=floor(lv);float d=abs(fract(lv)-.5);',
+  ' float dist=(.5-d)/(length(g)*15.+.0001);float ln=1.-smoothstep(0.,.0045,dist);float major=mod(idx,5.)<.5?1.:0.;',
+  ' vec3 col=mix(u_c1,u_c2,smoothstep(.25,.8,h));col=mix(col,u_c3,ln*.6);col=mix(col,u_c4,ln*major*.9);',
+  ' vec2 q=gl_FragCoord.xy/u_res-.5;col*=1.-.4*dot(q,q);col+=(h21(gl_FragCoord.xy+fract(u_time)*31.)-.5)/180.;',
+  ' gl_FragColor=vec4(clamp(col,0.,1.),1.);}'].join('\n');
+  var hex=function(h){return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16)/255;});};
+  var liveFns=[];
+  /* Live contour shader. Returns false when WebGL is unavailable, so the video stays as the fallback. */
+  function live(vid,opts){
+    try{
+      var cv=document.createElement('canvas');cv.className='mapc';cv.setAttribute('aria-hidden','true');
+      var gl=cv.getContext('webgl',{antialias:false,premultipliedAlpha:false});if(!gl)return false;
+      function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o;}
+      var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FRAG));
+      gl.bindAttribLocation(pr,0,'a');gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return false;gl.useProgram(pr);
+      gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
+      var U=function(n){return gl.getUniformLocation(pr,n);};
+      function cols(){var cs=getComputedStyle(document.documentElement);[1,2,3,4].forEach(function(i){gl.uniform3fv(U('u_c'+i),hex(cs.getPropertyValue('--map'+i).trim()));});}cols();
+      gl.uniform1f(U('u_scale'),opts.scale||1);
+      vid.parentNode.insertBefore(cv,vid.nextSibling);
+      var m=[.7,.5],tm=[.7,.5],act=0,tact=0,visible=true,raf=0,t0=performance.now()-(opts.offset||0),failed=false;
+      var zone=cv.parentElement;
+      zone.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];tact=1;kick();});
+      zone.addEventListener('pointerleave',function(){tact=0;kick();});
+      function fit(){var d=Math.min(1.5,devicePixelRatio||1);cv.width=Math.max(1,cv.clientWidth*d|0);cv.height=Math.max(1,cv.clientHeight*d|0);gl.viewport(0,0,cv.width,cv.height);}
+      function draw(now){
+        m[0]+=(tm[0]-m[0])*.06;m[1]+=(tm[1]-m[1])*.06;act+=(tact-act)*.04;
+        gl.uniform1f(U('u_time'),reduce?40:(now-t0)/1000*(opts.speed||1));
+        gl.uniform2f(U('u_res'),cv.width,cv.height);gl.uniform2f(U('u_m'),m[0],m[1]);gl.uniform1f(U('u_act'),act);
+        gl.drawArrays(gl.TRIANGLES,0,3);
+      }
+      function tick(now){raf=0;if(failed)return;draw(now);if(!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
+      function kick(){if(!raf&&!failed&&!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
+      new ResizeObserver(function(){fit();draw(performance.now());}).observe(cv);
+      new IntersectionObserver(function(es){visible=es[es.length-1].isIntersecting;kick();}).observe(cv);
+      document.addEventListener('visibilitychange',kick);
+      /* if the GPU is lost later, fall back to the video */
+      cv.addEventListener('webglcontextlost',function(e){e.preventDefault();failed=true;cv.remove();vid._live=false;vid.style.display='';setMap();});
+      fit();draw(performance.now());kick();
+      liveFns.push(function(){cols();draw(performance.now());});
+      vid._live=true;vid.removeAttribute('src');vid.removeAttribute('data-src');try{vid.load();}catch(e){}vid.style.display='none';
+      return true;
+    }catch(e){console.error(e);return false;}
+  }
+  var liveOn=false;try{liveOn=live(document.getElementById('map-hero'),{scale:1,speed:1});live(document.getElementById('map-cta'),{scale:1.3,speed:.8,offset:60000});}catch(e){}
   setMap();
   if('IntersectionObserver' in window&&!reduce){
-    var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;v._vis=e.isIntersecting&&e.intersectionRatio>.12;if(v._vis){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();});},{threshold:[0,.12,.5]});
+    var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;v._vis=e.isIntersecting&&e.intersectionRatio>.12;if(v._live)return;if(v._vis){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();});},{threshold:[0,.12,.5]});
     mapVids.forEach(function(v){vio.observe(v);});
   }
   addEventListener('resize',function(){clearTimeout(setMap.t);setMap.t=setTimeout(setMap,200);});
@@ -904,7 +962,7 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 
   /* ---- theme: monochrome, follows the visitor's light/dark setting ---- */
   document.documentElement.dataset.pal='mono';
-  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',setMap);}catch(e){}
+  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){setMap();liveFns.forEach(function(f){f();});});}catch(e){}
 
   /* ---- header turns solid after the hero ---- */
   var hdr=document.getElementById('hdr'),mb=document.getElementById('menu');
