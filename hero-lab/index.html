@@ -66,12 +66,13 @@ var ORIG = [
   ' float dist=(.5-d)/(length(g)*15.+.0001);float ln=1.-smoothstep(0.,.0045,dist);float major=mod(idx,5.)<.5?1.:0.;',
   ' vec3 col=mix(u_c1,u_c2,smoothstep(.25,.8,h));col=mix(col,u_c3,ln*.6);col=mix(col,u_c4,ln*major*.9);',
   ' vec2 q=gl_FragCoord.xy/u_res-.5;col*=1.-.4*dot(q,q);gl_FragColor=vec4(clamp(col,0.,1.),1.);}'].join('\n');
-var bg=document.getElementById('bg'),cur=null,stop=null;
+var bg=document.getElementById('bg'),cur=null,stop=null,note=document.createElement('div');note.style.cssText='position:fixed;z-index:60;top:10px;left:10px;right:10px;background:#b00;color:#fff;font:12px ui-monospace,monospace;padding:0;border-radius:8px;white-space:pre-wrap';document.body.appendChild(note);
+new MutationObserver(function(){note.style.padding=note.textContent?'8px 10px':'0';}).observe(note,{childList:true,characterData:true,subtree:true});
 function live(src,opts){
   var cv=document.createElement('canvas');bg.appendChild(cv);
-  var gl=cv.getContext('webgl',{antialias:false});
+  var gl=cv.getContext('webgl',{antialias:false})||cv.getContext('experimental-webgl');if(!gl)throw new Error('WebGL not available');
   function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o;}
-  var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,src));gl.linkProgram(pr);gl.useProgram(pr);
+  var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,src));gl.bindAttribLocation(pr,0,'a');gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))throw new Error('link: '+gl.getProgramInfoLog(pr));gl.useProgram(pr);
   gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
   var U=function(n){return gl.getUniformLocation(pr,n);};
   COL.forEach(function(c,i){gl.uniform3fv(U('u_c'+(i+1)),hex(c));});gl.uniform1f(U('u_scale'),1);
@@ -95,7 +96,7 @@ var V={
  D:function(){return img();},
  E:function(){return vid('/hero-lab/small-'+th+'.mp4');}
 };
-function pick(k){if(stop)stop();stop=V[k]();cur=k;[].forEach.call(document.querySelectorAll('#bar button'),function(b){b.classList.toggle('on',b.dataset.v===k);});history.replaceState(null,'','?v='+k);resetStats();}
+function pick(k){if(stop){try{stop();}catch(e){}stop=null;}try{stop=V[k]();note.textContent='';}catch(e){stop=null;note.textContent='Version '+k+' failed: '+(e&&e.message||e);console.error(e);}cur=k;[].forEach.call(document.querySelectorAll('#bar button'),function(b){b.classList.toggle('on',b.dataset.v===k);});history.replaceState(null,'','?v='+k);resetStats();}
 document.getElementById('bar').addEventListener('click',function(e){if(e.target.dataset&&e.target.dataset.v)pick(e.target.dataset.v);});
 /* fps meter: samples frame gaps; shows stats for the last 3 seconds of scrolling */
 var ds=[],lastT=performance.now(),lastScroll=0,out=document.getElementById('fps');
