@@ -28,7 +28,10 @@ Standard library only (html.parser).
 import argparse, html, os, re, sys
 from html.parser import HTMLParser
 
-SKIP = {"script", "style", "noscript", "template", "svg", "head", "nav", "header", "footer"}
+SKIP = {"script", "style", "noscript", "template", "svg", "head"}
+# Site chrome expected to change in a redesign. Skipped on OLD pages only (default nav,header; see --skip-old).
+# New pages are searched in full, so content that moved into a new footer or menu still counts as present.
+CHROME_DEFAULT = "nav,header"
 INLINE = {"a", "b", "i", "em", "strong", "span", "code", "small", "sup", "sub", "mark",
           "abbr", "u", "s", "cite", "q", "time", "bdi", "kbd", "var", "samp", "del", "ins", "wbr", "font"}
 VOID = {"img", "br", "hr", "input", "meta", "link", "wbr", "source", "area", "base", "col", "embed", "track", "param"}
@@ -40,8 +43,9 @@ def norm(s):
 
 
 class Extract(HTMLParser):
-    def __init__(self):
+    def __init__(self, extra_skip=()):
         super().__init__(convert_charrefs=True)
+        self.SKIP = SKIP | set(extra_skip)
         self.blocks, self.buf, self.skip = [], [], 0
         self.counts = {k: 0 for k in COUNTED}
 
@@ -52,7 +56,7 @@ class Extract(HTMLParser):
             self.blocks.append(t)
 
     def handle_starttag(self, tag, attrs):
-        if tag in SKIP and tag not in VOID:
+        if tag in self.SKIP and tag not in VOID:
             self.skip += 1
             return
         if self.skip:
@@ -67,12 +71,12 @@ class Extract(HTMLParser):
             self.counts["a[href]"] += 1
 
     def handle_startendtag(self, tag, attrs):
-        if tag in SKIP and tag not in VOID:
+        if tag in self.SKIP and tag not in VOID:
             return  # self-closed svg etc.: nothing inside
         self.handle_starttag(tag, attrs)
 
     def handle_endtag(self, tag):
-        if tag in SKIP and tag not in VOID:
+        if tag in self.SKIP and tag not in VOID:
             self.skip = max(0, self.skip - 1)
             return
         if not self.skip and tag not in INLINE:
@@ -87,8 +91,8 @@ class Extract(HTMLParser):
         self.flush()
 
 
-def extract(path):
-    p = Extract()
+def extract(path, extra_skip=()):
+    p = Extract(extra_skip)
     with open(path, encoding="utf-8", errors="replace") as f:
         p.feed(f.read())
     p.close()
@@ -125,7 +129,8 @@ def main():
     ap = argparse.ArgumentParser(description="Content parity between old and redesigned pages")
     ap.add_argument("--old", nargs="+", required=True)
     ap.add_argument("--new", nargs="+", required=True)
-    ap.add_argument("--map", nargs="*", default=[], help="old=new page pairs")
+    ap.add_argument("--map", nargs="+", action="extend", default=[], help="old=new page pairs (repeatable)")
+    ap.add_argument("--skip-old", default=CHROME_DEFAULT, help="comma list of chrome tags ignored on OLD pages (default nav,header; footer is checked)")
     ap.add_argument("--ignore-regex", action="append", default=[], help="removed from old text blocks before checking")
     ap.add_argument("--min-words", type=int, default=3)
     ap.add_argument("--strict-counts", action="store_true", help="count differences fail the run")
@@ -152,7 +157,7 @@ def main():
             print(f"{os.path.basename(opath):40} UNPAIRED: no new page for {nspec!r} (use --map)")
             fail = True
             continue
-        oblocks, ocnt = extract(opath)
+        oblocks, ocnt = extract(opath, [t for t in a.skip_old.split(",") if t])
         nblocks, ncnt = extract(npath)
         hay = " ".join(nblocks)
         hay_sq = re.sub(r"\s+", "", hay)

@@ -58,7 +58,7 @@ One generator per design (`render_a.py`, `render_b.py`), stdlib only, re-runnabl
 ## 4. Prove nothing was lost
 
 Run these before anyone looks at the design:
-- `python3 scripts/parity.py --old source/ --new mockup-b/ --map …`: every old text node present in the new page, plus media and link counts. The redesign shipped with 0 missing across 10 pages, but only after this caught the dropped sections.
+- `python3 scripts/parity.py --old source/ --new mockup-b/ --map old=new …` (repeat `--map` per page): every old text node present in the new page, plus media and link counts. New pages are searched in full, footers included; on old pages only nav and header are skipped (`--skip-old`). Wording changes count as missing, which is by design: read each one. The redesign shipped with 0 missing across 10 pages, but only after this caught the dropped sections.
 - `node scripts/check_links.mjs <url> --crawl --redirect-map-var map`: every internal link, #anchor, redirect-map entry and media file resolves. Run it against `http.server` locally (videos may stall there because it lacks Range support, which is fine), then against production after deploy. Keep concurrency low; 240 rapid requests to GitHub Pages timed out from a laptop.
 - `node scripts/shoot.mjs` on the homepage and the two most varied inner pages, at desktop, mobile and reduced motion.
 
@@ -85,6 +85,8 @@ A promote script (re-runnable) that:
 2. re-runs extract + render,
 3. copies the mockup's homepage and area pages over the site, with shared CSS/JS under `assets/site/`, rewriting `../assets/` depths and pointing demo links at the site's own `demos/`,
 4. reports leftover mockup-only paths (must be none).
+
+**Guard the promote script against drift.** Once a redesign is live, other sessions edit the live files directly: new case studies on an area page, a scrolling tweak in `assets/site/b.js`, a favicon in `index.html`. Within two days, five PRs had done this on the portfolio. A plain re-run of the promote script would have wiped all of them, and only a surprising "49 case studies" in its output caught it. The script should fingerprint every file it writes (`.promoted.json`) and refuse when a live file no longer matches, listing the files, until those edits are ported into the source. Without fingerprints, it should refuse whenever a live file differs from what it's about to write. For a small fix on a site that has drifted, edit the live files surgically and make the same change in the generator, rather than regenerating.
 
 Commit the design source (`mockup-b/`) and generators with the site. If the host publishes everything (`.nojekyll` on GitHub Pages), add `robots.txt` disallowing the source folders. Leave the losing mockup local.
 
