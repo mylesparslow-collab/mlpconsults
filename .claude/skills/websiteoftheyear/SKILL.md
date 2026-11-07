@@ -1,6 +1,6 @@
 ---
 name: websiteoftheyear
-description: Design and build websites to the standard of the 2020–2026 "website of the year" winners (Awwwards Site/Developer/E-commerce/Users' Choice of the Year, Agency/Studio/Independent of the Year, CSS Design Awards WOTY, Webby Best Visual Design, FWA), reverse-engineered into a workflow, jury checklist, agency playbook and code recipes. Use when the user says /websiteoftheyear, or asks for an award-winning, Awwwards-level, "site of the day", immersive, WebGL/3D, agency-grade or "make it look like Lusion / Immersive Garden / Locomotive / Obys / Active Theory / Igloo / Lando Norris" site, a studio or personal portfolio that should impress designers, or wants to know what makes a site win, or to reverse-engineer a site's stack and design. Also use it to upgrade an existing landing page or portfolio to that level, even if the user doesn't name awards.
+description: Design and build websites to the standard of the 2020–2026 "website of the year" winners (Awwwards Site/Developer/E-commerce/Users' Choice of the Year, Agency/Studio/Independent of the Year, CSS Design Awards WOTY, Webby Best Visual Design, FWA), reverse-engineered into a workflow, jury checklist, agency playbook and code recipes. Use when the user says /websiteoftheyear, or asks for an award-winning, Awwwards-level, "site of the day", immersive, WebGL/3D, agency-grade or "make it look like Lusion / Immersive Garden / Locomotive / Obys / Active Theory / Igloo / Lando Norris" site, a studio or personal portfolio that should impress designers, or wants to know what makes a site win, or to reverse-engineer a site's stack and design. Also use it to upgrade or redesign an existing site or portfolio (all pages, content kept), A/B-test two design directions, or add dark mode, even if the user doesn't name awards.
 ---
 
 # Website of the Year
@@ -14,7 +14,8 @@ Distilled from about 70 annual award winners 2020–2026 (Awwwards, CSS Design A
 | `references/agency-playbook.md` | Any studio, agency, portfolio or personal site. **Start here for those.** 12 studio patterns with measured specs and code. |
 | `references/soty-teardowns.md` | Brand, product, campaign, commerce or story sites. Per-winner breakdown 2020–2025 + how the bar moved each year. |
 | `references/motion.md` | **Any motion decision.** Measured timings, staggers and easing shapes from 32 recorded winners; catalogue of loaders, reveals, hovers, cursor, scroll and transitions; code for the signature moves. |
-| `references/recipes.md` | When building: Lenis+GSAP base, loader-as-scene, line reveals, transitions, DOM-synced WebGL, cursor, quality tiers, a11y layer, image sequences, sound. |
+| `references/recipes.md` | When building: §0 pitfalls (read first), Lenis+GSAP base, loader-as-scene, line reveals, transitions, DOM-synced WebGL, cursor, quality tiers, a11y layer, image sequences, sound, §11 three themes (light/dark/accent), §12 smooth sticky stacks. |
+| `references/site-migration.md` | **Redesigning an existing multi-page site**, A/B-testing two directions, or shipping the winner: extract content to data, render each design, prove parity, sharpen images, publish both, promote, checklist before merge. |
 | `references/winners.md` | The canonical list: who won what, studio, URL, score. JSON versions alongside. |
 | `references/fingerprints.md`, `live-probes.md` | Raw measured stack/type/colour data per site. |
 | `references/agency-teardowns-sources.md` | Source links and evidence behind the playbook. |
@@ -22,6 +23,11 @@ Distilled from about 70 annual award winners 2020–2026 (Awwwards, CSS Design A
 | `scripts/shoot.mjs` | Headless verification of your build: screenshots at desktop, mobile and reduced motion, plus errors and overflow (step 5). |
 | `scripts/record-motion.mjs` | Record a site in motion (real Chrome + GPU, scripted idle/hover/scroll/click, action timeline, contact sheets) to extend `motion.md`. |
 | `scripts/runtime-probe.js` | Paste into a live page (browser `javascript_tool`) for real fonts, type scale, colours, libs, canvases. |
+| `scripts/parity.py` | Redesigns: every text node, image and link from the old pages is present in the new ones. Exits 1 on anything missing. |
+| `scripts/check_links.mjs` | Every internal link, #anchor, media file and old-hash redirect entry resolves on a served site (local or production). |
+| `scripts/sharpen_thumbs.py` | Rebuilds low-res thumbnails at 2× from the full-size screenshots they were cut from; flags any with no source. |
+| `scripts/frame_perf.mjs` | Scroll-jank profiler on uncapped frames: frames >20/33ms, p95, and a raster/layout/script verdict from a Chrome trace. |
+| `scripts/publish_bundle.py` | Turns a multi-page static site into a Claude Artifact bundle (explicit index.html links, only referenced media, a ready `files` list). |
 
 ## What actually wins (the short version)
 
@@ -41,6 +47,9 @@ Awwwards weights **Design 40% · Usability 30% · Creativity 20% · Content 10%*
 
 ### 0. Load companions
 Say which you load. `design-archive` (Myles's Specimen Room: check `catalog.json` for type/palette/motion specimens before inventing), `gsap-core` / `gsap-scrolltrigger` / `gsap-timeline` for motion, `animate` for curve decisions, `animation-vocabulary` to name effects, `awesome-ai-motion` (637 effect cards) and `gl-transitions` for more effects, `animation-performance` if GL + scroll compete, `bbc-sfx` for sound, `artifact-design` if the output is an Artifact. If the brief wants an ASCII/glyph look, add `ascii-library`.
+
+### 0b. Redesigning a site that already exists?
+Then the homepage is the easy part. Read `references/site-migration.md` before designing. Extract the existing content into data first, so every design you try renders the same content, all pages included. Plan to show at least two directions as full mini-sites (projects open in-theme, not on the old site), because that's how people judge them. Ship nothing until `parity.py` and `check_links.mjs` pass.
 
 ### 1. Pick the tier (decide, don't ask, unless budget is unknown and it matters)
 - **A · Canvas-first.** The site is a WebGL world; the DOM is a thin overlay plus an a11y layer. Igloo, Lusion, Active Theory, Messenger, Immersive Garden. Use it for studios selling 3D/interactive work, launches with a story, and games.
@@ -64,6 +73,8 @@ Sound: none | gated | ambient+UI
 Mobile path: what degrades, what changes
 Budget: KB before first interaction · tier switch
 A11y: DOM layer, keyboard path, reduced motion
+Themes: light only | light + dark (system default) | + accent theme (recipes §11)
+Pages: homepage only | + inner pages in-theme (site-migration.md)
 ```
 
 ### 4. Build
@@ -72,6 +83,8 @@ A11y: DOM layer, keyboard path, reduced motion
 - **Read `recipes.md` §0 (pitfalls) before writing motion code.** Each pitfall there cost a test build a debug round.
 - Build the content and layout in plain DOM first, then motion, then GL. A site that's beautiful with JS off is a site that survives WebGL failing.
 - **No photos or reel?** This is common for a studio of one or a side-project portfolio. Don't fake a gallery. Give each project a small live procedural scene (canvas 2D is enough) drawn in the site palette and driven by the cursor, and show it in one shared stage (Obys filmstrip / bracket frame). In testing this beat stock-looking thumbnails and kept the site coherent.
+- **Images must be sharp at the size they're shown.** Check natural width against displayed width × 2. Small thumbnails made both mockups look cheap ("extremely low res"). Run `scripts/sharpen_thumbs.py` to recut them from their source screenshots, and match each frame's aspect to its images.
+- **Offer dark mode** on anything editorial: light plus dark from the system, saved per visitor, with no flash (recipes §11). Users ask for it.
 - "≤4 sizes" means the text sizes: tiny UI, body, one middle size, one display. A footer email or counter reuses one of them rather than adding a fifth.
 - Re-skin every borrowed pattern into this site's tokens, type and copy. Copy patterns and techniques, never another studio's assets, fonts, copy or brand. Pick fonts the user owns, or free foundry alternatives (e.g. Neue Montreal → Pangram Pangram personal-use download, licence it for clients; Helvetica Now → Inter Display/Geist; Times-style serif → Instrument Serif/Newsreader).
 
@@ -83,6 +96,12 @@ Score 1–10 with one line of evidence each. Fix anything under 8, then re-score
 - **Content (10%):** are copy and imagery specific? No lorem ipsum and no generic stock.
 - **Dev:** 60fps on a mid laptop, under 3MB before first interaction, Lighthouse a11y ≥ 90, `prefers-reduced-motion` honoured, no console errors.
 Verify with screenshots before claiming anything. `node scripts/shoot.mjs <index.html> <out-dir>` takes desktop, mobile and reduced-motion runs, logs console errors and horizontal overflow, and saves hero plus two mid-scroll shots each. Look at every shot. The mid-scroll ones catch fixed chrome colliding with content, and the mobile hero shot catches empty space. Use the browser pane instead when you need to hover or click.
+
+Then run the checks a fresh pair of eyes always found on this kind of site:
+- **Keyboard:** the skip link and in-page jumps move focus, not just scroll; the menu traps focus, closes on Esc and scrolls on a short screen; nothing with a scrambled or split label loses its accessible name (recipes §0).
+- **Motion cost:** `node scripts/frame_perf.mjs <url>` on the heaviest scroll section. Nothing over 33ms; if it's raster-bound, see recipes §12.
+- **Multi-page:** `parity.py` and `check_links.mjs` (site-migration.md §4).
+- **Independent review:** for anything that will be shared or shipped, have a reviewer agent that didn't write the code test it with JS off, reduced motion, blocked CDNs, blocked storage, dark scheme, deep links and 375/768/1440. On the portfolio this caught a footer whose links never appeared, two items active at once, a garbled screen-reader heading and dropped content. Fix, then re-run the checks.
 
 ### 6. Things that never win (avoid)
 A centred hero with a gradient blob plus three feature cards. Purple-to-blue gradients. Bold weights everywhere. Five different easings. Fade-in-up on every element. A generic spinner before a fade. Particle backgrounds unrelated to the concept. A custom cursor dot that merely follows. Autoplaying sound. Glassmorphism cards as decoration. Any section you can't tie back to the concept line.

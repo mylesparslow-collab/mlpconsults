@@ -14,6 +14,8 @@ Each recipe names the winners it comes from, then gives minimal working code. Ve
 8. Canvas accessibility layer
 9. Scroll-scrubbed image sequence
 10. Sound
+11. Three themes (light, dark from the system, an accent theme)
+12. Sticky stacks that scroll smoothly
 
 ---
 
@@ -25,6 +27,19 @@ Each recipe names the winners it comes from, then gives minimal working code. Ve
 - **Mobile hero:** if the hero art (canvas or stage) is hidden on small screens, close the gap. Either move the headline up or stack the art above it at a reduced height. Never leave the desktop's vertical spacing with nothing in it.
 - **Labels on canvas art** (scene captions, hints) need a safe area or a backdrop; they will overlap the art at some sizes.
 - **Pinned versions:** check the current release before shipping with `npm view gsap version`, `npm view lenis version` and `npm view three version`. Then pin a release that is at least two weeks old.
+
+Found by an independent review of the mylesparslow.com redesign (Nov 2026). Each one shipped to a mockup before it was caught:
+- **In-page jumps must move focus, not just scroll.** A skip link or a list item that calls `lenis.scrollTo()` leaves keyboard focus behind, so the next Tab jumps back up the page. After scrolling: `if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex','-1'); t.focus({preventScroll:true})`, and hide the outline on those targets only (`[tabindex="-1"]:focus{outline:none}`).
+- **Lenis swallows wheel events on overlays.** `lenis.stop()` while a menu is open also stops the menu itself scrolling on short screens. Put `data-lenis-prevent` on every scrollable overlay (menu, modal, drawer), and give the overlay `overflow-y:auto; overscroll-behavior:contain; justify-content:safe center`.
+- **A scramble or split-text effect must not touch accessible names.** Scrambling a focused link's text means screen readers announce gibberish. Give the control a fixed `aria-label`, put the animated text in an `aria-hidden` span, and trigger on `pointerenter` only, never `focus`. When splitting an h1 into letters, set its `aria-label` from the lines joined with spaces, or it reads "Myles Parslowmakes things".
+- **Scroll reveals at the page bottom never fire.** A footer row with `start:'top 85%'` can't reach 85% because the page ends first, so its links stay translated away. Use `start:'clamp(top 85%)'` (ScrollTrigger 3.12+).
+- **Toggling a stateful label while a scramble runs** loses the update. The running rAF overwrites "Close" with "Menu". `cancelAnimationFrame` before setting the new text.
+- **Filtering a list must clear the old active item before resetting the pointer,** or two items stay `aria-current` and highlighted.
+- **Loaders replay on Back and on every visit.** Skip the loader on `performance.getEntriesByType('navigation')[0].type === 'back_forward'` or a `sessionStorage` "seen" flag (in try/catch), and set `pointer-events:none` on the loader the moment its exit starts, not when it finishes.
+- **Fixed bottom-corner labels over body text on phones.** On mobile, show them only at the very top (`scrollY < 24`), or move the context into the top bar (B's "Myles Parslow · Business" strip). Check 375 and 768 mid-scroll shots.
+- **A frame shape that fights the images.** A portrait 3:4 frame cropped 16:10 screenshots badly. Match the frame's aspect to the content.
+- **Pointer-driven image cuts read as random.** Zhenya's hard-cut-on-mouse-x slideshow felt broken on a portfolio hero. A slow crossfade (3.5s, paused on hover) with previous/next buttons and a counter read as deliberate.
+- **Multi-page sites drop content outside the main blocks.** See `site-migration.md` §2, and run `scripts/parity.py`.
 
 ## 1. Base stack (Locomotive, OFF+BRAND/Lando, Malvah, Don't Board Me, Scout)
 ```html
@@ -171,3 +186,32 @@ Export the sequence at 1600px webp, quality around 70. Serve half the frames on 
 - Use sound in three layers: an ambient bed, UI ticks on hover and click (quiet, under 80ms), and stingers on scene changes. Duck the bed during transitions.
 - Commerce winners skip sound entirely. Do the same unless the brief is a story.
 - Use real recorded sounds (see the `bbc-sfx` skill), never synth beeps.
+
+## 11. Three themes (mylesparslow.com "five rooms", Nov 2026)
+Light, dark and one accent theme (red), shipped on a live site. The user asked for dark mode twice, so offer it by default on editorial builds.
+- **Default follows the system.** With no saved choice, `prefers-color-scheme` decides. A toggle cycles Light → Dark → Accent; its label names the current theme ("In dark") and its `aria-label` names current and next. Save with `localStorage` in try/catch.
+- **No flash.** Set the theme in `<head>` before the CSS loads:
+```html
+<script>(function(){var t=null;try{t=localStorage.getItem('site-theme')}catch(e){}
+if(!/^(light|dark|red)$/.test(t||''))t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t);})();</script>
+```
+- **Tokens, not inversion.** Define every colour on `:root`, then redefine under `[data-theme="dark"]` and `[data-theme="red"]`. Design the dark palette: ground near `#141312`, warm paper text `#ebe5da`, accent lifted from `#f23c0d` to `#ff5a30` so it passes on dark (5.97:1). Section grounds keep their hue at low lightness (pink → `#432a26`, sage → `#2a3426`, butter → `#403718`, sky → `#26303f`, lilac → `#322a43`).
+- **CSS fallback for no JS:** `@media (prefers-color-scheme: dark){:root:not([data-theme]){…dark tokens…}}`.
+- **Check contrast in every theme and record it.** Compute every text/ground pair (96 on this site) and keep the table in the project's notes. The accent theme is where it fails: a bright red ground (`#f23c0d`) gives only 3.09:1 for paper body text, so the red theme uses a deeper ground (`#bf2400`, 4.83:1), full paper (not tinted) for muted text, and the room's own foreground on chips.
+- **Update `<meta name="theme-color">`** when the theme changes.
+- **If the page is also published as a Claude Artifact,** the host sets its own `data-theme` (light/dark) on the root. Only ever set your own values and treat unknown values as "follow the system", so the two don't fight.
+
+## 12. Sticky stacks that scroll smoothly
+A stack of sticky, rounded, image-heavy cards that scale down and dim as the next arrives (Pangram's pattern) felt laggy on the live site. `scripts/frame_perf.mjs` showed why: the trouble was raster, not layout. Chrome re-rasterised each whole card on every frame of the scale scrub, at about 2.3ms of raster per frame, with 11 frames over 20ms and a 69ms worst frame. Layout, the chrome-strip CSS-variable writes and `getBoundingClientRect` reads were all small.
+- **Fix:** give each card a stable compositor layer only where the scrub runs:
+```css
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  .js .card{will-change:transform} .js .card__shade{will-change:opacity}
+}
+```
+  That took raster from about 590ms to 39ms per pass, frames over 20ms from 11 to 0, and the worst frame from 69ms to 19ms. Text can look slightly softer mid-scale, and is crisp at rest.
+- **Decode thumbnails before the user scrolls into them:** on `load` plus about 1.5s, set `loading='eager'` and call `img.decode()` on the stack's images, so decoding doesn't land mid-scroll.
+- **Removing the radius made raster worse** (1263ms), so don't trade design for speed blindly. Measure first.
+- **Measure on uncapped frames.** Some Macs cap rAF at about 30Hz in automation, so every frame reads 33ms. Launch Chrome with `--disable-frame-rate-limit --disable-gpu-vsync` and judge by raster time and frames over 20ms. `frame_perf.mjs` does this.
+- If it still feels floaty after the frames are clean, that's Lenis `lerp` latency, not jank: 0.1 to 0.14–0.18 tightens it.
