@@ -24,18 +24,22 @@ catch {
 if (!chromium) { console.error('Playwright not found. Run: npx -y playwright install chromium  (or npm i -g playwright)'); process.exit(1); }
 import { mkdirSync } from 'fs';
 import { resolve } from 'path';
-const [target, out = './shots'] = process.argv.slice(2);
-if (!target) { console.log('usage: node shoot.mjs <file-or-url> <out-dir>'); process.exit(1); }
+const argv = process.argv.slice(2);
+const flag = (n, d) => { const i = argv.indexOf(n); if (i < 0) return d; const v = argv[i + 1]; argv.splice(i, 2); return v; };
+const only = flag('--only', 'desk,mob,reduced').split(',');
+const wait = +flag('--wait', 4500);
+const [target, out = './shots'] = argv;
+if (!target) { console.log('usage: node shoot.mjs <file-or-url> <out-dir> [--only desk,mob,reduced] [--wait 4500]'); process.exit(1); }
 const url = /^https?:/.test(target) ? target : 'file://' + resolve(target);
 mkdirSync(out, { recursive: true });
 const b = await chromium.launch();
 const runs = [[1440, 900, 'desk', 'no-preference'], [375, 812, 'mob', 'no-preference'], [1440, 900, 'reduced', 'reduce']];
-for (const [w, h, tag, motion] of runs) {
+for (const [w, h, tag, motion] of runs.filter(r => only.includes(r[2]))) {
   const p = await b.newPage({ viewport: { width: w, height: h }, reducedMotion: motion });
   const errs = [];
   p.on('pageerror', e => errs.push(e.message));
   p.on('console', m => m.type() === 'error' && errs.push(m.text()));
-  await p.goto(url); await p.waitForTimeout(4500);           // let the loader finish
+  await p.goto(url); await p.waitForTimeout(wait);           // let the loader finish (--wait ms)
   await p.screenshot({ path: `${out}/${tag}-1-hero.png` });
   await p.mouse.move(w * 0.3, h * 0.5);
   for (const n of [2, 3]) { await p.mouse.wheel(0, h * 1.5); await p.waitForTimeout(1800); await p.screenshot({ path: `${out}/${tag}-${n}-scroll.png` }); }

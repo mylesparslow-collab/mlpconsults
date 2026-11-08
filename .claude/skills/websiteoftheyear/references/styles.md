@@ -4,6 +4,23 @@ The award corpus (winners.md, agency-playbook.md) mostly rewards one look: a nea
 
 **Measured 2026-11-07:** headless Chromium at 1440×900 rendered each site for 6s, then a probe read the computed body/heading fonts and background, and `fingerprint.py` read the fonts, colours, stack and easings. Raw data is in `styles-data.json`. **Look at the sheets** in `assets/styles/NN-family.jpg` (hero plus a scrolled shot per site) before you choose. (The public repo copy of this skill leaves the sheets out because they're screenshots of other people's sites. If `assets/styles/` is missing, screenshot the family's sites yourself at 1440×900 before choosing.) Facts below are measured unless marked *seen* (read off the screenshot) or *inferred*.
 
+## Chooser (read this, then only your family's section)
+
+| The brief is… | Family | Section |
+|---|---|---|
+| writing, essays, a publication, a bookshop, a newsletter | Editorial | 01 |
+| many projects or items, an archive, an institution, a festival | Exhibition index | 02 |
+| a writer, researcher or engineer who wants it to feel authored; a diary; a tiny budget | Plain web | 03 |
+| a developer, a tool, a game, anything playful-technical | Retro computer | 04 |
+| a maker, a small shop, gifts, florist, satire, very personal | Handmade paper | 05 |
+| a consumer brand, food, kids, an event, a fun agency | Loud pop | 06 |
+| a shop, beauty, home, hospitality, wellness | Warm commerce | 07 |
+| two scripts, hospitality, friendly-corporate, dense information | Japanese web | 08 |
+| advocacy, research findings, a data journalist's or analyst's portfolio | Argument and data | 09 |
+| "win SOTY", a studio selling 3D/WebGL work | award look | agency-playbook.md |
+
+A **hiring portfolio** works in the family of the person's own medium: data → 09, writing → 01, a big body of work → 02, code → 03 or 04. Editors and clients want the work and the contact within five seconds, so skip loaders.
+
 ## What the new set does differently (measured across all 33)
 
 | Knob | Award default | What these sites do |

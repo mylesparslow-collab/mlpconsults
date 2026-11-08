@@ -11,8 +11,8 @@ Distilled from about 70 annual award winners 2020–2026 (Awwwards, CSS Design A
 
 | File | When |
 |---|---|
-| `references/styles.md` + `assets/styles/*.jpg` | **Every build, at step 1b.** 9 style families the awards don't reward (editorial, exhibition index, plain web, retro computer, handmade paper, loud pop, warm commerce, Japanese, data), 33 measured live sites, a screenshot sheet per family. The fix for sites that come out looking alike. |
-| `references/recent-builds.md` | Step 1b: the ledger of what this skill has built recently. Compare against it, then append a line after each build. |
+| `references/styles.md` + `assets/styles/*.jpg` | **Every build, at step 1b.** Chooser at the top. 9 style families the awards don't reward (editorial, exhibition index, plain web, retro computer, handmade paper, loud pop, warm commerce, Japanese, data), 33 measured live sites, a screenshot sheet per family. The fix for sites that come out looking alike. |
+| `references/recent-builds.md` | Step 1b: the ledger (or the project's own `docs/recent-builds.md`) of what this skill has built recently. Compare against it, then append a line after each build. |
 | `references/agency-playbook.md` | Any studio, agency, portfolio or personal site. **Start here for those.** 12 studio patterns with measured specs and code. |
 | `references/soty-teardowns.md` | Brand, product, campaign, commerce or story sites. Per-winner breakdown 2020–2025 + how the bar moved each year. |
 | `references/motion.md` | **Any motion decision.** Measured timings, staggers and easing shapes from 32 recorded winners; catalogue of loaders, reveals, hovers, cursor, scroll and transitions; code for the signature moves. |
@@ -48,7 +48,7 @@ Awwwards weights **Design 40% · Usability 30% · Creativity 20% · Content 10%*
 ## Workflow
 
 ### 0. Load companions
-Say which you load. `design-archive` (Myles's Specimen Room: check `catalog.json` for type/palette/motion specimens before inventing), `gsap-core` / `gsap-scrolltrigger` / `gsap-timeline` for motion, `animate` for curve decisions, `animation-vocabulary` to name effects, `awesome-ai-motion` (637 effect cards) and `gl-transitions` for more effects, `animation-performance` if GL + scroll compete, `bbc-sfx` for sound, `artifact-design` if the output is an Artifact. If the brief wants an ASCII/glyph look, add `ascii-library`.
+Load only what this build needs and say which you loaded (none is fine for a small tier C page). `design-archive` (Myles's Specimen Room: check `catalog.json` for type/palette/motion specimens before inventing), `gsap-core` / `gsap-scrolltrigger` / `gsap-timeline` for motion, `animate` for curve decisions, `animation-vocabulary` to name effects, `awesome-ai-motion` (637 effect cards) and `gl-transitions` for more effects, `animation-performance` if GL + scroll compete, `bbc-sfx` for sound, `artifact-design` if the output is an Artifact. If the brief wants an ASCII/glyph look, add `ascii-library`.
 
 ### 0b. Redesigning a site that already exists?
 Then the homepage is the easy part. Read `references/site-migration.md` before designing. Extract the existing content into data first, so every design you try renders the same content, all pages included. Plan to show at least two directions as full mini-sites (projects open in-theme, not on the old site), because that's how people judge them. Ship nothing until `parity.py` and `check_links.mjs` pass.
@@ -59,22 +59,43 @@ Then the homepage is the easy part. Read `references/site-migration.md` before d
 - **C · Pure craft, no GL.** Type, layout, illustration, CSS/SVG motion. Opal, Don't Board Me, Pangram, Louis Paquet, Obys's restraint. Use it for commerce, content-heavy sites, tight budgets, or when the work itself is the show.
 
 ### 1b. Pick a style family, then check for sameness
-Read `references/styles.md` and **look at the sheet** for the family you're considering. Choose the family from the subject, audience and content: writing-led work points to editorial or plain web, a big archive to exhibition index, a shop to warm commerce, a kid or food brand to loud pop. Choose the **award look** (the list above plus agency-playbook) only when the brief asks for SOTY polish or a studio selling WebGL work.
+Open the chooser at the top of `references/styles.md`, then read only your family's section and **look at its sheet**. Choose from the subject, audience and content, not from what looks impressive. Choose the **award look** (the list above plus agency-playbook) only when the brief asks for SOTY polish or a studio selling WebGL work.
 
-Then open `references/recent-builds.md` and compare your plan on these eight knobs: **ground, type class, weight/case, layout model, imagery, chrome, motion, signature**. The new build must differ from each of the last three builds on at least **four** of the eight, and from the award defaults on at least **two**, unless the user asked for that look by name or the site already has a brand system. Two directions in an A/B test must differ from each other on five. If the check fails, change the knobs, not the libraries: GSAP and Lenis turn up across very different-looking sites.
+Then compare your plan with the **last three** entries in the ledger (`references/recent-builds.md`, or the project's ledger; see below) and with the award defaults, knob by knob. A knob *differs* when it changes by the rule in this table, not by a shade:
 
-Studio, agency or portfolio: use the chooser table at the top of `agency-playbook.md` and pick **one primary pattern and at most one secondary**. Brand, product or campaign: pick the closest winner in `soty-teardowns.md`. Write down what you take from each (e.g. "Obys two-size type + Immersive Garden corner frame"). Mixing more than two reads as a collage.
+| Knob | Counts as different when… |
+|---|---|
+| Ground | a different hue family or value band (black → paper is different; two off-whites are not) |
+| Type class | a different class for the display face: grotesk, serif, mono/pixel, hand, condensed/wide display, CJK. Two serifs are the same class |
+| Weight/case | display weight moves by 200+ or case changes (sentence ↔ caps) or width changes (normal ↔ condensed/wide) |
+| Layout model | a different model: index/list, magazine grid, sticky stack, OS windows, scrapbook, single column, product grid, full-bleed slabs, ledger with sticky panel |
+| Imagery | a different source: screenshots, renders, photography, scans, illustration, objects, charts, none |
+| Chrome | a different system: corner labels, masthead + nav, single top strip, window bars, plain links, none |
+| Motion | a different kind: none, CSS settle, expo reveals, physics, game, boot sequence, data-driven |
+| Signature | a different one thing (two "hover shows a preview" ideas are the same) |
+
+Pass: **≥4 of 8 differ** from each of the last three builds, **≥2** from the award defaults, and **≥5** between two A/B directions, unless the user asked for that look by name or the site has a brand system. With fewer than three ledger entries, compare against what's there.
+
+**Watch the small text, too.** Tracked uppercase mono labels with hairline rules are the next default to avoid: both test builds after the style families shipped used them. If the last build had them, set the labels another way (serif small caps, sentence-case grotesk, hand, coloured tabs, CJK brackets).
+
+If the check fails, change the knobs, not the libraries: GSAP and Lenis turn up across very different-looking sites.
+
+**Where the ledger lives:** append to `references/recent-builds.md` when you're working in your own skill install. When the skill folder is read-only, shared, a repo copy, or the brief says not to touch it, use the project's `docs/recent-builds.md` (create it with the same columns). Never both.
+
+### 2. Choose references
+For the award look: studio, agency or portfolio, use the chooser table at the top of `agency-playbook.md`; brand, product or campaign, pick the closest winner in `soty-teardowns.md`. For any other family, take the two sites from its section in `styles.md`. Write down what you take from each (e.g. "Obys two-size type + Immersive Garden corner frame"). Mixing more than two reads as a collage.
 
 ### 3. Write the jury sheet before any code
-Put it at the top of your reply or in a `JURY.md`, then build to it:
+Put it at the top of your reply or in a `JURY.md`, then build to it. **Award look (tier A/B):** fill in every line. **Any other family or tier C:** use the short form: the first five lines plus Type, Palette, Motion, Chrome, Mobile, A11y, Themes and Pages. Don't invent a loader, sound or shader to fill a field.
 ```
+Tier (A/B/C) · family (styles.md) · audience and the page's one job:
+References: the 2 sites and the moves taken from each:
 Family (styles.md) + the 2 reference sites and the moves taken from each:
-Sameness check: knobs that differ from the last 3 builds (≥4) and from the award defaults (≥2):
-Concept (one line):
-Signature interaction (the one thing):
-Loader → hero handoff:
+Sameness check: the 8 knobs, marked differs/same vs each of the last 3 builds and vs the award defaults:
+Concept (one line) · signature (the one thing):
+Loader → hero handoff (award look only):
 Type: family 1 / family 2 · sizes (≤4, far apart, in vw or clamp) · case · tracking
-Palette: ink / paper / accent (hex) · shared with shaders? 
+Palette: ink / paper / accent (hex) · shared with shaders (if any GL)?
 Motion: curves (2–3) · durations · reveal style · transition style · scroll · the persistent actor · the one hard cut
 Chrome: corners / menu / counters
 Sound: none | gated | ambient+UI
@@ -86,7 +107,7 @@ Pages: homepage only | + inner pages in-theme (site-migration.md)
 ```
 
 ### 4. Build
-- **Single-file / Artifact:** vanilla JS + GSAP + Lenis (+ three.js for tier A/B) from cdnjs/unpkg, pinned versions. Start from `recipes.md` §1.
+- **Single-file / Artifact:** plain HTML/CSS with no libraries is the default for tier C and most non-award families; add GSAP + Lenis (+ three.js for tier A/B) from cdnjs/unpkg, pinned versions. Start from `recipes.md` §1.
 - **Real project:** Astro (Lusion, Scout) or Nuxt (Immersive Garden, Malvah, Noomo, KPR) are the proven homes; Webflow is fine for client-editable (OFF+BRAND, Lando); Svelte + Vite for heavy GL (Igloo, Messenger). Follow the project's existing stack if there is one.
 - **Read `recipes.md` §0 (pitfalls) before writing motion code.** Each pitfall there cost a test build a debug round.
 - Build the content and layout in plain DOM first, then motion, then GL. A site that's beautiful with JS off is a site that survives WebGL failing.
@@ -94,6 +115,7 @@ Pages: homepage only | + inner pages in-theme (site-migration.md)
 - **Images must be sharp at the size they're shown.** Check natural width against displayed width × 2. Small thumbnails made both mockups look cheap ("extremely low res"). Run `scripts/sharpen_thumbs.py` to recut them from their source screenshots, and match each frame's aspect to its images.
 - **Offer dark mode** on anything editorial: light plus dark from the system, saved per visitor, with no flash (recipes §11). Users ask for it.
 - "≤4 sizes" means the text sizes: tiny UI, body, one middle size, one display. A footer email or counter reuses one of them rather than adding a fifth.
+- **Invented facts:** when the brief lacks real content (names, prices, addresses, figures), invent plausible ones, mark every one in an HTML comment at the top of the file, and list them in your report as needing replacement. Never invent facts about a real person or business without marking them.
 - Re-skin every borrowed pattern into this site's tokens, type and copy. Copy patterns and techniques, never another studio's assets, fonts, copy or brand. Pick fonts the user owns, or free foundry alternatives (e.g. Neue Montreal → Pangram Pangram personal-use download, licence it for clients; Helvetica Now → Inter Display/Geist; Times-style serif → Instrument Serif/Newsreader).
 
 ### 5. Self-judge like the jury, then fix the lowest score
@@ -102,8 +124,8 @@ Score 1–10 with one line of evidence each. Fix anything under 8, then re-score
 - **Usability (30%):** can a first-time visitor find work and contact in under 5s? Do the menu, back and close controls work by keyboard? No scroll-jacking that fights the trackpad.
 - **Creativity (20%):** is the signature interaction new to this brief, not a stock demo?
 - **Content (10%):** are copy and imagery specific? No lorem ipsum and no generic stock.
-- **Dev:** 60fps on a mid laptop, under 3MB before first interaction, Lighthouse a11y ≥ 90, `prefers-reduced-motion` honoured, no console errors.
-Verify with screenshots before claiming anything. `node scripts/shoot.mjs <index.html> <out-dir>` takes desktop, mobile and reduced-motion runs, logs console errors and horizontal overflow, and saves hero plus two mid-scroll shots each. Look at every shot. The mid-scroll ones catch fixed chrome colliding with content, and the mobile hero shot catches empty space. Use the browser pane instead when you need to hover or click.
+- **Dev:** 60fps on a mid laptop, under 3MB before first interaction, a11y ≥ 90 (`npx -y lighthouse <url> --only-categories=accessibility --quiet --chrome-flags=--headless`), `prefers-reduced-motion` honoured, no console errors.
+Verify with screenshots before claiming anything. `node scripts/shoot.mjs <index.html> <out-dir> [--only desk,mob] [--wait 800]` takes desktop, mobile and reduced-motion runs (`--wait` defaults to 4500ms for loaders; use less when there's none), logs console errors and horizontal overflow, and saves hero plus two mid-scroll shots each. Look at every shot. The mid-scroll ones catch fixed chrome colliding with content, and the mobile hero shot catches empty space. Use the browser pane instead when you need to hover or click.
 
 Then run the checks a fresh pair of eyes always found on this kind of site:
 - **Keyboard:** the skip link and in-page jumps move focus, not just scroll; the menu traps focus, closes on Esc and scrolls on a short screen; nothing with a scrambled or split label loses its accessible name (recipes §0).
@@ -111,7 +133,7 @@ Then run the checks a fresh pair of eyes always found on this kind of site:
 - **Multi-page:** `parity.py` and `check_links.mjs` (site-migration.md §4).
 - **Independent review:** for anything that will be shared or shipped, have a reviewer agent that didn't write the code test it with JS off, reduced motion, blocked CDNs, blocked storage, dark scheme, deep links and 375/768/1440. On the portfolio this caught a footer whose links never appeared, two items active at once, a garbled screen-reader heading and dropped content. Fix, then re-run the checks.
 
-Finally, append a line for this build to `references/recent-builds.md` (or the project's own ledger).
+Finally, append a line for this build to the ledger (step 1b says which file), filling all eight knob columns.
 
 ### 6. Things that never win (avoid)
 A centred hero with a gradient blob plus three feature cards. Purple-to-blue gradients. Bold weights everywhere. Five different easings. Fade-in-up on every element. A generic spinner before a fade. Particle backgrounds unrelated to the concept. A custom cursor dot that merely follows. Autoplaying sound. Glassmorphism cards as decoration. Any section you can't tie back to the concept line.
