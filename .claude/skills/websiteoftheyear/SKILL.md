@@ -1,6 +1,6 @@
 ---
 name: websiteoftheyear
-description: Design and build websites to the standard of the 2020–2026 "website of the year" winners (Awwwards Site/Developer/E-commerce/Users' Choice of the Year, Agency/Studio/Independent of the Year, CSS Design Awards WOTY, Webby Best Visual Design, FWA), reverse-engineered into a workflow, jury checklist, agency playbook and code recipes. Use when the user says /websiteoftheyear, or asks for an award-winning, Awwwards-level, "site of the day", immersive, WebGL/3D, agency-grade or "make it look like Lusion / Immersive Garden / Locomotive / Obys / Active Theory / Igloo / Lando Norris" site, a studio or personal portfolio that should impress designers, or wants to know what makes a site win, or to reverse-engineer a site's stack and design. Also use it to upgrade or redesign an existing site or portfolio (all pages, content kept), A/B-test two design directions, or add dark mode, even if the user doesn't name awards.
+description: Design and build websites to the standard of the 2020–2026 "website of the year" winners (Awwwards Site/Developer/E-commerce/Users' Choice of the Year, Agency/Studio/Independent of the Year, CSS Design Awards WOTY, Webby Best Visual Design, FWA), reverse-engineered into a workflow, jury checklist, agency playbook and code recipes. Use when the user says /websiteoftheyear, or asks for an award-winning, Awwwards-level, "site of the day", immersive, WebGL/3D, agency-grade or "make it look like Lusion / Immersive Garden / Locomotive / Obys / Active Theory / Igloo / Lando Norris" site, a studio or personal portfolio that should impress designers, or wants to know what makes a site win, or to reverse-engineer a site's stack and design. Also use it to upgrade or redesign an existing site or portfolio (all pages, content kept), A/B-test two design directions, add dark mode, or get a look that isn't samey, even if the user doesn't name awards.
 ---
 
 # Website of the Year
@@ -11,6 +11,8 @@ Distilled from about 70 annual award winners 2020–2026 (Awwwards, CSS Design A
 
 | File | When |
 |---|---|
+| `references/styles.md` + `assets/styles/*.jpg` | **Every build, at step 1b.** 9 style families the awards don't reward (editorial, exhibition index, plain web, retro computer, handmade paper, loud pop, warm commerce, Japanese, data), 33 measured live sites, a screenshot sheet per family. The fix for sites that come out looking alike. |
+| `references/recent-builds.md` | Step 1b: the ledger of what this skill has built recently. Compare against it, then append a line after each build. |
 | `references/agency-playbook.md` | Any studio, agency, portfolio or personal site. **Start here for those.** 12 studio patterns with measured specs and code. |
 | `references/soty-teardowns.md` | Brand, product, campaign, commerce or story sites. Per-winner breakdown 2020–2025 + how the bar moved each year. |
 | `references/motion.md` | **Any motion decision.** Measured timings, staggers and easing shapes from 32 recorded winners; catalogue of loaders, reveals, hovers, cursor, scroll and transitions; code for the signature moves. |
@@ -31,7 +33,7 @@ Distilled from about 70 annual award winners 2020–2026 (Awwwards, CSS Design A
 
 ## What actually wins (the short version)
 
-Awwwards weights **Design 40% · Usability 30% · Creativity 20% · Content 10%**, and a separate developer jury scores animations, WPO (performance), responsiveness, accessibility, semantics and markup. Across six years of winners:
+Awwwards weights **Design 40% · Usability 30% · Creativity 20% · Content 10%**, and a separate developer jury scores animations, WPO (performance), responsiveness, accessibility, semantics and markup. Across six years of winners (these describe one look, the SOTY look; it's one option among the families in `styles.md`, not the house style):
 
 1. **One signature interaction jurors remember.** Igloo's procedurally grown ice blocks, Lusion's physics ball-pit, KPR's stencil "windows" into another world, Lando's cursor-blob hero, Obys's bracketed filmstrip. Everything else on the site serves it. If you can't name the one thing, the site won't win.
 2. **The loader is the first scene.** A counter, letter drop, sound gate or real-time intro flows straight into the hero. It is never a spinner followed by a fade.
@@ -56,12 +58,18 @@ Then the homepage is the easy part. Read `references/site-migration.md` before d
 - **B · DOM-first with GL accents (the default).** Real HTML layout, a canvas that follows it (image distortion, one hero object, cursor field), Lenis + GSAP, view transitions. Lando Norris, Locomotive, Noomo, Malvah. Use it for most portfolios, agencies, brands and products.
 - **C · Pure craft, no GL.** Type, layout, illustration, CSS/SVG motion. Opal, Don't Board Me, Pangram, Louis Paquet, Obys's restraint. Use it for commerce, content-heavy sites, tight budgets, or when the work itself is the show.
 
-### 2. Choose references
+### 1b. Pick a style family, then check for sameness
+Read `references/styles.md` and **look at the sheet** for the family you're considering. Choose the family from the subject, audience and content: writing-led work points to editorial or plain web, a big archive to exhibition index, a shop to warm commerce, a kid or food brand to loud pop. Choose the **award look** (the list above plus agency-playbook) only when the brief asks for SOTY polish or a studio selling WebGL work.
+
+Then open `references/recent-builds.md` and compare your plan on these eight knobs: **ground, type class, weight/case, layout model, imagery, chrome, motion, signature**. The new build must differ from each of the last three builds on at least **four** of the eight, and from the award defaults on at least **two**, unless the user asked for that look by name or the site already has a brand system. Two directions in an A/B test must differ from each other on five. If the check fails, change the knobs, not the libraries: GSAP and Lenis turn up across very different-looking sites.
+
 Studio, agency or portfolio: use the chooser table at the top of `agency-playbook.md` and pick **one primary pattern and at most one secondary**. Brand, product or campaign: pick the closest winner in `soty-teardowns.md`. Write down what you take from each (e.g. "Obys two-size type + Immersive Garden corner frame"). Mixing more than two reads as a collage.
 
 ### 3. Write the jury sheet before any code
 Put it at the top of your reply or in a `JURY.md`, then build to it:
 ```
+Family (styles.md) + the 2 reference sites and the moves taken from each:
+Sameness check: knobs that differ from the last 3 builds (≥4) and from the award defaults (≥2):
 Concept (one line):
 Signature interaction (the one thing):
 Loader → hero handoff:
@@ -90,7 +98,7 @@ Pages: homepage only | + inner pages in-theme (site-migration.md)
 
 ### 5. Self-judge like the jury, then fix the lowest score
 Score 1–10 with one line of evidence each. Fix anything under 8, then re-score:
-- **Design (40%):** does the type system have ≤2 families and ≤4 sizes? Do spacing and alignment hold at 375, 768, 1440 and 1920?
+- **Design (40%):** does the type system keep to its family's rules (award look: ≤2 families, ≤4 sizes; handmade or editorial may use 3 faces)? Would someone who saw the last three builds in `recent-builds.md` take it for a different designer? Do spacing and alignment hold at 375, 768, 1440 and 1920?
 - **Usability (30%):** can a first-time visitor find work and contact in under 5s? Do the menu, back and close controls work by keyboard? No scroll-jacking that fights the trackpad.
 - **Creativity (20%):** is the signature interaction new to this brief, not a stock demo?
 - **Content (10%):** are copy and imagery specific? No lorem ipsum and no generic stock.
@@ -102,6 +110,8 @@ Then run the checks a fresh pair of eyes always found on this kind of site:
 - **Motion cost:** `node scripts/frame_perf.mjs <url>` on the heaviest scroll section. Nothing over 33ms; if it's raster-bound, see recipes §12.
 - **Multi-page:** `parity.py` and `check_links.mjs` (site-migration.md §4).
 - **Independent review:** for anything that will be shared or shipped, have a reviewer agent that didn't write the code test it with JS off, reduced motion, blocked CDNs, blocked storage, dark scheme, deep links and 375/768/1440. On the portfolio this caught a footer whose links never appeared, two items active at once, a garbled screen-reader heading and dropped content. Fix, then re-run the checks.
+
+Finally, append a line for this build to `references/recent-builds.md` (or the project's own ledger).
 
 ### 6. Things that never win (avoid)
 A centred hero with a gradient blob plus three feature cards. Purple-to-blue gradients. Bold weights everywhere. Five different easings. Fade-in-up on every element. A generic spinner before a fade. Particle backgrounds unrelated to the concept. A custom cursor dot that merely follows. Autoplaying sound. Glassmorphism cards as decoration. Any section you can't tie back to the concept line.
