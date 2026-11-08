@@ -88,6 +88,10 @@ A promote script (re-runnable) that:
 
 **Guard the promote script against drift.** Once a redesign is live, other sessions edit the live files directly: new case studies on an area page, a scrolling tweak in `assets/site/b.js`, a favicon in `index.html`. Within two days, five PRs had done this on the portfolio. A plain re-run of the promote script would have wiped all of them, and only a surprising "49 case studies" in its output caught it. The script should fingerprint every file it writes (`.promoted.json`) and refuse when a live file no longer matches, listing the files, until those edits are ported into the source. Without fingerprints, it should refuse whenever a live file differs from what it's about to write. For a small fix on a site that has drifted, edit the live files surgically and make the same change in the generator, rather than regenerating.
 
+**After the promote, the content source flips.** The extractor parsed the *old* markup, so once the new design is live it can't read the site any more. From then on, the data file (`live.json`) is the source of truth: edit it, re-render, re-promote. Retire the previous design's promote script, or it will happily overwrite the new design. (Shipping the portfolio's second redesign: extract the live pages, not the frozen originals, so edits other sessions made to the live files come along.)
+
+Keep the losing directions as a public **style archive** if the owner likes them: one page with a screenshot and the eight knobs per version, each version hosted in its own folder and robots-disallowed. It turns abandoned mockups into a portfolio piece.
+
 Commit the design source (`mockup-b/`) and generators with the site. If the host publishes everything (`.nojekyll` on GitHub Pages), add `robots.txt` disallowing the source folders. Leave the losing mockup local.
 
 ## 8. Checklist before merge
