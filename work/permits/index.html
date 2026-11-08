@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Permit Postcards</title>
+<meta name="description" content="Pick a trade, see the new Los Angeles and Orange County building permits that will need it, and preview the postcard.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="app.css?v=20261107224834">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"><span>PP</span></span>
+    <h1>Permit Postcards</h1>
+  </div>
+  <div class="top-actions">
+    <button type="button" class="link-btn" id="about-open">About the data</button>
+    <button type="button" class="btn ghost small" id="theme-toggle" aria-label="Switch colour theme">Theme</button>
+  </div>
+</header>
+
+<main class="app" id="app">
+  <div class="stage">
+    <div id="map" role="region" aria-label="Map of permits"></div>
+  </div>
+
+  <section class="ask" aria-label="Find homeowners who need your trade">
+    <p class="sentence">
+      <span>I do</span>
+      <label class="sr" for="trade">Your trade</label>
+      <select id="trade"></select>
+      <span>near</span>
+      <label class="sr" for="place">Where you work</label>
+      <select id="place"></select>
+    </p>
+    <p class="hint-line" id="place-hint" hidden>Click anywhere on the map to set your spot.</p>
+
+    <div class="pipe" id="pipe" role="group" aria-label="Show leads by status">
+      <button type="button" class="seg seg-new" id="seg-new" data-s="new" aria-pressed="false"><b id="n-new">–</b><span>new leads</span></button>
+      <button type="button" class="seg" id="seg-contacted" data-s="contacted" aria-pressed="false"><b id="n-contacted">–</b><span>Contacted</span></button>
+      <button type="button" class="seg" id="seg-quoting" data-s="quoting" aria-pressed="false"><b id="n-quoting">–</b><span>Quoting</span></button>
+      <button type="button" class="seg" id="seg-won" data-s="won" aria-pressed="false"><b id="n-won">–</b><span>Won</span></button>
+      <button type="button" class="seg" id="seg-lost" data-s="lost" aria-pressed="false"><b id="n-lost">–</b><span>Lost</span></button>
+    </div>
+    <button type="button" class="today" id="today" aria-pressed="false" hidden></button>
+    <p class="answer-sub" id="s-sub" aria-live="polite"></p>
+    <p class="note warn" id="store-note" role="status" hidden></p>
+
+    <button type="button" class="btn primary" id="work-lead">Work the newest lead</button>
+
+    <details class="more" id="adjust">
+      <summary>Adjust</summary>
+      <div class="more-body">
+        <div class="field">
+          <label for="radius" class="range-label">How far you travel <output id="radius-out" for="radius">10 mi</output></label>
+          <input id="radius" type="range" min="2" max="25" step="1" value="10">
+        </div>
+        <div class="field">
+          <label for="biz">Business name on the card</label>
+          <input id="biz" type="text" value="Westside Stone &amp; Surface" maxlength="48" autocomplete="off">
+        </div>
+        <div class="field rate">
+          <label for="rate">Cost per card <span class="hint">placeholder</span></label>
+          <input id="rate" type="number" min="0" step="0.01" value="0.95" inputmode="decimal">
+        </div>
+        <p class="note" id="adjust-note" hidden>Saved on this device only.</p>
+        <dl class="facts">
+          <div><dt>Mail them all</dt><dd id="s-cost">–</dd></div>
+          <div><dt>Per week, about</dt><dd id="s-week">–</dd></div>
+          <div><dt id="s-median-l">Typical project value</dt><dd id="s-median">–</dd></div>
+        </dl>
+      </div>
+    </details>
+
+    <details class="more" id="list-box">
+      <summary><span>See all <span id="list-count">0</span> leads</span></summary>
+      <div class="more-body">
+        <label class="sort"><span class="sr">Sort by</span>
+          <select id="sort"><option value="date">Newest first</option><option value="val">Biggest projects first</option><option value="follow">Follow-up date</option></select>
+        </label>
+        <ul class="matches" id="matches"></ul>
+        <p class="note" id="list-note" hidden></p>
+      </div>
+    </details>
+  </section>
+
+  <aside class="lead-panel" id="lead-panel" aria-label="Lead" hidden>
+    <div class="lp-head">
+      <div class="lp-title">
+        <h2 id="lp-addr"></h2>
+        <p class="lp-city" id="lp-city"></p>
+      </div>
+      <button type="button" class="icon-btn" id="lp-close" aria-label="Close lead">✕</button>
+    </div>
+    <div class="lp-links">
+      <a id="lp-dir" href="#" target="_blank" rel="noopener">Directions</a>
+      <button type="button" class="link-btn" id="lp-copy">Copy address</button>
+    </div>
+    <div class="lp-meta" id="lp-meta"></div>
+    <p class="lp-contractor" id="lp-contractor" hidden></p>
+    <p class="note warn" id="lp-notice" role="status" hidden></p>
+
+    <div class="lp-sec">
+      <h3 class="lp-label" id="lp-status-l">Status</h3>
+      <div class="lp-status" id="lp-status" role="group" aria-labelledby="lp-status-l">
+        <button type="button" class="s-new" data-s="new" aria-pressed="false">New</button>
+        <button type="button" class="s-contacted" data-s="contacted" aria-pressed="false">Contacted</button>
+        <button type="button" class="s-quoting" data-s="quoting" aria-pressed="false">Quoting</button>
+        <button type="button" class="s-won" data-s="won" aria-pressed="false">Won</button>
+        <button type="button" class="s-lost" data-s="lost" aria-pressed="false">Lost</button>
+      </div>
+    </div>
+
+    <div class="lp-sec">
+      <label class="lp-label" for="lp-follow">Follow up</label>
+      <div class="lp-follow">
+        <input id="lp-follow" type="date">
+        <div class="quick">
+          <button type="button" class="btn ghost small" data-d="1">Tomorrow</button>
+          <button type="button" class="btn ghost small" data-d="7">Next week</button>
+          <button type="button" class="btn ghost small" data-d="clear">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lp-sec">
+      <label class="lp-label" for="lp-note-in">Notes</label>
+      <textarea id="lp-note-in" rows="3" maxlength="2000" placeholder="Left a voicemail, quote sent…"></textarea>
+      <button type="button" class="btn small" id="lp-note-add">Add note</button>
+      <ul class="lp-notes" id="lp-notes"></ul>
+    </div>
+
+    <div class="lp-actions">
+      <button type="button" class="btn" id="lp-card">Postcard</button>
+      <button type="button" class="btn ghost" id="lp-prev">‹ Previous</button>
+      <button type="button" class="btn ghost" id="lp-next">Next ›</button>
+    </div>
+    <p class="note lp-foot" id="lp-foot"></p>
+  </aside>
+</main>
+
+<dialog class="card-dialog" id="drawer" aria-labelledby="h-card">
+  <div class="drawer-head">
+    <h2 id="h-card">Postcard preview</h2>
+    <button type="button" class="icon-btn" id="collapse" aria-label="Close">✕</button>
+  </div>
+  <div class="drawer-body" id="drawer-body">
+    <p class="card-for" id="card-for"></p>
+    <div class="card-wrap" id="card-wrap">
+      <div class="postcard" id="postcard">
+        <div class="face front" id="face-front" aria-label="Postcard front"></div>
+        <div class="face back" id="face-back" aria-label="Postcard back"></div>
+      </div>
+    </div>
+    <p class="empty" id="card-empty" hidden>No matching permits here. Try a bigger travel distance or another trade.</p>
+    <div class="card-actions">
+      <button type="button" class="btn ghost" id="prev-card">‹ Previous</button>
+      <button type="button" class="btn" id="flip" aria-pressed="false">Flip to back</button>
+      <button type="button" class="btn ghost" id="next-card">Next ›</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="about-dialog" id="about" aria-labelledby="h-about">
+  <div class="drawer-head">
+    <h2 id="h-about">About the data</h2>
+    <button type="button" class="icon-btn" id="about-close" aria-label="Close">✕</button>
+  </div>
+  <div class="about-body">
+    <p>Every dot is a real building permit from a city's public records. When someone pulls a permit for a kitchen, a pool or a new home, the trades that come after it (countertops, fencing, landscaping and so on) are the ones who get a postcard.</p>
+    <p class="fresh" id="fresh">Loading permit data…</p>
+    <p>Each dot that matches your trade is a lead. Set its status, add a follow-up date and notes, and they stay with it. Statuses and notes are shared with everyone who can open this page; if you opened a local copy, they are saved on this device only.</p>
+    <p class="foot" id="credits">Prototype; no mail is sent.</p>
+  </div>
+</dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="data/data.js" onerror="this.remove()"></script>
+<script src="app.js?v=20261107224834"></script>
+</body>
+</html>
