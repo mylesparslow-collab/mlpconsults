@@ -147,7 +147,7 @@ html.embed .hud h1 { display: none; }
       <p class="est" id="est"></p>
     </header>
     <div class="views" role="group" aria-label="Camera and display">
-      <button type="button" data-view="catalogue" aria-pressed="true">Catalogue</button>
+      <button type="button" data-view="catalogue" aria-pressed="true">Catalog</button>
       <button type="button" data-view="top" aria-pressed="false">Top</button>
       <button type="button" data-view="profile" aria-pressed="false">Profile</button>
       <button type="button" data-view="side" aria-pressed="false">Side</button>
@@ -210,7 +210,7 @@ html.embed .hud h1 { display: none; }
       <div class="pills" data-group="center" id="g-center"></div>
       <p class="hint" id="gemHint"></p>
       <div id="qualDiamond"><h3>Clarity</h3><div class="pills" data-group="clarity" id="g-clarity"></div>
-        <h3>Colour</h3><div class="pills" data-group="colour" id="g-colour"></div></div>
+        <h3>Color</h3><div class="pills" data-group="colour" id="g-colour"></div></div>
       <div id="qualColoured"><h3>Quality</h3><div class="pills" data-group="grade" id="g-grade"></div></div>
       <p class="hint" id="natHint"></p>
       <h3>Your own stone</h3>
@@ -307,7 +307,7 @@ html.embed .hud h1 { display: none; }
     <section>
       <h2>Your ring</h2>
       <div class="price" id="price"></div>
-      <p class="hint">Lab diamonds are IGI certified, F–G colour, VS1 or better, excellent cut; coloured stones come with a lab report on request. Made to order in our workshop in 3–4 weeks, with free resizing for a year.</p>
+      <p class="hint">Lab diamonds are IGI certified, F–G color, VS1 or better, excellent cut; colored stones come with a lab report on request. Made to order in our workshop in 3–4 weeks, with free resizing for a year.</p>
       <div class="row"><button type="button" class="btn" id="addBtn">Add to bag</button><button type="button" class="btn ghost" id="viewBtn">Book a viewing</button></div>
       <p class="hint" id="addMsg" role="status"></p>
     </section>
@@ -339,10 +339,10 @@ html.embed .hud h1 { display: none; }
         <button type="button" class="btn" id="stlBtn">Download 3D file</button>
         <button type="button" class="btn ghost" id="stlStonesBtn">With stones</button>
       </div>
-      <p class="hint">This design as an STL file at true size in millimetres, the same model our workshop starts from. Opens in any 3D or jewelry CAD program.</p>
+      <p class="hint">This design as an STL file at true size in millimeters, the same model our workshop starts from. Opens in any 3D or jewelry CAD program.</p>
     </section>
 
-    <p class="foot">Every ring is modelled to scale in millimetres, so a 3 ct oval and a 3 ct emerald show their real face-up difference. Final pieces are photographed before they ship.</p>
+    <p class="foot">Every ring is modeled to scale in millimeters, so a 3 ct oval and a 3 ct emerald show their real face-up difference. Final pieces are photographed before they ship.</p>
   </aside>
 </div>
 
@@ -426,7 +426,7 @@ const GEMS = {
   pink:      { label: 'Pink sapphire', color: '#b83a72', n: 1.767, disp: .018, mohs: 9, pc: [700, 2400] },
   padpa:     { label: 'Padparadscha sapphire', color: '#e0704f', n: 1.767, disp: .018, mohs: 9, pc: [700, 2400] },
   moissanite:{ label: 'Moissanite', color: '#f3f5f1', n: 2.67, disp: .104, mohs: 9.25, pc: [300, 650], note: 'More rainbow fire than a diamond: its dispersion is more than twice as high.' },
-  white:     { label: 'White sapphire', color: '#eef1f5', n: 1.767, disp: .018, mohs: 9, pc: [200, 800], note: 'Colourless, with far less fire and brilliance than a diamond.' },
+  white:     { label: 'White sapphire', color: '#eef1f5', n: 1.767, disp: .018, mohs: 9, pc: [200, 800], note: 'Colorless, with far less fire and brilliance than a diamond.' },
   yellow:    { label: 'Yellow sapphire', color: '#f0c440', n: 1.767, disp: .018, mohs: 9, pc: [500, 1500] },
   ruby:      { label: 'Ruby', color: '#a8102c', n: 1.767, disp: .018, mohs: 9, pc: [1000, 7500] },
   emerald:   { label: 'Emerald', color: '#1e7d4a', n: 1.580, disp: .014, mohs: 7.75, pc: [1000, 6000], note: 'Hard but brittle, and nearly always included: a bezel or protective prongs suit it.' },
@@ -454,8 +454,8 @@ const cauchyOf = gem => { const g = GEMS[gem], B = g.disp / (1 / .431 ** 2 - 1 /
    tourmaline and beryl), a fine haze, colour zoning, and pleochroism (a different colour along the crystal's axis than across it). */
 const CLARITY_NOTE = { FL: 'Flawless: nothing to find even at 10×.', VVS1: 'Pinpoints a grader struggles to find at 10×.', VS1: 'Minor inclusions, easy to see at 10×, not by eye.',
   SI1: 'Inclusions a loupe finds at once; in a large stone sometimes by eye.', I1: 'Inclusions you can see without a loupe.' };
-const GRADE_NOTE = { AAA: 'the richest colour and the cleanest stones of the kind.', AA: 'good colour with the inclusions typical of the kind.',
-  A: 'lighter, greyer colour and more inclusions.' };
+const GRADE_NOTE = { AAA: 'the richest color and the cleanest stones of the kind.', AA: 'good color with the inclusions typical of the kind.',
+  A: 'lighter, grayer color and more inclusions.' };
 const GRADES = { AAA: { label: 'AAA', note: 'top gem', k: .3, desat: 0, light: 0 },
                  AA: { label: 'AA', note: 'fine', k: 1, desat: .08, light: .03 },
                  A: { label: 'A', note: 'commercial', k: 2.1, desat: .3, light: .12 } };
@@ -467,17 +467,17 @@ const DCOLOURS = { D: { label: 'D', tint: '#ffffff', mult: 1.1 }, F: { label: 'F
 // blue sapphire goes greenish across, ruby orangey, emerald yellowish, tanzanite violet, aquamarine near colourless.
 const NATURE = {
   corundum: { e: { royal: '#1d4778', corn: '#3d73a8', teal: '#3f7a46', pink: '#c25866', padpa: '#e89058', yellow: '#e6cf62', ruby: '#c22a1c' },
-              haze: .004, silk: 10, crystal: 1, print: 1, zone: .28, text: 'Silk (fine rutile needles), colour banding and the odd crystal, as natural sapphire and ruby grow.' },
+              haze: .004, silk: 10, crystal: 1, print: 1, zone: .28, text: 'Silk (fine rutile needles), color banding and the odd crystal, as natural sapphire and ruby grow.' },
   emerald:  { e: { emerald: '#3c8c34' }, haze: .02, feather: 7, print: 2, crystal: 3, zone: .15,
               text: 'Its jardin: the healed fractures, fluid drops and crystals almost every natural emerald carries, and a soft haze.' },
   beryl:    { e: { aqua: '#d8e7e6', morganite: '#e7c6d6' }, rain: 4, crystal: .4, text: 'Usually eye-clean; the odd fine growth tube.' },
   tanzanite:{ e: { tanzanite: '#7a3fae' }, crystal: .5, feather: .5, text: 'Usually eye-clean. Strongly pleochroic: blue face-up, violet as it tilts.' },
   spinel:   { crystal: 1.5, print: .5, text: 'Often clean; tiny octahedral crystals when it is not.' },
   garnet:   { feather: 1.5, silk: 2, crystal: .7, haze: .006, text: 'Small feathers and fine needles.' },
-  demantoid:{ horsetail: 1, crystal: .5, text: 'Its horsetail: golden fibres of chrysotile fanning from a point, the mark of a Russian demantoid.' },
+  demantoid:{ horsetail: 1, crystal: .5, text: 'Its horsetail: golden fibers of chrysotile fanning from a point, the mark of a Russian demantoid.' },
   peridot:  { e: { peridot: '#acc23c' }, lily: 2, crystal: .5, text: 'Lily pads: round disc fractures, each around a tiny dark crystal.' },
-  quartz:   { e: { amethyst: '#8c55b4' }, zone: .5, print: 1.4, feather: .5, text: 'Colour zoning and fluid fingerprints.' },
-  citrine:  { zone: .22, crystal: .3, text: 'Usually eye-clean, with soft colour zoning.' },
+  quartz:   { e: { amethyst: '#8c55b4' }, zone: .5, print: 1.4, feather: .5, text: 'Color zoning and fluid fingerprints.' },
+  citrine:  { zone: .22, crystal: .3, text: 'Usually eye-clean, with soft color zoning.' },
   paraiba:  { e: { paraiba: '#2cae98' }, feather: 3, print: 2, rain: 3, haze: .02, zone: .2, text: 'Feathers, fluid fingerprints and growth tubes; clean Paraíba is very rare.' },
   lab:      { text: 'Grown in a lab, so nearly free of inclusions.' },
 };
@@ -594,7 +594,7 @@ const cell = (az, el, w, p, h, q, seed = 0) => {
   return .7 + .6 * (x - Math.floor(x));
 };
 const LIGHTS = {
-  studio:   { label: 'Studio', note: 'Catalogue look', bloom: .5, key: '#ffffff', spots: SPOTS(14, 25, 70, 1.1, 40),
+  studio:   { label: 'Studio', note: 'Catalog look', bloom: .5, key: '#ffffff', spots: SPOTS(14, 25, 70, 1.1, 40),
               dome: (az, el) => {
                 if (el < 0) return (stripes(az + 9, 13, 360 / 14) ? .9 : .3) * (1 + el / 120);    // tabletop: fine light/dark sectors, not one flat grey
                 if (el > 70) return 1.6;                                            // overhead soft box
@@ -1579,7 +1579,7 @@ function sync() {
   $('bw').value = S.bandW; $('bwOut').textContent = `${S.bandW.toFixed(1)} mm`;
   { const dia = S.center === 'diamond', lab = FAMILY[S.center] === 'lab';
     $('qualDiamond').hidden = !dia; $('qualColoured').hidden = dia || lab;
-    $('natHint').textContent = dia ? `${S.colour} colour, ${S.clarity} clarity. ${CLARITY_NOTE[S.clarity]}` : lab ? NATURE.lab.text : `${GRADES[S.grade].label}: ${GRADE_NOTE[S.grade]} ${NATURE[FAMILY[S.center]]?.text ?? ''}`.trim(); }
+    $('natHint').textContent = dia ? `${S.colour} color, ${S.clarity} clarity. ${CLARITY_NOTE[S.clarity]}` : lab ? NATURE.lab.text : `${GRADES[S.grade].label}: ${GRADE_NOTE[S.grade]} ${NATURE[FAMILY[S.center]]?.text ?? ''}`.trim(); }
   { const g = GEMS[S.center]; $('gemHint').textContent = `${g.label}: hardness ${g.mohs} on the Mohs scale${S.center === 'diamond' ? '' : ' (diamond is 10)'}.${g.note ? ' ' + g.note : ''}`; }
   $('thk').value = S.thick; $('thkOut').textContent = `${S.thick.toFixed(2)} mm`;
   $('wedHint').textContent = WEDS[S.wed].hint ?? '';
