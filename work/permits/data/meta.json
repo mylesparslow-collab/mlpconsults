@@ -1,0 +1,360 @@
+{
+ "fetched_at": "2026-11-08T06:46:23Z",
+ "source": "https://data.lacity.org/resource/pi9x-tg5x.json",
+ "feed_refreshed": "2026-11-01",
+ "date_min": "2026-09-16",
+ "date_max": "2026-11-07",
+ "window_days": 45,
+ "total_rows": 11506,
+ "sources": [
+  {
+   "id": "la",
+   "city": "Los Angeles",
+   "credit": {
+    "name": "LA City Open Data, building permits (pi9x-tg5x)",
+    "url": "https://data.lacity.org/d/pi9x-tg5x"
+   },
+   "rows": 9251,
+   "window_start": "2026-09-16",
+   "window_end": "2026-10-31",
+   "date_min": "2026-09-16",
+   "date_max": "2026-10-31",
+   "feed_refreshed": "2026-11-01"
+  },
+  {
+   "id": "anaheim",
+   "city": "Anaheim",
+   "credit": {
+    "name": "City of Anaheim, Accela building permits (GIS)",
+    "url": "https://gis.anaheim.net/server/rest/services/GIS/Accela_BuildingPermits/FeatureServer/0"
+   },
+   "rows": 903,
+   "window_start": "2026-09-22",
+   "window_end": "2026-11-06",
+   "date_min": "2026-09-22",
+   "date_max": "2026-11-06",
+   "feed_refreshed": ""
+  },
+  {
+   "id": "newport-beach",
+   "city": "Newport Beach",
+   "credit": {
+    "name": "City of Newport Beach, EnerGov self-service permits",
+    "url": "https://css.newportbeachca.gov/EnerGov_Prod/SelfService"
+   },
+   "rows": 941,
+   "window_start": "2026-09-23",
+   "window_end": "2026-11-07",
+   "date_min": "2026-09-23",
+   "date_max": "2026-11-07",
+   "feed_refreshed": ""
+  },
+  {
+   "id": "costa-mesa",
+   "city": "Costa Mesa",
+   "credit": {
+    "name": "City of Costa Mesa, TESSA (EnerGov) permits",
+    "url": "https://permits.costamesaca.gov/EnerGov_Prod/SelfService"
+   },
+   "rows": 411,
+   "window_start": "2026-09-22",
+   "window_end": "2026-11-06",
+   "date_min": "2026-09-22",
+   "date_max": "2026-11-06",
+   "feed_refreshed": ""
+  }
+ ],
+ "sources_failed": [
+  {
+   "id": "lake-forest",
+   "city": "Lake Forest",
+   "error": "blocked: https://cityoflakeforestca-energovweb.tylerhost.net/robots.txt returned 403"
+  }
+ ],
+ "counts_by_city": {
+  "Los Angeles": 9251,
+  "Newport Beach": 941,
+  "Anaheim": 903,
+  "Costa Mesa": 411
+ },
+ "counts_by_city_kind": {
+  "Los Angeles": {
+   "other": 3864,
+   "roof": 2612,
+   "adu": 1147,
+   "bath": 583,
+   "kitchen": 400,
+   "pool_spa": 357,
+   "addition": 316,
+   "new_home": 232,
+   "demolition": 149,
+   "hvac": 23,
+   "solar": 6
+  },
+  "Anaheim": {
+   "other": 573,
+   "roof": 155,
+   "hvac": 58,
+   "solar": 42,
+   "bath": 27,
+   "adu": 24,
+   "kitchen": 19,
+   "addition": 15,
+   "new_home": 11,
+   "pool_spa": 8,
+   "demolition": 4
+  },
+  "Newport Beach": {
+   "other": 738,
+   "roof": 89,
+   "pool_spa": 30,
+   "new_home": 23,
+   "bath": 17,
+   "demolition": 15,
+   "kitchen": 14,
+   "solar": 10,
+   "hvac": 10,
+   "adu": 6
+  },
+  "Costa Mesa": {
+   "other": 170,
+   "roof": 105,
+   "solar": 50,
+   "bath": 37,
+   "kitchen": 30,
+   "hvac": 27,
+   "adu": 17,
+   "pool_spa": 12,
+   "new_home": 10,
+   "demolition": 9,
+   "addition": 4
+  }
+ },
+ "counts_by_city_trade": {
+  "Los Angeles": {
+   "solar": 3148,
+   "gutters": 2612,
+   "countertops": 2301,
+   "cabinets": 2013,
+   "flooring": 2013,
+   "landscaping": 1989,
+   "windows_blinds": 1658,
+   "furniture": 1147,
+   "tile": 583,
+   "shower_glass": 583,
+   "plumbing_fixtures": 583,
+   "appliances": 400,
+   "solar_pool_heating": 357,
+   "fencing": 357,
+   "pool_service": 357,
+   "dumpsters": 149,
+   "insulation": 23,
+   "battery_ev": 6
+  },
+  "Anaheim": {
+   "solar": 181,
+   "gutters": 155,
+   "windows_blinds": 99,
+   "countertops": 66,
+   "insulation": 58,
+   "flooring": 57,
+   "cabinets": 57,
+   "landscaping": 49,
+   "battery_ev": 42,
+   "tile": 27,
+   "plumbing_fixtures": 27,
+   "shower_glass": 27,
+   "furniture": 24,
+   "appliances": 19,
+   "solar_pool_heating": 8,
+   "fencing": 8,
+   "pool_service": 8,
+   "dumpsters": 4
+  },
+  "Newport Beach": {
+   "solar": 112,
+   "gutters": 89,
+   "landscaping": 55,
+   "countertops": 52,
+   "cabinets": 39,
+   "flooring": 39,
+   "windows_blinds": 34,
+   "solar_pool_heating": 30,
+   "fencing": 30,
+   "pool_service": 30,
+   "plumbing_fixtures": 17,
+   "shower_glass": 17,
+   "tile": 17,
+   "dumpsters": 15,
+   "appliances": 14,
+   "battery_ev": 10,
+   "insulation": 10,
+   "furniture": 6
+  },
+  "Costa Mesa": {
+   "solar": 118,
+   "gutters": 105,
+   "countertops": 54,
+   "battery_ev": 50,
+   "windows_blinds": 50,
+   "cabinets": 47,
+   "flooring": 47,
+   "plumbing_fixtures": 37,
+   "shower_glass": 37,
+   "tile": 37,
+   "landscaping": 36,
+   "appliances": 30,
+   "insulation": 27,
+   "furniture": 17,
+   "solar_pool_heating": 12,
+   "fencing": 12,
+   "pool_service": 12,
+   "dumpsters": 9
+  }
+ },
+ "counts_by_kind": {
+  "other": 5345,
+  "roof": 2961,
+  "adu": 1194,
+  "bath": 664,
+  "kitchen": 463,
+  "pool_spa": 407,
+  "addition": 335,
+  "new_home": 276,
+  "demolition": 177,
+  "hvac": 118,
+  "solar": 108
+ },
+ "counts_by_trade": {
+  "solar": 3559,
+  "gutters": 2961,
+  "countertops": 2473,
+  "cabinets": 2156,
+  "flooring": 2156,
+  "landscaping": 2129,
+  "windows_blinds": 1841,
+  "furniture": 1194,
+  "tile": 664,
+  "shower_glass": 664,
+  "plumbing_fixtures": 664,
+  "appliances": 463,
+  "solar_pool_heating": 407,
+  "fencing": 407,
+  "pool_service": 407,
+  "dumpsters": 177,
+  "insulation": 118,
+  "battery_ev": 108
+ },
+ "kinds": {
+  "kitchen": {
+   "label": "Kitchen remodel",
+   "trades": [
+    "countertops",
+    "cabinets",
+    "appliances",
+    "flooring"
+   ]
+  },
+  "bath": {
+   "label": "Bathroom remodel",
+   "trades": [
+    "countertops",
+    "tile",
+    "shower_glass",
+    "plumbing_fixtures"
+   ]
+  },
+  "roof": {
+   "label": "Re-roof",
+   "trades": [
+    "gutters",
+    "solar"
+   ]
+  },
+  "pool_spa": {
+   "label": "Pool / spa",
+   "trades": [
+    "fencing",
+    "landscaping",
+    "pool_service",
+    "solar_pool_heating"
+   ]
+  },
+  "adu": {
+   "label": "ADU",
+   "trades": [
+    "furniture",
+    "flooring",
+    "cabinets",
+    "countertops",
+    "landscaping",
+    "windows_blinds"
+   ]
+  },
+  "addition": {
+   "label": "Home addition",
+   "trades": [
+    "landscaping",
+    "flooring",
+    "cabinets",
+    "countertops",
+    "windows_blinds",
+    "solar"
+   ]
+  },
+  "new_home": {
+   "label": "New home",
+   "trades": [
+    "landscaping",
+    "flooring",
+    "cabinets",
+    "countertops",
+    "windows_blinds",
+    "solar"
+   ]
+  },
+  "solar": {
+   "label": "Solar",
+   "trades": [
+    "battery_ev"
+   ]
+  },
+  "demolition": {
+   "label": "Demolition",
+   "trades": [
+    "dumpsters"
+   ]
+  },
+  "hvac": {
+   "label": "HVAC",
+   "trades": [
+    "insulation",
+    "windows_blinds"
+   ]
+  },
+  "other": {
+   "label": "Other",
+   "trades": []
+  }
+ },
+ "trades": {
+  "countertops": "Countertops / stone",
+  "cabinets": "Cabinets",
+  "appliances": "Appliances",
+  "flooring": "Flooring",
+  "tile": "Tile",
+  "shower_glass": "Glass / shower doors",
+  "plumbing_fixtures": "Plumbing fixtures",
+  "fencing": "Fencing",
+  "landscaping": "Landscaping",
+  "pool_service": "Pool service",
+  "solar_pool_heating": "Solar pool heating",
+  "furniture": "Furniture",
+  "windows_blinds": "Windows / blinds",
+  "gutters": "Gutters",
+  "solar": "Solar installers",
+  "dumpsters": "Dumpsters / haul-away",
+  "battery_ev": "Battery / EV charging",
+  "insulation": "Insulation / air sealing"
+ }
+}

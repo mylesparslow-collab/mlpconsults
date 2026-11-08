@@ -1,0 +1,1433 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Halden Fine Jewelry</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preload" as="image" href="img/hero-900.jpg" imagesrcset="img/hero-600.jpg 600w, img/hero-900.jpg 900w, img/hero.jpg 1400w" imagesizes="(max-width: 760px) 92vw, 50vw" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Tenor+Sans&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Tenor+Sans&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+<style>
+/* Layout: a quiet ivory jewellery house (Specimen Room: Maison Orfèvre tokens, Cormorant + Tenor Sans, diamond hairline,
+   luxury split header) with a second voice, the studio's mono strip and X-ray pins, laid over it to sell the build. */
+:root {
+  --bg: #f8f5ef; --surface: #fffdf9; --ink: #1c1915; --muted: #6c645a; --line: #e4ded3;
+  --gold: #8a6b37; --gold-2: #b89660; --photo: #fbf9f5; --band: #1e1b17; --band-ink: #f3eee4; --band-muted: #b5ab9b;
+  --studio: #12100d; --studio-ink: #eadcbe; --ok: #3f6b50; --warn: #9a3f2f; --veil: rgba(20,17,13,.42);
+  --display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --caps: "Tenor Sans", "Gill Sans", "Hanken Grotesk", sans-serif;
+  --body: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #13110e; --surface: #1b1815; --ink: #f1ebe0; --muted: #a59b8c; --line: #2f2a24;
+  --gold: #d2b47e; --gold-2: #9b7d4b; --photo: #fbf9f5; --band: #0c0b09; --band-ink: #f1ebe0; --band-muted: #a59b8c;
+  --studio: #0a0907; --studio-ink: #e6d6b4; --ok: #7fb08f; --warn: #e08a76; --veil: rgba(0,0,0,.6); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #13110e; --surface: #1b1815; --ink: #f1ebe0; --muted: #a59b8c; --line: #2f2a24;
+  --gold: #d2b47e; --gold-2: #9b7d4b; --photo: #fbf9f5; --band: #0c0b09; --band-ink: #f1ebe0; --band-muted: #a59b8c;
+  --studio: #0a0907; --studio-ink: #e6d6b4; --ok: #7fb08f; --warn: #e08a76; --veil: rgba(0,0,0,.6); color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--studio); }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: -.005em; }
+h1 em, h2 em { font-style: italic; color: var(--gold); }
+.caps { font-family: var(--caps); font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; }
+.muted { color: var(--muted); }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+p { margin: 0; }
+.rule { display: block; width: min(320px, 70%); height: 18px; margin: 0 auto; color: var(--gold-2); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 46px; padding: 0 24px; border: 1px solid var(--ink); background: var(--ink); color: var(--bg); font-family: var(--caps); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; white-space: nowrap; transition: background .2s, color .2s; }
+.btn:hover { background: transparent; color: var(--ink); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--bg); }
+.btn.gold { background: var(--gold); border-color: var(--gold); color: var(--bg); }
+.btn.gold:hover { background: transparent; color: var(--gold); }
+.btn[disabled] { opacity: .45; pointer-events: none; }
+.link { background: none; border: 0; padding: 0; font-family: var(--caps); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: var(--gold-2); }
+.link:hover { color: var(--gold); }
+
+/* Studio strip: the agency's own voice, mono on near-black */
+.studio { background: var(--studio); color: var(--studio-ink); font: 12.5px/1.4 var(--body); }
+.studio .wrap { display: flex; align-items: center; gap: 22px; min-height: 36px; padding-block: 6px; flex-wrap: wrap; }
+.studio p { flex: 1 1 260px; min-width: 0; }
+.studio b { font: 400 11px var(--caps); letter-spacing: .2em; text-transform: uppercase; color: #fff; margin-right: 6px; }
+.studio button { background: none; border: 0; border-bottom: 1px solid rgba(234,220,190,.4); color: var(--studio-ink); font: 400 10.5px var(--caps); letter-spacing: .18em; text-transform: uppercase; padding: 3px 0; transition: color .2s, border-color .2s; }
+.studio button:hover, .studio button[aria-pressed="true"] { color: #fff; border-color: #fff; }
+
+/* Header */
+.announce { border-bottom: 1px solid var(--line); text-align: center; padding: 8px 0; font-size: 12.5px; color: var(--muted); }
+header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header.site .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 74px; gap: 16px; }
+.nav { display: flex; gap: 26px; }
+.nav button, .tools button { white-space: nowrap; background: none; border: 0; padding: 6px 0; font-family: var(--caps); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); position: relative; }
+.nav button::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform .3s; }
+.nav button:hover::after, .nav button[aria-current="page"]::after { transform: scaleX(1); }
+.mark { background: none; border: 0; padding: 0; text-align: center; color: var(--ink); }
+.mark b { display: block; font: 400 30px/1 var(--display); letter-spacing: .42em; margin-right: -.42em; }
+.mark span { display: block; margin-top: 5px; font-family: var(--caps); font-size: 9.5px; letter-spacing: .34em; color: var(--muted); }
+.tools { display: flex; justify-content: flex-end; align-items: center; gap: 20px; }
+.tools .ico { display: inline-flex; align-items: center; gap: 7px; }
+.ico svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.3; }
+.count { min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--gold); color: var(--bg); font: 600 10.5px/18px var(--body); letter-spacing: 0; }
+.count:empty { display: none; }
+.menuBtn { display: none !important; background: none; border: 0; padding: 6px 0; color: var(--ink); }
+
+main { min-height: 60vh; }
+.book > *, .steps > *, .owner > *, .info > *, .pdp > *, .contact > *, .shopBody > *, .visit .wrap > *, .hero .wrap > *, .band .wrap > * { min-width: 0; }
+.view[hidden] { display: none; }
+
+/* Home */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(24px, 5vw, 72px); align-items: center; padding-block: clamp(32px, 6vw, 72px) clamp(40px, 6vw, 80px); }
+.hero h1 { font-size: clamp(46px, 6.6vw, 92px); font-weight: 300; }
+.hero h1 em { font-weight: 300; background: linear-gradient(100deg, var(--gold) 0 40%, #f4e3bd 50%, var(--gold) 60% 100%) 0 0 / 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 7s ease-in-out infinite; }
+@keyframes sheen { 0%, 55% { background-position: 100% 0; } 85%, 100% { background-position: 0 0; } }
+.hero .lede { font-size: 17px; max-width: 42ch; margin-top: 22px; color: var(--muted); }
+.hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+.hero .facts { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); }
+.hero .facts div { display: flex; flex-direction: column; gap: 2px; }
+.hero .facts b { font: 400 26px/1 var(--display); }
+.hero figure { margin: 0; position: relative; background: var(--photo); aspect-ratio: 1; max-width: 100%; }
+.hero figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero figcaption { position: absolute; left: 18px; bottom: 16px; right: 18px; display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: #2a251f; }
+.hero figcaption b { font: 400 21px/1.1 var(--display); }
+
+section.block { padding-block: clamp(48px, 7vw, 96px); }
+.head { display: flex; align-items: end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 34px; }
+.head h2 { font-size: clamp(34px, 4.2vw, 54px); font-weight: 300; }
+.head p { max-width: 46ch; color: var(--muted); margin-top: 10px; }
+.shapes { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.shapes button { background: none; border: 0; border-right: 1px solid var(--line); padding: 26px 8px 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; transition: background .2s; }
+.shapes button:last-child { border-right: 0; }
+.shapes button:hover { background: var(--surface); }
+.shapes svg { width: 46px; height: 46px; fill: none; stroke: var(--ink); stroke-width: 1; }
+.shapes button:hover svg { stroke: var(--gold); }
+
+/* Product grid */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 40px 22px; }
+.card { position: relative; display: flex; flex-direction: column; gap: 12px; }
+.card .ph { position: relative; aspect-ratio: 1; background: var(--photo); overflow: hidden; border: 0; padding: 0; width: 100%; display: block; }
+.card .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .45s, transform .9s cubic-bezier(.2,.7,.2,1); }
+.card .ph img.alt { opacity: 0; }
+.card:hover .ph img.alt { opacity: 1; }
+.card:hover .ph img { transform: scale(1.03); }
+.card .tag { position: absolute; left: 12px; top: 12px; font-family: var(--caps); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #3a332a; background: rgba(255,255,255,.7); padding: 4px 8px; }
+.heart { position: absolute; right: 8px; top: 8px; width: 38px; height: 38px; border-radius: 50%; border: 0; background: rgba(255,255,255,.75); color: #3a332a; display: grid; place-items: center; z-index: 2; }
+.heart svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+.heart[aria-pressed="true"] svg { fill: #8a6b37; stroke: #8a6b37; }
+.card .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.card h3 { font-size: 24px; }
+.card h3 button { background: none; border: 0; padding: 0; font: inherit; text-align: left; }
+.card .price { font-size: 14px; white-space: nowrap; }
+.card .sub { font-size: 13px; color: var(--muted); margin-top: -8px; }
+.sw { display: flex; gap: 8px; }
+.sw button { width: 20px; height: 20px; border-radius: 50%; border: 0; box-shadow: inset 0 0 0 1px rgba(0,0,0,.18); outline-offset: 3px; }
+.sw button[aria-pressed="true"] { outline: 1px solid var(--ink); }
+
+/* Dark design band */
+.band { background: var(--band); color: var(--band-ink); }
+.band .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; padding-block: clamp(48px, 7vw, 96px); }
+.band h2 { font-size: clamp(38px, 5vw, 66px); font-weight: 300; }
+.band h2 em { color: var(--gold-2); }
+:root .band h2 em { color: #c9a96e; }
+.band p { color: var(--band-muted); max-width: 44ch; margin-top: 18px; }
+.band .btn { background: var(--band-ink); color: var(--band); border-color: var(--band-ink); margin-top: 30px; }
+.band .btn:hover { background: transparent; color: var(--band-ink); }
+.band ul { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 10px; font-size: 14px; }
+.band li { display: flex; gap: 12px; color: var(--band-ink); }
+.band li::before { content: ""; width: 7px; height: 7px; margin-top: 8px; transform: rotate(45deg); border: 1px solid #c9a96e; flex: none; }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.trio img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: var(--photo); }
+.trio img:nth-child(2) { transform: translateY(-22px); }
+
+.promises { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.promises div { padding: 28px 24px 4px 0; display: flex; flex-direction: column; gap: 10px; }
+.promises svg { width: 30px; height: 30px; stroke: var(--gold); fill: none; stroke-width: 1.1; }
+.promises h3 { font-size: 23px; }
+.promises p { font-size: 14px; color: var(--muted); }
+
+.reviews { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.reviews figure { margin: 0; padding: 28px; background: var(--surface); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
+.reviews blockquote { margin: 0; font: italic 300 23px/1.3 var(--display); }
+.reviews figcaption { font-size: 13px; color: var(--muted); }
+.stars { color: var(--gold); letter-spacing: 3px; font-size: 13px; }
+.sample { font: 11.5px var(--body); color: var(--muted); }
+
+.visit .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.hours { display: grid; grid-template-columns: auto 1fr; gap: 6px 26px; font-size: 14px; }
+.hours dt { color: var(--muted); }
+.hours dd { margin: 0; }
+footer.site { border-top: 1px solid var(--line); padding-block: 48px 36px; margin-top: 40px; font-size: 13.5px; }
+footer.site .wrap { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 30px; }
+footer .h4 { margin: 0 0 12px; font-family: var(--caps); font-weight: 400; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; }
+footer li button { background: none; border: 0; padding: 0; text-align: left; }
+footer li button:hover { color: var(--gold); }
+.news { display: flex; border-bottom: 1px solid var(--ink); margin-top: 14px; max-width: 360px; }
+.news input { flex: 1; min-width: 0; border: 0; background: none; padding: 10px 0; }
+.news input:focus { outline: none; }
+.news button { background: none; border: 0; font-family: var(--caps); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; }
+.fine { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; }
+
+/* Shop */
+.crumbs { padding-block: 22px 0; font-size: 12.5px; color: var(--muted); }
+.crumbs button { background: none; border: 0; padding: 0; color: var(--muted); }
+.crumbs button:hover { color: var(--ink); }
+.shopHead { padding-block: 18px 30px; display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; }
+.shopHead h1 { font-size: clamp(40px, 5vw, 64px); font-weight: 300; }
+.shopBody { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 40px; align-items: start; }
+.filters { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 96px); display: grid; gap: 26px; }
+.filters fieldset { border: 0; margin: 0; padding: 0; display: grid; gap: 9px; }
+.filters legend { font-family: var(--caps); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; padding: 0; }
+.chk { display: flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer; }
+.chk input { accent-color: var(--gold); width: 15px; height: 15px; margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { background: none; border: 1px solid var(--line); padding: 6px 11px; font-size: 13px; display: inline-flex; align-items: center; gap: 7px; }
+.chip svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.2; }
+.chip[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--bg); }
+.chip i { width: 13px; height: 13px; border-radius: 50%; display: block; box-shadow: inset 0 0 0 1px rgba(0,0,0,.2); }
+.range { display: grid; gap: 6px; }
+.range input { width: 100%; accent-color: var(--gold); }
+.bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 16px; margin-bottom: 26px; border-bottom: 1px solid var(--line); font-size: 13.5px; flex-wrap: wrap; }
+.bar select { border: 1px solid var(--line); background: var(--surface); padding: 7px 10px; }
+.filterToggle { display: none !important; }
+.empty { padding: 60px 20px; text-align: center; border: 1px dashed var(--line); display: grid; gap: 14px; justify-items: center; }
+.empty h3 { font-size: 30px; }
+
+/* Product page */
+.pdp { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; padding-block: 18px 40px; }
+.gallery { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 12px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 92px); }
+.thumbs { display: grid; gap: 10px; align-content: start; }
+.thumbs button { padding: 0; border: 1px solid transparent; background: var(--photo); aspect-ratio: 1; }
+.thumbs button[aria-pressed="true"] { border-color: var(--ink); }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.stagePh { position: relative; aspect-ratio: 1; background: var(--photo); overflow: hidden; cursor: zoom-in; }
+.stagePh img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s; transform-origin: var(--zx, 50%) var(--zy, 50%); }
+.stagePh.zoom img { transform: scale(2); }
+.stagePh .hint { position: absolute; right: 14px; bottom: 12px; font-size: 11.5px; color: #4a4238; background: rgba(255,255,255,.7); padding: 3px 8px; }
+.info { display: grid; gap: 22px; }
+.info h1 { font-size: clamp(42px, 4.6vw, 62px); font-weight: 300; }
+.info .pr { font: 400 26px/1 var(--display); }
+.info .pr small { font: 13px var(--body); color: var(--muted); margin-left: 8px; }
+.opt .h4 { margin: 0 0 10px; font: 400 11.5px var(--caps); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; }
+.opt .h4 span { color: var(--ink); letter-spacing: .04em; text-transform: none; font-family: var(--body); font-size: 13.5px; }
+.sizes { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.sizes button { border: 1px solid var(--line); background: var(--surface); padding: 9px 0; font-size: 13px; }
+.sizes button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: var(--bg); }
+.fld { display: grid; gap: 6px; }
+.fld label { font-size: 13px; color: var(--muted); }
+.fld input, .fld select, .fld textarea { width: 100%; border: 1px solid var(--line); background: var(--surface); padding: 11px 12px; border-radius: 0; }
+.fld textarea { min-height: 90px; resize: vertical; }
+.fld input:focus, .fld select:focus, .fld textarea:focus { outline: none; border-color: var(--gold); }
+.fld .err { color: var(--warn); font-size: 12.5px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.actions { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+.actions .heart { position: static; width: 46px; height: 46px; border-radius: 0; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.note { font-size: 13.5px; color: var(--muted); display: flex; gap: 10px; align-items: flex-start; }
+.note svg { width: 17px; height: 17px; flex: none; margin-top: 2px; stroke: var(--gold); fill: none; stroke-width: 1.3; }
+details { border-top: 1px solid var(--line); }
+details:last-of-type { border-bottom: 1px solid var(--line); }
+summary { list-style: none; cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; font-family: var(--caps); font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-family: var(--body); font-size: 18px; line-height: 1; transition: transform .25s; }
+details[open] summary::after { transform: rotate(45deg); }
+details > div { padding: 0 0 18px; font-size: 14px; color: var(--muted); display: grid; gap: 6px; }
+.spec { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; }
+.spec dt { color: var(--muted); }
+.spec dd { margin: 0; color: var(--ink); }
+.stickyBuy { display: none; }
+
+/* Builder */
+.designer .wrap { padding-block: 22px 12px; display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; }
+.designer h1 { font-size: clamp(36px, 4.4vw, 56px); font-weight: 300; }
+.frame { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); height: min(86vh, 900px); min-height: 560px; background: var(--photo); }
+.frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.frame .load { height: 100%; display: grid; place-items: center; color: #6c645a; font-size: 14px; }
+
+/* Booking */
+.book { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 60px); padding-block: 18px 60px; align-items: start; }
+.book h1 { font-size: clamp(40px, 4.6vw, 60px); font-weight: 300; }
+.steps { display: grid; gap: 34px; margin-top: 30px; }
+.step h3 { font-size: 24px; margin-bottom: 14px; display: flex; gap: 12px; align-items: baseline; }
+.step h3 span { font: 400 11px var(--caps); letter-spacing: .2em; color: var(--gold); }
+.types { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.types button { text-align: left; border: 1px solid var(--line); background: var(--surface); padding: 14px 16px; display: grid; gap: 3px; }
+.types b { font-weight: 500; }
+.types span { font-size: 13px; color: var(--muted); }
+.types button[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.dates { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; }
+.dates button { flex: none; width: 64px; border: 1px solid var(--line); background: var(--surface); padding: 10px 0; display: grid; gap: 2px; text-align: center; }
+.dates button small { font-family: var(--caps); font-size: 9.5px; letter-spacing: .16em; color: var(--muted); text-transform: uppercase; }
+.dates button b { font: 400 24px/1 var(--display); }
+.dates button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.dates button[aria-pressed="true"] small { color: var(--bg); }
+.dates button:disabled { opacity: .35; cursor: not-allowed; }
+.slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; }
+.slots button { border: 1px solid var(--line); background: var(--surface); padding: 10px 0; }
+.slots button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.slots button:disabled { text-decoration: line-through; opacity: .4; cursor: not-allowed; }
+.summary { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 96px); background: var(--surface); border: 1px solid var(--line); padding: 26px; display: grid; gap: 16px; }
+.summary h3 { font-size: 26px; }
+.summary img { width: 100%; aspect-ratio: 1.6; object-fit: cover; background: var(--photo); }
+.summary dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin: 0; font-size: 14px; }
+.summary dt { color: var(--muted); }
+.summary dd { margin: 0; }
+.done { display: grid; gap: 14px; justify-items: start; padding: 30px; border: 1px solid var(--line); background: var(--surface); }
+.done h2 { font-size: 40px; font-weight: 300; }
+.ok { color: var(--ok); }
+
+/* Drawer + modal */
+.veil { position: fixed; inset: 0; background: var(--veil); z-index: 70; opacity: 0; pointer-events: none; transition: opacity .3s; }
+.veil.on { opacity: 1; pointer-events: auto; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(440px, 100vw); background: var(--bg); z-index: 80; transform: translateX(102%); transition: transform .4s cubic-bezier(.2,.7,.2,1); display: flex; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); padding-right: env(safe-area-inset-right, 0px); }
+.drawer.on { transform: none; }
+.drawer header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--line); }
+.drawer header h2 { font-size: 28px; }
+.x { background: none; border: 0; width: 38px; height: 38px; display: grid; place-items: center; }
+.x svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.3; fill: none; }
+.drawer .body { flex: 1; overflow-y: auto; padding: 8px 24px 24px; }
+.drawer footer { border-top: 1px solid var(--line); padding: 18px 24px 22px; display: grid; gap: 12px; }
+.line { display: grid; grid-template-columns: 86px minmax(0, 1fr); gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.line img { width: 86px; height: 86px; object-fit: cover; background: var(--photo); }
+.line h3 { font-size: 21px; }
+.line .d { font-size: 12.5px; color: var(--muted); }
+.line .ctl { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; gap: 8px; }
+.line input { width: 100%; border: 1px solid var(--line); background: var(--surface); padding: 6px 8px; font-size: 12.5px; margin-top: 8px; }
+.tot { display: flex; justify-content: space-between; font-size: 14px; }
+.tot.big { font: 400 24px var(--display); }
+.modal { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); pointer-events: none; opacity: 0; transition: opacity .25s; }
+.modal.on { pointer-events: auto; opacity: 1; }
+.modal .box { background: var(--bg); width: min(640px, 100%); max-height: 100%; overflow: auto; padding: 26px; display: grid; gap: 18px; position: relative; }
+.modal .box > .x { position: absolute; right: 10px; top: 10px; }
+.modal h2 { font-size: 32px; font-weight: 300; padding-right: 40px; }
+.cardCal { height: 120px; display: grid; place-items: center; background: var(--surface); border: 1px dashed var(--line); overflow: hidden; }
+.cardCal div { aspect-ratio: 85.6 / 53.98; border: 1.5px solid var(--gold); border-radius: 6px; display: grid; place-items: center; font-size: 11px; color: var(--muted); }
+.ringCal { height: 170px; display: grid; place-items: center; background: var(--surface); border: 1px dashed var(--line); }
+.ringCal div { border-radius: 50%; border: 2px solid var(--gold); display: grid; place-items: center; font-size: 12px; color: var(--muted); }
+.big { font: 400 46px/1 var(--display); }
+.chart { width: 100%; border-collapse: collapse; font-size: 13px; }
+.chart th, .chart td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+.chart th { font-weight: 500; color: var(--muted); }
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); background: var(--ink); color: var(--bg); padding: 12px 18px; font-size: 14px; z-index: 95; opacity: 0; transition: opacity .25s, transform .25s; pointer-events: none; max-width: calc(100vw - 32px); }
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+/* Owner dashboard */
+.owner { padding-block: 18px 60px; display: grid; gap: 28px; }
+.owner h1 { font-size: clamp(40px, 4.6vw, 60px); font-weight: 300; }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); background: var(--surface); }
+.kpis div { padding: 20px 22px; border-right: 1px solid var(--line); display: grid; gap: 4px; }
+.kpis div:last-child { border-right: 0; }
+.kpis b { font: 400 38px/1 var(--display); }
+.tabs { display: flex; gap: 26px; border-bottom: 1px solid var(--line); overflow-x: auto; }
+.tabs button { background: none; border: 0; padding: 12px 0; font-family: var(--caps); font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-color: var(--gold); }
+.tableWrap { overflow-x: auto; border: 1px solid var(--line); background: var(--surface); }
+table.data { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 680px; }
+table.data th { text-align: left; font-weight: 500; color: var(--muted); font-size: 12px; padding: 12px 14px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+table.data td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.data tr:last-child td { border-bottom: 0; }
+.pill { display: inline-block; font-size: 11.5px; padding: 2px 8px; border: 1px solid currentColor; white-space: nowrap; }
+.pill.live { color: var(--ok); }
+.pill.local { color: var(--gold); }
+.src { font: 12.5px var(--body); color: var(--muted); }
+
+/* For jewelers: the studio's page */
+.pitch .heroP { padding-block: clamp(40px, 6vw, 80px) 40px; display: grid; gap: 22px; max-width: 900px; }
+.pitch .heroP h1 { font-size: clamp(48px, 7vw, 100px); font-weight: 300; }
+.pitch .kicker { font: 400 11.5px var(--caps); color: var(--gold); letter-spacing: .2em; text-transform: uppercase; }
+.pitch .lede { font-size: 18px; color: var(--muted); max-width: 56ch; }
+.feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.feats div { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 26px; display: grid; gap: 10px; align-content: start; }
+.feats h3 { font-size: 26px; }
+.feats p { font-size: 14px; color: var(--muted); }
+.feats .link { justify-self: start; margin-top: 4px; }
+.compare { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 620px; }
+.compare th, .compare td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.compare thead th { font-family: var(--caps); font-weight: 400; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.compare td:last-child { color: var(--ink); }
+.compare td:nth-child(2) { color: var(--muted); }
+.tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+.tier { border: 1px solid var(--line); background: var(--surface); padding: 30px 26px; display: flex; flex-direction: column; gap: 16px; }
+.tier.pick { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.tier h3 { font-size: 30px; }
+.tier .amt { font: 300 52px/1 var(--display); }
+.tier .amt small { font: 13px var(--body); color: var(--muted); margin-left: 6px; }
+.tier ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; font-size: 14px; flex: 1; }
+.tier li { display: flex; gap: 10px; }
+.tier li::before { content: ""; width: 6px; height: 6px; margin-top: 8px; transform: rotate(45deg); background: var(--gold); flex: none; }
+.tier .flag { font: 400 10.5px var(--caps); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.process { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; counter-reset: s; }
+.process div { border-top: 1px solid var(--ink); padding-top: 16px; display: grid; gap: 8px; align-content: start; }
+.process div::before { counter-increment: s; content: "0" counter(s); font: 400 italic 20px var(--display); color: var(--gold); }
+.process h3 { font-size: 24px; }
+.process p { font-size: 14px; color: var(--muted); }
+.faq { max-width: 860px; }
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 60px); align-items: start; }
+.contact form { display: grid; gap: 14px; }
+.copyBox { border: 1px solid var(--line); background: var(--surface); padding: 18px; display: grid; gap: 12px; }
+.copyBox pre { margin: 0; white-space: pre-wrap; font: 12.5px/1.55 var(--mono); max-height: 220px; overflow: auto; }
+.email { font: 500 15px var(--mono); user-select: all; }
+
+
+/* Measured: strip plot of real shops' Lighthouse scores (validated: gold #9a6a12 / slate #3866a8 light, #c08820 / #5f8fd8 dark) */
+:root { --m-halden: #9a6a12; --m-shop: #3866a8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --m-halden: #c08820; --m-shop: #5f8fd8; } }
+:root[data-theme="dark"] { --m-halden: #c08820; --m-shop: #5f8fd8; }
+.lhChart { border: 1px solid var(--line); background: var(--surface); padding: 22px 24px 14px; display: grid; gap: 6px; }
+.lhLegend { display: flex; gap: 22px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+.lhLegend span { display: inline-flex; align-items: center; gap: 8px; }
+.lhRow { display: grid; grid-template-columns: 150px minmax(0, 1fr) 92px; gap: 16px; align-items: center; min-height: 46px; }
+.lhRow .lab { font-size: 14px; }
+.lhRow .val { font-size: 13px; color: var(--muted); text-align: right; }
+.lhRow .val b { color: var(--ink); font-weight: 600; }
+.track { position: relative; height: 44px; }
+.track::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line); }
+.track .good { position: absolute; top: 4px; bottom: 4px; left: 90%; right: 0; background: color-mix(in srgb, var(--ok) 9%, transparent); }
+.mk { display: inline-block; width: 10px; height: 10px; }
+.mk.shop { border-radius: 50%; border: 1.5px solid var(--m-shop); background: color-mix(in srgb, var(--m-shop) 18%, transparent); }
+.mk.med { width: 2px; height: 16px; background: var(--ink); }
+.mk.halden { width: 11px; height: 11px; background: var(--m-halden); transform: rotate(45deg); box-shadow: 0 0 0 2px var(--surface); }
+.track .mk { position: absolute; top: 50%; transform: translate(-50%, -50%); }
+.track .mk.halden { transform: translate(-50%, -50%) rotate(45deg); z-index: 3; }
+.track .mk.med { z-index: 2; }
+.track .hit { position: absolute; top: 0; bottom: 0; width: 16px; transform: translateX(-50%); z-index: 4; background: none; border: 0; padding: 0; cursor: default; }
+.lhAxis { display: grid; grid-template-columns: 150px minmax(0, 1fr) 92px; gap: 16px; font-size: 11.5px; color: var(--muted); }
+.lhAxis .ticks { position: relative; height: 16px; }
+.lhAxis .ticks span { position: absolute; transform: translateX(-50%); }
+.lhAxis { position: relative; }
+.lhAxis span { font-variant-numeric: tabular-nums; }
+.featStats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-left: 1px solid var(--line); margin-top: 22px; }
+.featStats div { border-right: 1px solid var(--line); padding: 4px 20px; display: grid; gap: 6px; align-content: start; }
+.featStats b { font: 400 40px/1 var(--body); letter-spacing: -.02em; }
+.featStats p { font-size: 13.5px; color: var(--muted); }
+.featStats .us { font: 500 12px var(--body); color: var(--m-halden); }
+.tip { position: fixed; z-index: 96; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12.5px; padding: 6px 9px; transform: translate(-50%, calc(-100% - 10px)); white-space: nowrap; }
+@media (max-width: 760px) { .lhAxis .ticks span:nth-child(5) { display: none; } .lhRow, .lhAxis { grid-template-columns: 96px minmax(0, 1fr) 54px; gap: 10px; } .featStats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 22px; } .lhChart { padding: 16px 14px 10px; } .lhRow .val small { display: none; } }
+
+/* X-ray */
+[data-xray] { position: relative; }
+.xpin { position: absolute; z-index: 30; left: 8px; top: 8px; width: 28px; height: 28px; border-radius: 50%; border: 0; background: var(--studio); color: var(--studio-ink); font: 400 13px var(--display); display: none; place-items: center; box-shadow: 0 0 0 4px rgba(210,180,126,.35); animation: ping 2.2s ease-out infinite; }
+html.xray .xpin { display: grid; }
+html.xray [data-xray] { outline: 1px dashed rgba(184,150,96,.8); outline-offset: 4px; }
+@keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(210,180,126,.6); } 70%, 100% { box-shadow: 0 0 0 12px rgba(210,180,126,0); } }
+.xcard { position: fixed; z-index: 85; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: min(380px, calc(100vw - 32px)); background: var(--studio); color: var(--studio-ink); padding: 18px 20px; font: 13.5px/1.6 var(--body); display: grid; gap: 10px; box-shadow: 0 20px 50px rgba(0,0,0,.3); }
+.xcard h3 { font: 400 22px/1.2 var(--display); color: #fff; }
+.xcard .nav2 { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.xcard button { background: none; border: 1px solid rgba(234,220,190,.35); color: var(--studio-ink); font: 400 10.5px var(--caps); letter-spacing: .16em; text-transform: uppercase; padding: 7px 12px; }
+.xcard button:hover { background: var(--studio-ink); color: var(--studio); }
+.xfab { position: fixed; z-index: 50; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--studio); color: var(--studio-ink); border: 0; font: 400 10.5px var(--caps); letter-spacing: .18em; text-transform: uppercase; padding: 13px 18px; display: flex; gap: 10px; align-items: center; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.xfab i { width: 8px; height: 8px; border-radius: 50%; background: #d2b47e; box-shadow: 0 0 0 0 rgba(210,180,126,.6); animation: ping 2.2s infinite; }
+
+/* Mobile drawer nav */
+.mnav { position: fixed; inset: 0 auto 0 0; width: min(340px, 88vw); background: var(--bg); z-index: 80; transform: translateX(-102%); transition: transform .35s cubic-bezier(.2,.7,.2,1); padding: calc(18px + env(safe-area-inset-top, 0px)) 24px 24px max(24px, env(safe-area-inset-left, 0px)); display: grid; align-content: start; gap: 6px; }
+.mnav.on { transform: none; }
+.mnav button.it { background: none; border: 0; border-bottom: 1px solid var(--line); text-align: left; padding: 16px 0; font: 300 28px var(--display); }
+
+@media (max-width: 1180px) { .nav { gap: 18px; } .tools { gap: 14px; } }
+@media (max-width: 980px) {
+  .nav { display: none; }
+  .menuBtn { display: inline-flex !important; }
+  header.site .wrap { grid-template-columns: auto 1fr auto; }
+  .mark { justify-self: center; }
+  .tools .lbl { display: none; }
+  .shopBody { grid-template-columns: 1fr; }
+  .filters { position: static; display: none; padding: 18px; border: 1px solid var(--line); background: var(--surface); }
+  .filters.open { display: grid; }
+  .filterToggle { display: inline-flex !important; }
+  .shapes { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .shapes button:nth-child(4) { border-right: 0; }
+  .shapes button:nth-child(-n+4) { border-bottom: 1px solid var(--line); }
+  .promises, .process { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reviews, .feats, .tiers { grid-template-columns: 1fr; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpis div:nth-child(2) { border-right: 0; }
+  .kpis div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  footer.site .wrap { grid-template-columns: 1fr 1fr; }
+  footer.site .wrap > div:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .hero .wrap, .band .wrap, .pdp, .book, .visit .wrap, .contact { grid-template-columns: 1fr; }
+  .hero figure { order: -1; }
+  .gallery { position: static; grid-template-columns: 1fr; }
+  .thumbs { grid-template-columns: repeat(5, minmax(0, 1fr)); order: 2; }
+  .summary { position: static; }
+  .tools { gap: 14px; }
+  .tools .bookLink { display: none; }
+  .mark b { font-size: 24px; }
+  .mark span { font-size: 8px; letter-spacing: .22em; white-space: nowrap; }
+  .types { grid-template-columns: 1fr; }
+  .stickyBuy { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; background: var(--bg); border-top: 1px solid var(--line); padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); gap: 12px; align-items: center; justify-content: space-between; }
+  .stickyBuy[hidden] { display: none; }
+  .stickyBuy b { font: 400 22px var(--display); }
+  .xfab { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .frame { height: auto; min-height: 0; }
+  .frame iframe { height: 1500px; }
+  .sizes { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .promises, .process { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 12px; }
+  .card h3 { font-size: 20px; }
+  .card .meta { flex-direction: column; gap: 2px; }
+  .row2 { grid-template-columns: 1fr; }
+  .kpis b { font-size: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.6 7.6 3.9 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.3 0 5.6 3.1 4.4 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12.5H6L5 8zM8.5 8V6.5a3.5 3.5 0 0 1 7 0V8"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v10h-11zM13.5 10h4l3 3.5v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
+  <symbol id="i-gem" viewBox="0 0 24 24"><path d="M6 4h12l4 5-10 11L2 9l4-5zM2 9h20M9 4l3 5 3-5M12 20L9 9M12 20l3-11"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4zM14 7l3 3"/></symbol>
+</svg>
+
+<div class="studio">
+  <div class="wrap">
+    <p><b id="studioName">MLP Consulting</b> built this demo jewelry store. Every button works: shop, design a ring in 3D, size it, book a viewing, check out.</p>
+    <button type="button" id="xrayBtn" aria-pressed="false">X-ray: how it sells</button>
+    <button type="button" data-go="for-jewelers">For jewelers →</button>
+  </div>
+</div>
+<div class="announce">Complimentary resizing for one year · Insured delivery on every order · <button class="link" type="button" data-go="book" style="font-size:10.5px">Book a private viewing</button></div>
+
+<header class="site">
+  <div class="wrap">
+    <nav class="nav" aria-label="Shop">
+      <button type="button" data-go="shop" data-cat="engagement">Engagement</button>
+      <button type="button" data-go="shop" data-cat="sapphire">Sapphire</button>
+      <button type="button" data-go="design">Design your ring</button>
+    </nav>
+    <button type="button" class="tools menuBtn ico" id="menuBtn" aria-label="Open menu"><svg><use href="#i-menu"/></svg></button>
+    <button type="button" class="mark" data-go="home" aria-label="Halden, home"><b>HALDEN</b><span>FINE JEWELRY · BRIDAL</span></button>
+    <div class="tools">
+      <button type="button" class="ico bookLink" data-go="book"><svg><use href="#i-cal"/></svg><span class="lbl">Book</span></button>
+      <button type="button" class="ico" id="savedBtn" aria-label="Saved rings"><svg><use href="#i-heart"/></svg><span class="lbl">Saved</span><span class="count" id="savedCount"></span></button>
+      <button type="button" class="ico" id="bagBtn" aria-label="Bag" data-xray="bag"><svg><use href="#i-bag"/></svg><span class="lbl">Bag</span><span class="count" id="bagCount"></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HOME -->
+  <div class="view" data-view="home">
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <p class="caps muted">Lab-grown diamonds & sapphires · made to order</p>
+          <h1 style="margin-top:18px">Engagement rings, cut to the <em>millimetre.</em></h1>
+          <p class="lede">Twelve settings we make by hand, in platinum and gold, or one you design yourself in 3D with real diamond optics. Every ring is priced up front.</p>
+          <div class="ctas">
+            <button type="button" class="btn" data-go="shop" data-cat="engagement">Shop engagement rings</button>
+            <button type="button" class="btn ghost" data-go="design">Design yours in 3D</button>
+          </div>
+          <div class="facts">
+            <div><b class="num">IGI</b><span class="caps muted" style="font-size:10px">certified stones</span></div>
+            <div><b class="num">3–4 wks</b><span class="caps muted" style="font-size:10px">made to order</span></div>
+            <div><b class="num">1 yr</b><span class="caps muted" style="font-size:10px">free resizing</span></div>
+          </div>
+        </div>
+        <figure>
+          <img src="img/hero-900.jpg" srcset="img/hero-600.jpg 600w, img/hero-900.jpg 900w, img/hero.jpg 1400w" sizes="(max-width: 760px) 92vw, 50vw" width="900" height="900" fetchpriority="high" decoding="async" alt="The Wren: a 2 carat oval lab diamond on a slim 18k yellow gold band">
+          <figcaption><span><b>The Wren</b><br>2.00 ct oval · 18k yellow gold</span><button type="button" class="link" data-go="ring-wren">View ring</button></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <div class="head"><div><p class="caps muted">Start with the stone</p><h2 style="margin-top:8px">Shop by <em>shape</em></h2></div></div>
+        <div class="shapes" id="shapeStrip" data-xray="shapes"></div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <div class="head"><div><p class="caps muted">The bridal edit</p><h2 style="margin-top:8px">Engagement rings</h2><p>Lab-grown diamonds, F–G colour, VS1 or better, excellent cut. Hover a ring to see it from above.</p></div><button type="button" class="link" data-go="shop" data-cat="engagement">See all eight</button></div>
+        <div class="grid" id="homeBridal"></div>
+      </div>
+    </section>
+
+    <section class="band" data-xray="builder">
+      <div class="wrap">
+        <div>
+          <p class="caps" style="color:#c9a96e">The design studio</p>
+          <h2 style="margin-top:14px">Build the ring <em>she'll actually want.</em></h2>
+          <p>Pick a shape and carat, a head, a halo, a band and a metal. The stone is rendered with real refraction and fire, and the price moves with every choice.</p>
+          <ul><li>10 center shapes, 0.5 to 6 carats</li><li>Halo, hidden halo, three-stone and toi et moi</li><li>Add your design to the bag or bring it to a viewing</li></ul>
+          <button type="button" class="btn" data-go="design">Open the designer</button>
+        </div>
+        <div class="trio"><img src="img/margot-plat.jpg" alt="The Margot, emerald cut three-stone ring"><img src="img/juno-y18.jpg" alt="The Juno, toi et moi ring with a sapphire"><img src="img/aurora-r14.jpg" alt="The Aurora, padparadscha halo ring"></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap">
+        <div class="head"><div><p class="caps muted">Colour, chosen</p><h2 style="margin-top:8px">The <em>sapphire</em> collection</h2><p>Royal blue, cornflower, teal and padparadscha, set alone or beside white diamonds.</p></div><button type="button" class="link" data-go="shop" data-cat="sapphire">See all four</button></div>
+        <div class="grid" id="homeSapphire"></div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <svg class="rule" viewBox="0 0 320 18" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1"><path d="M0 7.5H140M180 7.5H320M0 10.5H140M180 10.5H320"/><path d="M160 0l9 9-9 9-9-9z"/><path d="M160 4.5l4.5 4.5-4.5 4.5-4.5-4.5z" fill="currentColor"/><path d="M146 9l3-3 3 3-3 3zM168 9l3-3 3 3-3 3z"/></g></svg>
+        <div class="promises" style="margin-top:46px">
+          <div><svg><use href="#i-gem"/></svg><h3>Certified stones</h3><p>Every center stone over 0.5 ct comes with its IGI report, laser-inscribed on the girdle.</p></div>
+          <div><svg><use href="#i-loop"/></svg><h3>Free resizing</h3><p>One resize within the first year, in our workshop, back to you in a week.</p></div>
+          <div><svg><use href="#i-truck"/></svg><h3>Insured delivery</h3><p>Signature on delivery, fully insured door to door, in a ring box you will keep.</p></div>
+          <div><svg><use href="#i-shield"/></svg><h3>Lifetime care</h3><p>Prong checks, cleaning and polishing for as long as you wear it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <div class="head"><div><p class="caps muted">From the people who wear them</p><h2 style="margin-top:8px">Kind words</h2></div><p class="sample">Sample reviews: a live site pulls these from Google or your review app.</p></div>
+        <div class="reviews">
+          <figure><span class="stars" aria-label="5 out of 5">◆◆◆◆◆</span><blockquote>I built three versions in the designer, booked a viewing, and they had all three on a tray when I walked in.</blockquote><figcaption>Sample · The Oriel, platinum</figcaption></figure>
+          <figure><span class="stars" aria-label="5 out of 5">◆◆◆◆◆</span><blockquote>The on-screen sizer said 4¾. She is a 4¾. I still don't know how.</blockquote><figcaption>Sample · The Wren, 18k yellow</figcaption></figure>
+          <figure><span class="stars" aria-label="5 out of 5">◆◆◆◆◆</span><blockquote>The price on the site was the price at the counter. No surprises, no haggling.</blockquote><figcaption>Sample · The Regent, platinum</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="block visit" style="padding-top:0">
+      <div class="wrap">
+        <div><p class="caps muted">The showroom</p><h2 style="margin-top:8px;font-size:clamp(34px,4.2vw,54px);font-weight:300">Come and <em>try them on</em></h2><p class="muted" style="margin-top:14px;max-width:44ch">Private viewings run an hour. Tell us which rings you liked and they'll be waiting on a tray, in your size.</p><button type="button" class="btn" data-go="book" style="margin-top:26px">Book a viewing</button></div>
+        <dl class="hours"><dt>Tuesday – Friday</dt><dd>11:00 – 19:00</dd><dt>Saturday</dt><dd>10:00 – 18:00</dd><dt>Sunday, Monday</dt><dd>By appointment for video calls</dd><dt>Showroom</dt><dd>Address is sent with your booking (this is a demo store)</dd></dl>
+      </div>
+    </section>
+  </div>
+
+  <!-- SHOP -->
+  <div class="view" data-view="shop" hidden>
+    <div class="wrap">
+      <p class="crumbs"><button type="button" data-go="home">Home</button> / <span id="crumbCat">All rings</span></p>
+      <div class="shopHead"><h1 id="shopTitle">All rings</h1><p class="muted" style="max-width:46ch">Every ring is shown in the metal you pick, at that metal's price.</p></div>
+      <div class="shopBody">
+        <aside class="filters" id="filters">
+          <fieldset><legend>Collection</legend><div class="chips" id="fCat"></div></fieldset>
+          <fieldset><legend>Shape</legend><div class="chips" id="fShape"></div></fieldset>
+          <fieldset data-xray="swatches"><legend>Metal</legend><div class="chips" id="fMetal"></div></fieldset>
+          <fieldset><legend>Price</legend><div class="range"><label for="fPrice" class="num" id="fPriceOut"></label><input type="range" id="fPrice" min="4500" max="9500" step="250"></div></fieldset>
+          <fieldset><legend>Saved</legend><label class="chk"><input type="checkbox" id="fSaved"> Only rings I've saved</label></fieldset>
+          <button type="button" class="link" id="fReset" style="justify-self:start">Clear filters</button>
+        </aside>
+        <div>
+          <div class="bar"><span class="num" id="shopCount"></span><span style="display:flex;gap:12px;align-items:center"><button type="button" class="link filterToggle" id="filterToggle">Filters</button><label for="fSort" class="muted">Sort</label><select id="fSort"><option value="featured">Featured</option><option value="low">Price, low to high</option><option value="high">Price, high to low</option></select></span></div>
+          <div class="grid" id="shopGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT -->
+  <div class="view" data-view="ring" hidden>
+    <div class="wrap">
+      <p class="crumbs"><button type="button" data-go="home">Home</button> / <button type="button" id="pdpCrumb" data-go="shop">Engagement</button> / <span id="pdpCrumbName"></span></p>
+      <div class="pdp">
+        <div class="gallery">
+          <div class="thumbs" id="thumbs"></div>
+          <div class="stagePh" id="stagePh"><img id="stageImg" alt=""><span class="hint">Click to zoom</span></div>
+        </div>
+        <div class="info">
+          <div><p class="caps muted" id="pdpStyle"></p><h1 id="pdpName" style="margin-top:10px"></h1><p class="muted" id="pdpLine" style="margin-top:12px;max-width:46ch"></p></div>
+          <p class="pr num"><span id="pdpPrice"></span><small id="pdpMonthly"></small></p>
+          <div class="opt" data-xray="swatches"><p class="h4">Metal <span id="pdpMetalName"></span></p><div class="sw" id="pdpMetals"></div></div>
+          <div class="opt" data-xray="sizer"><p class="h4">Ring size (US) <button type="button" class="link" id="openSizer" style="font-size:10.5px">Find her size</button></p><div class="sizes" id="pdpSizes"></div><p class="fld"><span class="err" id="sizeErr" hidden>Choose a size, or use the sizer to find it.</span></p></div>
+          <div class="fld"><label for="pdpEngrave">Engraving inside the band (optional, free)</label><input id="pdpEngrave" maxlength="20" placeholder="e.g. Always, 06.21"></div>
+          <div class="actions"><button type="button" class="btn" id="pdpAdd">Add to bag</button><button type="button" class="heart" id="pdpHeart" aria-pressed="false" aria-label="Save ring"><svg><use href="#i-heart"/></svg></button></div>
+          <div style="display:flex;gap:22px;flex-wrap:wrap"><button type="button" class="link" id="pdpBook">See it in person</button><button type="button" class="link" id="pdpCustom">Customise in 3D</button></div>
+          <p class="note"><svg><use href="#i-truck"/></svg><span id="pdpShip"></span></p>
+          <div>
+            <details open><summary>The stone</summary><div><dl class="spec" id="pdpSpec"></dl></div></details>
+            <details><summary>Delivery & returns</summary><div><p>Made to order in 3–4 weeks. Insured delivery with signature. Returns within 30 days of delivery, unworn and with the IGI report. Engraved rings can be returned; we polish the engraving out.</p></div></details>
+            <details><summary>Care</summary><div><p>Bring it in twice a year for a prong check and a steam clean, free for life. At home, warm water, a drop of washing-up liquid and a soft toothbrush.</p></div></details>
+          </div>
+        </div>
+      </div>
+      <section class="block" style="padding-top:20px"><div class="head"><h2>You may also love</h2></div><div class="grid" id="pdpMore"></div></section>
+    </div>
+    <div class="stickyBuy" id="stickyBuy" hidden><div><span class="caps muted" style="font-size:10px" id="sbName"></span><br><b class="num" id="sbPrice"></b></div><button type="button" class="btn" id="sbAdd">Add to bag</button></div>
+  </div>
+
+  <!-- DESIGN -->
+  <div class="view designer" data-view="design" hidden>
+    <div class="wrap"><div><p class="caps muted">The design studio</p><h1 style="margin-top:8px">Design your <em>ring</em></h1></div><p class="muted" style="max-width:48ch">Drag to turn it, scroll to zoom. When you like it, add it to your bag or bring it to a viewing.</p></div>
+    <div class="frame" data-xray="builder" id="frame"><div class="load">Loading the designer…</div></div>
+  </div>
+
+  <!-- BOOK -->
+  <div class="view" data-view="book" hidden>
+    <div class="wrap">
+      <p class="crumbs"><button type="button" data-go="home">Home</button> / Book a viewing</p>
+      <div class="book">
+        <div data-xray="booking">
+          <h1>Book a private <em>viewing</em></h1>
+          <p class="muted" style="margin-top:12px;max-width:52ch">An hour with a jeweler, in the showroom or on video. Tell us what you liked and we'll have it ready in your size.</p>
+          <form id="bookForm" class="steps" novalidate>
+            <div class="step"><h3><span>1</span>What's it for?</h3><div class="types" id="bType"></div></div>
+            <div class="step"><h3><span>2</span>Pick a day</h3><div class="dates" id="bDates"></div></div>
+            <div class="step"><h3><span>3</span>Pick a time</h3><div class="slots" id="bSlots"></div><p class="muted" style="font-size:13px;margin-top:10px" id="bSlotNote"></p></div>
+            <div class="step"><h3><span>4</span>Your details</h3>
+              <div style="display:grid;gap:12px">
+                <div class="row2"><div class="fld"><label for="bName">Name</label><input id="bName" autocomplete="name" required></div><div class="fld"><label for="bEmail">Email</label><input id="bEmail" type="email" autocomplete="email" required></div></div>
+                <div class="row2"><div class="fld"><label for="bPhone">Phone (optional)</label><input id="bPhone" type="tel" autocomplete="tel"></div><div class="fld"><label for="bBudget">Budget</label><select id="bBudget"><option>Not sure yet</option><option>Under $5,000</option><option>$5,000 – $8,000</option><option>$8,000 – $12,000</option><option>$12,000+</option></select></div></div>
+                <div class="fld"><label for="bNotes">Anything we should know?</label><textarea id="bNotes" placeholder="She loves ovals, wears mostly gold, size 5 or so"></textarea></div>
+                <p class="fld"><span class="err" id="bErr" hidden></span></p>
+                <button type="submit" class="btn" style="justify-self:start">Request this time</button>
+              </div>
+            </div>
+          </form>
+          <div class="done" id="bDone" hidden></div>
+        </div>
+        <aside class="summary" id="bSummary"></aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- OWNER -->
+  <div class="view" data-view="owner" hidden>
+    <div class="wrap owner" data-xray="owner">
+      <div><p class="caps muted">What the jeweler sees</p><h1 style="margin-top:8px">Owner <em>dashboard</em></h1><p class="muted" style="margin-top:12px;max-width:62ch">Every booking, order and enquiry made on the site, in one place. Try it: book a viewing or check out, then come back here.</p><p class="src" id="ownerSrc" style="margin-top:10px"></p></div>
+      <div class="kpis" id="kpis"></div>
+      <div class="tabs" role="tablist" id="ownerTabs"></div>
+      <div id="ownerTable"></div>
+    </div>
+  </div>
+
+  <!-- FOR JEWELERS -->
+  <div class="view pitch" data-view="for-jewelers" hidden>
+    <div class="wrap">
+      <div class="heroP">
+        <p class="kicker" id="pitchKicker">MLP Consulting · websites for independent jewelers</p>
+        <h1>This store <em>is the pitch.</em></h1>
+        <p class="lede">Halden isn't a real shop. It's a working example of the site we build for jewelers: a catalogue that looks like your counter, a 3D ring designer, booking, sizing and checkout, with an owner view of everything that comes in.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap"><button type="button" class="btn" data-scroll="pContact">Get a site like this</button><button type="button" class="btn ghost" id="pitchTour">Take the X-ray tour</button></div>
+      </div>
+    </div>
+    <section class="block" style="padding-top:20px">
+      <div class="wrap">
+        <div class="head"><div><p class="caps muted">Everything here works</p><h2 style="margin-top:8px">What your customers <em>get to do</em></h2></div></div>
+        <div class="feats">
+          <div><h3>Design a ring in 3D</h3><p>Shape, carat, head, halo, band and metal, with real diamond refraction and a live price. Their design goes to the bag or to a booking with a picture attached.</p><button type="button" class="link" data-go="design">Try it</button></div>
+          <div><h3>Book a viewing</h3><p>Real days and times from your hours, with taken slots blocked. You get the booking with what they were looking at and their budget.</p><button type="button" class="link" data-go="book">Try it</button></div>
+          <div><h3>Find their size</h3><p>An on-screen sizer calibrated with a bank card, plus a millimetre chart. Fewer wrong-size orders and resizing trips.</p><button type="button" class="link" data-go="ring-wren" data-then="sizer">Try it</button></div>
+          <div><h3>See every metal</h3><p>Each ring photographed in platinum, yellow and rose gold. The photo and the price change together.</p><button type="button" class="link" data-go="shop" data-cat="all">Try it</button></div>
+          <div><h3>Save and come back</h3><p>Hearts on every ring, a saved filter in the shop, and a bag that remembers engraving and size.</p><button type="button" class="link" data-go="shop" data-cat="all">Try it</button></div>
+          <div><h3>Check out</h3><p>Bag, engraving, financing line and a checkout that hands off to Stripe or Shopify on your live site.</p><button type="button" class="link" id="pitchBag">Try it</button></div>
+        </div>
+      </div>
+    </section>
+    <section class="block" style="padding-top:0" id="measured" hidden>
+      <div class="wrap">
+        <div class="head"><div><p class="caps muted">We checked the competition</p><h2 style="margin-top:8px">We measured <em id="mN"></em> real jewelers' websites</h2><p id="mLede" style="max-width:62ch"></p></div></div>
+        <div class="lhChart" id="lhChart" data-xray="measured">
+          <div class="lhLegend" aria-hidden="true"><span><i class="mk halden"></i>Halden (this demo)</span><span><i class="mk med"></i>Median of the shops</span><span><i class="mk shop"></i>One shop</span></div>
+          <div id="lhRows"></div>
+          <div class="lhAxis" aria-hidden="true"><span></span><div class="ticks" id="lhTicks"></div><span></span></div>
+        </div>
+        <div class="featStats" id="featStats"></div>
+        <details class="faq" style="max-width:none;margin-top:18px"><summary>Show as a table, and how we measured</summary><div id="mTable"></div></details>
+      </div>
+    </section>
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <div class="head"><div><p class="caps muted">Pricing</p><h2 style="margin-top:8px">Three ways to <em>start</em></h2><p>Fixed prices. You own the site and the domain.</p></div></div>
+        <div class="tiers" id="tiers"></div>
+      </div>
+    </section>
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <div class="head"><div><p class="caps muted">How it goes</p><h2 style="margin-top:8px">From first call to <em>launch</em></h2></div></div>
+        <div class="process">
+          <div><h3>A 30-minute call</h3><p>Your shop, your best sellers, what customers ask about most. You leave with a fixed quote.</p></div>
+          <div><h3>Your catalogue</h3><p>Send your settings and prices. We photograph or render each one in every metal you sell.</p></div>
+          <div><h3>The build</h3><p>Two to four weeks. You get a private link to click through as it comes together.</p></div>
+          <div><h3>Launch</h3><p>Your domain, your Stripe or Shopify account, and a walkthrough of the owner dashboard.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="block" style="padding-top:0">
+      <div class="wrap faq">
+        <div class="head"><h2>Questions</h2></div>
+        <details><summary>Do I need Shopify?</summary><div><p>No. We can run checkout through Stripe on its own, or plug the site into a Shopify store you already have so inventory and orders stay where they are.</p></div></details>
+        <details><summary>Can you use my own photos?</summary><div><p>Yes, and for pieces you already have, real photos are best. Renders are for settings you make to order, metals you haven't shot, and the 3D designer.</p></div></details>
+        <details><summary>What does the ring designer need from me?</summary><div><p>The heads, bands and accents you offer, your metal prices and your stone price rules. We model your settings to scale so what customers build is what you can make.</p></div></details>
+        <details><summary>Who owns the site?</summary><div><p>You do: the domain, the code and the content. The care plan is optional and you can leave it any month.</p></div></details>
+        <details><summary>Where do bookings and orders go?</summary><div><p>To the owner dashboard and your email. Orders also land in Stripe or Shopify, and bookings can sync to your Google Calendar.</p></div></details>
+      </div>
+    </section>
+    <section class="block" style="padding-top:0" id="pContact">
+      <div class="wrap contact">
+        <div><p class="caps muted">Get in touch</p><h2 style="margin-top:8px;font-size:clamp(34px,4.2vw,54px);font-weight:300">Want this for <em>your shop?</em></h2><p class="muted" style="margin-top:14px;max-width:44ch">Tell us a little about the shop. You'll get a reply within one working day with a time for the call.</p><p style="margin-top:22px" class="muted">Or email directly:</p><p class="email" id="studioEmail" style="margin-top:4px"></p><button type="button" class="link" id="copyEmail" style="margin-top:10px">Copy address</button></div>
+        <div>
+          <form id="leadForm" novalidate>
+            <div class="row2"><div class="fld"><label for="lName">Your name</label><input id="lName" autocomplete="name" required></div><div class="fld"><label for="lShop">Shop name</label><input id="lShop" autocomplete="organization" required></div></div>
+            <div class="row2"><div class="fld"><label for="lEmail">Email</label><input id="lEmail" type="email" autocomplete="email" required></div><div class="fld"><label for="lSite">Current website (optional)</label><input id="lSite" type="url" placeholder="https://"></div></div>
+            <div class="fld"><label for="lPlan">Interested in</label><select id="lPlan"></select></div>
+            <div class="fld"><label for="lMsg">What would you want the site to do?</label><textarea id="lMsg" placeholder="We sell mostly custom engagement rings and want people to book before they come in."></textarea></div>
+            <p class="fld"><span class="err" id="lErr" hidden></span></p>
+            <button type="submit" class="btn">Send</button>
+          </form>
+          <div class="copyBox" id="leadDone" hidden></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div><button type="button" class="mark" data-go="home" style="text-align:left"><b style="font-size:24px">HALDEN</b></button><p class="muted" style="margin-top:12px;max-width:34ch">Fine jewelry and bridal, made to order. A demo store by <span id="footStudio">MLP Consulting</span>.</p>
+      <form class="news" id="newsForm"><input id="newsEmail" type="email" placeholder="Email for new pieces" aria-label="Email for new pieces"><button type="submit">Join</button></form><p class="muted" style="font-size:12.5px;margin-top:8px" id="newsMsg" role="status"></p></div>
+    <div><p class="h4">Shop</p><ul><li><button type="button" data-go="shop" data-cat="engagement">Engagement rings</button></li><li><button type="button" data-go="shop" data-cat="sapphire">Sapphire rings</button></li><li><button type="button" data-go="design">Design your ring</button></li></ul></div>
+    <div><p class="h4">Visit</p><ul><li><button type="button" data-go="book">Book a viewing</button></li><li><button type="button" id="footSizer">Ring sizer</button></li><li><button type="button" data-go="owner">Owner dashboard</button></li></ul></div>
+    <div><p class="h4">Studio</p><ul><li><button type="button" data-go="for-jewelers">For jewelers</button></li><li><button type="button" id="footXray">X-ray tour</button></li></ul></div>
+    <p class="fine"><span>© Halden, a fictional store. Prices are examples.</span><span>Rings rendered in 3D from the same engine as the designer.</span></p>
+  </div>
+</footer>
+
+<button type="button" class="xfab" id="xfab"><i></i>How this site sells</button>
+<div class="xcard" id="xcard" hidden role="dialog" aria-label="X-ray note"></div>
+
+<div class="veil" id="veil"></div>
+<aside class="drawer" id="bag" aria-label="Your bag" inert>
+  <header><h2 id="bagTitle">Your bag</h2><button type="button" class="x" data-close aria-label="Close bag"><svg><use href="#i-x"/></svg></button></header>
+  <div class="body" id="bagBody"></div>
+  <footer id="bagFoot"></footer>
+</aside>
+<nav class="mnav" id="mnav" aria-label="Menu" inert>
+  <button type="button" class="x" data-close aria-label="Close menu" style="justify-self:end"><svg><use href="#i-x"/></svg></button>
+  <button type="button" class="it" data-go="shop" data-cat="engagement">Engagement</button>
+  <button type="button" class="it" data-go="shop" data-cat="sapphire">Sapphire</button>
+  <button type="button" class="it" data-go="design">Design your ring</button>
+  <button type="button" class="it" data-go="book">Book a viewing</button>
+  <button type="button" class="it" data-go="owner">Owner dashboard</button>
+  <button type="button" class="it" data-go="for-jewelers">For jewelers</button>
+</nav>
+<div class="modal" id="sizer" inert>
+  <div class="box" role="dialog" aria-labelledby="sizerTitle">
+    <button type="button" class="x" data-close aria-label="Close sizer"><svg><use href="#i-x"/></svg></button>
+    <h2 id="sizerTitle">Find her ring size</h2>
+    <div id="sizerBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="products.js"></script>
+<script>
+document.documentElement.lang = 'en';   // the publish skeleton's <html> has no lang, and puts everything in <body>
+document.head.append(Object.assign(document.createElement('meta'), { name: 'description', content: 'Halden: lab-grown diamond and sapphire engagement rings, made to order. A working demo store by MLP Consulting.' }));
+
+/* ===== Studio config: the agency layer. Change name, email or prices here. ===== */
+const STUDIO = {
+  name: 'MLP Consulting',
+  email: 'myles@mlpconsults.com',
+  tiers: [
+    { k: 'storefront', name: 'Storefront', amt: '$3,500', unit: 'one time', flag: '', items: ['Catalogue, product pages and metal swatches', 'Bag and checkout through Stripe or Shopify', 'Viewing bookings and the on-screen sizer', 'Your domain, mobile-first, live in 2–3 weeks'] },
+    { k: 'atelier', name: 'Atelier', amt: '$7,500', unit: 'one time', flag: 'What you just used', items: ['Everything in Storefront', '3D ring designer with your settings and prices', 'Rendered photos of every ring in every metal', 'Owner dashboard for bookings, orders and enquiries'] },
+    { k: 'care', name: 'Care plan', amt: '$250', unit: 'per month', flag: '', items: ['Hosting, updates and security', 'New rings added and rendered each month', 'A monthly note on what sold and what people searched', 'Cancel any month'] },
+  ],
+};
+
+/* ===== X-ray notes: what each feature does for the jeweler ===== */
+const XRAY = {
+  shapes: ['Shop by shape', 'Most engagement-ring shoppers start with the stone shape. One tap filters the whole catalogue.'],
+  builder: ['3D ring designer', 'Customers build their ring with real diamond refraction and a live price, then add it to the bag or book a viewing with a picture of their design attached.'],
+  swatches: ['Every metal, every price', 'Each ring is rendered in platinum, yellow and rose gold. The photo and the price change together, so nobody has to ask.'],
+  sizer: ['On-screen ring sizer', 'Calibrated against a bank card so it measures real millimetres. Fewer wrong-size orders and resizing trips.'],
+  booking: ['Viewing bookings', 'Real days and hours, taken slots blocked. The booking arrives with the ring they were looking at, their budget and their notes.'],
+  bag: ['Bag and checkout', 'Engraving and size saved per ring, a financing line on every price, and a checkout that hands off to Stripe or Shopify.'],
+  measured: ['Measured, not claimed', 'The comparison comes from Lighthouse runs on real independent jewelers’ sites, the same test Google publishes. A pitch with numbers a jeweler can rerun themselves.'],
+  owner: ['Owner dashboard', 'Bookings, orders and enquiries from the site in one place, stored in a database the owner controls.'],
+};
+
+const $ = id => document.getElementById(id);
+const list = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const money = v => '$' + Math.round(v).toLocaleString('en-US');
+const P = Object.fromEntries(PRODUCTS.map(p => [p.id, p]));
+const metal = k => METALS.find(m => m.k === k);
+const priceOf = (id, m) => PRICES[id][m];
+const fromPrice = id => Math.min(...Object.values(PRICES[id]));
+const img = (id, v) => `img/${id}-${v}.jpg`;
+const SIZES = [3, 3.5, 4, 4.5, 5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5];
+const SHAPE_NAMES = { round: 'Round', oval: 'Oval', cushion: 'Cushion', emerald: 'Emerald', radiant: 'Radiant', asscher: 'Asscher', pear: 'Pear', marquise: 'Marquise' };
+const SHAPE_SVG = {
+  round: '<circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="8"/>',
+  oval: '<ellipse cx="24" cy="24" rx="11" ry="17"/><ellipse cx="24" cy="24" rx="5.5" ry="9"/>',
+  cushion: '<rect x="9" y="9" width="30" height="30" rx="9"/><rect x="16" y="16" width="16" height="16" rx="4"/>',
+  emerald: '<path d="M16 6h16l6 6v24l-6 6H16l-6-6V12z"/><path d="M19 12h10l3 3v18l-3 3H19l-3-3V15z"/>',
+  radiant: '<path d="M14 7h20l5 5v24l-5 5H14l-5-5V12z"/><path d="M14 7l10 17L14 41M34 7L24 24l10 17M9 12l15 12L9 36M39 12L24 24l15 12"/>',
+  asscher: '<path d="M16 8h16l8 8v16l-8 8H16l-8-8V16z"/><path d="M19 15h10l4 4v10l-4 4H19l-4-4V19z"/>',
+  pear: '<path d="M24 5c6 9 14 17 14 26a14 14 0 0 1-28 0c0-9 8-17 14-26z"/><path d="M24 17c3 5 7 9 7 14a7 7 0 0 1-14 0c0-5 4-9 7-14z"/>',
+  marquise: '<path d="M24 4c10 8 13 14 13 20s-3 12-13 20C14 36 11 30 11 24s3-12 13-20z"/><path d="M24 14c5 4 6 7 6 10s-1 6-6 10c-5-4-6-7-6-10s1-6 6-10z"/>',
+};
+const NOUN = { diamond: 'lab diamond', royal: 'royal blue sapphire', corn: 'cornflower sapphire', teal: 'teal sapphire', padpa: 'padparadscha sapphire' };
+
+/* ===== Per-viewer conveniences: bag and saved rings ===== */
+const store = {
+  get(k, d) { try { return JSON.parse(localStorage.getItem('halden.' + k)) ?? d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem('halden.' + k, JSON.stringify(v)); } catch {} },
+};
+let bag = store.get('bag', []);
+let saved = new Set(store.get('saved', []));
+let prefMetal = store.get('metal', 'plat');
+
+/* ===== Records: bookings, orders, enquiries. The shared database when this viewer has it, this device otherwise. ===== */
+let DB = null;
+const dbReady = (window.claude?.use ? window.claude.use('db') : Promise.resolve(null)).then(d => (DB = d)).catch(() => null);
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+async function record(kind, rec) {
+  rec = { ...rec, uid: uid(), created: new Date().toISOString() };
+  let live = false;
+  await dbReady;
+  if (DB) { try { await DB.collection(kind).doc(rec.uid).set(rec); live = true; } catch {} }
+  const local = store.get(kind, []); local.unshift({ ...rec, live }); store.set(kind, local.slice(0, 100));
+  return { rec, live };
+}
+async function readAll(kind) {
+  const local = store.get(kind, []);
+  const seen = new Set(local.map(r => r.uid)); let remote = [], readable = false;
+  await dbReady;
+  if (DB) { try { const s = await DB.collection(kind).orderBy('created', 'desc').limit(100).get(); remote = s.docs.map(d => ({ ...d.data(), live: true })); readable = true; } catch {} }
+  const merged = [...remote.map(r => (seen.has(r.uid) ? { ...r, mine: true } : r)), ...local.filter(r => !remote.some(x => x.uid === r.uid))];
+  merged.sort((a, b) => (b.created || '').localeCompare(a.created || ''));
+  return { rows: merged, readable };
+}
+
+/* ===== Toast ===== */
+let toastT;
+function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2600); }
+
+/* ===== Cards ===== */
+function card(p, m = prefMetal) {
+  const tag = p.cat === 'sapphire' ? 'Sapphire' : p.style;
+  return `<article class="card" data-id="${p.id}">
+    <button type="button" class="ph" data-go="ring-${p.id}" aria-label="${esc(p.name)}"><img src="${img(p.id, m)}" alt="${esc(p.name)} in ${metal(m).label}" loading="lazy"><img class="alt" src="${img(p.id, m + '-top')}" alt="" loading="lazy"><span class="tag">${tag}</span></button>
+    <button type="button" class="heart" data-save="${p.id}" aria-pressed="${saved.has(p.id)}" aria-label="Save ${esc(p.name)}"><svg><use href="#i-heart"/></svg></button>
+    <div class="meta"><h3><button type="button" data-go="ring-${p.id}">${esc(p.name)}</button></h3><span class="price num" data-price>${money(priceOf(p.id, m))}</span></div>
+    <p class="sub">${p.cfg.ct.toFixed(2)} ct ${SHAPE_NAMES[p.cfg.shape].toLowerCase()} · ${NOUN[p.cfg.center]}</p>
+    <div class="sw" role="group" aria-label="Metal">${METALS.map(x => `<button type="button" data-sw="${x.k}" aria-pressed="${x.k === m}" style="background:${x.swatch}" aria-label="${x.label}" title="${x.label}"></button>`).join('')}</div>
+  </article>`;
+}
+document.addEventListener('click', e => {
+  const sw = e.target.closest('[data-sw]');
+  if (sw && sw.closest('.card')) {
+    const c = sw.closest('.card'), id = c.dataset.id, m = sw.dataset.sw;
+    c.querySelector('.ph img').src = img(id, m); c.querySelector('.ph img.alt').src = img(id, m + '-top'); c.querySelector('[data-price]').textContent = money(priceOf(id, m));
+    c.querySelectorAll('[data-sw]').forEach(b => b.setAttribute('aria-pressed', b === sw));
+  }
+  const sv = e.target.closest('[data-save]');
+  if (sv) toggleSave(sv.dataset.save);
+});
+function toggleSave(id) {
+  saved.has(id) ? saved.delete(id) : saved.add(id);
+  store.set('saved', [...saved]);
+  document.querySelectorAll(`[data-save="${id}"]`).forEach(b => b.setAttribute('aria-pressed', saved.has(id)));
+  if (current.view === 'ring' && current.id === id) $('pdpHeart').setAttribute('aria-pressed', saved.has(id));
+  $('savedCount').textContent = saved.size || '';
+  toast(saved.has(id) ? `Saved ${P[id].name}` : `Removed ${P[id].name} from saved`);
+  if (current.view === 'shop' && $('fSaved').checked) renderShop();
+}
+
+/* ===== Router: bare hash tokens ===== */
+const current = { view: 'home' };
+function go(token, opts = {}) {
+  let view = token, id = null;
+  if (token.startsWith('ring-')) { view = 'ring'; id = token.slice(5); if (!P[id]) view = 'shop'; }
+  if (!document.querySelector(`[data-view="${view}"]`)) view = 'home';
+  current.view = view; current.id = id;
+  document.querySelectorAll('.view').forEach(v => (v.hidden = v.dataset.view !== view));
+  document.querySelectorAll('.nav button').forEach(b => b.removeAttribute('aria-current'));
+  if (view === 'shop') { if (opts.cat) filters.cat = opts.cat; if (opts.shape) { filters.shapes = new Set([opts.shape]); filters.cat = 'all'; } renderShop(); }
+  if (view === 'ring') renderPdp(id);
+  if (view === 'design') mountBuilder(opts.cfg);
+  if (view === 'book') renderBook(opts);
+  if (view === 'owner') renderOwner();
+  if (view === 'shop') document.querySelector(`.nav [data-cat="${filters.cat}"]`)?.setAttribute('aria-current', 'page');
+  if (view === 'design') document.querySelector('.nav [data-go="design"]').setAttribute('aria-current', 'page');
+  $('stickyBuy').hidden = view !== 'ring';
+  closeAll();
+  const tok = view === 'ring' ? 'ring-' + id : view;
+  if (location.hash.slice(1) !== tok) history.replaceState(null, '', '#' + tok);
+  if (!opts.keepScroll) window.scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' });
+  refreshPins();
+}
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-go]');
+  if (!g) return;
+  e.preventDefault();
+  go(g.dataset.go, { cat: g.dataset.cat });
+  if (g.dataset.then === 'sizer') openSizer();
+});
+document.addEventListener('click', e => {
+  const s = e.target.closest('[data-scroll]');
+  if (s) $(s.dataset.scroll).scrollIntoView({ behavior: 'smooth' });
+});
+
+/* ===== Home ===== */
+function renderHome() {
+  $('shapeStrip').innerHTML = Object.keys(SHAPE_NAMES).map(k => `<button type="button" data-shape="${k}"><svg viewBox="0 0 48 48" aria-hidden="true">${SHAPE_SVG[k]}</svg><span class="caps" style="font-size:10.5px">${SHAPE_NAMES[k]}</span></button>`).join('');
+  $('homeBridal').innerHTML = ['wren', 'oriel', 'margot', 'celeste'].map(id => card(P[id])).join('');
+  $('homeSapphire').innerHTML = PRODUCTS.filter(p => p.cat === 'sapphire').map(p => card(p)).join('');
+}
+$('shapeStrip').addEventListener('click', e => { const b = e.target.closest('[data-shape]'); if (b) go('shop', { shape: b.dataset.shape }); });
+
+/* ===== Shop ===== */
+const filters = { cat: 'all', shapes: new Set(), metal: prefMetal, max: 9500, savedOnly: false, sort: 'featured' };
+function renderFilters() {
+  const cats = [['all', 'All rings'], ['engagement', 'Engagement'], ['sapphire', 'Sapphire']];
+  $('fCat').innerHTML = cats.map(([k, l]) => `<button type="button" class="chip" data-fcat="${k}" aria-pressed="${filters.cat === k}">${l}</button>`).join('');
+  $('fShape').innerHTML = Object.keys(SHAPE_NAMES).map(k => `<button type="button" class="chip" data-fshape="${k}" aria-pressed="${filters.shapes.has(k)}"><svg viewBox="0 0 48 48" aria-hidden="true">${SHAPE_SVG[k]}</svg>${SHAPE_NAMES[k]}</button>`).join('');
+  $('fMetal').innerHTML = METALS.map(m => `<button type="button" class="chip" data-fmetal="${m.k}" aria-pressed="${filters.metal === m.k}"><i style="background:${m.swatch}"></i>${m.label.replace(' Gold', '')}</button>`).join('');
+  $('fPrice').value = filters.max; $('fPriceOut').textContent = filters.max >= 9500 ? 'Any price' : `Up to ${money(filters.max)}`;
+  $('fSaved').checked = filters.savedOnly; $('fSort').value = filters.sort;
+}
+function renderShop() {
+  renderFilters();
+  const titles = { all: 'All rings', engagement: 'Engagement rings', sapphire: 'Sapphire rings' };
+  $('shopTitle').textContent = titles[filters.cat]; $('crumbCat').textContent = titles[filters.cat];
+  let list = PRODUCTS.filter(p => (filters.cat === 'all' || p.cat === filters.cat) && (!filters.shapes.size || filters.shapes.has(p.cfg.shape))
+    && priceOf(p.id, filters.metal) <= filters.max && (!filters.savedOnly || saved.has(p.id)));
+  if (filters.sort !== 'featured') list = [...list].sort((a, b) => (priceOf(a.id, filters.metal) - priceOf(b.id, filters.metal)) * (filters.sort === 'low' ? 1 : -1));
+  $('shopCount').textContent = `${list.length} ${list.length === 1 ? 'ring' : 'rings'}`;
+  $('shopGrid').innerHTML = list.length ? list.map(p => card(p, filters.metal)).join('')
+    : `<div class="empty" style="grid-column:1/-1"><h3>No rings match all of that</h3><p class="muted">${filters.savedOnly && !saved.size ? 'You haven’t saved any rings yet. Tap the heart on a ring to keep it here.' : 'Try another shape or a higher price, or design exactly what you want.'}</p><div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center"><button type="button" class="btn ghost" id="emptyReset">Clear filters</button><button type="button" class="btn" data-go="design">Design your own</button></div></div>`;
+  $('emptyReset')?.addEventListener('click', resetFilters);
+}
+function resetFilters() { Object.assign(filters, { cat: 'all', max: 9500, savedOnly: false, sort: 'featured' }); filters.shapes.clear(); renderShop(); }
+$('filters').addEventListener('click', e => {
+  const c = e.target.closest('[data-fcat]'), s = e.target.closest('[data-fshape]'), m = e.target.closest('[data-fmetal]');
+  if (c) filters.cat = c.dataset.fcat;
+  if (s) { const k = s.dataset.fshape; filters.shapes.has(k) ? filters.shapes.delete(k) : filters.shapes.add(k); }
+  if (m) { filters.metal = prefMetal = m.dataset.fmetal; store.set('metal', prefMetal); }
+  if (c || s || m) renderShop();
+});
+$('fPrice').oninput = e => { filters.max = +e.target.value; renderShop(); };
+$('fSaved').onchange = e => { filters.savedOnly = e.target.checked; renderShop(); };
+$('fSort').onchange = e => { filters.sort = e.target.value; renderShop(); };
+$('fReset').onclick = resetFilters;
+$('filterToggle').onclick = () => $('filters').classList.toggle('open');
+$('savedBtn').onclick = () => { filters.savedOnly = true; filters.cat = 'all'; filters.shapes.clear(); filters.max = 9500; go('shop'); };
+
+/* ===== Product page ===== */
+const pdp = { metal: 'plat', size: null, view: 'metal' };
+function renderPdp(id) {
+  const p = P[id];
+  pdp.metal = prefMetal; pdp.size = store.get('size', null); pdp.view = 'metal';
+  $('pdpName').textContent = p.name; $('pdpCrumbName').textContent = p.name; $('sbName').textContent = p.name;
+  $('pdpCrumb').textContent = p.cat === 'sapphire' ? 'Sapphire' : 'Engagement'; $('pdpCrumb').dataset.cat = p.cat;
+  $('pdpStyle').textContent = `${p.style} · ${p.cfg.ct.toFixed(2)} ct ${SHAPE_NAMES[p.cfg.shape]}`;
+  $('pdpLine').textContent = p.line;
+  $('pdpEngrave').value = '';
+  const c = p.cfg, acc = { none: 'None', halo: 'Halo of round brilliants', hidden: 'Hidden halo under the center', side: `Two ${c.accentCt?.toFixed(2)} ct ${c.accentShape === 'baguette' ? 'tapered baguettes' : c.accentShape + 's'} (${NOUN[c.accentStone || 'diamond']})`, toi: `${c.accentCt?.toFixed(2)} ct ${c.accentShape} ${NOUN[c.accentStone]}` }[c.accent];
+  const head = { prong4: '4 prongs', prong6: '6 prongs', claw: '4 claw prongs', compass: 'Compass prongs', bezel: 'Bezel' }[c.head];
+  const band = { plain: 'Polished', pave: 'Pavé diamonds', split: 'Split shank', knife: 'Knife-edge', twist: 'Twisted' }[c.band];
+  $('pdpSpec').innerHTML = [['Center', `${c.ct.toFixed(2)} ct ${SHAPE_NAMES[c.shape].toLowerCase()} ${NOUN[c.center]}`], ['Grade', c.center === 'diamond' ? 'F–G colour, VS1+, excellent cut, IGI' : 'Heated, eye-clean, lab report'], ['Setting', head], ['Accents', acc], ['Band', `${band}, ${c.bandW.toFixed(1)} mm`]]
+    .map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+  $('pdpSizes').innerHTML = SIZES.map(s => `<button type="button" data-size="${s}" aria-pressed="${pdp.size === s}">${s}</button>`).join('');
+  $('pdpMetals').innerHTML = METALS.map(m => `<button type="button" data-pm="${m.k}" style="background:${m.swatch};width:30px;height:30px" aria-label="${m.label}" title="${m.label}"></button>`).join('');
+  $('pdpMore').innerHTML = PRODUCTS.filter(x => x.id !== id && (x.cat === p.cat || x.cfg.shape === p.cfg.shape)).slice(0, 4).map(x => card(x)).join('');
+  $('pdpHeart').setAttribute('aria-pressed', saved.has(id)); $('sizeErr').hidden = true;
+  const d = new Date(); d.setDate(d.getDate() + 25);
+  $('pdpShip').textContent = `Made to order. Order today and it ships by ${d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}, insured.`;
+  updatePdp();
+}
+function updatePdp() {
+  const id = current.id, m = metal(pdp.metal), pr = priceOf(id, pdp.metal);
+  $('pdpPrice').textContent = money(pr); $('sbPrice').textContent = money(pr);
+  $('pdpMonthly').textContent = `or ${money(pr / 12)}/mo for 12 months`;
+  $('pdpMetalName').textContent = m.label;
+  $('pdpMetals').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.dataset.pm === pdp.metal));
+  $('pdpSizes').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.size === pdp.size));
+  const views = [['metal', img(id, pdp.metal), `${P[id].name} in ${m.label}`], ['top', img(id, pdp.metal + '-top'), 'From above'], ['profile', img(id, pdp.metal + '-profile'), 'From the side'], ...METALS.filter(x => x.k !== pdp.metal).map(x => ['m-' + x.k, img(id, x.k), `In ${x.label}`])];
+  const cur = views.find(v => v[0] === pdp.view) || views[0];
+  $('stageImg').src = cur[1]; $('stageImg').alt = cur[2]; $('stagePh').classList.remove('zoom');
+  $('thumbs').innerHTML = views.map(v => `<button type="button" data-th="${v[0]}" aria-pressed="${v === cur}" aria-label="${esc(v[2])}"><img src="${v[1]}" alt=""></button>`).join('');
+}
+$('pdpMetals').addEventListener('click', e => { const b = e.target.closest('[data-pm]'); if (!b) return; pdp.metal = prefMetal = b.dataset.pm; store.set('metal', prefMetal); pdp.view = 'metal'; updatePdp(); });
+$('pdpSizes').addEventListener('click', e => { const b = e.target.closest('[data-size]'); if (!b) return; pdp.size = +b.dataset.size; store.set('size', pdp.size); $('sizeErr').hidden = true; updatePdp(); });
+$('thumbs').addEventListener('click', e => { const b = e.target.closest('[data-th]'); if (!b) return; const v = b.dataset.th; if (v.startsWith('m-')) { pdp.metal = v.slice(2); pdp.view = 'metal'; } else pdp.view = v; updatePdp(); });
+$('stagePh').addEventListener('click', e => { const r = e.currentTarget.getBoundingClientRect(); e.currentTarget.style.setProperty('--zx', ((e.clientX - r.left) / r.width * 100) + '%'); e.currentTarget.style.setProperty('--zy', ((e.clientY - r.top) / r.height * 100) + '%'); e.currentTarget.classList.toggle('zoom'); });
+$('stagePh').addEventListener('mousemove', e => { if (!e.currentTarget.classList.contains('zoom')) return; const r = e.currentTarget.getBoundingClientRect(); e.currentTarget.style.setProperty('--zx', ((e.clientX - r.left) / r.width * 100) + '%'); e.currentTarget.style.setProperty('--zy', ((e.clientY - r.top) / r.height * 100) + '%'); });
+function addCurrent() {
+  if (!pdp.size) { $('sizeErr').hidden = false; $('pdpSizes').querySelector('button')?.closest('.opt').scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+  const id = current.id;
+  addToBag({ key: `${id}-${pdp.metal}-${pdp.size}-${$('pdpEngrave').value}`, name: P[id].name, img: img(id, pdp.metal), desc: `${metal(pdp.metal).label} · size ${pdp.size}`, price: priceOf(id, pdp.metal), engrave: $('pdpEngrave').value.trim() });
+}
+$('pdpAdd').onclick = addCurrent; $('sbAdd').onclick = addCurrent;
+$('pdpHeart').onclick = () => toggleSave(current.id);
+$('pdpBook').onclick = () => go('book', { ring: { name: P[current.id].name, img: img(current.id, pdp.metal), desc: `${metal(pdp.metal).label}${pdp.size ? ' · size ' + pdp.size : ''}` } });
+$('pdpCustom').onclick = () => go('design', { cfg: { ...P[current.id].cfg, metal: pdp.metal, size: pdp.size || 6 } });
+$('openSizer').onclick = () => openSizer();
+$('footSizer').onclick = () => openSizer();
+
+/* ===== Bag ===== */
+function addToBag(item) {
+  const hit = bag.find(b => b.key === item.key);
+  hit ? hit.qty++ : bag.push({ ...item, qty: 1 });
+  store.set('bag', bag); renderBag(); openBag(); checkout.step = 'bag'; renderBag();
+}
+const checkout = { step: 'bag' };
+function bagTotal() { return bag.reduce((s, b) => s + b.price * b.qty, 0); }
+function renderBag() {
+  const n = bag.reduce((s, b) => s + b.qty, 0);
+  $('bagCount').textContent = n || '';
+  if (checkout.step === 'placed') return;
+  if (!bag.length) {
+    $('bagTitle').textContent = 'Your bag';
+    $('bagBody').innerHTML = `<div class="empty" style="margin-top:20px"><h3>Your bag is empty</h3><p class="muted">Rings you add, or design yourself, will wait here.</p><button type="button" class="btn" data-go="shop" data-cat="engagement">Shop engagement rings</button></div>`;
+    $('bagFoot').innerHTML = ''; return;
+  }
+  if (checkout.step === 'details') return renderCheckout();
+  $('bagTitle').textContent = `Your bag (${n})`;
+  $('bagBody').innerHTML = bag.map((b, i) => `<div class="line"><img src="${b.img}" alt=""><div><h3>${esc(b.name)}</h3><p class="d">${esc(b.desc)}</p>
+    <input data-eng="${i}" maxlength="20" value="${esc(b.engrave || '')}" placeholder="Add a free engraving (20 characters)" aria-label="Engraving for ${esc(b.name)}">
+    <div class="ctl"><span class="num">${money(b.price)}${b.qty > 1 ? ' × ' + b.qty : ''}</span><button type="button" class="link" data-rm="${i}" style="font-size:10.5px">Remove</button></div></div></div>`).join('');
+  const t = bagTotal();
+  $('bagFoot').innerHTML = `<div class="tot"><span>Insured delivery</span><span>Free</span></div><div class="tot big num"><span>Total</span><span>${money(t)}</span></div><p class="muted" style="font-size:12.5px">or ${money(t / 12)}/mo for 12 months with financing, subject to approval</p><button type="button" class="btn" id="toCheckout">Check out</button>`;
+  $('toCheckout').onclick = () => { checkout.step = 'details'; renderBag(); };
+}
+$('bagBody').addEventListener('click', e => { const r = e.target.closest('[data-rm]'); if (r) { bag.splice(+r.dataset.rm, 1); store.set('bag', bag); renderBag(); } });
+$('bagBody').addEventListener('input', e => { const i = e.target.dataset.eng; if (i != null) { bag[i].engrave = e.target.value; store.set('bag', bag); } });
+function renderCheckout() {
+  $('bagTitle').textContent = 'Checkout';
+  $('bagBody').innerHTML = `<form id="coForm" novalidate style="display:grid;gap:12px;padding-top:16px">
+    <p class="sample" style="padding:10px;border:1px dashed var(--line)">Demo checkout. No card is taken here. On a live site this step hands off to Stripe or Shopify.</p>
+    <div class="fld"><label for="coName">Full name</label><input id="coName" autocomplete="name" required></div>
+    <div class="fld"><label for="coEmail">Email</label><input id="coEmail" type="email" autocomplete="email" required></div>
+    <div class="fld"><label for="coAddr">Street address</label><input id="coAddr" autocomplete="street-address" required></div>
+    <div class="row2"><div class="fld"><label for="coCity">City</label><input id="coCity" autocomplete="address-level2" required></div><div class="fld"><label for="coZip">ZIP</label><input id="coZip" autocomplete="postal-code" inputmode="numeric" required></div></div>
+    <p class="fld"><span class="err" id="coErr" hidden></span></p></form>`;
+  $('bagFoot').innerHTML = `<div class="tot big num"><span>Total</span><span>${money(bagTotal())}</span></div><button type="button" class="btn" id="placeOrder">Place order</button><button type="button" class="link" id="backBag" style="justify-self:center">Back to bag</button>`;
+  $('backBag').onclick = () => { checkout.step = 'bag'; renderBag(); };
+  $('placeOrder').onclick = placeOrder;
+}
+async function placeOrder() {
+  const v = id => $(id).value.trim(), err = $('coErr');
+  const miss = [['coName', 'your name'], ['coEmail', 'your email'], ['coAddr', 'a street address'], ['coCity', 'a city'], ['coZip', 'a ZIP code']].filter(([id]) => !v(id));
+  if (miss.length) { err.textContent = `Add ${list(miss.map(m => m[1]))} to place the order.`; err.hidden = false; return; }
+  if (!/^\S+@\S+\.\S+$/.test(v('coEmail'))) { err.textContent = 'That email address looks incomplete. Check it has an @ and a domain.'; err.hidden = false; return; }
+  $('placeOrder').disabled = true;
+  const items = bag.map(b => ({ name: b.name, desc: b.desc, price: b.price, qty: b.qty, engrave: b.engrave || '' }));
+  const { rec, live } = await record('orders', { name: v('coName'), email: v('coEmail'), city: v('coCity'), items, total: bagTotal(), status: 'New' });
+  checkout.step = 'placed'; bag = []; store.set('bag', bag);
+  $('bagCount').textContent = '';
+  $('bagTitle').textContent = 'Order placed';
+  $('bagBody').innerHTML = `<div class="done" style="margin-top:20px"><p class="caps ok">Order ${rec.uid.slice(-6).toUpperCase()}</p><h2>Thank you, ${esc(rec.name.split(' ')[0])}.</h2><p class="muted">${items.map(i => esc(i.name)).join(', ')}, ${money(rec.total)}. We'll email ${esc(rec.email)} when it goes to the workshop.</p><p class="src">${live ? 'Saved to the store database. It is in the owner dashboard now.' : 'Saved on this device (demo). Open the owner dashboard to see it.'}</p><button type="button" class="btn ghost" data-go="owner">See it in the owner dashboard</button></div>`;
+  $('bagFoot').innerHTML = '';
+  setTimeout(() => (checkout.step = 'bag'), 0);
+}
+function openBag() { $('bag').classList.add('on'); $('bag').inert = false; $('veil').classList.add('on'); }
+$('bagBtn').onclick = () => { if (checkout.step !== 'placed') checkout.step = 'bag'; renderBag(); openBag(); };
+$('pitchBag').onclick = () => { if (!bag.length) addToBag({ key: 'wren-plat-6-', name: 'The Wren', img: img('wren', 'plat'), desc: 'Platinum · size 6', price: priceOf('wren', 'plat'), engrave: '' }); else { renderBag(); openBag(); } };
+
+/* ===== Overlays ===== */
+function closeAll() {
+  ['bag', 'mnav', 'sizer'].forEach(id => { $(id).classList.remove('on'); $(id).inert = true; }); $('veil').classList.remove('on');
+}
+$('veil').onclick = closeAll;
+document.addEventListener('click', e => { if (e.target.closest('[data-close]')) closeAll(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeAll(); closeXcard(); } });
+$('menuBtn').onclick = () => { $('mnav').classList.add('on'); $('mnav').inert = false; $('veil').classList.add('on'); };
+
+/* ===== Ring sizer: calibrate px per mm with a bank card, then match a ring ===== */
+const sizerState = { cardPx: null, dia: 16.5 };
+const sizeFromMm = d => Math.round(((d - 11.63) / 0.8128) * 4) / 4;   // US size from inside diameter
+const mmFromSize = s => 11.63 + 0.8128 * s;
+function openSizer() {
+  $('sizer').classList.add('on'); $('sizer').inert = false; $('veil').classList.add('on');
+  sizerState.cardPx ??= store.get('cardPx', null);
+  renderSizer(sizerState.cardPx ? 2 : 1);
+}
+function renderSizer(step) {
+  const b = $('sizerBody');
+  if (step === 1) {
+    const w = sizerState.cardPx || 300;
+    b.innerHTML = `<p class="caps muted">Step 1 of 2 · Calibrate your screen</p><p>Hold any bank or loyalty card against the screen and drag the slider until the outline matches its width exactly.</p>
+      <div class="cardCal"><div id="calCard" style="width:${w}px">85.6 × 54 mm card</div></div>
+      <input type="range" id="calRange" min="160" max="520" value="${w}" style="width:100%;accent-color:var(--gold)" aria-label="Card outline width">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><button type="button" class="link" id="calSkip">No card? Use the size chart</button><button type="button" class="btn" id="calNext">It matches</button></div>`;
+    $('calRange').oninput = e => { $('calCard').style.width = e.target.value + 'px'; };
+    $('calNext').onclick = () => { sizerState.cardPx = +$('calRange').value; store.set('cardPx', sizerState.cardPx); renderSizer(2); };
+    $('calSkip').onclick = () => renderSizer(3);
+    return;
+  }
+  if (step === 2) {
+    const pxmm = sizerState.cardPx / 85.6;
+    b.innerHTML = `<p class="caps muted">Step 2 of 2 · Match a ring she already wears</p><p>Lay one of her rings on the circle and resize the circle until it sits just inside the band.</p>
+      <div class="ringCal"><div id="calRing"></div></div>
+      <input type="range" id="ringRange" min="14" max="20" step="0.05" value="${sizerState.dia}" style="width:100%;accent-color:var(--gold)" aria-label="Inside diameter">
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap"><div><span class="big num" id="calSize"></span><p class="muted num" id="calMm"></p></div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><button type="button" class="link" id="calRedo">Recalibrate</button><button type="button" class="link" id="calChart">Size chart</button><button type="button" class="btn" id="calUse">Use this size</button></div></div>`;
+    const upd = () => { const d = +$('ringRange').value, s = sizeFromMm(d), px = d * pxmm; sizerState.dia = d;
+      Object.assign($('calRing').style, { width: px + 'px', height: px + 'px' });
+      $('calSize').textContent = `US ${Math.min(13, Math.max(3, s)).toString().replace('.25', '¼').replace('.5', '½').replace('.75', '¾')}`; $('calMm').textContent = `${d.toFixed(1)} mm inside diameter`; };
+    $('ringRange').oninput = upd; upd();
+    $('calRedo').onclick = () => renderSizer(1); $('calChart').onclick = () => renderSizer(3);
+    $('calUse').onclick = () => useSize(Math.round(sizeFromMm(sizerState.dia) * 2) / 2);
+    return;
+  }
+  b.innerHTML = `<p>Inside diameter of the ring, measured across the middle.</p><div class="tableWrap" style="max-height:340px;overflow:auto"><table class="chart num"><thead><tr><th>US size</th><th>Diameter</th><th>Circumference</th><th></th></tr></thead><tbody>
+    ${SIZES.map(s => `<tr><td>${s}</td><td>${mmFromSize(s).toFixed(1)} mm</td><td>${(mmFromSize(s) * Math.PI).toFixed(1)} mm</td><td><button type="button" class="link" data-use="${s}" style="font-size:10px">Use</button></td></tr>`).join('')}</tbody></table></div>
+    <button type="button" class="link" id="calBack" style="justify-self:start">Back to the on-screen sizer</button>`;
+  $('calBack').onclick = () => renderSizer(sizerState.cardPx ? 2 : 1);
+  b.querySelectorAll('[data-use]').forEach(x => (x.onclick = () => useSize(+x.dataset.use)));
+}
+function useSize(s) {
+  s = Math.min(9.5, Math.max(3, s));
+  store.set('size', s); closeAll();
+  if (current.view === 'ring') { pdp.size = s; $('sizeErr').hidden = true; updatePdp(); }
+  toast(`Size ${s} saved. We'll use it on every ring.`);
+}
+
+/* ===== 3D designer (the builder runs in its own page; it posts designs back here) ===== */
+let builderCfg = null;
+function mountBuilder(cfg) {
+  const f = $('frame'), want = 'builder.html' + (cfg ? '?cfg=' + encodeURIComponent(JSON.stringify(cfg)) : '');
+  if (f.dataset.src === want && f.querySelector('iframe')) return;
+  f.dataset.src = want;
+  f.innerHTML = `<iframe src="${want}" title="3D ring designer" allow="fullscreen"></iframe>`;
+}
+window.addEventListener('message', e => {
+  const fr = $('frame').querySelector('iframe');
+  if (!fr || e.source !== fr.contentWindow || !e.data?.type) return;
+  const { type, cfg, desc, price, img: pic } = e.data;
+  if (type === 'ring:add') addToBag({ key: 'custom-' + uid(), name: 'Your design', img: pic, desc: `${desc} · size ${cfg.size}`, price, engrave: '' });
+  if (type === 'ring:view') go('book', { ring: { name: 'Your design', img: pic, desc }, type: 'custom' });
+  if (type === 'ring:file') saveFile(e.data.filename, e.data.data);
+});
+// The designer's 3D file or photo: the viewer confirms the save (a published page cannot start a download itself).
+// Published pages may save a .zip but not an .stl, so the file goes inside one.
+async function saveFile(filename, data) {
+  const dl = await window.claude?.use?.('downloads');
+  const stl = /\.stl$/.test(filename);   // a photo saves as itself
+  if (dl) { try { await dl.save(stl ? { filename: filename.replace(/\.stl$/, '.zip'), data: zip1(filename, new Uint8Array(data)) } : { filename, data: new Uint8Array(data) }); } catch {} return; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([data])); a.download = filename; a.click();
+}
+
+/* ===== Booking ===== */
+const TYPES = [['viewing', 'Showroom viewing', 'Try rings on, an hour'], ['video', 'Video call', 'From home, 30 minutes'], ['custom', 'Custom design', 'Sketch it with a jeweler'], ['care', 'Resize or repair', 'Drop off, 15 minutes']];
+const SLOTS = ['11:00', '12:00', '13:30', '15:00', '16:30', '18:00'];
+const booking = { type: 'viewing', date: null, time: null, ring: null };
+let taken = [];
+function openDays() {
+  const out = [], d = new Date(); d.setHours(0, 0, 0, 0);
+  for (let i = 1; out.length < 18; i++) { const x = new Date(d); x.setDate(d.getDate() + i); out.push(x); }
+  return out;
+}
+const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const closedDay = (d, type) => type !== 'video' && (d.getDay() === 0 || d.getDay() === 1);
+async function renderBook(opts = {}) {
+  if (opts.ring) booking.ring = opts.ring;
+  if (opts.type) booking.type = opts.type;
+  $('bookForm').hidden = false; $('bDone').hidden = true;
+  $('bType').innerHTML = TYPES.map(([k, l, s]) => `<button type="button" data-bt="${k}" aria-pressed="${booking.type === k}"><b>${l}</b><span>${s}</span></button>`).join('');
+  const days = openDays();
+  if (!booking.date || closedDay(new Date(booking.date + 'T12:00'), booking.type)) booking.date = iso(days.find(d => !closedDay(d, booking.type)));
+  $('bDates').innerHTML = days.map(d => `<button type="button" data-bd="${iso(d)}" aria-pressed="${iso(d) === booking.date}" ${closedDay(d, booking.type) ? 'disabled title="Closed"' : ''}><small>${d.toLocaleDateString('en-US', { weekday: 'short' })}</small><b class="num">${d.getDate()}</b><small>${d.toLocaleDateString('en-US', { month: 'short' })}</small></button>`).join('');
+  renderSlots(); renderBookSummary();
+  const { rows } = await readAll('bookings'); taken = rows.map(r => r.date + ' ' + r.time); renderSlots();
+}
+function renderSlots() {
+  const free = SLOTS.filter(s => !taken.includes(booking.date + ' ' + s));
+  if (booking.time && !free.includes(booking.time)) booking.time = null;
+  $('bSlots').innerHTML = SLOTS.map(s => { const t = taken.includes(booking.date + ' ' + s); return `<button type="button" data-bs="${s}" aria-pressed="${booking.time === s}" ${t ? 'disabled title="Taken"' : ''}>${s}</button>`; }).join('');
+  $('bSlotNote').textContent = SLOTS.length - free.length ? `${SLOTS.length - free.length} of ${SLOTS.length} times on this day are already booked.` : 'Every time on this day is free.';
+}
+function renderBookSummary() {
+  const t = TYPES.find(x => x[0] === booking.type), d = new Date(booking.date + 'T12:00');
+  $('bSummary').innerHTML = `<p class="caps muted">Your appointment</p><h3>${t[1]}</h3>${booking.ring ? `<img src="${booking.ring.img}" alt="${esc(booking.ring.name)}"><p><b style="font-weight:500">${esc(booking.ring.name)}</b><br><span class="muted" style="font-size:13px">${esc(booking.ring.desc)}</span></p><button type="button" class="link" id="bClearRing" style="justify-self:start;font-size:10.5px">Remove ring</button>` : `<p class="muted" style="font-size:14px">Looking at a ring? Open it and press "See it in person" and it'll be on the tray.</p>`}
+    <dl><dt>Day</dt><dd>${d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</dd><dt>Time</dt><dd>${booking.time || 'Pick a time'}</dd><dt>Length</dt><dd>${t[2].split(', ')[1]}</dd><dt>Where</dt><dd>${booking.type === 'video' ? 'Video link by email' : 'The showroom'}</dd></dl>`;
+  $('bClearRing')?.addEventListener('click', () => { booking.ring = null; renderBookSummary(); });
+}
+$('bType').addEventListener('click', e => { const b = e.target.closest('[data-bt]'); if (b) { booking.type = b.dataset.bt; renderBook(); } });
+$('bDates').addEventListener('click', e => { const b = e.target.closest('[data-bd]'); if (b && !b.disabled) { booking.date = b.dataset.bd; $('bDates').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); renderSlots(); renderBookSummary(); } });
+$('bSlots').addEventListener('click', e => { const b = e.target.closest('[data-bs]'); if (b && !b.disabled) { booking.time = b.dataset.bs; renderSlots(); renderBookSummary(); } });
+$('bookForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const v = id => $(id).value.trim(), err = $('bErr');
+  const miss = [!booking.time && 'a time', !v('bName') && 'your name', !v('bEmail') && 'your email'].filter(Boolean);
+  if (miss.length) { err.textContent = `Add ${list(miss)} to request this appointment.`; err.hidden = false; return; }
+  if (!/^\S+@\S+\.\S+$/.test(v('bEmail'))) { err.textContent = 'That email address looks incomplete. Check it has an @ and a domain.'; err.hidden = false; return; }
+  err.hidden = true;
+  const t = TYPES.find(x => x[0] === booking.type);
+  const { rec, live } = await record('bookings', { type: t[1], date: booking.date, time: booking.time, name: v('bName'), email: v('bEmail'), phone: v('bPhone'), budget: v('bBudget'), notes: v('bNotes'), ring: booking.ring ? `${booking.ring.name} · ${booking.ring.desc}` : '', status: 'Requested' });
+  $('bookForm').hidden = true;
+  const d = new Date(rec.date + 'T12:00');
+  $('bDone').innerHTML = `<p class="caps ok">Request received</p><h2>See you ${d.toLocaleDateString('en-US', { weekday: 'long' })}, ${esc(rec.name.split(' ')[0])}.</h2><p class="muted">${esc(t[1])} on ${d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} at ${rec.time}. A jeweler will confirm by email at ${esc(rec.email)}.</p><p class="src">${live ? 'Saved to the store database. The owner sees it now.' : 'Saved on this device (demo).'}</p><div style="display:flex;gap:12px;flex-wrap:wrap"><button type="button" class="btn ghost" data-go="owner">See what the jeweler sees</button><button type="button" class="link" id="bAgain">Book another</button></div>`;
+  $('bDone').hidden = false; booking.time = null;
+  $('bAgain').onclick = () => renderBook();
+  $('bDone').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+/* ===== Owner dashboard ===== */
+let ownerTab = 'bookings';
+async function renderOwner() {
+  const [b, o, l] = await Promise.all([readAll('bookings'), readAll('orders'), readAll('leads')]);
+  const live = b.readable || o.readable;
+  $('ownerSrc').textContent = live ? 'Live: reading the store database. Rows marked "you" came from this device.' : 'Showing what was made on this device. On a live site every customer’s bookings and orders land here.';
+  const wk = Date.now() - 7 * 864e5, revenue = o.rows.reduce((s, r) => s + (r.total || 0), 0);
+  $('kpis').innerHTML = [['Bookings', b.rows.length], ['This week', b.rows.filter(r => new Date(r.created) > wk).length + o.rows.filter(r => new Date(r.created) > wk).length], ['Orders', o.rows.length], ['Order value', money(revenue)]]
+    .map(([k, v]) => `<div><span class="caps muted" style="font-size:10.5px">${k}</span><b class="num">${v}</b></div>`).join('');
+  const tabs = [['bookings', `Bookings (${b.rows.length})`], ['orders', `Orders (${o.rows.length})`], ...(l.rows.length ? [['leads', `Enquiries (${l.rows.length})`]] : [])];
+  if (!tabs.some(t => t[0] === ownerTab)) ownerTab = 'bookings';
+  $('ownerTabs').innerHTML = tabs.map(([k, n]) => `<button type="button" role="tab" data-ot="${k}" aria-selected="${ownerTab === k}">${n}</button>`).join('');
+  const rows = { bookings: b.rows, orders: o.rows, leads: l.rows }[ownerTab];
+  const tag = r => `<span class="pill ${r.live ? 'live' : 'local'}">${r.live ? (r.mine ? 'you · live' : 'live') : 'this device'}</span>`;
+  const when = r => new Date(r.created).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+  const empty = { bookings: ['No bookings yet', 'Book a viewing and it shows up here, with the ring and budget attached.', 'book', 'Book a viewing'], orders: ['No orders yet', 'Add a ring to the bag and check out. No card is taken.', 'shop', 'Shop rings'], leads: ['No enquiries', '', 'for-jewelers', 'For jewelers'] }[ownerTab];
+  if (!rows.length) { $('ownerTable').innerHTML = `<div class="empty"><h3>${empty[0]}</h3><p class="muted">${empty[1]}</p><button type="button" class="btn" data-go="${empty[2]}">${empty[3]}</button></div>`; return; }
+  const cols = {
+    bookings: [['Requested', when], ['Appointment', r => `${esc(r.type)}<br><span class="muted num">${new Date(r.date + 'T12:00').toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}, ${esc(r.time)}</span>`], ['Customer', r => `${esc(r.name)}<br><span class="muted">${esc(r.email)}${r.phone ? ' · ' + esc(r.phone) : ''}</span>`], ['Ring and budget', r => `${esc(r.ring || '—')}<br><span class="muted">${esc(r.budget)}</span>`], ['Notes', r => esc(r.notes || '—')], ['', tag]],
+    orders: [['Placed', when], ['Order', r => `<span class="num">${esc((r.uid || '').slice(-6).toUpperCase())}</span><br><span class="muted">${esc(r.status)}</span>`], ['Customer', r => `${esc(r.name)}<br><span class="muted">${esc(r.email)} · ${esc(r.city)}</span>`], ['Items', r => (r.items || []).map(i => `${esc(i.name)} <span class="muted">${esc(i.desc)}${i.engrave ? ' · “' + esc(i.engrave) + '”' : ''}</span>`).join('<br>')], ['Total', r => `<span class="num">${money(r.total || 0)}</span>`], ['', tag]],
+    leads: [['Sent', when], ['Jeweler', r => `${esc(r.name)}<br><span class="muted">${esc(r.shop)}</span>`], ['Contact', r => `${esc(r.email)}<br><span class="muted">${esc(r.site || '')}</span>`], ['Plan', r => esc(r.plan)], ['Message', r => esc(r.msg || '—')], ['', tag]],
+  }[ownerTab];
+  $('ownerTable').innerHTML = `<div class="tableWrap"><table class="data"><thead><tr>${cols.map(c => `<th>${c[0]}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${cols.map(c => `<td>${c[1](r)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+$('ownerTabs').addEventListener('click', e => { const t = e.target.closest('[data-ot]'); if (t) { ownerTab = t.dataset.ot; renderOwner(); } });
+
+/* ===== For jewelers: tiers and the enquiry form ===== */
+function renderPitch() {
+  $('studioName').textContent = $('footStudio').textContent = STUDIO.name;
+  $('pitchKicker').textContent = `${STUDIO.name} · websites for independent jewelers`;
+  $('studioEmail').textContent = STUDIO.email;
+  $('tiers').innerHTML = STUDIO.tiers.map(t => `<div class="tier ${t.flag ? 'pick' : ''}"><p class="flag">${esc(t.flag) || '&nbsp;'}</p><h3>${esc(t.name)}</h3><p class="amt num">${esc(t.amt)}<small>${esc(t.unit)}</small></p><ul>${t.items.map(i => `<li>${esc(i)}</li>`).join('')}</ul><button type="button" class="btn ${t.flag ? '' : 'line'}" data-plan="${t.k}">Ask about ${esc(t.name)}</button></div>`).join('');
+  $('lPlan').innerHTML = STUDIO.tiers.map(t => `<option value="${esc(t.name)}">${esc(t.name)} · ${esc(t.amt)} ${esc(t.unit)}</option>`).join('') + '<option>Not sure yet</option>';
+  $('lPlan').value = STUDIO.tiers[1].name;
+}
+$('tiers').addEventListener('click', e => { const b = e.target.closest('[data-plan]'); if (!b) return; $('lPlan').value = STUDIO.tiers.find(t => t.k === b.dataset.plan).name; $('pContact').scrollIntoView({ behavior: 'smooth' }); });
+async function copy(text, btn, label) {
+  try { await navigator.clipboard.writeText(text); toast(label || 'Copied'); }
+  catch { const r = document.createRange(); r.selectNodeContents(btn); getSelection().removeAllRanges(); getSelection().addRange(r); toast('Selected. Press Cmd+C or Ctrl+C to copy.'); }
+}
+$('copyEmail').onclick = () => copy(STUDIO.email, $('studioEmail'), 'Email address copied');
+$('leadForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const v = id => $(id).value.trim(), err = $('lErr');
+  const miss = [!v('lName') && 'your name', !v('lShop') && 'the shop name', !v('lEmail') && 'your email'].filter(Boolean);
+  if (miss.length) { err.textContent = `Add ${list(miss)} so we can reply.`; err.hidden = false; return; }
+  if (!/^\S+@\S+\.\S+$/.test(v('lEmail'))) { err.textContent = 'That email address looks incomplete. Check it has an @ and a domain.'; err.hidden = false; return; }
+  err.hidden = true;
+  const lead = { name: v('lName'), shop: v('lShop'), email: v('lEmail'), site: v('lSite'), plan: v('lPlan'), msg: v('lMsg') };
+  const { live } = await record('leads', lead);
+  const text = `To: ${STUDIO.email}\nSubject: Website for ${lead.shop}\n\nHi, I'm ${lead.name} from ${lead.shop}${lead.site ? ' (' + lead.site + ')' : ''}.\nInterested in: ${lead.plan}\n\n${lead.msg || 'I saw the Halden demo and would like a site like it.'}\n\nReply to: ${lead.email}`;
+  $('leadForm').hidden = true;
+  $('leadDone').innerHTML = live
+    ? `<p class="caps ok">Sent</p><h3 style="font-size:28px">Thanks, ${esc(lead.name.split(' ')[0])}.</h3><p class="muted">${esc(STUDIO.name)} has your note and will reply to ${esc(lead.email)} within one working day.</p>`
+    : `<p class="caps" style="color:var(--gold)">One more step</p><h3 style="font-size:28px">Send this to ${esc(STUDIO.name)}</h3><p class="muted">This preview can't send email on its own. Copy the note below into an email to <span class="email" style="font-size:13px">${esc(STUDIO.email)}</span>.</p><pre id="leadText">${esc(text)}</pre><div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center"><button type="button" class="btn" id="copyLead">Copy the note</button><a class="link" href="mailto:${esc(STUDIO.email)}?subject=${encodeURIComponent('Website for ' + lead.shop)}&body=${encodeURIComponent(text)}">Open in my email app</a></div>`;
+  $('leadDone').hidden = false;
+  $('copyLead')?.addEventListener('click', () => copy(text, $('leadText'), 'Note copied. Paste it into an email.'));
+});
+$('newsForm').addEventListener('submit', e => { e.preventDefault(); const v = $('newsEmail').value.trim(); $('newsMsg').textContent = /^\S+@\S+\.\S+$/.test(v) ? `Thanks. New pieces will go to ${v}.` : 'Add a full email address, with an @ and a domain.'; if (/^\S+@\S+\.\S+$/.test(v)) $('newsEmail').value = ''; });
+
+
+/* ===== Measured: real jewelers vs this build. FINDINGS comes from tools/summarize.mjs; shops stay anonymous. ===== */
+const FINDINGS = {"measured":"2026-10-27","n":17,"states":12,"method":"Lighthouse 12.6.1, mobile, default simulated throttling, homepage; features read from the rendered homepage and bridal page.","scores":{"perf":[43,43,53,54,58,59,64,64,64,68,68,68,69,75,78,87,90],"a11y":[63,84,84,85,87,88,89,89,91,93,93,93,93,95,96,98,100],"bp":[57,57,71,75,75,75,75,75,79,79,93,96,96,96,100,100,100],"seo":[85,85,85,85,85,85,92,92,92,92,92,92,92,92,100,100,100]},"median":{"perf":64,"a11y":91,"bp":79,"seo":92},"medianLcp":7236,"medianMB":3.4,"below50perf":2,"nF":13,"features":{"booking":7,"sizer":1,"builder":1,"prices":7},"all4":0,"halden":{"perf":91,"a11y":100,"bp":100,"seo":100,"lcp":3456,"mb":1.3,"features":{"booking":true,"sizer":true,"builder":true,"prices":true}},"beatsMedianOnAll":true};
+function renderMeasured() {
+  const F = FINDINGS; if (!F) return;
+  $('measured').hidden = false;
+  $('mN').textContent = F.n;
+  const d = new Date(F.measured + 'T12:00').toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  $('mLede').textContent = `Independent, mostly family-owned shops in ${F.states} states, tested in ${d} with Google's Lighthouse on a simulated mid-range phone. Halden was run through the same test. On that phone the median shop's main image takes ${(F.medianLcp / 1000).toFixed(1)} seconds to appear, and its homepage weighs ${F.medianMB} MB. Halden's takes ${(F.halden.lcp / 1000).toFixed(1)} seconds and weighs ${F.halden.mb} MB.`;
+  const CAT = [['perf', 'Performance', 'How fast it loads'], ['a11y', 'Accessibility', 'Usable with a screen reader or keyboard'], ['bp', 'Best practices', 'Security and code health'], ['seo', 'SEO basics', 'What search engines can read']];
+  $('lhTicks').innerHTML = [0, 25, 50, 75, 90, 100].map(v => `<span style="left:${v}%">${v}</span>`).join('');
+  $('lhRows').innerHTML = CAT.map(([k, l, sub]) => {
+    const seen = {};   // shops with the same score stack above and below the line so each one shows
+    const dots = F.scores[k].map(v => { const j = seen[v] = (seen[v] ?? -1) + 1, dy = j ? (j % 2 ? -1 : 1) * Math.ceil(j / 2) * 8 : 0;
+      return `<i class="mk shop" style="left:${v}%;margin-top:${dy}px"></i><button type="button" class="hit" style="left:${v}%" data-tip="A real jeweler: ${v}" aria-label="A real jeweler scored ${v}"></button>`; }).join('');
+    return `<div class="lhRow"><div class="lab">${l}<br><small class="muted" style="font-size:11.5px">${sub}</small></div>
+      <div class="track" role="img" aria-label="${l}: Halden ${F.halden[k]}, shop median ${F.median[k]}, shops range ${F.scores[k][0]} to ${F.scores[k].at(-1)}"><span class="good"></span>${dots}
+        <i class="mk med" style="left:${F.median[k]}%"></i><button type="button" class="hit" style="left:${F.median[k]}%" data-tip="Median of ${F.n} shops: ${F.median[k]}" aria-label="Median ${F.median[k]}"></button>
+        <i class="mk halden" style="left:${F.halden[k]}%"></i><button type="button" class="hit" style="left:${F.halden[k]}%" data-tip="Halden: ${F.halden[k]}" aria-label="Halden ${F.halden[k]}"></button></div>
+      <div class="val num"><b>${F.halden[k]}</b> <small>vs ${F.median[k]}</small></div></div>`;
+  }).join('');
+  const feat = [['booking', 'let you book an appointment online'], ['sizer', 'have a ring size guide or sizer'], ['builder', 'offer a ring builder or try-on'], ['prices', 'show prices on their bridal page']];
+  $('featStats').innerHTML = feat.map(([k, t]) => `<div><b class="num">${F.features[k]}<small style="font-size:18px" class="muted"> / ${F.nF}</small></b><p>${t}</p><span class="us">${F.halden.features[k] ? '◆ Halden does' : 'Halden does not'}</span></div>`).join('');
+  $('mTable').innerHTML = `<div class="tableWrap" style="margin-bottom:12px"><table class="data" style="min-width:520px"><thead><tr><th>Lighthouse (mobile)</th><th>Halden</th><th>Shop median</th><th>Shop range</th></tr></thead><tbody>
+    ${CAT.map(([k, l]) => `<tr><td>${l}</td><td class="num">${F.halden[k]}</td><td class="num">${F.median[k]}</td><td class="num">${F.scores[k][0]} – ${F.scores[k].at(-1)}</td></tr>`).join('')}
+    <tr><td>Largest paint, slow phone</td><td class="num">${(F.halden.lcp / 1000).toFixed(1)} s</td><td class="num">${(F.medianLcp / 1000).toFixed(1)} s</td><td></td></tr>
+    <tr><td>Homepage weight</td><td class="num">${F.halden.mb} MB</td><td class="num">${F.medianMB} MB</td><td></td></tr></tbody></table></div>
+    <p>${esc(F.method)} Shops are kept anonymous. Feature counts cover the ${F.nF} sites whose pages rendered in a headless browser; the rest blocked or timed out, and count toward the scores only. Feature checks look for booking, sizing and builder links and for at least three prices in the rendered page, so a feature hidden behind a phone call doesn't count, and a custom-design service doesn't count as a ring builder. Halden was measured on a local copy of this page. Measured ${esc(F.measured)}.</p>`;
+}
+const tip = Object.assign(document.createElement('div'), { className: 'tip', hidden: true }); document.body.append(tip);
+document.addEventListener('pointerover', e => { const h = e.target.closest('[data-tip]'); if (!h) return; const r = h.getBoundingClientRect(); tip.textContent = h.dataset.tip; tip.style.left = r.left + r.width / 2 + 'px'; tip.style.top = r.top + 'px'; tip.hidden = false; });
+document.addEventListener('pointerout', e => { if (e.target.closest('[data-tip]')) tip.hidden = true; });
+document.addEventListener('scroll', () => (tip.hidden = true), { passive: true });
+
+/* ===== X-ray: numbered pins on each feature in view, with a note card ===== */
+let xOn = false, xIdx = 0;
+function pinsInView() {   // page features in reading order, then the header's bag
+  const els = [...document.querySelectorAll('[data-xray]')].filter(el => el.offsetParent !== null || el.closest('header'));
+  return [...els.filter(el => !el.closest('header')), ...els.filter(el => el.closest('header'))];
+}
+function refreshPins() {
+  document.querySelectorAll('.xpin').forEach(p => p.remove());
+  if (!xOn) return;
+  pinsInView().forEach((el, i) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'xpin'; b.textContent = i + 1; b.setAttribute('aria-label', 'X-ray note ' + (i + 1)); b.onclick = ev => { ev.stopPropagation(); showX(i); }; el.prepend(b); });
+  if (!$('xcard').hidden) showX(Math.min(xIdx, pinsInView().length - 1));
+}
+function showX(i) {
+  const els = pinsInView(); if (!els.length) return;
+  xIdx = (i + els.length) % els.length;
+  const [t, body] = XRAY[els[xIdx].dataset.xray];
+  $('xcard').innerHTML = `<p style="color:#c9a96e">X-ray ${xIdx + 1} / ${els.length}</p><h3>${t}</h3><p>${body}</p><div class="nav2"><span><button type="button" id="xPrev">←</button> <button type="button" id="xNext">→</button></span><span><button type="button" id="xPitch">For jewelers</button> <button type="button" id="xClose">Close</button></span></div>`;
+  $('xcard').hidden = false; $('xfab').hidden = true;
+  $('xPrev').onclick = () => showX(xIdx - 1); $('xNext').onclick = () => showX(xIdx + 1);
+  $('xClose').onclick = () => setXray(false); $('xPitch').onclick = () => { setXray(false); go('for-jewelers'); };
+  const r = els[xIdx].getBoundingClientRect();
+  if (r.top < 80 || r.bottom > innerHeight) els[xIdx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function closeXcard() { $('xcard').hidden = true; $('xfab').hidden = false; }
+function setXray(on) {
+  xOn = on; document.documentElement.classList.toggle('xray', on); $('xrayBtn').setAttribute('aria-pressed', on);
+  refreshPins(); on ? showX(0) : closeXcard();
+}
+$('xrayBtn').onclick = () => setXray(!xOn); $('xfab').onclick = () => setXray(true); $('footXray').onclick = () => setXray(true);
+$('pitchTour').onclick = () => { go('home'); setXray(true); };
+
+/* ===== Boot ===== */
+renderHome(); renderPitch(); renderMeasured(); renderBag(); $('savedCount').textContent = saved.size || '';
+go(location.hash.slice(1) || 'home', { keepScroll: true });
+window.addEventListener('hashchange', () => { const t = location.hash.slice(1); if (t && t !== (current.view === 'ring' ? 'ring-' + current.id : current.view)) go(t); });
+// A zip holding one file, stored without compression.
+function zip1(name, bytes) {
+  const T = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });
+  let crc = -1; for (const b of bytes) crc = T[(crc ^ b) & 255] ^ (crc >>> 8); crc = (crc ^ -1) >>> 0;
+  const nm = new TextEncoder().encode(name), n = bytes.length, L = nm.length;
+  const out = new Uint8Array(30 + L + n + 46 + L + 22), v = new DataView(out.buffer);
+  const head = (o, sig, central) => {
+    v.setUint32(o, sig, true); o += 4;
+    if (central) { v.setUint16(o, 20, true); o += 2; }
+    for (const [x, w] of [[20, 2], [0, 2], [0, 2], [0, 2], [33, 2], [crc, 4], [n, 4], [n, 4], [L, 2], [0, 2]]) { w === 2 ? v.setUint16(o, x, true) : v.setUint32(o, x, true); o += w; }
+    if (central) { v.setUint16(o, 0, true); v.setUint16(o + 2, 0, true); v.setUint16(o + 4, 0, true); v.setUint32(o + 6, 0, true); v.setUint32(o + 10, 0, true); o += 14; }
+    out.set(nm, o); return o + L;
+  };
+  let o = head(0, 0x04034b50, false); out.set(bytes, o); o += n;
+  const cd = o; o = head(o, 0x02014b50, true);
+  v.setUint32(o, 0x06054b50, true); v.setUint16(o + 8, 1, true); v.setUint16(o + 10, 1, true); v.setUint32(o + 12, o - cd, true); v.setUint32(o + 16, cd, true);
+  return out;
+}
+</script>

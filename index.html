@@ -250,10 +250,10 @@ summary:hover .thumb img{transform:scale(1.05)}
 .tag.built{background:var(--brass-soft);border-color:transparent;color:var(--brass)}
 .toggle{display:inline-flex;align-items:center;gap:10px;font:600 14px/1 var(--body);white-space:nowrap}
 .toggle i{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;font-style:normal;font-size:20px;line-height:1;transition:transform .35s,border-color .2s,color .2s}
-details[open] .toggle i{transform:rotate(45deg);border-color:var(--brass);color:var(--brass)}
+details[open]>summary .toggle i{transform:rotate(45deg);border-color:var(--brass);color:var(--brass)}
 .toggle .open-t{display:none}
-details[open] .toggle .open-t{display:inline}
-details[open] .toggle .closed-t{display:none}
+details[open]>summary .toggle .open-t{display:inline}
+details[open]>summary .toggle .closed-t{display:none}
 summary:hover h3{color:var(--brass)}
 .case-body{display:grid;gap:32px;border-top:1px solid var(--line);margin:0 26px 0 20px;padding-block:32px}
 details[open] .case-body{animation:open .5s cubic-bezier(.2,.7,.2,1)}
@@ -404,6 +404,12 @@ footer b{color:var(--on-night);font:400 22px/1 var(--display)}
 .rtab th{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 14px 12px 0;border-bottom:1px solid var(--ink)}
 .rtab td{padding:13px 14px 13px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted)}
 .rtab td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+.subcases{display:grid;gap:14px;margin-top:14px}
+.subcases details.case{box-shadow:none}
+.subcases details.case summary{grid-template-columns:150px minmax(0,1fr) auto;padding:14px 18px 14px 14px}
+.subcases .sum-text h3{font-size:19px}
+.subcases .case-body{margin:0 18px 0 14px}
+@media (max-width:1000px){.subcases details.case summary{grid-template-columns:minmax(0,1fr)}.subcases .thumb{display:none}}
 @media (max-width:980px){.autos{grid-template-columns:repeat(2,minmax(0,1fr))}.auto,.auto:not(:nth-child(3n+1)){padding:24px 24px 26px 0;border-left:0}.auto:nth-child(2n){padding-left:24px;border-left:1px solid var(--line)}.rules{grid-template-columns:minmax(0,1fr);gap:32px}}
 @media (max-width:620px){.autos{grid-template-columns:minmax(0,1fr)}.auto,.auto:nth-child(2n){padding:22px 0;border-left:0}.rtab{display:block;overflow-x:auto}.rtab td:first-child{white-space:normal}}
 
@@ -552,7 +558,70 @@ footer .refline a{color:var(--on-night)}
       <p class="lead rv d1">Websites, everyday workflows, and AI tools designed around the people using them.</p>
     </div>
     <div class="cases">
-      <details class="case rv" id="case-remodeler">
+      <details class="case" id="case-sites">
+        <summary>
+          <div class="thumb"><img decoding="async" src="img/site-cedarline.webp" width="1600" height="1000" alt="A restaurant website with table reservations, on desktop and phone" loading="lazy"></div>
+          <div class="sum-text">
+            <div class="tagrow"><span class="tag">Websites</span><span class="tag">Local businesses</span></div>
+            <h3>Websites for local businesses</h3>
+            <p>A pediatric office, a bookstore, a restaurant, a med spa and more, each with its own layout and the tools its customers actually use.</p>
+          </div>
+          <span class="toggle"><span class="closed-t">See the sites</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
+        </summary>
+        <div class="case-body">
+          <div class="cb-grid">
+            <div><h4>The idea</h4><p>Most small-business sites are a template with a phone number. These show what yours could be instead: a site that looks like nobody else’s and does real work, so customers can book, order or ask without picking up the phone.</p></div>
+            <div><h4>What they have in common</h4><ul><li>A design built around the business, not a theme</li><li>Booking, ordering or inquiries that work on the page</li><li>Prices and hours where people look for them</li><li>Fast, clean and easy to use on a phone</li></ul></div>
+          </div>
+          <div class="gal gal-sites">
+            <figure><div class="shot"><img decoding="async" src="img/jewelry-store.webp" width="1600" height="1000" alt="Halden demo jewelry store with a grid of engagement rings and prices" loading="lazy"></div><figcaption><b>Halden</b> · Jewelry store with a 3D ring designer <a class="demo-a" href="/work/jewelry/#shop" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/jewelry/builder.html" target="_blank" rel="noopener">Open the ring designer <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/brokerage-site.webp" width="1600" height="1000" alt="A redesigned real estate brokerage website on desktop and phone" loading="lazy"></div><figcaption><b>Boutique brokerage</b> · Real estate <a class="demo-a" href="/work/brokerage/site/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-birchway.webp" width="1600" height="1000" alt="Birchway Pediatrics website on desktop and phone" loading="lazy"></div><figcaption><b>Birchway Pediatrics</b> · Pediatric office <a class="demo-a" href="/work/sites/birchway/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/sites/birchway/#staff" target="_blank" rel="noopener">Open the staff side <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-camino.webp" width="1600" height="1000" alt="Osteria Camino website on desktop and phone" loading="lazy"></div><figcaption><b>Osteria Camino</b> · Italian restaurant <a class="demo-a" href="/work/sites/camino/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/sites/camino/#staff" target="_blank" rel="noopener">Open the staff side <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-paperwhale.webp" width="1600" height="1000" alt="Paperwhale Books website on desktop and phone" loading="lazy"></div><figcaption><b>Paperwhale Books</b> · Bookstore <a class="demo-a" href="/work/sites/paperwhale/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/sites/paperwhale/#staff" target="_blank" rel="noopener">Open the staff side <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-quietwell.webp" width="1600" height="1000" alt="Quietwell Aesthetics website on desktop and phone" loading="lazy"></div><figcaption><b>Quietwell Aesthetics</b> · Med spa <a class="demo-a" href="/work/sites/quietwell/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+          </div>
+          <details class="more"><summary><span class="m-closed">See 11 more sites</span><span class="m-open">Show fewer</span></summary>
+          <div class="gal gal-sites">
+            <figure><div class="shot"><img decoding="async" src="img/site-little-orbit.webp" width="1600" height="1000" alt="Little Orbit Tea website on desktop and phone" loading="lazy"></div><figcaption><b>Little Orbit Tea</b> · Boba shop <a class="demo-a" href="/work/sites/little-orbit/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-crestline.webp" width="1600" height="1000" alt="Crestline Design-Build website on desktop and phone" loading="lazy"></div><figcaption><b>Crestline Design-Build</b> · Remodeling company <a class="demo-a" href="/work/sites/crestline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-cedarline.webp" width="1600" height="1000" alt="Cedarline Kitchen website on desktop and phone" loading="lazy"></div><figcaption><b>Cedarline Kitchen</b> · Restaurant <a class="demo-a" href="/work/sites/cedarline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-hollis.webp" width="1600" height="1000" alt="Hollis Flower House website on desktop and phone" loading="lazy"></div><figcaption><b>Hollis Flower House</b> · Florist <a class="demo-a" href="/work/sites/hollis/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-bellwood.webp" width="1600" height="1000" alt="Bellwood Family Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Bellwood Family Dental</b> · Dental office <a class="demo-a" href="/work/sites/bellwood/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-coffee.webp" width="1600" height="1000" alt="Kestrel Hill Coffee Roasters website on desktop and phone" loading="lazy"></div><figcaption><b>Kestrel Hill Coffee Roasters</b> · Coffee roaster <a class="demo-a" href="/work/sites/coffee/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-halden.webp" width="1600" height="1000" alt="Halden &amp; Rye Bakery website on desktop and phone" loading="lazy"></div><figcaption><b>Halden &amp; Rye Bakery</b> · Bakery <a class="demo-a" href="/work/sites/halden/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-salon.webp" width="1600" height="1000" alt="Ostrander Hair Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Ostrander Hair Studio</b> · Hair salon <a class="demo-a" href="/work/sites/salon/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-pilates.webp" width="1600" height="1000" alt="Springline Reformer Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Springline Reformer Studio</b> · Pilates studio <a class="demo-a" href="/work/sites/pilates/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-boutique.webp" width="1600" height="1000" alt="Fig &amp; Fennimore website on desktop and phone" loading="lazy"></div><figcaption><b>Fig &amp; Fennimore</b> · Clothing boutique <a class="demo-a" href="/work/sites/boutique/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+            <figure><div class="shot"><img decoding="async" src="img/site-solace.webp" width="1600" height="1000" alt="Solace Studio Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Solace Studio Dental</b> · Dental studio <a class="demo-a" href="/work/sites/solace/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+          </div>
+          </details>
+          <p class="fine" style="margin:0">Every site is live: open one and book, order or browse like a customer would. Screens use sample data; business names and details are fictional.</p>
+        </div>
+      </details>
+      <details class="case" id="case-automations">
+        <summary>
+          <div class="thumb"><img decoding="async" src="img/auto-invoices.webp" width="1600" height="1000" alt="An overdue invoices summary with an aging bar and a table of open invoices" loading="lazy"></div>
+          <div class="sum-text">
+            <div class="tagrow"><span class="tag">Workflows</span><span class="tag">Any business</span></div>
+            <h3>Workflows that handle the routine</h3>
+            <p>Inbox replies, lead follow-up, reminders, reviews and invoice chasing, working in the background while you run the business.</p>
+          </div>
+          <span class="toggle"><span class="closed-t">See the automations</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
+        </summary>
+        <div class="case-body">
+          <ul class="autos">
+          <li><div class="shot"><img decoding="async" src="img/email-automation.webp" width="1600" height="1000" alt="Inbox with a new inquiry and a drafted reply ready to approve" loading="lazy"></div><div><h4>An inbox that answers itself</h4><p>Routine emails get an instant reply; personal ones wait as a draft for you to approve.</p></div></li>
+          <li><div class="shot"><img decoding="async" src="img/auto-follow-up.webp" width="1600" height="1000" alt="A text conversation beside a follow-up timeline" loading="lazy"></div><div><h4>Inquiries acknowledged right away</h4><p>Every inquiry gets an instant acknowledgment and a friendly follow-up schedule.</p></div></li>
+          <li><div class="shot"><img decoding="async" src="img/auto-reminders.webp" width="1600" height="1000" alt="A weekly calendar of appointments with confirmation status" loading="lazy"></div><div><h4>Appointments that show up</h4><p>Reminders and easy rescheduling by text cut no-shows.</p></div></li>
+          <li><div class="shot"><img decoding="async" src="img/auto-reviews.webp" width="1600" height="1000" alt="A rating summary with new customer reviews" loading="lazy"></div><div><h4>Feedback that is easy to give</h4><p>A consistent request after every completed job or visit, with a clear route for your team to respond.</p></div></li>
+          <li><div class="shot"><img decoding="async" src="img/auto-invoices.webp" width="1600" height="1000" alt="An overdue summary and a table of open invoices" loading="lazy"></div><div><h4>Invoices that chase themselves</h4><p>Polite reminders with a payment link, stopping once you are paid.</p></div></li>
+          <li><div class="shot"><img decoding="async" src="img/site-command-center.webp" width="1600" height="1000" alt="Owner command center with an approval queue and live job profit" loading="lazy"></div><div><h4>An owner’s morning view</h4><p>An approval queue and live job profit in one place.</p></div></li>
+          </ul>
+          <p class="fine" style="margin:0">Tap any screenshot to enlarge it. Screens use sample data.</p>
+          <h4 class="nx">Larger systems</h4>
+          <div class="cases subcases">
+<details class="case sub" id="case-remodeler">
         <summary>
           <div class="thumb"><img decoding="async" src="img/remodel-deck.webp" width="724" height="738" alt="A finished rear deck from the remodeling company's portfolio" loading="lazy"></div>
           <div class="sum-text">
@@ -581,8 +650,7 @@ footer .refline a{color:var(--on-night)}
           <p class="fine" style="margin:0">Screens use sample data.</p>
         </div>
       </details>
-
-      <details class="case rv d1" id="case-brokerage">
+<details class="case sub" id="case-brokerage">
         <summary>
           <div class="thumb"><img decoding="async" src="img/brokerage-site.webp" width="1600" height="1000" alt="A redesigned real estate website on desktop and phone" loading="lazy"></div>
           <div class="sum-text">
@@ -614,69 +682,32 @@ footer .refline a{color:var(--on-night)}
           <p class="fine" style="margin:0">Screens use sample data.</p>
         </div>
       </details>
-    </div>
-    <p class="morelink rv"><a href="#more-work" id="more-link">Explore more websites and workflow demos <span aria-hidden="true">→</span></a></p>
-    <div class="cases more-cases" id="more-work">
-      <h3 class="mw-h">More websites and workflow demos</h3>
-      <details class="case" id="case-sites">
+<details class="case sub" id="case-permits">
         <summary>
-          <div class="thumb"><img decoding="async" src="img/site-cedarline.webp" width="1600" height="1000" alt="A restaurant website with table reservations, on desktop and phone" loading="lazy"></div>
+          <div class="thumb"><img decoding="async" src="img/permit-map.webp" width="1600" height="1000" alt="A map of Los Angeles with new building permits marked as leads around Santa Monica" loading="lazy"></div>
           <div class="sum-text">
-            <div class="tagrow"><span class="tag">Websites</span><span class="tag">Local businesses</span></div>
-            <h3>Websites for local businesses</h3>
-            <p>A pediatric office, a bookstore, a restaurant, a med spa and more, each with its own layout and the tools its customers actually use.</p>
+            <div class="tagrow"><span class="tag">Tool · Contractors</span></div>
+            <h3>A lead map built from new building permits</h3>
+            <p>Public permit data from four Southern California cities becomes a lead list for the trades that come after the permit, worked right on the map.</p>
           </div>
-          <span class="toggle"><span class="closed-t">View</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
+          <span class="toggle"><span class="closed-t">Explore the map</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
         </summary>
         <div class="case-body">
           <div class="cb-grid">
-            <div><h4>The idea</h4><p>Most small-business sites are a template with a phone number. These show what yours could be instead: a site that looks like nobody else’s and does real work, so customers can book, order or ask without picking up the phone.</p></div>
-            <div><h4>What they have in common</h4><ul><li>A design built around the business, not a theme</li><li>Booking, ordering or inquiries that work on the page</li><li>Prices and hours where people look for them</li><li>Fast, clean and easy to use on a phone</li></ul></div>
+            <div><h4>The business need</h4><p>The trade that pulls a permit already has the job. Countertop, cabinet, fencing and landscaping companies come next, and they rarely hear about it in time.</p></div>
+            <div><h4>The solution</h4><ul><li>New permits from Los Angeles, Anaheim, Newport Beach and Costa Mesa, refreshed from each city's public data</li><li>Each permit sorted by what follows it: a kitchen remodel means countertops and cabinets, a pool means fencing and landscaping</li><li>Leads worked on the map: status, notes, follow-up dates and directions</li><li>A postcard preview for each address, as one possible next step</li></ul></div>
           </div>
-          <div class="gal gal-sites">
-            <figure><div class="shot"><img decoding="async" src="img/site-birchway.webp" width="1600" height="1000" alt="Birchway Pediatrics website on desktop and phone" loading="lazy"></div><figcaption><b>Birchway Pediatrics</b> · Pediatric office <a class="demo-a" href="/work/sites/birchway/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/sites/birchway/#staff" target="_blank" rel="noopener">Open the staff side <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-camino.webp" width="1600" height="1000" alt="Osteria Camino website on desktop and phone" loading="lazy"></div><figcaption><b>Osteria Camino</b> · Italian restaurant <a class="demo-a" href="/work/sites/camino/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/sites/camino/#staff" target="_blank" rel="noopener">Open the staff side <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-paperwhale.webp" width="1600" height="1000" alt="Paperwhale Books website on desktop and phone" loading="lazy"></div><figcaption><b>Paperwhale Books</b> · Bookstore <a class="demo-a" href="/work/sites/paperwhale/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/sites/paperwhale/#staff" target="_blank" rel="noopener">Open the staff side <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-quietwell.webp" width="1600" height="1000" alt="Quietwell Aesthetics website on desktop and phone" loading="lazy"></div><figcaption><b>Quietwell Aesthetics</b> · Med spa <a class="demo-a" href="/work/sites/quietwell/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-little-orbit.webp" width="1600" height="1000" alt="Little Orbit Tea website on desktop and phone" loading="lazy"></div><figcaption><b>Little Orbit Tea</b> · Boba shop <a class="demo-a" href="/work/sites/little-orbit/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-crestline.webp" width="1600" height="1000" alt="Crestline Design-Build website on desktop and phone" loading="lazy"></div><figcaption><b>Crestline Design-Build</b> · Remodeling company <a class="demo-a" href="/work/sites/crestline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
+          <div class="cb-grid">
+            <div><h4>Where it stands</h4><p>Built and running on public city permit records. A working tool, not yet piloted with a contractor.</p></div>
+            <div class="kv kv2">
+              <div><b>11,506</b><span>Permits in the last 45 days</span></div>
+              <div><b>2,473</b><span>Of them point to countertop work</span></div>
+            </div>
           </div>
-          <details class="more"><summary><span class="m-closed">See 9 more sites</span><span class="m-open">Show fewer</span></summary>
-          <div class="gal gal-sites">
-            <figure><div class="shot"><img decoding="async" src="img/site-cedarline.webp" width="1600" height="1000" alt="Cedarline Kitchen website on desktop and phone" loading="lazy"></div><figcaption><b>Cedarline Kitchen</b> · Restaurant <a class="demo-a" href="/work/sites/cedarline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-hollis.webp" width="1600" height="1000" alt="Hollis Flower House website on desktop and phone" loading="lazy"></div><figcaption><b>Hollis Flower House</b> · Florist <a class="demo-a" href="/work/sites/hollis/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-bellwood.webp" width="1600" height="1000" alt="Bellwood Family Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Bellwood Family Dental</b> · Dental office <a class="demo-a" href="/work/sites/bellwood/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-coffee.webp" width="1600" height="1000" alt="Kestrel Hill Coffee Roasters website on desktop and phone" loading="lazy"></div><figcaption><b>Kestrel Hill Coffee Roasters</b> · Coffee roaster <a class="demo-a" href="/work/sites/coffee/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-halden.webp" width="1600" height="1000" alt="Halden &amp; Rye Bakery website on desktop and phone" loading="lazy"></div><figcaption><b>Halden &amp; Rye Bakery</b> · Bakery <a class="demo-a" href="/work/sites/halden/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-salon.webp" width="1600" height="1000" alt="Ostrander Hair Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Ostrander Hair Studio</b> · Hair salon <a class="demo-a" href="/work/sites/salon/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-pilates.webp" width="1600" height="1000" alt="Springline Reformer Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Springline Reformer Studio</b> · Pilates studio <a class="demo-a" href="/work/sites/pilates/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-boutique.webp" width="1600" height="1000" alt="Fig &amp; Fennimore website on desktop and phone" loading="lazy"></div><figcaption><b>Fig &amp; Fennimore</b> · Clothing boutique <a class="demo-a" href="/work/sites/boutique/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-solace.webp" width="1600" height="1000" alt="Solace Studio Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Solace Studio Dental</b> · Dental studio <a class="demo-a" href="/work/sites/solace/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-          </div>
-          </details>
-          <p class="fine" style="margin:0">Every site is live: open one and book, order or browse like a customer would. Screens use sample data; business names and details are fictional.</p>
+          <div class="demos"><span class="demos-l">Try the live demo</span><a class="demos-main" href="/work/permits/" target="_blank" rel="noopener">Permit lead map <span aria-hidden="true">↗</span></a></div>
         </div>
       </details>
-      <details class="case" id="case-automations">
-        <summary>
-          <div class="thumb"><img decoding="async" src="img/auto-invoices.webp" width="1600" height="1000" alt="An overdue invoices summary with an aging bar and a table of open invoices" loading="lazy"></div>
-          <div class="sum-text">
-            <div class="tagrow"><span class="tag">Workflows</span><span class="tag">Any business</span></div>
-            <h3>Workflows that handle the routine</h3>
-            <p>Inbox replies, lead follow-up, reminders, reviews and invoice chasing, working in the background while you run the business.</p>
           </div>
-          <span class="toggle"><span class="closed-t">View</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
-        </summary>
-        <div class="case-body">
-          <ul class="autos">
-          <li><div class="shot"><img decoding="async" src="img/email-automation.webp" width="1600" height="1000" alt="Inbox with a new inquiry and a drafted reply ready to approve" loading="lazy"></div><div><h4>An inbox that answers itself</h4><p>Routine emails get an instant reply; personal ones wait as a draft for you to approve.</p></div></li>
-          <li><div class="shot"><img decoding="async" src="img/auto-follow-up.webp" width="1600" height="1000" alt="A text conversation beside a follow-up timeline" loading="lazy"></div><div><h4>Inquiries acknowledged right away</h4><p>Every inquiry gets an instant acknowledgment and a friendly follow-up schedule.</p></div></li>
-          <li><div class="shot"><img decoding="async" src="img/auto-reminders.webp" width="1600" height="1000" alt="A weekly calendar of appointments with confirmation status" loading="lazy"></div><div><h4>Appointments that show up</h4><p>Reminders and easy rescheduling by text cut no-shows.</p></div></li>
-          <li><div class="shot"><img decoding="async" src="img/auto-reviews.webp" width="1600" height="1000" alt="A rating summary with new customer reviews" loading="lazy"></div><div><h4>Feedback that is easy to give</h4><p>A consistent request after every completed job or visit, with a clear route for your team to respond.</p></div></li>
-          <li><div class="shot"><img decoding="async" src="img/auto-invoices.webp" width="1600" height="1000" alt="An overdue summary and a table of open invoices" loading="lazy"></div><div><h4>Invoices that chase themselves</h4><p>Polite reminders with a payment link, stopping once you are paid.</p></div></li>
-          <li><div class="shot"><img decoding="async" src="img/site-command-center.webp" width="1600" height="1000" alt="Owner command center with an approval queue and live job profit" loading="lazy"></div><div><h4>An owner’s morning view</h4><p>An approval queue and live job profit in one place.</p></div></li>
-          </ul>
-          <p class="fine" style="margin:0">Tap any screenshot to enlarge it. Screens use sample data.</p>
         </div>
       </details>
     </div>
