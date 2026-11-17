@@ -36,15 +36,6 @@
 :root{--display:"Instrument Serif","Iowan Old Style",Georgia,serif; --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace; --night:#f3f3f1; --night-2:#e9e9e6; --on-night:#0b0b0b; --on-night-2:#3a3a3a; --night-muted:#6b6b6b; --night-line:rgba(0,0,0,.1); --paper:#ffffff; --mist:#f4f4f2; --ink:#0b0b0b; --muted:#5f5f5f; --line:#e2e2df; --card:#ffffff; --brass:#0b0b0b; --brass-hi:#0b0b0b; --brass-soft:#ededea; --accent-ink:#ffffff; --map1:#f3f3f1; --map2:#ebebe8; --map3:#c9c9c4; --map4:#111111; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--night:#090909; --night-2:#121212; --on-night:#f4f4f4; --on-night-2:#c4c4c4; --night-muted:#8d8d8d; --night-line:rgba(255,255,255,.12); --paper:#0c0c0c; --mist:#131313; --ink:#f1f1f1; --muted:#a0a0a0; --line:#262626; --card:#161616; --brass:#ffffff; --brass-hi:#ffffff; --brass-soft:#1f1f1f; --accent-ink:#0a0a0a; --map1:#090909; --map2:#141414; --map3:#2c2c2c; --map4:#e6e6e6; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
 :root[data-theme="dark"]{--night:#090909; --night-2:#121212; --on-night:#f4f4f4; --on-night-2:#c4c4c4; --night-muted:#8d8d8d; --night-line:rgba(255,255,255,.12); --paper:#0c0c0c; --mist:#131313; --ink:#f1f1f1; --muted:#a0a0a0; --line:#262626; --card:#161616; --brass:#ffffff; --brass-hi:#ffffff; --brass-soft:#1f1f1f; --accent-ink:#0a0a0a; --map1:#090909; --map2:#141414; --map3:#2c2c2c; --map4:#e6e6e6; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
-:root[data-pal="cobalt"]{--night:#eef0fb; --night-2:#e3e7fa; --on-night:#101218; --on-night-2:#3b4157; --night-muted:#646a80; --night-line:rgba(16,18,24,.1); --paper:#fbfbfd; --mist:#f1f3f9; --ink:#101218; --muted:#5d6273; --line:#e1e4ee; --card:#ffffff; --brass:#2b44c7; --brass-hi:#2b44c7; --brass-soft:#e8ecfd; --accent-ink:#ffffff; --map1:#eef0fb; --map2:#e1e6fb; --map3:#bfc8f3; --map4:#2b44c7; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
-@media (prefers-color-scheme: dark){:root[data-pal="cobalt"]:not([data-theme="light"]){--night:#0a0b10; --night-2:#12141c; --on-night:#f2f3f7; --on-night-2:#c3c8d8; --night-muted:#9a9fb0; --night-line:rgba(255,255,255,.12); --paper:#0d0e13; --mist:#13151c; --ink:#eceef4; --muted:#9ea3b4; --line:#252833; --card:#16181f; --brass:#8fa0ff; --brass-hi:#8fa0ff; --brass-soft:#1a1f3d; --accent-ink:#0a0b10; --map1:#0a0b10; --map2:#151a36; --map3:#2c3460; --map4:#6f84ff; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
-:root[data-pal="cobalt"][data-theme="dark"]{--night:#0a0b10; --night-2:#12141c; --on-night:#f2f3f7; --on-night-2:#c3c8d8; --night-muted:#9a9fb0; --night-line:rgba(255,255,255,.12); --paper:#0d0e13; --mist:#13151c; --ink:#eceef4; --muted:#9ea3b4; --line:#252833; --card:#16181f; --brass:#8fa0ff; --brass-hi:#8fa0ff; --brass-soft:#1a1f3d; --accent-ink:#0a0b10; --map1:#0a0b10; --map2:#151a36; --map3:#2c3460; --map4:#6f84ff; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
-:root[data-pal="forest"]{--night:#eee9da; --night-2:#e5dfcb; --on-night:#14231b; --on-night-2:#3b4a40; --night-muted:#6a7468; --night-line:rgba(20,35,27,.12); --paper:#faf8f1; --mist:#f1ede1; --ink:#14231b; --muted:#5c675e; --line:#e2dccb; --card:#fffdf7; --brass:#2f5d46; --brass-hi:#2f5d46; --brass-soft:#e3ebe2; --accent-ink:#ffffff; --map1:#eee9da; --map2:#e4ddc8; --map3:#cbc2a2; --map4:#2f5d46; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
-@media (prefers-color-scheme: dark){:root[data-pal="forest"]:not([data-theme="light"]){--night:#0d1813; --night-2:#13221b; --on-night:#eee9dc; --on-night-2:#c6c3b4; --night-muted:#949a8c; --night-line:rgba(238,233,220,.12); --paper:#0f1914; --mist:#14211a; --ink:#ebe7da; --muted:#a3a898; --line:#24332b; --card:#16241d; --brass:#b5d1a8; --brass-hi:#b5d1a8; --brass-soft:#1d2f24; --accent-ink:#0d1813; --map1:#0d1813; --map2:#15281e; --map3:#2b4636; --map4:#d8cda8; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
-:root[data-pal="forest"][data-theme="dark"]{--night:#0d1813; --night-2:#13221b; --on-night:#eee9dc; --on-night-2:#c6c3b4; --night-muted:#949a8c; --night-line:rgba(238,233,220,.12); --paper:#0f1914; --mist:#14211a; --ink:#ebe7da; --muted:#a3a898; --line:#24332b; --card:#16241d; --brass:#b5d1a8; --brass-hi:#b5d1a8; --brass-soft:#1d2f24; --accent-ink:#0d1813; --map1:#0d1813; --map2:#15281e; --map3:#2b4636; --map4:#d8cda8; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
-:root[data-pal="terra"]{--night:#f4ece2; --night-2:#ece0d2; --on-night:#1e1714; --on-night-2:#4a3d36; --night-muted:#7a6b62; --night-line:rgba(30,23,20,.12); --paper:#fbf8f3; --mist:#f3ece3; --ink:#1e1714; --muted:#6a5d55; --line:#e6dccf; --card:#fffdf9; --brass:#b4532a; --brass-hi:#b4532a; --brass-soft:#f6e6dc; --accent-ink:#ffffff; --map1:#f4ece2; --map2:#ede0d1; --map3:#d8c2ac; --map4:#b4532a; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
-@media (prefers-color-scheme: dark){:root[data-pal="terra"]:not([data-theme="light"]){--night:#141110; --night-2:#1d1917; --on-night:#f3ede6; --on-night-2:#cfc5bb; --night-muted:#9e948b; --night-line:rgba(243,237,230,.12); --paper:#161312; --mist:#1d1917; --ink:#f0e9e2; --muted:#a89d94; --line:#2e2723; --card:#211c19; --brass:#ec9465; --brass-hi:#ec9465; --brass-soft:#33231b; --accent-ink:#141110; --map1:#141110; --map2:#221b17; --map3:#3e3029; --map4:#e58a5a; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
-:root[data-pal="terra"][data-theme="dark"]{--night:#141110; --night-2:#1d1917; --on-night:#f3ede6; --on-night-2:#cfc5bb; --night-muted:#9e948b; --night-line:rgba(243,237,230,.12); --paper:#161312; --mist:#1d1917; --ink:#f0e9e2; --muted:#a89d94; --line:#2e2723; --card:#211c19; --brass:#ec9465; --brass-hi:#ec9465; --brass-soft:#33231b; --accent-ink:#141110; --map1:#141110; --map2:#221b17; --map3:#3e3029; --map4:#e58a5a; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased;margin:0}
@@ -99,6 +90,10 @@ nav.links .btn{padding:11px 18px;font-size:14px}
 .menu-btn i{display:grid;gap:4px;width:14px}.menu-btn i::before,.menu-btn i::after{content:"";height:1.5px;background:currentColor;border-radius:2px;transition:transform .25s}
 .menu-open .menu-btn i::before{transform:translateY(2.75px) rotate(45deg)}.menu-open .menu-btn i::after{transform:translateY(-2.75px) rotate(-45deg)}
 .navr{display:flex;align-items:center;gap:10px}
+.cta-s{display:none}.menu-btn{min-height:40px}
+@media (max-width:520px){.cta-l{display:none}.cta-s{display:inline}.mark b.cons{letter-spacing:.22em}}
+@media (max-width:385px){.mark b.cons{display:none}}
+@media (max-width:860px){footer nav{gap:0 22px}footer nav a{padding:9px 0}.direct .addr{display:inline-block;padding:6px 0}}
 nav.links .btn{white-space:nowrap}
 @media (max-width:420px){header.top .wrap{gap:12px}.navr{gap:8px}nav.links .btn{padding:11px 15px;font-size:13.5px}.menu-btn{padding:11px 13px}.menu-btn span{display:none}}
 @media (max-width:920px){
@@ -522,7 +517,7 @@ footer .refline a{color:var(--on-night)}
       <a href="#services">Services</a>
       <a href="#work">Work</a>
       <a href="#about">About</a>
-      <a class="btn gold" href="#contact" data-interest="Free assessment">Get a free assessment</a>
+      <a class="btn gold" href="#contact" data-interest="Free assessment"><span class="cta-l">Get a free assessment</span><span class="cta-s">Free assessment</span></a>
     </nav>
     <button class="menu-btn" type="button" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Menu"><i aria-hidden="true"></i><span>Menu</span></button>
     </div>
@@ -537,23 +532,23 @@ footer .refline a{color:var(--on-night)}
     <div>
       <div class="eyebrow">Websites, automation &amp; practical AI</div>
       <h1 id="hero-title"><span class="ln"><span>More customers.</span></span><span class="ln"><span><em>Fewer late nights.</em></span></span></h1>
-      <p class="lead">I help owner-run businesses improve their websites, follow up with leads, and take routine work off their plates. You get practical tools built around your business, with setup, training, and a clear plan for keeping everything running.</p>
+      <p class="lead">I work with owner-run businesses on the things that slip when you’re busy: a website that takes bookings, quotes that get a follow-up on day two, invoices that get chased before they’re two months old. I set it up, train your team, and keep it running.</p>
       <div class="cta">
         <a class="btn gold" href="#contact" data-interest="Free assessment">Get a free assessment <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         <a class="btn line" href="#work">See the work</a>
       </div>
-      <p class="reassure">Three practical recommendations for your business, delivered within one business day.</p>
+      <p class="reassure">Send me your website and I’ll send back three things worth fixing, within one business day.</p>
       <p class="aud" id="industries">Based in Irvine. Serving Southern California and businesses nationwide.</p>
     </div>
 
     <aside class="sheet" aria-labelledby="sheet-t">
-      <div class="sh-top"><b id="sheet-t">A clearer picture of what to improve</b><span>Example assessment</span></div>
+      <div class="sh-top"><b id="sheet-t">What a free assessment looks like</b><span>Example assessment</span></div>
       <ol>
-        <li><span class="k">Website</span><span class="d">The main service page has no clear next step.</span><span class="v">Put an inquiry or booking option where customers need it.</span></li>
-        <li><span class="k">Local presence</span><span class="d">Service details differ across public listings.</span><span class="v">Make it easier for customers to understand what you offer.</span></li>
-        <li><span class="k">Inquiry experience</span><span class="d">The contact form asks for a lot of information up front.</span><span class="v">Make the first inquiry easier to complete.</span></li>
+        <li><span class="k">Website</span><span class="d">On a phone, the booking button is three screens down.</span><span class="v">Put it at the top of every service page.</span></li>
+        <li><span class="k">Local presence</span><span class="d">Google says you’re closed Saturdays. Your site says open until 2.</span><span class="v">Match your hours everywhere customers look.</span></li>
+        <li><span class="k">Inquiry experience</span><span class="d">The contact form asks eleven questions before anyone can say what they need.</span><span class="v">Cut it to a name, a phone number and the job.</span></li>
       </ol>
-      <div class="sh-foot">Your assessment focuses on your business and the improvements worth making first.</div>
+      <div class="sh-foot">Yours is written about your business, in plain English, with what to fix first.</div>
     </aside>
   </div>
 </section>
@@ -561,8 +556,8 @@ footer .refline a{color:var(--on-night)}
 <section id="work" class="mist">
   <div class="wrap">
     <div class="head">
-      <div class="rv"><div class="eyebrow">Selected projects</div><h2>See how the pieces <em>come together.</em></h2></div>
-      <p class="lead rv d1">Websites, everyday workflows, and AI tools designed around the people using them.</p>
+      <div class="rv"><div class="eyebrow">Work</div><h2>Open one <em>and try it.</em></h2></div>
+      <p class="lead rv d1">Seventeen working websites and the follow-up systems that run behind them. Book a table, order a drink, design a ring.</p>
     </div>
     <div class="cases">
       <details class="case" id="case-sites">
@@ -634,13 +629,13 @@ footer .refline a{color:var(--on-night)}
           <div class="sum-text">
             <div class="tagrow"><span class="tag">Client project · Home services</span></div>
             <h3>A connected toolkit for a remodeling business</h3>
-            <p>A public website, office workspace, mobile job tracker, and content tools bring inquiries, estimates, job costs, and marketing into a more organized workflow.</p>
+            <p>A public website, an office workspace, a job tracker for crews and a set of video ads, in place of a spreadsheet and a crowded inbox.</p>
           </div>
           <span class="toggle"><span class="closed-t">Explore the project</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
         </summary>
         <div class="case-body">
           <div class="cb-grid">
-            <div><h4>The business need</h4><p>A design-build crew doing kitchens, baths and decks needed one organized place for inquiries, estimates, payments, job costs and marketing, in place of a spreadsheet and a busy inbox.</p></div>
+            <div><h4>The business need</h4><p>A design-build crew doing kitchens, baths and decks needed one organized place for inquiries, estimates, payments, job costs and marketing, so nothing lives only in someone’s head.</p></div>
             <div><h4>The solution</h4><ul><li>A public website with service pages and 57 plain-spoken local remodeling guides</li><li>An office workspace for inbox review, estimates, payments and job details</li><li>A mobile layout designed for crews in the field, tracking hours, costs and what each job really earns</li><li>Short video ads in six styles, queued on a weekly posting schedule</li></ul></div>
           </div>
           <div class="cb-grid">
@@ -663,7 +658,7 @@ footer .refline a{color:var(--on-night)}
           <div class="sum-text">
             <div class="tagrow"><span class="tag">Custom solution showcase · Real estate</span></div>
             <h3>A modern website and AI workspace for real estate</h3>
-            <p>A coordinated website and agent workspace bring lead follow-up, listing campaigns, market reports, and content approvals together in one experience.</p>
+            <p>A rebuilt website and an agent workspace that handle lead follow-up, listing campaigns, market reports and content approvals in one place.</p>
           </div>
           <span class="toggle"><span class="closed-t">Explore the tools</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
         </summary>
@@ -705,7 +700,7 @@ footer .refline a{color:var(--on-night)}
             <div><h4>The solution</h4><ul><li>New permits from Los Angeles, Anaheim, Newport Beach and Costa Mesa, refreshed from each city's public data</li><li>Each permit sorted by what follows it: a kitchen remodel means countertops and cabinets, a pool means fencing and landscaping</li><li>Leads worked on the map: status, notes, follow-up dates and directions</li><li>A postcard preview for each address, as one possible next step</li></ul></div>
           </div>
           <div class="cb-grid">
-            <div><h4>Where it stands</h4><p>Built and running on public city permit records. A working tool, not yet piloted with a contractor.</p></div>
+            <div><h4>How it’s used</h4><p>Open the map, filter to your trade and city, and work the list: mark who you’ve contacted, add a note, set a follow-up date and pull up directions.</p></div>
             <div class="kv kv2">
               <div><b>11,506</b><span>Permits in the last 45 days</span></div>
               <div><b>2,473</b><span>Of them point to countertop work</span></div>
@@ -724,14 +719,14 @@ footer .refline a{color:var(--on-night)}
 <section id="services">
   <div class="wrap">
     <div class="head">
-      <div class="rv"><div class="eyebrow">Services</div><h2>Start with the improvement <em>that matters most.</em></h2></div>
-      <p class="lead rv d1">Solve one specific problem, improve the way customers find you, or connect the tools behind the business.</p>
+      <div class="rv"><div class="eyebrow">Services</div><h2>Three ways <em>to start.</em></h2></div>
+      <p class="lead rv d1">Fix one thing for $500, rebuild the website, or connect the tools you already pay for.</p>
     </div>
     <div class="offers">
       <article class="offer rv" id="quick-win">
         <h3>Quick Win</h3>
         <div class="price">$500 fixed scope</div>
-        <p>Put one useful improvement to work: online booking, inquiry replies, missed-call follow-up, or review requests.</p>
+        <p>One thing fixed and working inside a week: online booking, replies to new inquiries, a text back after a missed call, or review requests.</p>
         <ul>
           <li>One clearly defined workflow.</li>
           <li>Setup using your existing tools where practical.</li>
@@ -744,7 +739,7 @@ footer .refline a{color:var(--on-night)}
       <article class="offer rv d1" id="website">
         <h3>Website &amp; Inquiry Setup</h3>
         <div class="price">Projects from $2,000</div>
-        <p>Give customers a clear picture of your business and an easy way to take the next step, with a professional website and an organized path from inquiry to follow-up.</p>
+        <p>A site that shows what you do, what it costs and how to book, with every inquiry landing somewhere it gets answered.</p>
         <div class="typ">Typical scope</div>
         <ul>
           <li>A website designed around your services and customers.</li>
@@ -757,7 +752,7 @@ footer .refline a{color:var(--on-night)}
       <article class="offer rv d2" id="workflows-ai">
         <h3>Connected Workflows &amp; AI</h3>
         <div class="price">Priced to your scope</div>
-        <p>Connect the tools you already use and simplify the work between them, from estimates and document drafts to customer follow-up and weekly reporting.</p>
+        <p>Connect the tools you already use and take the retyping out of the work between them: estimates, document drafts, customer follow-up and a weekly report.</p>
         <div class="typ">Typical scope</div>
         <ul>
           <li>A focused review of the workflow you want to improve.</li>
@@ -776,12 +771,12 @@ footer .refline a{color:var(--on-night)}
 <section id="how" class="mist">
   <div class="wrap">
     <div class="head">
-      <div class="rv"><div class="eyebrow">How it works</div><h2>A clear path from idea <em>to everyday use.</em></h2></div>
+      <div class="rv"><div class="eyebrow">How it works</div><h2>From first call <em>to handoff.</em></h2></div>
     </div>
     <ol class="steps3">
-      <li class="rv"><span class="dot">1</span><h3>Find the right starting point</h3><p>We look at your business, identify the work worth improving, and choose a useful first step.</p></li>
-      <li class="rv d1"><span class="dot">2</span><h3>Agree on the scope</h3><p>You receive a clear proposal covering the work, price, timeline, and any software costs.</p></li>
-      <li class="rv d2"><span class="dot">3</span><h3>Build, refine, and hand over</h3><p>I set up the solution, work through it with you, and show your team how to use it. Ongoing support is available when you need it.</p></li>
+      <li class="rv"><span class="dot">1</span><h3>Pick the first thing to fix</h3><p>We walk through how inquiries, quotes and payments move through your business, and pick the fix that pays off soonest.</p></li>
+      <li class="rv d1"><span class="dot">2</span><h3>Agree on the scope</h3><p>You get a written proposal: what gets built, the price, the timeline and any software costs. Nothing starts until you say yes.</p></li>
+      <li class="rv d2"><span class="dot">3</span><h3>Build, test and hand over</h3><p>I build it, we run it on real examples until it’s right, and I show your team how to use it. Support continues after launch.</p></li>
     </ol>
     <p class="fine rv">For larger projects, a Growth Plan starts at $1,000 and includes workflow research, priorities, and a tailored solution preview. The planning fee is credited toward the build.</p>
   </div>
@@ -793,7 +788,7 @@ footer .refline a{color:var(--on-night)}
     <div class="pgrid">
       <div class="rv"><h3>Clear approvals</h3><p>You approve the messages and rules before launch. Routine work follows those rules, and decisions that need your judgment come back to you.</p></div>
       <div class="rv d1"><h3>Your accounts and data</h3><p>Your domain, business accounts, and customer data stay yours. You receive the access and documentation needed to manage the work.</p></div>
-      <div class="rv d2"><h3>Direct support</h3><p>You work directly with Myles from the first conversation through delivery and support.</p></div>
+      <div class="rv d2"><h3>Direct support</h3><p>You work with me directly, from the first conversation through delivery and support. Call or email and I’m the one who answers.</p></div>
     </div>
   </div>
 </section>
@@ -803,11 +798,11 @@ footer .refline a{color:var(--on-night)}
     <figure class="portrait rv"><img decoding="async" src="img/myles.webp" width="720" height="1080" alt="Myles Parslow" loading="lazy"><figcaption>Myles Parslow · Founder</figcaption></figure>
     <div class="rv d1">
       <div class="eyebrow">Meet Myles</div>
-      <h2>Practical technology. <em>Personal attention.</em></h2>
+      <h2>The person <em>doing the work.</em></h2>
       <div class="body">
-        <p>I’m Myles Parslow, founder of MLP Consulting. I build websites, workflows, and AI tools that help owners run their businesses with less friction.</p>
-        <p>My background is in law-firm conflicts and risk, where accuracy, clear processes, and careful handling of information matter every day. I bring that same discipline to projects for small businesses, alongside hands-on experience building tools for operations, customer follow-up, and marketing.</p>
-        <p>I studied philosophy at USC and am based in Irvine. You work directly with me: I get to know the business, build around how your team works, and make sure the handoff is clear.</p>
+        <p>I’m Myles Parslow. I started MLP Consulting to build the websites and behind-the-scenes systems that owner-run businesses rarely have time to set up for themselves.</p>
+        <p>I studied philosophy at USC, and I build things. A remodeling company’s office system that reads the inbox, tracks job costs and shows what each job really earned. A real estate website with eight AI tools for its agents. A lead map drawn from more than 11,000 city building permits. The seventeen sites in the work section above.</p>
+        <p>My background is in law-firm conflicts and risk, where a missed detail has consequences and nothing goes out unchecked. I run projects the same way: the scope is written down, you approve what customers see, and the handoff is documented. I’m based in Irvine.</p>
       </div>
     </div>
   </div>
@@ -833,7 +828,7 @@ footer .refline a{color:var(--on-night)}
     <div class="rv">
       <div class="eyebrow">Contact</div>
       <h2>What would make your business <em>easier to run?</em></h2>
-      <p class="lead">Tell me a little about your business and what you’d like to improve. I’ll start with a personal review and three practical recommendations.</p>
+      <p class="lead">Tell me what the business does and what’s eating your time. I’ll look at your website and how customers reach you, then send back three things worth fixing first.</p>
       <p style="margin:22px 0 4px"><a class="btn line" href="https://cal.com/mlpconsults/free-check-up" target="_blank" rel="noopener">Prefer to talk? Book a free 30-minute call <span aria-hidden="true">↗</span></a></p>
       <div class="direct">
         <div class="mailrow"><a class="addr" id="addr" href="mailto:myles@mlpconsults.com" style="color:inherit;text-decoration:none">myles@mlpconsults.com</a><button class="btn copy" type="button" id="copy">Copy</button></div>
@@ -860,7 +855,6 @@ footer .refline a{color:var(--on-night)}
     </form>
   </div>
 </section>
-</main>
 
 <section class="press" aria-label="Press">
   <div class="wrap">
@@ -871,6 +865,7 @@ footer .refline a{color:var(--on-night)}
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap foot">
@@ -1017,7 +1012,7 @@ footer .refline a{color:var(--on-night)}
     }catch(err){}
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:'c3cd3264-8d14-478c-ba2a-afb3df8e7b03',subject:'Free assessment: '+v('f-biz')+' ('+v('f-interest')+')',from_name:'MLP Consulting site',name:v('f-name'),email:v('f-contact'),message:body})})
       .then(function(r){return r.json();})
-      .then(function(j){if(!j.success)throw new Error('fail');e.target.reset();setInterest('Free assessment');btn.textContent='Request sent';done.className='done';done.textContent='Thanks — your request is in. I’ll review your business and follow up with your assessment.';done.hidden=false;})
+      .then(function(j){if(!j.success)throw new Error('fail');e.target.reset();setInterest('Free assessment');btn.textContent='Request sent';done.className='done';done.textContent='Thanks, your request is in. I’ll review your business and send your assessment within one business day.';done.hidden=false;})
       .catch(function(){btn.disabled=false;btn.textContent=label;done.className='done err';done.innerHTML='That did not go through. Please email <a href="mailto:myles@mlpconsults.com">myles@mlpconsults.com</a> directly and I will pick it up from there.';done.hidden=false;});
   });
   document.getElementById('copy').addEventListener('click',function(){
@@ -1068,27 +1063,28 @@ dialog.lb::backdrop{background:rgba(6,6,8,.88);backdrop-filter:blur(6px);-webkit
 <script>
 (function(){
   var CAP={
-    'site-birchway':['Birchway Pediatrics · Pediatric office','Request a visit by age and reason, see the morning sick-visit slots, and open the staff side: a front desk inbox, reminder and recall automations, and a private assistant that runs on the practice’s own equipment. Sample site; the business is fictional.'],
-    'site-camino':['Osteria Camino · Italian restaurant','Reserve a table, browse tonight’s menu, and ask about the back room. The staff side holds the reservation book, review replies waiting for approval, and a pre-shift brief. Sample site; the business is fictional.'],
-    'site-paperwhale':['Paperwhale Books · Bookstore','Shop real titles with pickup in about two hours, staff picks and events. The staff side shows orders, special requests, newsletter drafts and a weekly brief for the owner. Sample site; the business is fictional.'],
-    'site-quietwell':['Quietwell Aesthetics · Med spa','Book in under a minute, a treatment menu with prices on it, a membership plan, and a text line for clients who would rather not call. Sample site; the business is fictional.'],
-    'site-bellwood':['Bellwood Family Dental · Dental office','Next open appointments right on the home page, an insurance check, clear prices for patients without insurance, and a same-day emergency line. Sample site; the business is fictional.'],
-    'site-little-orbit':['Little Orbit Tea · Boba shop','Real online ordering: build a drink, choose pickup or delivery, check out and follow the order, plus a rewards card. Sample site; the business is fictional.'],
-    'site-coffee':['Kestrel Hill Coffee Roasters · Coffee roaster','Order ahead to skip the line, a bean club subscription for fresh bags, and live open hours in the header. Sample site; the business is fictional.'],
-    'site-halden':['Halden & Rye Bakery · Bakery','Today’s bake counted down live as it sells, a four-step cake builder, and weekly standing orders for bread. Sample site; the business is fictional.'],
-    'site-cedarline':['Cedarline Kitchen · Restaurant','Table reservations, tonight’s menu, and a private dining inquiry for rehearsal dinners, offsites and birthdays. Sample site; the business is fictional.'],
-    'site-hollis':['Hollis Flower House · Florist','Same-day delivery with a ZIP check and order cutoff, weekly flower subscriptions, and wedding inquiries. Sample site; the business is fictional.'],
-    'site-salon':['Ostrander Hair Studio · Hair salon','Pick a service, then a stylist and a time, with straightforward pricing, a texting line and a first-visit offer. Sample site; the business is fictional.'],
-    'site-crestline':['Crestline Design-Build · Remodeling company','A cost estimator that returns a real price range in seconds, a text-back with the itemized breakdown, finished projects with timelines, and plain-English permit and cost guides. Sample site; the business is fictional.'],
-    'site-solace':['Solace Studio Dental · Dental studio','Pick a visit type and a real open time, see what your insurance covers before you arrive, and get intake forms by text. Sample site; the business is fictional.'],
+    'jewelry-store':['Halden · Jewelry store','Engagement rings with prices on every card, and a 3D ring designer: pick the setting, the metal and the stone, and turn the ring to see it from any side.'],
+    'site-birchway':['Birchway Pediatrics · Pediatric office','Request a visit by age and reason, see the morning sick-visit slots, and open the staff side: a front desk inbox, reminder and recall automations, and a private assistant that runs on the practice’s own equipment.'],
+    'site-camino':['Osteria Camino · Italian restaurant','Reserve a table, browse tonight’s menu, and ask about the back room. The staff side holds the reservation book, review replies waiting for approval, and a pre-shift brief.'],
+    'site-paperwhale':['Paperwhale Books · Bookstore','Shop real titles with pickup in about two hours, staff picks and events. The staff side shows orders, special requests, newsletter drafts and a weekly brief for the owner.'],
+    'site-quietwell':['Quietwell Aesthetics · Med spa','Book in under a minute, a treatment menu with prices on it, a membership plan, and a text line for clients who would rather not call.'],
+    'site-bellwood':['Bellwood Family Dental · Dental office','Next open appointments right on the home page, an insurance check, clear prices for patients without insurance, and a same-day emergency line.'],
+    'site-little-orbit':['Little Orbit Tea · Boba shop','Real online ordering: build a drink, choose pickup or delivery, check out and follow the order, plus a rewards card.'],
+    'site-coffee':['Kestrel Hill Coffee Roasters · Coffee roaster','Order ahead to skip the line, a bean club subscription for fresh bags, and live open hours in the header.'],
+    'site-halden':['Halden & Rye Bakery · Bakery','Today’s bake counted down live as it sells, a four-step cake builder, and weekly standing orders for bread.'],
+    'site-cedarline':['Cedarline Kitchen · Restaurant','Table reservations, tonight’s menu, and a private dining inquiry for rehearsal dinners, offsites and birthdays.'],
+    'site-hollis':['Hollis Flower House · Florist','Same-day delivery with a ZIP check and order cutoff, weekly flower subscriptions, and wedding inquiries.'],
+    'site-salon':['Ostrander Hair Studio · Hair salon','Pick a service, then a stylist and a time, with straightforward pricing, a texting line and a first-visit offer.'],
+    'site-crestline':['Crestline Design-Build · Remodeling company','A cost estimator that returns a real price range in seconds, a text-back with the itemized breakdown, finished projects with timelines, and plain-English permit and cost guides.'],
+    'site-solace':['Solace Studio Dental · Dental studio','Pick a visit type and a real open time, see what your insurance covers before you arrive, and get intake forms by text.'],
     'site-command-center':['Owner command center','Overnight emails sorted, new leads graded, and drafted replies waiting for the owner’s approval, next to live job profit. Nothing goes out until you approve. Sample data.'],
-    'site-pilates':['Springline Reformer Studio · Pilates studio','A live class schedule with spots left, intro packs, and membership plans, with an app-style tab bar on phones. Sample site; the business is fictional.'],
+    'site-pilates':['Springline Reformer Studio · Pilates studio','A live class schedule with spots left, intro packs, and membership plans, with an app-style tab bar on phones.'],
     'email-automation':['Email automation: inbox','A new inquiry arrives, gets sorted, and a reply is drafted in your voice, ready for one tap. Sample automation.'],
     'auto-follow-up':['Inquiries acknowledged right away','An inquiry gets an instant text and a follow-up plan runs on schedule; a customer reply pauses that sequence and alerts the right person.'],
     'auto-reminders':['Appointments that show up','The week’s calendar with every confirmation tracked, a missed visit already being rebooked, and a reminder text for anyone who has not replied.'],
     'auto-reviews':['Feedback that is easy to give','Your rating, the reviews coming in, and the month’s requests, with a clear route for your team to respond.'],
     'auto-invoices':['Invoices that chase themselves','What is owed and how old it is, with each invoice’s next step queued and a payment link in every message.'],
-    'site-boutique':['Fig & Fennimore · Clothing boutique','A seasonal lookbook, new arrivals with a cart, a fitting room you can book with a stylist, and an early-look email list. Sample site; the business is fictional.'],
+    'site-boutique':['Fig & Fennimore · Clothing boutique','A seasonal lookbook, new arrivals with a cart, a fitting room you can book with a stylist, and an early-look email list.'],
     'brokerage-site':['Brokerage website redesign','The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed.'],
     'lead-responder':['A seller inquiry, answered right away','A homeowner asks a brokerage for a pricing analysis and sees a confirmation immediately, while the agent gets the request with every detail filled in.'],
     'blog-library':['Local guide library','Buyer and neighborhood guides with clear structure, built to be found and understood in search.'],
