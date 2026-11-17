@@ -30,985 +30,907 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('mlp-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t;}catch(e){}</script>
 <style>
-/* Layout: a living topographic map behind the hero (your business as terrain), then services, a scroll-lit statement, numbers, steps, industries, collapsible work, principles, about, and a contact band on the same map. */
-:root{--display:"Instrument Serif","Iowan Old Style",Georgia,serif; --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace; --night:#f3f3f1; --night-2:#e9e9e6; --on-night:#0b0b0b; --on-night-2:#3a3a3a; --night-muted:#6b6b6b; --night-line:rgba(0,0,0,.1); --paper:#ffffff; --mist:#f4f4f2; --ink:#0b0b0b; --muted:#5f5f5f; --line:#e2e2df; --card:#ffffff; --brass:#0b0b0b; --brass-hi:#0b0b0b; --brass-soft:#ededea; --accent-ink:#ffffff; --map1:#f3f3f1; --map2:#ebebe8; --map3:#c9c9c4; --map4:#111111; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--night:#090909; --night-2:#121212; --on-night:#f4f4f4; --on-night-2:#c4c4c4; --night-muted:#8d8d8d; --night-line:rgba(255,255,255,.12); --paper:#0c0c0c; --mist:#131313; --ink:#f1f1f1; --muted:#a0a0a0; --line:#262626; --card:#161616; --brass:#ffffff; --brass-hi:#ffffff; --brass-soft:#1f1f1f; --accent-ink:#0a0a0a; --map1:#090909; --map2:#141414; --map3:#2c2c2c; --map4:#e6e6e6; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
-:root[data-theme="dark"]{--night:#090909; --night-2:#121212; --on-night:#f4f4f4; --on-night-2:#c4c4c4; --night-muted:#8d8d8d; --night-line:rgba(255,255,255,.12); --paper:#0c0c0c; --mist:#131313; --ink:#f1f1f1; --muted:#a0a0a0; --line:#262626; --card:#161616; --brass:#ffffff; --brass-hi:#ffffff; --brass-soft:#1f1f1f; --accent-ink:#0a0a0a; --map1:#090909; --map2:#141414; --map3:#2c2c2c; --map4:#e6e6e6; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
-:root[data-pal="cobalt"]{--night:#eef0fb; --night-2:#e3e7fa; --on-night:#101218; --on-night-2:#3b4157; --night-muted:#646a80; --night-line:rgba(16,18,24,.1); --paper:#fbfbfd; --mist:#f1f3f9; --ink:#101218; --muted:#5d6273; --line:#e1e4ee; --card:#ffffff; --brass:#2b44c7; --brass-hi:#2b44c7; --brass-soft:#e8ecfd; --accent-ink:#ffffff; --map1:#eef0fb; --map2:#e1e6fb; --map3:#bfc8f3; --map4:#2b44c7; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
-@media (prefers-color-scheme: dark){:root[data-pal="cobalt"]:not([data-theme="light"]){--night:#0a0b10; --night-2:#12141c; --on-night:#f2f3f7; --on-night-2:#c3c8d8; --night-muted:#9a9fb0; --night-line:rgba(255,255,255,.12); --paper:#0d0e13; --mist:#13151c; --ink:#eceef4; --muted:#9ea3b4; --line:#252833; --card:#16181f; --brass:#8fa0ff; --brass-hi:#8fa0ff; --brass-soft:#1a1f3d; --accent-ink:#0a0b10; --map1:#0a0b10; --map2:#151a36; --map3:#2c3460; --map4:#6f84ff; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
-:root[data-pal="cobalt"][data-theme="dark"]{--night:#0a0b10; --night-2:#12141c; --on-night:#f2f3f7; --on-night-2:#c3c8d8; --night-muted:#9a9fb0; --night-line:rgba(255,255,255,.12); --paper:#0d0e13; --mist:#13151c; --ink:#eceef4; --muted:#9ea3b4; --line:#252833; --card:#16181f; --brass:#8fa0ff; --brass-hi:#8fa0ff; --brass-soft:#1a1f3d; --accent-ink:#0a0b10; --map1:#0a0b10; --map2:#151a36; --map3:#2c3460; --map4:#6f84ff; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
-:root[data-pal="forest"]{--night:#eee9da; --night-2:#e5dfcb; --on-night:#14231b; --on-night-2:#3b4a40; --night-muted:#6a7468; --night-line:rgba(20,35,27,.12); --paper:#faf8f1; --mist:#f1ede1; --ink:#14231b; --muted:#5c675e; --line:#e2dccb; --card:#fffdf7; --brass:#2f5d46; --brass-hi:#2f5d46; --brass-soft:#e3ebe2; --accent-ink:#ffffff; --map1:#eee9da; --map2:#e4ddc8; --map3:#cbc2a2; --map4:#2f5d46; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
-@media (prefers-color-scheme: dark){:root[data-pal="forest"]:not([data-theme="light"]){--night:#0d1813; --night-2:#13221b; --on-night:#eee9dc; --on-night-2:#c6c3b4; --night-muted:#949a8c; --night-line:rgba(238,233,220,.12); --paper:#0f1914; --mist:#14211a; --ink:#ebe7da; --muted:#a3a898; --line:#24332b; --card:#16241d; --brass:#b5d1a8; --brass-hi:#b5d1a8; --brass-soft:#1d2f24; --accent-ink:#0d1813; --map1:#0d1813; --map2:#15281e; --map3:#2b4636; --map4:#d8cda8; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
-:root[data-pal="forest"][data-theme="dark"]{--night:#0d1813; --night-2:#13221b; --on-night:#eee9dc; --on-night-2:#c6c3b4; --night-muted:#949a8c; --night-line:rgba(238,233,220,.12); --paper:#0f1914; --mist:#14211a; --ink:#ebe7da; --muted:#a3a898; --line:#24332b; --card:#16241d; --brass:#b5d1a8; --brass-hi:#b5d1a8; --brass-soft:#1d2f24; --accent-ink:#0d1813; --map1:#0d1813; --map2:#15281e; --map3:#2b4636; --map4:#d8cda8; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
-:root[data-pal="terra"]{--night:#f4ece2; --night-2:#ece0d2; --on-night:#1e1714; --on-night-2:#4a3d36; --night-muted:#7a6b62; --night-line:rgba(30,23,20,.12); --paper:#fbf8f3; --mist:#f3ece3; --ink:#1e1714; --muted:#6a5d55; --line:#e6dccf; --card:#fffdf9; --brass:#b4532a; --brass-hi:#b4532a; --brass-soft:#f6e6dc; --accent-ink:#ffffff; --map1:#f4ece2; --map2:#ede0d1; --map3:#d8c2ac; --map4:#b4532a; --ok:#1f6b4a; --ok-soft:#e3f2ea; --flag:#b4410f; --flag-soft:#fbeae2; --shadow:0 1px 2px rgba(14,22,38,.05),0 24px 48px -28px rgba(14,22,38,.3); color-scheme:light;}
-@media (prefers-color-scheme: dark){:root[data-pal="terra"]:not([data-theme="light"]){--night:#141110; --night-2:#1d1917; --on-night:#f3ede6; --on-night-2:#cfc5bb; --night-muted:#9e948b; --night-line:rgba(243,237,230,.12); --paper:#161312; --mist:#1d1917; --ink:#f0e9e2; --muted:#a89d94; --line:#2e2723; --card:#211c19; --brass:#ec9465; --brass-hi:#ec9465; --brass-soft:#33231b; --accent-ink:#141110; --map1:#141110; --map2:#221b17; --map3:#3e3029; --map4:#e58a5a; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}}
-:root[data-pal="terra"][data-theme="dark"]{--night:#141110; --night-2:#1d1917; --on-night:#f3ede6; --on-night-2:#cfc5bb; --night-muted:#9e948b; --night-line:rgba(243,237,230,.12); --paper:#161312; --mist:#1d1917; --ink:#f0e9e2; --muted:#a89d94; --line:#2e2723; --card:#211c19; --brass:#ec9465; --brass-hi:#ec9465; --brass-soft:#33231b; --accent-ink:#141110; --map1:#141110; --map2:#221b17; --map3:#3e3029; --map4:#e58a5a; --ok:#7fd3a6; --ok-soft:#13301f; --flag:#f08a5d; --flag-soft:#3a2016; --shadow:0 1px 2px rgba(0,0,0,.3),0 24px 48px -28px rgba(0,0,0,.8); color-scheme:dark;}
+/* One sheet. The whole site is a single map that fills the window; the six tabs are places on it.
+   Wide screens: nothing scrolls, the map travels and the panel changes. Phones: same six tabs, each one a short page. */
+:root{--display:"Instrument Serif","Iowan Old Style",Georgia,serif;--body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+--paper:#ffffff;--ground:#f3f3f1;--ink:#0b0b0b;--ink-2:#3a3a3a;--muted:#5f5f5f;--line:#deded9;--line-2:#ecece8;--card:#ffffff;--soft:#f4f4f2;--on-ink:#ffffff;
+--map1:#f3f3f1;--map2:#ebebe8;--map3:#c9c9c4;--map4:#111111;--err:#9a2c0a;
+--shadow:0 1px 2px rgba(14,14,14,.05),0 30px 60px -34px rgba(14,14,14,.35);
+--ease:cubic-bezier(.19,1,.22,1);--ease-io:cubic-bezier(.77,0,.175,1);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0c0c0c;--ground:#090909;--ink:#f1f1f1;--ink-2:#c4c4c4;--muted:#a0a0a0;--line:#2a2a2a;--line-2:#1e1e1e;--card:#141414;--soft:#1b1b1b;--on-ink:#0a0a0a;--map1:#090909;--map2:#141414;--map3:#2c2c2c;--map4:#e6e6e6;--err:#f08a5d;--shadow:0 1px 2px rgba(0,0,0,.3),0 30px 60px -34px rgba(0,0,0,.9);color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0c0c0c;--ground:#090909;--ink:#f1f1f1;--ink-2:#c4c4c4;--muted:#a0a0a0;--line:#2a2a2a;--line-2:#1e1e1e;--card:#141414;--soft:#1b1b1b;--on-ink:#0a0a0a;--map1:#090909;--map2:#141414;--map3:#2c2c2c;--map4:#e6e6e6;--err:#f08a5d;--shadow:0 1px 2px rgba(0,0,0,.3),0 30px 60px -34px rgba(0,0,0,.9);color-scheme:dark}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased;margin:0}
+html{font-size:clamp(14px,min(1.05vw,1.9vh),18px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 1rem/1.55 var(--body);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--brass-hi);outline-offset:3px;border-radius:2px}
-.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-h1,h2,h3,h4{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;letter-spacing:-.01em}
-h2{font-size:clamp(40px,5.4vw,68px);line-height:1}
-h2 em,h1 em{font-style:italic;color:var(--brass)}
-p{margin:0}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
-.eyebrow::before{content:"";width:22px;height:1px;background:currentColor}
-.lead{font-size:19px;color:var(--muted);max-width:58ch}
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--body);padding:16px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .25s,border-color .25s,color .25s,transform .25s}
-.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;transition:transform .25s}
-.btn:hover svg{transform:translateX(3px)}
-.btn.gold{background:var(--brass-hi);color:var(--accent-ink)}
-.btn.gold:hover{filter:brightness(1.15)}
-.btn.line{border-color:color-mix(in srgb,var(--on-night) 30%,transparent);color:var(--on-night)}
-.btn.line:hover{border-color:var(--on-night)}
-.btn.ink{background:var(--ink);color:var(--paper)}
-.btn.ink:hover{background:var(--brass)}
-section{padding-block:120px}
-.mist{background:var(--mist)}
-.head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:end;margin-bottom:64px}
-.head > div{display:grid;gap:20px}
-@media (max-width:860px){.head{grid-template-columns:minmax(0,1fr);gap:20px;margin-bottom:44px}section{padding-block:88px}}
+button{font:inherit;color:inherit}
+h1,h2,h3,p,ul,ol,blockquote,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:3px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:fixed;left:12px;top:-60px;z-index:50;background:var(--ink);color:var(--on-ink);padding:10px 14px;border-radius:6px;text-decoration:none}
+.skip:focus{top:12px}
 
-/* reveal on scroll (only when JS runs) */
-.js .rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-.js .rv.in{opacity:1;transform:none}
-.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}.js .rv.d3{transition-delay:.24s}
+/* the map */
+.map{position:fixed;inset:0;z-index:0;background:var(--map1) center/cover no-repeat;overflow:hidden}
+.map canvas,.map video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.wash{position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,color-mix(in srgb,var(--map1) 90%,transparent) 0%,color-mix(in srgb,var(--map1) 78%,transparent) 30%,color-mix(in srgb,var(--map1) 30%,transparent) 62%,color-mix(in srgb,var(--map1) 12%,transparent) 100%)}
 
-/* header */
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--night)}
-header.top{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:6;color:var(--on-night);transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
-header.top.solid{background:color-mix(in srgb,var(--night) 97%,transparent);border-bottom-color:var(--night-line)}
-header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:18px}
-.mark{display:flex;align-items:center;gap:12px;text-decoration:none}
-.mark .logo{display:block;width:44px;height:44px}
-.mark .logo12{display:block;width:auto;height:26px;width:auto;color:var(--on-night)}
-.mark b.cons{font:600 11px/1 var(--body);letter-spacing:.34em;text-transform:uppercase;padding-top:2px}
-.mark .mono{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--brass-hi);color:var(--brass-hi);font:400 15px/1 var(--display);letter-spacing:.04em;border-radius:50%}
-.mark b{font:400 23px/1 var(--display);letter-spacing:.005em}
-.mark b span{color:var(--night-muted)}
-nav.links{display:flex;gap:28px;align-items:center;font-size:15px}
-nav.links a{text-decoration:none;color:var(--night-muted);transition:color .2s}
-nav.links a:hover{color:var(--on-night)}
-nav.links .btn{padding:11px 18px;font-size:14px}
-.menu-btn{display:none;align-items:center;gap:8px;background:none;border:1px solid var(--night-line);color:var(--on-night);font:600 14px/1 var(--body);padding:11px 16px;border-radius:999px;cursor:pointer}
-.menu-btn i{display:grid;gap:4px;width:14px}.menu-btn i::before,.menu-btn i::after{content:"";height:1.5px;background:currentColor;border-radius:2px;transition:transform .25s}
-.menu-open .menu-btn i::before{transform:translateY(2.75px) rotate(45deg)}.menu-open .menu-btn i::after{transform:translateY(-2.75px) rotate(-45deg)}
-.navr{display:flex;align-items:center;gap:10px}
-nav.links .btn{white-space:nowrap}
-@media (max-width:420px){header.top .wrap{gap:12px}.navr{gap:8px}nav.links .btn{padding:11px 15px;font-size:13.5px}.menu-btn{padding:11px 13px}.menu-btn span{display:none}}
-@media (max-width:920px){
-  nav.links a:not(.btn){display:none}
-  .menu-btn{display:inline-flex}
-  header.top.menu-open{background:var(--night);border-bottom-color:var(--night-line)}
-  .menu-open nav.links{position:absolute;top:100%;left:0;right:0;display:grid;gap:0;background:var(--night);border-bottom:1px solid var(--night-line);padding:6px max(20px,env(safe-area-inset-left,0px)) 18px}
-  .menu-open nav.links a:not(.btn){display:block;padding:15px 0;border-bottom:1px solid var(--night-line);color:var(--on-night);font-size:17px}
-  .menu-open nav.links .btn{justify-self:start;margin-top:16px}
-}
-@media (max-width:420px){.mark b span{display:none}.hero .eyebrow{font-size:10.5px;letter-spacing:.1em}}
+.sheet{position:relative;z-index:1;display:grid;grid-template-rows:auto 1fr auto;min-height:100dvh}
+.js .sheet{height:100dvh;overflow:hidden}
 
-/* hero */
-.hero{position:relative;background:var(--night);color:var(--on-night);min-height:min(940px,100svh);display:grid;align-items:center;overflow:hidden;padding-block:150px 110px}
-.hero canvas.mapc,.cta-band canvas.mapc{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
-.hero video,.cta-band video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;pointer-events:none}
-.hero .scrim{position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb,var(--night) 92%,transparent) 0%,color-mix(in srgb,var(--night) 72%,transparent) 42%,color-mix(in srgb,var(--night) 15%,transparent) 100%),linear-gradient(0deg,color-mix(in srgb,var(--night) 85%,transparent),transparent 30%);pointer-events:none}
-.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:64px;align-items:center;width:100%}
-.hero h1{font-size:clamp(56px,8.4vw,124px);line-height:.92;letter-spacing:-.025em;margin:26px 0 28px}
-.hero h1 em{color:var(--brass-hi)}
-.hero h1 .ln{display:block;overflow:hidden;padding:0 .08em .22em 0;margin-bottom:-.16em}
-.hero h1 .ln > span{display:inline-block}
-.js .hero h1 .ln > span{transform:translateY(105%);animation:rise 1.1s cubic-bezier(.2,.7,.2,1) forwards}
-.js .hero h1 .ln:nth-child(2) > span{animation-delay:.14s}
-@keyframes rise{to{transform:none}}
-.hero .lead{color:var(--on-night-2);font-size:20px}
-.hero .eyebrow{color:var(--brass-hi)}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
-.note{font-size:14px;color:var(--night-muted);margin-top:24px;display:flex;gap:10px;align-items:center}
-.note i{width:7px;height:7px;border-radius:50%;background:#7fd3a6;box-shadow:0 0 0 4px rgba(127,211,166,.18);flex:none}
-.coord{position:absolute;right:max(20px,env(safe-area-inset-right,0px));bottom:26px;font:400 11px/1 var(--mono);letter-spacing:.12em;color:var(--night-muted);text-transform:uppercase}
-@media (max-width:980px){.hero .wrap{grid-template-columns:minmax(0,1fr);gap:48px}.hero .scrim{background:linear-gradient(0deg,color-mix(in srgb,var(--night) 94%,transparent) 10%,color-mix(in srgb,var(--night) 55%,transparent))}.coord{display:none}}
+/* top strip */
+.top{display:flex;align-items:center;gap:1.4rem;padding:1.05rem 2.6rem .6rem;background:linear-gradient(180deg,color-mix(in srgb,var(--map1) 90%,transparent) 30%,transparent)}
+.mark{display:flex;align-items:center;gap:.75rem;text-decoration:none;margin-right:auto}
+.mark .logo12{display:block;height:1.55rem;width:auto;color:var(--ink)}
+.mark b.cons{font:600 .68rem/1 var(--body);letter-spacing:.3em;text-transform:uppercase;padding-top:2px}
+.top .tel,.top .mode{font-size:.87rem;text-decoration:none;color:var(--ink-2);background:none;border:0;padding:.4rem .2rem;cursor:pointer}
+.top .tel:hover,.top .mode:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;font:600 .93rem/1 var(--body);padding:.95rem 1.35rem;border-radius:999px;text-decoration:none;border:1px solid var(--ink);cursor:pointer;transition:background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease);white-space:nowrap}
+.btn.ink{background:var(--ink);color:var(--on-ink)}
+.btn.ink:hover{background:transparent;color:var(--ink)}
+.btn.line{background:transparent;color:var(--ink);border-color:color-mix(in srgb,var(--ink) 32%,transparent)}
+.btn.line:hover{border-color:var(--ink)}
+.btn.sm{padding:.7rem 1.05rem;font-size:.87rem}
+.btn .ar{transition:transform .3s var(--ease)}
+.btn:hover .ar{transform:translateX(3px)}
 
-.sheet{background:rgba(251,250,247,.97);color:#101218;border-radius:14px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 0 1px rgba(0,0,0,.08);font-size:14px;min-width:0;overflow:hidden}
-.js .sheet{opacity:0;transform:translateY(24px);animation:sheetIn 1.2s .5s cubic-bezier(.2,.7,.2,1) forwards}
-@keyframes sheetIn{to{opacity:1;transform:none}}
-.sheet .sh-top{display:flex;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid #e2dfd6}
-.sheet .sh-top b{font:500 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase}
-.sheet .sh-top span{font:400 11px/1.4 var(--mono);color:#596476}
-.sheet ol{list-style:none;margin:0;padding:0}
-.sheet li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 16px;padding:13px 20px;border-bottom:1px solid #ebe8e0}
-.sheet .k{font-weight:600}
-.sheet .v{font:500 12.5px/1.4 var(--mono);font-variant-numeric:tabular-nums;text-align:right}
-.sheet .d{grid-column:1/-1;color:#596476;font-size:13px}
-.pill{display:inline-block;font:500 10.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:99px}
-.pill.flag{background:#fbeae2;color:#b4410f}
-.pill.ok{background:#e3f2ea;color:#1f6b4a}
-.sheet .sh-foot{padding:12px 20px;font:400 11px/1.4 var(--mono);color:#596476;background:#f2f0ea}
+/* stage and panels */
+.stage{position:relative;min-height:0}
+.panel{display:grid;grid-template-columns:minmax(0,37fr) minmax(0,63fr);gap:3rem;padding:1.2rem 2.6rem 1.6rem;max-width:1680px;margin:0 auto;width:100%}
+.js .panel{position:absolute;inset:0;left:0;right:0;visibility:hidden;opacity:0}
+.js .panel.on{visibility:visible;opacity:1}
+.js .panel.on .say{animation:arrive .9s var(--ease) both}
+.js .panel.on .card{animation:arrive 1s .06s var(--ease) both}
+@keyframes arrive{from{opacity:0;transform:translate3d(calc(var(--dir,1)*2.2rem),0,0)}to{opacity:1;transform:none}}
+.say{display:flex;flex-direction:column;min-height:0;padding:.6rem 0 .2rem}
+.kick{font-size:.87rem;color:var(--ink-2);margin-bottom:1.1rem;display:flex;gap:.6rem;align-items:baseline}
+.kick i{font:italic 400 1.05rem/1 var(--display);color:var(--muted)}
+.say h1,.say h2{font:400 clamp(2.5rem,min(5.2vw,9.4vh),5.6rem)/.98 var(--display);letter-spacing:-.012em;text-wrap:balance}
+.say h1 em,.say h2 em{font-style:italic}
+.say h1:focus,.say h2:focus{outline:none}
+.lede{margin-top:1.35rem;max-width:34rem;color:var(--ink-2);font-size:1.04rem;line-height:1.6;text-wrap:pretty}
+.acts{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem}
+.aside{margin-top:1.1rem;font-size:.87rem;color:var(--muted);max-width:30rem}
+.foot{margin-top:auto;padding-top:1.2rem;font-size:.87rem;color:var(--muted);max-width:30rem}
+.foot a,.aside a{color:var(--ink);text-underline-offset:3px}
 
-/* ticker */
-.ticker{background:var(--night);color:var(--night-muted);border-top:1px solid var(--night-line);overflow:hidden;padding-block:20px}
-.track{display:flex;width:max-content;gap:0;animation:tick 48s linear infinite}
-.ticker:hover .track{animation-play-state:paused}
-.track span{font:400 26px/1 var(--display);white-space:nowrap;padding-right:44px;display:flex;align-items:center;gap:44px}
-.track span::after{content:"✦";font-size:13px;color:var(--brass-hi)}
-@keyframes tick{to{transform:translateX(-50%)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-height:0;display:flex;flex-direction:column;overflow:hidden;align-self:start;margin-top:3.1rem;max-height:calc(100% - 3.1rem);width:100%}
+.card>header{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.1rem 1.6rem .95rem;border-bottom:1px solid var(--line-2)}
+.card>header h3{font:400 1.75rem/1.1 var(--display)}
+.card>header h3 em{font-style:italic}
+.card>header span{font-size:.87rem;color:var(--muted);white-space:nowrap}
+.card .in{padding:1.2rem 1.6rem 1.4rem;min-height:0;overflow:auto;flex:1;scrollbar-width:thin}
+.card>footer{padding:.9rem 1.6rem 1.05rem;border-top:1px solid var(--line-2);font-size:.87rem;color:var(--muted);line-height:1.5}
+.card>footer a{color:var(--ink);text-underline-offset:3px}
 
-/* services */
-.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.svc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;box-shadow:var(--shadow);transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .3s}
-.svc:hover{border-color:color-mix(in srgb,var(--brass) 55%,var(--line))}
-.svc .pic{display:none;aspect-ratio:16/9;overflow:hidden;background:var(--mist);border-bottom:1px solid var(--line)}
-.svc .pic img{width:100%;height:100%;object-fit:cover;object-position:0 0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
-.svc:hover .pic img{transform:scale(1.045)}
-.svc .num{position:absolute;top:24px;right:26px;font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--muted)}
-.svc .body{padding:26px 28px 24px;display:grid;gap:10px;align-content:start}
-.svc .q{font:italic 400 22px/1.3 var(--display);color:var(--muted)}
-.svc h3{font-size:30px;line-height:1.02}
-.svc p{color:var(--muted);font-size:15.5px}
-.svc ul{list-style:none;margin:6px 0 0;padding:0;border-top:1px solid var(--line)}
-.svc li{padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;display:flex;gap:12px}
-.svc li:nth-child(n+3){display:none}
-.svc.wide{grid-column:1/-1}.svc.wide li:nth-child(n+3){display:flex}.svc.wide ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}@media (max-width:860px){.svc.wide ul{grid-template-columns:minmax(0,1fr)}}
-.svc li::before{content:"";flex:0 0 6px;height:6px;margin-top:9px;background:var(--brass);transform:rotate(45deg)}
-@media (max-width:860px){.services{grid-template-columns:minmax(0,1fr)}.svc .body{padding:24px 22px 26px}}
+/* accordions: services and questions */
+.acc{border-bottom:1px solid var(--line-2)}
+.acc:last-child{border-bottom:0}
+.acc>h4{margin:0;font:inherit}
+.acc-h{display:grid;grid-template-columns:1fr auto 1.4rem;gap:1.2rem;align-items:baseline;width:100%;text-align:left;background:none;border:0;padding:1.05rem 1.6rem;cursor:pointer}
+.acc-h b{font:400 1.55rem/1.15 var(--display)}
+.acc-h .pr{font-size:.93rem;font-weight:600;white-space:nowrap}
+.acc-h .pm{justify-self:end;position:relative;width:.8rem;height:.8rem;align-self:center}
+.acc-h .pm::before,.acc-h .pm::after{content:"";position:absolute;left:0;right:0;top:50%;height:1.5px;background:currentColor;transition:transform .5s var(--ease)}
+.acc-h .pm::after{transform:rotate(90deg)}
+.acc-h[aria-expanded="true"] .pm::after{transform:rotate(0)}
+.acc-h:hover b{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.js .acc-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.js .acc-b>div{overflow:hidden;visibility:hidden;transition:visibility 0s .6s}
+.js .acc.open .acc-b{grid-template-rows:1fr}
+.js .acc.open .acc-b>div{visibility:visible;transition-delay:0s}
+.acc-c{padding:0 1.6rem 1.3rem}
+.svc .acc-c{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:.4rem 2.4rem;align-items:start}
+.svc .acc-c>p{color:var(--ink-2)}
+.svc ul li{position:relative;padding:.18rem 0 .18rem 1.15rem;font-size:.93rem;color:var(--ink-2)}
+.svc ul li::before{content:"";position:absolute;left:0;top:.82em;width:.55rem;height:1.5px;background:var(--ink)}
+.svc .go{grid-column:1;display:flex;flex-wrap:wrap;align-items:center;gap:.9rem;margin-top:.9rem}
+.svc .go small{font-size:.87rem;color:var(--muted)}
+.svc ul{grid-column:2;grid-row:1/span 2}
+.faq .acc-h b{font-size:1.4rem}
+.faq .acc-c p{color:var(--ink-2);max-width:44rem}
 
-/* statement lit by scroll */
-.statement{background:var(--night);color:var(--on-night);padding-block:0}
-.statement .pin{position:relative}
-.statement .stick{padding-block:80px}
-.statement p{font:400 clamp(34px,4.8vw,66px)/1.12 var(--display);letter-spacing:-.01em;max-width:22ch}
-.statement .w{color:color-mix(in srgb,var(--on-night) 16%,transparent);transition:color .25s}
-.statement .w.on{color:var(--on-night)}
-.statement .w.on.gold{color:var(--brass-hi);font-style:italic}
-.statement .eyebrow{color:var(--brass-hi);margin-bottom:34px}
-@media (prefers-reduced-motion: reduce){.statement .pin{height:auto}.statement .stick{position:static}.statement .w{color:var(--on-night)}}
+/* work */
+.seg{display:inline-flex;gap:.25rem;margin-top:1.6rem;padding:.25rem;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent);border-radius:999px;background:color-mix(in srgb,var(--card) 70%,transparent);align-self:flex-start;flex-wrap:wrap}
+.seg button{border:0;background:none;padding:.6rem .95rem;border-radius:999px;font-size:.9rem;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .3s var(--ease),color .3s var(--ease)}
+.seg button sup{font-size:.72em;color:var(--muted);margin-left:.25em;vertical-align:.5em;line-height:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--on-ink)}
+.seg button[aria-pressed="true"] sup{color:inherit;opacity:.7}
+.work .in{display:grid;grid-template-columns:minmax(0,19rem) minmax(0,1fr);gap:1.6rem;padding:1.1rem 1.2rem 1.2rem 1rem;overflow:hidden}
+.wl{min-height:0;overflow:auto;scrollbar-width:thin;align-self:stretch}
+.js .wl[hidden]{display:none}
+.wl li a{display:flex;justify-content:space-between;gap:.8rem;align-items:baseline;padding:.36rem .6rem;border-radius:6px;text-decoration:none;font-size:.93rem;line-height:1.3}
+.wl li a small{font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:none;max-width:48%}
+.wl li a:hover{background:var(--soft)}
+.wl li a[aria-current="true"]{background:var(--ink);color:var(--on-ink)}
+.wl li a[aria-current="true"] small{color:inherit;opacity:.72}
+.wl.long li a{padding:.62rem .6rem;font-size:1rem}
+.pv{min-height:0;display:flex;flex-direction:column;min-width:0}
+.pv .shot{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--soft);aspect-ratio:16/10;cursor:zoom-in;padding:0;display:block;width:100%;flex:0 1 auto;min-height:0;max-height:52vh}
+.pv .shot img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:opacity .35s var(--ease)}
+.pv .shot img.sw{opacity:0}
+.pv .shot::after{content:"View larger";position:absolute;right:.6rem;bottom:.6rem;font-size:.78rem;font-weight:500;padding:.4rem .65rem;border-radius:99px;background:rgba(10,10,12,.78);color:#fff;opacity:0;transition:opacity .25s}
+.pv .shot:hover::after,.pv .shot:focus-visible::after{opacity:1}
+@media (hover:none){.pv .shot::after{opacity:1}}
+.pv .cap{padding:.9rem .2rem 0;display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;align-items:start}
+.pv .cap h4{font:400 1.5rem/1.15 var(--display);margin:0}
+.pv .cap .k{font-size:.87rem;color:var(--muted);margin-top:.2rem}
+.pv .cap p.d{grid-column:1/-1;color:var(--ink-2);font-size:.95rem;margin-top:.35rem;max-width:46rem;text-wrap:pretty}
+.pv .step{display:flex;align-items:center;gap:.5rem;font-size:.87rem;color:var(--muted);white-space:nowrap}
+.pv .step button{width:2.1rem;height:2.1rem;border-radius:50%;border:1px solid var(--line);background:none;cursor:pointer;display:grid;place-items:center}
+.pv .step button:hover{border-color:var(--ink)}
+.pv .links{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.pill{display:inline-flex;gap:.4rem;align-items:center;font-size:.89rem;font-weight:500;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:.5rem .9rem;background:none;cursor:pointer;transition:border-color .25s,background .25s,color .25s}
+.pill:hover{border-color:var(--ink)}
+.pill.main{background:var(--ink);color:var(--on-ink);border-color:var(--ink);font-weight:600}
+.pill.main:hover{background:transparent;color:var(--ink)}
+.js .detail{display:none}
 
-/* numbers */
-.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
-.nums div{padding:30px 24px 8px 0;display:grid;gap:10px;align-content:start}
-.nums div + div{padding-left:24px;border-left:1px solid var(--line)}
-.nums b{font:400 clamp(56px,6.4vw,88px)/.9 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
-.nums b small{font-size:.5em;color:var(--brass)}
-.nums span{font-size:15px;color:var(--muted);max-width:24ch}
-@media (max-width:860px){.nums{grid-template-columns:repeat(2,minmax(0,1fr))}.nums div:nth-child(3){padding-left:0;border-left:0}.nums div{border-bottom:1px solid var(--line);padding-bottom:26px}}
-.numsec{padding-block:96px}
-
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;counter-reset:s;position:relative}
-.steps::before{content:"";position:absolute;left:0;right:0;top:23px;height:1px;background:var(--line)}
-.step{padding:0 28px 0 0;display:grid;gap:12px;align-content:start;position:relative}
-.step .dot{width:47px;height:47px;border-radius:50%;background:var(--paper);border:1px solid var(--brass);display:grid;place-items:center;font:400 20px/1 var(--display);color:var(--brass);margin-bottom:14px;position:relative}
-.mist .step .dot{background:var(--mist)}
-.step h3{font-size:32px;line-height:1}
-.step .price{font:500 13px/1.3 var(--mono);color:var(--brass);letter-spacing:.04em;text-transform:uppercase}
-.step p{color:var(--muted);font-size:15px}
-@media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:44px}.steps::before{display:none}}
-@media (max-width:560px){.steps{grid-template-columns:minmax(0,1fr)}}
-
-/* industries */
-.inds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
-.ind{padding:28px 28px 30px 0;border-bottom:1px solid var(--line);display:grid;gap:8px;align-content:start;transition:background .3s}
-.ind:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--line)}
-.ind .n{font:400 11px/1 var(--mono);color:var(--brass);letter-spacing:.1em}
-.ind h3{font-size:30px;line-height:1.05}
-.ind p{color:var(--muted);font-size:15px}
-@media (max-width:860px){.inds{grid-template-columns:minmax(0,1fr)}.ind,.ind:not(:nth-child(3n+1)){padding:22px 0;border-left:0}}
-.fine{font-size:14px;color:var(--muted);margin-top:22px}
-.quick{margin-top:56px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;align-items:center;padding:32px 36px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
-.quick .price{font:500 13px/1.3 var(--mono);color:var(--brass);letter-spacing:.04em;text-transform:uppercase;margin:10px 0 12px}
-.quick h3{font-size:32px;line-height:1.05}
-.quick p{color:var(--muted);font-size:15px}
-.quick .btn{margin-top:20px}
-.quick ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-.quick li{padding-left:22px;position:relative;font-size:15px}
-.quick li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;border:1px solid var(--brass)}
-.fc{margin:44px 0 0;padding:28px 30px;border:1px solid var(--line);border-radius:14px;display:grid;gap:14px;justify-items:start}
-.fc p{margin:0;max-width:760px;color:var(--muted);line-height:1.6}
-.fc p strong{color:var(--ink);font-weight:600}
-.quick .founding{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;font-size:14px;color:var(--muted)}
-@media (max-width:760px){.quick{grid-template-columns:1fr;padding:24px 20px;gap:20px}}
-
-/* case studies */
-.cases{display:grid;gap:16px}
-.grp{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:22px 0 2px}
-.grp:first-child{margin-top:0}
-details.case{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
-details.case summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:220px minmax(0,1fr) auto;gap:30px;align-items:center;padding:20px 26px 20px 20px}
-details.case summary::-webkit-details-marker{display:none}
-.thumb{aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:var(--mist);border:1px solid var(--line)}
-.thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-summary:hover .thumb img{transform:scale(1.05)}
-.sum-text{display:grid;gap:8px}
-.sum-text h3{font-size:34px;line-height:1.05;transition:color .2s}
-.sum-text p{color:var(--muted);font-size:15.5px}
-.tagrow{display:flex;flex-wrap:wrap;gap:8px}
-.tag{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
-.tag.live{background:var(--ok-soft);border-color:transparent;color:var(--ok)}
-.tag.built{background:var(--brass-soft);border-color:transparent;color:var(--brass)}
-.toggle{display:inline-flex;align-items:center;gap:10px;font:600 14px/1 var(--body);white-space:nowrap}
-.toggle i{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;font-style:normal;font-size:20px;line-height:1;transition:transform .35s,border-color .2s,color .2s}
-details[open]>summary .toggle i{transform:rotate(45deg);border-color:var(--brass);color:var(--brass)}
-.toggle .open-t{display:none}
-details[open]>summary .toggle .open-t{display:inline}
-details[open]>summary .toggle .closed-t{display:none}
-summary:hover h3{color:var(--brass)}
-.case-body{display:grid;gap:32px;border-top:1px solid var(--line);margin:0 26px 0 20px;padding-block:32px}
-details[open] .case-body{animation:open .5s cubic-bezier(.2,.7,.2,1)}
-@keyframes open{from{opacity:0;transform:translateY(-8px)}}
-.cb-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}
-.cb-grid h4{font-size:26px;margin-bottom:10px}
-.cb-grid p{color:var(--muted);font-size:15.5px}
-.cb-grid ul{margin:0;padding-left:18px;color:var(--muted);font-size:15.5px;display:grid;gap:6px}
-.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.gal figure{margin:0;display:grid;gap:8px;align-content:start}
-.gal .shot{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--mist);aspect-ratio:16/10}
-.gal .shot img{width:100%;height:100%;object-fit:cover;object-position:0 0}
-.gal figcaption{font-size:13px;color:var(--muted)}
-.autos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px}
-.autos li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;align-items:center;padding:14px 0;border-top:1px solid var(--line)}
-.autos .shot{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:var(--mist);aspect-ratio:16/10}
-.autos .shot img{width:100%;height:100%;object-fit:cover;object-position:0 0}
-.autos h4{font:400 20px/1.15 var(--display);margin:0 0 4px}
-.autos p{margin:0;font-size:14px;color:var(--muted)}
-@media (max-width:860px){.autos{grid-template-columns:minmax(0,1fr)}}
-.more{margin-top:18px}
-details.more>summary,details.case details.more>summary{width:fit-content;grid-template-columns:none;list-style:none;cursor:pointer;display:inline-flex !important;align-items:center;gap:8px;font:500 13px/1 var(--mono);letter-spacing:.06em;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:12px 20px !important;background:transparent}
-details.more>summary::-webkit-details-marker{display:none}
-.more>summary::after{content:"+";font-size:16px;line-height:1}
-.more[open]>summary::after{content:"\2212"}
-.more>summary:hover{border-color:var(--ink)}
-.more>summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.more .m-open,.more[open] .m-closed{display:none}
-.more[open] .m-open{display:inline}
-.more[open]>.gal{margin-top:18px}
-.gal-sites{grid-template-columns:repeat(3,minmax(0,1fr))}
-.gal-sites figcaption b{color:var(--ink);font-weight:600}
-.cb-intro{font-size:17px;color:var(--ink);max-width:70ch;margin:0}
-.status{display:grid;border-top:1px solid var(--line)}
-.status div{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
-.st{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap;flex:none}
-.st.live{background:var(--ok-soft);border-color:transparent;color:var(--ok)}
-.nx{font-size:22px}
-@media (max-width:600px){.status div{flex-direction:column;align-items:flex-start;gap:8px}}
-.kv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.kv div{padding:18px 18px 18px 0;display:grid;gap:4px}
-.kv div + div{padding-left:18px;border-left:1px solid var(--line)}
-.kv b{font:400 38px/1 var(--display);font-variant-numeric:tabular-nums}
-.kv span{font-size:13.5px;color:var(--muted)}
-@media (max-width:860px){
-  details.case summary{grid-template-columns:minmax(0,1fr);gap:16px;padding:18px}
-  .cb-grid{grid-template-columns:minmax(0,1fr);gap:24px}
-  .gal{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .kv{grid-template-columns:repeat(2,minmax(0,1fr))}.kv div:nth-child(3){padding-left:0;border-left:0}.kv div{border-bottom:1px solid var(--line)}
-  .case-body{margin:0 18px}
-}
-
-/* principles */
-.press{padding-block:56px;border-top:1px solid var(--line)}
-.press .wrap{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:48px;align-items:start}
-.press blockquote{margin:0;font:400 clamp(24px,2.8vw,34px)/1.3 var(--display);color:var(--ink);max-width:34ch}
-.press .src{display:block;margin-top:18px;font:500 12px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.press .src a{color:var(--ink);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
-.press .src a:hover{opacity:.6}
-@media (max-width:760px){section.press{padding-block:44px}.press .wrap{grid-template-columns:1fr;gap:20px}}
-.principles{background:var(--night);color:var(--on-night)}
-.principles h2{color:var(--on-night)}
-.principles h2 em,.principles .eyebrow{color:var(--brass-hi)}
-.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-top:60px}
-.pgrid div{border-top:1px solid var(--night-line);padding-top:26px;display:grid;gap:10px}
-.pgrid .n{font:400 11px/1 var(--mono);color:var(--brass-hi);letter-spacing:.1em}
-.pgrid h3{font-size:32px;color:var(--on-night)}
-.pgrid p{color:var(--night-muted);font-size:15.5px}
-@media (max-width:860px){.pgrid{grid-template-columns:minmax(0,1fr);gap:30px}}
+/* how it works */
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.8rem}
+.cols3 h4{font:400 1.4rem/1.15 var(--display);margin:0 0 .45rem}
+.cols3 p{font-size:.95rem;color:var(--ink-2)}
+.steps li>i{display:block;font:italic 400 2.6rem/1 var(--display);margin-bottom:.5rem}
+.rule{border:0;border-top:1px solid var(--line-2);margin:1.4rem -1.6rem 1.3rem}
+.sub{font:400 1.75rem/1.1 var(--display);margin:0 0 1.1rem}
+.sub em{font-style:italic}
 
 /* about */
-.about .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px;align-items:start}
-.portrait{margin:0;display:grid;gap:12px}
-.portrait img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);transition:filter .5s}
-:root[data-pal="mono"] .portrait img,:root:not([data-pal]) .portrait img{filter:grayscale(1) contrast(1.05)}
-.portrait figcaption{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.about h2{margin:18px 0 26px}
-.about .body{display:grid;gap:16px;color:var(--muted);max-width:62ch}
-.slot{border:1px dashed var(--brass);background:var(--brass-soft);border-radius:12px;padding:16px 18px;font-size:14.5px;color:var(--ink)}
-.slot b{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brass);display:block;margin-bottom:8px}
-@media (max-width:860px){.about .wrap{grid-template-columns:minmax(0,1fr);gap:40px}.portrait{max-width:320px}}
+.bio{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:1.8rem;align-items:start}
+.bio figure img{border-radius:8px;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 18%}
+.bio figcaption{font-size:.87rem;color:var(--muted);margin-top:.55rem}
+.bio p{color:var(--ink-2)}
+.bio p+p{margin-top:.85rem}
+.bio p:first-child{font:400 1.45rem/1.3 var(--display);color:var(--ink)}
+.quote{margin-top:1.6rem;max-width:32rem}
+.quote blockquote{font:italic 400 1.5rem/1.28 var(--display);text-wrap:pretty}
+.quote cite{display:block;font-style:normal;font-size:.87rem;color:var(--muted);margin-top:.7rem}
+.quote cite a{color:var(--ink)}
 
-/* referrals */
-.refer{padding-block:96px}
-.refer .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start}
-.refer h2{margin:18px 0 18px}
-.refer .lead{font-size:17.5px}
-.rates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.rates div{padding:22px 22px 22px 0;display:grid;gap:6px}
-.rates div + div{padding-left:22px;border-left:1px solid var(--line)}
-.rates b{font:400 54px/1 var(--display);font-variant-numeric:tabular-nums}
-.rates span{font-size:14.5px;color:var(--muted)}
-.refsteps{margin:26px 0 0;padding-left:18px;color:var(--muted);font-size:15.5px;display:grid;gap:8px}
-.refer .acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px}
-.refer .acts .fine{margin:0}
-@media (max-width:860px){.refer .wrap{grid-template-columns:minmax(0,1fr);gap:32px}.rates b{font-size:44px}}
+/* contact */
+.reach{margin-top:1.4rem;display:grid;gap:.15rem}
+.reach .r{display:flex;align-items:center;gap:.8rem}
+.reach a.addr{font:400 1.5rem/1.3 var(--display);text-decoration:none}
+.reach a.addr:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.copy{font-size:.8rem;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:.3rem .7rem;cursor:pointer}
+.copy:hover{border-color:var(--ink)}
+.contact .in{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:2rem;padding:1.3rem 1.6rem 1.4rem}
+form{display:grid;gap:.75rem;align-content:start}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+label{display:grid;gap:.3rem;font-size:.87rem;font-weight:500}
+label small{font-weight:400;color:var(--muted);font-size:1em}
+input,textarea{font:400 1rem/1.4 var(--body);color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:7px;padding:.68rem .8rem;width:100%;min-width:0}
+textarea{min-height:5.6rem;resize:none}
+input:focus,textarea:focus{outline:2px solid var(--ink);outline-offset:1px;background:var(--card)}
+[aria-invalid="true"]{border-color:var(--err)}
+.refd summary{font-size:.87rem;color:var(--ink-2);cursor:pointer}
+.refd label{margin-top:.5rem}
+.interest{font-size:.87rem;color:var(--ink-2)}
+.done{font-size:.9rem;padding:.7rem .85rem;border-radius:7px;background:var(--soft);border:1px solid var(--line)}
+.done.err{border-color:var(--err);color:var(--err)}
+.done a{color:inherit}
+.ex{border-left:1px solid var(--line-2);padding-left:2rem;display:flex;flex-direction:column;min-width:0}
+.ex h4{font:400 1.4rem/1.15 var(--display);margin:0 0 .2rem}
+.ex>p{font-size:.87rem;color:var(--muted)}
+.ex ol{margin-top:.5rem}
+.ex li{padding:.8rem 0;border-top:1px solid var(--line-2)}
+.ex li:first-child{border-top:0}
+.ex li span{display:block;font-size:.8rem;color:var(--muted)}
+.ex li b{display:block;font-weight:500;font-size:.95rem;line-height:1.4;margin:.15rem 0}
+.ex li em{display:block;font:italic 400 1.1rem/1.3 var(--display)}
+.ex .n{margin-top:auto;padding-top:.6rem}
 
-/* contact band */
-.cta-band{position:relative;background:var(--night);color:var(--on-night);overflow:hidden}
-.cta-band .scrim{position:absolute;inset:0;background:color-mix(in srgb,var(--night) 62%,transparent);pointer-events:none}
-.cta-band .wrap{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start}
-.cta-band h2{color:var(--on-night);margin:18px 0 22px}
-.cta-band h2 em,.cta-band .eyebrow{color:var(--brass-hi)}
-.cta-band .lead{color:var(--on-night-2)}
-.direct{margin-top:40px;padding-top:28px;border-top:1px solid var(--night-line);display:grid;gap:12px}
-.mailrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.addr{font:500 18px/1.4 var(--mono);user-select:all;overflow-wrap:anywhere}
-.copy{padding:9px 16px;font-size:13px;border:1px solid color-mix(in srgb,var(--on-night) 30%,transparent);background:transparent;color:var(--on-night)}
-.copy:hover{border-color:var(--brass-hi);color:var(--brass-hi)}
-.refnote{font-size:15px;color:var(--night-muted)}
-form{background:var(--card);color:var(--ink);border-radius:18px;padding:36px;display:grid;gap:20px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);min-width:0}
-.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-label{display:grid;gap:7px;font-size:13px;font-weight:600;letter-spacing:.02em}
-label small{font-weight:400;color:var(--muted)}
-input,select,textarea{font:400 16px/1.4 var(--body);color:var(--ink);background:var(--mist);border:1px solid var(--line);border-radius:10px;padding:13px 14px;width:100%}
-textarea{min-height:120px;resize:vertical}
-input:focus,select:focus,textarea:focus{outline:2px solid var(--brass);outline-offset:0;border-color:var(--brass)}
-input[aria-invalid="true"]{border-color:var(--flag)}
-.done{border:1px solid var(--ok);background:var(--ok-soft);color:var(--ink);border-radius:10px;padding:14px 16px;font-size:15px}
-@media (max-width:860px){.cta-band .wrap{grid-template-columns:minmax(0,1fr);gap:40px}.row2{grid-template-columns:minmax(0,1fr)}form{padding:24px}}
+/* bottom tabs */
+.tabs{display:flex;align-items:stretch;gap:.2rem;padding:0 2.6rem;border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent);background:color-mix(in srgb,var(--map1) 80%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.tabs a.t{position:relative;display:flex;align-items:baseline;gap:.5rem;padding:1rem 1.15rem 1.05rem;text-decoration:none;font-size:.93rem;font-weight:500;color:var(--ink-2)}
+.tabs a.t i{font:italic 400 1rem/1 var(--display);color:var(--muted)}
+.tabs a.t::before{content:"";position:absolute;left:1.15rem;right:1.15rem;top:-1px;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.tabs a.t:hover{color:var(--ink)}
+.tabs a.t[aria-current="page"]{color:var(--ink)}
+.tabs a.t[aria-current="page"]::before{transform:scaleX(1)}
+.tabs a.t .s{display:none}
+.tabs .more{margin-left:auto;display:flex;align-items:center;gap:1.3rem;font-size:.87rem;color:var(--muted)}
+.tabs .more a{text-decoration:none}
+.tabs .more a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:4px}
 
-footer{background:var(--night);color:var(--night-muted);font-size:14px;border-top:1px solid var(--night-line)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding-block:36px}
-footer b{color:var(--on-night);font:400 22px/1 var(--display)}
+/* dialogs */
+dialog{border:0;padding:0;color:var(--ink)}
+dialog::backdrop{background:rgba(6,6,8,.82);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+dialog.lb{background:transparent;margin:auto;max-width:min(1400px,calc(100vw - 32px));max-height:calc(100dvh - 32px);width:100%;overflow:visible;color:#f4f4f2}
+.lb figure{display:grid;gap:14px;justify-items:center}
+.lb img{max-width:100%;max-height:calc(100dvh - 190px);width:auto;height:auto;border-radius:10px;background:#111}
+.lb figcaption{max-width:72ch;text-align:center;font-size:15px;line-height:1.5;color:#e9e9e6}
+.lb figcaption b{display:block;font-weight:600;color:#fff;margin-bottom:2px}
+.lb .lbn{font-size:12px;color:#9a9a96}
+.lb .lbd{display:inline-block;margin-top:10px;color:#fff;font-weight:600;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 14px;text-decoration:none}
+.lb .lbd:hover{background:rgba(255,255,255,.12)}
+.lb button{position:fixed;border:1px solid rgba(255,255,255,.25);background:rgba(20,20,22,.7);color:#fff;width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer;display:grid;place-items:center}
+.lb button:hover{background:rgba(255,255,255,.15)}
+.lb .lbx{top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px))}
+.lb .lbp{left:calc(16px + env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb .lbq{right:calc(16px + env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+dialog.sys{margin:auto;width:min(1080px,calc(100vw - 32px));max-height:calc(100dvh - 48px);background:var(--card);border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow);overflow:auto}
+.sys .sx{position:sticky;top:0;float:right;margin:.9rem .9rem 0 0;width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;z-index:2}
+.sys .sx:hover{border-color:var(--ink)}
+.sys .body{padding:2rem 2.4rem 2.2rem}
+.sys .eb{font-size:.87rem;color:var(--muted)}
+.sys h3{font:400 2.5rem/1.05 var(--display);margin:.4rem 0 1.4rem;max-width:22ch;text-wrap:balance}
+.sys .g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
+.sys h4{font:600 .93rem/1.3 var(--body);margin:0 0 .5rem}
+.sys p,.sys li{font-size:.95rem;color:var(--ink-2)}
+.sys ul li{position:relative;padding:.2rem 0 .2rem 1.15rem}
+.sys ul li::before{content:"";position:absolute;left:0;top:.85em;width:.55rem;height:1.5px;background:var(--ink)}
+.sys .nums{display:flex;gap:2.4rem;margin-top:1rem}
+.sys .nums b{display:block;font:400 2.2rem/1 var(--display);color:var(--ink)}
+.sys .nums span{font-size:.87rem;color:var(--muted)}
+.sys .thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;margin-top:1.6rem}
+.sys .thumbs button{border:1px solid var(--line);border-radius:8px;overflow:hidden;padding:0;background:var(--soft);cursor:zoom-in;aspect-ratio:16/10}
+.sys .thumbs img{width:100%;height:100%;object-fit:cover;object-position:top}
+.sys .demos{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem;align-items:center}
+.sys .demos>span{font-size:.87rem;color:var(--muted);margin-right:.3rem}
+.sys .note{font-size:.87rem;color:var(--muted);margin-top:1.1rem}
 
-
-.mock{position:fixed;z-index:20;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;padding:8px;border-radius:999px;background:var(--card);color:var(--ink);border:1px solid var(--line);box-shadow:0 18px 40px -16px rgba(0,0,0,.45);max-width:calc(100% - 32px);font:500 13px/1 var(--body)}
-.mock .lbl{font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 6px 0 10px}
-.seg{display:flex;gap:2px;background:var(--mist);border-radius:999px;padding:3px}
-.seg button{font:inherit;border:0;background:none;color:var(--muted);padding:8px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
-.seg button i{width:10px;height:10px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(127,127,127,.4)}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-@media (max-width:640px){.mock{border-radius:18px}.mock .lbl{display:none}.seg button{padding:8px 9px}.seg button span{display:none}}
-
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .js .rv,.js .sheet,.js .hero h1 .ln > span{opacity:1;transform:none}
+/* short wide screens: tighten so nothing needs to scroll */
+@media (min-width:900px) and (max-height:700px){
+  .top{padding-top:.7rem;padding-bottom:.3rem}
+  .panel{padding-top:.6rem;padding-bottom:.9rem}
+  .lede{margin-top:1rem}.acts{margin-top:1.1rem}
+  .card{margin-top:.6rem;max-height:calc(100% - .6rem)}
+  .kick{margin-bottom:.7rem}
+  .acc-h{padding-top:.75rem;padding-bottom:.75rem}
+  .card>header{padding-top:.8rem;padding-bottom:.7rem}
+  .tabs a.t{padding-top:.75rem;padding-bottom:.8rem}
+}
+@media (min-width:900px) and (max-width:1180px){
+  .panel{gap:2rem;grid-template-columns:minmax(0,40fr) minmax(0,60fr)}
+  .contact .in{grid-template-columns:1fr}.ex{display:none}
+  .work .in{grid-template-columns:minmax(0,15rem) minmax(0,1fr)}
+  .wl li a small{display:none}
+  .svc .acc-c{grid-template-columns:1fr}.svc ul{grid-column:1;grid-row:auto}
+  .top .tel{display:none}
+  .tabs .more{gap:.9rem}
 }
 
-/* automations */
-.autos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
-.auto{padding:28px 28px 30px 0;display:grid;gap:10px;align-content:start;border-bottom:1px solid var(--line)}
-.auto:not(:nth-child(3n+1)){padding-left:28px;border-left:1px solid var(--line)}
-.auto .n{font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--muted)}
-.auto h3{font-size:28px;line-height:1.04}
-.auto .when{font:500 12px/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--brass)}
-.auto p{color:var(--muted);font-size:15.5px}
-.auto .you{font-size:14.5px;color:var(--ink);padding-top:10px;margin-top:4px;border-top:1px solid var(--line)}
-.auto .you b{font-weight:600}
-.rules{margin-top:72px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
-.rules h3{font-size:clamp(30px,3.4vw,44px);line-height:1.02;margin:16px 0 14px}
-.rules > div:first-child p{color:var(--muted);font-size:16px}
-.rtab{width:100%;border-collapse:collapse;font-size:14.5px}
-.rtab th{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 14px 12px 0;border-bottom:1px solid var(--ink)}
-.rtab td{padding:13px 14px 13px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted)}
-.rtab td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
-.subcases{display:grid;gap:14px;margin-top:14px}
-.subcases details.case{box-shadow:none}
-.subcases details.case summary{grid-template-columns:150px minmax(0,1fr) auto;padding:14px 18px 14px 14px}
-.subcases .sum-text h3{font-size:19px}
-.subcases .case-body{margin:0 18px 0 14px}
-@media (max-width:1000px){.subcases details.case summary{grid-template-columns:minmax(0,1fr)}.subcases .thumb{display:none}}
-@media (max-width:980px){.autos{grid-template-columns:repeat(2,minmax(0,1fr))}.auto,.auto:not(:nth-child(3n+1)){padding:24px 24px 26px 0;border-left:0}.auto:nth-child(2n){padding-left:24px;border-left:1px solid var(--line)}.rules{grid-template-columns:minmax(0,1fr);gap:32px}}
-@media (max-width:620px){.autos{grid-template-columns:minmax(0,1fr)}.auto,.auto:nth-child(2n){padding:22px 0;border-left:0}.rtab{display:block;overflow-x:auto}.rtab td:first-child{white-space:normal}}
-
-/* ---- homepage refresh ---- */
-[id]{scroll-margin-top:84px}
-.hero .scrim{background:linear-gradient(90deg,color-mix(in srgb,var(--night) 96%,transparent) 0%,color-mix(in srgb,var(--night) 86%,transparent) 48%,color-mix(in srgb,var(--night) 55%,transparent) 100%),linear-gradient(0deg,color-mix(in srgb,var(--night) 90%,transparent),transparent 30%)}
-.hero{min-height:0;padding-block:150px 100px}
-.hero .lead{font-size:19px;max-width:54ch}
-.hero h1{margin-bottom:24px}
-.reassure{font-size:14.5px;color:var(--on-night-2);margin-top:20px;max-width:52ch}
-.aud{font:500 12px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--night-muted);margin-top:18px}
-.sheet{background:var(--card);color:var(--ink);box-shadow:0 30px 70px -34px rgba(0,0,0,.55),0 0 0 1px var(--line)}
-.sheet .sh-top{border-color:var(--line)}.sheet .sh-top span{color:var(--muted)}
-.sheet .sh-top b{font:600 15px/1.3 var(--body);letter-spacing:0;text-transform:none}
-.sheet li{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;border-color:var(--line);padding:15px 20px}
-.sheet .k{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.sheet .d{grid-column:auto;color:var(--ink);font-size:15px}
-.sheet .v{font:400 14px/1.45 var(--body);text-align:left;color:var(--muted)}
-.sheet .v::before{content:"Opportunity \2192  ";font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
-.sheet .sh-foot{background:var(--mist);color:var(--muted);font:400 13px/1.5 var(--body)}
-.tag.live,.tag.built{background:none;border:1px solid var(--line);color:var(--muted)}
-.cases{gap:20px}
-details.case summary{grid-template-columns:260px minmax(0,1fr) auto}
-.toggle{font-size:14px}
-.sum-text h3{font-family:var(--body);font-weight:600;font-size:25px;letter-spacing:-.01em;line-height:1.2}
-.cb-grid h4,.nx{font-family:var(--body);font-weight:600;font-size:17px;letter-spacing:0}
-.kv2{grid-template-columns:repeat(2,minmax(0,1fr));align-self:start}
-.gal1{grid-template-columns:repeat(2,minmax(0,1fr))}
-.morelink{margin-top:28px;font-weight:600}
-.morelink a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line)}
-.morelink a:hover{text-decoration-color:currentColor}
-.more-cases{margin-top:36px}
-.mw-h{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
-.offers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
-.offer{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow)}
-.offer h3{font-family:var(--body);font-weight:600;font-size:22px;letter-spacing:-.01em;line-height:1.2}
-.offer .price{font:500 13px/1.3 var(--mono);letter-spacing:.04em;text-transform:uppercase}
-.offer p{color:var(--muted);font-size:15.5px}
-.offer .typ{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:6px}
-.offer ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.offer li{padding:10px 0 10px 20px;border-bottom:1px solid var(--line);font-size:15px;position:relative}
-.offer li::before{content:"";position:absolute;left:0;top:1.05em;width:6px;height:6px;border-radius:50%;background:var(--ink)}
-.offer .btn{margin-top:auto;align-self:flex-start}
-.offer p.timing,.offer p.onote{font-size:14px}
-.offer ul + .timing{margin-top:2px}
-.btn.line-ink{border-color:var(--ink);color:var(--ink)}
-.btn.line-ink:hover{background:var(--ink);color:var(--paper)}
-.shared{margin-top:28px;color:var(--muted);font-size:16px}
-#services .fine{margin-top:10px}
-#services .fine a{text-underline-offset:3px}
-.steps3{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px}
-.steps3 li{display:grid;gap:10px;align-content:start}
-.steps3 .dot{width:44px;height:44px;border-radius:50%;border:1px solid var(--ink);display:grid;place-items:center;font:400 19px/1 var(--display)}
-.steps3 h3{font-family:var(--body);font-weight:600;font-size:20px;letter-spacing:-.01em;line-height:1.25;margin-top:6px}
-.steps3 p{color:var(--muted);font-size:15.5px}
-#how .fine{margin-top:40px;max-width:70ch}
-.principles{padding-block:100px}
-.pgrid{margin-top:48px}
-.pgrid h3{font-family:var(--body);font-weight:600;font-size:21px;letter-spacing:-.01em}
-.about h2{font-size:clamp(36px,4.6vw,58px)}
-.faqw{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px;align-items:start}
-.faqw h2{margin-top:18px}
-.faq details{border-bottom:1px solid var(--line)}
-.faq details:first-child{border-top:1px solid var(--ink)}
-.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:20px 0;font:600 17px/1.4 var(--body)}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font:400 24px/1 var(--body);flex:none;transition:transform .25s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{color:var(--muted);padding:0 40px 22px 0;max-width:64ch}
-@media (max-width:860px){.faqw{grid-template-columns:minmax(0,1fr);gap:28px}}
-.reassure + .aud{margin-top:14px}
-.interest{margin:0;font-size:14px;color:var(--muted)}.interest b{color:var(--ink)}
-.refd summary{cursor:pointer;font-size:14px;color:var(--muted);list-style:none}
-.refd summary::-webkit-details-marker{display:none}
-.refd summary::before{content:"+ ";font-weight:600}
-.refd[open] summary::before{content:"\2212 "}
-.refd label{margin-top:10px}
-.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.done{border-color:var(--ink);background:var(--mist)}
-.done.err{border-color:var(--flag);background:var(--flag-soft)}
-.done a{font-weight:600}
-.direct{margin-top:32px}
-footer .foot{align-items:flex-start;gap:28px}
-footer .foot p{margin:6px 0 0;max-width:46ch}
-footer nav{display:flex;flex-wrap:wrap;gap:6px 22px}
-footer nav a{color:inherit;text-decoration:none}footer nav a:hover{color:var(--on-night)}
-footer .foot p.refline{max-width:none}
-footer .refline{flex-basis:100%;border-top:1px solid var(--night-line);padding-top:20px;margin:0}
-footer .refline a{color:var(--on-night)}
-@media (max-width:1000px){.offers{grid-template-columns:minmax(0,1fr)}.steps3{grid-template-columns:minmax(0,1fr);gap:28px}details.case summary{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:860px){.hero{padding-block:120px 72px}section{padding-block:72px}}
+/* phones, small tablets and very short windows: same six tabs, each tab a short page that scrolls if it has to */
+@media (max-width:899px),(max-height:539px){
+  html{font-size:16px}
+  .js .sheet{height:auto;overflow:visible}
+  .sheet{display:block;padding-bottom:calc(4.4rem + env(safe-area-inset-bottom,0px))}
+  .wash{background:linear-gradient(180deg,color-mix(in srgb,var(--map1) 80%,transparent),color-mix(in srgb,var(--map1) 62%,transparent))}
+  .top{position:sticky;top:0;z-index:5;padding:.7rem 1.1rem;gap:.9rem;background:color-mix(in srgb,var(--map1) 86%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
+  .top .tel{display:none}
+  .mark b.cons{display:none}
+  .panel{display:block;padding:1.6rem 1.1rem 1.4rem}
+  .js .panel{position:static;display:none}
+  .js .panel.on{display:block}
+  .panel+.panel{border-top:1px solid var(--line)}
+  .js .panel+.panel{border-top:0}
+  .say{padding:0 0 1.5rem}
+  .say h1,.say h2{font-size:clamp(2.6rem,12.2vw,4rem)}
+  .foot{margin-top:1.2rem;padding-top:0}
+  .card{max-height:none;overflow:visible;margin-top:0}
+  .card .in{overflow:visible}
+  .card>header{padding:1rem 1.1rem .85rem}
+  .card>header h3{font-size:1.55rem}
+  .card>header span{display:none}
+  .card .in{padding:1.1rem}
+  .card>footer{padding:.9rem 1.1rem 1rem}
+  .rule{margin-left:-1.1rem;margin-right:-1.1rem}
+  .acc-h{padding:1rem 1.1rem;grid-template-columns:1fr 1.2rem;gap:.2rem 1rem}
+  .acc-h .pr{grid-column:1;grid-row:2;font-weight:500;color:var(--ink-2)}
+  .acc-h .pm{grid-row:1/span 2;grid-column:2}
+  .acc-c{padding:0 1.1rem 1.2rem}
+  .svc .acc-c{grid-template-columns:1fr}.svc ul{grid-column:1;grid-row:auto;margin-top:.4rem}
+  .seg{margin-top:1.2rem;border-radius:1.5rem}
+  .seg button{padding:.55rem .62rem;font-size:.84rem}
+  .work .in{display:flex;flex-direction:column;gap:1.1rem;padding:1.1rem}
+  .pv{order:-1}
+  .pv .shot{max-height:none}
+  .wl{overflow:visible}
+  .wl li a{padding:.7rem .6rem;font-size:1rem;border-bottom:1px solid var(--line-2);border-radius:0}
+  .wl li a[aria-current="true"]{border-radius:6px}
+  .cols3{grid-template-columns:1fr;gap:1.3rem}
+  .steps li{display:grid;grid-template-columns:2.6rem 1fr;column-gap:.4rem}
+  .steps li>i{grid-row:1/span 2;font-size:2.4rem}
+  .steps li>p{grid-column:2}
+  .bio{grid-template-columns:1fr}
+  .bio figure{max-width:13rem}
+  .contact .in{grid-template-columns:1fr;gap:1.6rem;padding:1.1rem}
+  .ex{border-left:0;padding-left:0;border-top:1px solid var(--line-2);padding-top:1.4rem}
+  .reach a.addr{font-size:1.35rem}
+  .tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;padding:0 .2rem env(safe-area-inset-bottom,0px);gap:0;justify-content:space-between;background:color-mix(in srgb,var(--map1) 92%,transparent)}
+  .tabs a.t{flex:1 1 0;flex-direction:column;align-items:center;gap:.25rem;padding:.6rem .1rem .7rem;font-size:.8rem;min-width:0}
+  .tabs a.t::before{left:22%;right:22%}
+  .tabs a.t .l{display:none}.tabs a.t .s{display:inline}
+  .tabs a.t i{font-size:.9rem}
+  .tabs .more{display:none}
+  .mfoot{display:block!important;padding:0 1.1rem 1.6rem;font-size:.87rem;color:var(--muted)}
+  .mfoot a{color:var(--ink);margin-right:1rem}
+  .sys .body{padding:1.4rem 1.1rem 1.6rem}
+  .sys h3{font-size:1.9rem}
+  .sys .g{grid-template-columns:1fr;gap:1.3rem}
+  .sys .thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lb .lbp,.lb .lbq{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:none}
+}
+@media (max-width:420px){.row2{grid-template-columns:1fr}.btn{padding:.9rem 1.15rem}.top .btn{padding:.65rem .9rem;font-size:.84rem}}
+.mfoot{display:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@media print{.map,.wash,.tabs{display:none}.js .sheet{height:auto;overflow:visible}.js .panel{position:static;visibility:visible;opacity:1;display:block}}
 </style>
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<script>document.documentElement.classList.add('js')</script>
+<a class="skip" href="#main">Skip to content</a>
+<div class="map" id="map" aria-hidden="true"><video id="mapv" muted loop playsinline preload="none" tabindex="-1"></video></div>
+<div class="wash" aria-hidden="true"></div>
 
-<header class="top" id="hdr">
-  <div class="wrap">
-    <a class="mark" href="#top" aria-label="MLP Consulting, home"><svg class="logo12" viewBox="0 0 337.0 143.0" width="60" height="26" aria-hidden="true"><path fill="currentColor" d="M182.98,8.41 L182.69,6.67 L182.07,5.02 L181.48,4.00 L180.36,2.64 L179.00,1.52 L177.44,0.69 L175.76,0.17 L174.59,0.02 L161.00,0.00 L159.83,0.08 L158.67,0.31 L157.56,0.69 L156.50,1.21 L155.07,2.23 L154.23,3.07 L153.52,4.00 L152.93,5.02 L152.48,6.11 L152.08,7.83 L152.00,9.00 L152.00,99.00 L152.17,100.76 L152.69,102.44 L153.21,103.50 L153.86,104.48 L155.07,105.77 L156.00,106.48 L157.02,107.07 L158.11,107.52 L159.24,107.83 L160.41,107.98 L222.00,108.00 L223.76,107.83 L225.44,107.31 L226.50,106.79 L227.93,105.77 L228.77,104.93 L229.48,104.00 L230.07,102.98 L230.52,101.89 L230.83,100.76 L230.98,99.59 L231.00,86.00 L230.83,84.24 L230.31,82.56 L229.48,81.00 L228.36,79.64 L227.00,78.52 L225.98,77.93 L224.89,77.48 L223.76,77.17 L222.59,77.02 L183.00,77.00 L182.98,8.41Z M9.36,0.03 L8.06,0.20 L7.42,0.35 L6.79,0.54 L5.58,1.04 L4.45,1.69 L3.92,2.07 L3.41,2.49 L2.48,3.41 L2.07,3.92 L1.34,5.01 L1.03,5.58 L0.53,6.79 L0.19,8.06 L0.02,9.36 L0.00,10.01 L0.02,133.62 L0.19,134.91 L0.53,136.18 L0.76,136.79 L1.34,137.96 L1.68,138.52 L2.48,139.55 L3.40,140.48 L3.91,140.89 L4.99,141.62 L6.16,142.20 L7.40,142.62 L8.04,142.77 L8.68,142.88 L9.99,142.96 L24.94,142.99 L26.25,142.90 L27.53,142.65 L28.77,142.23 L29.95,141.65 L31.04,140.93 L32.02,140.06 L32.88,139.08 L33.61,137.99 L33.92,137.42 L34.42,136.21 L34.61,135.58 L34.87,134.30 L34.96,132.99 L35.00,57.83 L35.04,57.40 L35.19,56.83 L35.68,55.99 L36.41,55.34 L37.31,54.97 L38.08,54.89 L38.85,55.01 L39.57,55.33 L40.21,55.85 L64.01,82.58 L64.93,83.49 L65.43,83.90 L66.51,84.62 L67.09,84.92 L68.29,85.41 L68.91,85.60 L70.18,85.85 L71.47,85.93 L72.12,85.91 L73.40,85.75 L74.66,85.41 L75.26,85.19 L75.86,84.92 L76.98,84.28 L78.01,83.50 L78.49,83.06 L102.71,55.95 L103.12,55.55 L103.60,55.23 L104.15,55.01 L105.11,54.89 L105.69,54.97 L106.25,55.16 L106.75,55.45 L107.19,55.84 L107.55,56.30 L107.81,56.83 L107.96,57.40 L108.00,57.96 L108.00,132.95 L108.09,134.26 L108.19,134.90 L108.53,136.17 L108.76,136.78 L109.34,137.95 L110.07,139.04 L110.93,140.02 L111.41,140.47 L111.91,140.89 L113.00,141.61 L114.17,142.19 L115.41,142.61 L116.05,142.76 L117.34,142.93 L118.00,142.95 L259.97,143.00 L260.62,142.98 L261.92,142.81 L263.18,142.47 L264.39,141.97 L265.52,141.32 L266.56,140.52 L267.48,139.60 L268.28,138.56 L268.93,137.43 L269.43,136.23 L269.77,134.96 L269.95,133.67 L269.97,133.02 L269.97,119.08 L269.79,117.72 L269.63,117.05 L269.14,115.67 L269.02,115.07 L269.00,111.08 L269.04,110.51 L269.20,109.94 L269.46,109.42 L269.81,108.95 L270.59,108.36 L271.13,108.13 L271.71,108.02 L283.05,108.00 L285.75,107.93 L288.15,107.75 L290.78,107.43 L294.93,106.66 L297.50,106.01 L300.04,105.24 L302.30,104.43 L304.75,103.42 L308.55,101.57 L310.85,100.26 L313.09,98.84 L315.25,97.31 L317.34,95.68 L319.34,93.94 L321.26,92.11 L323.08,90.19 L324.81,88.18 L326.43,86.08 L327.96,83.91 L329.37,81.67 L330.67,79.36 L331.86,76.99 L332.93,74.57 L333.88,72.09 L334.70,69.58 L335.41,67.02 L335.98,64.43 L336.43,61.82 L336.72,59.43 L336.98,55.47 L336.94,51.49 L336.58,47.29 L335.94,43.36 L335.01,39.50 L334.24,36.96 L333.43,34.70 L331.87,31.04 L330.05,27.51 L327.98,24.12 L325.51,20.70 L322.94,17.66 L320.16,14.82 L318.19,13.04 L316.33,11.52 L313.12,9.18 L309.74,7.09 L307.19,5.72 L303.79,4.17 L301.32,3.21 L298.58,2.30 L294.97,1.34 L292.37,0.82 L289.51,0.40 L286.87,0.14 L282.95,0.00 L231.28,0.00 L228.35,0.18 L226.71,0.43 L225.12,0.82 L223.05,1.51 L222.13,1.89 L220.25,2.83 L219.21,3.45 L218.38,4.00 L216.71,5.30 L215.11,6.81 L213.73,8.40 L213.01,9.38 L212.45,10.21 L211.39,12.07 L210.53,14.00 L210.13,15.12 L209.44,17.71 L209.12,19.84 L209.00,22.21 L209.02,58.62 L209.09,59.27 L209.34,60.55 L209.76,61.79 L210.03,62.39 L210.68,63.52 L211.06,64.05 L211.48,64.56 L212.40,65.48 L213.44,66.28 L214.57,66.93 L215.16,67.20 L216.40,67.62 L217.68,67.88 L218.98,67.97 L229.98,67.99 L231.29,67.90 L232.57,67.65 L233.20,67.46 L234.41,66.96 L234.99,66.65 L236.08,65.93 L236.59,65.51 L237.51,64.59 L237.93,64.08 L238.31,63.55 L238.97,62.42 L239.24,61.82 L239.66,60.58 L239.91,59.29 L240.00,57.99 L240.00,40.08 L240.08,39.32 L240.46,38.42 L241.10,37.68 L241.94,37.20 L242.51,37.04 L242.95,37.00 L282.96,37.01 L284.71,37.16 L286.20,37.45 L287.70,37.90 L289.07,38.46 L290.54,39.25 L291.98,40.24 L293.17,41.26 L294.29,42.44 L295.35,43.83 L296.16,45.17 L296.85,46.64 L297.43,48.34 L297.78,49.93 L297.98,51.71 L297.98,53.34 L297.78,55.08 L297.42,56.71 L296.85,58.37 L296.18,59.78 L295.34,61.18 L294.28,62.57 L293.24,63.68 L292.06,64.70 L290.85,65.56 L289.49,66.33 L288.10,66.95 L286.66,67.43 L285.22,67.76 L283.94,67.93 L282.58,68.00 L249.35,68.02 L248.05,68.19 L247.41,68.34 L246.17,68.76 L245.58,69.03 L244.44,69.69 L243.91,70.07 L242.93,70.93 L242.48,71.41 L241.69,72.44 L241.03,73.58 L240.53,74.79 L240.34,75.41 L240.09,76.69 L240.00,78.00 L240.00,114.05 L239.87,114.87 L239.44,115.75 L238.90,116.32 L238.06,116.80 L237.49,116.96 L236.92,117.00 L146.08,117.00 L145.51,116.96 L144.59,116.64 L144.10,116.32 L143.68,115.90 L143.20,115.06 L143.04,114.49 L143.00,114.05 L142.98,9.38 L142.91,8.73 L142.66,7.45 L142.24,6.21 L141.97,5.62 L141.32,4.48 L140.94,3.95 L140.08,2.97 L139.60,2.52 L138.56,1.73 L137.43,1.07 L136.84,0.80 L136.22,0.57 L134.96,0.23 L133.67,0.06 L111.54,0.03 L110.24,0.20 L109.60,0.34 L108.36,0.76 L107.77,1.03 L106.63,1.69 L105.59,2.48 L105.12,2.93 L73.59,34.41 L73.08,34.80 L72.56,35.06 L71.99,35.21 L71.40,35.25 L70.82,35.18 L70.26,34.99 L69.75,34.69 L69.41,34.41 L37.96,2.96 L36.98,2.10 L35.89,1.37 L35.32,1.06 L34.11,0.56 L32.85,0.22 L31.55,0.05 L9.36,0.03Z"/></svg><b class="cons">Consulting</b></a>
-    <div class="navr">
-    <nav class="links" id="nav" aria-label="Main">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a class="btn gold" href="#contact" data-interest="Free assessment">Get a free assessment</a>
-    </nav>
-    <button class="menu-btn" type="button" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Menu"><i aria-hidden="true"></i><span>Menu</span></button>
-    </div>
-  </div>
+<div class="sheet">
+<header class="top">
+  <a class="mark" href="#start" aria-label="MLP Consulting, home"><svg class="logo12" viewBox="0 0 337.0 143.0" width="60" height="26" aria-hidden="true"><path fill="currentColor" d="M182.98,8.41 L182.69,6.67 L182.07,5.02 L181.48,4.00 L180.36,2.64 L179.00,1.52 L177.44,0.69 L175.76,0.17 L174.59,0.02 L161.00,0.00 L159.83,0.08 L158.67,0.31 L157.56,0.69 L156.50,1.21 L155.07,2.23 L154.23,3.07 L153.52,4.00 L152.93,5.02 L152.48,6.11 L152.08,7.83 L152.00,9.00 L152.00,99.00 L152.17,100.76 L152.69,102.44 L153.21,103.50 L153.86,104.48 L155.07,105.77 L156.00,106.48 L157.02,107.07 L158.11,107.52 L159.24,107.83 L160.41,107.98 L222.00,108.00 L223.76,107.83 L225.44,107.31 L226.50,106.79 L227.93,105.77 L228.77,104.93 L229.48,104.00 L230.07,102.98 L230.52,101.89 L230.83,100.76 L230.98,99.59 L231.00,86.00 L230.83,84.24 L230.31,82.56 L229.48,81.00 L228.36,79.64 L227.00,78.52 L225.98,77.93 L224.89,77.48 L223.76,77.17 L222.59,77.02 L183.00,77.00 L182.98,8.41Z M9.36,0.03 L8.06,0.20 L7.42,0.35 L6.79,0.54 L5.58,1.04 L4.45,1.69 L3.92,2.07 L3.41,2.49 L2.48,3.41 L2.07,3.92 L1.34,5.01 L1.03,5.58 L0.53,6.79 L0.19,8.06 L0.02,9.36 L0.00,10.01 L0.02,133.62 L0.19,134.91 L0.53,136.18 L0.76,136.79 L1.34,137.96 L1.68,138.52 L2.48,139.55 L3.40,140.48 L3.91,140.89 L4.99,141.62 L6.16,142.20 L7.40,142.62 L8.04,142.77 L8.68,142.88 L9.99,142.96 L24.94,142.99 L26.25,142.90 L27.53,142.65 L28.77,142.23 L29.95,141.65 L31.04,140.93 L32.02,140.06 L32.88,139.08 L33.61,137.99 L33.92,137.42 L34.42,136.21 L34.61,135.58 L34.87,134.30 L34.96,132.99 L35.00,57.83 L35.04,57.40 L35.19,56.83 L35.68,55.99 L36.41,55.34 L37.31,54.97 L38.08,54.89 L38.85,55.01 L39.57,55.33 L40.21,55.85 L64.01,82.58 L64.93,83.49 L65.43,83.90 L66.51,84.62 L67.09,84.92 L68.29,85.41 L68.91,85.60 L70.18,85.85 L71.47,85.93 L72.12,85.91 L73.40,85.75 L74.66,85.41 L75.26,85.19 L75.86,84.92 L76.98,84.28 L78.01,83.50 L78.49,83.06 L102.71,55.95 L103.12,55.55 L103.60,55.23 L104.15,55.01 L105.11,54.89 L105.69,54.97 L106.25,55.16 L106.75,55.45 L107.19,55.84 L107.55,56.30 L107.81,56.83 L107.96,57.40 L108.00,57.96 L108.00,132.95 L108.09,134.26 L108.19,134.90 L108.53,136.17 L108.76,136.78 L109.34,137.95 L110.07,139.04 L110.93,140.02 L111.41,140.47 L111.91,140.89 L113.00,141.61 L114.17,142.19 L115.41,142.61 L116.05,142.76 L117.34,142.93 L118.00,142.95 L259.97,143.00 L260.62,142.98 L261.92,142.81 L263.18,142.47 L264.39,141.97 L265.52,141.32 L266.56,140.52 L267.48,139.60 L268.28,138.56 L268.93,137.43 L269.43,136.23 L269.77,134.96 L269.95,133.67 L269.97,133.02 L269.97,119.08 L269.79,117.72 L269.63,117.05 L269.14,115.67 L269.02,115.07 L269.00,111.08 L269.04,110.51 L269.20,109.94 L269.46,109.42 L269.81,108.95 L270.59,108.36 L271.13,108.13 L271.71,108.02 L283.05,108.00 L285.75,107.93 L288.15,107.75 L290.78,107.43 L294.93,106.66 L297.50,106.01 L300.04,105.24 L302.30,104.43 L304.75,103.42 L308.55,101.57 L310.85,100.26 L313.09,98.84 L315.25,97.31 L317.34,95.68 L319.34,93.94 L321.26,92.11 L323.08,90.19 L324.81,88.18 L326.43,86.08 L327.96,83.91 L329.37,81.67 L330.67,79.36 L331.86,76.99 L332.93,74.57 L333.88,72.09 L334.70,69.58 L335.41,67.02 L335.98,64.43 L336.43,61.82 L336.72,59.43 L336.98,55.47 L336.94,51.49 L336.58,47.29 L335.94,43.36 L335.01,39.50 L334.24,36.96 L333.43,34.70 L331.87,31.04 L330.05,27.51 L327.98,24.12 L325.51,20.70 L322.94,17.66 L320.16,14.82 L318.19,13.04 L316.33,11.52 L313.12,9.18 L309.74,7.09 L307.19,5.72 L303.79,4.17 L301.32,3.21 L298.58,2.30 L294.97,1.34 L292.37,0.82 L289.51,0.40 L286.87,0.14 L282.95,0.00 L231.28,0.00 L228.35,0.18 L226.71,0.43 L225.12,0.82 L223.05,1.51 L222.13,1.89 L220.25,2.83 L219.21,3.45 L218.38,4.00 L216.71,5.30 L215.11,6.81 L213.73,8.40 L213.01,9.38 L212.45,10.21 L211.39,12.07 L210.53,14.00 L210.13,15.12 L209.44,17.71 L209.12,19.84 L209.00,22.21 L209.02,58.62 L209.09,59.27 L209.34,60.55 L209.76,61.79 L210.03,62.39 L210.68,63.52 L211.06,64.05 L211.48,64.56 L212.40,65.48 L213.44,66.28 L214.57,66.93 L215.16,67.20 L216.40,67.62 L217.68,67.88 L218.98,67.97 L229.98,67.99 L231.29,67.90 L232.57,67.65 L233.20,67.46 L234.41,66.96 L234.99,66.65 L236.08,65.93 L236.59,65.51 L237.51,64.59 L237.93,64.08 L238.31,63.55 L238.97,62.42 L239.24,61.82 L239.66,60.58 L239.91,59.29 L240.00,57.99 L240.00,40.08 L240.08,39.32 L240.46,38.42 L241.10,37.68 L241.94,37.20 L242.51,37.04 L242.95,37.00 L282.96,37.01 L284.71,37.16 L286.20,37.45 L287.70,37.90 L289.07,38.46 L290.54,39.25 L291.98,40.24 L293.17,41.26 L294.29,42.44 L295.35,43.83 L296.16,45.17 L296.85,46.64 L297.43,48.34 L297.78,49.93 L297.98,51.71 L297.98,53.34 L297.78,55.08 L297.42,56.71 L296.85,58.37 L296.18,59.78 L295.34,61.18 L294.28,62.57 L293.24,63.68 L292.06,64.70 L290.85,65.56 L289.49,66.33 L288.10,66.95 L286.66,67.43 L285.22,67.76 L283.94,67.93 L282.58,68.00 L249.35,68.02 L248.05,68.19 L247.41,68.34 L246.17,68.76 L245.58,69.03 L244.44,69.69 L243.91,70.07 L242.93,70.93 L242.48,71.41 L241.69,72.44 L241.03,73.58 L240.53,74.79 L240.34,75.41 L240.09,76.69 L240.00,78.00 L240.00,114.05 L239.87,114.87 L239.44,115.75 L238.90,116.32 L238.06,116.80 L237.49,116.96 L236.92,117.00 L146.08,117.00 L145.51,116.96 L144.59,116.64 L144.10,116.32 L143.68,115.90 L143.20,115.06 L143.04,114.49 L143.00,114.05 L142.98,9.38 L142.91,8.73 L142.66,7.45 L142.24,6.21 L141.97,5.62 L141.32,4.48 L140.94,3.95 L140.08,2.97 L139.60,2.52 L138.56,1.73 L137.43,1.07 L136.84,0.80 L136.22,0.57 L134.96,0.23 L133.67,0.06 L111.54,0.03 L110.24,0.20 L109.60,0.34 L108.36,0.76 L107.77,1.03 L106.63,1.69 L105.59,2.48 L105.12,2.93 L73.59,34.41 L73.08,34.80 L72.56,35.06 L71.99,35.21 L71.40,35.25 L70.82,35.18 L70.26,34.99 L69.75,34.69 L69.41,34.41 L37.96,2.96 L36.98,2.10 L35.89,1.37 L35.32,1.06 L34.11,0.56 L32.85,0.22 L31.55,0.05 L9.36,0.03Z"/></svg><b class="cons">Consulting</b></a>
+  <button class="mode" id="mode" type="button" aria-label="Switch between day and night colors">Night</button>
+  <a class="tel" href="tel:+15183069403">(518) 306-9403</a>
+  <a class="btn ink sm" href="#contact" data-go="contact" data-interest="Free assessment">Free assessment</a>
 </header>
 
-<main id="top">
-<section class="hero" aria-labelledby="hero-title">
-  <video class="mapv" id="map-hero" muted loop playsinline autoplay preload="auto" aria-hidden="true" tabindex="-1"></video>
-  <div class="scrim"></div>
-  <div class="wrap">
-    <div>
-      <div class="eyebrow">Websites, automation &amp; practical AI</div>
-      <h1 id="hero-title"><span class="ln"><span>More customers.</span></span><span class="ln"><span><em>Fewer late nights.</em></span></span></h1>
-      <p class="lead">I help owner-run businesses improve their websites, follow up with leads, and take routine work off their plates. You get practical tools built around your business, with setup, training, and a clear plan for keeping everything running.</p>
-      <div class="cta">
-        <a class="btn gold" href="#contact" data-interest="Free assessment">Get a free assessment <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a class="btn line" href="#work">See the work</a>
-      </div>
-      <p class="reassure">Three practical recommendations for your business, delivered within one business day.</p>
-      <p class="aud" id="industries">Based in Irvine. Serving Southern California and businesses nationwide.</p>
-    </div>
+<main class="stage" id="main">
 
-    <aside class="sheet" aria-labelledby="sheet-t">
-      <div class="sh-top"><b id="sheet-t">A clearer picture of what to improve</b><span>Example assessment</span></div>
-      <ol>
-        <li><span class="k">Website</span><span class="d">The main service page has no clear next step.</span><span class="v">Put an inquiry or booking option where customers need it.</span></li>
-        <li><span class="k">Local presence</span><span class="d">Service details differ across public listings.</span><span class="v">Make it easier for customers to understand what you offer.</span></li>
-        <li><span class="k">Inquiry experience</span><span class="d">The contact form asks for a lot of information up front.</span><span class="v">Make the first inquiry easier to complete.</span></li>
-      </ol>
-      <div class="sh-foot">Your assessment focuses on your business and the improvements worth making first.</div>
-    </aside>
+<!-- 01 START: the pitch and the three services -->
+<section class="panel on" id="start" aria-labelledby="h-start">
+  <div class="say">
+    <p class="kick">Websites, automation &amp; practical AI</p>
+    <h1 id="h-start" tabindex="-1">More customers. <em>Fewer late nights.</em></h1>
+    <p class="lede">I work with owner-run businesses on the things that slip when you’re busy: a website that takes bookings, quotes that get a follow-up on day two, invoices that get chased before they’re two months old. I set it up, train your team, and keep it running.</p>
+    <div class="acts">
+      <a class="btn ink" href="#contact" data-go="contact" data-interest="Free assessment">Get a free assessment <span class="ar" aria-hidden="true">→</span></a>
+      <a class="btn line" href="#work" data-go="work">See the work</a>
+    </div>
+    <p class="aside">Send me your website and I’ll send back three things worth fixing, within one business day.</p>
+    <p class="foot">Based in Irvine. Serving Southern California and businesses nationwide.</p>
   </div>
-</section>
-
-<section id="work" class="mist">
-  <div class="wrap">
-    <div class="head">
-      <div class="rv"><div class="eyebrow">Selected projects</div><h2>See how the pieces <em>come together.</em></h2></div>
-      <p class="lead rv d1">Websites, everyday workflows, and AI tools designed around the people using them.</p>
-    </div>
-    <div class="cases">
-      <details class="case" id="case-sites">
-        <summary>
-          <div class="thumb"><img decoding="async" src="img/site-cedarline.webp" width="1600" height="1000" alt="A restaurant website with table reservations, on desktop and phone" loading="lazy"></div>
-          <div class="sum-text">
-            <div class="tagrow"><span class="tag">Websites</span><span class="tag">Local businesses</span></div>
-            <h3>Websites for local businesses</h3>
-            <p>A pediatric office, a bookstore, a restaurant, a med spa and more, each with its own layout and the tools its customers actually use.</p>
-          </div>
-          <span class="toggle"><span class="closed-t">See the sites</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
-        </summary>
-        <div class="case-body">
-          <div class="cb-grid">
-            <div><h4>The idea</h4><p>Most small-business sites are a template with a phone number. These show what yours could be instead: a site that looks like nobody else’s and does real work, so customers can book, order or ask without picking up the phone.</p></div>
-            <div><h4>What they have in common</h4><ul><li>A design built around the business, not a theme</li><li>Booking, ordering or inquiries that work on the page</li><li>Prices and hours where people look for them</li><li>Fast, clean and easy to use on a phone</li></ul></div>
-          </div>
-          <div class="gal gal-sites">
-            <figure><div class="shot"><img decoding="async" src="img/jewelry-store.webp" width="1600" height="1000" alt="Halden demo jewelry store with a grid of engagement rings and prices" loading="lazy"></div><figcaption><b>Halden</b> · Jewelry store with a 3D ring designer <a class="demo-a" href="/work/jewelry/#shop" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/jewelry/builder.html" target="_blank" rel="noopener">Open the ring designer <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/brokerage-site.webp" width="1600" height="1000" alt="A redesigned real estate brokerage website on desktop and phone" loading="lazy"></div><figcaption><b>Boutique brokerage</b> · Real estate <a class="demo-a" href="/work/brokerage/site/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-birchway.webp" width="1600" height="1000" alt="Birchway Pediatrics website on desktop and phone" loading="lazy"></div><figcaption><b>Birchway Pediatrics</b> · Pediatric office <a class="demo-a" href="/work/sites/birchway/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/sites/birchway/#staff" target="_blank" rel="noopener">Open the staff side <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-camino.webp" width="1600" height="1000" alt="Osteria Camino website on desktop and phone" loading="lazy"></div><figcaption><b>Osteria Camino</b> · Italian restaurant <a class="demo-a" href="/work/sites/camino/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/sites/camino/#staff" target="_blank" rel="noopener">Open the staff side <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-paperwhale.webp" width="1600" height="1000" alt="Paperwhale Books website on desktop and phone" loading="lazy"></div><figcaption><b>Paperwhale Books</b> · Bookstore <a class="demo-a" href="/work/sites/paperwhale/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a><a class="demo-a" href="/work/sites/paperwhale/#staff" target="_blank" rel="noopener">Open the staff side <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-quietwell.webp" width="1600" height="1000" alt="Quietwell Aesthetics website on desktop and phone" loading="lazy"></div><figcaption><b>Quietwell Aesthetics</b> · Med spa <a class="demo-a" href="/work/sites/quietwell/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-          </div>
-          <details class="more"><summary><span class="m-closed">See 11 more sites</span><span class="m-open">Show fewer</span></summary>
-          <div class="gal gal-sites">
-            <figure><div class="shot"><img decoding="async" src="img/site-little-orbit.webp" width="1600" height="1000" alt="Little Orbit Tea website on desktop and phone" loading="lazy"></div><figcaption><b>Little Orbit Tea</b> · Boba shop <a class="demo-a" href="/work/sites/little-orbit/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-crestline.webp" width="1600" height="1000" alt="Crestline Design-Build website on desktop and phone" loading="lazy"></div><figcaption><b>Crestline Design-Build</b> · Remodeling company <a class="demo-a" href="/work/sites/crestline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-cedarline.webp" width="1600" height="1000" alt="Cedarline Kitchen website on desktop and phone" loading="lazy"></div><figcaption><b>Cedarline Kitchen</b> · Restaurant <a class="demo-a" href="/work/sites/cedarline/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-hollis.webp" width="1600" height="1000" alt="Hollis Flower House website on desktop and phone" loading="lazy"></div><figcaption><b>Hollis Flower House</b> · Florist <a class="demo-a" href="/work/sites/hollis/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-bellwood.webp" width="1600" height="1000" alt="Bellwood Family Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Bellwood Family Dental</b> · Dental office <a class="demo-a" href="/work/sites/bellwood/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-coffee.webp" width="1600" height="1000" alt="Kestrel Hill Coffee Roasters website on desktop and phone" loading="lazy"></div><figcaption><b>Kestrel Hill Coffee Roasters</b> · Coffee roaster <a class="demo-a" href="/work/sites/coffee/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-halden.webp" width="1600" height="1000" alt="Halden &amp; Rye Bakery website on desktop and phone" loading="lazy"></div><figcaption><b>Halden &amp; Rye Bakery</b> · Bakery <a class="demo-a" href="/work/sites/halden/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-salon.webp" width="1600" height="1000" alt="Ostrander Hair Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Ostrander Hair Studio</b> · Hair salon <a class="demo-a" href="/work/sites/salon/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-pilates.webp" width="1600" height="1000" alt="Springline Reformer Studio website on desktop and phone" loading="lazy"></div><figcaption><b>Springline Reformer Studio</b> · Pilates studio <a class="demo-a" href="/work/sites/pilates/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-boutique.webp" width="1600" height="1000" alt="Fig &amp; Fennimore website on desktop and phone" loading="lazy"></div><figcaption><b>Fig &amp; Fennimore</b> · Clothing boutique <a class="demo-a" href="/work/sites/boutique/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/site-solace.webp" width="1600" height="1000" alt="Solace Studio Dental website on desktop and phone" loading="lazy"></div><figcaption><b>Solace Studio Dental</b> · Dental studio <a class="demo-a" href="/work/sites/solace/" target="_blank" rel="noopener">Open site <span aria-hidden="true">↗</span></a></figcaption></figure>
-          </div>
-          </details>
-          <p class="fine" style="margin:0">Every site is live: open one and book, order or browse like a customer would. Screens use sample data; business names and details are fictional.</p>
-        </div>
-      </details>
-      <details class="case" id="case-automations">
-        <summary>
-          <div class="thumb"><img decoding="async" src="img/auto-invoices.webp" width="1600" height="1000" alt="An overdue invoices summary with an aging bar and a table of open invoices" loading="lazy"></div>
-          <div class="sum-text">
-            <div class="tagrow"><span class="tag">Workflows</span><span class="tag">Any business</span></div>
-            <h3>Workflows that handle the routine</h3>
-            <p>Inbox replies, lead follow-up, reminders, reviews and invoice chasing, working in the background while you run the business.</p>
-          </div>
-          <span class="toggle"><span class="closed-t">See the automations</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
-        </summary>
-        <div class="case-body">
-          <ul class="autos">
-          <li><div class="shot"><img decoding="async" src="img/email-automation.webp" width="1600" height="1000" alt="Inbox with a new inquiry and a drafted reply ready to approve" loading="lazy"></div><div><h4>An inbox that answers itself</h4><p>Routine emails get an instant reply; personal ones wait as a draft for you to approve.</p></div></li>
-          <li><div class="shot"><img decoding="async" src="img/auto-follow-up.webp" width="1600" height="1000" alt="A text conversation beside a follow-up timeline" loading="lazy"></div><div><h4>Inquiries acknowledged right away</h4><p>Every inquiry gets an instant acknowledgment and a friendly follow-up schedule.</p></div></li>
-          <li><div class="shot"><img decoding="async" src="img/auto-reminders.webp" width="1600" height="1000" alt="A weekly calendar of appointments with confirmation status" loading="lazy"></div><div><h4>Appointments that show up</h4><p>Reminders and easy rescheduling by text cut no-shows.</p></div></li>
-          <li><div class="shot"><img decoding="async" src="img/auto-reviews.webp" width="1600" height="1000" alt="A rating summary with new customer reviews" loading="lazy"></div><div><h4>Feedback that is easy to give</h4><p>A consistent request after every completed job or visit, with a clear route for your team to respond.</p></div></li>
-          <li><div class="shot"><img decoding="async" src="img/auto-invoices.webp" width="1600" height="1000" alt="An overdue summary and a table of open invoices" loading="lazy"></div><div><h4>Invoices that chase themselves</h4><p>Polite reminders with a payment link, stopping once you are paid.</p></div></li>
-          <li><div class="shot"><img decoding="async" src="img/site-command-center.webp" width="1600" height="1000" alt="Owner command center with an approval queue and live job profit" loading="lazy"></div><div><h4>An owner’s morning view</h4><p>An approval queue and live job profit in one place.</p></div></li>
+  <div class="card svc" id="services">
+    <header><h3>Three ways <em>to start.</em></h3><span>Services</span></header>
+    <div class="in" style="padding:0">
+      <div class="acc open">
+        <h4><button class="acc-h" type="button" aria-expanded="true" aria-controls="s1"><b>Quick Win</b><span class="pr">$500 fixed scope</span><span class="pm" aria-hidden="true"></span></button></h4>
+        <div class="acc-b" id="s1"><div><div class="acc-c">
+          <p>One thing fixed and working inside a week: online booking, replies to new inquiries, a text back after a missed call, or review requests.</p>
+          <ul>
+            <li>One clearly defined workflow.</li>
+            <li>Setup using your existing tools where practical.</li>
+            <li>Approved messaging and a guided handoff.</li>
+            <li>A focused one-week setup once access and content are ready.</li>
           </ul>
-          <p class="fine" style="margin:0">Tap any screenshot to enlarge it. Screens use sample data.</p>
-          <h4 class="nx">Larger systems</h4>
-          <div class="cases subcases">
-<details class="case sub" id="case-remodeler">
-        <summary>
-          <div class="thumb"><img decoding="async" src="img/remodel-deck.webp" width="724" height="738" alt="A finished rear deck from the remodeling company's portfolio" loading="lazy"></div>
-          <div class="sum-text">
-            <div class="tagrow"><span class="tag">Client project · Home services</span></div>
-            <h3>A connected toolkit for a remodeling business</h3>
-            <p>A public website, office workspace, mobile job tracker, and content tools bring inquiries, estimates, job costs, and marketing into a more organized workflow.</p>
-          </div>
-          <span class="toggle"><span class="closed-t">Explore the project</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
-        </summary>
-        <div class="case-body">
-          <div class="cb-grid">
-            <div><h4>The business need</h4><p>A design-build crew doing kitchens, baths and decks needed one organized place for inquiries, estimates, payments, job costs and marketing, in place of a spreadsheet and a busy inbox.</p></div>
-            <div><h4>The solution</h4><ul><li>A public website with service pages and 57 plain-spoken local remodeling guides</li><li>An office workspace for inbox review, estimates, payments and job details</li><li>A mobile layout designed for crews in the field, tracking hours, costs and what each job really earns</li><li>Short video ads in six styles, queued on a weekly posting schedule</li></ul></div>
-          </div>
-          <div class="cb-grid">
-            <div><h4>How it supports the team</h4><ul><li>Larger text and five clear groups make the office workspace easy for the owner to use every day</li><li>Customer data stays on the owner's computer</li><li>The AI drafts and organizes; nothing reaches the books or a customer until the owner approves it</li><li>Careful checks against representative business data before delivery</li></ul></div>
-            <div><h4>Explore the work</h4><div class="gal gal1">
-              <figure><div class="shot"><img decoding="async" src="img/remodel-job.webp" width="1024" height="754" alt="Job page with stages and profit, sample data" loading="lazy"></div><figcaption>A job's stage and real profit.</figcaption></figure>
-              <figure><div class="shot"><img decoding="async" src="img/remodel-inbox.webp" width="1280" height="800" alt="Inbox items to review, sample data" loading="lazy"></div><figcaption>Receipts and leads waiting for approval.</figcaption></figure>
-            </div></div>
-          </div>
-          <div class="gal">
-            <figure><div class="shot"><img decoding="async" src="img/ad-studio.webp" width="1280" height="800" alt="Claymation and blueprint video ads" loading="lazy"></div><figcaption>Claymation and blueprint video ads.</figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/remodel-office.webp" width="1280" height="800" alt="Office workspace showing today's list" loading="lazy"></div><figcaption>Office workspace: today's list.</figcaption></figure>
-          </div>
-          <p class="fine" style="margin:0">Screens use sample data.</p>
+          <div class="go"><a class="btn ink sm" href="#contact" data-go="contact" data-interest="Quick Win">Find my Quick Win <span class="ar" aria-hidden="true">→</span></a><small>Your $500 is credited toward a larger build when you continue.</small></div>
+        </div></div></div>
+      </div>
+      <div class="acc">
+        <h4><button class="acc-h" type="button" aria-expanded="false" aria-controls="s2"><b>Website &amp; Inquiry Setup</b><span class="pr">Projects from $2,000</span><span class="pm" aria-hidden="true"></span></button></h4>
+        <div class="acc-b" id="s2"><div><div class="acc-c">
+          <p>A site that shows what you do, what it costs and how to book, with every inquiry landing somewhere it gets answered.</p>
+          <ul>
+            <li>A website designed around your services and customers.</li>
+            <li>Clear contact or booking paths.</li>
+            <li>Inquiry routing and a practical follow-up process.</li>
+            <li>Mobile-friendly pages and a straightforward handoff.</li>
+          </ul>
+          <div class="go"><a class="btn ink sm" href="#contact" data-go="contact" data-interest="Website &amp; Inquiry Setup">Discuss my website <span class="ar" aria-hidden="true">→</span></a></div>
+        </div></div></div>
+      </div>
+      <div class="acc">
+        <h4><button class="acc-h" type="button" aria-expanded="false" aria-controls="s3"><b>Connected Workflows &amp; AI</b><span class="pr">Priced to your scope</span><span class="pm" aria-hidden="true"></span></button></h4>
+        <div class="acc-b" id="s3"><div><div class="acc-c">
+          <p>Connect the tools you already use and take the retyping out of the work between them: estimates, document drafts, customer follow-up and a weekly report.</p>
+          <ul>
+            <li>A focused review of the workflow you want to improve.</li>
+            <li>Automation and AI configured for the task.</li>
+            <li>Clear approvals and useful reporting.</li>
+            <li>Team training and written handoff guidance.</li>
+          </ul>
+          <div class="go"><a class="btn ink sm" href="#contact" data-go="contact" data-interest="Connected Workflows &amp; AI">Discuss my workflow <span class="ar" aria-hidden="true">→</span></a></div>
+        </div></div></div>
+      </div>
+    </div>
+    <footer>Every project starts with an agreed scope and price. Any software subscriptions are identified before work begins. Founding-client pricing is available for the first five businesses, with the scope and rate confirmed in your proposal. <a href="/workflows/">Useful workflows for a busy business</a></footer>
+  </div>
+</section>
+
+<!-- 02 WORK -->
+<section class="panel work" id="work" aria-labelledby="h-work">
+  <div class="say">
+    <p class="kick">Work</p>
+    <h2 id="h-work" tabindex="-1">Open one <em>and try it.</em></h2>
+    <p class="lede">Seventeen working websites and the follow-up systems that run behind them. Book a table, order a drink, design a ring.</p>
+    <div class="seg" role="group" aria-label="Kind of work">
+      <button type="button" data-set="sites" aria-pressed="true">Websites<sup>17</sup></button>
+      <button type="button" data-set="flows" aria-pressed="false">Workflows<sup>6</sup></button>
+      <button type="button" data-set="systems" aria-pressed="false">Larger systems<sup>3</sup></button>
+    </div>
+    <p class="foot">Every site is live: open one and book, order or browse like a customer would. Screens use sample data; business names and details are fictional.</p>
+  </div>
+  <div class="card">
+    <div class="in">
+      <ul class="wl" id="wl-sites" aria-label="Websites">
+        <li><a href="/work/jewelry/#shop" data-img="jewelry-store" data-links="Open site|/work/jewelry/#shop;Open the ring designer|/work/jewelry/builder.html" data-desc="Engagement rings with prices on every card, and a 3D ring designer: pick the setting, the metal and the stone, and turn the ring to see it from any side.">Halden <small>Jewelry store</small></a></li>
+        <li><a href="/work/brokerage/site/" data-img="brokerage-site" data-links="Open site|/work/brokerage/site/" data-desc="The new home page for a boutique real estate brokerage, with listing search up front.">Boutique brokerage <small>Real estate</small></a></li>
+        <li><a href="/work/sites/birchway/" data-img="site-birchway" data-links="Open site|/work/sites/birchway/;Open the staff side|/work/sites/birchway/#staff" data-desc="Request a visit by age and reason, see the morning sick-visit slots, and open the staff side: a front desk inbox, reminder and recall automations, and a private assistant that runs on the practice’s own equipment.">Birchway Pediatrics <small>Pediatric office</small></a></li>
+        <li><a href="/work/sites/camino/" data-img="site-camino" data-links="Open site|/work/sites/camino/;Open the staff side|/work/sites/camino/#staff" data-desc="Reserve a table, browse tonight’s menu, and ask about the back room. The staff side holds the reservation book, review replies waiting for approval, and a pre-shift brief.">Osteria Camino <small>Italian restaurant</small></a></li>
+        <li><a href="/work/sites/paperwhale/" data-img="site-paperwhale" data-links="Open site|/work/sites/paperwhale/;Open the staff side|/work/sites/paperwhale/#staff" data-desc="Shop real titles with pickup in about two hours, staff picks and events. The staff side shows orders, special requests, newsletter drafts and a weekly brief for the owner.">Paperwhale Books <small>Bookstore</small></a></li>
+        <li><a href="/work/sites/quietwell/" data-img="site-quietwell" data-links="Open site|/work/sites/quietwell/" data-desc="Book in under a minute, a treatment menu with prices on it, a membership plan, and a text line for clients who would rather not call.">Quietwell Aesthetics <small>Med spa</small></a></li>
+        <li><a href="/work/sites/little-orbit/" data-img="site-little-orbit" data-links="Open site|/work/sites/little-orbit/" data-desc="Real online ordering: build a drink, choose pickup or delivery, check out and follow the order, plus a rewards card.">Little Orbit Tea <small>Boba shop</small></a></li>
+        <li><a href="/work/sites/crestline/" data-img="site-crestline" data-links="Open site|/work/sites/crestline/" data-desc="A cost estimator that returns a real price range in seconds, a text-back with the itemized breakdown, finished projects with timelines, and plain-English permit and cost guides.">Crestline Design-Build <small>Remodeling company</small></a></li>
+        <li><a href="/work/sites/cedarline/" data-img="site-cedarline" data-links="Open site|/work/sites/cedarline/" data-desc="Table reservations, tonight’s menu, and a private dining inquiry for rehearsal dinners, offsites and birthdays.">Cedarline Kitchen <small>Restaurant</small></a></li>
+        <li><a href="/work/sites/hollis/" data-img="site-hollis" data-links="Open site|/work/sites/hollis/" data-desc="Same-day delivery with a ZIP check and order cutoff, weekly flower subscriptions, and wedding inquiries.">Hollis Flower House <small>Florist</small></a></li>
+        <li><a href="/work/sites/bellwood/" data-img="site-bellwood" data-links="Open site|/work/sites/bellwood/" data-desc="Next open appointments right on the home page, an insurance check, clear prices for patients without insurance, and a same-day emergency line.">Bellwood Family Dental <small>Dental office</small></a></li>
+        <li><a href="/work/sites/coffee/" data-img="site-coffee" data-links="Open site|/work/sites/coffee/" data-desc="Order ahead to skip the line, a bean club subscription for fresh bags, and live open hours in the header.">Kestrel Hill Coffee Roasters <small>Coffee roaster</small></a></li>
+        <li><a href="/work/sites/halden/" data-img="site-halden" data-links="Open site|/work/sites/halden/" data-desc="Today’s bake counted down live as it sells, a four-step cake builder, and weekly standing orders for bread.">Halden &amp; Rye Bakery <small>Bakery</small></a></li>
+        <li><a href="/work/sites/salon/" data-img="site-salon" data-links="Open site|/work/sites/salon/" data-desc="Pick a service, then a stylist and a time, with straightforward pricing, a texting line and a first-visit offer.">Ostrander Hair Studio <small>Hair salon</small></a></li>
+        <li><a href="/work/sites/pilates/" data-img="site-pilates" data-links="Open site|/work/sites/pilates/" data-desc="A live class schedule with spots left, intro packs, and membership plans, with an app-style tab bar on phones.">Springline Reformer Studio <small>Pilates studio</small></a></li>
+        <li><a href="/work/sites/boutique/" data-img="site-boutique" data-links="Open site|/work/sites/boutique/" data-desc="A seasonal lookbook, new arrivals with a cart, a fitting room you can book with a stylist, and an early-look email list.">Fig &amp; Fennimore <small>Clothing boutique</small></a></li>
+        <li><a href="/work/sites/solace/" data-img="site-solace" data-links="Open site|/work/sites/solace/" data-desc="Pick a visit type and a real open time, see what your insurance covers before you arrive, and get intake forms by text.">Solace Studio Dental <small>Dental studio</small></a></li>
+      </ul>
+      <ul class="wl long" id="wl-flows" aria-label="Workflows" hidden>
+        <li><a href="/workflows/" data-img="email-automation" data-kind="Workflow" data-links="See all the workflows|/workflows/" data-desc="Routine emails get an instant reply; personal ones wait as a draft in your voice, ready for one tap.">An inbox that answers itself</a></li>
+        <li><a href="/workflows/" data-img="auto-follow-up" data-kind="Workflow" data-links="See all the workflows|/workflows/" data-desc="An inquiry gets an instant text and a follow-up plan runs on schedule; a customer reply pauses that sequence and alerts the right person.">Inquiries acknowledged right away</a></li>
+        <li><a href="/workflows/" data-img="auto-reminders" data-kind="Workflow" data-links="See all the workflows|/workflows/" data-desc="The week’s calendar with every confirmation tracked, a missed visit already being rebooked, and a reminder text for anyone who has not replied.">Appointments that show up</a></li>
+        <li><a href="/workflows/" data-img="auto-reviews" data-kind="Workflow" data-links="See all the workflows|/workflows/" data-desc="A consistent request after every completed job or visit, with a clear route for your team to respond.">Feedback that is easy to give</a></li>
+        <li><a href="/workflows/" data-img="auto-invoices" data-kind="Workflow" data-links="See all the workflows|/workflows/" data-desc="What is owed and how old it is, with polite reminders and a payment link in every message, stopping once you are paid.">Invoices that chase themselves</a></li>
+        <li><a href="/work/sites/command-center/" data-img="site-command-center" data-kind="Workflow" data-links="Open the command center|/work/sites/command-center/" data-desc="Overnight emails sorted, new leads graded, and drafted replies waiting for the owner’s approval, next to live job profit. Nothing goes out until you approve.">An owner’s morning view</a></li>
+      </ul>
+      <ul class="wl long" id="wl-systems" aria-label="Larger systems" hidden>
+        <li><a href="#work" data-img="remodel-deck" data-fit="cover" data-kind="Client project · Home services" data-detail="d-remodel" data-desc="A public website, an office workspace, a job tracker for crews and a set of video ads, in place of a spreadsheet and a crowded inbox.">A connected toolkit for a remodeling business</a></li>
+        <li><a href="/work/brokerage/site/" data-img="brokerage-site" data-kind="Custom solution showcase · Real estate" data-detail="d-brokerage" data-links="Open the Team Hub|/work/brokerage/hub/" data-desc="A rebuilt website and an agent workspace that handle lead follow-up, listing campaigns, market reports and content approvals in one place.">A modern website and AI workspace for real estate</a></li>
+        <li><a href="/work/permits/" data-img="permit-map" data-kind="Tool · Contractors" data-detail="d-permits" data-links="Open the permit lead map|/work/permits/" data-desc="Public permit data from four Southern California cities becomes a lead list for the trades that come after the permit, worked right on the map.">A lead map built from new building permits</a></li>
+      </ul>
+      <div class="pv" id="pv">
+        <button class="shot" type="button" id="pv-shot" aria-label="View larger"><img id="pv-img" src="img/jewelry-store.webp" width="1600" height="1000" alt="Halden demo jewelry store with a grid of engagement rings and prices"></button>
+        <div class="cap" aria-live="polite">
+          <div><h4 id="pv-t">Halden</h4><p class="k" id="pv-k">Jewelry store</p></div>
+          <div class="step"><button type="button" id="pv-prev" aria-label="Previous">←</button><span id="pv-n">1 / 17</span><button type="button" id="pv-next" aria-label="Next">→</button></div>
+          <p class="d" id="pv-d">Engagement rings with prices on every card, and a 3D ring designer: pick the setting, the metal and the stone, and turn the ring to see it from any side.</p>
+          <div class="links" id="pv-l"><a class="pill main" href="/work/jewelry/#shop">Open site <span aria-hidden="true">↗</span></a><a class="pill" href="/work/jewelry/builder.html">Open the ring designer <span aria-hidden="true">↗</span></a></div>
         </div>
-      </details>
-<details class="case sub" id="case-brokerage">
-        <summary>
-          <div class="thumb"><img decoding="async" src="img/brokerage-site.webp" width="1600" height="1000" alt="A redesigned real estate website on desktop and phone" loading="lazy"></div>
-          <div class="sum-text">
-            <div class="tagrow"><span class="tag">Custom solution showcase · Real estate</span></div>
-            <h3>A modern website and AI workspace for real estate</h3>
-            <p>A coordinated website and agent workspace bring lead follow-up, listing campaigns, market reports, and content approvals together in one experience.</p>
-          </div>
-          <span class="toggle"><span class="closed-t">Explore the tools</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
-        </summary>
-        <div class="case-body">
-          <div class="cb-grid">
-            <div><h4>The business need</h4><p>An independent boutique brokerage wanted a website that matched the quality of its listings, plus a consistent way to follow up with leads and launch every new listing.</p></div>
-            <div><h4>The solution</h4><ul><li>The existing site rebuilt page for page, with an optional modern redesign and listing search</li><li>A 24/7 lead responder, listing launch kit and review engine</li><li>Social and video tools, plus monthly market reports</li><li>A Team Hub that brings eight AI tools together for agents</li></ul></div>
-          </div>
-          <div class="cb-grid">
-            <div><h4>How it supports the team</h4><p>Agents work from one place and approve every lead reply, post and email before it goes out, so the brokerage's voice stays consistent across every channel.</p></div>
-            <div class="kv kv2">
-              <div><b>8</b><span>AI tools for agents</span></div>
-              <div><b>48</b><span>Buyer and area guides</span></div>
-            </div>
-          </div>
-          <div><h4 class="nx">Explore the work</h4></div>
-          <div class="gal">
-            <figure><div class="shot"><img decoding="async" src="img/brokerage-site.webp" width="1600" height="1000" alt="The redesigned brokerage website" loading="lazy"></div><figcaption>The redesigned website, with listing search. <a class="demo-a" href="/work/brokerage/site/" target="_blank" rel="noopener">Open website <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/launch-kit.webp" width="1280" height="800" alt="Listing launch kit" loading="lazy"></div><figcaption>A full listing campaign from one form. <a class="demo-a" href="/work/brokerage/launch/" target="_blank" rel="noopener">Open launch kit <span aria-hidden="true">↗</span></a></figcaption></figure>
-            <figure><div class="shot"><img decoding="async" src="img/market-reports.webp" width="1280" height="800" alt="Market reports" loading="lazy"></div><figcaption>Monthly market reports. <a class="demo-a" href="/work/brokerage/reports/" target="_blank" rel="noopener">Open reports <span aria-hidden="true">↗</span></a></figcaption></figure>
-          </div>
-          <div class="demos"><span class="demos-l">Try the live demos</span><a href="/work/brokerage/site/" target="_blank" rel="noopener">Redesigned website <span aria-hidden="true">↗</span></a><a href="/work/brokerage/hub/" target="_blank" rel="noopener">Team Hub <span aria-hidden="true">↗</span></a><a href="/work/brokerage/responder/" target="_blank" rel="noopener">Lead responder <span aria-hidden="true">↗</span></a><a href="/work/brokerage/reviews/" target="_blank" rel="noopener">Review engine <span aria-hidden="true">↗</span></a><a href="/work/brokerage/launch/" target="_blank" rel="noopener">Listing launch kit <span aria-hidden="true">↗</span></a><a href="/work/brokerage/social/" target="_blank" rel="noopener">Content engine <span aria-hidden="true">↗</span></a><a href="/work/brokerage/ads/" target="_blank" rel="noopener">Listing ads <span aria-hidden="true">↗</span></a><a href="/work/brokerage/staging/" target="_blank" rel="noopener">Virtual staging <span aria-hidden="true">↗</span></a><a href="/work/brokerage/nurture/" target="_blank" rel="noopener">Home value notes <span aria-hidden="true">↗</span></a><a href="/work/brokerage/reports/" target="_blank" rel="noopener">Market reports <span aria-hidden="true">↗</span></a><a href="/work/brokerage/security/" target="_blank" rel="noopener">Site protection <span aria-hidden="true">↗</span></a></div>
-          <p class="fine" style="margin:0">Screens use sample data.</p>
-        </div>
-      </details>
-<details class="case sub" id="case-permits">
-        <summary>
-          <div class="thumb"><img decoding="async" src="img/permit-map.webp" width="1600" height="1000" alt="A map of Los Angeles with new building permits marked as leads around Santa Monica" loading="lazy"></div>
-          <div class="sum-text">
-            <div class="tagrow"><span class="tag">Tool · Contractors</span></div>
-            <h3>A lead map built from new building permits</h3>
-            <p>Public permit data from four Southern California cities becomes a lead list for the trades that come after the permit, worked right on the map.</p>
-          </div>
-          <span class="toggle"><span class="closed-t">Explore the map</span><span class="open-t">Close</span><i aria-hidden="true">+</i></span>
-        </summary>
-        <div class="case-body">
-          <div class="cb-grid">
-            <div><h4>The business need</h4><p>The trade that pulls a permit already has the job. Countertop, cabinet, fencing and landscaping companies come next, and they rarely hear about it in time.</p></div>
-            <div><h4>The solution</h4><ul><li>New permits from Los Angeles, Anaheim, Newport Beach and Costa Mesa, refreshed from each city's public data</li><li>Each permit sorted by what follows it: a kitchen remodel means countertops and cabinets, a pool means fencing and landscaping</li><li>Leads worked on the map: status, notes, follow-up dates and directions</li><li>A postcard preview for each address, as one possible next step</li></ul></div>
-          </div>
-          <div class="cb-grid">
-            <div><h4>Where it stands</h4><p>Built and running on public city permit records. A working tool, not yet piloted with a contractor.</p></div>
-            <div class="kv kv2">
-              <div><b>11,506</b><span>Permits in the last 45 days</span></div>
-              <div><b>2,473</b><span>Of them point to countertop work</span></div>
-            </div>
-          </div>
-          <div class="demos"><span class="demos-l">Try the live demo</span><a class="demos-main" href="/work/permits/" target="_blank" rel="noopener">Permit lead map <span aria-hidden="true">↗</span></a></div>
-        </div>
-      </details>
-          </div>
-        </div>
-      </details>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail" id="d-remodel">
+    <p class="eb">Client project · Home services</p>
+    <h3>A connected toolkit for a remodeling business</h3>
+    <div class="g">
+      <div><h4>The business need</h4><p>A design-build crew doing kitchens, baths and decks needed one organized place for inquiries, estimates, payments, job costs and marketing, so nothing lives only in someone’s head.</p></div>
+      <div><h4>The solution</h4><ul>
+        <li>A public website with service pages and 57 plain-spoken local remodeling guides</li>
+        <li>An office workspace for inbox review, estimates, payments and job details</li>
+        <li>A mobile layout designed for crews in the field, tracking hours, costs and what each job really earns</li>
+        <li>Short video ads in six styles, queued on a weekly posting schedule</li></ul></div>
+      <div><h4>How it supports the team</h4><ul>
+        <li>Larger text and five clear groups make the office workspace easy for the owner to use every day</li>
+        <li>Customer data stays on the owner’s computer</li>
+        <li>The AI drafts and organizes; nothing reaches the books or a customer until the owner approves it</li>
+        <li>Careful checks against representative business data before delivery</li></ul></div>
+    </div>
+    <div class="thumbs">
+      <button type="button" data-zoom="remodel-job" data-cap="A job’s stage and real profit."><img loading="lazy" src="img/remodel-job.webp" alt="Job page with stages and profit"></button>
+      <button type="button" data-zoom="remodel-inbox" data-cap="Receipts and leads waiting for approval."><img loading="lazy" src="img/remodel-inbox.webp" alt="Inbox items to review"></button>
+      <button type="button" data-zoom="ad-studio" data-cap="Claymation and blueprint video ads."><img loading="lazy" src="img/ad-studio.webp" alt="Claymation and blueprint video ads"></button>
+      <button type="button" data-zoom="remodel-office" data-cap="Office workspace: today’s list."><img loading="lazy" src="img/remodel-office.webp" alt="Office workspace showing today’s list"></button>
+    </div>
+    <p class="note">Screens use sample data.</p>
+  </div>
+  <div class="detail" id="d-brokerage">
+    <p class="eb">Custom solution showcase · Real estate</p>
+    <h3>A modern website and AI workspace for real estate</h3>
+    <div class="g">
+      <div><h4>The business need</h4><p>An independent boutique brokerage wanted a website that matched the quality of its listings, plus a consistent way to follow up with leads and launch every new listing.</p></div>
+      <div><h4>The solution</h4><ul>
+        <li>The existing site rebuilt page for page, with an optional modern redesign and listing search</li>
+        <li>A 24/7 lead responder, listing launch kit and review engine</li>
+        <li>Social and video tools, plus monthly market reports</li>
+        <li>A Team Hub that brings eight AI tools together for agents</li></ul></div>
+      <div><h4>How it supports the team</h4><p>Agents work from one place and approve every lead reply, post and email before it goes out, so the brokerage’s voice stays consistent across every channel.</p>
+        <div class="nums"><div><b>8</b><span>AI tools for agents</span></div><div><b>48</b><span>Buyer and area guides</span></div></div></div>
+    </div>
+    <div class="demos"><span>Try the live demos</span>
+      <a class="pill main" href="/work/brokerage/site/">Redesigned website <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="/work/brokerage/hub/">Team Hub <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="/work/brokerage/responder/">Lead responder <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="/work/brokerage/reviews/">Review engine <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="/work/brokerage/launch/">Listing launch kit <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="/work/brokerage/social/">Content engine <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="/work/brokerage/ads/">Listing ads <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="/work/brokerage/staging/">Virtual staging <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="/work/brokerage/nurture/">Home value notes <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="/work/brokerage/reports/">Market reports <span aria-hidden="true">↗</span></a>
+      <a class="pill" href="/work/brokerage/security/">Site protection <span aria-hidden="true">↗</span></a>
+    </div>
+    <p class="note">Screens use sample data.</p>
+  </div>
+  <div class="detail" id="d-permits">
+    <p class="eb">Tool · Contractors</p>
+    <h3>A lead map built from new building permits</h3>
+    <div class="g">
+      <div><h4>The business need</h4><p>The trade that pulls a permit already has the job. Countertop, cabinet, fencing and landscaping companies come next, and they rarely hear about it in time.</p></div>
+      <div><h4>The solution</h4><ul>
+        <li>New permits from Los Angeles, Anaheim, Newport Beach and Costa Mesa, refreshed from each city’s public data</li>
+        <li>Each permit sorted by what follows it: a kitchen remodel means countertops and cabinets, a pool means fencing and landscaping</li>
+        <li>Leads worked on the map: status, notes, follow-up dates and directions</li>
+        <li>A postcard preview for each address, as one possible next step</li></ul></div>
+      <div><h4>How it’s used</h4><p>Open the map, filter to your trade and city, and work the list: mark who you’ve contacted, add a note, set a follow-up date and pull up directions.</p>
+        <div class="nums"><div><b>11,506</b><span>Permits in the last 45 days</span></div><div><b>2,473</b><span>Of them point to countertop work</span></div></div></div>
+    </div>
+    <div class="demos"><span>Try the live demo</span><a class="pill main" href="/work/permits/">Permit lead map <span aria-hidden="true">↗</span></a></div>
+  </div>
+</section>
+
+<!-- 03 HOW IT WORKS -->
+<section class="panel" id="how" aria-labelledby="h-how">
+  <div class="say">
+    <p class="kick">How it works</p>
+    <h2 id="h-how" tabindex="-1">From first call <em>to handoff.</em></h2>
+    <p class="lede">For larger projects, a Growth Plan starts at $1,000 and includes workflow research, priorities, and a tailored solution preview. The planning fee is credited toward the build.</p>
+    <div class="acts"><a class="btn ink" href="#contact" data-go="contact" data-interest="Free assessment">Start with a free assessment <span class="ar" aria-hidden="true">→</span></a></div>
+  </div>
+  <div class="card">
+    <header><h3>Three steps, <em>in writing.</em></h3><span>How it works</span></header>
+    <div class="in">
+      <ol class="cols3 steps">
+        <li><i aria-hidden="true">1</i><h4>Pick the first thing to fix</h4><p>We walk through how inquiries, quotes and payments move through your business, and pick the fix that pays off soonest.</p></li>
+        <li><i aria-hidden="true">2</i><h4>Agree on the scope</h4><p>You get a written proposal: what gets built, the price, the timeline and any software costs. Nothing starts until you say yes.</p></li>
+        <li><i aria-hidden="true">3</i><h4>Build, test and hand over</h4><p>I build it, we run it on real examples until it’s right, and I show your team how to use it. Support continues after launch.</p></li>
+      </ol>
+      <hr class="rule">
+      <h3 class="sub">Built for your business. <em>Kept in your control.</em></h3>
+      <ul class="cols3">
+        <li><h4>Clear approvals</h4><p>You approve the messages and rules before launch. Routine work follows those rules, and decisions that need your judgment come back to you.</p></li>
+        <li><h4>Your accounts and data</h4><p>Your domain, business accounts, and customer data stay yours. You receive the access and documentation needed to manage the work.</p></li>
+        <li><h4>Direct support</h4><p>You work with me directly, from the first conversation through delivery and support. Call or email and I’m the one who answers.</p></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section id="services">
-  <div class="wrap">
-    <div class="head">
-      <div class="rv"><div class="eyebrow">Services</div><h2>Start with the improvement <em>that matters most.</em></h2></div>
-      <p class="lead rv d1">Solve one specific problem, improve the way customers find you, or connect the tools behind the business.</p>
-    </div>
-    <div class="offers">
-      <article class="offer rv" id="quick-win">
-        <h3>Quick Win</h3>
-        <div class="price">$500 fixed scope</div>
-        <p>Put one useful improvement to work: online booking, inquiry replies, missed-call follow-up, or review requests.</p>
-        <ul>
-          <li>One clearly defined workflow.</li>
-          <li>Setup using your existing tools where practical.</li>
-          <li>Approved messaging and a guided handoff.</li>
-        </ul>
-        <p class="timing">A focused one-week setup once access and content are ready.</p>
-        <a class="btn gold" href="#contact" data-interest="Quick Win">Find my Quick Win <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <p class="onote">Your $500 is credited toward a larger build when you continue.</p>
-      </article>
-      <article class="offer rv d1" id="website">
-        <h3>Website &amp; Inquiry Setup</h3>
-        <div class="price">Projects from $2,000</div>
-        <p>Give customers a clear picture of your business and an easy way to take the next step, with a professional website and an organized path from inquiry to follow-up.</p>
-        <div class="typ">Typical scope</div>
-        <ul>
-          <li>A website designed around your services and customers.</li>
-          <li>Clear contact or booking paths.</li>
-          <li>Inquiry routing and a practical follow-up process.</li>
-          <li>Mobile-friendly pages and a straightforward handoff.</li>
-        </ul>
-        <a class="btn line-ink" href="#contact" data-interest="Website &amp; Inquiry Setup">Discuss my website</a>
-      </article>
-      <article class="offer rv d2" id="workflows-ai">
-        <h3>Connected Workflows &amp; AI</h3>
-        <div class="price">Priced to your scope</div>
-        <p>Connect the tools you already use and simplify the work between them, from estimates and document drafts to customer follow-up and weekly reporting.</p>
-        <div class="typ">Typical scope</div>
-        <ul>
-          <li>A focused review of the workflow you want to improve.</li>
-          <li>Automation and AI configured for the task.</li>
-          <li>Clear approvals and useful reporting.</li>
-          <li>Team training and written handoff guidance.</li>
-        </ul>
-        <a class="btn line-ink" href="#contact" data-interest="Connected Workflows &amp; AI">Discuss my workflow</a>
-      </article>
-    </div>
-    <p class="shared rv">Every project starts with an agreed scope and price. Any software subscriptions are identified before work begins.</p>
-    <p class="fine rv" id="automations">Founding-client pricing is available for the first five businesses, with the scope and rate confirmed in your proposal. &nbsp;·&nbsp; <a href="/workflows/">Useful workflows for a busy business</a></p>
+<!-- 04 ABOUT -->
+<section class="panel" id="about" aria-labelledby="h-about">
+  <div class="say">
+    <p class="kick">Meet Myles</p>
+    <h2 id="h-about" tabindex="-1">The person <em>doing the work.</em></h2>
+    <figure class="quote">
+      <blockquote>“The money is usually leaking somewhere else, like quotes nobody followed up on or invoices that sat for two months before anyone asked.”</blockquote>
+      <cite>Myles Parslow in Peekwire · <a href="https://peekwire.com/article/the-automation-advice-that-misses-the-mark-an-interview-with-myles-parslow-of-mlp-consulting" target="_blank" rel="noopener">Read the interview</a></cite>
+    </figure>
+    <div class="acts"><a class="btn line" href="#contact" data-go="contact" data-interest="Free assessment">Talk to Myles</a></div>
   </div>
-</section>
-
-<section id="how" class="mist">
-  <div class="wrap">
-    <div class="head">
-      <div class="rv"><div class="eyebrow">How it works</div><h2>A clear path from idea <em>to everyday use.</em></h2></div>
-    </div>
-    <ol class="steps3">
-      <li class="rv"><span class="dot">1</span><h3>Find the right starting point</h3><p>We look at your business, identify the work worth improving, and choose a useful first step.</p></li>
-      <li class="rv d1"><span class="dot">2</span><h3>Agree on the scope</h3><p>You receive a clear proposal covering the work, price, timeline, and any software costs.</p></li>
-      <li class="rv d2"><span class="dot">3</span><h3>Build, refine, and hand over</h3><p>I set up the solution, work through it with you, and show your team how to use it. Ongoing support is available when you need it.</p></li>
-    </ol>
-    <p class="fine rv">For larger projects, a Growth Plan starts at $1,000 and includes workflow research, priorities, and a tailored solution preview. The planning fee is credited toward the build.</p>
-  </div>
-</section>
-
-<section class="principles">
-  <div class="wrap">
-    <div class="rv"><h2>Built for your business. <em>Kept in your control.</em></h2></div>
-    <div class="pgrid">
-      <div class="rv"><h3>Clear approvals</h3><p>You approve the messages and rules before launch. Routine work follows those rules, and decisions that need your judgment come back to you.</p></div>
-      <div class="rv d1"><h3>Your accounts and data</h3><p>Your domain, business accounts, and customer data stay yours. You receive the access and documentation needed to manage the work.</p></div>
-      <div class="rv d2"><h3>Direct support</h3><p>You work directly with Myles from the first conversation through delivery and support.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="about" id="about">
-  <div class="wrap">
-    <figure class="portrait rv"><img decoding="async" src="img/myles.webp" width="720" height="1080" alt="Myles Parslow" loading="lazy"><figcaption>Myles Parslow · Founder</figcaption></figure>
-    <div class="rv d1">
-      <div class="eyebrow">Meet Myles</div>
-      <h2>Practical technology. <em>Personal attention.</em></h2>
-      <div class="body">
-        <p>I’m Myles Parslow, founder of MLP Consulting. I build websites, workflows, and AI tools that help owners run their businesses with less friction.</p>
-        <p>My background is in law-firm conflicts and risk, where accuracy, clear processes, and careful handling of information matter every day. I bring that same discipline to projects for small businesses, alongside hands-on experience building tools for operations, customer follow-up, and marketing.</p>
-        <p>I studied philosophy at USC and am based in Irvine. You work directly with me: I get to know the business, build around how your team works, and make sure the handoff is clear.</p>
+  <div class="card">
+    <div class="in">
+      <div class="bio">
+        <figure><img src="img/myles.webp" width="720" height="1080" alt="Myles Parslow"><figcaption>Myles Parslow · Founder</figcaption></figure>
+        <div>
+          <p>I’m Myles Parslow. I started MLP Consulting to build the websites and behind-the-scenes systems that owner-run businesses rarely have time to set up for themselves.</p>
+          <p>I studied philosophy at USC, and I build things. A remodeling company’s office system that reads the inbox, tracks job costs and shows what each job really earned. A real estate website with eight AI tools for its agents. A lead map drawn from more than 11,000 city building permits. The seventeen sites under Work.</p>
+          <p>My background is in law-firm conflicts and risk, where a missed detail has consequences and nothing goes out unchecked. I run projects the same way: the scope is written down, you approve what customers see, and the handoff is documented. I’m based in Irvine.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="faq" class="mist">
-  <div class="wrap faqw">
-    <div class="rv"><div class="eyebrow">Questions</div><h2>Good to know <em>before we talk.</em></h2></div>
-    <div class="faq rv d1">
-      <details><summary>Where should I start?</summary><p>Start with the free assessment. I’ll review your public website and online presence, then recommend three practical improvements. We can use a short conversation to identify the best fit for your team and budget.</p></details>
-      <details><summary>Can you work with the software I already use?</summary><p>Yes. The starting point is your current setup. I look for ways to improve and connect what you have, and recommend changes when they make the work simpler.</p></details>
-      <details><summary>Do I need to know anything about AI?</summary><p>You bring your knowledge of the business. I handle the technical setup and explain how the tools fit into the work your team already does.</p></details>
-      <details><summary>What does ongoing support include?</summary><p>Website care starts at $200 per month, with hosting, backups, security updates, and agreed content changes. Support for connected workflows is scoped around the systems involved and the level of service you need.</p></details>
-      <details><summary>What happens after I contact you?</summary><p>I’ll review what you’ve shared and recommend a useful next step. When there’s a project to pursue, you’ll receive a clear scope and price before work starts.</p></details>
+<!-- 05 QUESTIONS -->
+<section class="panel" id="faq" aria-labelledby="h-faq">
+  <div class="say">
+    <p class="kick">Questions</p>
+    <h2 id="h-faq" tabindex="-1">Good to know <em>before we talk.</em></h2>
+    <p class="lede">Anything else, call or email and I’m the one who answers.</p>
+    <div class="acts"><a class="btn line" href="tel:+15183069403">(518) 306-9403</a><a class="btn line" href="mailto:myles@mlpconsults.com">myles@mlpconsults.com</a></div>
+  </div>
+  <div class="card faq">
+    <div class="in" style="padding:.3rem 0">
+      <div class="acc open"><h4><button class="acc-h" type="button" aria-expanded="true" aria-controls="q1"><b>Where should I start?</b><span></span><span class="pm" aria-hidden="true"></span></button></h4>
+        <div class="acc-b" id="q1"><div><div class="acc-c"><p>Start with the free assessment. I’ll review your public website and online presence, then recommend three practical improvements. We can use a short conversation to identify the best fit for your team and budget.</p></div></div></div></div>
+      <div class="acc"><h4><button class="acc-h" type="button" aria-expanded="false" aria-controls="q2"><b>Can you work with the software I already use?</b><span></span><span class="pm" aria-hidden="true"></span></button></h4>
+        <div class="acc-b" id="q2"><div><div class="acc-c"><p>Yes. The starting point is your current setup. I look for ways to improve and connect what you have, and recommend changes when they make the work simpler.</p></div></div></div></div>
+      <div class="acc"><h4><button class="acc-h" type="button" aria-expanded="false" aria-controls="q3"><b>Do I need to know anything about AI?</b><span></span><span class="pm" aria-hidden="true"></span></button></h4>
+        <div class="acc-b" id="q3"><div><div class="acc-c"><p>You bring your knowledge of the business. I handle the technical setup and explain how the tools fit into the work your team already does.</p></div></div></div></div>
+      <div class="acc"><h4><button class="acc-h" type="button" aria-expanded="false" aria-controls="q4"><b>What does ongoing support include?</b><span></span><span class="pm" aria-hidden="true"></span></button></h4>
+        <div class="acc-b" id="q4"><div><div class="acc-c"><p>Website care starts at $200 per month, with hosting, backups, security updates, and agreed content changes. Support for connected workflows is scoped around the systems involved and the level of service you need.</p></div></div></div></div>
+      <div class="acc"><h4><button class="acc-h" type="button" aria-expanded="false" aria-controls="q5"><b>What happens after I contact you?</b><span></span><span class="pm" aria-hidden="true"></span></button></h4>
+        <div class="acc-b" id="q5"><div><div class="acc-c"><p>I’ll review what you’ve shared and recommend a useful next step. When there’s a project to pursue, you’ll receive a clear scope and price before work starts.</p></div></div></div></div>
     </div>
   </div>
 </section>
 
-<section class="cta-band" id="contact">
-  <video class="mapv" id="map-cta" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-  <div class="scrim"></div>
-  <div class="wrap">
-    <div class="rv">
-      <div class="eyebrow">Contact</div>
-      <h2>What would make your business <em>easier to run?</em></h2>
-      <p class="lead">Tell me a little about your business and what you’d like to improve. I’ll start with a personal review and three practical recommendations.</p>
-      <p style="margin:22px 0 4px"><a class="btn line" href="https://cal.com/mlpconsults/free-check-up" target="_blank" rel="noopener">Prefer to talk? Book a free 30-minute call <span aria-hidden="true">↗</span></a></p>
-      <div class="direct">
-        <div class="mailrow"><a class="addr" id="addr" href="mailto:myles@mlpconsults.com" style="color:inherit;text-decoration:none">myles@mlpconsults.com</a><button class="btn copy" type="button" id="copy">Copy</button></div>
-        <div class="mailrow"><a class="addr" href="tel:+15183069403" style="color:inherit;text-decoration:none">(518) 306-9403</a></div>
+<!-- 06 CONTACT -->
+<section class="panel contact" id="contact" aria-labelledby="h-contact">
+  <div class="say">
+    <p class="kick">Contact</p>
+    <h2 id="h-contact" tabindex="-1">What would make your business <em>easier to run?</em></h2>
+    <p class="lede">Tell me what the business does and what’s eating your time. I’ll look at your website and how customers reach you, then send back three things worth fixing first.</p>
+    <div class="reach">
+      <div class="r"><a class="addr" id="addr" href="mailto:myles@mlpconsults.com">myles@mlpconsults.com</a><button class="copy" type="button" id="copy">Copy</button></div>
+      <div class="r"><a class="addr" href="tel:+15183069403">(518) 306-9403</a></div>
+    </div>
+    <div class="acts"><a class="btn line" href="https://cal.com/mlpconsults/free-check-up" target="_blank" rel="noopener">Prefer to talk? Book a free 30-minute call <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <div class="card">
+    <div class="in">
+      <form id="intake" novalidate>
+        <input type="hidden" id="f-interest" name="interest" value="Free assessment">
+        <p class="interest" id="interest-line" hidden>Interested in: <b id="interest-val"></b></p>
+        <div class="row2">
+          <label for="f-name">Your name<input id="f-name" name="name" autocomplete="name" required></label>
+          <label for="f-biz">Business name<input id="f-biz" name="business" autocomplete="organization" required></label>
+        </div>
+        <div class="row2">
+          <label for="f-contact">Email<input id="f-contact" name="email" type="email" autocomplete="email" required></label>
+          <label for="f-site"><span>Website <small>(optional)</small></span><input id="f-site" name="website" inputmode="url" placeholder="yourbusiness.com"></label>
+        </div>
+        <label for="f-pain"><span>What would you like to improve? <small>(optional)</small></span><textarea id="f-pain" name="goal"></textarea></label>
+        <details class="refd"><summary>Were you referred by someone?</summary>
+          <label for="f-ref"><span class="vh">Referred by</span><input id="f-ref" name="referrer" placeholder="Name of the person who sent you"></label>
+        </details>
+        <button class="btn ink" type="submit" style="justify-self:start">Get my free assessment</button>
+        <div class="done" id="done" role="status" aria-live="polite" hidden></div>
+      </form>
+      <div class="ex">
+        <h4>What a free assessment looks like</h4>
+        <p>An example. Three findings, each with the fix.</p>
+        <ol>
+          <li><span>Website</span><b>On a phone, the booking button is three screens down.</b><em>Put it at the top of every service page.</em></li>
+          <li><span>Local presence</span><b>Google says you’re closed Saturdays. Your site says open until 2.</b><em>Match your hours everywhere customers look.</em></li>
+          <li><span>Inquiry experience</span><b>The contact form asks eleven questions before anyone can say what they need.</b><em>Cut it to a name, a phone number and the job.</em></li>
+        </ol>
+        <p class="n">Yours is written about your business, in plain English, with what to fix first.</p>
       </div>
     </div>
-    <form id="intake" class="rv d1" novalidate>
-      <input type="hidden" id="f-interest" name="interest" value="Free assessment">
-      <p class="interest" id="interest-line" hidden>Interested in: <b id="interest-val"></b></p>
-      <div class="row2">
-        <label for="f-name">Your name<input id="f-name" name="name" autocomplete="name" required></label>
-        <label for="f-biz">Business name<input id="f-biz" name="business" autocomplete="organization" required></label>
-      </div>
-      <div class="row2">
-        <label for="f-contact">Email<input id="f-contact" name="email" type="email" autocomplete="email" required></label>
-        <label for="f-site"><span>Website <small>(optional)</small></span><input id="f-site" name="website" inputmode="url" placeholder="yourbusiness.com"></label>
-      </div>
-      <label for="f-pain"><span>What would you like to improve? <small>(optional)</small></span><textarea id="f-pain" name="goal"></textarea></label>
-      <details class="refd"><summary>Were you referred by someone?</summary>
-        <label for="f-ref"><span class="vh">Referred by</span><input id="f-ref" name="referrer" placeholder="Name of the person who sent you"></label>
-      </details>
-      <button class="btn ink" type="submit" style="justify-self:start">Get my free assessment</button>
-      <div class="done" id="done" role="status" aria-live="polite" hidden></div>
-    </form>
   </div>
 </section>
+
 </main>
 
-<section class="press" aria-label="Press">
-  <div class="wrap">
-    <div class="eyebrow">In the press</div>
-    <div>
-      <blockquote>&ldquo;The money is usually leaking somewhere else, like quotes nobody followed up on or invoices that sat for two months before anyone asked.&rdquo;</blockquote>
-      <span class="src">Myles Parslow in Peekwire &middot; <a href="https://peekwire.com/article/the-automation-advice-that-misses-the-mark-an-interview-with-myles-parslow-of-mlp-consulting" target="_blank" rel="noopener">Read the interview</a></span>
-    </div>
-  </div>
-</section>
+<p class="mfoot">MLP Consulting · Irvine, California<br><a href="/workflows/">Workflows</a><a href="/referrals/">Referrals</a><a href="/privacy/">Privacy</a></p>
 
-<footer>
-  <div class="wrap foot">
-    <div><b>MLP Consulting</b><p>Websites, automation, and practical AI for owner-run businesses.</p><p>Irvine, California · Working locally and nationwide.</p></div>
-    <nav aria-label="Footer"><a href="#services">Services</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a><a href="/referrals/" id="referrals">Referrals</a><a href="/privacy/">Privacy</a></nav>
-    <p class="refline">Know an owner who could use a hand? <a href="/referrals/">Explore referrals.</a></p>
-  </div>
-</footer>
+<nav class="tabs" id="tabs" aria-label="Sections">
+  <a class="t" href="#start" data-go="start" aria-current="page"><i aria-hidden="true">01</i><span class="l">Services</span><span class="s">Start</span></a>
+  <a class="t" href="#work" data-go="work"><i aria-hidden="true">02</i><span>Work</span></a>
+  <a class="t" href="#how" data-go="how"><i aria-hidden="true">03</i><span class="l">How it works</span><span class="s">Steps</span></a>
+  <a class="t" href="#about" data-go="about"><i aria-hidden="true">04</i><span>About</span></a>
+  <a class="t" href="#faq" data-go="faq"><i aria-hidden="true">05</i><span class="l">Questions</span><span class="s">FAQ</span></a>
+  <a class="t" href="#contact" data-go="contact"><i aria-hidden="true">06</i><span>Contact</span></a>
+  <div class="more"><span>Irvine, California</span><a href="/workflows/">Workflows</a><a href="/referrals/">Referrals</a><a href="/privacy/">Privacy</a></div>
+</nav>
+</div>
 
+<dialog class="lb" id="lb" aria-label="Screenshot viewer">
+  <button class="lbx" type="button" aria-label="Close">✕</button>
+  <button class="lbp" type="button" aria-label="Previous">←</button>
+  <button class="lbq" type="button" aria-label="Next">→</button>
+  <figure><img id="lbi" alt=""><figcaption><b id="lbt"></b><span id="lbc"></span><br><span class="lbn" id="lbn"></span><br><a class="lbd" id="lbd" hidden></a></figcaption></figure>
+</dialog>
+<dialog class="sys" id="sys" aria-labelledby="sys-h"><button class="sx" type="button" aria-label="Close">✕</button><div class="body" id="sys-b"></div></dialog>
 
 <script>
 (function(){
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var D=document,root=D.documentElement,$=function(s,c){return (c||D).querySelector(s);},$$=function(s,c){return [].slice.call((c||D).querySelectorAll(s));};
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var flowMq=matchMedia('(max-width:899px),(max-height:539px)');
+  function isDark(){var t=root.dataset.theme;return t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);}
 
-  /* ---- Contour map: the live shader (WebGL); a pre-rendered looping video, light and dark, stands in when WebGL is unavailable ---- */
-  var mapVids=[].slice.call(document.querySelectorAll('video.mapv'));
-  function isDark(){var t=document.documentElement.dataset.theme;return t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);}
-  function setMap(){
-    var th=isDark()?'dark':'light',sm=innerWidth<700?'-sm':'';
-    mapVids.forEach(function(v){
-      if(v._live)return;
-      var src='map/map-'+th+sm+'.mp4',post='map/poster-'+th+'.jpg';
-      if(v.getAttribute('poster')!==post)v.setAttribute('poster',post);
-      if(reduce)return;
-      if(v.getAttribute('data-src')!==src){v.setAttribute('data-src',src);v.src=src;if(v._vis)v.play().catch(function(){});}
-    });
+  /* ---- the map: one live contour shader behind everything; each tab is a place on it. A looping video stands in when WebGL is unavailable. ---- */
+  var mapEl=$('#map'),vid=$('#mapv'),map=null;
+  function setFallback(){
+    var th=isDark()?'dark':'light';
+    mapEl.style.backgroundImage='url(map/poster-'+th+'.jpg)';
+    if(map||reduce){vid.style.display='none';return;}
+    var src='map/map-'+th+(innerWidth<700?'-sm':'')+'.mp4';
+    vid.style.display='';vid.poster='map/poster-'+th+'.jpg';
+    if(vid.getAttribute('data-src')!==src){vid.setAttribute('data-src',src);vid.src=src;var p=vid.play();if(p&&p.catch)p.catch(function(){});}
   }
-  var FRAG = [
+  var FRAG=[
   'precision highp float;',
-  'uniform float u_time; uniform vec2 u_res; uniform vec2 u_m; uniform float u_act;',
+  'uniform float u_time; uniform vec2 u_res; uniform vec2 u_m; uniform float u_act; uniform vec2 u_off;',
   'uniform vec3 u_c1,u_c2,u_c3,u_c4; uniform float u_scale;',
   'float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
   'float vn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1.,0.)),f.x),mix(h21(i+vec2(0.,1.)),h21(i+vec2(1.,1.)),f.x),f.y);}',
   'float fbm(vec2 p){float a=.5,s=0.;mat2 m=mat2(.8,.6,-.6,.8)*2.02;for(int i=0;i<5;i++){s+=a*vn(p);p=m*p;a*=.5;}return s*1.03;}',
   'vec2 pc(vec2 fc){return (fc*2.-u_res)/min(u_res.x,u_res.y);}',
   'float hf(vec2 p){float t=u_time*.05;float h=fbm(p*.9+vec2(t,-t*.7)+1.5*vec2(fbm(p*.5+t),fbm(p*.5-t+3.)));',
-  ' vec2 m=pc(u_m*u_res);h+=.14*u_act*exp(-dot(p/(1.6*u_scale)-m,p/(1.6*u_scale)-m)*3.);return h;}',
-  'void main(){vec2 p=pc(gl_FragCoord.xy)*1.6*u_scale;float e=.01;float h=hf(p);',
+  ' vec2 q=(p-u_off)/(1.6*u_scale)-pc(u_m*u_res);h+=.14*u_act*exp(-dot(q,q)*3.);return h;}',
+  'void main(){vec2 p=pc(gl_FragCoord.xy)*1.6*u_scale+u_off;float e=.01;float h=hf(p);',
   ' vec2 g=vec2(hf(p+vec2(e,0.))-h,hf(p+vec2(0.,e))-h)/e;float lv=h*15.;float idx=floor(lv);float d=abs(fract(lv)-.5);',
   ' float dist=(.5-d)/(length(g)*15.+.0001);float ln=1.-smoothstep(0.,.0045,dist);float major=mod(idx,5.)<.5?1.:0.;',
   ' vec3 col=mix(u_c1,u_c2,smoothstep(.25,.8,h));col=mix(col,u_c3,ln*.6);col=mix(col,u_c4,ln*major*.9);',
-  ' vec2 q=gl_FragCoord.xy/u_res-.5;col*=1.-.4*dot(q,q);col+=(h21(gl_FragCoord.xy+fract(u_time)*31.)-.5)/180.;',
+  ' vec2 v=gl_FragCoord.xy/u_res-.5;col*=1.-.3*dot(v,v);col+=(h21(gl_FragCoord.xy+fract(u_time)*31.)-.5)/180.;',
   ' gl_FragColor=vec4(clamp(col,0.,1.),1.);}'].join('\n');
-  var hex=function(h){return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16)/255;});};
-  var liveFns=[];
-  /* Live contour shader. Returns false when WebGL is unavailable, so the video stays as the fallback. */
-  function live(vid,opts){
+  function startMap(){
     try{
-      var cv=document.createElement('canvas');cv.className='mapc';cv.setAttribute('aria-hidden','true');
-      var gl=cv.getContext('webgl',{antialias:false,premultipliedAlpha:false});if(!gl)return false;
+      var cv=D.createElement('canvas'),gl=cv.getContext('webgl',{antialias:false,premultipliedAlpha:false});if(!gl)return null;
       function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o;}
       var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FRAG));
-      gl.bindAttribLocation(pr,0,'a');gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return false;gl.useProgram(pr);
+      gl.bindAttribLocation(pr,0,'a');gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return null;gl.useProgram(pr);
       gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
-      var U=function(n){return gl.getUniformLocation(pr,n);};
-      function cols(){var cs=getComputedStyle(document.documentElement);[1,2,3,4].forEach(function(i){gl.uniform3fv(U('u_c'+i),hex(cs.getPropertyValue('--map'+i).trim()));});}cols();
-      gl.uniform1f(U('u_scale'),opts.scale||1);
-      vid.parentNode.insertBefore(cv,vid.nextSibling);
-      var m=[.7,.5],tm=[.7,.5],act=0,tact=0,visible=true,raf=0,t0=performance.now()-(opts.offset||0),failed=false;
-      var zone=cv.parentElement;
-      zone.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];tact=1;kick();});
-      zone.addEventListener('pointerleave',function(){tact=0;kick();});
+      var U={};['u_time','u_res','u_m','u_act','u_off','u_scale','u_c1','u_c2','u_c3','u_c4'].forEach(function(n){U[n]=gl.getUniformLocation(pr,n);});
+      var hex=function(h){return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16)/255;});};
+      function cols(){var cs=getComputedStyle(root);[1,2,3,4].forEach(function(i){gl.uniform3fv(U['u_c'+i],hex(cs.getPropertyValue('--map'+i).trim()));});}
+      cols();gl.uniform1f(U.u_scale,1);
+      mapEl.appendChild(cv);
+      var m=[.3,.5],tm=[.3,.5],act=0,tact=0,raf=0,t0=performance.now(),failed=false;
+      var off=[0,0],from=[0,0],to=[0,0],fs=0,fd=1;
+      addEventListener('pointermove',function(e){if(e.pointerType==='touch')return;tm=[e.clientX/innerWidth,1-e.clientY/innerHeight];tact=1;kick();},{passive:true});
+      D.addEventListener('pointerleave',function(){tact=0;});
       function fit(){var d=Math.min(1.5,devicePixelRatio||1);cv.width=Math.max(1,cv.clientWidth*d|0);cv.height=Math.max(1,cv.clientHeight*d|0);gl.viewport(0,0,cv.width,cv.height);}
       function draw(now){
         m[0]+=(tm[0]-m[0])*.06;m[1]+=(tm[1]-m[1])*.06;act+=(tact-act)*.04;
-        gl.uniform1f(U('u_time'),reduce?40:(now-t0)/1000*(opts.speed||1));
-        gl.uniform2f(U('u_res'),cv.width,cv.height);gl.uniform2f(U('u_m'),m[0],m[1]);gl.uniform1f(U('u_act'),act);
+        var k=fd?Math.min(1,(now-fs)/fd):1;k=k>=1?1:1-Math.pow(2,-10*k);
+        off[0]=from[0]+(to[0]-from[0])*k;off[1]=from[1]+(to[1]-from[1])*k;
+        gl.uniform1f(U.u_time,reduce?40:(now-t0)/1000);
+        gl.uniform2f(U.u_res,cv.width,cv.height);gl.uniform2f(U.u_m,m[0],m[1]);gl.uniform1f(U.u_act,act);gl.uniform2f(U.u_off,off[0],off[1]);
         gl.drawArrays(gl.TRIANGLES,0,3);
       }
-      function tick(now){raf=0;if(failed)return;draw(now);if(!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
-      function kick(){if(!raf&&!failed&&!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
+      function tick(now){raf=0;if(failed)return;draw(now);if(!reduce&&!D.hidden)raf=requestAnimationFrame(tick);}
+      function kick(){if(!raf&&!failed&&!reduce&&!D.hidden)raf=requestAnimationFrame(tick);}
       new ResizeObserver(function(){fit();draw(performance.now());}).observe(cv);
-      new IntersectionObserver(function(es){visible=es[es.length-1].isIntersecting;kick();}).observe(cv);
-      document.addEventListener('visibilitychange',kick);
-      /* if the GPU is lost later, fall back to the video */
-      cv.addEventListener('webglcontextlost',function(e){e.preventDefault();failed=true;cv.remove();vid._live=false;vid.style.display='';setMap();});
+      D.addEventListener('visibilitychange',kick);
+      cv.addEventListener('webglcontextlost',function(e){e.preventDefault();failed=true;cv.remove();map=null;setFallback();});
       fit();draw(performance.now());kick();
-      liveFns.push(function(){cols();draw(performance.now());});
-      vid._live=true;vid.removeAttribute('src');vid.removeAttribute('data-src');try{vid.load();}catch(e){}vid.style.display='none';
-      return true;
-    }catch(e){console.error(e);return false;}
+      return {
+        fly:function(x,y,instant){from=[off[0],off[1]];to=[x,y];fs=performance.now();fd=(instant||reduce)?0:1500;if(!fd){off=[x,y];from=[x,y];}if(reduce)draw(fs);else kick();},
+        recolor:function(){cols();draw(performance.now());}
+      };
+    }catch(e){return null;}
   }
-  var liveOn=false;try{liveOn=live(document.getElementById('map-hero'),{scale:1,speed:1});live(document.getElementById('map-cta'),{scale:1.3,speed:.8,offset:60000});}catch(e){}
-  setMap();
-  if('IntersectionObserver' in window&&!reduce){
-    var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;v._vis=e.isIntersecting&&e.intersectionRatio>.12;if(v._live)return;if(v._vis){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();});},{threshold:[0,.12,.5]});
-    mapVids.forEach(function(v){vio.observe(v);});
+  map=startMap();setFallback();
+  addEventListener('resize',function(){clearTimeout(setFallback.t);setFallback.t=setTimeout(setFallback,200);});
+
+  /* ---- day / night ---- */
+  var mode=$('#mode');
+  function paintMode(){mode.textContent=isDark()?'Day':'Night';if(map)map.recolor();setFallback();}
+  mode.addEventListener('click',function(){var n=isDark()?'light':'dark';root.dataset.theme=n;try{localStorage.setItem('mlp-theme',n);}catch(e){}paintMode();});
+  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paintMode);}catch(e){}
+  paintMode();
+
+  /* ---- tabs: six places on the map. No scroll is taken over; arrows, the tabs and links move between them. ---- */
+  var ids=['start','work','how','about','faq','contact'],alias={top:'start',services:'start',main:'start'};
+  var spots={start:[0,0],work:[2.3,.55],how:[4.6,-.35],about:[6.9,.6],faq:[9.2,-.2],contact:[11.5,.45]};
+  var titles={start:'MLP Consulting | Websites, Automation & AI | Irvine',work:'Work | MLP Consulting',how:'How it works | MLP Consulting',about:'About Myles Parslow | MLP Consulting',faq:'Questions | MLP Consulting',contact:'Contact | MLP Consulting'};
+  var cur='start',tabs=$$('#tabs a.t');
+  function resolve(h){h=(h||'').replace(/^#/,'');h=alias[h]||h;return ids.indexOf(h)>-1?h:null;}
+  function go(id,o){
+    o=o||{};
+    if(id!==cur||o.force){
+      var a=$('#'+cur),b=$('#'+id),dir=ids.indexOf(id)>=ids.indexOf(cur)?1:-1;
+      var hadFocus=a.contains(D.activeElement);
+      a.classList.remove('on');a.inert=true;
+      b.style.setProperty('--dir',dir);b.inert=false;b.classList.add('on');
+      cur=id;
+      tabs.forEach(function(t){if(t.getAttribute('data-go')===id)t.setAttribute('aria-current','page');else t.removeAttribute('aria-current');});
+      if(map)map.fly(spots[id][0],spots[id][1],o.instant);
+      D.title=titles[id];
+      if(flowMq.matches)scrollTo(0,0);
+      if(hadFocus||o.focus){var h=$('h1,h2',b);if(h)h.focus({preventScroll:true});}
+    }
+    if(o.push){try{history.pushState(null,'',id==='start'?location.pathname+location.search:'#'+id);}catch(e){}}
   }
-  addEventListener('resize',function(){clearTimeout(setMap.t);setMap.t=setTimeout(setMap,200);});
+  ids.forEach(function(id){$('#'+id).inert=id!=='start';});
+  D.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('[data-go]');if(!a||e.metaKey||e.ctrlKey||e.shiftKey)return;
+    e.preventDefault();
+    if(a.hasAttribute('data-interest'))setInterest(a.getAttribute('data-interest'));
+    go(a.getAttribute('data-go'),{push:true,focus:!a.classList.contains('t')});
+  });
+  $('.mark').addEventListener('click',function(e){e.preventDefault();go('start',{push:true});});
+  function fromUrl(instant){var id=resolve(location.hash)||'start';go(id,{instant:instant,force:instant});}
+  addEventListener('popstate',function(){fromUrl(false);});
+  D.addEventListener('keydown',function(e){
+    if(e.altKey||e.metaKey||e.ctrlKey||D.querySelector('dialog[open]'))return;
+    var t=e.target,tag=t.tagName;if(tag==='INPUT'||tag==='TEXTAREA'||tag==='SELECT'||t.isContentEditable)return;
+    if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+    if(t.closest&&t.closest('.pv,.wl,.seg'))return;
+    var i=ids.indexOf(cur)+(e.key==='ArrowRight'?1:-1);if(i<0||i>=ids.length)return;
+    e.preventDefault();go(ids[i],{push:true});
+  });
 
+  /* ---- accordions: one open at a time in each card ---- */
+  $$('.acc-h').forEach(function(b){b.addEventListener('click',function(){
+    var me=b.closest('.acc'),was=me.classList.contains('open');
+    $$('.acc',me.parentNode).forEach(function(x){x.classList.remove('open');$('.acc-h',x).setAttribute('aria-expanded','false');});
+    if(!was){me.classList.add('open');b.setAttribute('aria-expanded','true');}
+  });});
 
+  /* ---- work: a list on the left, the selected piece on the right ---- */
+  var sets={sites:$$('#wl-sites a'),flows:$$('#wl-flows a'),systems:$$('#wl-systems a')},setName='sites',idx=0;
+  var pvImg=$('#pv-img'),pvT=$('#pv-t'),pvK=$('#pv-k'),pvD=$('#pv-d'),pvL=$('#pv-l'),pvN=$('#pv-n');
+  function nameOf(a){return a.firstChild.textContent.trim();}
+  function kindOf(a){var s=$('small',a);return a.getAttribute('data-kind')||(s?s.textContent:'');}
+  function arrow(){var s=D.createElement('span');s.setAttribute('aria-hidden','true');s.textContent=' ↗';return s;}
+  function pick(i,quiet){
+    var list=sets[setName];idx=(i+list.length)%list.length;var a=list[idx];
+    $$('.wl a[aria-current]').forEach(function(x){x.removeAttribute('aria-current');});a.setAttribute('aria-current','true');
+    var src='img/'+a.getAttribute('data-img')+'.webp';
+    if(pvImg.getAttribute('src')!==src){
+      pvImg.classList.add('sw');var im=new Image();
+      im.onload=im.onerror=function(){if(sets[setName][idx]!==a)return;pvImg.src=src;pvImg.alt=nameOf(a)+', '+kindOf(a).toLowerCase();pvImg.classList.remove('sw');};im.src=src;
+    }
+    pvT.textContent=nameOf(a);pvK.textContent=kindOf(a);pvD.textContent=a.getAttribute('data-desc');pvN.textContent=(idx+1)+' / '+list.length;
+    pvL.textContent='';
+    if(a.getAttribute('data-detail')){var b=D.createElement('button');b.type='button';b.className='pill main';b.textContent='Read the full project';b.addEventListener('click',function(){openSys(a.getAttribute('data-detail'));});pvL.appendChild(b);}
+    (a.getAttribute('data-links')||'').split(';').filter(Boolean).forEach(function(p,n){
+      var x=p.split('|'),l=D.createElement('a');l.className='pill'+(n===0&&!a.getAttribute('data-detail')?' main':'');l.href=x[1];l.textContent=x[0];l.appendChild(arrow());pvL.appendChild(l);
+    });
+    if(!quiet&&flowMq.matches)$('#pv').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+    if(!flowMq.matches&&a.scrollIntoView)a.scrollIntoView({block:'nearest'});
+  }
+  Object.keys(sets).forEach(function(k){sets[k].forEach(function(a,i){
+    a.addEventListener('click',function(e){if(e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();pick(i);});
+    a.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse'&&setName===k)pick(i,true);});
+    a.addEventListener('focus',function(){if(setName===k&&!flowMq.matches)pick(i,true);});
+    a.addEventListener('keydown',function(e){
+      if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();var n=(i+(e.key==='ArrowDown'?1:-1)+sets[k].length)%sets[k].length;sets[k][n].focus();pick(n,true);}
+    });
+  });});
+  $$('.seg button').forEach(function(b){b.addEventListener('click',function(){
+    setName=b.getAttribute('data-set');
+    $$('.seg button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    Object.keys(sets).forEach(function(k){$('#wl-'+k).hidden=k!==setName;});
+    pick(0,true);
+  });});
+  $('#pv-prev').addEventListener('click',function(){pick(idx-1,true);});
+  $('#pv-next').addEventListener('click',function(){pick(idx+1,true);});
+  sets.sites[0].setAttribute('aria-current','true');
 
-  /* ---- theme: monochrome, follows the visitor's light/dark setting ---- */
-  document.documentElement.dataset.pal='mono';
-  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){setMap();liveFns.forEach(function(f){f();});});}catch(e){}
+  /* ---- screenshot viewer ---- */
+  var lb=$('#lb'),li=$('#lbi'),lt=$('#lbt'),lc=$('#lbc'),ln=$('#lbn'),ld=$('#lbd'),shots=[],at=0;
+  function show(i){at=(i+shots.length)%shots.length;var s=shots[at];li.src=s.src;li.alt=s.t;lt.textContent=s.t;lc.textContent=s.c;ln.textContent=shots.length>1?(at+1)+' of '+shots.length:'';if(s.href){ld.href=s.href;ld.textContent=s.label;ld.hidden=false;}else ld.hidden=true;lb.querySelector('.lbp').hidden=lb.querySelector('.lbq').hidden=shots.length<2;}
+  function openShots(list,i){shots=list;show(i);if(!lb.open)lb.showModal();}
+  $('#pv-shot').addEventListener('click',function(){
+    var list=sets[setName].map(function(a){var l=(a.getAttribute('data-links')||'').split(';')[0].split('|');return {src:'img/'+a.getAttribute('data-img')+'.webp',t:nameOf(a)+(kindOf(a)?' · '+kindOf(a):''),c:a.getAttribute('data-desc'),href:l[1],label:l[0]};});
+    openShots(list,idx);
+  });
+  lb.querySelector('.lbx').onclick=function(){lb.close();};
+  lb.querySelector('.lbp').onclick=function(){show(at-1);};
+  lb.querySelector('.lbq').onclick=function(){show(at+1);};
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
+  lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')show(at-1);else if(e.key==='ArrowRight')show(at+1);});
 
-  /* ---- header turns solid after the hero ---- */
-  var hdr=document.getElementById('hdr'),mb=document.getElementById('menu');
-  function setMenu(o){hdr.classList.toggle('menu-open',o);mb.setAttribute('aria-expanded',o);}
-  mb.addEventListener('click',function(){setMenu(!hdr.classList.contains('menu-open'));});
-  document.querySelectorAll('#nav a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false);});
-  function onScroll(){hdr.classList.toggle('solid',scrollY>40);}
-  addEventListener('scroll',onScroll,{passive:true});
-
-  /* ---- reveal on scroll ---- */
-  var rvs=document.querySelectorAll('.rv');
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
-    rvs.forEach(function(el){io.observe(el);});
-  } else rvs.forEach(function(el){el.classList.add('in');});
-
-  onScroll();
+  /* ---- the full write-up of a larger system ---- */
+  var sys=$('#sys'),sysB=$('#sys-b');
+  function openSys(id){
+    sysB.innerHTML=$('#'+id).innerHTML;var h=$('h3',sysB);if(h)h.id='sys-h';
+    var th=$$('[data-zoom]',sysB);
+    th.forEach(function(b,i){b.setAttribute('aria-label','View larger: '+b.getAttribute('data-cap'));b.addEventListener('click',function(){
+      openShots(th.map(function(x){return {src:'img/'+x.getAttribute('data-zoom')+'.webp',t:x.getAttribute('data-cap'),c:'Screens use sample data.'};}),i);
+    });});
+    sys.showModal();sys.scrollTop=0;
+  }
+  sys.querySelector('.sx').onclick=function(){sys.close();};
+  sys.addEventListener('click',function(e){if(e.target===sys)sys.close();});
 
   /* ---- offer buttons preselect the inquiry subject; UTM/source kept for attribution ---- */
-  var qs=new URLSearchParams(location.search),interest=document.getElementById('f-interest'),iline=document.getElementById('interest-line'),ival=document.getElementById('interest-val');
+  var qs=new URLSearchParams(location.search),interest=$('#f-interest'),iline=$('#interest-line'),ival=$('#interest-val');
   function setInterest(t){if(!t)return;interest.value=t;ival.textContent=t;iline.hidden=(t==='Free assessment');}
-  document.querySelectorAll('[data-interest]').forEach(function(a){a.addEventListener('click',function(){setInterest(a.getAttribute('data-interest'));});});
   setInterest(qs.get('interest'));
-  if(qs.get('ref'))document.getElementById('f-ref').value=qs.get('ref');
+  if(qs.get('ref')){$('#f-ref').value=qs.get('ref');$('.refd').open=true;}
   var src=['utm_source','utm_medium','utm_campaign'].map(function(k){return qs.get(k)?k+'='+qs.get(k):'';}).filter(Boolean).join('&');
+
   /* ---- form: success is shown only after the server confirms receipt ---- */
   var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  document.getElementById('intake').addEventListener('submit',function(e){
+  $('#intake').addEventListener('submit',function(e){
     e.preventDefault();
-    var done=document.getElementById('done');done.hidden=true;done.className='done';
-    var need=['f-name','f-biz','f-contact'].map(function(id){return document.getElementById(id);}).filter(function(el){el.removeAttribute('aria-invalid');var ok=el.value.trim()&&(el.id!=='f-contact'||emailRe.test(el.value.trim()));return !ok;});
+    var done=$('#done');done.hidden=true;done.className='done';
+    var need=['f-name','f-biz','f-contact'].map(function(id){return D.getElementById(id);}).filter(function(el){el.removeAttribute('aria-invalid');var ok=el.value.trim()&&(el.id!=='f-contact'||emailRe.test(el.value.trim()));return !ok;});
     if(need.length){need.forEach(function(el){el.setAttribute('aria-invalid','true');});need[0].focus();done.className='done err';done.textContent='Please check the highlighted fields. A name, business name and valid email are needed.';done.hidden=false;return;}
-    var v=function(id){return document.getElementById(id).value.trim();};
+    var v=function(id){return D.getElementById(id).value.trim();};
     var btn=e.target.querySelector('button[type=submit]'),label=btn.textContent;
     var body='Name: '+v('f-name')+'\nBusiness: '+v('f-biz')+'\nEmail: '+v('f-contact')+'\nWebsite: '+v('f-site')+'\nInterested in: '+v('f-interest')+'\nReferred by: '+v('f-ref')+'\nSource: '+(src||'direct')+'\n\nWhat they would like to improve:\n'+v('f-pain');
     btn.disabled=true;btn.textContent='Sending...';
-    /* copy the lead into the HubSpot CRM (best effort; the email below is the source of truth) */
+    /* copy the lead into the CRM (best effort; the email below is the source of truth) */
     try{
-      var hutk=(document.cookie.match(/hubspotutk=([^;]+)/)||[])[1];
+      var hutk=(D.cookie.match(/hubspotutk=([^;]+)/)||[])[1];
       var hs=[['firstname',v('f-name')],['company',v('f-biz')],['website',v('f-site')],['email',v('f-contact')],['message','Interested in: '+v('f-interest')+'\nReferred by: '+v('f-ref')+'\nSource: '+(src||'direct')+'\n\n'+v('f-pain')]]
         .filter(function(x){return x[1];}).map(function(x){return {objectTypeId:'0-1',name:x[0],value:x[1]};});
-      var ctx={pageUri:location.href,pageName:document.title};if(hutk)ctx.hutk=hutk;
+      var ctx={pageUri:location.href,pageName:D.title};if(hutk)ctx.hutk=hutk;
       fetch('https://api.hsforms.com/submissions/v3/integration/submit/247871007/41028eeb-eade-4ad2-af4f-d77729628ba6',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:hs,context:ctx})}).catch(function(){});
     }catch(err){}
     /* also save the lead in the MLP database (best effort) */
@@ -1017,115 +939,17 @@ footer .refline a{color:var(--on-night)}
     }catch(err){}
     fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:'c3cd3264-8d14-478c-ba2a-afb3df8e7b03',subject:'Free assessment: '+v('f-biz')+' ('+v('f-interest')+')',from_name:'MLP Consulting site',name:v('f-name'),email:v('f-contact'),message:body})})
       .then(function(r){return r.json();})
-      .then(function(j){if(!j.success)throw new Error('fail');e.target.reset();setInterest('Free assessment');btn.textContent='Request sent';done.className='done';done.textContent='Thanks — your request is in. I’ll review your business and follow up with your assessment.';done.hidden=false;})
+      .then(function(j){if(!j.success)throw new Error('fail');e.target.reset();setInterest('Free assessment');btn.textContent='Request sent';done.className='done';done.textContent='Thanks, your request is in. I’ll review your business and send your assessment within one business day.';done.hidden=false;})
       .catch(function(){btn.disabled=false;btn.textContent=label;done.className='done err';done.innerHTML='That did not go through. Please email <a href="mailto:myles@mlpconsults.com">myles@mlpconsults.com</a> directly and I will pick it up from there.';done.hidden=false;});
   });
-  document.getElementById('copy').addEventListener('click',function(){
-    var b=this,a=document.getElementById('addr');
-    function sel(){var r=document.createRange();r.selectNodeContents(a);var x=getSelection();x.removeAllRanges();x.addRange(r);b.textContent='Selected';}
+  $('#copy').addEventListener('click',function(){
+    var b=this,a=$('#addr');
+    function sel(){var r=D.createRange();r.selectNodeContents(a);var x=getSelection();x.removeAllRanges();x.addRange(r);b.textContent='Selected';}
     try{navigator.clipboard.writeText(a.textContent).then(function(){b.textContent='Copied';},sel);}catch(e){sel();}
   });
+
+  fromUrl(true);
 })();
 </script>
-
-<style>
-/* screenshot viewer: click any screenshot to see it large, with a caption */
-.zm{cursor:zoom-in}
-.zw{position:relative;display:block}
-.zw::after{content:"⤢  View";position:absolute;right:10px;bottom:10px;font:500 11px/1 system-ui,sans-serif;letter-spacing:.04em;padding:7px 9px;border-radius:99px;background:rgba(10,10,12,.78);color:#fff;opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s;pointer-events:none}
-.zw:hover::after,.zw:focus-within::after{opacity:1;transform:none}
-@media (hover:none){.zw::after{opacity:1;transform:none}}
-.demo-a{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;white-space:nowrap}
-.demo-a:hover{text-decoration-color:currentColor}
-.gal-sites .demo-a{display:block;margin-top:2px}
-.demos{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.demos a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:8px 14px;transition:border-color .2s,background .2s}
-.demos a:hover{border-color:var(--ink)}
-.demos a.demos-main{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:600}
-.demos .demos-l{font-size:13px;color:var(--muted);margin-right:4px}
-.lb .lbd{display:inline-block;margin-top:10px;color:#fff;font-weight:600;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:8px 14px;text-decoration:none}
-.lb .lbd:hover{background:rgba(255,255,255,.12)}
-dialog.lb{border:0;padding:0;margin:auto;background:transparent;max-width:min(1400px,calc(100vw - 32px));max-height:calc(100vh - 32px);width:100%;overflow:visible;color:#f4f4f2}
-dialog.lb::backdrop{background:rgba(6,6,8,.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.lb figure{margin:0;display:grid;gap:14px;justify-items:center}
-.lb img{max-width:100%;max-height:calc(100vh - 170px);width:auto;height:auto;border-radius:10px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9);background:#111}
-.lb figcaption{max-width:72ch;text-align:center;font:400 15px/1.5 system-ui,-apple-system,sans-serif;color:#e9e9e6}
-.lb figcaption b{display:block;font-weight:600;color:#fff;margin-bottom:2px}
-.lb .lbn{font:400 12px/1 ui-monospace,Menlo,monospace;color:#9a9a96}
-.lb .lbx,.lb .lbp,.lb .lbq{position:fixed;border:1px solid rgba(255,255,255,.25);background:rgba(20,20,22,.7);color:#fff;width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer;display:grid;place-items:center}
-.lb .lbx{top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px))}
-.lb .lbp{left:calc(16px + env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
-.lb .lbq{right:calc(16px + env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
-.lb button:hover{background:rgba(255,255,255,.15)}
-@media (max-width:700px){.lb .lbp,.lb .lbq{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:none}}
-</style>
-<dialog class="lb" id="lb" aria-label="Screenshot viewer">
-  <button class="lbx" type="button" aria-label="Close">✕</button>
-  <button class="lbp" type="button" aria-label="Previous screenshot">←</button>
-  <button class="lbq" type="button" aria-label="Next screenshot">→</button>
-  <figure><img decoding="async" id="lbi" alt=""><figcaption><b id="lbt"></b><span id="lbc"></span><br><span class="lbn" id="lbn"></span><br><a class="lbd" id="lbd" target="_blank" rel="noopener" hidden></a></figcaption></figure>
-</dialog>
-<script>
-(function(){
-  var CAP={
-    'site-birchway':['Birchway Pediatrics · Pediatric office','Request a visit by age and reason, see the morning sick-visit slots, and open the staff side: a front desk inbox, reminder and recall automations, and a private assistant that runs on the practice’s own equipment. Sample site; the business is fictional.'],
-    'site-camino':['Osteria Camino · Italian restaurant','Reserve a table, browse tonight’s menu, and ask about the back room. The staff side holds the reservation book, review replies waiting for approval, and a pre-shift brief. Sample site; the business is fictional.'],
-    'site-paperwhale':['Paperwhale Books · Bookstore','Shop real titles with pickup in about two hours, staff picks and events. The staff side shows orders, special requests, newsletter drafts and a weekly brief for the owner. Sample site; the business is fictional.'],
-    'site-quietwell':['Quietwell Aesthetics · Med spa','Book in under a minute, a treatment menu with prices on it, a membership plan, and a text line for clients who would rather not call. Sample site; the business is fictional.'],
-    'site-bellwood':['Bellwood Family Dental · Dental office','Next open appointments right on the home page, an insurance check, clear prices for patients without insurance, and a same-day emergency line. Sample site; the business is fictional.'],
-    'site-little-orbit':['Little Orbit Tea · Boba shop','Real online ordering: build a drink, choose pickup or delivery, check out and follow the order, plus a rewards card. Sample site; the business is fictional.'],
-    'site-coffee':['Kestrel Hill Coffee Roasters · Coffee roaster','Order ahead to skip the line, a bean club subscription for fresh bags, and live open hours in the header. Sample site; the business is fictional.'],
-    'site-halden':['Halden & Rye Bakery · Bakery','Today’s bake counted down live as it sells, a four-step cake builder, and weekly standing orders for bread. Sample site; the business is fictional.'],
-    'site-cedarline':['Cedarline Kitchen · Restaurant','Table reservations, tonight’s menu, and a private dining inquiry for rehearsal dinners, offsites and birthdays. Sample site; the business is fictional.'],
-    'site-hollis':['Hollis Flower House · Florist','Same-day delivery with a ZIP check and order cutoff, weekly flower subscriptions, and wedding inquiries. Sample site; the business is fictional.'],
-    'site-salon':['Ostrander Hair Studio · Hair salon','Pick a service, then a stylist and a time, with straightforward pricing, a texting line and a first-visit offer. Sample site; the business is fictional.'],
-    'site-crestline':['Crestline Design-Build · Remodeling company','A cost estimator that returns a real price range in seconds, a text-back with the itemized breakdown, finished projects with timelines, and plain-English permit and cost guides. Sample site; the business is fictional.'],
-    'site-solace':['Solace Studio Dental · Dental studio','Pick a visit type and a real open time, see what your insurance covers before you arrive, and get intake forms by text. Sample site; the business is fictional.'],
-    'site-command-center':['Owner command center','Overnight emails sorted, new leads graded, and drafted replies waiting for the owner’s approval, next to live job profit. Nothing goes out until you approve. Sample data.'],
-    'site-pilates':['Springline Reformer Studio · Pilates studio','A live class schedule with spots left, intro packs, and membership plans, with an app-style tab bar on phones. Sample site; the business is fictional.'],
-    'email-automation':['Email automation: inbox','A new inquiry arrives, gets sorted, and a reply is drafted in your voice, ready for one tap. Sample automation.'],
-    'auto-follow-up':['Inquiries acknowledged right away','An inquiry gets an instant text and a follow-up plan runs on schedule; a customer reply pauses that sequence and alerts the right person.'],
-    'auto-reminders':['Appointments that show up','The week’s calendar with every confirmation tracked, a missed visit already being rebooked, and a reminder text for anyone who has not replied.'],
-    'auto-reviews':['Feedback that is easy to give','Your rating, the reviews coming in, and the month’s requests, with a clear route for your team to respond.'],
-    'auto-invoices':['Invoices that chase themselves','What is owed and how old it is, with each invoice’s next step queued and a payment link in every message.'],
-    'site-boutique':['Fig & Fennimore · Clothing boutique','A seasonal lookbook, new arrivals with a cart, a fitting room you can book with a stylist, and an early-look email list. Sample site; the business is fictional.'],
-    'brokerage-site':['Brokerage website redesign','The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed.'],
-    'lead-responder':['A seller inquiry, answered right away','A homeowner asks a brokerage for a pricing analysis and sees a confirmation immediately, while the agent gets the request with every detail filled in.'],
-    'blog-library':['Local guide library','Buyer and neighborhood guides with clear structure, built to be found and understood in search.'],
-    'ad-studio':['Video ad studio','Short vertical ads for TikTok, Reels and Facebook in claymation and 3D blueprint styles, rendered from the client’s real projects.'],
-    'remodel-office':['Office app: today’s list','What needs the owner’s attention today, pulled automatically from the business inbox and job list. Sample data.'],
-    'team-hub':['Team Hub','One dashboard where staff approve leads, posts and emails before anything goes out, with the week’s numbers at a glance. Sample data.'],
-    'remodel-deck':['A finished rear deck','Completed work from the remodeling company’s portfolio.'],
-    'remodel-job':['Office app: job page','Each job’s stage, next step, payments and real profit once crew hours are counted. Sample job.'],
-    'remodel-inbox':['Office app: inbox review','Receipts, payments and new leads read from the business inbox, each waiting for the owner’s approval. Sample data.'],
-    'security-report':['Website security report','Hidden spam links and out-of-date software found on the brokerage’s old site, explained in plain English with the fix for each.'],
-    'launch-kit':['Listing launch kit','One short form produces the listing page, social posts, an email blast and print pieces for a new listing.'],
-    'market-reports':['Monthly market reports','Neighborhood prices and trends, drafted each month for agents to review and send to their clients.']
-  };
-  var lb=document.getElementById('lb'),li=document.getElementById('lbi'),lt=document.getElementById('lbt'),lc=document.getElementById('lbc'),ln=document.getElementById('lbn'),list=[],cur=0;
-  function key(src){var m=/img\/([a-z-]+)\.(?:jpg|webp)/.exec(src||'');return m?m[1]:'';}
-  document.querySelectorAll('img').forEach(function(im){
-    var k=key(im.getAttribute('src'));
-    if(!CAP[k]||im.closest('summary')||im.closest('.peek')||im.closest('#lb'))return;
-    list.push(im);im.classList.add('zm');im.tabIndex=0;im.setAttribute('role','button');
-    im.setAttribute('aria-label','View larger: '+CAP[k][0]);
-    var p=im.parentElement;if(p&&p.children.length===1)p.classList.add('zw');
-  });
-  function show(i){cur=(i+list.length)%list.length;var im=list[cur],c=CAP[key(im.getAttribute('src'))];li.src=im.currentSrc||im.src;li.alt=c[0];lt.textContent=c[0];lc.textContent=c[1];ln.textContent=(cur+1)+' of '+list.length;var f=im.closest('figure'),a=f&&f.querySelector('a.demo-a'),d=document.getElementById('lbd');if(a){d.href=a.getAttribute('href');d.textContent=a.textContent;d.hidden=false;}else d.hidden=true;}
-  function open(im){show(list.indexOf(im));if(!lb.open)lb.showModal();}
-  list.forEach(function(im){
-    im.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();open(im);});
-    im.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(im);}});
-  });
-  lb.querySelector('.lbx').onclick=function(){lb.close();};
-  lb.querySelector('.lbp').onclick=function(){show(cur-1);};
-  lb.querySelector('.lbq').onclick=function(){show(cur+1);};
-  lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
-  lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')show(cur-1);else if(e.key==='ArrowRight')show(cur+1);});
-})();
-</script>
-
-<!-- HubSpot: captures contact form submissions into the CRM -->
-<script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247871007.js"></script>
 </body>
 </html>
