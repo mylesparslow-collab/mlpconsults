@@ -1,4 +1,4 @@
-/* Wrenfield demo catalogue. Each ring is a Ring Studio config; photos in img/ are rendered from these by tools/render.js.
+/* Halden demo catalogue. Each ring is a Ring Studio config; photos in img/ are rendered from these by tools/render.js.
    Edit here, re-render, and paste the returned prices into PRICES at the bottom. */
 window.METALS = [
   { k: 'plat', label: 'Platinum', swatch: 'linear-gradient(135deg, #f4f5f7 0%, #b9bec6 45%, #eef0f2 60%, #9ea4ad 100%)' },
