@@ -2,13 +2,13 @@
 (function () {
   var NAMES = {
     bellwood: "Bellwood Family Dental", boutique: "Fig & Fennimore", cedarline: "Cedarline Kitchen",
-    coffee: "Kestrel Hill Coffee Roasters", crestline: "Crestline Design-Build", halden: "Halden & Rye Bakery",
+    coffee: "Kestrel Hill Coffee Roasters", crestline: "Crestline Design-Build", marlow: "Marlow & Rye Bakery",
     hollis: "Hollis Flower House", "little-orbit": "Little Orbit Tea", pilates: "Springline Reformer Studio",
     quietwell: "Quietwell Aesthetics", salon: "Ostrander Hair Studio", solace: "Solace Studio Dental"
   };
   var slug = location.pathname.split("/").filter(Boolean).pop();
   var name = NAMES[slug]; if (!name) return;
-  var SHORT = { boutique: "Fig & Fennimore", coffee: "Kestrel Hill", "little-orbit": "Little Orbit", halden: "Halden & Rye", hollis: "Hollis", salon: "Ostrander", pilates: "Springline", crestline: "Crestline", solace: "Solace", bellwood: "Bellwood", cedarline: "Cedarline", quietwell: "Quietwell" };
+  var SHORT = { boutique: "Fig & Fennimore", coffee: "Kestrel Hill", "little-orbit": "Little Orbit", marlow: "Marlow & Rye", hollis: "Hollis", salon: "Ostrander", pilates: "Springline", crestline: "Crestline", solace: "Solace", bellwood: "Bellwood", cedarline: "Cedarline", quietwell: "Quietwell" };
   var first = SHORT[slug] || name;
 
   function rgb(c) { var m = (c || "").match(/rgba?\(([^)]+)\)/); if (!m) return null; var p = m[1].split(",").map(parseFloat); return p[3] === 0 ? null : p; }
