@@ -125,7 +125,7 @@ def strip(page):
 <a href="{pre}#about">About</a>
 <a class="btn lamp" href="{pre}#contact" data-interest="Free assessment"><span class="cta-l">Get a free assessment</span><span class="cta-s">Free assessment</span></a>
 </nav>
-<button class="doorsign" type="button" id="sign" aria-label="Switch between open (light) and after hours (dark)"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span>Open</span></button>
+<button class="doorsign" type="button" id="sign" aria-label="Switch between day (light) and night (dark)"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span>Day</span></button>
 <button class="menu-btn" type="button" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
 </div>
 </header>
@@ -163,7 +163,7 @@ LIGHTBOX = '''<dialog class="lb" id="lb" aria-label="Screenshot viewer">
 def shot(s, w=1600, h=1000):
     x = f' data-x="{e("|".join(s["extra"]))}"' if s.get('extra') else ''
     return (f'<button class="shot" type="button" data-title="{e(s["cap_title"])}" data-cap="{e(s["cap"])}"{x} aria-label="View larger: {e(s["cap_title"])}">'
-            f'<img decoding="async" src="/img/{s["key"]}.webp" width="{w}" height="{h}" alt="{e(s["alt"])}" loading="lazy"></button>')
+            f'<img decoding="async" src="/img/{s["key"]}.webp" width="{w}" height="{h}" alt="{e(s["alt"])}" loading="lazy"><span class="vl" aria-hidden="true">View larger</span></button>')
 
 
 def peek_strip(sites, n=8):
@@ -195,23 +195,26 @@ def home():
     out.append(f'''<main id="main">
 <section class="hero green" id="top" aria-labelledby="hero-title">
 <div class="wrap">
-<p class="kicker" id="industries"><span>{nb(hero["kicker"][0])}</span><span>{nb(hero["kicker"][1])}</span></p>
 <h1 id="hero-title"><span class="ln">{nb(hero["h1"][0])}</span><span class="ln lit">{nb(hero["h1"][1])}</span></h1>
-<div class="under">
-<div>
+</div>
+<div class="hstreet">
+<div class="mlpshop" style="--c:#0f3b2d;--t:#f6f0e1">
+<p class="kicker" id="industries"><span>{nb(hero["kicker"][0])}</span><span>{nb(hero["kicker"][1])}</span></p>
+<div class="mbay">
+<div class="mwin">
 <p class="lead">{nb(hero["lead"])}</p>
 <div class="cta">
 <a class="btn lamp go" href="#contact" data-interest="Free assessment">{nb(hero["cta"][0])}</a>
-<a class="btn line" href="#services">{nb(hero["cta"][1])}</a>
+<a class="tlink" href="#services">{nb(hero["cta"][1])}</a>
 </div>
-</div>
-<div>
-<ul class="decal">{facts}</ul>
 <p class="reassure">{nb(hero["reassure"])}</p>
 </div>
+<span class="door" aria-hidden="true"><span class="sign">Open</span><span class="knob"></span></span>
 </div>
 </div>
-<div class="peek lights" aria-hidden="true">{peek}</div>
+<ul class="decal">{facts}</ul>
+<div class="peekrow lights" aria-hidden="true">{peek}</div>
+</div>
 </section>
 <section class="band assess" aria-labelledby="sheet-t">
 <div class="wrap">
@@ -279,7 +282,7 @@ def home():
             demos = f'<div class="demos"><span>{nb(c["demos_label"])}</span>' + ''.join(f'<a href="{h}" target="_blank" rel="noopener">{nb(t)}</a>' for t, h in c['demos']) + '</div>'
         fine = f'<p class="fine">{nb(c["fine"])}</p>' if c['fine'] else ''
         cases.append(f'''<details class="case" id="{c["id"]}">
-<summary><img class="cth" src="/img/{c["shots"][0]["key"]}.webp" width="{c["shots"][0]["w"]}" height="{c["shots"][0]["h"]}" alt="" loading="lazy" decoding="async"><div><span class="tag">{nb(c["tag"])}</span><h4>{nb(c["title"])}</h4></div><p>{nb(c["sum"])}</p><span class="tg" aria-hidden="true">+</span></summary>
+<summary><img class="cth" src="/img/{c["shots"][0]["key"]}.webp" width="{c["shots"][0]["w"]}" height="{c["shots"][0]["h"]}" alt="" loading="lazy" decoding="async"><div><span class="tag">{nb(c["tag"])}</span><h4>{nb(c["title"])}</h4></div><p>{nb(c["sum"])}</p><span class="tg" aria-hidden="true"></span></summary>
 <div class="case-body">
 <div class="cb-grid">{cols}{kv}</div>
 <div class="gal {'g1' if n == 1 else 'g3' if n == 3 else ''}">{gal}</div>
@@ -296,7 +299,7 @@ def home():
 <ol>{directory}</ol>
 </nav>
 <div class="streetwrap">
-<div class="arrows"><button type="button" id="pv" aria-label="Back along the street">←</button><button type="button" id="nx" aria-label="Further along the street">→</button></div>
+<div class="arrows"><button type="button" id="pv" aria-label="Back along the street">← Back</button><button type="button" id="nx" aria-label="Further along the street">Further →</button></div>
 <ol class="track lights" id="track" aria-label="Seventeen working websites">
 {chr(10).join(shops)}
 </ol>
@@ -377,7 +380,6 @@ def pagehead(label, h1, lead):
 <h1>{nb(h1)}</h1>
 <p class="lead">{nb(lead)}</p>
 </div>
-<div class="peek small" aria-hidden="true">{peek_strip(H["work"]["sites"])}</div>
 </section>
 '''
 

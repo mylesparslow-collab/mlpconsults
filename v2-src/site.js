@@ -6,14 +6,14 @@
   var $ = function (id) { return document.getElementById(id); };
   if (!reduce) root.classList.add('anim');
 
-  /* ---- the door sign: Open (light) / After hours (dark); follows the system until flipped ---- */
+  /* ---- day (light) / night (dark): follows the system until switched; at night the shop windows are the light ---- */
   var sign = $('sign');
   function isDark() { var t = root.dataset.theme; return t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches); }
   function paintSign() {
     if (!sign) return;
     var d = isDark();
-    sign.querySelector('span').textContent = d ? 'After hours' : 'Open';
-    sign.setAttribute('aria-label', d ? 'After hours (dark) is on. Switch to open (light).' : 'Open (light) is on. Switch to after hours (dark).');
+    sign.querySelector('span').textContent = d ? 'Night' : 'Day';
+    sign.setAttribute('aria-label', d ? 'Night (dark) is on. Switch to day (light).' : 'Day (light) is on. Switch to night (dark).');
   }
   paintSign();
   try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paintSign); } catch (e) {}
