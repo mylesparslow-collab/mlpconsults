@@ -104,7 +104,7 @@ def head(meta, page):
 {jsonld}<meta name="theme-color" content="#0f3b2d">
 <link rel="preload" href="{BASE}/assets/fonts/Gabarito.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="{BASE}/assets/fonts/Figtree.ttf" as="font" type="font/ttf" crossorigin>
-<script>try{{var t=localStorage.getItem('mlp-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
+<script>try{{var t=localStorage.getItem('mlp-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}}catch(e){{}}document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="{BASE}/assets/site.css">
 </head>
 '''
@@ -118,6 +118,7 @@ def strip(page):
 <header class="strip" id="strip">
 <div class="wrap">
 <a class="mark" href="{'#top' if home else BASE + '/'}" aria-label="MLP Consulting, home">{LOGO}<b>Consulting</b></a>
+<button class="menu-btn" type="button" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
 <nav class="links" id="nav" aria-label="Main">
 <a href="{pre}#services">Services</a>
 <a href="{pre}#work">Work</a>
@@ -125,8 +126,7 @@ def strip(page):
 <a href="{pre}#about">About</a>
 <a class="btn lamp" href="{pre}#contact" data-interest="Free assessment"><span class="cta-l">Get a free assessment</span><span class="cta-s">Free assessment</span></a>
 </nav>
-<button class="doorsign" type="button" id="sign" aria-label="Switch between day (light) and night (dark)"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span>Day</span></button>
-<button class="menu-btn" type="button" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+<button class="doorsign" type="button" id="sign" role="switch" aria-checked="false" aria-label="Night colours"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span class="seg day">Day</span><span class="seg night">Night</span></button>
 </div>
 </header>
 '''

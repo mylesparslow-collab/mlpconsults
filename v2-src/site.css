@@ -18,7 +18,7 @@ html{-webkit-text-size-adjust:100%;scroll-padding-top:88px}
 body{margin:0;background:var(--wall);color:var(--ink);font:400 17px/1.5 var(--text);overflow-x:hidden}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1.5px}
-p{margin:0}h1,h2,h3,h4,h5{margin:0;font-family:var(--sign);text-wrap:balance}
+p{margin:0;text-wrap:pretty}h1,h2,h3,h4,h5{margin:0;font-family:var(--sign);text-wrap:balance}
 button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:2px}
 .green :focus-visible,.nightband :focus-visible,.strip :focus-visible,.directory :focus-visible{outline-color:var(--lamp)}
@@ -44,12 +44,16 @@ button{font:inherit;color:inherit}
 .strip{position:sticky;top:0;z-index:50;background:var(--shop);color:var(--shop-ink)}
 .strip .wrap{display:flex;align-items:center;gap:24px;height:72px}
 .mark{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 15px var(--sign);margin-right:auto}
+.strip .links{order:1}.strip .doorsign{order:2}.strip .menu-btn{order:3}
 .mark svg{width:58px;height:25px;flex:none}
 .links{display:flex;gap:26px;align-items:center}
 .links a{text-decoration:none;font-weight:500;font-size:16px}
 .links a:not(.btn):hover,.links a[aria-current=page]{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
 .cta-s{display:none}
-.doorsign{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:84px;font:700 14px/1 var(--sign);background:none;color:var(--shop-ink);border:2px solid color-mix(in srgb,var(--shop-ink) 55%,transparent);border-radius:6px;padding:9px 11px 8px;cursor:pointer;white-space:nowrap}
+.doorsign{display:inline-flex;align-items:center;gap:3px;font:700 13.5px/1 var(--sign);background:none;color:var(--shop-ink);border:2px solid color-mix(in srgb,var(--shop-ink) 55%,transparent);border-radius:6px;padding:4px 5px 4px 9px;cursor:pointer;white-space:nowrap}
+.doorsign svg{margin-right:4px}
+.seg{padding:6px 7px 5px;border-radius:3px;opacity:.75}
+.doorsign[aria-checked=false] .day,.doorsign[aria-checked=true] .night{background:var(--shop-ink);color:var(--shop);opacity:1}
 .doorsign:hover{border-color:var(--shop-ink)}
 .menu-btn{display:none;font:700 14px/1 var(--sign);background:none;border:2px solid color-mix(in srgb,var(--shop-ink) 55%,transparent);border-radius:6px;padding:10px 11px 9px;cursor:pointer}
 
@@ -71,7 +75,12 @@ h1 .lit{color:var(--lamp)}
 .mwin .btn{padding:13px 16px}
 .mwin .reassure{font-size:14.5px;line-height:1.45;color:#46544b;margin-top:13px}
 .mwin :focus-visible{outline-color:#0f3b2d}
-.decal{flex:0 0 232px;margin:0;padding:22px 26px 16px;list-style:none;background:#14201a;color:var(--shop-ink);clip-path:polygon(7% 0,93% 0,100% 100%,0 100%);border-top:6px solid #2c3a32}
+.mlpshop .door::before{background:#2f5a49}
+.mlpshop .door .sign{background:var(--lamp);color:var(--lamp-ink);font-size:14px;top:20%}
+.mlpshop .door .sign::before{background:var(--lamp)}
+.mlpshop .knob{width:6px;height:34px;border-radius:3px;left:9px;top:68%;background:#f6f0e1}
+.decal{flex:0 0 214px;margin:0;padding:16px 18px 14px;list-style:none;background:#14201a;color:var(--shop-ink);border-radius:6px 6px 0 0;border:3px solid #f6f0e1;border-bottom:0;position:relative}
+.decal::before{content:"";position:absolute;left:50%;top:-12px;width:34px;height:10px;margin-left:-17px;border:3px solid #f6f0e1;border-bottom:0;border-radius:8px 8px 0 0}
 .decal li{padding:9px 0 11px}
 .decal li+li{border-top:2px solid #f6f0e138}
 .decal b{display:block;font:800 34px/1 var(--sign);white-space:nowrap}
@@ -86,7 +95,7 @@ h1 .lit{color:var(--lamp)}
 .mrow{display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:8px}
 .mw{display:block;border-radius:2px;overflow:hidden;background:#0c100d;margin-bottom:22px}
 .mw img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top left}
-.mr{display:block;margin-top:-20px;height:20px;font:600 11.5px/18px var(--text);opacity:.85}
+.mr{display:block;margin-top:-20px;height:20px;font:600 11.5px/18px var(--text)}
 .mini .door{border-width:2px}
 .mini .door .sign{font-size:9.5px;padding:3px 4px 2px;top:26%}
 
@@ -94,8 +103,8 @@ h1 .lit{color:var(--lamp)}
 .band{padding:88px 0}
 .assess{padding:64px 0 0}
 .as-head{display:grid;gap:18px}
-.assess h2{font-size:clamp(28px,3.1vw,44px);line-height:1;letter-spacing:-.015em}
-.assess h2 small{font:500 16px var(--text);color:var(--muted);letter-spacing:0;margin-left:8px;white-space:nowrap}
+.assess h2{font-size:clamp(28px,3.1vw,44px);line-height:1;letter-spacing:-.015em;display:flex;flex-direction:column-reverse;gap:14px}
+.assess h2 small{font:700 18px/1 var(--sign);letter-spacing:0}
 .tabs{display:flex;flex-wrap:wrap;gap:8px}
 .tabs button{font:700 15.5px/1 var(--sign);border:2px solid var(--ink);background:none;color:var(--ink);padding:9px 12px 8px;border-radius:4px;cursor:pointer}
 .tabs button[aria-selected=true]{background:var(--ink);color:var(--wall)}
@@ -122,7 +131,7 @@ h2{font-weight:800;font-size:clamp(38px,5.3vw,76px);line-height:.95;letter-spaci
 .price{font:800 clamp(30px,3.6vw,52px)/1 var(--sign);white-space:nowrap}
 .price.word{font-weight:600;font-size:clamp(24px,2.4vw,34px)}
 .svc-body{display:grid;grid-template-columns:minmax(0,3.4fr) minmax(0,4.3fr) minmax(0,4.3fr);gap:20px 48px;margin-top:16px}
-.svc-body .note{font-size:16px;color:var(--muted);max-width:24em}
+.svc-body .note{font-size:16.5px;max-width:24em}
 .svc-body .btn{margin-top:16px}
 .what p+p{margin-top:10px}
 .svc ul{margin:0;padding:0;list-style:none}
@@ -134,7 +143,7 @@ h2{font-weight:800;font-size:clamp(38px,5.3vw,76px);line-height:.95;letter-spaci
 
 /* ---- work: the street ---- */
 .streetband{padding:40px 0 0}
-.plaza{display:grid;grid-template-columns:316px minmax(0,1fr);margin-top:54px;align-items:end}
+.plaza{display:grid;grid-template-columns:calc(var(--edge) + 290px) minmax(0,1fr);margin-top:54px;align-items:end}
 .directory{margin-left:var(--edge);background:var(--board);color:var(--shop-ink);border-radius:5px 5px 0 0;padding:18px 18px 16px;position:relative;z-index:2}
 .directory .dh{font:700 17px/1.1 var(--sign);margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline}
 .directory .dh small{font:500 13px var(--text);opacity:.8}
@@ -157,7 +166,7 @@ h2{font-weight:800;font-size:clamp(38px,5.3vw,76px);line-height:.95;letter-spaci
 .bay{display:grid;grid-template-columns:minmax(0,1fr) 78px;grid-template-rows:auto 1fr;gap:0 10px}
 .window{display:block;background:#0c100d;border-radius:3px;overflow:hidden;position:relative}
 .window img{width:118%;max-width:none;aspect-ratio:16/10.4;object-fit:cover;object-position:top left}
-.riser{display:block;font:600 13.5px/34px var(--text);opacity:.85}
+.riser{display:block;font:600 13.5px/34px var(--text)}
 .door{grid-column:2;grid-row:1/3;position:relative;display:block;background:color-mix(in srgb,var(--c) 74%,#000);border:3px solid color-mix(in srgb,var(--t) 62%,var(--c));border-bottom:0;border-radius:3px 3px 0 0}
 .door::before{content:"";position:absolute;left:7px;right:7px;top:7px;height:58%;border-radius:2px;background:color-mix(in srgb,var(--t) 16%,#0c100d)}
 .mini .door::before{left:4px;right:4px;top:4px}
@@ -173,7 +182,7 @@ h2{font-weight:800;font-size:clamp(38px,5.3vw,76px);line-height:.95;letter-spaci
 .arrows{position:absolute;right:var(--edge);top:-34px;display:flex;gap:8px}
 .arrows button{height:42px;padding:0 14px;border-radius:4px;border:2px solid var(--ink);background:var(--wall);color:var(--ink);font:700 15px/1 var(--sign);cursor:pointer;white-space:nowrap}
 .arrows button:hover{background:var(--ink);color:var(--wall)}
-.arrows button:disabled{opacity:.3;cursor:default;background:var(--wall);color:var(--ink)}
+.arrows button[aria-disabled=true]{opacity:.35;cursor:default;background:var(--wall);color:var(--ink)}
 .walk{background:var(--walk);padding:14px 0 16px;margin-top:22px}
 .walk p{font-size:15px;max-width:70em}
 /* lights: windows are dim until the street is switched on (only when the script has asked for it) */
@@ -188,8 +197,9 @@ h2{font-weight:800;font-size:clamp(38px,5.3vw,76px);line-height:.95;letter-spaci
 .flows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 36px;margin-top:44px}
 figure{margin:0}
 .shot{display:block;position:relative;padding:0;border:0;background:none;cursor:zoom-in;width:100%;border-radius:4px;overflow:hidden}
-.vl{position:absolute;right:10px;bottom:10px;font:700 13.5px/1 var(--sign);background:#14201a;color:#f6f0e1;padding:7px 9px 6px;border-radius:3px}
+.vl{position:absolute;right:10px;top:10px;font:700 13.5px/1 var(--sign);background:#14201a;color:#f6f0e1;padding:7px 9px 6px;border-radius:3px}
 .gal .vl{display:none}
+@media (hover:hover){.vl{opacity:0;transition:opacity .2s}.shot:hover .vl,.shot:focus-visible .vl{opacity:1}}
 .shot img{width:100%}
 .flows .shot{border:2px solid #f1ecdc40}
 .flows h4{font:700 23px/1.15 var(--sign);margin-top:18px}
@@ -336,14 +346,19 @@ dialog.lb::backdrop{background:#04100bd9}
 
 /* ---- narrow screens ---- */
 @media (max-width:1100px){
-  .links a:not(.btn){display:none}
-  .strip.open .links a:not(.btn){display:block}
-  .menu-btn{display:inline-block}
-  .strip .links{gap:0}
+  /* the folded menu needs the script; without it the links simply wrap under the strip */
+  .js .links a:not(.btn){display:none}
+  .js .strip.open .links a:not(.btn){display:block}
+  .js .menu-btn{display:inline-block}
+  .js .strip .links{gap:0}
   .strip.open .links{position:absolute;left:0;right:0;top:100%;background:var(--shop);flex-direction:column;align-items:stretch;padding:6px var(--pad) 18px;gap:0;border-top:1px solid #ffffff2e;max-height:calc(100vh - 72px);overflow:auto}
   .strip.open .links a:not(.btn){padding:13px 0;font:700 22px var(--sign);border-bottom:1px solid #ffffff24}
   .strip.open .links .btn{order:9;margin-top:14px}
   .strip:not(.open) .links .btn{padding:10px 14px;font-size:15px}
+  html:not(.js) .strip{position:static}
+  html:not(.js) .strip .wrap{height:auto;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;gap:8px 18px}
+  html:not(.js) .strip .links{flex-wrap:wrap;gap:8px 18px}
+  html:not(.js) .doorsign{display:none}
 }
 @media (max-width:900px){
   :root{--pad:20px}
@@ -355,7 +370,7 @@ dialog.lb::backdrop{background:#04100bd9}
   .foot .mark{flex-direction:row;align-items:center;gap:10px;font-size:15px}
   .cta-l{display:none}.cta-s{display:inline}
   .strip:not(.open) .links .btn{padding:9px 11px;font-size:14px;white-space:nowrap}
-  .doorsign span{display:none}.doorsign{padding:9px;min-width:0}
+  .doorsign .seg{display:none}.doorsign{padding:9px}.doorsign svg{margin:0}
   .hero{padding-top:18px}
   .hero h1{font-size:clamp(44px,14.6vw,88px)}
   .hstreet{flex-wrap:wrap;margin-top:22px;gap:22px 10px}
@@ -364,7 +379,8 @@ dialog.lb::backdrop{background:#04100bd9}
   .mbay{grid-template-columns:minmax(0,1fr)}.mlpshop .door{display:none}
   .mwin{padding:16px 16px 18px;margin-bottom:10px}.mwin .lead{font-size:17.5px}
   .lead{font-size:18px}
-  .decal{flex-basis:196px;padding:18px 22px 12px}.decal b{font-size:28px}.decal span{font-size:13.5px}
+  .decal{flex:0 0 calc(100% - var(--pad));border-bottom:3px solid #f6f0e1;border-radius:6px;padding:8px 16px}.decal::before{display:none}
+  .decal li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;align-items:baseline}.decal b{font-size:28px}.decal span{font-size:15px}
   .mini{flex-basis:214px}.mf{font-size:15px}
   .band{padding:58px 0}.assess{padding:46px 0 0}.counter{padding:58px 0}.streetband{padding-top:10px}.nightband{padding:54px 0 58px}.casesband{padding:54px 0 58px}.about{padding-bottom:58px}
   #sheet-list{grid-template-columns:minmax(0,1fr);gap:14px;min-height:0;margin-top:22px}
@@ -376,7 +392,7 @@ dialog.lb::backdrop{background:#04100bd9}
   .svc-body{grid-template-columns:minmax(0,1fr);gap:16px}
   .also{grid-template-columns:minmax(0,1fr);gap:18px}
   .plaza{display:block;margin-top:28px}.directory{display:none}
-  .track{grid-auto-columns:min(86vw,350px);padding:6px var(--pad) 0;scroll-snap-type:x mandatory;scroll-padding-left:var(--pad)}
+  .track{grid-auto-columns:min(89vw,360px);padding:6px var(--pad) 0;scroll-snap-type:x mandatory;scroll-padding-left:var(--pad)}
   .shop{scroll-snap-align:start}
   .fascia h3{font-size:21px}.bay{grid-template-columns:minmax(0,1fr) 62px}.door .sign{font-size:12px}
   .curb{padding-bottom:6px}
@@ -396,7 +412,7 @@ dialog.lb::backdrop{background:#04100bd9}
   .slab{padding:24px 20px}
 }
 @media (min-width:901px) and (max-width:1180px){
-  .plaza{grid-template-columns:250px minmax(0,1fr)}
+  .plaza{grid-template-columns:calc(var(--edge) + 236px) minmax(0,1fr)}
   .svc-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.svc-body>:first-child{grid-column:1/-1}
   .case summary{grid-template-columns:150px minmax(0,1fr) 84px}.cth{width:150px}.case summary p{grid-column:2/3}
 }
