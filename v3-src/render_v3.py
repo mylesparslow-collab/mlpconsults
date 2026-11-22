@@ -23,11 +23,11 @@ def shot(s, w=1600, h=1000):
 
 def home():
     hero, sv, wk, ab, ct = H['hero'], H['services'], H['work'], H['about'], H['contact']
-    out = [head(H['meta'], 'home'), '<body>\n', header('home'), '<main id="main" tabindex="-1">\n']
+    out = [head(H['meta'], 'home'), '<body>\n', header('home'), '<div class="scrim" data-scene-through aria-hidden="true"></div>\n', '<main id="main" tabindex="-1">\n']
 
     # 1 storm
     facts = ''.join(f'<div><dt>{nb(a)}</dt><dd>{nb(b)}</dd></div>' for a, b in hero['facts'])
-    out.append(f'''<section class="ch" id="top" aria-labelledby="hero-title">
+    out.append(f'''<section class="ch" data-scene-through id="top" aria-labelledby="hero-title">
 <div class="col">
 <p class="kicker"><span>{nb(hero["kicker"][0])}</span><span>{nb(hero["kicker"][1])}</span></p>
 <h1 id="hero-title"><span class="ln">{nb(hero["h1"][0])}</span><span class="ln">{nb(hero["h1"][1])}</span></h1>
@@ -48,11 +48,15 @@ def home():
         f'<button type="button" role="tab" id="tab-{k}" aria-selected="{"true" if i == 0 else "false"}" aria-controls="sheet-panel" data-t="{k}"{"" if i == 0 else " tabindex=\"-1\""}>{nb(v)}</button>'
         for i, (k, v) in enumerate(hero['tabs']))
     rows = ''.join(f'<li><i>{i + 1}</i><span class="k">{nb(r[0])}</span><span class="d">{nb(r[1])}</span><span class="v"><b>Fix:</b> {nb(r[2])}</span></li>' for i, r in enumerate(ex0))
-    out.append(f'''<section class="ch" id="assessment" aria-labelledby="sheet-t">
+    allx = ''.join(
+        f'<div class="ex"><h3>{nb(v)}</h3><ol>' + ''.join(f'<li><i>{i + 1}</i><span class="k">{nb(r[0])}</span><span class="d">{nb(r[1])}</span><span class="v"><b>Fix:</b> {nb(r[2])}</span></li>' for i, r in enumerate(hero['examples'][k])) + '</ol></div>'
+        for k, v in hero['tabs'])
+    out.append(f'''<section class="ch" data-scene-through id="assessment" aria-labelledby="sheet-t">
 <div class="col">
 <h2 id="sheet-t">{nb(hero["sheet_title"])} <small>{nb(hero["sheet_small"])}</small></h2>
 <div class="tabs" role="tablist" aria-label="Kind of business" id="tabs">{tabs}</div>
 <div id="sheet-panel" role="tabpanel" aria-labelledby="tab-{hero["tabs"][0][0]}" aria-live="polite"><ol id="sheet-list">{rows}</ol></div>
+<div class="ex-all">{allx}</div>
 <p class="foot-note">{nb(hero["sheet_foot"])}</p>
 </div>
 </section>
@@ -73,7 +77,7 @@ def home():
 <p class="go-line"><a class="tlink" href="#contact" data-interest="{e(s["interest"])}">{nb(s["cta"])}</a></p>
 </article>''')
     also = ''.join(f'<div><b>{nb(a)}</b><p>{nb(b)}</p></div>' for a, b in sv['also'])
-    out.append(f'''<section class="ch" id="services" aria-labelledby="services-t">
+    out.append(f'''<section class="ch" data-scene-through id="services" aria-labelledby="services-t">
 <div class="col">
 <p class="seclbl">{nb(sv["label"])}</p>
 <h2 id="services-t">{nb(sv["h2"])}</h2>
@@ -95,7 +99,7 @@ def home():
 <a class="row" href="{s["href"]}" target="_blank" rel="noopener"><span class="n">{nb(s["no"])}</span><span class="nm">{nb(s["name"])}</span><span class="tr">{nb(s["trade"])}</span><img class="th" src="/v3/assets/sites/{k}.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
 <div class="detail"><p>{nb(s["cap"])}</p>{more}</div>
 </li>''')
-    out.append(f'''<section class="ch" id="work" aria-labelledby="work-t">
+    out.append(f'''<section class="ch" data-scene-through id="work" aria-labelledby="work-t">
 <div class="col">
 <p class="seclbl">{nb(wk["label"])}</p>
 <h2 id="work-t">{nb(wk["h2"])}</h2>
@@ -112,7 +116,7 @@ def home():
 
     # 5 conveyor lanes: automations
     flows = ''.join(f'<figure>{shot(f)}<figcaption><h3>{nb(f["title"])}</h3><p>{nb(f["text"])}</p></figcaption></figure>' for f in wk['flows'])
-    out.append(f'''<section class="ch wide" id="case-automations" aria-labelledby="flows-t">
+    out.append(f'''<section class="ch wide" data-scene-through id="case-automations" aria-labelledby="flows-t">
 <div class="col">
 <h2 id="flows-t">{nb(wk["flows_head"][0])}</h2>
 <p class="lead">{nb(wk["flows_head"][1])}</p>
@@ -140,7 +144,7 @@ def home():
 </div>
 </details>''')
     body = ''.join(f'<p>{nb(p)}</p>' for p in ab['body'])
-    out.append(f'''<section class="ch wide" id="systems" aria-labelledby="cases-t">
+    out.append(f'''<section class="ch wide" data-scene-through id="systems" aria-labelledby="cases-t">
 <div class="col">
 <h2 id="cases-t">{nb(wk["cases_head"][0])}</h2>
 <p class="lead">{nb(wk["cases_head"][1])}</p>
@@ -160,7 +164,7 @@ def home():
 
     # 7 one neat stack: contact (the form is the live one, verbatim)
     form = ct['form_html'].replace(' class="rv d1"', '')
-    out.append(f'''<section class="ch" id="contact" aria-labelledby="contact-t">
+    out.append(f'''<section class="ch" data-scene-through id="contact" aria-labelledby="contact-t">
 <div class="col">
 <p class="seclbl">{nb(ct["label"])}</p>
 <h2 id="contact-t">{nb(ct["h2"])}</h2>

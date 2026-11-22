@@ -45,15 +45,16 @@ const smooth01 = t => t * t * (3 - 2 * t);
 const lerp = (a, b, t) => a + (b - a) * t;
 const clamp = (x, a, b) => Math.min(b, Math.max(a, x));
 
-function hasWebGL2() {
-  try { const c = document.createElement('canvas'); return !!c.getContext('webgl2'); } catch (e) { return false; }
-}
-function isSoftwareGL() {
+// one throwaway probe: is WebGL2 there, and is it a software renderer? The context is released straight away.
+function probeGL() {
+  let gl = null;
   try {
-    const gl = document.createElement('canvas').getContext('webgl2'); if (!gl) return false;
+    gl = document.createElement('canvas').getContext('webgl2'); if (!gl) return { ok: false, soft: false };
     const dbg = gl.getExtension('WEBGL_debug_renderer_info');
-    return /swiftshader|llvmpipe|software/i.test(String(gl.getParameter(dbg ? dbg.UNMASKED_RENDERER_WEBGL : gl.RENDERER)));
-  } catch (e) { return false; }
+    const soft = /swiftshader|llvmpipe|software/i.test(String(gl.getParameter(dbg ? dbg.UNMASKED_RENDERER_WEBGL : gl.RENDERER)));
+    return { ok: true, soft };
+  } catch (e) { return { ok: false, soft: false }; }
+  finally { try { const ext = gl && gl.getExtension('WEBGL_lose_context'); if (ext) ext.loseContext(); } catch (e) { /* ignore */ } }
 }
 
 // ------------------------------------------------------------------ shaders
@@ -300,13 +301,13 @@ function drawSlipDesign(ctx, shape, j, x, y, w, h, text, DISP, SANS) {
 
 // ------------------------------------------------------------------ scene
 export async function createScene(canvas, opts = {}) {
-  if (!hasWebGL2()) return null;
+  const probe = probeGL();
+  if (!probe.ok || (probe.soft && !opts.tier)) return null;   // software GL: the page uses its no-WebGL layout
   const sites = (opts.sites || []).slice(0, NT_MAX);
   const lines = opts.slips && opts.slips.length ? opts.slips : ['Loose ends'];
   const reduced = !!opts.reducedMotion;
   const q = opts;
-  const soft = isSoftwareGL();
-  const lowEnd = q.tier ? q.tier === 'low' : (soft || matchMedia('(pointer:coarse)').matches || (navigator.hardwareConcurrency || 4) <= 4 || (navigator.deviceMemory || 8) <= 4);
+  const lowEnd = q.tier ? q.tier === 'low' : (matchMedia('(pointer:coarse)').matches || (navigator.hardwareConcurrency || 4) <= 4 || (navigator.deviceMemory || 8) <= 4);
   const tier = lowEnd ? 'low' : 'desktop';
   const N = lowEnd ? 900 : 2600;
   const T = sites.length;
@@ -568,9 +569,10 @@ export async function createScene(canvas, opts = {}) {
   }
 
   // ---- state
-  const listeners = { sitehover: [], siteclick: [] };
+  const listeners = { sitehover: [], siteclick: [], lost: [] };
   const emit = (n, v) => { for (const fn of listeners[n] || []) { try { fn(v); } catch (e) { /* page handler errors stay the page's */ } } };
   let W = 1, H = 1, aspect = 1;
+  let clearF = clamp(opts.clear == null ? 0.42 : +opts.clear || 0, 0, 0.62);
   let target = 0, cur = 0, vel = 0, firstSet = true;
   const t0 = performance.now();
   let introStart = reduced ? -1e9 : t0, introDone = reduced;
@@ -584,7 +586,7 @@ export async function createScene(canvas, opts = {}) {
   function computeFit() {
     const visH = 2 * 14 * Math.tan(THREE.MathUtils.degToRad(17.5));
     const wide = aspect >= 1;
-    const rw = wide ? 0.58 * visH * aspect * 0.92 : visH * aspect * 0.94;
+    const rw = wide ? (1 - clearF) * visH * aspect * 0.92 * (clearF > 0.55 ? 1 - (clearF - 0.55) * 1.5 : 1) : visH * aspect * 0.94;
     const rh = wide ? visH * 0.9 : 0.55 * visH * 0.92;
     S = FORM.map(f => {
       let s = f.cap;
@@ -593,9 +595,9 @@ export async function createScene(canvas, opts = {}) {
       return s;
     });
     // lane span in model space: from just inside the content area to past the right edge
-    const halfW = 14 * Math.tan(THREE.MathUtils.degToRad(17.5)) * aspect, shift = wide ? 0.42 : 0;
-    uniforms.uLaneP.value = laneP; uniforms.uCut.value = -0.16;
-    uniforms.uLane.value.set(((wide ? -0.1 : -1.12) - shift) * halfW / S[4], (1.14 - shift) * halfW / S[4]);
+    const halfW = 14 * Math.tan(THREE.MathUtils.degToRad(17.5)) * aspect, shift = wide ? clearF : 0;
+    uniforms.uLaneP.value = laneP; uniforms.uCut.value = 2 * clearF - 1;
+    uniforms.uLane.value.set(((wide ? 2 * clearF - 1 + 0.06 : -1.12) - shift) * halfW / S[4], (1.14 - shift) * halfW / S[4]);
   }
   function resize() {
     W = Math.max(1, canvas.clientWidth || innerWidth); H = Math.max(1, canvas.clientHeight || innerHeight); aspect = W / H;
@@ -616,12 +618,12 @@ export async function createScene(canvas, opts = {}) {
     slips.scale.setScalar(s); desk.scale.setScalar(s);
     camera.position.copy(camPos); camera.lookAt(camLook);
     const wide = aspect >= 1;
-    if (wide) camera.setViewOffset(W, H, -0.21 * W, 0, W, H); else camera.setViewOffset(W, H, 0, 0.225 * H, W, H);
+    if (wide) camera.setViewOffset(W, H, -0.5 * clearF * W, 0, W, H); else camera.setViewOffset(W, H, 0, 0.225 * H, W, H);
     camera.updateProjectionMatrix(); camera.updateMatrixWorld();
     uniforms.uCam.value.copy(camPos).divideScalar(s);
     uniforms.uPushK.value = lerp(a.push, b.push, e);
     uniforms.uPushR.value = 1.35;
-    const m = smooth01(clamp((p - 5.3) / 0.7, 0, 1));
+    const m = smooth01(clamp((p - 5.45) / 0.3, 0, 1));
     ground.copy(nightC).lerp(morningC, m);
     uniforms.uMorn.value = m;
     deskU.uD2.value = Math.max(0, 1 - Math.abs(p - 2) * 1.6);
@@ -637,6 +639,7 @@ export async function createScene(canvas, opts = {}) {
   }
 
   // ---- pointer
+  let lost = false, lostTimer = 0, lastWake = performance.now(), lastRender = 0, lastSiteUpload = 0, dprSeen = devicePixelRatio, lastDprCheck = 0;
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
   let ptrHead = 0, lastMove = -1e9, lastPush = -1e9, ptrAge = new Float32Array(8).fill(1e9), pointerNdcValid = false;
   const setRay = k => {
@@ -655,8 +658,18 @@ export async function createScene(canvas, opts = {}) {
     }
     return [x0, y0, x1, y1];
   }
+  const coarse = matchMedia('(pointer: coarse)').matches;
+  const NOSCENE = '.menu,dialog,[data-noscene]';
+  // the canvas sits behind the page: only count a tile hit when nothing but the backdrop is under the pointer
+  function backdropAt(clientX, clientY) {
+    const el = document.elementFromPoint(clientX, clientY);
+    if (!el) return false;
+    if (el.closest && el.closest(NOSCENE)) return false;
+    return el === canvas || el === document.documentElement || el === document.body || el.tagName === 'MAIN' || el.hasAttribute('data-scene-through');
+  }
   function hitSite(cx, cy) {
-    if (Math.abs(cur - 3) > 0.3 || !T) return null;
+    if (coarse || lost || Math.abs(cur - 3) > 0.3 || !T) return null;
+    const rc = canvas.getBoundingClientRect(); if (!backdropAt(cx + rc.left, cy + rc.top)) return null;
     const nx = cx / W * 2 - 1, ny = 1 - cy / H * 2;
     for (let i = 0; i < T; i++) { const r = tileRect(i); if (r && nx >= r[0] && nx <= r[2] && ny >= r[1] && ny <= r[3]) return sites[i].key; }
     return null;
@@ -670,7 +683,7 @@ export async function createScene(canvas, opts = {}) {
     const r = canvas.getBoundingClientRect();
     const cx = e.clientX - r.left, cy = e.clientY - r.top;
     ndc.set(cx / r.width * 2 - 1, 1 - cy / r.height * 2); pointerNdcValid = true;
-    const now = performance.now(); lastMove = now;
+    const now = performance.now(); lastMove = now; lastWake = now; requestRender();
     if (!reduced && now - lastPush > 40) {
       lastPush = now; ptrHead = (ptrHead + 1) % 8; ptrAge[ptrHead] = 0; setRay(ptrHead);
     }
@@ -679,7 +692,7 @@ export async function createScene(canvas, opts = {}) {
   function onClick(e) {
     if (e.target && e.target.closest && e.target.closest('a,button,input,select,textarea,summary,label,dialog,[data-noscene]')) return;
     const r = canvas.getBoundingClientRect();
-    const k = hitSite(e.clientX - r.left, e.clientY - r.top);
+    const k = hitSite(e.clientX - r.left, e.clientY - r.top);   // re-tests elementFromPoint
     if (k) emit('siteclick', k);
   }
   addEventListener('pointermove', onMove, { passive: true });
@@ -715,7 +728,12 @@ export async function createScene(canvas, opts = {}) {
       if (pointerNdcValid && now - lastMove < 500) { ptrAge[ptrHead] = 0; setRay(ptrHead); }
       for (let i = 0; i < 8; i++) { ptrAge[i] += dt; uniforms.uPS.value[i] = ptrAge[i] > 2.5 ? 0 : Math.exp(-ptrAge[i] / 0.85); }
     }
-    if (siteDirty) { siteTex.needsUpdate = true; siteDirty = false; }
+    if (siteDirty) {
+      if (now - lastSiteUpload > 250) { siteTex.needsUpdate = true; siteDirty = false; lastSiteUpload = now; }
+      else setTimeout(requestRender, 260);
+    }
+    if (now - lastDprCheck > 1000) { lastDprCheck = now; if (devicePixelRatio !== dprSeen) { dprSeen = devicePixelRatio; resize(); } }
+    lastRender = now;
     renderer.info.reset();
     composer.render();
     frameCalls = renderer.info.render.calls;
@@ -724,23 +742,40 @@ export async function createScene(canvas, opts = {}) {
     if (hoverKey && Math.abs(cur - 3) > 0.3) { hoverKey = null; setCursor(false); emit('sitehover', null); }
   }
   const animating = () => !reduced && !document.hidden;
-  function loop(now) { raf = 0; frame(now); if (animating()) raf = requestAnimationFrame(loop); }
+  // a settled still formation (stacks, wall, grid, one stack) with an idle pointer only needs about 12 frames a second
+  const STILL = [false, false, true, true, false, true, true];
+  const isStill = now => introDone && cur === target && vel === 0 && Number.isInteger(cur) && STILL[cur] && now - lastWake > 1500 && now - lastMove > 1500 && !siteDirty &&
+    lift.every((v, i) => v === liftTarget[i]);
+  function loop(now) {
+    raf = 0;
+    if (lost || destroyed) return;
+    if (!(isStill(now) && now - lastRender < 80)) frame(now);
+    if (animating()) raf = requestAnimationFrame(loop);
+  }
   let pending = 0;
   requestRender = () => {
-    if (destroyed) return;
+    if (destroyed || lost) return;
     if (reduced) { if (!pending) pending = requestAnimationFrame(t => { pending = 0; frame(t); }); }
     else if (!raf && !document.hidden) raf = requestAnimationFrame(loop);
   };
   const onVis = () => { if (document.hidden) { cancelAnimationFrame(raf); raf = 0; } else { lastFrame = performance.now(); requestRender(); } };
   document.addEventListener('visibilitychange', onVis);
+  const onLost = e => {
+    e.preventDefault(); lost = true; cancelAnimationFrame(raf); raf = 0; setCursor(false);
+    clearTimeout(lostTimer); lostTimer = setTimeout(() => { if (lost) emit('lost'); }, 3000);
+  };
+  const onRestored = () => { lost = false; clearTimeout(lostTimer); lastFrame = performance.now(); requestRender(); };
+  canvas.addEventListener('webglcontextlost', onLost); canvas.addEventListener('webglcontextrestored', onRestored);
   addEventListener('resize', resize);
   resize();
   if (reduced) { frame(performance.now()); } else requestRender();
 
   // ---- API
   const api = {
+    setClear(f) { clearF = clamp(+f || 0, 0, 0.62); computeFit(); lastWake = performance.now(); requestRender(); },
     setProgress(x) {
       x = clamp(+x || 0, 0, 6);
+      if (x !== target) lastWake = performance.now();
       target = x;
       if (firstSet) { cur = x; vel = 0; firstSet = false; }
       requestRender();
@@ -751,7 +786,7 @@ export async function createScene(canvas, opts = {}) {
       requestRender();
     },
     highlightSite(key) {
-      liftTarget.fill(0);
+      lastWake = performance.now(); liftTarget.fill(0);
       if (key != null && keyIndex.has(key)) liftTarget[keyIndex.get(key)] = 1;
       requestRender();
     },
@@ -760,7 +795,8 @@ export async function createScene(canvas, opts = {}) {
     destroy() {
       destroyed = true; cancelAnimationFrame(raf); cancelAnimationFrame(pending);
       removeEventListener('pointermove', onMove); removeEventListener('click', onClick); removeEventListener('resize', resize);
-      document.removeEventListener('visibilitychange', onVis); setCursor(false);
+      document.removeEventListener('visibilitychange', onVis); setCursor(false); clearTimeout(lostTimer);
+      canvas.removeEventListener('webglcontextlost', onLost); canvas.removeEventListener('webglcontextrestored', onRestored);
       geo.dispose(); material.dispose(); desk.geometry.dispose(); deskMat.dispose();
       tex0.dispose(); tex1.dispose(); tex2.dispose(); slipTex.dispose(); siteTex.dispose();
       composer.dispose(); renderer.dispose();

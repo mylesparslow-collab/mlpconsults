@@ -82,6 +82,7 @@ CHAPTERS = ['Welcome', 'Free assessment', 'Services', 'Work', 'Automations', 'La
 def header(page):
     home = page == 'home'
     pre = _pre(page)
+    nojs = ''.join(f'<a href="{_menu_href(h, page)}">{e(t)}</a>' for t, h in MENU)
     counter = ''
     if home:
         counter = f'<div class="counter" id="counter" aria-hidden="true"><span id="cn">01 / 07</span> <span class="dot">·</span> <span id="cl">{CHAPTERS[0]}</span></div>\n'
@@ -93,6 +94,7 @@ def header(page):
 <a class="btn go" href="{pre}#contact" data-interest="Free assessment"><span class="cta-l">Get a free assessment</span><span class="cta-s">Free assessment</span></a>
 <button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
 </div>
+<noscript><nav class="nojs-nav" aria-label="Main">{nojs}</nav></noscript>
 </header>
 {counter}'''
 

@@ -42,7 +42,7 @@ const qs = new URLSearchParams(location.search);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const scene = await createScene(document.getElementById('c'), {
   sites: SITES, slips: SLIPS, reducedMotion: reduced,
-  tier: qs.get('tier') || undefined, dof: qs.get('dof') !== '0',
+  tier: qs.get('tier') || undefined, clear: qs.has('clear') ? parseFloat(qs.get('clear')) : undefined, dof: qs.get('dof') !== '0',
 });
 window.__scene = scene;
 const range = document.getElementById('p'), pv = document.getElementById('pv'), ev = document.getElementById('ev'), infoEl = document.getElementById('info');

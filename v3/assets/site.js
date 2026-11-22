@@ -35,12 +35,15 @@
   if (menu && mbtn) {
     mbtn.addEventListener('click', function () { menuOpen() ? closeMenu() : openMenu(); });
     mx.addEventListener('click', function () { closeMenu(); });
-    menu.addEventListener('keydown', function (ev) {
+    /* on the document, so Escape and Tab still work after a click on empty menu space moved focus to the body */
+    document.addEventListener('keydown', function (ev) {
+      if (!menuOpen()) return;
       if (ev.key === 'Escape') { ev.preventDefault(); closeMenu(); return; }
       if (ev.key !== 'Tab') return;
       var f = $$('a[href],button', menu).filter(function (x) { return !x.hidden; });
       var first = f[0], last = f[f.length - 1];
-      if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+      if (!menu.contains(document.activeElement)) { ev.preventDefault(); (ev.shiftKey ? last : first).focus(); }
+      else if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
       else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
     });
     $$('a', menu).forEach(function (a) { a.addEventListener('click', function () { closeMenu(false); }); });
@@ -177,11 +180,28 @@
     if (force || Math.abs(p - last) > 1e-4) {
       last = p;
       root.style.setProperty('--p', p.toFixed(3));
-      root.style.setProperty('--light', clamp((p - 5.3) / 0.7, 0, 1).toFixed(3));
+      var pl = reduced ? Math.round(p) : p, lt = clamp((pl - 5.45) / 0.3, 0, 1);
+      root.style.setProperty('--light', (lt * lt * (3 - 2 * lt)).toFixed(3));
       if (scene) { try { scene.setProgress(p); } catch (e) {} }
     }
     var c = chapterNow();
-    if (c !== chap && cn) { chap = c; cn.textContent = ('0' + (c + 1)).slice(-2) + ' / 07'; cl.textContent = names[c]; }
+    if (c !== chap) {
+      chap = c;
+      if (cn) { cn.textContent = ('0' + (c + 1)).slice(-2) + ' / 07'; cl.textContent = names[c]; }
+      updateClear();
+    }
+  }
+  /* fraction of the canvas width the scene keeps clear for this chapter's text column */
+  function clearFor(c) {
+    var el = chapters[c], col = el && $('.col', el);
+    if (!col) return 0.42;
+    var r = c === 0 ? ($('.lead', col) || col).getBoundingClientRect().right : col.getBoundingClientRect().right;
+    return clamp((r + 40) / innerWidth, 0, 0.62);
+  }
+  function updateClear() {
+    var f = clearFor(chap < 0 ? chapterNow() : chap);
+    root.style.setProperty('--clear', f.toFixed(3));
+    if (scene && scene.setClear) { try { scene.setClear(f); } catch (e) {} }
   }
   function tick(now) {
     raf = 0;
@@ -195,12 +215,12 @@
   }
   function schedule() { if (isHome && !raf) raf = requestAnimationFrame(tick); }
   window.addEventListener('scroll', schedule, { passive: true });
-  window.addEventListener('resize', function () { if (scene) { try { scene.resize(); } catch (e) {} } schedule(); });
+  window.addEventListener('resize', function () { if (scene) { try { scene.resize(); } catch (e) {} } updateClear(); schedule(); });
   p = tgt = target(); apply(true);
   window.addEventListener('load', function () { p = tgt = target(); apply(true); });
 
   /* work index: rows highlight their site in the scene and vice versa */
-  var rows = $$('#case-sites li'), activeLi = null;
+  var rows = $$('#case-sites li'), activeLi = null, inList = false;
   function setActive(li) {
     if (activeLi === li) return;
     if (activeLi) activeLi.classList.remove('on');
@@ -215,6 +235,7 @@
   });
   if (rows[0]) setActive(rows[0]);
   var wrap = $('#case-sites');
+  if (wrap) { wrap.addEventListener('mouseenter', function () { inList = true; }); wrap.addEventListener('mouseleave', function () { inList = false; }); }
   if (wrap) wrap.addEventListener('focusout', function (ev) { if (!wrap.contains(ev.relatedTarget) && scene) { try { scene.highlightSite(null); } catch (e) {} } });
 
   /* scene (optional): the page is complete without it */
@@ -229,14 +250,16 @@
         return { key: k, name: $('.nm', li).textContent, href: a.getAttribute('href'), img: '/v3/assets/sites/' + k + '.jpg' };
       });
       var slips = ['A call at 5:40 rings out', 'A quote goes out', 'Nobody checks back', 'An invoice passes its due date', 'A job or visit is finished', 'A call goes unanswered', 'Monday morning', 'Requests for the back room', 'A missed appointment', 'No-shows', 'New inquiry', 'Quote follow-up, day 2', 'Payment reminder', 'Review request', 'Missed-call text back', 'Weekly owner summary'];
-      scene = await mod.createScene(canvas, { sites: sites, slips: slips, reducedMotion: reduced });
+      scene = await mod.createScene(canvas, { sites: sites, slips: slips, reducedMotion: reduced, clear: clearFor(chap < 0 ? chapterNow() : chap) });
     } catch (e) { scene = null; }
     if (!scene) { noGl(); return; }
     window.__scene = scene;
     try {
-      scene.on('sitehover', function (k) { if (!k) return; var li = rows.filter(function (x) { return x.getAttribute('data-key') === k; })[0]; if (li) setActive(li); });
+      scene.on('sitehover', function (k) { if (!k || inList || (wrap && wrap.contains(document.activeElement))) return; var li = rows.filter(function (x) { return x.getAttribute('data-key') === k; })[0]; if (li) setActive(li); });
       scene.on('siteclick', function (k) { var li = rows.filter(function (x) { return x.getAttribute('data-key') === k; })[0]; if (li) window.open($('a.row', li).href, '_blank', 'noopener'); });
+      scene.on('lost', function () { try { scene.destroy(); } catch (e) {} scene = null; noGl(); });
       scene.resize();
+      updateClear();
     } catch (e) {}
     apply(true);
   })();
