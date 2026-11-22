@@ -23,17 +23,20 @@ const NT_MAX = 24;
 const NF = 7;
 const HALF_PI = Math.PI / 2;
 
-// camera pose, framing box (fit = width, height the formation needs; 0 = unconstrained) and pointer strength per formation
+// camera pose, framing box (fit = width, height the formation needs; 0 = unconstrained) and pointer strength per formation.
+// Only the opening storm answers the pointer; every other formation holds still.
 const FORM = [
   { cam: [0, 1.4, 14], look: [0, 0, 0], fit: [10.5, 7.6], cap: 1.15, push: 1.0 },
-  { cam: [0, 0.4, 14.5], look: [0, 0, 0], fit: [8.0, 8.4], cap: 1.15, push: 0.35 },
-  { cam: [0, 5.6, 12.8], look: [0, 0.3, 0], fit: [8.2, 7.6], cap: 1.2, push: 0.18 },
-  { cam: [0, 0, 14], look: [0, 0, 0], fit: [6.4, 5.5], cap: 1.5, push: 0.05 },
-  { cam: [0, 0, 14], look: [0, 0, 0], fit: [0, 7.0], cap: 1.2, push: 0.2 },
-  { cam: [0, 6.6, 11.5], look: [0, -1.4, -5.5], fit: [0, 0], cap: 1, push: 0.12 },
-  { cam: [0, 4.6, 12.5], look: [0, -1.3, 0], fit: [3.6, 5.0], cap: 1.35, push: 0.1 },
+  { cam: [0, 0.4, 14.5], look: [0, 0, 0], fit: [8.0, 8.4], cap: 1.15, push: 0 },
+  { cam: [0, 5.6, 12.8], look: [0, 0.3, 0], fit: [8.2, 7.6], cap: 1.2, push: 0 },
+  { cam: [0, 0, 14], look: [0, 0, 0], fit: [6.4, 5.5], cap: 1.5, push: 0 },
+  { cam: [0, 0, 14], look: [0, 0, 0], fit: [0, 7.0], cap: 1.2, push: 0 },
+  { cam: [0, 6.6, 11.5], look: [0, -1.4, -5.5], fit: [0, 0], cap: 0.54, push: 0 },
+  { cam: [0, 4.6, 12.5], look: [0, -1.3, 0], fit: [3.6, 5.0], cap: 1.35, push: 0 },
 ];
 const STACK_BASE_Y = -2.5;
+// share of its framing box a formation fills: the scene sits beside the text, it does not fill the half
+const SIZE_WIDE = 0.7, SIZE_TALL = 0.82;
 const CUTW = [0, 1, 1, 1, 1, 1, 1];   // 1 = keep the left of a wide screen clear
 
 // ------------------------------------------------------------------ small helpers
@@ -159,7 +162,7 @@ const VERT = /* glsl */`
       C.s *= mix(1.0, smoothstep(uCut - 0.07, uCut, cc.x / cc.w), uCutW); }
     // a lifted site tile comes toward the camera and grows
     float lift = 0.0;
-    if (aMeta.z >= 0.0) { lift = uLift[int(aMeta.z)]; C.p += normalize(uCam - C.p) * 0.9 * lift; C.s *= 1.0 + 0.12 * lift; }
+    if (aMeta.z >= 0.0) { lift = uLift[int(aMeta.z)]; C.p += normalize(uCam - C.p) * 0.9 * lift; C.s *= 1.0 + 0.25 * lift; }
     // pointer: slips near any recent pointer ray are pushed away and drift back as the trail fades
     float twist = 0.0; vec3 push = vec3(0.0);
     for (int k = 0; k < 8; k++) {
@@ -592,7 +595,7 @@ export async function createScene(canvas, opts = {}) {
       let s = f.cap;
       if (f.fit[0] > 0) s = Math.min(s, rw / f.fit[0]);
       if (f.fit[1] > 0) s = Math.min(s, rh / f.fit[1]);
-      return s;
+      return s * (wide ? SIZE_WIDE : SIZE_TALL);
     });
     // lane span in model space: from just inside the content area to past the right edge
     const halfW = 14 * Math.tan(THREE.MathUtils.degToRad(17.5)) * aspect, shift = wide ? clearF : 0;
@@ -615,7 +618,7 @@ export async function createScene(canvas, opts = {}) {
     camPos.set(lerp(a.cam[0], b.cam[0], e), lerp(a.cam[1], b.cam[1], e), lerp(a.cam[2], b.cam[2], e));
     camLook.set(lerp(a.look[0], b.look[0], e), lerp(a.look[1], b.look[1], e), lerp(a.look[2], b.look[2], e));
     const s = lerp(S[ie], S[i2], e);
-    slips.scale.setScalar(s); desk.scale.setScalar(s);
+    slips.scale.setScalar(s); desk.scale.setScalar(s); desk.position.y = (STACK_BASE_Y - 0.01) * s;
     camera.position.copy(camPos); camera.lookAt(camLook);
     const wide = aspect >= 1;
     if (wide) camera.setViewOffset(W, H, -0.5 * clearF * W, 0, W, H); else camera.setViewOffset(W, H, 0, 0.225 * H, W, H);
@@ -683,8 +686,9 @@ export async function createScene(canvas, opts = {}) {
     const r = canvas.getBoundingClientRect();
     const cx = e.clientX - r.left, cy = e.clientY - r.top;
     ndc.set(cx / r.width * 2 - 1, 1 - cy / r.height * 2); pointerNdcValid = true;
-    const now = performance.now(); lastMove = now; lastWake = now; requestRender();
-    if (!reduced && now - lastPush > 40) {
+    const now = performance.now();
+    if (uniforms.uPushK.value > 0.002) { lastMove = now; lastWake = now; requestRender(); }
+    if (!reduced && uniforms.uPushK.value > 0.002 && now - lastPush > 40) {
       lastPush = now; ptrHead = (ptrHead + 1) % 8; ptrAge[ptrHead] = 0; setRay(ptrHead);
     }
     checkHover(cx, cy);
@@ -721,12 +725,12 @@ export async function createScene(canvas, opts = {}) {
     uniforms.uIntro.value = introT;
     updatePose(p);
     // highlight lifts (about 0.2 s)
-    const k = 1 - Math.exp(-dt * 11);
-    for (let i = 0; i < NT_MAX; i++) { lift[i] += (liftTarget[i] - lift[i]) * (reduced ? 1 : k); if (Math.abs(lift[i] - liftTarget[i]) < 0.002) lift[i] = liftTarget[i]; uniforms.uLift.value[i] = lift[i]; }
+    const k = 1 - Math.exp(-dt * 11), wallW = clamp(1 - Math.abs(p - 3) * 2.5, 0, 1);   // the chosen site stands forward on the wall only
+    for (let i = 0; i < NT_MAX; i++) { lift[i] += (liftTarget[i] - lift[i]) * (reduced ? 1 : k); if (Math.abs(lift[i] - liftTarget[i]) < 0.002) lift[i] = liftTarget[i]; uniforms.uLift.value[i] = lift[i] * wallW; }
     // pointer trail
     if (!reduced) {
       if (pointerNdcValid && now - lastMove < 500) { ptrAge[ptrHead] = 0; setRay(ptrHead); }
-      for (let i = 0; i < 8; i++) { ptrAge[i] += dt; uniforms.uPS.value[i] = ptrAge[i] > 2.5 ? 0 : Math.exp(-ptrAge[i] / 0.85); }
+      for (let i = 0; i < 8; i++) { ptrAge[i] += dt; uniforms.uPS.value[i] = ptrAge[i] > 1.6 ? 0 : Math.exp(-ptrAge[i] / 0.5); }
     }
     if (siteDirty) {
       if (now - lastSiteUpload > 250) { siteTex.needsUpdate = true; siteDirty = false; lastSiteUpload = now; }

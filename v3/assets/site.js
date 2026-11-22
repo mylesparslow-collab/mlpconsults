@@ -183,6 +183,7 @@
       var pl = reduced ? Math.round(p) : p, lt = clamp((pl - 5.45) / 0.3, 0, 1);
       root.style.setProperty('--light', (lt * lt * (3 - 2 * lt)).toFixed(3));
       if (scene) { try { scene.setProgress(p); } catch (e) {} }
+      root.classList.toggle('at-work', Math.abs(p - 3) < 0.3);
     }
     var c = chapterNow();
     if (c !== chap) {
@@ -219,24 +220,31 @@
   p = tgt = target(); apply(true);
   window.addEventListener('load', function () { p = tgt = target(); apply(true); });
 
-  /* work index: rows highlight their site in the scene and vice versa */
-  var rows = $$('#case-sites li'), activeLi = null, inList = false;
+  /* work index: the row under the pointer (or with focus) is the one site brought forward on the wall,
+     and its caption shows in one fixed place under the wall, so the list never moves */
+  var rows = $$('#case-sites li'), activeLi = null, cap = null;
+  function fillCap(li) {
+    if (!cap || !li) return;
+    var d = $('.detail', li);
+    cap.innerHTML = '<p class="h"><span class="n"></span><span class="nm"></span><span class="tr"></span></p>' + (d ? d.innerHTML : '');
+    $('.n', cap).textContent = $('.n', li).textContent;
+    $('.nm', cap).textContent = $('.nm', li).textContent;
+    $('.tr', cap).textContent = $('.tr', li).textContent;
+    $$('a', cap).forEach(function (a) { a.tabIndex = -1; });
+  }
   function setActive(li) {
     if (activeLi === li) return;
     if (activeLi) activeLi.classList.remove('on');
     activeLi = li; if (li) li.classList.add('on');
+    fillCap(li);
+    if (scene && li) { try { scene.highlightSite(li.getAttribute('data-key')); } catch (e) {} }
   }
   rows.forEach(function (li) {
-    var k = li.getAttribute('data-key');
-    var on = function () { setActive(li); if (scene) { try { scene.highlightSite(k); } catch (e) {} } };
+    var on = function () { setActive(li); };
     li.addEventListener('mouseenter', on);
     li.addEventListener('focusin', on);
-    li.addEventListener('mouseleave', function () { if (scene) { try { scene.highlightSite(null); } catch (e) {} } });
   });
   if (rows[0]) setActive(rows[0]);
-  var wrap = $('#case-sites');
-  if (wrap) { wrap.addEventListener('mouseenter', function () { inList = true; }); wrap.addEventListener('mouseleave', function () { inList = false; }); }
-  if (wrap) wrap.addEventListener('focusout', function (ev) { if (!wrap.contains(ev.relatedTarget) && scene) { try { scene.highlightSite(null); } catch (e) {} } });
 
   /* scene (optional): the page is complete without it */
   var canvas = $('#scene');
@@ -255,9 +263,17 @@
     if (!scene) { noGl(); return; }
     window.__scene = scene;
     try {
-      scene.on('sitehover', function (k) { if (!k || inList || (wrap && wrap.contains(document.activeElement))) return; var li = rows.filter(function (x) { return x.getAttribute('data-key') === k; })[0]; if (li) setActive(li); });
+      /* the caption panel: a copy for the eye; the list keeps the real one for keyboards and screen readers */
+      var work = $('#work');
+      if (work && rows.length) {
+        cap = document.createElement('div');
+        cap.className = 'sitecap'; cap.setAttribute('aria-hidden', 'true'); cap.setAttribute('data-noscene', '');
+        work.appendChild(cap); root.classList.add('cap');
+        fillCap(activeLi);
+        if (activeLi) scene.highlightSite(activeLi.getAttribute('data-key'));
+      }
       scene.on('siteclick', function (k) { var li = rows.filter(function (x) { return x.getAttribute('data-key') === k; })[0]; if (li) window.open($('a.row', li).href, '_blank', 'noopener'); });
-      scene.on('lost', function () { try { scene.destroy(); } catch (e) {} scene = null; noGl(); });
+      scene.on('lost', function () { try { scene.destroy(); } catch (e) {} scene = null; root.classList.remove('cap'); noGl(); });
       scene.resize();
       updateClear();
     } catch (e) {}

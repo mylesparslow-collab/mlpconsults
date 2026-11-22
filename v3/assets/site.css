@@ -158,6 +158,21 @@ h1 .ln{display:block}
 @media(min-width:900px){
   .js .sites li:not(.on) .detail{position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden;padding:0;white-space:nowrap}
 }
+/* with the scene running on a wide screen, the caption shows once, under the wall; a row's own opens only for keyboard focus */
+.sitecap{display:none}
+@media(min-width:900px) and (min-aspect-ratio:1/1){
+  html.cap.js .sites li.on:not(:has(:focus-visible)) .detail{position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden;padding:0;white-space:nowrap}
+  html.cap .sitecap{display:block;position:fixed;z-index:2;bottom:52px;left:calc((1 + var(--clear)) * 50vw);transform:translateX(-50%);width:min(400px,calc((1 - var(--clear)) * 100vw - 72px));
+    font-size:14.5px;line-height:1.45;color:var(--mut);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s .25s}
+  html.cap.at-work .sitecap{opacity:1;visibility:visible;transition:opacity .25s ease}
+  .sitecap .h{display:flex;align-items:baseline;gap:10px;margin:0 0 6px;padding-top:12px;border-top:1px solid var(--rule)}
+  .sitecap .n{font:500 14px/1 var(--disp);font-variant-numeric:tabular-nums}
+  .sitecap .nm{font-family:var(--disp);font-weight:500;font-size:19px;letter-spacing:-.02em;color:var(--fg)}
+  .sitecap .tr{margin-left:auto;font-size:13.5px;text-align:right}
+  .sitecap p{margin:0 0 4px}
+  .sitecap .more{color:var(--fg);display:inline-block;padding:6px 0}
+}
+@media(prefers-reduced-motion:reduce){html.cap .sitecap,html.cap.at-work .sitecap{transition:none}}
 @media(max-width:899px){
   .sites .row{grid-template-columns:30px 1fr}
   .detail{padding-left:40px}
