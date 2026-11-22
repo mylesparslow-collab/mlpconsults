@@ -177,7 +177,7 @@
     if (force || Math.abs(p - last) > 1e-4) {
       last = p;
       root.style.setProperty('--p', p.toFixed(3));
-      root.style.setProperty('--light', clamp((p - 4.6) / 1.4, 0, 1).toFixed(3));
+      root.style.setProperty('--light', clamp((p - 5.3) / 0.7, 0, 1).toFixed(3));
       if (scene) { try { scene.setProgress(p); } catch (e) {} }
     }
     var c = chapterNow();

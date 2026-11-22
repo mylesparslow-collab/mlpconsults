@@ -621,7 +621,7 @@ export async function createScene(canvas, opts = {}) {
     uniforms.uCam.value.copy(camPos).divideScalar(s);
     uniforms.uPushK.value = lerp(a.push, b.push, e);
     uniforms.uPushR.value = 1.35;
-    const m = smooth01(clamp((p - 4.6) / 1.4, 0, 1));
+    const m = smooth01(clamp((p - 5.3) / 0.7, 0, 1));
     ground.copy(nightC).lerp(morningC, m);
     uniforms.uMorn.value = m;
     deskU.uD2.value = Math.max(0, 1 - Math.abs(p - 2) * 1.6);
