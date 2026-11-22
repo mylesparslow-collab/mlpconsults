@@ -1,7 +1,7 @@
 /* MLP Consulting v3 inner pages. Night palette throughout; reuses site.css. */
 .pg{position:relative;isolation:isolate;padding:22vh 0 14vh}
 .pg::before{content:'';position:absolute;top:0;bottom:0;left:0;width:55%;background:linear-gradient(90deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 85%,transparent) 38%,transparent 100%);z-index:-1;pointer-events:none}
-@media(max-width:899px){.pg{padding:16vh 0 12vh}.pg::before{width:100%;background:color-mix(in srgb,var(--bg) 78%,transparent)}}
+@media(max-width:899px){.pg{padding:16vh 0 12vh}.pg::before{width:100%;background:color-mix(in srgb,var(--bg) 88%,transparent)}}
 .blk{margin-top:16vh}
 .blk.end{padding-bottom:4vh}
 .pg h2+.lead{margin-top:22px}
@@ -53,7 +53,3 @@
 .psec h2{font-size:clamp(24px,2.4vw,32px);margin-bottom:12px}
 .psec p{margin:0;color:var(--mut)}
 .psec a{color:var(--fg)}
-
-/* formation 6 rests on the scene's paper-coloured ground: keep the night scrim solid under the text column */
-body[data-formation="6"] .pg::before{width:64%;background:linear-gradient(90deg,var(--bg) 0%,var(--bg) 68%,transparent 100%)}
-@media(max-width:899px){body[data-formation="6"] .pg::before{width:100%;background:color-mix(in srgb,var(--bg) 94%,transparent)}}

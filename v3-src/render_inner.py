@@ -15,7 +15,7 @@ nb = e
 SITES = [{'key': s['key'], 'name': s['name'], 'href': s['href'], 'img': BASE + '/assets/sites/' + s['key'] + '.jpg'} for s in H['work']['sites']]
 SITES_JSON = json.dumps(SITES, ensure_ascii=False).replace('</', '<\\/')
 OUT = {'how': 'how-it-works', 'workflows': 'workflows', 'referrals': 'referrals', 'privacy': 'privacy'}
-FORMATION = {'how': 1, 'workflows': 4, 'referrals': 2, 'privacy': 6}
+FORMATION = {'how': 1, 'workflows': 4, 'referrals': 2, 'privacy': 5}
 
 
 def page(name, meta, body):
