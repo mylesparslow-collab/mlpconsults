@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loose ends scene test</title>
+<style>
+  @font-face { font-family: 'Funnel Display'; src: url(/v3/assets/fonts/FunnelDisplay.ttf) format('truetype'); font-weight: 300 800; font-display: swap; }
+  @font-face { font-family: 'Funnel Sans'; src: url(/v3/assets/fonts/FunnelSans.ttf) format('truetype'); font-weight: 300 800; font-display: swap; }
+  html, body { margin: 0; height: 100%; background: #0e0d0c; overflow: hidden; }
+  canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+  #bar { position: fixed; left: 0; right: 0; bottom: 0; box-sizing: border-box; padding: 8px 12px; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center;
+    font: 12px/1.4 'Funnel Sans', system-ui, sans-serif; color: #f2eee6; background: rgba(14, 13, 12, .78); }
+  #bar input[type=range] { flex: 1 1 200px; min-width: 120px; accent-color: #e6b04a; }
+  #bar button { font: inherit; color: #f2eee6; background: #2a2825; border: 1px solid #4a4640; border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+  #bar .line { flex: 1 1 100%; font-variant-numeric: tabular-nums; opacity: .8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+</style></head>
+<body>
+<canvas id="c"></canvas>
+<div id="bar">
+  <input id="p" type="range" min="0" max="6" step="0.01" value="0" aria-label="progress">
+  <span id="pv">0.00</span>
+  <span id="btns"></span>
+  <div class="line" id="ev">events: none</div>
+  <div class="line" id="info">info: waiting</div>
+</div>
+<script type="importmap">{"imports":{"three":"/v3/assets/vendor/three.module.js","postprocessing":"/v3/assets/vendor/postprocessing.js"}}</script>
+<script type="module">
+import { createScene } from '/v3/assets/scene.js';
+const SITES = [
+  ['jewelry-store', 'Halden', '/work/jewelry/#shop'], ['brokerage-site', 'Boutique brokerage', '/work/brokerage/site/'],
+  ['site-birchway', 'Birchway Pediatrics', '/work/sites/birchway/'], ['site-camino', 'Osteria Camino', '/work/sites/camino/'],
+  ['site-paperwhale', 'Paperwhale Books', '/work/sites/paperwhale/'], ['site-quietwell', 'Quietwell Aesthetics', '/work/sites/quietwell/'],
+  ['site-little-orbit', 'Little Orbit Tea', '/work/sites/little-orbit/'], ['site-crestline', 'Crestline Design-Build', '/work/sites/crestline/'],
+  ['site-cedarline', 'Cedarline Kitchen', '/work/sites/cedarline/'], ['site-hollis', 'Hollis Flower House', '/work/sites/hollis/'],
+  ['site-bellwood', 'Bellwood Family Dental', '/work/sites/bellwood/'], ['site-coffee', 'Kestrel Hill Coffee Roasters', '/work/sites/coffee/'],
+  ['site-marlow', 'Marlow & Rye Bakery', '/work/sites/marlow/'], ['site-salon', 'Ostrander Hair Studio', '/work/sites/salon/'],
+  ['site-pilates', 'Springline Reformer Studio', '/work/sites/pilates/'], ['site-boutique', 'Fig & Fennimore', '/work/sites/boutique/'],
+  ['site-solace', 'Solace Studio Dental', '/work/sites/solace/'],
+].map(([key, name, href]) => ({ key, name, href, img: `/v3/assets/sites/${key}.jpg` }));
+const SLIPS = ['A call at 5:40 rings out', 'A quote goes out', 'Nobody checks back', 'An invoice passes its due date', 'A job or visit is finished',
+  'A call goes unanswered', 'Monday morning', 'Requests for the back room', 'A missed appointment', 'No-shows', 'New inquiry',
+  'Quote follow-up, day 2', 'Payment reminder', 'Review request', 'Missed-call text back', 'Weekly owner summary'];
+const qs = new URLSearchParams(location.search);
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const scene = await createScene(document.getElementById('c'), {
+  sites: SITES, slips: SLIPS, reducedMotion: reduced,
+  tier: qs.get('tier') || undefined, dof: qs.get('dof') !== '0',
+});
+window.__scene = scene;
+const range = document.getElementById('p'), pv = document.getElementById('pv'), ev = document.getElementById('ev'), infoEl = document.getElementById('info');
+if (!scene) {
+  infoEl.textContent = 'WebGL2 unavailable: createScene returned null';
+} else {
+  const set = v => { range.value = v; pv.textContent = (+v).toFixed(2); scene.setProgress(+v); };
+  range.addEventListener('input', () => set(range.value));
+  const btns = document.getElementById('btns');
+  for (let i = 0; i < 7; i++) {
+    const b = document.createElement('button'); b.textContent = i; b.title = 'setFormation(' + i + ')';
+    b.addEventListener('click', () => { range.value = i; pv.textContent = i.toFixed(2); scene.setFormation(i); });
+    btns.appendChild(b);
+  }
+  scene.on('sitehover', k => { ev.textContent = 'sitehover: ' + k; });
+  scene.on('siteclick', k => { ev.textContent = 'siteclick: ' + k; });
+  if (qs.has('p')) set(parseFloat(qs.get('p')) || 0);
+  const upd = () => { infoEl.textContent = 'info: ' + JSON.stringify(scene.info()); };
+  upd(); setInterval(upd, 1000);
+}
+</script>
+</body></html>
