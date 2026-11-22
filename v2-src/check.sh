@@ -44,4 +44,11 @@ if old not in f: miss.append(('form', 'handler differs from the live one'))
 print('named checks:', 'PASS (17 sites, privacy sentences, form fields and destinations)' if not miss else 'FAIL %r' % miss)
 raise SystemExit(1 if miss else 0)
 PY
-node "$SK/check_links.mjs" "$BASE/v2/" --pages how-it-works/,workflows/,referrals/,privacy/ --no-external
+# The demo apps route #staff and #shop in their own scripts (no element carries those ids), so the link
+# checker reports those four; they are the same links the live site has. Anything else fails the run.
+OUT=$(node "$SK/check_links.mjs" "$BASE/v2/" --pages how-it-works/,workflows/,referrals/,privacy/ --no-external || true)
+echo "$OUT" | grep -v -E 'anchor #(staff|shop) missing on /work/' | grep -v '^FAIL: '
+OTHER=$(echo "$OUT" | grep -E '^ +FAIL ' | grep -v -c -E 'anchor #(staff|shop) missing on /work/' || true)
+KNOWN=$(echo "$OUT" | grep -c -E 'anchor #(staff|shop) missing on /work/' || true)
+echo "links: $OTHER unexpected problem(s); $KNOWN known demo hash routes (#staff, #shop) skipped"
+[ "$OTHER" = "0" ]

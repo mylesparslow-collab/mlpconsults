@@ -125,7 +125,7 @@ def strip(page):
 <a href="{pre}#about">About</a>
 <a class="btn lamp" href="{pre}#contact" data-interest="Free assessment"><span class="cta-l">Get a free assessment</span><span class="cta-s">Free assessment</span></a>
 </nav>
-<button class="doorsign" type="button" id="sign" aria-label="Switch between open (light) and after hours (dark)"><span>Open</span></button>
+<button class="doorsign" type="button" id="sign" aria-label="Switch between open (light) and after hours (dark)"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg><span>Open</span></button>
 <button class="menu-btn" type="button" id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
 </div>
 </header>
@@ -166,6 +166,18 @@ def shot(s, w=1600, h=1000):
             f'<img decoding="async" src="/img/{s["key"]}.webp" width="{w}" height="{h}" alt="{e(s["alt"])}" loading="lazy"></button>')
 
 
+def peek_strip(sites, n=8):
+    """A row of small shopfronts (decorative; the real links are in the street on the homepage)."""
+    out = []
+    for s in sites[:n]:
+        k = s['key']
+        aw = '<span class="awning"></span>' if SHOPS[k][2] else ''
+        out.append(f'<span class="mini" style="{shop_style(k)}"><span class="mf">{nb(s["name"])}</span>{aw}'
+                   f'<span class="mrow"><span class="mw"><img src="{BASE}/assets/peek/{k}.jpg" width="560" height="350" alt="" decoding="async"></span>'
+                   f'<span class="door"><span class="sign">Open</span></span></span><span class="mr">No. {int(s["no"])}</span></span>')
+    return ''.join(out)
+
+
 # ------------------------------------------------------------------ home
 def home():
     hero, sv, wk, ab, ct = H['hero'], H['services'], H['work'], H['about'], H['contact']
@@ -173,13 +185,11 @@ def home():
 
     ex0 = hero['examples'][hero['tabs'][0][0]]
     tabs = ''.join(
-        f'<button type="button" role="tab" aria-selected="{"true" if i == 0 else "false"}" aria-controls="sheet-list" data-t="{k}"{"" if i == 0 else " tabindex=\"-1\""}>{nb(v)}</button>'
+        f'<button type="button" role="tab" aria-selected="{"true" if i == 0 else "false"}" aria-controls="sheet-panel" data-t="{k}"{"" if i == 0 else " tabindex=\"-1\""}>{nb(v)}</button>'
         for i, (k, v) in enumerate(hero['tabs']))
     rows = ''.join(f'<li><i>{i + 1}</i><span class="k">{nb(r[0])}</span><span class="d">{nb(r[1])}</span><span class="v"><b>Fix:</b> {nb(r[2])}</span></li>' for i, r in enumerate(ex0))
     facts = ''.join(f'<li><b>{nb(a)}</b><span>{nb(b)}</span></li>' for a, b in hero['facts'])
-    peek = ''.join(
-        f'<span class="mini" style="{shop_style(s["key"])}"><span class="mf">{nb(s["name"])}</span><span class="mw"><img src="/img/{s["key"]}.webp" width="1600" height="1000" alt="" decoding="async"></span></span>'
-        for s in sites[:8])
+    peek = peek_strip(sites)
 
     out = [head(H['meta'], 'home'), '<body>\n', strip('home')]
     out.append(f'''<main id="main">
@@ -194,20 +204,24 @@ def home():
 <a class="btn lamp go" href="#contact" data-interest="Free assessment">{nb(hero["cta"][0])}</a>
 <a class="btn line" href="#services">{nb(hero["cta"][1])}</a>
 </div>
+</div>
+<div>
+<ul class="decal">{facts}</ul>
 <p class="reassure">{nb(hero["reassure"])}</p>
 </div>
-<aside class="notice" aria-labelledby="sheet-t">
-<div class="nt">
-<b id="sheet-t">{nb(hero["sheet_title"])} <small>{nb(hero["sheet_small"])}</small></b>
-<div class="tabs" role="tablist" aria-label="Kind of business" id="tabs">{tabs}</div>
 </div>
-<ol id="sheet-list" role="tabpanel" aria-live="polite">{rows}</ol>
-<p class="nf">{nb(hero["sheet_foot"])}</p>
-</aside>
-</div>
-<ul class="decal">{facts}</ul>
 </div>
 <div class="peek lights" aria-hidden="true">{peek}</div>
+</section>
+<section class="band assess" aria-labelledby="sheet-t">
+<div class="wrap">
+<div class="as-head">
+<h2 id="sheet-t">{nb(hero["sheet_title"])} <small>{nb(hero["sheet_small"])}</small></h2>
+<div class="tabs" role="tablist" aria-label="Kind of business" id="tabs">{tabs}</div>
+</div>
+<div id="sheet-panel" role="tabpanel" aria-live="polite" aria-label="Three example findings"><ol id="sheet-list">{rows}</ol></div>
+<p class="nf">{nb(hero["sheet_foot"])}</p>
+</div>
 </section>
 ''')
 
@@ -217,9 +231,9 @@ def home():
         what = ''.join(f'<p>{fix_links(p, True)}</p>' for p in s['what_html'])
         lis = ''.join(f'<li>{nb(b)}</li>' for b in s['bullets'])
         svcs.append(f'''<article class="svc" id="{s["id"]}">
-<div class="svc-top"><h3><i>{nb(s["letter"])}</i> {nb(s["name"])}</h3><span class="dots" aria-hidden="true"></span><p class="price">{nb(s["price"])}</p></div>
+<div class="svc-top"><h3><i>{nb(s["letter"])}</i> {nb(s["name"])}</h3><span class="dots" aria-hidden="true"></span><p class="price{'' if any(ch.isdigit() for ch in s["price"]) else ' word'}">{nb(s["price"])}</p></div>
 <div class="svc-body">
-<div><p class="note">{nb(s["price_note"])}</p><a class="btn {'lamp go' if i == 0 else 'line'} sm" href="#contact" data-interest="{e(s["interest"])}">{nb(s["cta"])}</a></div>
+<div><p class="note">{nb(s["price_note"])}</p><a class="btn ink go sm" href="#contact" data-interest="{e(s["interest"])}">{nb(s["cta"])}</a></div>
 <div class="what">{what}</div>
 <ul>{lis}</ul>
 </div>
@@ -227,7 +241,7 @@ def home():
     also = ''.join(f'<div><b>{nb(a)}</b><p>{nb(b)}</p></div>' for a, b in sv['also'])
     out.append(f'''<section class="band" id="services">
 <div class="wrap">
-<div class="sh"><div><span class="plate">{nb(sv["label"])}</span><h2>{nb(sv["h2"])}</h2></div><p class="lead">{nb(sv["lead"])}</p></div>
+<div class="sh"><div><p class="seclbl">{nb(sv["label"])}</p><h2>{nb(sv["h2"])}</h2></div><p class="lead">{nb(sv["lead"])}</p></div>
 <div class="prices">
 {chr(10).join(svcs)}
 </div>
@@ -243,10 +257,11 @@ def home():
         aw = '<span class="awning" aria-hidden="true"></span>' if SHOPS[k][2] else ''
         more = f'<a class="more" href="{s["extra"][1]}" target="_blank" rel="noopener">{nb(s["extra"][0])} ↗</a>' if s['extra'] else ''
         shops.append(f'''<li class="shop" id="shop-{k}">
-<a class="front" href="{s["href"]}" target="_blank" rel="noopener" style="{shop_style(k)}" aria-label="Open {e(s["name"])}, {e(s["trade"].lower())} (opens in a new tab)">
-<span class="fascia"><h4>{nb(s["name"])}</h4></span>{aw}
-<span class="window"><img src="/img/{k}.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"></span>
-<span class="riser"><span class="no">No. {int(s["no"])}</span><span class="sign">Open ↗</span></span>
+<a class="front" href="{s["href"]}" target="_blank" rel="noopener" style="{shop_style(k)}">
+<span class="fascia"><h3>{nb(s["name"])}</h3></span>{aw}
+<span class="bay"><span class="window"><img src="/img/{k}.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"></span>
+<span class="riser">No. {int(s["no"])}</span>
+<span class="door"><span class="sign">Open <span aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></span><span class="knob" aria-hidden="true"></span></span></span>
 </a>
 <div class="curb"><b>{nb(s["trade"])}</b><p>{nb(s["cap"])}</p>{more}</div>
 </li>''')
@@ -264,7 +279,7 @@ def home():
             demos = f'<div class="demos"><span>{nb(c["demos_label"])}</span>' + ''.join(f'<a href="{h}" target="_blank" rel="noopener">{nb(t)}</a>' for t, h in c['demos']) + '</div>'
         fine = f'<p class="fine">{nb(c["fine"])}</p>' if c['fine'] else ''
         cases.append(f'''<details class="case" id="{c["id"]}">
-<summary><div><span class="tag">{nb(c["tag"])}</span><h4>{nb(c["title"])}</h4></div><p>{nb(c["sum"])}</p><span class="tg" aria-hidden="true">+</span></summary>
+<summary><img class="cth" src="/img/{c["shots"][0]["key"]}.webp" width="{c["shots"][0]["w"]}" height="{c["shots"][0]["h"]}" alt="" loading="lazy" decoding="async"><div><span class="tag">{nb(c["tag"])}</span><h4>{nb(c["title"])}</h4></div><p>{nb(c["sum"])}</p><span class="tg" aria-hidden="true">+</span></summary>
 <div class="case-body">
 <div class="cb-grid">{cols}{kv}</div>
 <div class="gal {'g1' if n == 1 else 'g3' if n == 3 else ''}">{gal}</div>
@@ -273,11 +288,11 @@ def home():
 </details>''')
     out.append(f'''<section class="streetband" id="work">
 <div class="wrap">
-<div class="sh"><div><span class="plate">{nb(wk["label"])}</span><h2>{nb(wk["h2"])}</h2></div><p class="lead">{nb(wk["lead"])}</p></div>
+<div class="sh"><div><p class="seclbl">{nb(wk["label"])}</p><h2>{nb(wk["h2"])}</h2></div><p class="lead">{nb(wk["lead"])}</p></div>
 </div>
 <div class="plaza" id="case-sites">
 <nav class="directory" aria-label="Directory of the seventeen sites">
-<h3>Directory <small>17 sites</small></h3>
+<p class="dh">Directory <small>17 sites</small></p>
 <ol>{directory}</ol>
 </nav>
 <div class="streetwrap">
@@ -291,11 +306,11 @@ def home():
 </section>
 <section class="nightband" id="case-automations" aria-labelledby="flows-t">
 <div class="wrap">
-<div class="grp"><div><span class="plate">After hours</span><h3 id="flows-t">{nb(wk["flows_head"][0])}</h3></div><p>{nb(wk["flows_head"][1])}</p></div>
+<div class="grp"><div><h3 id="flows-t">{nb(wk["flows_head"][0])}</h3></div><p>{nb(wk["flows_head"][1])}</p></div>
 <div class="flows">{flows}</div>
 </div>
 </section>
-<section class="band" aria-labelledby="cases-t">
+<section class="casesband" aria-labelledby="cases-t">
 <div class="wrap">
 <div class="grp cases-head"><h3 id="cases-t">{nb(wk["cases_head"][0])}</h3><p>{nb(wk["cases_head"][1])}</p></div>
 <div class="cases">
@@ -307,12 +322,12 @@ def home():
 
     # about
     body = ''.join(f'<p>{nb(p)}</p>' for p in ab['body'])
-    out.append(f'''<section class="band about" id="about" style="padding-top:0">
+    out.append(f'''<section class="about" id="about">
 <div class="wrap">
-<span class="plate">{nb(ab["label"])}</span>
 <div class="cols">
 <figure class="portrait"><img decoding="async" src="/img/myles.webp" width="720" height="1080" alt="Myles Parslow" loading="lazy"><figcaption>{nb(ab["figcaption"])}</figcaption></figure>
 <div>
+<p class="seclbl">{nb(ab["label"])}</p>
 <h2>{nb(ab["h2"])}</h2>
 <div class="body">{body}</div>
 <blockquote class="quote"><p>{nb(ab["quote"])}</p><footer>{ab["quote_footer_html"]}</footer></blockquote>
@@ -327,7 +342,7 @@ def home():
     out.append(f'''<section class="counter green" id="contact">
 <div class="wrap">
 <div>
-<span class="plate">{nb(ct["label"])}</span>
+<p class="seclbl">{nb(ct["label"])}</p>
 <h2>{nb(ct["h2"])}</h2>
 <p class="avail">{nb(ct["avail"])}</p>
 <p class="lead">{fix_links(ct["lead_html"], True)}</p>
@@ -354,7 +369,7 @@ def home():
 
 # ------------------------------------------------------------------ inner pages
 def pagehead(label, h1, lead):
-    plate = f'<span class="plate">{nb(label)}</span>' if label else ''
+    plate = f'<p class="seclbl">{nb(label)}</p>' if label else ''
     return f'''<main id="main">
 <section class="pagehead green">
 <div class="wrap">
@@ -362,6 +377,7 @@ def pagehead(label, h1, lead):
 <h1>{nb(h1)}</h1>
 <p class="lead">{nb(lead)}</p>
 </div>
+<div class="peek small" aria-hidden="true">{peek_strip(H["work"]["sites"])}</div>
 </section>
 '''
 
@@ -373,26 +389,26 @@ def how():
     faq = ''.join(f'<details><summary>{nb(a)}</summary><p>{fix_links(b)}</p></details>' for a, b in d['faq'])
     return ''.join([head(d['meta'], 'how'), '<body>\n', strip('how'), pagehead('', d['h1'], d['lead']), f'''<section class="band" id="how">
 <div class="wrap">
-<div class="sh"><div><span class="plate">{nb(d["steps_label"])}</span><h2>{nb(d["steps_h2"])}</h2></div></div>
+<div class="sh"><div><p class="seclbl">{nb(d["steps_label"])}</p><h2>{nb(d["steps_h2"])}</h2></div></div>
 <ol class="steps">{steps}</ol>
 </div>
 </section>
 <section class="band green" aria-labelledby="pr-t">
 <div class="wrap">
 <h2 id="pr-t">{nb(d["principles_h2"])}</h2>
-<div class="pgrid">{pr}</div>
+<div class="prows">{pr}</div>
 </div>
 </section>
 <section class="band" id="faq">
 <div class="wrap">
 <div class="faqw">
-<div><span class="plate">{nb(d["faq_label"])}</span><h2>{nb(d["faq_h2"])}</h2></div>
+<div><p class="seclbl">{nb(d["faq_label"])}</p><h2>{nb(d["faq_h2"])}</h2></div>
 <div class="faq">{faq}</div>
 </div>
 </div>
 </section>
 <section class="closer green">
-<div class="wrap"><h2>{nb(d["cta_h2"])}</h2><p class="avail">{nb(d["cta_avail"])}</p><br><a class="btn lamp go" href="{BASE}/#contact" data-interest="Free assessment">{nb(d["cta_btn"])}</a></div>
+<div class="wrap"><h2>{nb(d["cta_h2"])}</h2><p class="avail">{nb(d["cta_avail"])}</p><a class="btn lamp go" href="{BASE}/#contact" data-interest="Free assessment">{nb(d["cta_btn"])}</a></div>
 </section>
 </main>
 ''', footer('how'), tail()])
@@ -461,4 +477,7 @@ if __name__ == '__main__':
         shutil.copyfile(os.path.join(HERE, f), os.path.join(OUT, 'assets', f))
     for f in ('Gabarito.ttf', 'Figtree.ttf', 'Gabarito-OFL.txt', 'Figtree-OFL.txt'):
         shutil.copyfile(os.path.join(HERE, 'fonts', f), os.path.join(OUT, 'assets', 'fonts', f))
+    os.makedirs(os.path.join(OUT, 'assets', 'peek'), exist_ok=True)
+    for f in os.listdir(os.path.join(HERE, 'peek')):
+        shutil.copyfile(os.path.join(HERE, 'peek', f), os.path.join(OUT, 'assets', 'peek', f))
     print('base:', repr(BASE), '(preview: noindex, no HubSpot tracker)' if PREVIEW else '(root paths)')

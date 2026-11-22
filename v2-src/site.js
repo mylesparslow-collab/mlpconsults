@@ -25,9 +25,7 @@
       paintSign();
       relight();
     }
-    if (reduce) { apply(); return; }
-    sign.classList.remove('flip'); void sign.offsetWidth; sign.classList.add('flip');
-    setTimeout(apply, 250);
+    apply();
   });
 
   /* ---- menu on narrow screens ---- */
