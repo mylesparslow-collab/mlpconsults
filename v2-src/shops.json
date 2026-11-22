@@ -1,0 +1,172 @@
+[
+ [
+  "01",
+  "Halden",
+  "Jewelry store, 3D ring designer",
+  "/work/jewelry/#shop",
+  "jewelry-store",
+  "#15120d",
+  "#e3c98f",
+  0
+ ],
+ [
+  "02",
+  "Boutique brokerage",
+  "Real estate",
+  "/work/brokerage/site/",
+  "brokerage-site",
+  "#7c3527",
+  "#f6ead9",
+  1
+ ],
+ [
+  "03",
+  "Birchway Pediatrics",
+  "Pediatric office",
+  "/work/sites/birchway/",
+  "site-birchway",
+  "#e9c85f",
+  "#1b2a2a",
+  0
+ ],
+ [
+  "04",
+  "Osteria Camino",
+  "Italian restaurant",
+  "/work/sites/camino/",
+  "site-camino",
+  "#b93a26",
+  "#fff1e2",
+  1
+ ],
+ [
+  "05",
+  "Paperwhale Books",
+  "Bookstore",
+  "/work/sites/paperwhale/",
+  "site-paperwhale",
+  "#f3efe6",
+  "#c8362a",
+  0
+ ],
+ [
+  "06",
+  "Quietwell Aesthetics",
+  "Med spa",
+  "/work/sites/quietwell/",
+  "site-quietwell",
+  "#8d9a6c",
+  "#fbf7ee",
+  0
+ ],
+ [
+  "07",
+  "Little Orbit Tea",
+  "Boba shop",
+  "/work/sites/little-orbit/",
+  "site-little-orbit",
+  "#a8743c",
+  "#fff6e6",
+  1
+ ],
+ [
+  "08",
+  "Crestline Design-Build",
+  "Remodeling company",
+  "/work/sites/crestline/",
+  "site-crestline",
+  "#22352b",
+  "#f0a35c",
+  0
+ ],
+ [
+  "09",
+  "Cedarline Kitchen",
+  "Restaurant",
+  "/work/sites/cedarline/",
+  "site-cedarline",
+  "#5a2a1a",
+  "#f3dcc0",
+  1
+ ],
+ [
+  "10",
+  "Hollis Flower House",
+  "Florist",
+  "/work/sites/hollis/",
+  "site-hollis",
+  "#f0d3c6",
+  "#1b4539",
+  0
+ ],
+ [
+  "11",
+  "Bellwood Family Dental",
+  "Dental office",
+  "/work/sites/bellwood/",
+  "site-bellwood",
+  "#255049",
+  "#f4f1e6",
+  0
+ ],
+ [
+  "12",
+  "Kestrel Hill Coffee Roasters",
+  "Coffee roaster",
+  "/work/sites/coffee/",
+  "site-coffee",
+  "#121f19",
+  "#f08a2b",
+  1
+ ],
+ [
+  "13",
+  "Marlow & Rye Bakery",
+  "Bakery",
+  "/work/sites/marlow/",
+  "site-marlow",
+  "#e9dfcc",
+  "#5b3a22",
+  1
+ ],
+ [
+  "14",
+  "Ostrander Hair Studio",
+  "Hair salon",
+  "/work/sites/salon/",
+  "site-salon",
+  "#216556",
+  "#f6efe0",
+  0
+ ],
+ [
+  "15",
+  "Springline Reformer Studio",
+  "Pilates studio",
+  "/work/sites/pilates/",
+  "site-pilates",
+  "#f1c9c2",
+  "#3b1c25",
+  0
+ ],
+ [
+  "16",
+  "Fig & Fennimore",
+  "Clothing boutique",
+  "/work/sites/boutique/",
+  "site-boutique",
+  "#7f172b",
+  "#f6e7d8",
+  1
+ ],
+ [
+  "17",
+  "Solace Studio Dental",
+  "Dental studio",
+  "/work/sites/solace/",
+  "site-solace",
+  "#dfe9e4",
+  "#255344",
+  0
+ ]
+]

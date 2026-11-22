@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MLP Consulting: The Switchboard</title>
+<meta name="description" content="Websites and follow-up systems for owner-run businesses.">
+<style>
+@font-face{font-family:"Host Grotesk";src:url("fonts/HostGrotesk.ttf") format("truetype");font-weight:300 800;font-display:block}
+:root{--ground:#dfe5de;--ink:#16201b;--orange:#e0521d;--green:#0c7a52;--ochre:#c79a00;--muted:#3d4a43;--rule:rgba(22,32,27,.22)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Host Grotesk",sans-serif;font-weight:400;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--ink);outline-offset:3px;border-radius:3px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+/* corners */
+.corner{position:fixed;z-index:20;font-size:14px;font-weight:600;background:var(--ground);padding:6px 10px;line-height:1.2}
+.tl{top:14px;left:18px}.tr{top:14px;right:18px}.bl{bottom:14px;left:18px}.br{bottom:14px;right:18px;display:flex;gap:14px}
+.tr a,.br a{text-decoration:none;border-bottom:1.5px solid var(--ink)}
+.tr a:hover,.br a:hover{border-color:transparent}
+.strip{display:none}
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:40% 60%;align-items:center}
+.hl{padding:92px 28px 92px 58px}
+h1{font-weight:500;font-size:clamp(40px,4.2vw,84px);line-height:1.02;letter-spacing:-.02em;margin:0 0 26px;text-wrap:balance}
+.lead{font-size:17px;line-height:1.55;margin:0 0 26px;max-width:34em}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.btn{display:inline-block;padding:13px 20px;border-radius:8px;font-weight:600;font-size:15.5px;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.p{background:var(--ink);color:var(--ground)}
+.btn.p:hover{background:#2a3a32}
+.btn.s:hover{background:rgba(22,32,27,.08)}
+.reassure{font-size:14.5px;color:var(--muted);margin:0;max-width:34em}
+.hr{padding:70px 48px 70px 0}
+#board{display:block;width:100%;height:auto;overflow:visible;user-select:none;-webkit-user-select:none}
+#board text{font-family:"Host Grotesk",sans-serif;font-size:14.5px;font-weight:600;fill:var(--ink)}
+#board .ring{fill:none;stroke:var(--ink);stroke-width:2}
+#board .cord{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0;animation:draw .5s cubic-bezier(.4,0,.2,1) both;animation-delay:calc(var(--i)*120ms);transition:opacity .15s,stroke-width .15s}
+#board .plug{animation:plug .15s both;animation-delay:calc(var(--i)*120ms + 380ms)}
+@keyframes draw{from{stroke-dashoffset:1}}
+@keyframes plug{from{opacity:0}}
+#board .dim{opacity:.28}
+#board .on{stroke-width:6}
+#board .free{stroke:var(--ink);stroke-width:2.5;opacity:.5}
+#board .row text{transition:opacity .15s}
+#board .lj{cursor:grab;touch-action:none}
+#board.dragging .lj{cursor:grabbing}
+#board .hit{fill:transparent}
+#board .row.act .ring{stroke-width:3.5}
+.panel{margin-top:6px;border-top:1.5px solid var(--ink);padding-top:14px;min-height:150px}
+.panel h3{margin:0 0 6px;font-weight:600;font-size:18px}
+.panel p{margin:0 0 6px;font-size:15.5px;max-width:46em}
+.panel .pc{font-weight:600}
+.panel .st{font-size:13.5px;color:var(--muted);min-height:1.4em}
+.hint{font-size:13.5px;color:var(--muted);margin:10px 0 0}
+/* shared jack */
+.jack{display:inline-block;flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--ink);background:radial-gradient(circle,var(--c,var(--ink)) 0 38%,transparent 42%)}
+/* pairs list: sr-only on desktop */
+.pairs{list-style:none;margin:0;padding:0}
+@media (min-width:901px){.pairs{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+.pairbtn{all:unset;display:block;cursor:pointer}
+.pairbtn:focus-visible{outline:2.5px solid var(--ink);outline-offset:3px}
+.pair .mcord path{fill:none;stroke:var(--c);stroke-width:4;stroke-linecap:round}
+/* work */
+.work{padding:130px 58px 150px;border-top:1.5px solid var(--ink);margin:0 18px}
+.work h2{font-weight:500;font-size:clamp(36px,4.2vw,72px);line-height:1.02;letter-spacing:-.02em;margin:0 0 16px}
+.work .wl{max-width:36em;margin:0 0 48px;font-size:17px}
+.wgrid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;align-items:start}
+.sites{list-style:none;margin:0;padding:0;columns:2;column-gap:28px}
+.site{break-inside:avoid;display:grid;grid-template-columns:20px 26px 1fr auto;align-items:center;gap:10px;padding:10px 8px;border-top:1px solid var(--rule);position:relative}
+.site:hover,.site:focus-within,.site.cur{background:rgba(22,32,27,.07)}
+.site.cur::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c)}
+.num{font-size:13px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.who{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.sname{font-weight:600;font-size:15.5px}
+.trade{font-size:13.5px;color:var(--muted)}
+.site a{font-size:13.5px;font-weight:600;white-space:nowrap;text-decoration:none;border-bottom:1.5px solid var(--ink)}
+.site a:hover{border-color:transparent}
+.site .jack{width:16px;height:16px}
+.frame{position:sticky;top:70px;border:1.5px solid var(--ink);border-radius:8px;overflow:hidden;background:var(--ground)}
+.fbar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1.5px solid var(--ink);font-weight:600;font-size:14.5px}
+.fbar .jack{width:16px;height:16px}
+.fbar .ft{font-weight:400;color:var(--muted)}
+.frame img{display:block;width:100%;aspect-ratio:16/11;object-fit:cover;object-position:top}
+.foot{display:none}
+/* mobile */
+@media (max-width:900px){
+ body{font-size:16px}
+ .corner{display:none}
+ .strip{display:flex;justify-content:space-between;gap:12px;padding:16px 18px;font-size:14px;font-weight:600}
+ .strip a{text-decoration:none;border-bottom:1.5px solid var(--ink)}
+ .hero{display:block;min-height:0}
+ .hl{padding:30px 18px 26px}
+ h1{font-size:clamp(40px,11.5vw,56px)}
+ .hr{padding:0 18px 20px}
+ #board,.panel,.hint{display:none}
+ .pairs{display:block}
+ .pair{border-top:1.5px solid var(--ink);padding:16px 0 18px}
+ .pairbtn{pointer-events:none}
+ .from,.to{display:flex;align-items:center;gap:12px}
+ .from .lbl{font-size:14.5px;font-weight:600;color:var(--muted)}
+ .to .name{font-size:19px;font-weight:600}
+ .mcord{display:block;width:28px;height:38px;margin:0 -4px;margin-left:-4px;padding-left:0}
+ .pair .mcord{margin-left:-4px;overflow:visible}
+ .pair .desc,.pair .ctl{margin:8px 0 0 32px;font-size:15.5px}
+ .pair .desc{margin-top:12px}
+ .pair .ctl{font-weight:600;font-size:14.5px}
+ .work{padding:70px 18px 40px;margin:0}
+ .wgrid{display:flex;flex-direction:column-reverse;gap:24px}
+ .sites{columns:1}
+ .frame{position:static}
+ .foot{display:flex;flex-direction:column;gap:10px;padding:10px 18px 36px;font-size:14px;font-weight:600}
+ .foot nav{display:flex;flex-wrap:wrap;gap:6px 16px}
+}
+@media (max-width:1180px) and (min-width:901px){.hl{padding-left:36px}.wgrid{grid-template-columns:1fr}.frame{position:static}.work{padding-left:36px;padding-right:36px}}
+@media (prefers-reduced-motion:reduce){#board .cord,#board .plug{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<span class="corner tl">MLP Consulting</span>
+<span class="corner tr"><a href="/assessment/">Get a free assessment</a></span>
+<span class="corner bl">Irvine, California</span>
+<nav class="corner br" aria-label="Main"><a href="/#services">Services</a><a href="#work">Work</a><a href="/#how-it-works">How it works</a><a href="/about/">About</a></nav>
+<div class="strip"><span>MLP Consulting</span><a href="/assessment/">Get a free assessment</a></div>
+
+<main>
+<section class="hero" aria-labelledby="h1">
+ <div class="hl">
+  <h1 id="h1">More customers. Fewer late nights.</h1>
+  <p class="lead">I work with owner-run businesses on the things that slip when you’re busy: a website that takes bookings, quotes that get a follow-up on day two, invoices that get chased before they’re two months old. I set it up, train your team, and keep it running.</p>
+  <div class="btns"><a class="btn p" href="/assessment/">Get a free assessment</a><a class="btn s" href="/services/">See services and prices</a></div>
+  <p class="reassure">Send me your website and I’ll send back three things worth fixing, within one business day. Serving Southern California and businesses nationwide.</p>
+ </div>
+ <div class="hr">
+  <svg id="board" viewBox="0 0 820 470" aria-hidden="true" focusable="false"></svg>
+  <div class="panel" id="panel"><h3 id="pn"></h3><p id="pd"></p><p class="pc" id="pcn"></p><p class="st" id="pst" aria-live="polite"></p></div>
+  <p class="hint">Drag a plug from a left jack to the jack that answers it.</p>
+  <ul class="pairs" aria-label="What answers each line">
+<li class="pair" data-i="0" data-slot="2" style="--c:#e0521d">
+ <button type="button" class="pairbtn">
+  <span class="from"><span class="jack"></span><span class="lbl">A form, call or message arrives</span></span>
+  <svg class="mcord" viewBox="0 0 28 38" aria-hidden="true"><path d="M14 0 C 14 22, 2 18, 14 38" pathLength="1"/></svg>
+  <span class="to"><span class="jack"></span><span class="name">New inquiry follow-up</span></span>
+ </button>
+ <p class="desc">A prompt acknowledgment goes out in your words, asks a couple of useful questions, and offers a time to talk. You are alerted right away if it looks like a larger job.</p>
+ <p class="ctl">Control: You approve the first reply, once, before launch.</p>
+</li>
+<li class="pair" data-i="1" data-slot="0" style="--c:#0c7a52">
+ <button type="button" class="pairbtn">
+  <span class="from"><span class="jack"></span><span class="lbl">A quote goes out</span></span>
+  <svg class="mcord" viewBox="0 0 28 38" aria-hidden="true"><path d="M14 0 C 14 22, 2 18, 14 38" pathLength="1"/></svg>
+  <span class="to"><span class="jack"></span><span class="name">Quote follow-up</span></span>
+ </button>
+ <p class="desc">Friendly check-ins on day 2, 5 and 10, plus a list of who has gone quiet. A customer’s reply pauses that quote’s sequence and alerts you.</p>
+ <p class="ctl">Control: You approve each message until you trust the wording.</p>
+</li>
+<li class="pair" data-i="2" data-slot="4" style="--c:#c79a00">
+ <button type="button" class="pairbtn">
+  <span class="from"><span class="jack"></span><span class="lbl">An invoice passes its due date</span></span>
+  <svg class="mcord" viewBox="0 0 28 38" aria-hidden="true"><path d="M14 0 C 14 22, 2 18, 14 38" pathLength="1"/></svg>
+  <span class="to"><span class="jack"></span><span class="name">Payment reminders</span></span>
+ </button>
+ <p class="desc">A polite reminder, then a firmer one, each with a way to pay. You hear about it at two weeks, and the sequence stops once payment is received.</p>
+ <p class="ctl">Control: You approve the tone and decide on any call.</p>
+</li>
+<li class="pair" data-i="3" data-slot="1" style="--c:#e0521d">
+ <button type="button" class="pairbtn">
+  <span class="from"><span class="jack"></span><span class="lbl">A job or visit is finished</span></span>
+  <svg class="mcord" viewBox="0 0 28 38" aria-hidden="true"><path d="M14 0 C 14 22, 2 18, 14 38" pathLength="1"/></svg>
+  <span class="to"><span class="jack"></span><span class="name">Review requests</span></span>
+ </button>
+ <p class="desc">Make it easy for customers to share honest feedback after a completed job or visit, with a consistent request process and a clear route for your team to respond.</p>
+ <p class="ctl">Control: You approve who gets asked and the wording.</p>
+</li>
+<li class="pair" data-i="4" data-slot="5" style="--c:#0c7a52">
+ <button type="button" class="pairbtn">
+  <span class="from"><span class="jack"></span><span class="lbl">A call goes unanswered</span></span>
+  <svg class="mcord" viewBox="0 0 28 38" aria-hidden="true"><path d="M14 0 C 14 22, 2 18, 14 38" pathLength="1"/></svg>
+  <span class="to"><span class="jack"></span><span class="name">Missed-call follow-up</span></span>
+ </button>
+ <p class="desc">A text within a minute asking what’s going on and offering a callback time, logged as a lead so no call is lost. A reply pauses the text and alerts the right person.</p>
+ <p class="ctl">Control: You approve the wording and the hours it runs.</p>
+</li>
+<li class="pair" data-i="5" data-slot="3" style="--c:#c79a00">
+ <button type="button" class="pairbtn">
+  <span class="from"><span class="jack"></span><span class="lbl">Monday morning</span></span>
+  <svg class="mcord" viewBox="0 0 28 38" aria-hidden="true"><path d="M14 0 C 14 22, 2 18, 14 38" pathLength="1"/></svg>
+  <span class="to"><span class="jack"></span><span class="name">Weekly owner summary</span></span>
+ </button>
+ <p class="desc">One short message: new inquiries, quotes waiting, money overdue, and the one thing to do first. It goes only to you.</p>
+ <p class="ctl">Control: Nothing to approve; it never contacts a customer.</p>
+</li>
+  </ul>
+ </div>
+</section>
+
+<section class="work" id="work" aria-labelledby="h2">
+ <h2 id="h2">Open one and try it.</h2>
+ <p class="wl">Seventeen working websites and the follow-up systems that run behind them. Book a table, order a drink, design a ring.</p>
+ <div class="wgrid">
+  <ol class="sites" id="sites">
+<li class="site" data-img="jewelry-store" data-name="Halden" data-trade="Jewelry store" style="--c:#e0521d"><span class="jack"></span><span class="num">01</span><span class="who"><span class="sname">Halden</span><span class="trade">Jewelry store</span></span><a href="/work/jewelry/#shop" target="_blank" rel="noopener" aria-label="Open Halden site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="brokerage-site" data-name="Boutique brokerage" data-trade="Real estate" style="--c:#0c7a52"><span class="jack"></span><span class="num">02</span><span class="who"><span class="sname">Boutique brokerage</span><span class="trade">Real estate</span></span><a href="/work/brokerage/site/" target="_blank" rel="noopener" aria-label="Open Boutique brokerage site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-birchway" data-name="Birchway Pediatrics" data-trade="Pediatric office" style="--c:#c79a00"><span class="jack"></span><span class="num">03</span><span class="who"><span class="sname">Birchway Pediatrics</span><span class="trade">Pediatric office</span></span><a href="/work/sites/birchway/" target="_blank" rel="noopener" aria-label="Open Birchway Pediatrics site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-camino" data-name="Osteria Camino" data-trade="Italian restaurant" style="--c:#e0521d"><span class="jack"></span><span class="num">04</span><span class="who"><span class="sname">Osteria Camino</span><span class="trade">Italian restaurant</span></span><a href="/work/sites/camino/" target="_blank" rel="noopener" aria-label="Open Osteria Camino site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-paperwhale" data-name="Paperwhale Books" data-trade="Bookstore" style="--c:#0c7a52"><span class="jack"></span><span class="num">05</span><span class="who"><span class="sname">Paperwhale Books</span><span class="trade">Bookstore</span></span><a href="/work/sites/paperwhale/" target="_blank" rel="noopener" aria-label="Open Paperwhale Books site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-quietwell" data-name="Quietwell Aesthetics" data-trade="Med spa" style="--c:#c79a00"><span class="jack"></span><span class="num">06</span><span class="who"><span class="sname">Quietwell Aesthetics</span><span class="trade">Med spa</span></span><a href="/work/sites/quietwell/" target="_blank" rel="noopener" aria-label="Open Quietwell Aesthetics site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-little-orbit" data-name="Little Orbit Tea" data-trade="Boba shop" style="--c:#e0521d"><span class="jack"></span><span class="num">07</span><span class="who"><span class="sname">Little Orbit Tea</span><span class="trade">Boba shop</span></span><a href="/work/sites/little-orbit/" target="_blank" rel="noopener" aria-label="Open Little Orbit Tea site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-crestline" data-name="Crestline Design-Build" data-trade="Remodeling company" style="--c:#0c7a52"><span class="jack"></span><span class="num">08</span><span class="who"><span class="sname">Crestline Design-Build</span><span class="trade">Remodeling company</span></span><a href="/work/sites/crestline/" target="_blank" rel="noopener" aria-label="Open Crestline Design-Build site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-cedarline" data-name="Cedarline Kitchen" data-trade="Restaurant" style="--c:#c79a00"><span class="jack"></span><span class="num">09</span><span class="who"><span class="sname">Cedarline Kitchen</span><span class="trade">Restaurant</span></span><a href="/work/sites/cedarline/" target="_blank" rel="noopener" aria-label="Open Cedarline Kitchen site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-hollis" data-name="Hollis Flower House" data-trade="Florist" style="--c:#e0521d"><span class="jack"></span><span class="num">10</span><span class="who"><span class="sname">Hollis Flower House</span><span class="trade">Florist</span></span><a href="/work/sites/hollis/" target="_blank" rel="noopener" aria-label="Open Hollis Flower House site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-bellwood" data-name="Bellwood Family Dental" data-trade="Dental office" style="--c:#0c7a52"><span class="jack"></span><span class="num">11</span><span class="who"><span class="sname">Bellwood Family Dental</span><span class="trade">Dental office</span></span><a href="/work/sites/bellwood/" target="_blank" rel="noopener" aria-label="Open Bellwood Family Dental site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-coffee" data-name="Kestrel Hill Coffee Roasters" data-trade="Coffee roaster" style="--c:#c79a00"><span class="jack"></span><span class="num">12</span><span class="who"><span class="sname">Kestrel Hill Coffee Roasters</span><span class="trade">Coffee roaster</span></span><a href="/work/sites/coffee/" target="_blank" rel="noopener" aria-label="Open Kestrel Hill Coffee Roasters site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-marlow" data-name="Marlow &amp; Rye Bakery" data-trade="Bakery" style="--c:#e0521d"><span class="jack"></span><span class="num">13</span><span class="who"><span class="sname">Marlow &amp; Rye Bakery</span><span class="trade">Bakery</span></span><a href="/work/sites/marlow/" target="_blank" rel="noopener" aria-label="Open Marlow &amp; Rye Bakery site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-salon" data-name="Ostrander Hair Studio" data-trade="Hair salon" style="--c:#0c7a52"><span class="jack"></span><span class="num">14</span><span class="who"><span class="sname">Ostrander Hair Studio</span><span class="trade">Hair salon</span></span><a href="/work/sites/salon/" target="_blank" rel="noopener" aria-label="Open Ostrander Hair Studio site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-pilates" data-name="Springline Reformer Studio" data-trade="Pilates studio" style="--c:#c79a00"><span class="jack"></span><span class="num">15</span><span class="who"><span class="sname">Springline Reformer Studio</span><span class="trade">Pilates studio</span></span><a href="/work/sites/pilates/" target="_blank" rel="noopener" aria-label="Open Springline Reformer Studio site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-boutique" data-name="Fig &amp; Fennimore" data-trade="Clothing boutique" style="--c:#e0521d"><span class="jack"></span><span class="num">16</span><span class="who"><span class="sname">Fig &amp; Fennimore</span><span class="trade">Clothing boutique</span></span><a href="/work/sites/boutique/" target="_blank" rel="noopener" aria-label="Open Fig &amp; Fennimore site (opens in a new tab)">Open site ↗</a></li>
+<li class="site" data-img="site-solace" data-name="Solace Studio Dental" data-trade="Dental studio" style="--c:#0c7a52"><span class="jack"></span><span class="num">17</span><span class="who"><span class="sname">Solace Studio Dental</span><span class="trade">Dental studio</span></span><a href="/work/sites/solace/" target="_blank" rel="noopener" aria-label="Open Solace Studio Dental site (opens in a new tab)">Open site ↗</a></li>
+  </ol>
+  <figure class="frame" style="margin:0">
+   <div class="fbar"><span class="jack" id="fj" style="--c:#e0521d"></span><span id="fn">Halden</span><span class="ft" id="ft">Jewelry store</span></div>
+   <img id="fimg" src="/img/jewelry-store.webp" alt="Screenshot of the selected website">
+  </figure>
+ </div>
+</section>
+</main>
+<div class="foot"><span>Irvine, California</span><nav aria-label="Main"><a href="/#services">Services</a><a href="#work">Work</a><a href="/#how-it-works">How it works</a><a href="/about/">About</a></nav></div>
+
+<script>
+(function(){
+var NS='http://www.w3.org/2000/svg',COL=['#e0521d','#0c7a52','#c79a00'];
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* ---- sites frame ---- */
+var rows=[].slice.call(document.querySelectorAll('.site')),fimg=document.getElementById('fimg');
+function showSite(r){rows.forEach(function(x){x.classList.toggle('cur',x===r)});
+ fimg.src='/img/'+r.dataset.img+'.webp';fimg.alt='Screenshot of '+r.dataset.name;
+ document.getElementById('fn').textContent=r.dataset.name;document.getElementById('ft').textContent=r.dataset.trade;
+ document.getElementById('fj').style.setProperty('--c',r.style.getPropertyValue('--c'))}
+rows.forEach(function(r){r.addEventListener('pointerenter',function(){showSite(r)});r.addEventListener('focusin',function(){showSite(r)})});
+rows[0].classList.add('cur');
+/* ---- board ---- */
+var board=document.getElementById('board');
+var items=[].slice.call(document.querySelectorAll('.pair')).map(function(li,i){return{i:i,slot:+li.dataset.slot,from:li.querySelector('.lbl').textContent,name:li.querySelector('.name').textContent,desc:li.querySelector('.desc').textContent,ctl:li.querySelector('.ctl').textContent,btn:li.querySelector('.pairbtn'),col:COL[i%3]}});
+var LX=270,RX=550,Y0=38,DY=74,SAG=58;
+function L(i){return{x:LX,y:Y0+i*DY}}
+function R(s){return{x:RX,y:Y0+s*DY}}
+function cp(a,b){var dx=(b.x-a.x)*.3;return'M'+a.x+' '+a.y+' C'+(a.x+dx)+' '+(a.y+SAG)+' '+(b.x-dx)+' '+(b.y+SAG)+' '+b.x+' '+b.y}
+function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+var gC=el('g',{},board),gJ=el('g',{},board);
+var rslot=[];items.forEach(function(it){rslot[it.slot]=it});
+items.forEach(function(it){
+ var i=it.i,a=L(i),b=R(it.slot);
+ it.end={x:b.x,y:b.y};it.seated=true;
+ it.path=el('path',{d:cp(a,b),pathLength:1,stroke:it.col,'class':'cord'},gC);it.path.style.setProperty('--i',i);
+ it.p1=el('circle',{cx:a.x,cy:a.y,r:6,fill:it.col,'class':'plug'},gC);it.p1.style.setProperty('--i',i);
+ it.p2=el('circle',{cx:b.x,cy:b.y,r:6,fill:it.col,'class':'plug'},gC);it.p2.style.setProperty('--i',i);
+ it.path.addEventListener('animationend',function(){it.path.style.animation='none';it.path.style.strokeDasharray='none'});
+ var g=el('g',{'class':'row lj','data-i':i},gJ);it.lg=g;
+ el('rect',{x:0,y:a.y-30,width:300,height:60,'class':'hit'},g);
+ el('circle',{cx:a.x,cy:a.y,r:12,'class':'ring'},g);
+ var t=el('text',{x:LX-24,y:a.y+5,'text-anchor':'end'},g);t.textContent=it.from;
+ var g2=el('g',{'class':'row','data-i':i},gJ);it.rg=g2;
+ el('rect',{x:RX-30,y:b.y-30,width:290,height:60,'class':'hit'},g2);
+ el('circle',{cx:b.x,cy:b.y,r:12,'class':'ring'},g2);
+ var t2=el('text',{x:RX+24,y:b.y+5},g2);t2.textContent=it.name;
+});
+var act=0,drag=null,sPn=document.getElementById('pn'),sPd=document.getElementById('pd'),sPc=document.getElementById('pcn'),sSt=document.getElementById('pst');
+function setActive(i,status){act=i;var it=items[i];sPn.textContent=it.name;sPd.textContent=it.desc;sPc.textContent=it.ctl;if(status!==undefined)sSt.textContent=status;
+ items.forEach(function(x){var on=x.i===i;x.path.classList.toggle('on',on&&x.seated);var d=!on&&board.classList.contains('hov');x.path.classList.toggle('dim',d);x.p1.classList.toggle('dim',d);x.p2.classList.toggle('dim',d);x.lg.classList.toggle('act',on);x.rg.classList.toggle('act',on)});
+ gC.appendChild(it.path);gC.appendChild(it.p1);if(it.seated)gC.appendChild(it.p2)}
+function draw(it){var a=L(it.i);it.path.setAttribute('d',cp(a,it.end));it.p2.setAttribute('cx',it.end.x);it.p2.setAttribute('cy',it.end.y)}
+function free(it){it.path.style.animation='none';it.path.style.strokeDasharray='none';it.path.setAttribute('stroke',it.seated?it.col:'#16201b');it.path.classList.toggle('free',!it.seated);it.p2.style.display=it.seated?'':'none'}
+function tween(it,to,ms,cb){var f={x:it.end.x,y:it.end.y},t0=performance.now();
+ if(reduce){it.end=to;draw(it);cb&&cb();return}
+ (function step(n){var k=Math.min(1,(n-t0)/ms),e=1-Math.pow(1-k,3);it.end={x:f.x+(to.x-f.x)*e,y:f.y+(to.y-f.y)*e};draw(it);if(k<1)requestAnimationFrame(step);else cb&&cb()})(t0)}
+function seat(i,msg){var it=items[i];it.seated=true;free(it);tween(it,R(it.slot),220,function(){it.p2.setAttribute('cx',RX);setActive(i,msg)});setActive(i,msg)}
+function unseat(it){it.seated=false;var a=L(it.i);free(it);tween(it,{x:a.x+40,y:a.y+34},300,function(){draw(it)})}
+function pt(e){var p=board.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(board.getScreenCTM().inverse())}
+board.addEventListener('pointerdown',function(e){var g=e.target.closest&&e.target.closest('.lj');if(!g)return;var it=items[+g.getAttribute('data-i')];
+ e.preventDefault();board.setPointerCapture(e.pointerId);drag={it:it,x0:e.clientX,y0:e.clientY,moved:false};setActive(it.i,'');
+ it.seated=false;free(it);it.path.style.stroke='';it.p2.style.display='';board.classList.add('dragging');it.end=pt(e);draw(it)});
+board.addEventListener('pointermove',function(e){if(!drag){var g=e.target.closest&&e.target.closest('.row');if(g){var i=+g.getAttribute('data-i');board.classList.add('hov');if(i!==act)setActive(i,'');else setActive(i)}return}
+ if(Math.abs(e.clientX-drag.x0)+Math.abs(e.clientY-drag.y0)>4)drag.moved=true;drag.it.end=pt(e);draw(drag.it)});
+function endDrag(e,cancel){if(!drag)return;var it=drag.it,p=pt(e),moved=drag.moved;drag=null;board.classList.remove('dragging');
+ var best=-1,bd=40;for(var s=0;s<6;s++){var r=R(s),d=Math.hypot(p.x-r.x,p.y-r.y);if(d<bd){bd=d;best=s}}
+ if(!cancel&&(!moved||best===it.slot)){seat(it.i,moved?'Patched. That is the right jack.':'')}
+ else{unseat(it);setActive(it.i,moved&&best>=0?'Not that one. This line goes to “'+it.name+'”. Try again.':'Unplugged. Drag it to “'+it.name+'” to seat it.')}}
+board.addEventListener('pointerup',function(e){endDrag(e,false)});
+board.addEventListener('pointercancel',function(e){endDrag(e,true)});
+/* keyboard / list */
+items.forEach(function(it){var b=it.btn;
+ b.addEventListener('focus',function(){board.classList.add('hov');setActive(it.i,'')});b.addEventListener('blur',function(){board.classList.remove('hov');setActive(act)});
+ b.addEventListener('click',function(){seat(it.i,'Patched.')})});
+setActive(0,'');
+board.addEventListener('pointerleave',function(){if(!drag){board.classList.remove('hov');setActive(act)}});
+})();
+</script>
+</body>
+</html>

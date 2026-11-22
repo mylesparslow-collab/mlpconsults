@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>mlpconsults.com: live design and Shop Row, side by side</title>
+<style>
+body{margin:0;font:15px/1.4 system-ui,sans-serif;background:#1b1d1c;color:#eee;display:grid;grid-template-rows:auto 1fr;height:100vh}
+header{display:flex;gap:18px;align-items:center;padding:10px 16px;flex-wrap:wrap}
+header b{font-size:16px}a{color:#ffcf3f}select{font:inherit;padding:4px 6px}
+main{display:grid;grid-template-columns:1fr 1fr;gap:2px;min-height:0}
+section{display:grid;grid-template-rows:auto 1fr;min-height:0;background:#000}
+h2{font-size:14px;margin:0;padding:8px 12px;background:#2a2d2b;font-weight:600}
+iframe{border:0;width:100%;height:100%;background:#fff}
+@media (max-width:900px){main{grid-template-columns:1fr}}
+</style></head><body>
+<header><b>mlpconsults.com, side by side</b>
+<label>Page <select id="pg"><option value="">Home</option><option value="how-it-works/">How it works</option><option value="workflows/">Workflows</option><option value="referrals/">Referrals</option><option value="privacy/">Privacy</option></select></label>
+<span>Open alone: <a href="/" target="_blank" rel="noopener">live design</a> · <a href="/v2/" target="_blank" rel="noopener">Shop Row</a> · <a href="/v2-src/directions/contact-sheet.html" target="_blank" rel="noopener">the three directions</a></span></header>
+<main><section><h2>Live design (today’s mlpconsults.com)</h2><iframe id="a" src="/" title="Live design"></iframe></section>
+<section><h2>Shop Row (the redesign)</h2><iframe id="b" src="/v2/" title="Shop Row redesign"></iframe></section></main>
+<script>document.getElementById('pg').onchange=function(){document.getElementById('a').src='/'+this.value;document.getElementById('b').src='/v2/'+this.value;};</script>
+</body></html>

@@ -1,0 +1,1059 @@
+{
+ "home": {
+  "meta": {
+   "title": "MLP Consulting | Websites, Automation & AI | Irvine",
+   "description": "Practical websites, automation, and AI for owner-run businesses. Work directly with Myles Parslow in Irvine, serving Southern California and clients nationwide.",
+   "canonical": "https://mlpconsults.com/",
+   "og_title": "MLP Consulting | Websites, Automation & AI | Irvine",
+   "og_description": "Practical websites, automation, and AI for owner-run businesses. Work directly with Myles Parslow in Irvine, serving Southern California and clients nationwide."
+  },
+  "jsonld": "{\"@context\":\"https://schema.org\",\"@graph\":[\n{\"@type\":\"WebSite\",\"@id\":\"https://mlpconsults.com/#website\",\"url\":\"https://mlpconsults.com/\",\"name\":\"MLP Consulting\",\"alternateName\":\"MLP Consults\",\"publisher\":{\"@id\":\"https://mlpconsults.com/#org\"}},\n{\"@type\":\"ProfessionalService\",\"@id\":\"https://mlpconsults.com/#org\",\"name\":\"MLP Consulting\",\"alternateName\":\"MLP Consults\",\"url\":\"https://mlpconsults.com/\",\"logo\":\"https://mlpconsults.com/img/logo-12/icon-192.png\",\"image\":\"https://mlpconsults.com/img/og.png\",\"description\":\"Websites, automation, and practical AI for owner-run businesses.\",\"email\":\"myles@mlpconsults.com\",\"telephone\":\"+1-518-306-9403\",\"areaServed\":[\"Southern California\",\"United States\"],\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Irvine\",\"addressRegion\":\"CA\",\"addressCountry\":\"US\"},\"founder\":{\"@id\":\"https://mlpconsults.com/#myles\"},\"sameAs\":[\"https://www.linkedin.com/company/mlpconsults\",\"https://mylesparslow.com\"]},\n{\"@type\":\"Person\",\"@id\":\"https://mlpconsults.com/#myles\",\"name\":\"Myles Parslow\",\"jobTitle\":\"Founder\",\"url\":\"https://mylesparslow.com\",\"worksFor\":{\"@id\":\"https://mlpconsults.com/#org\"}}\n]}",
+  "logo_svg": "<svg class=\"logo12\" viewBox=\"0 0 337.0 143.0\" width=\"60\" height=\"26\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M182.98,8.41 L182.69,6.67 L182.07,5.02 L181.48,4.00 L180.36,2.64 L179.00,1.52 L177.44,0.69 L175.76,0.17 L174.59,0.02 L161.00,0.00 L159.83,0.08 L158.67,0.31 L157.56,0.69 L156.50,1.21 L155.07,2.23 L154.23,3.07 L153.52,4.00 L152.93,5.02 L152.48,6.11 L152.08,7.83 L152.00,9.00 L152.00,99.00 L152.17,100.76 L152.69,102.44 L153.21,103.50 L153.86,104.48 L155.07,105.77 L156.00,106.48 L157.02,107.07 L158.11,107.52 L159.24,107.83 L160.41,107.98 L222.00,108.00 L223.76,107.83 L225.44,107.31 L226.50,106.79 L227.93,105.77 L228.77,104.93 L229.48,104.00 L230.07,102.98 L230.52,101.89 L230.83,100.76 L230.98,99.59 L231.00,86.00 L230.83,84.24 L230.31,82.56 L229.48,81.00 L228.36,79.64 L227.00,78.52 L225.98,77.93 L224.89,77.48 L223.76,77.17 L222.59,77.02 L183.00,77.00 L182.98,8.41Z M9.36,0.03 L8.06,0.20 L7.42,0.35 L6.79,0.54 L5.58,1.04 L4.45,1.69 L3.92,2.07 L3.41,2.49 L2.48,3.41 L2.07,3.92 L1.34,5.01 L1.03,5.58 L0.53,6.79 L0.19,8.06 L0.02,9.36 L0.00,10.01 L0.02,133.62 L0.19,134.91 L0.53,136.18 L0.76,136.79 L1.34,137.96 L1.68,138.52 L2.48,139.55 L3.40,140.48 L3.91,140.89 L4.99,141.62 L6.16,142.20 L7.40,142.62 L8.04,142.77 L8.68,142.88 L9.99,142.96 L24.94,142.99 L26.25,142.90 L27.53,142.65 L28.77,142.23 L29.95,141.65 L31.04,140.93 L32.02,140.06 L32.88,139.08 L33.61,137.99 L33.92,137.42 L34.42,136.21 L34.61,135.58 L34.87,134.30 L34.96,132.99 L35.00,57.83 L35.04,57.40 L35.19,56.83 L35.68,55.99 L36.41,55.34 L37.31,54.97 L38.08,54.89 L38.85,55.01 L39.57,55.33 L40.21,55.85 L64.01,82.58 L64.93,83.49 L65.43,83.90 L66.51,84.62 L67.09,84.92 L68.29,85.41 L68.91,85.60 L70.18,85.85 L71.47,85.93 L72.12,85.91 L73.40,85.75 L74.66,85.41 L75.26,85.19 L75.86,84.92 L76.98,84.28 L78.01,83.50 L78.49,83.06 L102.71,55.95 L103.12,55.55 L103.60,55.23 L104.15,55.01 L105.11,54.89 L105.69,54.97 L106.25,55.16 L106.75,55.45 L107.19,55.84 L107.55,56.30 L107.81,56.83 L107.96,57.40 L108.00,57.96 L108.00,132.95 L108.09,134.26 L108.19,134.90 L108.53,136.17 L108.76,136.78 L109.34,137.95 L110.07,139.04 L110.93,140.02 L111.41,140.47 L111.91,140.89 L113.00,141.61 L114.17,142.19 L115.41,142.61 L116.05,142.76 L117.34,142.93 L118.00,142.95 L259.97,143.00 L260.62,142.98 L261.92,142.81 L263.18,142.47 L264.39,141.97 L265.52,141.32 L266.56,140.52 L267.48,139.60 L268.28,138.56 L268.93,137.43 L269.43,136.23 L269.77,134.96 L269.95,133.67 L269.97,133.02 L269.97,119.08 L269.79,117.72 L269.63,117.05 L269.14,115.67 L269.02,115.07 L269.00,111.08 L269.04,110.51 L269.20,109.94 L269.46,109.42 L269.81,108.95 L270.59,108.36 L271.13,108.13 L271.71,108.02 L283.05,108.00 L285.75,107.93 L288.15,107.75 L290.78,107.43 L294.93,106.66 L297.50,106.01 L300.04,105.24 L302.30,104.43 L304.75,103.42 L308.55,101.57 L310.85,100.26 L313.09,98.84 L315.25,97.31 L317.34,95.68 L319.34,93.94 L321.26,92.11 L323.08,90.19 L324.81,88.18 L326.43,86.08 L327.96,83.91 L329.37,81.67 L330.67,79.36 L331.86,76.99 L332.93,74.57 L333.88,72.09 L334.70,69.58 L335.41,67.02 L335.98,64.43 L336.43,61.82 L336.72,59.43 L336.98,55.47 L336.94,51.49 L336.58,47.29 L335.94,43.36 L335.01,39.50 L334.24,36.96 L333.43,34.70 L331.87,31.04 L330.05,27.51 L327.98,24.12 L325.51,20.70 L322.94,17.66 L320.16,14.82 L318.19,13.04 L316.33,11.52 L313.12,9.18 L309.74,7.09 L307.19,5.72 L303.79,4.17 L301.32,3.21 L298.58,2.30 L294.97,1.34 L292.37,0.82 L289.51,0.40 L286.87,0.14 L282.95,0.00 L231.28,0.00 L228.35,0.18 L226.71,0.43 L225.12,0.82 L223.05,1.51 L222.13,1.89 L220.25,2.83 L219.21,3.45 L218.38,4.00 L216.71,5.30 L215.11,6.81 L213.73,8.40 L213.01,9.38 L212.45,10.21 L211.39,12.07 L210.53,14.00 L210.13,15.12 L209.44,17.71 L209.12,19.84 L209.00,22.21 L209.02,58.62 L209.09,59.27 L209.34,60.55 L209.76,61.79 L210.03,62.39 L210.68,63.52 L211.06,64.05 L211.48,64.56 L212.40,65.48 L213.44,66.28 L214.57,66.93 L215.16,67.20 L216.40,67.62 L217.68,67.88 L218.98,67.97 L229.98,67.99 L231.29,67.90 L232.57,67.65 L233.20,67.46 L234.41,66.96 L234.99,66.65 L236.08,65.93 L236.59,65.51 L237.51,64.59 L237.93,64.08 L238.31,63.55 L238.97,62.42 L239.24,61.82 L239.66,60.58 L239.91,59.29 L240.00,57.99 L240.00,40.08 L240.08,39.32 L240.46,38.42 L241.10,37.68 L241.94,37.20 L242.51,37.04 L242.95,37.00 L282.96,37.01 L284.71,37.16 L286.20,37.45 L287.70,37.90 L289.07,38.46 L290.54,39.25 L291.98,40.24 L293.17,41.26 L294.29,42.44 L295.35,43.83 L296.16,45.17 L296.85,46.64 L297.43,48.34 L297.78,49.93 L297.98,51.71 L297.98,53.34 L297.78,55.08 L297.42,56.71 L296.85,58.37 L296.18,59.78 L295.34,61.18 L294.28,62.57 L293.24,63.68 L292.06,64.70 L290.85,65.56 L289.49,66.33 L288.10,66.95 L286.66,67.43 L285.22,67.76 L283.94,67.93 L282.58,68.00 L249.35,68.02 L248.05,68.19 L247.41,68.34 L246.17,68.76 L245.58,69.03 L244.44,69.69 L243.91,70.07 L242.93,70.93 L242.48,71.41 L241.69,72.44 L241.03,73.58 L240.53,74.79 L240.34,75.41 L240.09,76.69 L240.00,78.00 L240.00,114.05 L239.87,114.87 L239.44,115.75 L238.90,116.32 L238.06,116.80 L237.49,116.96 L236.92,117.00 L146.08,117.00 L145.51,116.96 L144.59,116.64 L144.10,116.32 L143.68,115.90 L143.20,115.06 L143.04,114.49 L143.00,114.05 L142.98,9.38 L142.91,8.73 L142.66,7.45 L142.24,6.21 L141.97,5.62 L141.32,4.48 L140.94,3.95 L140.08,2.97 L139.60,2.52 L138.56,1.73 L137.43,1.07 L136.84,0.80 L136.22,0.57 L134.96,0.23 L133.67,0.06 L111.54,0.03 L110.24,0.20 L109.60,0.34 L108.36,0.76 L107.77,1.03 L106.63,1.69 L105.59,2.48 L105.12,2.93 L73.59,34.41 L73.08,34.80 L72.56,35.06 L71.99,35.21 L71.40,35.25 L70.82,35.18 L70.26,34.99 L69.75,34.69 L69.41,34.41 L37.96,2.96 L36.98,2.10 L35.89,1.37 L35.32,1.06 L34.11,0.56 L32.85,0.22 L31.55,0.05 L9.36,0.03Z\"/></svg>",
+  "hero": {
+   "kicker": [
+    "Websites, automation and practical AI",
+    "Irvine, California"
+   ],
+   "h1": [
+    "More customers.",
+    "Fewer late nights."
+   ],
+   "lead": "I work with owner-run businesses on the things that slip when you’re busy: a website that takes bookings, quotes that get a follow-up on day two, invoices that get chased before they’re two months old. I set it up, train your team, and keep it running.",
+   "cta": [
+    "Get a free assessment",
+    "See services and prices"
+   ],
+   "reassure": "Send me your website and I’ll send back three things worth fixing, within one business day. Serving Southern California and businesses nationwide.",
+   "sheet_title": "What a free assessment looks like",
+   "sheet_small": "Examples",
+   "tabs": [
+    [
+     "dental",
+     "Dental office"
+    ],
+    [
+     "restaurant",
+     "Restaurant"
+    ],
+    [
+     "contractor",
+     "Contractor"
+    ],
+    [
+     "salon",
+     "Salon"
+    ]
+   ],
+   "sheet_foot": "Yours is written about your business, in plain English, with what to fix first.",
+   "facts": [
+    [
+     "17",
+     "working websites you can open and try"
+    ],
+    [
+     "1 day",
+     "from your message to a written assessment"
+    ],
+    [
+     "$500",
+     "fixes the first thing, inside a week"
+    ]
+   ],
+   "examples": {
+    "dental": [
+     [
+      "Website",
+      "On a phone, the booking button is three screens down.",
+      "put it at the top of every page."
+     ],
+     [
+      "Insurance",
+      "New patients can’t tell whether you take their plan without calling.",
+      "list the plans you take, and what a cleaning costs without one."
+     ],
+     [
+      "After hours",
+      "A call at 5:40 rings out, and that patient books somewhere else.",
+      "a text back inside a minute, with a link to book."
+     ]
+    ],
+    "restaurant": [
+     [
+      "Menu",
+      "The menu is a PDF from last spring. On a phone it has to be pinched to read.",
+      "put tonight’s menu on the page as text, with prices."
+     ],
+     [
+      "Hours",
+      "Google says you close at 9. The door says 10 on Fridays and Saturdays.",
+      "match your hours everywhere customers look."
+     ],
+     [
+      "Private dining",
+      "Requests for the back room land in a shared inbox and wait for whoever sees them.",
+      "a short form that goes to one person, with a reply the same minute."
+     ]
+    ],
+    "contractor": [
+     [
+      "Portfolio",
+      "Your best kitchen is the ninth photo in a gallery with no captions.",
+      "lead with three finished jobs, each with the scope and how long it took."
+     ],
+     [
+      "Estimate form",
+      "The form asks eleven questions before anyone can say what they need.",
+      "cut it to a name, a phone number and the job."
+     ],
+     [
+      "Quotes",
+      "A quote goes out and nobody checks back.",
+      "a follow-up on day two and day seven, written the way you talk."
+     ]
+    ],
+    "salon": [
+     [
+      "Prices",
+      "Your prices are on Instagram but not on the site.",
+      "one price list on the site, kept current."
+     ],
+     [
+      "Hours",
+      "Google says you’re closed Saturdays. Your site says open until 2.",
+      "match your hours everywhere customers look."
+     ],
+     [
+      "No-shows",
+      "A missed appointment costs a chair for an hour, and nobody got a reminder.",
+      "a text the day before, with one tap to confirm or move."
+     ]
+    ]
+   }
+  },
+  "services": {
+   "label": "Services",
+   "h2": "Three ways to start.",
+   "lead": "Fix one thing for $500, rebuild the website, or connect the tools you already pay for.",
+   "items": [
+    {
+     "id": "quick-win",
+     "letter": "A",
+     "name": "Quick Win",
+     "price": "$500",
+     "price_note": "Fixed scope. Credited toward a larger build when you continue.",
+     "cta": "Find my Quick Win",
+     "interest": "Quick Win",
+     "what_html": [
+      "One thing fixed and working inside a week: online booking, replies to new inquiries, a text back after a missed call, or review requests.",
+      "A focused one-week setup once access and content are ready."
+     ],
+     "bullets": [
+      "One clearly defined workflow.",
+      "Setup using your existing tools where practical.",
+      "Approved messaging and a guided handoff."
+     ]
+    },
+    {
+     "id": "website",
+     "letter": "B",
+     "name": "Website & Inquiry Setup",
+     "price": "From $2,000",
+     "price_note": "A written scope and price before anything starts.",
+     "cta": "Discuss my website",
+     "interest": "Website & Inquiry Setup",
+     "what_html": [
+      "A site that shows what you do, what it costs and how to book, with every inquiry landing somewhere it gets answered.",
+      "<a href=\"#work\">Seventeen of them are below.</a> Open one and use it the way a customer would."
+     ],
+     "bullets": [
+      "A website designed around your services and customers.",
+      "Clear contact or booking paths.",
+      "Inquiry routing and a practical follow-up process.",
+      "Mobile-friendly pages and a straightforward handoff."
+     ]
+    },
+    {
+     "id": "workflows-ai",
+     "letter": "C",
+     "name": "Connected Workflows & AI",
+     "price": "Scoped",
+     "price_note": "Priced to the job, in writing, with any software costs named up front.",
+     "cta": "Discuss my workflow",
+     "interest": "Connected Workflows & AI",
+     "what_html": [
+      "Connect the tools you already use and take the retyping out of the work between them: estimates, document drafts, customer follow-up and a weekly report.",
+      "<a href=\"/workflows/\">Six workflows worth having in a busy business.</a>"
+     ],
+     "bullets": [
+      "A focused review of the workflow you want to improve.",
+      "Automation and AI configured for the task.",
+      "Clear approvals and useful reporting.",
+      "Team training and written handoff guidance."
+     ]
+    }
+   ],
+   "also": [
+    [
+     "Growth Plan, from $1,000",
+     "For larger projects: workflow research, priorities and a tailored solution preview. The planning fee is credited toward the build."
+    ],
+    [
+     "Website care, from $200 a month",
+     "Hosting, backups, security updates and agreed content changes, so the site stays current after launch."
+    ],
+    [
+     "Founding-client pricing",
+     "Available for the first five businesses, with the scope and rate confirmed in your proposal."
+    ]
+   ]
+  },
+  "captions": {
+   "jewelry-store": [
+    "Halden · Jewelry store",
+    "Engagement rings with prices on every card, and a 3D ring designer: pick the setting, the metal and the stone, and turn the ring to see it from any side."
+   ],
+   "site-birchway": [
+    "Birchway Pediatrics · Pediatric office",
+    "Request a visit by age and reason, see the morning sick-visit slots, and open the staff side: a front desk inbox, reminder and recall automations, and a private assistant that runs on the practice’s own equipment."
+   ],
+   "site-camino": [
+    "Osteria Camino · Italian restaurant",
+    "Reserve a table, browse tonight’s menu, and ask about the back room. The staff side holds the reservation book, review replies waiting for approval, and a pre-shift brief."
+   ],
+   "site-paperwhale": [
+    "Paperwhale Books · Bookstore",
+    "Shop real titles with pickup in about two hours, staff picks and events. The staff side shows orders, special requests, newsletter drafts and a weekly brief for the owner."
+   ],
+   "site-quietwell": [
+    "Quietwell Aesthetics · Med spa",
+    "Book in under a minute, a treatment menu with prices on it, a membership plan, and a text line for clients who would rather not call."
+   ],
+   "site-bellwood": [
+    "Bellwood Family Dental · Dental office",
+    "Next open appointments right on the home page, an insurance check, clear prices for patients without insurance, and a same-day emergency line."
+   ],
+   "site-little-orbit": [
+    "Little Orbit Tea · Boba shop",
+    "Real online ordering: build a drink, choose pickup or delivery, check out and follow the order, plus a rewards card."
+   ],
+   "site-coffee": [
+    "Kestrel Hill Coffee Roasters · Coffee roaster",
+    "Order ahead to skip the line, a bean club subscription for fresh bags, and live open hours in the header."
+   ],
+   "site-marlow": [
+    "Marlow & Rye Bakery · Bakery",
+    "Today’s bake counted down live as it sells, a four-step cake builder, and weekly standing orders for bread."
+   ],
+   "site-cedarline": [
+    "Cedarline Kitchen · Restaurant",
+    "Table reservations, tonight’s menu, and a private dining inquiry for rehearsal dinners, offsites and birthdays."
+   ],
+   "site-hollis": [
+    "Hollis Flower House · Florist",
+    "Same-day delivery with a ZIP check and order cutoff, weekly flower subscriptions, and wedding inquiries."
+   ],
+   "site-salon": [
+    "Ostrander Hair Studio · Hair salon",
+    "Pick a service, then a stylist and a time, with straightforward pricing, a texting line and a first-visit offer."
+   ],
+   "site-crestline": [
+    "Crestline Design-Build · Remodeling company",
+    "A cost estimator that returns a real price range in seconds, a text-back with the itemized breakdown, finished projects with timelines, and plain-English permit and cost guides."
+   ],
+   "site-solace": [
+    "Solace Studio Dental · Dental studio",
+    "Pick a visit type and a real open time, see what your insurance covers before you arrive, and get intake forms by text."
+   ],
+   "site-command-center": [
+    "Owner command center",
+    "Overnight emails sorted, new leads graded, and drafted replies waiting for the owner’s approval, next to live job profit. Nothing goes out until you approve. Sample data."
+   ],
+   "site-pilates": [
+    "Springline Reformer Studio · Pilates studio",
+    "A live class schedule with spots left, intro packs, and membership plans, with an app-style tab bar on phones."
+   ],
+   "email-automation": [
+    "Email automation: inbox",
+    "A new inquiry arrives, gets sorted, and a reply is drafted in your voice, ready for one tap. Sample automation."
+   ],
+   "auto-follow-up": [
+    "Inquiries acknowledged right away",
+    "An inquiry gets an instant text and a follow-up plan runs on schedule; a customer reply pauses that sequence and alerts the right person."
+   ],
+   "auto-reminders": [
+    "Appointments that show up",
+    "The week’s calendar with every confirmation tracked, a missed visit already being rebooked, and a reminder text for anyone who has not replied."
+   ],
+   "auto-reviews": [
+    "Feedback that is easy to give",
+    "Your rating, the reviews coming in, and the month’s requests, with a clear route for your team to respond."
+   ],
+   "auto-invoices": [
+    "Invoices that chase themselves",
+    "What is owed and how old it is, with each invoice’s next step queued and a payment link in every message."
+   ],
+   "site-boutique": [
+    "Fig & Fennimore · Clothing boutique",
+    "A seasonal lookbook, new arrivals with a cart, a fitting room you can book with a stylist, and an early-look email list."
+   ],
+   "brokerage-site": [
+    "Brokerage website redesign",
+    "The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed."
+   ],
+   "lead-responder": [
+    "A seller inquiry, answered right away",
+    "A homeowner asks a brokerage for a pricing analysis and sees a confirmation immediately, while the agent gets the request with every detail filled in."
+   ],
+   "blog-library": [
+    "Local guide library",
+    "Buyer and neighborhood guides with clear structure, built to be found and understood in search."
+   ],
+   "ad-studio": [
+    "Video ad studio",
+    "Short vertical ads for TikTok, Reels and Facebook in claymation and 3D blueprint styles, rendered from the client’s real projects."
+   ],
+   "remodel-office": [
+    "Office app: today’s list",
+    "What needs the owner’s attention today, pulled automatically from the business inbox and job list. Sample data."
+   ],
+   "team-hub": [
+    "Team Hub",
+    "One dashboard where staff approve leads, posts and emails before anything goes out, with the week’s numbers at a glance. Sample data."
+   ],
+   "remodel-deck": [
+    "A finished rear deck",
+    "Completed work from the remodeling company’s portfolio."
+   ],
+   "remodel-job": [
+    "Office app: job page",
+    "Each job’s stage, next step, payments and real profit once crew hours are counted. Sample job."
+   ],
+   "remodel-inbox": [
+    "Office app: inbox review",
+    "Receipts, payments and new leads read from the business inbox, each waiting for the owner’s approval. Sample data."
+   ],
+   "security-report": [
+    "Website security report",
+    "Hidden spam links and out-of-date software found on the brokerage’s old site, explained in plain English with the fix for each."
+   ],
+   "launch-kit": [
+    "Listing launch kit",
+    "One short form produces the listing page, social posts, an email blast and print pieces for a new listing."
+   ],
+   "market-reports": [
+    "Monthly market reports",
+    "Neighborhood prices and trends, drafted each month for agents to review and send to their clients."
+   ],
+   "permit-map": [
+    "Permit lead map",
+    "New building permits from four Southern California cities, sorted by the trade that comes next and worked right on the map."
+   ]
+  },
+  "work": {
+   "label": "Work",
+   "h2": "Open one and try it.",
+   "lead": "Seventeen working websites and the follow-up systems that run behind them. Book a table, order a drink, design a ring.",
+   "note": "Every site is live: open one and book, order or browse like a customer would. Screens use sample data; business names and details are fictional.",
+   "sites": [
+    {
+     "no": "01",
+     "name": "Halden",
+     "trade": "Jewelry store, 3D ring designer",
+     "href": "/work/jewelry/#shop",
+     "key": "jewelry-store",
+     "extra": [
+      "Open the ring designer",
+      "/work/jewelry/builder.html"
+     ],
+     "cap_title": "Halden · Jewelry store",
+     "cap": "Engagement rings with prices on every card, and a 3D ring designer: pick the setting, the metal and the stone, and turn the ring to see it from any side."
+    },
+    {
+     "no": "02",
+     "name": "Boutique brokerage",
+     "trade": "Real estate",
+     "href": "/work/brokerage/site/",
+     "key": "brokerage-site",
+     "extra": null,
+     "cap_title": "Brokerage website redesign",
+     "cap": "The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed."
+    },
+    {
+     "no": "03",
+     "name": "Birchway Pediatrics",
+     "trade": "Pediatric office",
+     "href": "/work/sites/birchway/",
+     "key": "site-birchway",
+     "extra": [
+      "Open the staff side",
+      "/work/sites/birchway/#staff"
+     ],
+     "cap_title": "Birchway Pediatrics · Pediatric office",
+     "cap": "Request a visit by age and reason, see the morning sick-visit slots, and open the staff side: a front desk inbox, reminder and recall automations, and a private assistant that runs on the practice’s own equipment."
+    },
+    {
+     "no": "04",
+     "name": "Osteria Camino",
+     "trade": "Italian restaurant",
+     "href": "/work/sites/camino/",
+     "key": "site-camino",
+     "extra": [
+      "Open the staff side",
+      "/work/sites/camino/#staff"
+     ],
+     "cap_title": "Osteria Camino · Italian restaurant",
+     "cap": "Reserve a table, browse tonight’s menu, and ask about the back room. The staff side holds the reservation book, review replies waiting for approval, and a pre-shift brief."
+    },
+    {
+     "no": "05",
+     "name": "Paperwhale Books",
+     "trade": "Bookstore",
+     "href": "/work/sites/paperwhale/",
+     "key": "site-paperwhale",
+     "extra": [
+      "Open the staff side",
+      "/work/sites/paperwhale/#staff"
+     ],
+     "cap_title": "Paperwhale Books · Bookstore",
+     "cap": "Shop real titles with pickup in about two hours, staff picks and events. The staff side shows orders, special requests, newsletter drafts and a weekly brief for the owner."
+    },
+    {
+     "no": "06",
+     "name": "Quietwell Aesthetics",
+     "trade": "Med spa",
+     "href": "/work/sites/quietwell/",
+     "key": "site-quietwell",
+     "extra": null,
+     "cap_title": "Quietwell Aesthetics · Med spa",
+     "cap": "Book in under a minute, a treatment menu with prices on it, a membership plan, and a text line for clients who would rather not call."
+    },
+    {
+     "no": "07",
+     "name": "Little Orbit Tea",
+     "trade": "Boba shop",
+     "href": "/work/sites/little-orbit/",
+     "key": "site-little-orbit",
+     "extra": null,
+     "cap_title": "Little Orbit Tea · Boba shop",
+     "cap": "Real online ordering: build a drink, choose pickup or delivery, check out and follow the order, plus a rewards card."
+    },
+    {
+     "no": "08",
+     "name": "Crestline Design-Build",
+     "trade": "Remodeling company",
+     "href": "/work/sites/crestline/",
+     "key": "site-crestline",
+     "extra": null,
+     "cap_title": "Crestline Design-Build · Remodeling company",
+     "cap": "A cost estimator that returns a real price range in seconds, a text-back with the itemized breakdown, finished projects with timelines, and plain-English permit and cost guides."
+    },
+    {
+     "no": "09",
+     "name": "Cedarline Kitchen",
+     "trade": "Restaurant",
+     "href": "/work/sites/cedarline/",
+     "key": "site-cedarline",
+     "extra": null,
+     "cap_title": "Cedarline Kitchen · Restaurant",
+     "cap": "Table reservations, tonight’s menu, and a private dining inquiry for rehearsal dinners, offsites and birthdays."
+    },
+    {
+     "no": "10",
+     "name": "Hollis Flower House",
+     "trade": "Florist",
+     "href": "/work/sites/hollis/",
+     "key": "site-hollis",
+     "extra": null,
+     "cap_title": "Hollis Flower House · Florist",
+     "cap": "Same-day delivery with a ZIP check and order cutoff, weekly flower subscriptions, and wedding inquiries."
+    },
+    {
+     "no": "11",
+     "name": "Bellwood Family Dental",
+     "trade": "Dental office",
+     "href": "/work/sites/bellwood/",
+     "key": "site-bellwood",
+     "extra": null,
+     "cap_title": "Bellwood Family Dental · Dental office",
+     "cap": "Next open appointments right on the home page, an insurance check, clear prices for patients without insurance, and a same-day emergency line."
+    },
+    {
+     "no": "12",
+     "name": "Kestrel Hill Coffee Roasters",
+     "trade": "Coffee roaster",
+     "href": "/work/sites/coffee/",
+     "key": "site-coffee",
+     "extra": null,
+     "cap_title": "Kestrel Hill Coffee Roasters · Coffee roaster",
+     "cap": "Order ahead to skip the line, a bean club subscription for fresh bags, and live open hours in the header."
+    },
+    {
+     "no": "13",
+     "name": "Marlow & Rye Bakery",
+     "trade": "Bakery",
+     "href": "/work/sites/marlow/",
+     "key": "site-marlow",
+     "extra": null,
+     "cap_title": "Marlow & Rye Bakery · Bakery",
+     "cap": "Today’s bake counted down live as it sells, a four-step cake builder, and weekly standing orders for bread."
+    },
+    {
+     "no": "14",
+     "name": "Ostrander Hair Studio",
+     "trade": "Hair salon",
+     "href": "/work/sites/salon/",
+     "key": "site-salon",
+     "extra": null,
+     "cap_title": "Ostrander Hair Studio · Hair salon",
+     "cap": "Pick a service, then a stylist and a time, with straightforward pricing, a texting line and a first-visit offer."
+    },
+    {
+     "no": "15",
+     "name": "Springline Reformer Studio",
+     "trade": "Pilates studio",
+     "href": "/work/sites/pilates/",
+     "key": "site-pilates",
+     "extra": null,
+     "cap_title": "Springline Reformer Studio · Pilates studio",
+     "cap": "A live class schedule with spots left, intro packs, and membership plans, with an app-style tab bar on phones."
+    },
+    {
+     "no": "16",
+     "name": "Fig & Fennimore",
+     "trade": "Clothing boutique",
+     "href": "/work/sites/boutique/",
+     "key": "site-boutique",
+     "extra": null,
+     "cap_title": "Fig & Fennimore · Clothing boutique",
+     "cap": "A seasonal lookbook, new arrivals with a cart, a fitting room you can book with a stylist, and an early-look email list."
+    },
+    {
+     "no": "17",
+     "name": "Solace Studio Dental",
+     "trade": "Dental studio",
+     "href": "/work/sites/solace/",
+     "key": "site-solace",
+     "extra": null,
+     "cap_title": "Solace Studio Dental · Dental studio",
+     "cap": "Pick a visit type and a real open time, see what your insurance covers before you arrive, and get intake forms by text."
+    }
+   ],
+   "flows": [
+    {
+     "key": "email-automation",
+     "alt": "Inbox with a new inquiry and a drafted reply ready to approve",
+     "title": "An inbox that answers itself",
+     "text": "Routine emails get an instant reply; personal ones wait as a draft for you to approve.",
+     "cap_title": "Email automation: inbox",
+     "cap": "A new inquiry arrives, gets sorted, and a reply is drafted in your voice, ready for one tap. Sample automation."
+    },
+    {
+     "key": "auto-follow-up",
+     "alt": "A text conversation beside a follow-up timeline",
+     "title": "Inquiries acknowledged right away",
+     "text": "Every inquiry gets an instant acknowledgment and a friendly follow-up schedule.",
+     "cap_title": "Inquiries acknowledged right away",
+     "cap": "An inquiry gets an instant text and a follow-up plan runs on schedule; a customer reply pauses that sequence and alerts the right person."
+    },
+    {
+     "key": "auto-reminders",
+     "alt": "A weekly calendar of appointments with confirmation status",
+     "title": "Appointments that show up",
+     "text": "Reminders and easy rescheduling by text cut no-shows.",
+     "cap_title": "Appointments that show up",
+     "cap": "The week’s calendar with every confirmation tracked, a missed visit already being rebooked, and a reminder text for anyone who has not replied."
+    },
+    {
+     "key": "auto-reviews",
+     "alt": "A rating summary with new customer reviews",
+     "title": "Feedback that is easy to give",
+     "text": "A consistent request after every completed job or visit, with a clear route for your team to respond.",
+     "cap_title": "Feedback that is easy to give",
+     "cap": "Your rating, the reviews coming in, and the month’s requests, with a clear route for your team to respond."
+    },
+    {
+     "key": "auto-invoices",
+     "alt": "An overdue summary and a table of open invoices",
+     "title": "Invoices that chase themselves",
+     "text": "Polite reminders with a payment link, stopping once you are paid.",
+     "cap_title": "Invoices that chase themselves",
+     "cap": "What is owed and how old it is, with each invoice’s next step queued and a payment link in every message."
+    },
+    {
+     "key": "site-command-center",
+     "alt": "Owner command center with an approval queue and live job profit",
+     "title": "An owner’s morning view",
+     "text": "An approval queue and live job profit in one place.",
+     "cap_title": "Owner command center",
+     "cap": "Overnight emails sorted, new leads graded, and drafted replies waiting for the owner’s approval, next to live job profit. Nothing goes out until you approve. Sample data."
+    }
+   ],
+   "cases": [
+    {
+     "id": "case-remodeler",
+     "tag": "Client project · Home services",
+     "title": "A connected toolkit for a remodeling business",
+     "sum": "A public website, an office workspace, a job tracker for crews and a set of video ads, in place of a spreadsheet and a crowded inbox.",
+     "cols": [
+      {
+       "h": "The business need",
+       "html": "<p>A design-build crew doing kitchens, baths and decks needed one organized place for inquiries, estimates, payments, job costs and marketing, so nothing lives only in someone’s head.</p>"
+      },
+      {
+       "h": "The solution",
+       "html": "<ul><li>A public website with service pages and 57 plain-spoken local remodeling guides</li><li>An office workspace for inbox review, estimates, payments and job details</li><li>A mobile layout designed for crews in the field, tracking hours, costs and what each job really earns</li><li>Short video ads in six styles, queued on a weekly posting schedule</li></ul>"
+      },
+      {
+       "h": "How it supports the team",
+       "html": "<ul><li>Larger text and five clear groups make the office workspace easy for the owner to use every day</li><li>Customer data stays on the owner’s computer</li><li>The AI drafts and organizes; nothing reaches the books or a customer until the owner approves it</li><li>Careful checks against representative business data before delivery</li></ul>"
+      }
+     ],
+     "kv": [],
+     "shots": [
+      {
+       "key": "remodel-job",
+       "alt": "Job page with stages and profit",
+       "w": 1024,
+       "h": 754,
+       "caption": "A job’s stage and real profit.",
+       "extra": null,
+       "cap_title": "Office app: job page",
+       "cap": "Each job’s stage, next step, payments and real profit once crew hours are counted. Sample job."
+      },
+      {
+       "key": "remodel-inbox",
+       "alt": "Inbox items to review",
+       "w": 1280,
+       "h": 800,
+       "caption": "Receipts and leads waiting for approval.",
+       "extra": null,
+       "cap_title": "Office app: inbox review",
+       "cap": "Receipts, payments and new leads read from the business inbox, each waiting for the owner’s approval. Sample data."
+      },
+      {
+       "key": "ad-studio",
+       "alt": "Claymation and blueprint video ads",
+       "w": 1280,
+       "h": 800,
+       "caption": "Claymation and blueprint video ads.",
+       "extra": null,
+       "cap_title": "Video ad studio",
+       "cap": "Short vertical ads for TikTok, Reels and Facebook in claymation and 3D blueprint styles, rendered from the client’s real projects."
+      },
+      {
+       "key": "remodel-office",
+       "alt": "Office workspace showing today’s list",
+       "w": 1280,
+       "h": 800,
+       "caption": "Office workspace: today’s list.",
+       "extra": null,
+       "cap_title": "Office app: today’s list",
+       "cap": "What needs the owner’s attention today, pulled automatically from the business inbox and job list. Sample data."
+      }
+     ],
+     "demos_label": "",
+     "demos": [],
+     "fine": "Screens use sample data."
+    },
+    {
+     "id": "case-brokerage",
+     "tag": "Custom solution showcase · Real estate",
+     "title": "A modern website and AI workspace for real estate",
+     "sum": "A rebuilt website and an agent workspace that handle lead follow-up, listing campaigns, market reports and content approvals in one place.",
+     "cols": [
+      {
+       "h": "The business need",
+       "html": "<p>An independent boutique brokerage wanted a website that matched the quality of its listings, plus a consistent way to follow up with leads and launch every new listing.</p>"
+      },
+      {
+       "h": "The solution",
+       "html": "<ul><li>The existing site rebuilt page for page, with an optional modern redesign and listing search</li><li>A 24/7 lead responder, listing launch kit and review engine</li><li>Social and video tools, plus monthly market reports</li><li>A Team Hub that brings eight AI tools together for agents</li></ul>"
+      },
+      {
+       "h": "How it supports the team",
+       "html": "<p>Agents work from one place and approve every lead reply, post and email before it goes out, so the brokerage’s voice stays consistent across every channel.</p>"
+      }
+     ],
+     "kv": [
+      [
+       "8",
+       "AI tools for agents"
+      ],
+      [
+       "48",
+       "Buyer and area guides"
+      ]
+     ],
+     "shots": [
+      {
+       "key": "brokerage-site",
+       "alt": "The redesigned brokerage website",
+       "w": 1600,
+       "h": 1000,
+       "caption": "The redesigned website, with listing search.",
+       "extra": [
+        "Open website",
+        "/work/brokerage/site/"
+       ],
+       "cap_title": "Brokerage website redesign",
+       "cap": "The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed."
+      },
+      {
+       "key": "launch-kit",
+       "alt": "Listing launch kit",
+       "w": 1280,
+       "h": 800,
+       "caption": "A full listing campaign from one form.",
+       "extra": [
+        "Open launch kit",
+        "/work/brokerage/launch/"
+       ],
+       "cap_title": "Listing launch kit",
+       "cap": "One short form produces the listing page, social posts, an email blast and print pieces for a new listing."
+      },
+      {
+       "key": "market-reports",
+       "alt": "Market reports",
+       "w": 1280,
+       "h": 800,
+       "caption": "Monthly market reports.",
+       "extra": [
+        "Open reports",
+        "/work/brokerage/reports/"
+       ],
+       "cap_title": "Monthly market reports",
+       "cap": "Neighborhood prices and trends, drafted each month for agents to review and send to their clients."
+      }
+     ],
+     "demos_label": "Try the live demos",
+     "demos": [
+      [
+       "Redesigned website ↗",
+       "/work/brokerage/site/"
+      ],
+      [
+       "Team Hub ↗",
+       "/work/brokerage/hub/"
+      ],
+      [
+       "Lead responder ↗",
+       "/work/brokerage/responder/"
+      ],
+      [
+       "Review engine ↗",
+       "/work/brokerage/reviews/"
+      ],
+      [
+       "Listing launch kit ↗",
+       "/work/brokerage/launch/"
+      ],
+      [
+       "Content engine ↗",
+       "/work/brokerage/social/"
+      ],
+      [
+       "Listing ads ↗",
+       "/work/brokerage/ads/"
+      ],
+      [
+       "Virtual staging ↗",
+       "/work/brokerage/staging/"
+      ],
+      [
+       "Home value notes ↗",
+       "/work/brokerage/nurture/"
+      ],
+      [
+       "Market reports ↗",
+       "/work/brokerage/reports/"
+      ],
+      [
+       "Site protection ↗",
+       "/work/brokerage/security/"
+      ]
+     ],
+     "fine": "Screens use sample data."
+    },
+    {
+     "id": "case-permits",
+     "tag": "Tool · Contractors",
+     "title": "A lead map built from new building permits",
+     "sum": "Public permit data from four Southern California cities becomes a lead list for the trades that come after the permit, worked right on the map.",
+     "cols": [
+      {
+       "h": "The business need",
+       "html": "<p>The trade that pulls a permit already has the job. Countertop, cabinet, fencing and landscaping companies come next, and they rarely hear about it in time.</p>"
+      },
+      {
+       "h": "The solution",
+       "html": "<ul><li>New permits from Los Angeles, Anaheim, Newport Beach and Costa Mesa, refreshed from each city’s public data</li><li>Each permit sorted by what follows it: a kitchen remodel means countertops and cabinets, a pool means fencing and landscaping</li><li>Leads worked on the map: status, notes, follow-up dates and directions</li><li>A postcard preview for each address, as one possible next step</li></ul>"
+      },
+      {
+       "h": "How it’s used",
+       "html": "<p>Open the map, filter to your trade and city, and work the list: mark who you’ve contacted, add a note, set a follow-up date and pull up directions.</p>"
+      }
+     ],
+     "kv": [
+      [
+       "11,506",
+       "Permits in the last 45 days"
+      ],
+      [
+       "2,473",
+       "Of them point to countertop work"
+      ]
+     ],
+     "shots": [
+      {
+       "key": "permit-map",
+       "alt": "A map of Los Angeles with new building permits marked as leads around Santa Monica",
+       "w": 1600,
+       "h": 1000,
+       "caption": "New permits around Santa Monica, marked as leads.",
+       "extra": [
+        "Open the permit lead map",
+        "/work/permits/"
+       ],
+       "cap_title": "Permit lead map",
+       "cap": "New building permits from four Southern California cities, sorted by the trade that comes next and worked right on the map."
+      }
+     ],
+     "demos_label": "Try the live demo",
+     "demos": [
+      [
+       "Permit lead map ↗",
+       "/work/permits/"
+      ]
+     ],
+     "fine": ""
+    }
+   ],
+   "flows_head": [
+    "Workflows that handle the routine",
+    "Inbox replies, lead follow-up, reminders, reviews and invoice chasing, working in the background while you run the business."
+   ],
+   "cases_head": [
+    "Larger systems",
+    "Three bigger builds, each with the need, what was built and screens you can open."
+   ]
+  },
+  "about": {
+   "label": "Meet Myles",
+   "h2": "The person doing the work.",
+   "figcaption": "Myles Parslow · Founder",
+   "body": [
+    "I’m Myles Parslow. I started MLP Consulting to build the websites and behind-the-scenes systems that owner-run businesses rarely have time to set up for themselves.",
+    "I studied philosophy at USC, and I build things. A remodeling company’s office system that reads the inbox, tracks job costs and shows what each job really earned. A real estate website with eight AI tools for its agents. A lead map drawn from more than 11,000 city building permits. The seventeen sites in the work section above.",
+    "My background is in law-firm conflicts and risk, where a missed detail has consequences and nothing goes out unchecked. I run projects the same way: the scope is written down, you approve what customers see, and the handoff is documented. I’m based in Irvine."
+   ],
+   "quote": "“The money is usually leaking somewhere else, like quotes nobody followed up on or invoices that sat for two months before anyone asked.”",
+   "quote_footer_html": "Myles Parslow in Peekwire · <a href=\"https://peekwire.com/article/the-automation-advice-that-misses-the-mark-an-interview-with-myles-parslow-of-mlp-consulting\" target=\"_blank\" rel=\"noopener\">Read the interview</a>"
+  },
+  "contact": {
+   "label": "Contact",
+   "h2": "What would make your business easier to run?",
+   "avail": "Now booking projects for December.",
+   "lead_html": "Tell me what the business does and what’s eating your time. I’ll look at your website and how customers reach you, then send back three things worth fixing first. Questions first? <a href=\"/how-it-works/\">See how a project runs.</a>",
+   "cal_text": "Prefer to talk? Book a free 30-minute call ↗",
+   "cal_href": "https://cal.com/mlpconsults/free-check-up",
+   "email": "myles@mlpconsults.com",
+   "phone_text": "(518) 306-9403",
+   "phone_href": "tel:+15183069403",
+   "form_html": "<form id=\"intake\" class=\"rv d1\" novalidate>\n      <input type=\"hidden\" id=\"f-interest\" name=\"interest\" value=\"Free assessment\">\n      <p class=\"interest\" id=\"interest-line\" hidden>Interested in: <b id=\"interest-val\"></b></p>\n      <div class=\"row2\">\n        <label for=\"f-name\">Your name<input id=\"f-name\" name=\"name\" autocomplete=\"name\" required></label>\n        <label for=\"f-biz\">Business name<input id=\"f-biz\" name=\"business\" autocomplete=\"organization\" required></label>\n      </div>\n      <div class=\"row2\">\n        <label for=\"f-contact\">Email<input id=\"f-contact\" name=\"email\" type=\"email\" autocomplete=\"email\" required></label>\n        <label for=\"f-site\"><span>Website <small>(optional)</small></span><input id=\"f-site\" name=\"website\" inputmode=\"url\" placeholder=\"yourbusiness.com\"></label>\n      </div>\n      <div class=\"row2\">\n        <label for=\"f-when\"><span>When do you need it? <small>(optional)</small></span><select id=\"f-when\" name=\"timing\"><option value=\"\">Choose one</option><option>As soon as possible</option><option>In the next month</option><option>In 1–3 months</option><option>Just exploring</option></select></label>\n        <label for=\"f-budget\"><span>Rough budget <small>(optional)</small></span><select id=\"f-budget\" name=\"budget\"><option value=\"\">Choose one</option><option>Under $500</option><option>$500–$2,000</option><option>$2,000–$5,000</option><option>$5,000 or more</option><option>Not sure yet</option></select></label>\n      </div>\n      <label for=\"f-pain\"><span>What would you like to improve? <small>(optional)</small></span><textarea id=\"f-pain\" name=\"goal\"></textarea></label>\n      <details class=\"refd\"><summary>Were you referred by someone?</summary>\n        <label for=\"f-ref\"><span class=\"vh\">Referred by</span><input id=\"f-ref\" name=\"referrer\" placeholder=\"Name of the person who sent you\"></label>\n      </details>\n      <button class=\"btn solid\" type=\"submit\" style=\"justify-self:start\">Get my free assessment</button>\n      <div class=\"done\" id=\"done\" role=\"status\" aria-live=\"polite\" hidden></div>\n    </form>",
+   "form_js": "/* ---- offer buttons preselect the inquiry subject; UTM/source kept for attribution ---- */\n  var qs=new URLSearchParams(location.search),interest=document.getElementById('f-interest'),iline=document.getElementById('interest-line'),ival=document.getElementById('interest-val');\n  function setInterest(t){if(!t)return;interest.value=t;ival.textContent=t;iline.hidden=(t==='Free assessment');}\n  document.querySelectorAll('[data-interest]').forEach(function(a){a.addEventListener('click',function(){setInterest(a.getAttribute('data-interest'));});});\n  setInterest(qs.get('interest'));\n  if(qs.get('ref'))document.getElementById('f-ref').value=qs.get('ref');\n  var src=['utm_source','utm_medium','utm_campaign'].map(function(k){return qs.get(k)?k+'='+qs.get(k):'';}).filter(Boolean).join('&');\n  /* ---- form: success is shown only after the server confirms receipt ---- */\n  var emailRe=/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\n  document.getElementById('intake').addEventListener('submit',function(e){\n    e.preventDefault();\n    var done=document.getElementById('done');done.hidden=true;done.className='done';\n    var need=['f-name','f-biz','f-contact'].map(function(id){return document.getElementById(id);}).filter(function(el){el.removeAttribute('aria-invalid');var ok=el.value.trim()&&(el.id!=='f-contact'||emailRe.test(el.value.trim()));return !ok;});\n    if(need.length){need.forEach(function(el){el.setAttribute('aria-invalid','true');});need[0].focus();done.className='done err';done.textContent='Please check the highlighted fields. A name, business name and valid email are needed.';done.hidden=false;return;}\n    var v=function(id){return document.getElementById(id).value.trim();};\n    var btn=e.target.querySelector('button[type=submit]'),label=btn.textContent;\n    var body='Name: '+v('f-name')+'\\nBusiness: '+v('f-biz')+'\\nEmail: '+v('f-contact')+'\\nWebsite: '+v('f-site')+'\\nInterested in: '+v('f-interest')+'\\nTiming: '+v('f-when')+'\\nBudget: '+v('f-budget')+'\\nReferred by: '+v('f-ref')+'\\nSource: '+(src||'direct')+'\\n\\nWhat they would like to improve:\\n'+v('f-pain');\n    btn.disabled=true;btn.textContent='Sending...';\n    /* copy the lead into the HubSpot CRM (best effort; the email below is the source of truth) */\n    try{\n      var hutk=(document.cookie.match(/hubspotutk=([^;]+)/)||[])[1];\n      var hs=[['firstname',v('f-name')],['company',v('f-biz')],['website',v('f-site')],['email',v('f-contact')],['message','Interested in: '+v('f-interest')+'\\nTiming: '+v('f-when')+'\\nBudget: '+v('f-budget')+'\\nReferred by: '+v('f-ref')+'\\nSource: '+(src||'direct')+'\\n\\n'+v('f-pain')]]\n        .filter(function(x){return x[1];}).map(function(x){return {objectTypeId:'0-1',name:x[0],value:x[1]};});\n      var ctx={pageUri:location.href,pageName:document.title};if(hutk)ctx.hutk=hutk;\n      fetch('https://api.hsforms.com/submissions/v3/integration/submit/247871007/41028eeb-eade-4ad2-af4f-d77729628ba6',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:hs,context:ctx})}).catch(function(){});\n    }catch(err){}\n    /* also save the lead in the MLP database (best effort) */\n    try{\n      fetch('https://oardvirqbbawklqvwwxc.supabase.co/rest/v1/leads',{method:'POST',headers:{'Content-Type':'application/json',apikey:'sb_publishable_Ok4J_FZyuLzHinQ910ktjg_ZD6NgTKo',Prefer:'return=minimal'},body:JSON.stringify({name:v('f-name'),business:v('f-biz'),industry:'',website:v('f-site'),contact:v('f-contact'),referred_by:v('f-ref'),pain:('Interested in: '+v('f-interest')+(src?' ['+src+']':'')+(v('f-when')?'\\nTiming: '+v('f-when'):'')+(v('f-budget')?'\\nBudget: '+v('f-budget'):'')+'\\n'+v('f-pain')).trim(),source:'website'})}).catch(function(){});\n    }catch(err){}\n    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:'c3cd3264-8d14-478c-ba2a-afb3df8e7b03',subject:'Free assessment: '+v('f-biz')+' ('+v('f-interest')+')',from_name:'MLP Consulting site',name:v('f-name'),email:v('f-contact'),message:body})})\n      .then(function(r){return r.json();})\n      .then(function(j){if(!j.success)throw new Error('fail');e.target.reset();setInterest('Free assessment');btn.textContent='Request sent';done.className='done';done.textContent='Thanks, your request is in. I’ll review your business and send your assessment within one business day.';done.hidden=false;})\n      .catch(function(){btn.disabled=false;btn.textContent=label;done.className='done err';done.innerHTML='That did not go through. Please email <a href=\"mailto:myles@mlpconsults.com\">myles@mlpconsults.com</a> directly and I will pick it up from there.';done.hidden=false;});\n  });"
+  },
+  "hubspot_loader": "<script type=\"text/javascript\" id=\"hs-script-loader\" async defer src=\"//js-na2.hs-scripts.com/247871007.js\"></script>",
+  "footer": {
+   "blurb": "Websites, automation, and practical AI for owner-run businesses. Irvine, California, working locally and nationwide.",
+   "referral_html": "Know an owner who could use a hand? <a href=\"/referrals/\">Explore referrals.</a>",
+   "copyright": "© 2026 MLP Consulting"
+  }
+ },
+ "how": {
+  "meta": {
+   "title": "How it works | MLP Consulting",
+   "description": "Practical websites, automation, and AI for owner-run businesses. Work directly with Myles Parslow in Irvine, serving Southern California and clients nationwide.",
+   "canonical": "https://mlpconsults.com/how-it-works/",
+   "og_title": "How it works | MLP Consulting",
+   "og_description": "Practical websites, automation, and AI for owner-run businesses. Work directly with Myles Parslow in Irvine, serving Southern California and clients nationwide."
+  },
+  "h1": "How it works.",
+  "lead": "How a project runs, what stays in your control, and answers to the questions owners ask before we talk.",
+  "steps_label": "The steps",
+  "steps_h2": "From first call to handoff.",
+  "steps": [
+   [
+    "1",
+    "Pick the first thing to fix",
+    "We walk through how inquiries, quotes and payments move through your business, and pick the fix that pays off soonest."
+   ],
+   [
+    "2",
+    "Agree on the scope",
+    "You get a written proposal: what gets built, the price, the timeline and any software costs. Nothing starts until you say yes."
+   ],
+   [
+    "3",
+    "Build, test and hand over",
+    "I build it, we run it on real examples until it’s right, and I show your team how to use it. Support continues after launch."
+   ]
+  ],
+  "principles_h2": "Built for your business. Kept in your control.",
+  "principles": [
+   [
+    "Clear approvals",
+    "You approve the messages and rules before launch. Routine work follows those rules, and decisions that need your judgment come back to you."
+   ],
+   [
+    "Your accounts and data",
+    "Your domain, business accounts, and customer data stay yours. You receive the access and documentation needed to manage the work."
+   ],
+   [
+    "Direct support",
+    "You work with me directly, from the first conversation through delivery and support. Call or email and I’m the one who answers."
+   ]
+  ],
+  "faq_label": "Questions",
+  "faq_h2": "Good to know before we talk.",
+  "faq": [
+   [
+    "Where should I start?",
+    "Start with the <a href=\"/#contact\">free assessment</a>. I’ll review your public website and online presence, then recommend three practical improvements. We can use a short conversation to identify the best fit for your team and budget."
+   ],
+   [
+    "Can you work with the software I already use?",
+    "Yes. The starting point is your current setup. I look for ways to improve and connect what you have, and recommend changes when they make the work simpler."
+   ],
+   [
+    "Do I need to know anything about AI?",
+    "You bring your knowledge of the business. I handle the technical setup and explain how the tools fit into the work your team already does."
+   ],
+   [
+    "What does ongoing support include?",
+    "Website care starts at $200 per month, with hosting, backups, security updates, and agreed content changes. Support for connected workflows is scoped around the systems involved and the level of service you need."
+   ],
+   [
+    "What happens after I contact you?",
+    "I’ll review what you’ve shared and recommend a useful next step. When there’s a project to pursue, you’ll receive a clear scope and price before work starts."
+   ]
+  ],
+  "cta_h2": "Ready when you are.",
+  "cta_avail": "Now booking projects for December.",
+  "cta_btn": "Get a free assessment"
+ },
+ "workflows": {
+  "meta": {
+   "title": "Useful workflows for a busy business | MLP Consulting",
+   "description": "Six practical workflows MLP Consulting sets up for owner-run businesses: inquiry follow-up, quote follow-up, payment reminders, review requests, missed-call follow-up and a weekly owner summary.",
+   "canonical": "https://mlpconsults.com/workflows/",
+   "og_title": "Useful workflows for a busy business | MLP Consulting",
+   "og_description": "Six practical workflows MLP Consulting sets up for owner-run businesses: inquiry follow-up, quote follow-up, payment reminders, review requests, missed-call follow-up and a weekly owner summary."
+  },
+  "eyebrow": "Workflows",
+  "h1": "Useful workflows for a busy business.",
+  "lead": "Six moves that take routine follow-up off your plate. Each is set up on the tools you already use, in your wording.",
+  "cards": [
+   {
+    "when": "A form, call or message arrives",
+    "title": "New inquiry follow-up",
+    "text": "A prompt acknowledgment goes out in your words, asks a couple of useful questions, and offers a time to talk. You are alerted right away if it looks like a larger job.",
+    "rule_html": "<strong>Control:</strong> You approve the first reply, once, before launch."
+   },
+   {
+    "when": "A quote goes out",
+    "title": "Quote follow-up",
+    "text": "Friendly check-ins on day 2, 5 and 10, plus a list of who has gone quiet. A customer’s reply pauses that quote’s sequence and alerts you.",
+    "rule_html": "<strong>Control:</strong> You approve each message until you trust the wording."
+   },
+   {
+    "when": "An invoice passes its due date",
+    "title": "Payment reminders",
+    "text": "A polite reminder, then a firmer one, each with a way to pay. You hear about it at two weeks, and the sequence stops once payment is received.",
+    "rule_html": "<strong>Control:</strong> You approve the tone and decide on any call."
+   },
+   {
+    "when": "A job or visit is finished",
+    "title": "Review requests",
+    "text": "Make it easy for customers to share honest feedback after a completed job or visit, with a consistent request process and a clear route for your team to respond.",
+    "rule_html": "<strong>Control:</strong> You approve who gets asked and the wording."
+   },
+   {
+    "when": "A call goes unanswered",
+    "title": "Missed-call follow-up",
+    "text": "A text within a minute asking what’s going on and offering a callback time, logged as a lead so no call is lost. A reply pauses the text and alerts the right person.",
+    "rule_html": "<strong>Control:</strong> You approve the wording and the hours it runs."
+   },
+   {
+    "when": "Monday morning",
+    "title": "Weekly owner summary",
+    "text": "One short message: new inquiries, quotes waiting, money overdue, and the one thing to do first. It goes only to you.",
+    "rule_html": "<strong>Control:</strong> Nothing to approve; it never contacts a customer."
+   }
+  ],
+  "note_h2": "Clear approvals and a pause button",
+  "note": "Before anything goes live, we write down what each workflow may do on its own, what waits for you, and what it never does. Every message and approval is logged, and you can pause everything at once. Where a customer replies, the relevant follow-up sequence pauses and the right person is alerted.",
+  "cta": "Get a free assessment"
+ },
+ "referrals": {
+  "meta": {
+   "title": "Referrals | MLP Consulting",
+   "description": "Introduce a business to MLP Consulting and earn a referral fee under a simple written agreement.",
+   "canonical": "https://mlpconsults.com/referrals/",
+   "og_title": "Referrals | MLP Consulting",
+   "og_description": "Introduce a business to MLP Consulting and earn a referral fee under a simple written agreement."
+  },
+  "eyebrow": "Referrals",
+  "h1": "Introduce a business. Share in the opportunity.",
+  "lead": "Connect MLP Consulting with a business that becomes a client, and earn a referral fee under a simple written agreement.",
+  "rates": [
+   [
+    "10%",
+    "of upfront project fees"
+   ],
+   [
+    "5%",
+    "of recurring service fees for their first year"
+   ]
+  ],
+  "prose": [
+   "Email me to make the introduction, or ask the business to put your name in the “Were you referred?” field when they get in touch. I’ll confirm the referral by email and send a short agreement. Once they become a client, fees are paid monthly as their payments come in.",
+   "Referral fees are subject to the written referral agreement."
+  ],
+  "cta": "Ask about referral terms",
+  "cta_href": "mailto:myles@mlpconsults.com?subject=Referral%20program"
+ },
+ "privacy": {
+  "meta": {
+   "title": "Privacy | MLP Consulting",
+   "description": "How MLP Consulting handles information submitted through this website.",
+   "canonical": "https://mlpconsults.com/privacy/",
+   "og_title": "Privacy | MLP Consulting",
+   "og_description": "How MLP Consulting handles information submitted through this website."
+  },
+  "eyebrow": "Privacy",
+  "h1": "Privacy",
+  "lead": "A plain description of what happens to information you share on this site.",
+  "sections": [
+   [
+    "What you send us",
+    "When you use the contact form, you share your name, business name, email, and optionally your website, a note about what you would like to improve, and who referred you. We use it to review your business and reply to you."
+   ],
+   [
+    "Where it goes",
+    "Form submissions are delivered to myles@mlpconsults.com through Web3Forms, and a copy is stored in MLP Consulting’s customer relationship tools (HubSpot) and a database (Supabase) so requests can be tracked. We do not sell your information."
+   ],
+   [
+    "Booking a call",
+    "The “Book a free 30-minute call” link opens a scheduling page hosted by Cal.com. Information you enter there is handled under Cal.com’s own policies."
+   ],
+   [
+    "Cookies and analytics",
+    "This site loads HubSpot’s tracking script, which sets a cookie so form submissions can be matched to visits. Fonts are loaded from Google Fonts. The site is hosted on Cloudflare, which keeps standard server logs."
+   ],
+   [
+    "Your choices",
+    "To ask what we hold about you, or to have it removed, email <a href=\"mailto:myles@mlpconsults.com\">myles@mlpconsults.com</a>."
+   ]
+  ]
+ }
+}

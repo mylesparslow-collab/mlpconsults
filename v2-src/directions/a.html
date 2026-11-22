@@ -1,0 +1,192 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Direction A · Shop Row</title>
+<style>
+@font-face{font-family:Gabarito;src:url(fonts/Gabarito.ttf);font-weight:400 900;font-display:swap}
+@font-face{font-family:Figtree;src:url(fonts/Figtree.ttf);font-weight:300 900;font-display:swap}
+:root{--shop:#0f3b2d;--shop2:#0a2a20;--cream:#f6f0e1;--lamp:#ffcf3f;--ink:#14201a;--wall:#efe8d6;--walk:#d8cfb9;--paper:#fffdf6;--muted:#55625a;--line:#14201a22}
+:root[data-theme=dark]{--shop:#0b2a20;--shop2:#07130e;--wall:#07130e;--walk:#101f18;--ink:#f1ecdc;--paper:#12241c;--muted:#a9b5a8;--line:#f1ecdc22}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--wall);color:var(--ink);font:400 17px/1.5 Figtree,system-ui,sans-serif;transition:background .5s}
+a{color:inherit}img{display:block;max-width:100%}
+.wrap{max-width:1344px;margin:0 auto;padding:0 48px}
+/* MLP's own shopfront */
+.hero{background:var(--shop);color:var(--cream);position:relative;overflow:hidden;transition:background .5s}
+.top{display:flex;align-items:center;gap:28px;height:76px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font:600 15px Figtree;margin-right:auto}
+.mark svg{width:58px;height:25px}
+.top nav{display:flex;gap:26px}.top nav a{text-decoration:none;font-weight:500;font-size:16px}.top nav a:hover{text-decoration:underline;text-underline-offset:5px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 16px Figtree;text-decoration:none;padding:13px 20px;border-radius:6px;border:2px solid transparent;cursor:pointer}
+.btn.lamp{background:var(--lamp);color:#14201a}.btn.line{border-color:currentColor;background:none;color:inherit}
+.doorsign{font:700 14px Gabarito;background:var(--cream);color:var(--shop);border:0;border-radius:4px;padding:9px 12px 8px;cursor:pointer;position:relative;transform-origin:50% -8px;transition:transform .5s cubic-bezier(.19,1,.22,1)}
+.doorsign::before{content:"";position:absolute;left:50%;top:-9px;width:26px;height:10px;margin-left:-13px;border:1.5px solid var(--cream);border-bottom:0;border-radius:13px 13px 0 0;opacity:.7}
+.doorsign:hover{transform:rotate(-3deg)}
+h1{font:800 clamp(52px,8.9vw,128px)/.9 Gabarito,sans-serif;letter-spacing:-.025em;margin:44px 0 0}
+h1 span{display:block}h1 .lit{color:var(--lamp)}
+.under{display:grid;grid-template-columns:5fr 7fr;gap:56px;margin-top:40px;align-items:start}
+.lead{font-size:20px;line-height:1.45;margin:0 0 26px;max-width:34em}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.reassure{font-size:15px;opacity:.82;max-width:30em;margin:18px 0 0}
+/* the notice in the window */
+.notice{background:var(--paper);color:var(--ink);border-radius:4px;padding:20px 22px 16px;position:relative;box-shadow:0 1px 0 #0003}
+.notice::before,.notice::after{content:"";position:absolute;top:-9px;width:54px;height:18px;background:#ffe9a6cc;transform:rotate(-3deg)}
+.notice::before{left:26px}.notice::after{right:26px;transform:rotate(2deg)}
+.nt{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.nt b{font:700 19px Gabarito}.nt small{font:500 13px Figtree;color:var(--muted);margin-left:6px}
+.tabs{display:flex;gap:4px}.tabs button{font:600 14px Figtree;border:0;background:none;color:var(--muted);padding:6px 10px;border-bottom:3px solid transparent;cursor:pointer}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--lamp)}
+.notice ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 22px}
+.notice li{border-top:2px solid var(--ink);padding-top:10px;font-size:15px;line-height:1.4}
+.notice li i{font:800 30px/1 Gabarito;font-style:normal;display:block}
+.notice li .k{font-weight:700;display:block;margin:4px 0 2px}.notice li .v{display:block;margin-top:6px;color:var(--muted)}.notice li .v b{color:var(--ink)}
+.nf{font-size:13.5px;color:var(--muted);margin:14px 0 0}
+/* door decal facts + the street peeking */
+.decal{display:grid;grid-template-columns:repeat(3,1fr);gap:0 56px;margin:54px 0 0;padding:0;list-style:none}
+.decal li{display:flex;align-items:baseline;gap:14px;border-top:2px solid #f6f0e155;padding:14px 0 0}
+.decal b{font:800 40px/1 Gabarito;white-space:nowrap}.decal span{font-size:15.5px;line-height:1.35;opacity:.9}
+.peek{display:flex;gap:10px;margin:44px 0 0 0;padding-left:max(48px,calc((100vw - 1344px)/2 + 48px));height:120px;overflow:hidden}
+.mini{flex:0 0 190px;background:var(--c);color:var(--t);text-decoration:none;border-radius:3px 3px 0 0;padding:0 8px;display:block}
+.mf{display:block;font:700 13px/30px Gabarito;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center}
+.mw{display:block;border-radius:2px;overflow:hidden;background:#fff}.mw img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top left}
+/* the street */
+.street{padding:84px 0 0}
+.sh{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:end}
+h2{font:800 clamp(40px,5.4vw,78px)/.95 Gabarito;letter-spacing:-.02em;margin:0}
+.sh p{font-size:19px;margin:0;max-width:32em}
+.label{font:700 15px Gabarito;display:inline-block;background:var(--ink);color:var(--wall);padding:5px 10px 4px;border-radius:3px;margin-bottom:18px}
+.row{position:relative;margin-top:48px}
+.track{display:flex;gap:0;list-style:none;margin:0;padding:0 48px 0 max(48px,calc((100vw - 1344px)/2 + 48px));overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;cursor:grab;align-items:flex-end}
+.track::-webkit-scrollbar{display:none}
+.shop{flex:0 0 372px;scroll-snap-align:start;padding-right:14px}
+.front{background:var(--c);color:var(--t);border-radius:5px 5px 0 0;padding:0 16px;position:relative}
+.shop:nth-child(3n+2) .fascia{height:84px}.shop:nth-child(4n) .fascia{height:58px}
+.fascia{height:70px;display:flex;align-items:center;justify-content:center;text-align:center}
+.fascia h3{font:700 23px/1.02 Gabarito;margin:0;letter-spacing:-.005em}
+.awning{height:26px;margin:0 -6px -8px;position:relative;z-index:2;background:repeating-linear-gradient(90deg,var(--t) 0 22px,color-mix(in srgb,var(--c) 82%,#000) 22px 44px);-webkit-mask:radial-gradient(circle at 11px 100%,#0000 8px,#000 8.5px) 0 0/22px 100%;mask:radial-gradient(circle at 11px 100%,#0000 8px,#000 8.5px) 0 0/22px 100%;filter:drop-shadow(0 3px 0 #0002)}
+.window{display:block;background:#101410;border-radius:3px;overflow:hidden;position:relative;outline-offset:3px}
+.window img{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top left;transition:filter .5s,opacity .5s}
+.riser{height:52px;display:flex;align-items:center;justify-content:space-between;font:600 14px Figtree}
+.riser .no{opacity:.75}
+.sign{font:700 14px Gabarito;background:var(--t);color:var(--c);padding:6px 10px 5px;border-radius:3px;transform-origin:50% -6px;transition:transform .4s cubic-bezier(.19,1,.22,1)}
+.shop:hover .sign,.shop:focus-within .sign{transform:rotate(-4deg)}
+.curb{border-top:10px solid var(--walk);padding:14px 6px 0 2px;min-height:150px}
+.curb b{font:700 17px Gabarito}.curb p{margin:4px 0 0;font-size:15px;line-height:1.42;color:var(--muted)}
+.walk{height:56px;background:var(--walk);margin-top:22px}
+.arrows{position:absolute;right:48px;top:-66px;display:flex;gap:8px}
+.arrows button{width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:none;color:var(--ink);font:700 18px Figtree;cursor:pointer}
+/* after hours: windows are the light */
+:root[data-theme=dark] .window{box-shadow:0 0 0 1px #ffcf3f55,0 18px 60px -18px #ffcf3f66}
+:root[data-theme=dark] .front{background:color-mix(in srgb,var(--c) 34%,#06100c);color:color-mix(in srgb,var(--t) 70%,#888)}
+:root[data-theme=dark] .sign{background:var(--lamp);color:#14201a}
+:root[data-theme=dark] .awning{opacity:.45}
+:root[data-theme=dark] .mini{background:color-mix(in srgb,var(--c) 34%,#06100c)}
+:root[data-theme=dark] .label{background:var(--lamp);color:#14201a}
+@media (max-width:900px){
+ .wrap{padding:0 20px}.top nav{display:none}.top{height:64px;gap:12px}.top .btn{padding:9px 12px;font-size:14px}
+ h1{margin-top:22px;font-size:15.2vw}.under{grid-template-columns:1fr;gap:28px;margin-top:22px}.lead{font-size:18px}
+ .notice ol{grid-template-columns:1fr;gap:12px}.tabs{overflow-x:auto;max-width:100%}.tabs button{white-space:nowrap;padding:6px 8px}
+ .decal{grid-template-columns:1fr;margin-top:30px}.decal li{padding:10px 0 12px}.decal b{font-size:32px;min-width:96px}
+ .peek{padding-left:20px;height:92px;margin-top:26px}.mini{flex-basis:150px}
+ .street{padding-top:54px}.sh{grid-template-columns:1fr;gap:16px}.track{padding:0 20px}.shop{flex-basis:300px}.arrows{display:none}.fascia h3{font-size:20px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<header class="hero"><div class="wrap">
+<div class="top"><a class="mark" href="#" aria-label="MLP Consulting, home"><svg class="logo12" viewBox="0 0 337.0 143.0" width="60" height="26" aria-hidden="true"><path fill="currentColor" d="M182.98,8.41 L182.69,6.67 L182.07,5.02 L181.48,4.00 L180.36,2.64 L179.00,1.52 L177.44,0.69 L175.76,0.17 L174.59,0.02 L161.00,0.00 L159.83,0.08 L158.67,0.31 L157.56,0.69 L156.50,1.21 L155.07,2.23 L154.23,3.07 L153.52,4.00 L152.93,5.02 L152.48,6.11 L152.08,7.83 L152.00,9.00 L152.00,99.00 L152.17,100.76 L152.69,102.44 L153.21,103.50 L153.86,104.48 L155.07,105.77 L156.00,106.48 L157.02,107.07 L158.11,107.52 L159.24,107.83 L160.41,107.98 L222.00,108.00 L223.76,107.83 L225.44,107.31 L226.50,106.79 L227.93,105.77 L228.77,104.93 L229.48,104.00 L230.07,102.98 L230.52,101.89 L230.83,100.76 L230.98,99.59 L231.00,86.00 L230.83,84.24 L230.31,82.56 L229.48,81.00 L228.36,79.64 L227.00,78.52 L225.98,77.93 L224.89,77.48 L223.76,77.17 L222.59,77.02 L183.00,77.00 L182.98,8.41Z M9.36,0.03 L8.06,0.20 L7.42,0.35 L6.79,0.54 L5.58,1.04 L4.45,1.69 L3.92,2.07 L3.41,2.49 L2.48,3.41 L2.07,3.92 L1.34,5.01 L1.03,5.58 L0.53,6.79 L0.19,8.06 L0.02,9.36 L0.00,10.01 L0.02,133.62 L0.19,134.91 L0.53,136.18 L0.76,136.79 L1.34,137.96 L1.68,138.52 L2.48,139.55 L3.40,140.48 L3.91,140.89 L4.99,141.62 L6.16,142.20 L7.40,142.62 L8.04,142.77 L8.68,142.88 L9.99,142.96 L24.94,142.99 L26.25,142.90 L27.53,142.65 L28.77,142.23 L29.95,141.65 L31.04,140.93 L32.02,140.06 L32.88,139.08 L33.61,137.99 L33.92,137.42 L34.42,136.21 L34.61,135.58 L34.87,134.30 L34.96,132.99 L35.00,57.83 L35.04,57.40 L35.19,56.83 L35.68,55.99 L36.41,55.34 L37.31,54.97 L38.08,54.89 L38.85,55.01 L39.57,55.33 L40.21,55.85 L64.01,82.58 L64.93,83.49 L65.43,83.90 L66.51,84.62 L67.09,84.92 L68.29,85.41 L68.91,85.60 L70.18,85.85 L71.47,85.93 L72.12,85.91 L73.40,85.75 L74.66,85.41 L75.26,85.19 L75.86,84.92 L76.98,84.28 L78.01,83.50 L78.49,83.06 L102.71,55.95 L103.12,55.55 L103.60,55.23 L104.15,55.01 L105.11,54.89 L105.69,54.97 L106.25,55.16 L106.75,55.45 L107.19,55.84 L107.55,56.30 L107.81,56.83 L107.96,57.40 L108.00,57.96 L108.00,132.95 L108.09,134.26 L108.19,134.90 L108.53,136.17 L108.76,136.78 L109.34,137.95 L110.07,139.04 L110.93,140.02 L111.41,140.47 L111.91,140.89 L113.00,141.61 L114.17,142.19 L115.41,142.61 L116.05,142.76 L117.34,142.93 L118.00,142.95 L259.97,143.00 L260.62,142.98 L261.92,142.81 L263.18,142.47 L264.39,141.97 L265.52,141.32 L266.56,140.52 L267.48,139.60 L268.28,138.56 L268.93,137.43 L269.43,136.23 L269.77,134.96 L269.95,133.67 L269.97,133.02 L269.97,119.08 L269.79,117.72 L269.63,117.05 L269.14,115.67 L269.02,115.07 L269.00,111.08 L269.04,110.51 L269.20,109.94 L269.46,109.42 L269.81,108.95 L270.59,108.36 L271.13,108.13 L271.71,108.02 L283.05,108.00 L285.75,107.93 L288.15,107.75 L290.78,107.43 L294.93,106.66 L297.50,106.01 L300.04,105.24 L302.30,104.43 L304.75,103.42 L308.55,101.57 L310.85,100.26 L313.09,98.84 L315.25,97.31 L317.34,95.68 L319.34,93.94 L321.26,92.11 L323.08,90.19 L324.81,88.18 L326.43,86.08 L327.96,83.91 L329.37,81.67 L330.67,79.36 L331.86,76.99 L332.93,74.57 L333.88,72.09 L334.70,69.58 L335.41,67.02 L335.98,64.43 L336.43,61.82 L336.72,59.43 L336.98,55.47 L336.94,51.49 L336.58,47.29 L335.94,43.36 L335.01,39.50 L334.24,36.96 L333.43,34.70 L331.87,31.04 L330.05,27.51 L327.98,24.12 L325.51,20.70 L322.94,17.66 L320.16,14.82 L318.19,13.04 L316.33,11.52 L313.12,9.18 L309.74,7.09 L307.19,5.72 L303.79,4.17 L301.32,3.21 L298.58,2.30 L294.97,1.34 L292.37,0.82 L289.51,0.40 L286.87,0.14 L282.95,0.00 L231.28,0.00 L228.35,0.18 L226.71,0.43 L225.12,0.82 L223.05,1.51 L222.13,1.89 L220.25,2.83 L219.21,3.45 L218.38,4.00 L216.71,5.30 L215.11,6.81 L213.73,8.40 L213.01,9.38 L212.45,10.21 L211.39,12.07 L210.53,14.00 L210.13,15.12 L209.44,17.71 L209.12,19.84 L209.00,22.21 L209.02,58.62 L209.09,59.27 L209.34,60.55 L209.76,61.79 L210.03,62.39 L210.68,63.52 L211.06,64.05 L211.48,64.56 L212.40,65.48 L213.44,66.28 L214.57,66.93 L215.16,67.20 L216.40,67.62 L217.68,67.88 L218.98,67.97 L229.98,67.99 L231.29,67.90 L232.57,67.65 L233.20,67.46 L234.41,66.96 L234.99,66.65 L236.08,65.93 L236.59,65.51 L237.51,64.59 L237.93,64.08 L238.31,63.55 L238.97,62.42 L239.24,61.82 L239.66,60.58 L239.91,59.29 L240.00,57.99 L240.00,40.08 L240.08,39.32 L240.46,38.42 L241.10,37.68 L241.94,37.20 L242.51,37.04 L242.95,37.00 L282.96,37.01 L284.71,37.16 L286.20,37.45 L287.70,37.90 L289.07,38.46 L290.54,39.25 L291.98,40.24 L293.17,41.26 L294.29,42.44 L295.35,43.83 L296.16,45.17 L296.85,46.64 L297.43,48.34 L297.78,49.93 L297.98,51.71 L297.98,53.34 L297.78,55.08 L297.42,56.71 L296.85,58.37 L296.18,59.78 L295.34,61.18 L294.28,62.57 L293.24,63.68 L292.06,64.70 L290.85,65.56 L289.49,66.33 L288.10,66.95 L286.66,67.43 L285.22,67.76 L283.94,67.93 L282.58,68.00 L249.35,68.02 L248.05,68.19 L247.41,68.34 L246.17,68.76 L245.58,69.03 L244.44,69.69 L243.91,70.07 L242.93,70.93 L242.48,71.41 L241.69,72.44 L241.03,73.58 L240.53,74.79 L240.34,75.41 L240.09,76.69 L240.00,78.00 L240.00,114.05 L239.87,114.87 L239.44,115.75 L238.90,116.32 L238.06,116.80 L237.49,116.96 L236.92,117.00 L146.08,117.00 L145.51,116.96 L144.59,116.64 L144.10,116.32 L143.68,115.90 L143.20,115.06 L143.04,114.49 L143.00,114.05 L142.98,9.38 L142.91,8.73 L142.66,7.45 L142.24,6.21 L141.97,5.62 L141.32,4.48 L140.94,3.95 L140.08,2.97 L139.60,2.52 L138.56,1.73 L137.43,1.07 L136.84,0.80 L136.22,0.57 L134.96,0.23 L133.67,0.06 L111.54,0.03 L110.24,0.20 L109.60,0.34 L108.36,0.76 L107.77,1.03 L106.63,1.69 L105.59,2.48 L105.12,2.93 L73.59,34.41 L73.08,34.80 L72.56,35.06 L71.99,35.21 L71.40,35.25 L70.82,35.18 L70.26,34.99 L69.75,34.69 L69.41,34.41 L37.96,2.96 L36.98,2.10 L35.89,1.37 L35.32,1.06 L34.11,0.56 L32.85,0.22 L31.55,0.05 L9.36,0.03Z"/></svg><b>Consulting</b></a>
+<nav aria-label="Main"><a href="#services">Services</a><a href="#work">Work</a><a href="#">How it works</a><a href="#about">About</a></nav>
+<a class="btn lamp" href="#contact">Get a free assessment</a>
+<button class="doorsign" id="sign" type="button" aria-label="Switch between open (light) and after hours (dark)">Open</button></div>
+<h1><span>More customers.</span><span class="lit">Fewer late nights.</span></h1>
+<div class="under"><div>
+<p class="lead">I work with owner-run businesses on the things that slip when you’re busy: a website that takes bookings, quotes that get a follow-up on day two, invoices that get chased before they’re two months old. I set it up, train your team, and keep it running.</p>
+<div class="cta"><a class="btn lamp" href="#contact">Get a free assessment →</a><a class="btn line" href="#services">See services and prices</a></div>
+<p class="reassure">Send me your website and I’ll send back three things worth fixing, within one business day. Serving Southern California and businesses nationwide.</p>
+</div>
+<aside class="notice" aria-labelledby="nt"><div class="nt"><b id="nt">What a free assessment looks like <small>Examples</small></b>
+<div class="tabs" role="tablist"><button role="tab" aria-selected="true">Dental office</button><button role="tab" aria-selected="false">Restaurant</button><button role="tab" aria-selected="false">Contractor</button><button role="tab" aria-selected="false">Salon</button></div></div>
+<ol><li><i>1</i><span class="k">Website</span>On a phone, the booking button is three screens down.<span class="v"><b>Fix:</b> put it at the top of every page.</span></li>
+<li><i>2</i><span class="k">Insurance</span>New patients can’t tell whether you take their plan without calling.<span class="v"><b>Fix:</b> list the plans you take, and what a cleaning costs without one.</span></li>
+<li><i>3</i><span class="k">After hours</span>A call at 5:40 rings out, and that patient books somewhere else.<span class="v"><b>Fix:</b> a text back inside a minute, with a link to book.</span></li></ol>
+<p class="nf">Yours is written about your business, in plain English, with what to fix first.</p></aside></div>
+<ul class="decal"><li><b>17</b><span>working websites you can open and try</span></li><li><b>1 day</b><span>from your message to a written assessment</span></li><li><b>$500</b><span>fixes the first thing, inside a week</span></li></ul>
+</div>
+<div class="peek"><a class="mini" href="#work" style="--c:#15120d;--t:#e3c98f" aria-hidden="true" tabindex="-1"><span class="mf">Halden</span><span class="mw"><img src="/img/jewelry-store.webp" alt="" loading="eager"></span></a><a class="mini" href="#work" style="--c:#7c3527;--t:#f6ead9" aria-hidden="true" tabindex="-1"><span class="mf">Boutique brokerage</span><span class="mw"><img src="/img/brokerage-site.webp" alt="" loading="eager"></span></a><a class="mini" href="#work" style="--c:#e9c85f;--t:#1b2a2a" aria-hidden="true" tabindex="-1"><span class="mf">Birchway Pediatrics</span><span class="mw"><img src="/img/site-birchway.webp" alt="" loading="eager"></span></a><a class="mini" href="#work" style="--c:#b93a26;--t:#fff1e2" aria-hidden="true" tabindex="-1"><span class="mf">Osteria Camino</span><span class="mw"><img src="/img/site-camino.webp" alt="" loading="eager"></span></a><a class="mini" href="#work" style="--c:#f3efe6;--t:#c8362a" aria-hidden="true" tabindex="-1"><span class="mf">Paperwhale Books</span><span class="mw"><img src="/img/site-paperwhale.webp" alt="" loading="eager"></span></a><a class="mini" href="#work" style="--c:#8d9a6c;--t:#fbf7ee" aria-hidden="true" tabindex="-1"><span class="mf">Quietwell Aesthetics</span><span class="mw"><img src="/img/site-quietwell.webp" alt="" loading="eager"></span></a><a class="mini" href="#work" style="--c:#a8743c;--t:#fff6e6" aria-hidden="true" tabindex="-1"><span class="mf">Little Orbit Tea</span><span class="mw"><img src="/img/site-little-orbit.webp" alt="" loading="eager"></span></a><a class="mini" href="#work" style="--c:#22352b;--t:#f0a35c" aria-hidden="true" tabindex="-1"><span class="mf">Crestline Design-Build</span><span class="mw"><img src="/img/site-crestline.webp" alt="" loading="eager"></span></a><a class="mini" href="#work" style="--c:#5a2a1a;--t:#f3dcc0" aria-hidden="true" tabindex="-1"><span class="mf">Cedarline Kitchen</span><span class="mw"><img src="/img/site-cedarline.webp" alt="" loading="eager"></span></a></div>
+</header>
+<main><section class="street" id="work"><div class="wrap sh"><div><span class="label">Work</span><h2>Open one and try it.</h2></div>
+<p>Seventeen working websites and the follow-up systems that run behind them. Book a table, order a drink, design a ring.</p></div>
+<div class="row"><div class="arrows"><button type="button" aria-label="Back along the street" id="pv">←</button><button type="button" aria-label="Along the street" id="nx">→</button></div>
+<ol class="track" id="track"><li class="shop" style="--c:#15120d;--t:#e3c98f">
+<div class="front"><div class="fascia"><h3>Halden</h3></div>
+<a class="window" href="/work/jewelry/#shop" target="_blank" rel="noopener" aria-label="Open Halden"><img src="/img/jewelry-store.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 1</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Jewelry store, 3D ring designer</b><p>Engagement rings with prices on every card, and a 3D ring designer: pick the setting, the metal and the stone, and turn the ring to see it from any side.</p></div></li><li class="shop aw" style="--c:#7c3527;--t:#f6ead9">
+<div class="front"><div class="fascia"><h3>Boutique brokerage</h3></div><div class="awning" aria-hidden="true"></div>
+<a class="window" href="/work/brokerage/site/" target="_blank" rel="noopener" aria-label="Open Boutique brokerage"><img src="/img/brokerage-site.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 2</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Real estate</b><p>The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed.</p></div></li><li class="shop" style="--c:#e9c85f;--t:#1b2a2a">
+<div class="front"><div class="fascia"><h3>Birchway Pediatrics</h3></div>
+<a class="window" href="/work/sites/birchway/" target="_blank" rel="noopener" aria-label="Open Birchway Pediatrics"><img src="/img/site-birchway.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 3</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Pediatric office</b><p>Request a visit by age and reason, see the morning sick-visit slots, and open the staff side.</p></div></li><li class="shop aw" style="--c:#b93a26;--t:#fff1e2">
+<div class="front"><div class="fascia"><h3>Osteria Camino</h3></div><div class="awning" aria-hidden="true"></div>
+<a class="window" href="/work/sites/camino/" target="_blank" rel="noopener" aria-label="Open Osteria Camino"><img src="/img/site-camino.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 4</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Italian restaurant</b><p>Reserve a table, browse tonight’s menu, and ask about the back room. The staff side holds the reservation book, review replies waiting for approval, and a pre-shift brief.</p></div></li><li class="shop" style="--c:#f3efe6;--t:#c8362a">
+<div class="front"><div class="fascia"><h3>Paperwhale Books</h3></div>
+<a class="window" href="/work/sites/paperwhale/" target="_blank" rel="noopener" aria-label="Open Paperwhale Books"><img src="/img/site-paperwhale.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 5</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Bookstore</b><p>Shop real titles with pickup in about two hours, staff picks and events.</p></div></li><li class="shop" style="--c:#8d9a6c;--t:#fbf7ee">
+<div class="front"><div class="fascia"><h3>Quietwell Aesthetics</h3></div>
+<a class="window" href="/work/sites/quietwell/" target="_blank" rel="noopener" aria-label="Open Quietwell Aesthetics"><img src="/img/site-quietwell.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 6</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Med spa</b><p>Book in under a minute, a treatment menu with prices on it, a membership plan, and a text line for clients who would rather not call.</p></div></li><li class="shop aw" style="--c:#a8743c;--t:#fff6e6">
+<div class="front"><div class="fascia"><h3>Little Orbit Tea</h3></div><div class="awning" aria-hidden="true"></div>
+<a class="window" href="/work/sites/little-orbit/" target="_blank" rel="noopener" aria-label="Open Little Orbit Tea"><img src="/img/site-little-orbit.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 7</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Boba shop</b><p></p></div></li><li class="shop" style="--c:#22352b;--t:#f0a35c">
+<div class="front"><div class="fascia"><h3>Crestline Design-Build</h3></div>
+<a class="window" href="/work/sites/crestline/" target="_blank" rel="noopener" aria-label="Open Crestline Design-Build"><img src="/img/site-crestline.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 8</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Remodeling company</b><p></p></div></li><li class="shop aw" style="--c:#5a2a1a;--t:#f3dcc0">
+<div class="front"><div class="fascia"><h3>Cedarline Kitchen</h3></div><div class="awning" aria-hidden="true"></div>
+<a class="window" href="/work/sites/cedarline/" target="_blank" rel="noopener" aria-label="Open Cedarline Kitchen"><img src="/img/site-cedarline.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 9</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Restaurant</b><p></p></div></li><li class="shop" style="--c:#f0d3c6;--t:#1b4539">
+<div class="front"><div class="fascia"><h3>Hollis Flower House</h3></div>
+<a class="window" href="/work/sites/hollis/" target="_blank" rel="noopener" aria-label="Open Hollis Flower House"><img src="/img/site-hollis.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 10</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Florist</b><p></p></div></li><li class="shop" style="--c:#255049;--t:#f4f1e6">
+<div class="front"><div class="fascia"><h3>Bellwood Family Dental</h3></div>
+<a class="window" href="/work/sites/bellwood/" target="_blank" rel="noopener" aria-label="Open Bellwood Family Dental"><img src="/img/site-bellwood.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 11</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Dental office</b><p></p></div></li><li class="shop aw" style="--c:#121f19;--t:#f08a2b">
+<div class="front"><div class="fascia"><h3>Kestrel Hill Coffee Roasters</h3></div><div class="awning" aria-hidden="true"></div>
+<a class="window" href="/work/sites/coffee/" target="_blank" rel="noopener" aria-label="Open Kestrel Hill Coffee Roasters"><img src="/img/site-coffee.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 12</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Coffee roaster</b><p></p></div></li><li class="shop aw" style="--c:#e9dfcc;--t:#5b3a22">
+<div class="front"><div class="fascia"><h3>Marlow &amp; Rye Bakery</h3></div><div class="awning" aria-hidden="true"></div>
+<a class="window" href="/work/sites/marlow/" target="_blank" rel="noopener" aria-label="Open Marlow &amp; Rye Bakery"><img src="/img/site-marlow.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 13</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Bakery</b><p></p></div></li><li class="shop" style="--c:#216556;--t:#f6efe0">
+<div class="front"><div class="fascia"><h3>Ostrander Hair Studio</h3></div>
+<a class="window" href="/work/sites/salon/" target="_blank" rel="noopener" aria-label="Open Ostrander Hair Studio"><img src="/img/site-salon.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 14</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Hair salon</b><p></p></div></li><li class="shop" style="--c:#f1c9c2;--t:#3b1c25">
+<div class="front"><div class="fascia"><h3>Springline Reformer Studio</h3></div>
+<a class="window" href="/work/sites/pilates/" target="_blank" rel="noopener" aria-label="Open Springline Reformer Studio"><img src="/img/site-pilates.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 15</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Pilates studio</b><p></p></div></li><li class="shop aw" style="--c:#7f172b;--t:#f6e7d8">
+<div class="front"><div class="fascia"><h3>Fig &amp; Fennimore</h3></div><div class="awning" aria-hidden="true"></div>
+<a class="window" href="/work/sites/boutique/" target="_blank" rel="noopener" aria-label="Open Fig &amp; Fennimore"><img src="/img/site-boutique.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 16</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Clothing boutique</b><p></p></div></li><li class="shop" style="--c:#dfe9e4;--t:#255344">
+<div class="front"><div class="fascia"><h3>Solace Studio Dental</h3></div>
+<a class="window" href="/work/sites/solace/" target="_blank" rel="noopener" aria-label="Open Solace Studio Dental"><img src="/img/site-solace.webp" width="1600" height="1000" alt="" loading="lazy"></a>
+<div class="riser"><span class="no">No. 17</span><span class="sign">Open ↗</span></div></div>
+<div class="curb"><b>Dental studio</b><p></p></div></li></ol><div class="walk"></div></div></section></main>
+<script>
+var r=document.documentElement,b=document.getElementById('sign');
+function set(d){r.dataset.theme=d?'dark':'light';b.textContent=d?'After hours':'Open'}
+if(location.hash==='#night')set(true);
+b.onclick=function(){set(r.dataset.theme!=='dark')};
+var t=document.getElementById('track');document.getElementById('nx').onclick=function(){t.scrollBy({left:744,behavior:'smooth'})};document.getElementById('pv').onclick=function(){t.scrollBy({left:-744,behavior:'smooth'})};
+</script></body></html>
