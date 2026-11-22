@@ -50,7 +50,7 @@ main{position:relative;z-index:1;outline:none}
 .menu-btn:hover{text-decoration-thickness:2px}
 .cta-s{display:none}
 @media(max-width:519px){.cta-l{display:none}.cta-s{display:inline}.acts{gap:14px}.mark b{display:none}}
-.counter{position:fixed;left:0;bottom:0;z-index:15;padding:30px 90px 16px var(--gut);font-size:13px;line-height:1;color:var(--mut);font-variant-numeric:tabular-nums;pointer-events:none;background:radial-gradient(ellipse 100% 100% at 30% 100%,var(--bg) 55%,transparent 100%)}
+.counter{position:fixed;right:0;bottom:0;z-index:15;padding:16px var(--gut);font-size:13px;line-height:1;color:var(--mut);font-variant-numeric:tabular-nums;pointer-events:none}
 .counter .dot{margin:0 .35em}
 @media(max-width:899px){.counter{display:none}}
 
