@@ -12,8 +12,8 @@ iframe{border:0;width:100%;height:100%;background:#fff}
 </style></head><body>
 <header><b>mlpconsults.com, side by side</b>
 <label>Page <select id="pg"><option value="">Home</option><option value="how-it-works/">How it works</option><option value="workflows/">Workflows</option><option value="referrals/">Referrals</option><option value="privacy/">Privacy</option></select></label>
-<span>Open alone: <a href="/" target="_blank" rel="noopener">live design</a> · <a href="/v2/" target="_blank" rel="noopener">Shop Row</a> · <a href="/v2-src/directions/contact-sheet.html" target="_blank" rel="noopener">the three directions</a></span></header>
-<main><section><h2>Live design (today’s mlpconsults.com)</h2><iframe id="a" src="/" title="Live design"></iframe></section>
+<span>Open alone: <a href="/?live=1" target="_blank" rel="noopener">live design</a> · <a href="/v2/" target="_blank" rel="noopener">Shop Row</a> · <a href="/v2-src/directions/contact-sheet.html" target="_blank" rel="noopener">the three directions</a></span></header>
+<main><section><h2>Live design (today’s mlpconsults.com)</h2><iframe id="a" src="/?live=1" title="Live design"></iframe></section>
 <section><h2>Shop Row (the redesign)</h2><iframe id="b" src="/v2/" title="Shop Row redesign"></iframe></section></main>
-<script>document.getElementById('pg').onchange=function(){document.getElementById('a').src='/'+this.value;document.getElementById('b').src='/v2/'+this.value;};</script>
+<script>document.getElementById('pg').onchange=function(){document.getElementById('a').src=this.value?'/'+this.value:'/?live=1';document.getElementById('b').src='/v2/'+this.value;};</script>
 </body></html>

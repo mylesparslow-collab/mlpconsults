@@ -4,10 +4,10 @@ A complete second version of the site (home, how-it-works, workflows, referrals,
 
 ## See it
 
-Launch entry `mlpconsults-v2` (port 8872) serves the repo root, so:
+Launch entry `mlpconsults-v2` (port 8872) runs `v2-src/serve.py`, which serves the repo root and sends the bare address to the redesign:
 
-- http://localhost:8872/v2/ is the redesign
-- http://localhost:8872/ is the live design
+- http://localhost:8872/ opens the redesign (it redirects to /v2/)
+- http://localhost:8872/?live=1 is the live design
 - http://localhost:8872/v2-src/compare.html shows both side by side, page by page
 - http://localhost:8872/v2-src/directions/contact-sheet.html is the three directions it was chosen from
 
