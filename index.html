@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-pal="mono">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -28,661 +28,221 @@
 {"@type":"Person","@id":"https://mlpconsults.com/#myles","name":"Myles Parslow","jobTitle":"Founder","url":"https://mylesparslow.com","worksFor":{"@id":"https://mlpconsults.com/#org"}}
 ]}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600&display=swap">
-<script>try{var t=localStorage.getItem('mlp-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}document.documentElement.classList.add('js')</script>
-<style>
-/* MLP Consulting. One idea: a survey of your business. The contour map is the ground; services lead; the work is an index you can open. Black and white only. */
-:root{--display:"Instrument Serif","Iowan Old Style",Georgia,serif;--body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;--paper:#ffffff;--mist:#f4f4f2;--hero:#f3f3f1;--ink:#0b0b0b;--ink2:#3a3a3a;--muted:#606060;--line:#e1e1dd;--card:#ffffff;--map1:#f3f3f1;--map2:#ebebe8;--map3:#c9c9c4;--map4:#111111;--flag:#b4410f;--flag-soft:#fbeae2;--shadow:0 1px 2px rgba(0,0,0,.05),0 30px 60px -34px rgba(0,0,0,.4);--e:cubic-bezier(.19,1,.22,1);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0c0c0c;--mist:#131313;--hero:#090909;--ink:#f1f1f1;--ink2:#c4c4c4;--muted:#a0a0a0;--line:#262626;--card:#161616;--map1:#090909;--map2:#141414;--map3:#2c2c2c;--map4:#e6e6e6;--flag:#f08a5d;--flag-soft:#3a2016;--shadow:0 1px 2px rgba(0,0,0,.3),0 30px 60px -34px rgba(0,0,0,.9);color-scheme:dark}}
-:root[data-theme="dark"]{--paper:#0c0c0c;--mist:#131313;--hero:#090909;--ink:#f1f1f1;--ink2:#c4c4c4;--muted:#a0a0a0;--line:#262626;--card:#161616;--map1:#090909;--map2:#141414;--map3:#2c2c2c;--map4:#e6e6e6;--flag:#f08a5d;--flag-soft:#3a2016;--shadow:0 1px 2px rgba(0,0,0,.3),0 30px 60px -34px rgba(0,0,0,.9);color-scheme:dark}
-*{box-sizing:border-box}
-:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased;margin:0}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit}
-p{margin:0}
-[hidden]{display:none!important}
-[id]{scroll-margin-top:84px}
-button{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:3px}
-.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.skip{position:absolute;left:16px;top:-60px;z-index:30;background:var(--ink);color:var(--paper);padding:12px 16px;border-radius:8px;text-decoration:none;font-weight:600}
-.skip:focus{top:16px}
-.wrap{max-width:1280px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-@media (min-width:900px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
-h1,h2,h3,h4{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;letter-spacing:-.012em}
-h2{font-size:clamp(42px,5.8vw,80px);line-height:.98}
-h1 em,h2 em{font-style:italic}
-.lead{font-size:19px;color:var(--muted);max-width:52ch}
-.fine{font-size:14px;color:var(--muted)}
-.fine a{text-underline-offset:3px}
-
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--body);padding:16px 22px;border-radius:999px;text-decoration:none;border:1px solid var(--ink);cursor:pointer;background:none;color:var(--ink);transition:background .3s var(--e),color .3s var(--e),opacity .2s;white-space:nowrap}
-.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;transition:transform .4s var(--e)}
-.btn:hover svg{transform:translateX(4px)}
-.btn.solid{background:var(--ink);color:var(--paper)}
-.btn.solid:hover{opacity:.82}
-.btn.line{border-color:color-mix(in srgb,var(--ink) 32%,transparent)}
-.btn.line:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.btn.sm{padding:11px 17px;font-size:14px}
-
-section{padding-block:clamp(72px,9vw,128px)}
-.mist{background:var(--mist)}
-.sh{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px 56px;align-items:end;border-top:1px solid var(--ink);padding-top:16px;margin-bottom:clamp(36px,5vw,64px)}
-.sh .idx{grid-column:1/-1;display:flex;gap:12px;align-items:baseline;font:500 14px/1 var(--body);margin-bottom:clamp(20px,3vw,40px)}
-.idx i{font:italic 400 21px/1 var(--display)}
-@media (max-width:860px){.sh{grid-template-columns:minmax(0,1fr)}}
-
-/* reveal (only when JS runs) */
-.js .rv{opacity:0;transform:translateY(22px);transition:opacity 1s var(--e),transform 1s var(--e)}
-.js .rv.in{opacity:1;transform:none}
-.js .rv.d1{transition-delay:.08s}.js .rv.d2{transition-delay:.16s}
-
-/* header */
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--hero)}
-header.top{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:6;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
-header.top.solid,header.top.menu-open{background:color-mix(in srgb,var(--paper) 96%,transparent);border-bottom-color:var(--line)}
-header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:16px}
-.mark{display:flex;align-items:center;gap:12px;text-decoration:none}
-.mark .logo12{display:block;height:26px;width:auto}
-.mark b{font:600 11px/1 var(--body);letter-spacing:.34em;text-transform:uppercase;padding-top:2px}
-.navr{display:flex;align-items:center;gap:10px}
-nav.links{display:flex;gap:30px;align-items:center;font-size:15px}
-nav.links a:not(.btn){text-decoration:none;color:var(--muted);transition:color .2s;padding:6px 0}
-nav.links a:not(.btn):hover{color:var(--ink)}
-.ib{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid color-mix(in srgb,var(--ink) 22%,transparent);background:none;cursor:pointer;flex:none}
-.ib:hover{border-color:var(--ink)}
-.ib svg{width:16px;height:16px}
-.menu-btn{display:none}
-.menu-btn i{display:grid;gap:4px;width:14px}.menu-btn i::before,.menu-btn i::after{content:"";height:1.5px;background:currentColor;border-radius:2px;transition:transform .25s}
-.menu-open .menu-btn i::before{transform:translateY(2.75px) rotate(45deg)}.menu-open .menu-btn i::after{transform:translateY(-2.75px) rotate(-45deg)}
-.cta-s{display:none}
-@media (max-width:920px){
-  nav.links a:not(.btn){display:none}
-  .menu-btn{display:inline-grid}
-  .menu-open nav.links{position:absolute;top:100%;left:0;right:0;display:grid;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:4px max(20px,env(safe-area-inset-left,0px)) 20px}
-  .menu-open nav.links a:not(.btn){display:block;padding:16px 0;border-bottom:1px solid var(--line);color:var(--ink);font:400 30px/1 var(--display)}
-  .menu-open nav.links .btn{justify-self:start;margin-top:18px}
-}
-@media (max-width:520px){.cta-l{display:none}.cta-s{display:inline}.mark b{letter-spacing:.22em}}
-@media (max-width:400px){.mark b{display:none}header.top .wrap{gap:10px}.navr{gap:8px}}
-
-/* hero */
-.hero{position:relative;background:var(--hero);min-height:100svh;display:grid;grid-template-rows:1fr auto;overflow:hidden;padding:clamp(112px,13vh,150px) 0 0}
-.hero canvas.mapc,.cta-band canvas.mapc,.hero video,.cta-band video{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
-.hero video,.cta-band video{object-fit:cover}
-.hero .scrim{position:absolute;inset:0;background:linear-gradient(90deg,color-mix(in srgb,var(--hero) 96%,transparent) 0%,color-mix(in srgb,var(--hero) 84%,transparent) 46%,color-mix(in srgb,var(--hero) 38%,transparent) 100%),linear-gradient(0deg,color-mix(in srgb,var(--hero) 92%,transparent),transparent 34%);pointer-events:none}
-.hero .wrap{position:relative;width:100%}
-.hero .top-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:64px;align-items:center;align-self:center;padding-bottom:56px}
-.kicker{font:500 14px/1.4 var(--body);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
-.kicker span + span::before{content:"";display:inline-block;width:18px;height:1px;background:currentColor;vertical-align:middle;margin-right:14px;opacity:.5}
-.hero h1{font-size:clamp(54px,8.8vw,136px);line-height:.9;letter-spacing:-.028em;margin:26px 0 30px}
-.hero h1 .ln{display:block;overflow:hidden;padding:0 .08em .2em 0;margin-bottom:-.15em}
-.hero h1 .ln > span{display:inline-block}
-.js .hero h1 .ln > span{transform:translateY(108%);animation:rise 1.2s var(--e) forwards}
-.js .hero h1 .ln:nth-child(2) > span{animation-delay:.12s}
-@keyframes rise{to{transform:none}}
-.hero .lead{color:var(--ink2);max-width:54ch}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.reassure{font-size:14.5px;color:var(--ink2);margin-top:20px;max-width:52ch}
-
-.sheet{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);min-width:0;overflow:hidden}
-.js .sheet{opacity:0;transform:translateY(24px);animation:sheetIn 1.2s .45s var(--e) forwards}
-@keyframes sheetIn{to{opacity:1;transform:none}}
-.sheet .sh-top{padding:18px 20px 14px;border-bottom:1px solid var(--line);display:grid;gap:12px}
-.sheet .sh-top b{font:600 15px/1.3 var(--body)}
-.sheet .sh-top b small{font-weight:400;color:var(--muted);font-size:13px;margin-left:8px}
-.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:2px 20px}
-.tabs::-webkit-scrollbar{display:none}
-.tabs button{border:1px solid var(--line);background:none;border-radius:999px;padding:8px 13px;font:500 13px/1 var(--body);color:var(--muted);cursor:pointer;white-space:nowrap;transition:background .25s,color .25s,border-color .25s}
-.tabs button:hover{border-color:var(--ink);color:var(--ink)}
-.tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-.sheet ol{list-style:none;margin:0;padding:0;transition:opacity .25s}
-.sheet ol.sw{opacity:0}
-.sheet li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:4px 6px;padding:15px 20px;border-bottom:1px solid var(--line)}
-.sheet li i{font:italic 400 22px/1.1 var(--display);grid-row:1/4}
-.sheet .k{font:500 12.5px/1.2 var(--body);color:var(--muted)}
-.sheet .d{font-size:15px;line-height:1.45}
-.sheet .v{font-size:14px;line-height:1.45;color:var(--muted)}
-.sheet .v b{color:var(--ink);font-weight:600}
-.sheet .sh-foot{padding:13px 20px;font-size:13px;color:var(--muted);background:var(--mist)}
-
-.facts{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid color-mix(in srgb,var(--ink) 22%,transparent)}
-.facts div{display:flex;gap:16px;align-items:baseline;padding:22px 24px 26px 0}
-.facts div + div{padding-left:24px;border-left:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}
-.facts b{font:400 clamp(36px,3.6vw,52px)/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums;flex:none}
-.facts span{font-size:14.5px;color:var(--ink2);max-width:24ch;line-height:1.4}
-@media (max-width:980px){
-  .hero .top-row{grid-template-columns:minmax(0,1fr);gap:44px}
-  .hero .scrim{background:linear-gradient(0deg,color-mix(in srgb,var(--hero) 95%,transparent) 12%,color-mix(in srgb,var(--hero) 62%,transparent))}
-}
-@media (max-width:700px){
-  .facts{grid-template-columns:minmax(0,1fr)}
-  .facts div,.facts div + div{padding:14px 0;border-left:0}
-  .facts div + div{border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}
-  .facts b{width:76px;font-size:34px}
-  .facts span{max-width:none}
-}
-
-/* services: a ledger, not cards */
-.svcs{border-bottom:1px solid var(--ink)}
-.svc{display:grid;grid-template-columns:minmax(0,3.4fr) minmax(0,4.2fr) minmax(0,4.4fr);gap:28px 56px;padding:40px 0 44px;border-top:1px solid var(--line);align-items:start}
-.svc:first-child{border-top:0;padding-top:0}
-.svc .who{display:grid;gap:16px;justify-items:start}
-.svc h3{font:600 15px/1.3 var(--body);letter-spacing:0;display:flex;gap:10px;align-items:baseline}
-.svc h3 i{font:italic 400 21px/1 var(--display)}
-.svc .price{font:400 clamp(44px,4.6vw,66px)/.95 var(--display);letter-spacing:-.02em}
-.svc .price small{display:block;font:400 14.5px/1.4 var(--body);letter-spacing:0;color:var(--muted);margin-top:10px}
-.svc .what{display:grid;gap:14px}
-.svc .what p:first-child{font:400 clamp(22px,2vw,27px)/1.25 var(--display);letter-spacing:-.005em}
-.svc .what p + p{color:var(--muted);font-size:15px}
-.svc ul{list-style:none;margin:0;padding:0}
-.svc li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px;display:grid;grid-template-columns:22px minmax(0,1fr)}
-.svc li:first-child{padding-top:0}
-.svc li::before{content:"";width:7px;height:7px;border:1px solid var(--ink);border-radius:50%;margin-top:.55em}
-.also{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:36px}
-.also div{padding:0 28px 0 0;display:grid;gap:6px;align-content:start}
-.also div + div{padding-left:28px;border-left:1px solid var(--line)}
-.also b{font:600 15px/1.35 var(--body)}
-.also p{font-size:14.5px;color:var(--muted)}
-@media (max-width:980px){.svc{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.svc .who{grid-column:1/-1;grid-template-columns:minmax(0,1fr) auto;align-items:end}.svc .who h3{grid-column:1/-1}}
-@media (max-width:700px){.svc{grid-template-columns:minmax(0,1fr);padding:32px 0 36px}.svc .who{grid-template-columns:minmax(0,1fr)}.also{grid-template-columns:minmax(0,1fr);gap:20px}.also div,.also div + div{padding:0;border-left:0}}
-
-/* work: the index is the hero */
-.index{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
-.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.row{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:11px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--muted);transition:color .25s,padding .5s var(--e)}
-.row .th{display:none}
-.row .n{font-size:13px;font-variant-numeric:tabular-nums}
-.row .nm{font:400 clamp(24px,2.3vw,31px)/1.1 var(--display);letter-spacing:-.01em;color:var(--ink);transition:opacity .25s}
-.row .tr{font-size:14px;text-align:right}
-.rows:hover .row:not(.on) .nm,.rows:focus-within .row:not(.on) .nm{opacity:.38}
-.row.on{color:var(--ink);padding-left:10px}
-.stage{position:sticky;top:96px;display:grid;gap:18px}
-.stage .frame{position:relative;aspect-ratio:16/10;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--mist);padding:0;cursor:zoom-in;display:block;width:100%}
-.stage .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s var(--e),transform 1.2s var(--e)}
-.stage .frame img.off{opacity:0;transform:scale(1.03)}
-.stage .frame span{position:absolute;right:12px;bottom:12px;font:500 12px/1 var(--body);padding:8px 11px;border-radius:99px;background:rgba(10,10,12,.78);color:#fff}
-.stage .cap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 28px;align-items:start;min-height:112px}
-.stage .cap b{font:600 16px/1.3 var(--body);display:block;margin-bottom:4px}
-.stage .cap p{font-size:15px;color:var(--muted);max-width:56ch}
-.stage .lk{display:grid;gap:8px;justify-items:end}
-.more-rows{display:none}
-.note{margin-top:22px}
-@media (max-width:1000px){
-  .index{grid-template-columns:minmax(0,1fr)}
-  .stage{display:none}
-  .row{grid-template-columns:96px minmax(0,1fr);gap:4px 16px;align-items:center;padding:12px 0}
-  .row .th{display:block;grid-row:1/3;width:96px;aspect-ratio:16/10;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
-  .row .n{display:none}
-  .row .nm{align-self:end;font-size:24px}
-  .row .tr{text-align:left;align-self:start}
-  .row.on{padding-left:0}
-  .rows:hover .row:not(.on) .nm{opacity:1}
-  .js .rows:not(.all) li.x{display:none}
-  .js .more-rows{display:inline-flex;margin-top:22px}
-  .js .rows.all + .more-rows{display:none}
-}
-
-.grp{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px 56px;align-items:end;margin:clamp(64px,8vw,104px) 0 32px;padding-top:16px;border-top:1px solid var(--line)}
-.grp h3{font-size:clamp(30px,3.4vw,46px);line-height:1.02}
-.grp p{color:var(--muted);font-size:16px;max-width:56ch}
-@media (max-width:860px){.grp{grid-template-columns:minmax(0,1fr)}}
-.flows{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 28px}
-.flows figure{margin:0;display:grid;gap:14px;align-content:start}
-.shot{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--mist);aspect-ratio:16/10;cursor:zoom-in;position:relative}
-.shot img{width:100%;height:100%;object-fit:cover;object-position:0 0;transition:transform 1.2s var(--e)}
-.shot:hover img{transform:scale(1.035)}
-.shot::after{content:"View";position:absolute;right:10px;bottom:10px;font:500 12px/1 var(--body);padding:7px 10px;border-radius:99px;background:rgba(10,10,12,.78);color:#fff;opacity:0;transition:opacity .2s}
-.shot:hover::after,.shot:focus-visible::after{opacity:1}
-@media (hover:none){.shot::after{opacity:1}}
-.flows h4{font:600 17px/1.3 var(--body);letter-spacing:0;margin-bottom:4px}
-.flows p{font-size:15px;color:var(--muted)}
-@media (max-width:900px){.flows{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 18px}}
-@media (max-width:520px){.flows{gap:24px 14px}.flows h4{font-size:15px}.flows p{font-size:13.5px}}
-
-/* larger systems, collapsed */
-.cases{border-bottom:1px solid var(--line)}
-details.case{border-top:1px solid var(--line)}
-details.case > summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr) auto;gap:8px 56px;align-items:center;padding:24px 0}
-details.case > summary::-webkit-details-marker{display:none}
-.case .tag{font-size:14px;color:var(--muted);display:block;margin-bottom:6px}
-.case summary h4{font-size:clamp(24px,2.3vw,31px);line-height:1.1}
-.case summary p{color:var(--muted);font-size:15.5px;max-width:58ch}
-.tg{display:grid;place-items:center;width:42px;height:42px;border:1px solid color-mix(in srgb,var(--ink) 25%,transparent);border-radius:50%;font:400 22px/1 var(--body);transition:transform .5s var(--e),background .3s,color .3s}
-summary:hover .tg{background:var(--ink);color:var(--paper)}
-details[open] > summary .tg{transform:rotate(45deg)}
-.case-body{display:grid;gap:32px;padding:8px 0 44px}
-details[open] .case-body{animation:open .7s var(--e)}
-@keyframes open{from{opacity:0;transform:translateY(-10px)}}
-.cb-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 56px}
-.cb-grid h5{font:600 15px/1.3 var(--body);margin:0 0 10px}
-.cb-grid p,.cb-grid ul{color:var(--muted);font-size:15.5px}
-.cb-grid ul{margin:0;padding-left:18px;display:grid;gap:6px}
-.kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line);align-self:start}
-.kv div{padding:18px 18px 18px 0;display:grid;gap:4px}
-.kv div + div{padding-left:18px;border-left:1px solid var(--line)}
-.kv b{font:400 44px/1 var(--display);font-variant-numeric:tabular-nums}
-.kv span{font-size:14px;color:var(--muted)}
-.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.gal.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.gal figure{margin:0;display:grid;gap:8px;align-content:start}
-.gal figcaption{font-size:13.5px;color:var(--muted)}
-.demos{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.demos a{font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:8px 14px;transition:border-color .2s}
-.demos a:hover{border-color:var(--ink)}
-.demos a.main{background:var(--ink);color:var(--paper);border-color:var(--ink);font-weight:600}
-.demos span{font-size:14px;color:var(--muted);margin-right:4px}
-@media (max-width:860px){details.case > summary{grid-template-columns:minmax(0,1fr) auto;gap:8px 20px}details.case > summary > p{grid-column:1;grid-row:2}.tg{grid-row:1/3;grid-column:2}.cb-grid{grid-template-columns:minmax(0,1fr)}.gal,.gal.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
-
-/* how it works */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
-.steps li{padding:0 36px 0 0;display:grid;gap:12px;align-content:start}
-.steps li + li{padding-left:36px;border-left:1px solid var(--line)}
-.steps i{font:italic 400 clamp(64px,7vw,104px)/.8 var(--display);margin-bottom:18px}
-.steps h3{font:600 19px/1.3 var(--body);letter-spacing:0}
-.steps p{color:var(--muted);font-size:15.5px}
-#how .fine{margin-top:44px;max-width:76ch;font-size:15px}
-@media (max-width:860px){.steps{grid-template-columns:minmax(0,1fr);gap:0}.steps li,.steps li + li{padding:26px 0;border-left:0;border-top:1px solid var(--line);grid-template-columns:76px minmax(0,1fr);gap:6px 12px}.steps i{grid-row:1/3;font-size:64px;margin:0}.steps p{grid-column:2}}
-
-/* principles: the one inverted band */
-.inv{background:var(--ink);color:var(--paper)}
-.inv h2 em{display:block}
-.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-top:clamp(40px,5vw,72px)}
-.pgrid div{border-top:1px solid color-mix(in srgb,var(--paper) 30%,transparent);padding-top:22px;display:grid;gap:10px;align-content:start}
-.pgrid h3{font:600 19px/1.3 var(--body);letter-spacing:0}
-.pgrid p{color:color-mix(in srgb,var(--paper) 68%,transparent);font-size:15.5px}
-@media (max-width:860px){.pgrid{grid-template-columns:minmax(0,1fr);gap:28px}}
-
-/* about */
-.about .cols{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px;align-items:start}
-.portrait{margin:0;display:grid;gap:12px;position:sticky;top:96px}
-.portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 0;border-radius:12px;border:1px solid var(--line);filter:grayscale(1) contrast(1.05)}
-.portrait figcaption{font-size:14px;color:var(--muted)}
-.about h2{margin-bottom:30px}
-.about .body{display:grid;gap:16px;color:var(--ink2);max-width:62ch;font-size:17.5px}
-.quote{margin:44px 0 0;padding-top:28px;border-top:1px solid var(--ink);max-width:760px}
-.quote p{font:400 clamp(26px,2.9vw,38px)/1.2 var(--display);letter-spacing:-.01em}
-.quote footer{margin-top:16px;font-size:14.5px;color:var(--muted);background:none;border:0}
-.quote a{color:var(--ink);text-underline-offset:3px}
-@media (max-width:860px){.about .cols{grid-template-columns:minmax(0,1fr);gap:36px}.portrait{position:static;max-width:300px}}
-
-/* faq */
-.faqw{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start;border-top:1px solid var(--ink);padding-top:16px}
-.faqw .idx{display:flex;gap:12px;align-items:baseline;font:500 14px/1 var(--body);margin-bottom:clamp(20px,3vw,40px)}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:20px 0;font:600 17px/1.4 var(--body)}
-.faq details:first-child summary{padding-top:4px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font:400 24px/1 var(--body);flex:none;transition:transform .5s var(--e)}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{color:var(--muted);padding:0 40px 22px 0;max-width:64ch}
-@media (max-width:860px){.faqw{grid-template-columns:minmax(0,1fr);gap:28px}}
-
-/* contact band */
-.cta-band{position:relative;background:var(--hero);overflow:hidden}
-.cta-band .scrim{position:absolute;inset:0;background:color-mix(in srgb,var(--hero) 64%,transparent);pointer-events:none}
-.cta-band .wrap{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start}
-.cta-band .idx{display:flex;gap:12px;align-items:baseline;font:500 14px/1 var(--body);margin-bottom:26px}
-.cta-band h2{font-size:clamp(40px,4.8vw,66px);margin-bottom:22px}
-.cta-band .lead{color:var(--ink2);font-size:18px}
-.direct{margin-top:32px;padding-top:24px;border-top:1px solid color-mix(in srgb,var(--ink) 18%,transparent);display:grid;gap:10px}
-.mailrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.addr{font:400 clamp(24px,2.4vw,30px)/1.2 var(--display);overflow-wrap:anywhere;text-decoration:none}
-.addr:hover{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
-form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px;display:grid;gap:20px;box-shadow:var(--shadow);min-width:0}
-.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-label{display:grid;gap:7px;font-size:13.5px;font-weight:600}
-label small{font-weight:400;color:var(--muted)}
-input,textarea,select{font:400 16px/1.4 var(--body);color:var(--ink);background:var(--mist);border:1px solid var(--line);border-radius:10px;padding:13px 14px;width:100%}
-textarea{min-height:120px;resize:vertical}
-select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:36px}
-.avail{margin:14px 0 22px;font:500 15px/1.4 var(--body);color:var(--ink)}
-input:focus,textarea:focus,select:focus{outline:2px solid var(--ink);outline-offset:0;border-color:var(--ink)}
-input[aria-invalid="true"]{border-color:var(--flag)}
-.interest{font-size:14px;color:var(--muted)}.interest b{color:var(--ink)}
-.refd summary{cursor:pointer;font-size:14px;color:var(--muted);list-style:none}
-.refd summary::-webkit-details-marker{display:none}
-.refd summary::before{content:"+ ";font-weight:600}
-.refd[open] summary::before{content:"\2212 "}
-.refd label{margin-top:10px}
-.done{border:1px solid var(--ink);background:var(--mist);border-radius:10px;padding:14px 16px;font-size:15px}
-.done.err{border-color:var(--flag);background:var(--flag-soft)}
-.done a{font-weight:600}
-@media (max-width:860px){.cta-band .wrap{grid-template-columns:minmax(0,1fr);gap:40px}.row2{grid-template-columns:minmax(0,1fr)}form{padding:24px}}
-
-footer.site{background:var(--paper);border-top:1px solid var(--line);font-size:14.5px;color:var(--muted)}
-footer.site .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:36px 56px;padding-block:56px 40px}
-footer.site .logo12{height:44px;width:auto;color:var(--ink);margin-bottom:18px}
-footer.site p{max-width:44ch}
-footer.site nav{display:flex;flex-wrap:wrap;gap:6px 26px;align-content:start;justify-content:flex-end}
-footer.site nav a{color:var(--ink);text-decoration:none;padding:6px 0}
-footer.site nav a:hover{text-decoration:underline;text-underline-offset:4px}
-footer.site .base{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;border-top:1px solid var(--line);padding-top:20px}
-footer.site .base a{color:var(--ink)}
-@media (max-width:760px){footer.site .wrap{grid-template-columns:minmax(0,1fr)}footer.site nav{justify-content:flex-start}}
-
-/* screenshot viewer */
-dialog.lb{border:0;padding:0;margin:auto;background:transparent;max-width:min(1400px,calc(100vw - 32px));max-height:calc(100vh - 32px);width:100%;overflow:visible;color:#f4f4f2}
-dialog.lb::backdrop{background:rgba(6,6,8,.9);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.lb figure{margin:0;display:grid;gap:14px;justify-items:center}
-.lb img{max-width:100%;max-height:calc(100vh - 210px);width:auto;height:auto;border-radius:10px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9);background:#111}
-.lb figcaption{max-width:72ch;text-align:center;font:400 15px/1.5 var(--body);color:#e9e9e6}
-.lb figcaption b{display:block;font-weight:600;color:#fff;margin-bottom:2px}
-.lb .lbn{display:block;margin-top:6px;font-size:13px;color:#9a9a96;font-variant-numeric:tabular-nums}
-.lb .lbl{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px}
-.lb .lbl a{color:#fff;font-weight:600;font-size:14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 15px;text-decoration:none}
-.lb .lbl a:first-child{background:#fff;color:#0b0b0b;border-color:#fff}
-.lb .lbl a:hover{opacity:.8}
-.lb .lbx,.lb .lbp,.lb .lbq{position:fixed;border:1px solid rgba(255,255,255,.25);background:rgba(20,20,22,.7);color:#fff;width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer;display:grid;place-items:center}
-.lb .lbx{top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px))}
-.lb .lbp{left:calc(16px + env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
-.lb .lbq{right:calc(16px + env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
-.lb button:hover{background:rgba(255,255,255,.18)}
-@media (max-width:700px){.lb .lbp,.lb .lbq{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:none}.lb figure{padding-bottom:64px}}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .js .rv,.js .sheet,.js .hero h1 .ln > span{opacity:1;transform:none}
-}
-</style>
+<meta name="theme-color" content="#0e0d0c">
+<link rel="preload" href="/assets/fonts/FunnelDisplay.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/assets/fonts/FunnelSans.ttf" as="font" type="font/ttf" crossorigin>
+<script type="importmap">{"imports": {"three": "/assets/vendor/three.module.js", "postprocessing": "/assets/vendor/postprocessing.js"}}</script>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-<a class="skip" href="#services">Skip to services</a>
-
-<header class="top" id="hdr">
-  <div class="wrap">
-    <a class="mark" href="#top" aria-label="MLP Consulting, home"><svg class="logo12" viewBox="0 0 337.0 143.0" width="60" height="26" aria-hidden="true"><path fill="currentColor" d="M182.98,8.41 L182.69,6.67 L182.07,5.02 L181.48,4.00 L180.36,2.64 L179.00,1.52 L177.44,0.69 L175.76,0.17 L174.59,0.02 L161.00,0.00 L159.83,0.08 L158.67,0.31 L157.56,0.69 L156.50,1.21 L155.07,2.23 L154.23,3.07 L153.52,4.00 L152.93,5.02 L152.48,6.11 L152.08,7.83 L152.00,9.00 L152.00,99.00 L152.17,100.76 L152.69,102.44 L153.21,103.50 L153.86,104.48 L155.07,105.77 L156.00,106.48 L157.02,107.07 L158.11,107.52 L159.24,107.83 L160.41,107.98 L222.00,108.00 L223.76,107.83 L225.44,107.31 L226.50,106.79 L227.93,105.77 L228.77,104.93 L229.48,104.00 L230.07,102.98 L230.52,101.89 L230.83,100.76 L230.98,99.59 L231.00,86.00 L230.83,84.24 L230.31,82.56 L229.48,81.00 L228.36,79.64 L227.00,78.52 L225.98,77.93 L224.89,77.48 L223.76,77.17 L222.59,77.02 L183.00,77.00 L182.98,8.41Z M9.36,0.03 L8.06,0.20 L7.42,0.35 L6.79,0.54 L5.58,1.04 L4.45,1.69 L3.92,2.07 L3.41,2.49 L2.48,3.41 L2.07,3.92 L1.34,5.01 L1.03,5.58 L0.53,6.79 L0.19,8.06 L0.02,9.36 L0.00,10.01 L0.02,133.62 L0.19,134.91 L0.53,136.18 L0.76,136.79 L1.34,137.96 L1.68,138.52 L2.48,139.55 L3.40,140.48 L3.91,140.89 L4.99,141.62 L6.16,142.20 L7.40,142.62 L8.04,142.77 L8.68,142.88 L9.99,142.96 L24.94,142.99 L26.25,142.90 L27.53,142.65 L28.77,142.23 L29.95,141.65 L31.04,140.93 L32.02,140.06 L32.88,139.08 L33.61,137.99 L33.92,137.42 L34.42,136.21 L34.61,135.58 L34.87,134.30 L34.96,132.99 L35.00,57.83 L35.04,57.40 L35.19,56.83 L35.68,55.99 L36.41,55.34 L37.31,54.97 L38.08,54.89 L38.85,55.01 L39.57,55.33 L40.21,55.85 L64.01,82.58 L64.93,83.49 L65.43,83.90 L66.51,84.62 L67.09,84.92 L68.29,85.41 L68.91,85.60 L70.18,85.85 L71.47,85.93 L72.12,85.91 L73.40,85.75 L74.66,85.41 L75.26,85.19 L75.86,84.92 L76.98,84.28 L78.01,83.50 L78.49,83.06 L102.71,55.95 L103.12,55.55 L103.60,55.23 L104.15,55.01 L105.11,54.89 L105.69,54.97 L106.25,55.16 L106.75,55.45 L107.19,55.84 L107.55,56.30 L107.81,56.83 L107.96,57.40 L108.00,57.96 L108.00,132.95 L108.09,134.26 L108.19,134.90 L108.53,136.17 L108.76,136.78 L109.34,137.95 L110.07,139.04 L110.93,140.02 L111.41,140.47 L111.91,140.89 L113.00,141.61 L114.17,142.19 L115.41,142.61 L116.05,142.76 L117.34,142.93 L118.00,142.95 L259.97,143.00 L260.62,142.98 L261.92,142.81 L263.18,142.47 L264.39,141.97 L265.52,141.32 L266.56,140.52 L267.48,139.60 L268.28,138.56 L268.93,137.43 L269.43,136.23 L269.77,134.96 L269.95,133.67 L269.97,133.02 L269.97,119.08 L269.79,117.72 L269.63,117.05 L269.14,115.67 L269.02,115.07 L269.00,111.08 L269.04,110.51 L269.20,109.94 L269.46,109.42 L269.81,108.95 L270.59,108.36 L271.13,108.13 L271.71,108.02 L283.05,108.00 L285.75,107.93 L288.15,107.75 L290.78,107.43 L294.93,106.66 L297.50,106.01 L300.04,105.24 L302.30,104.43 L304.75,103.42 L308.55,101.57 L310.85,100.26 L313.09,98.84 L315.25,97.31 L317.34,95.68 L319.34,93.94 L321.26,92.11 L323.08,90.19 L324.81,88.18 L326.43,86.08 L327.96,83.91 L329.37,81.67 L330.67,79.36 L331.86,76.99 L332.93,74.57 L333.88,72.09 L334.70,69.58 L335.41,67.02 L335.98,64.43 L336.43,61.82 L336.72,59.43 L336.98,55.47 L336.94,51.49 L336.58,47.29 L335.94,43.36 L335.01,39.50 L334.24,36.96 L333.43,34.70 L331.87,31.04 L330.05,27.51 L327.98,24.12 L325.51,20.70 L322.94,17.66 L320.16,14.82 L318.19,13.04 L316.33,11.52 L313.12,9.18 L309.74,7.09 L307.19,5.72 L303.79,4.17 L301.32,3.21 L298.58,2.30 L294.97,1.34 L292.37,0.82 L289.51,0.40 L286.87,0.14 L282.95,0.00 L231.28,0.00 L228.35,0.18 L226.71,0.43 L225.12,0.82 L223.05,1.51 L222.13,1.89 L220.25,2.83 L219.21,3.45 L218.38,4.00 L216.71,5.30 L215.11,6.81 L213.73,8.40 L213.01,9.38 L212.45,10.21 L211.39,12.07 L210.53,14.00 L210.13,15.12 L209.44,17.71 L209.12,19.84 L209.00,22.21 L209.02,58.62 L209.09,59.27 L209.34,60.55 L209.76,61.79 L210.03,62.39 L210.68,63.52 L211.06,64.05 L211.48,64.56 L212.40,65.48 L213.44,66.28 L214.57,66.93 L215.16,67.20 L216.40,67.62 L217.68,67.88 L218.98,67.97 L229.98,67.99 L231.29,67.90 L232.57,67.65 L233.20,67.46 L234.41,66.96 L234.99,66.65 L236.08,65.93 L236.59,65.51 L237.51,64.59 L237.93,64.08 L238.31,63.55 L238.97,62.42 L239.24,61.82 L239.66,60.58 L239.91,59.29 L240.00,57.99 L240.00,40.08 L240.08,39.32 L240.46,38.42 L241.10,37.68 L241.94,37.20 L242.51,37.04 L242.95,37.00 L282.96,37.01 L284.71,37.16 L286.20,37.45 L287.70,37.90 L289.07,38.46 L290.54,39.25 L291.98,40.24 L293.17,41.26 L294.29,42.44 L295.35,43.83 L296.16,45.17 L296.85,46.64 L297.43,48.34 L297.78,49.93 L297.98,51.71 L297.98,53.34 L297.78,55.08 L297.42,56.71 L296.85,58.37 L296.18,59.78 L295.34,61.18 L294.28,62.57 L293.24,63.68 L292.06,64.70 L290.85,65.56 L289.49,66.33 L288.10,66.95 L286.66,67.43 L285.22,67.76 L283.94,67.93 L282.58,68.00 L249.35,68.02 L248.05,68.19 L247.41,68.34 L246.17,68.76 L245.58,69.03 L244.44,69.69 L243.91,70.07 L242.93,70.93 L242.48,71.41 L241.69,72.44 L241.03,73.58 L240.53,74.79 L240.34,75.41 L240.09,76.69 L240.00,78.00 L240.00,114.05 L239.87,114.87 L239.44,115.75 L238.90,116.32 L238.06,116.80 L237.49,116.96 L236.92,117.00 L146.08,117.00 L145.51,116.96 L144.59,116.64 L144.10,116.32 L143.68,115.90 L143.20,115.06 L143.04,114.49 L143.00,114.05 L142.98,9.38 L142.91,8.73 L142.66,7.45 L142.24,6.21 L141.97,5.62 L141.32,4.48 L140.94,3.95 L140.08,2.97 L139.60,2.52 L138.56,1.73 L137.43,1.07 L136.84,0.80 L136.22,0.57 L134.96,0.23 L133.67,0.06 L111.54,0.03 L110.24,0.20 L109.60,0.34 L108.36,0.76 L107.77,1.03 L106.63,1.69 L105.59,2.48 L105.12,2.93 L73.59,34.41 L73.08,34.80 L72.56,35.06 L71.99,35.21 L71.40,35.25 L70.82,35.18 L70.26,34.99 L69.75,34.69 L69.41,34.41 L37.96,2.96 L36.98,2.10 L35.89,1.37 L35.32,1.06 L34.11,0.56 L32.85,0.22 L31.55,0.05 L9.36,0.03Z"/></svg><b>Consulting</b></a>
-    <div class="navr">
-      <nav class="links" id="nav" aria-label="Main">
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="/how-it-works/">How it works</a>
-        <a href="#about">About</a>
-        <a class="btn solid sm" href="#contact" data-interest="Free assessment"><span class="cta-l">Get a free assessment</span><span class="cta-s">Free assessment</span></a>
-      </nav>
-      <button class="ib" type="button" id="theme" aria-label="Switch between light and dark"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1.8a6.2 6.2 0 0 1 0 12.4z" fill="currentColor"/></svg></button>
-      <button class="ib menu-btn" type="button" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Menu"><i aria-hidden="true"></i></button>
-    </div>
-  </div>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="scene" aria-hidden="true"></canvas>
+<header class="chrome">
+<a class="mark" href="#top" aria-label="MLP Consulting, home"><svg class="logo12" viewBox="0 0 337.0 143.0" width="60" height="26" aria-hidden="true"><path fill="currentColor" d="M182.98,8.41 L182.69,6.67 L182.07,5.02 L181.48,4.00 L180.36,2.64 L179.00,1.52 L177.44,0.69 L175.76,0.17 L174.59,0.02 L161.00,0.00 L159.83,0.08 L158.67,0.31 L157.56,0.69 L156.50,1.21 L155.07,2.23 L154.23,3.07 L153.52,4.00 L152.93,5.02 L152.48,6.11 L152.08,7.83 L152.00,9.00 L152.00,99.00 L152.17,100.76 L152.69,102.44 L153.21,103.50 L153.86,104.48 L155.07,105.77 L156.00,106.48 L157.02,107.07 L158.11,107.52 L159.24,107.83 L160.41,107.98 L222.00,108.00 L223.76,107.83 L225.44,107.31 L226.50,106.79 L227.93,105.77 L228.77,104.93 L229.48,104.00 L230.07,102.98 L230.52,101.89 L230.83,100.76 L230.98,99.59 L231.00,86.00 L230.83,84.24 L230.31,82.56 L229.48,81.00 L228.36,79.64 L227.00,78.52 L225.98,77.93 L224.89,77.48 L223.76,77.17 L222.59,77.02 L183.00,77.00 L182.98,8.41Z M9.36,0.03 L8.06,0.20 L7.42,0.35 L6.79,0.54 L5.58,1.04 L4.45,1.69 L3.92,2.07 L3.41,2.49 L2.48,3.41 L2.07,3.92 L1.34,5.01 L1.03,5.58 L0.53,6.79 L0.19,8.06 L0.02,9.36 L0.00,10.01 L0.02,133.62 L0.19,134.91 L0.53,136.18 L0.76,136.79 L1.34,137.96 L1.68,138.52 L2.48,139.55 L3.40,140.48 L3.91,140.89 L4.99,141.62 L6.16,142.20 L7.40,142.62 L8.04,142.77 L8.68,142.88 L9.99,142.96 L24.94,142.99 L26.25,142.90 L27.53,142.65 L28.77,142.23 L29.95,141.65 L31.04,140.93 L32.02,140.06 L32.88,139.08 L33.61,137.99 L33.92,137.42 L34.42,136.21 L34.61,135.58 L34.87,134.30 L34.96,132.99 L35.00,57.83 L35.04,57.40 L35.19,56.83 L35.68,55.99 L36.41,55.34 L37.31,54.97 L38.08,54.89 L38.85,55.01 L39.57,55.33 L40.21,55.85 L64.01,82.58 L64.93,83.49 L65.43,83.90 L66.51,84.62 L67.09,84.92 L68.29,85.41 L68.91,85.60 L70.18,85.85 L71.47,85.93 L72.12,85.91 L73.40,85.75 L74.66,85.41 L75.26,85.19 L75.86,84.92 L76.98,84.28 L78.01,83.50 L78.49,83.06 L102.71,55.95 L103.12,55.55 L103.60,55.23 L104.15,55.01 L105.11,54.89 L105.69,54.97 L106.25,55.16 L106.75,55.45 L107.19,55.84 L107.55,56.30 L107.81,56.83 L107.96,57.40 L108.00,57.96 L108.00,132.95 L108.09,134.26 L108.19,134.90 L108.53,136.17 L108.76,136.78 L109.34,137.95 L110.07,139.04 L110.93,140.02 L111.41,140.47 L111.91,140.89 L113.00,141.61 L114.17,142.19 L115.41,142.61 L116.05,142.76 L117.34,142.93 L118.00,142.95 L259.97,143.00 L260.62,142.98 L261.92,142.81 L263.18,142.47 L264.39,141.97 L265.52,141.32 L266.56,140.52 L267.48,139.60 L268.28,138.56 L268.93,137.43 L269.43,136.23 L269.77,134.96 L269.95,133.67 L269.97,133.02 L269.97,119.08 L269.79,117.72 L269.63,117.05 L269.14,115.67 L269.02,115.07 L269.00,111.08 L269.04,110.51 L269.20,109.94 L269.46,109.42 L269.81,108.95 L270.59,108.36 L271.13,108.13 L271.71,108.02 L283.05,108.00 L285.75,107.93 L288.15,107.75 L290.78,107.43 L294.93,106.66 L297.50,106.01 L300.04,105.24 L302.30,104.43 L304.75,103.42 L308.55,101.57 L310.85,100.26 L313.09,98.84 L315.25,97.31 L317.34,95.68 L319.34,93.94 L321.26,92.11 L323.08,90.19 L324.81,88.18 L326.43,86.08 L327.96,83.91 L329.37,81.67 L330.67,79.36 L331.86,76.99 L332.93,74.57 L333.88,72.09 L334.70,69.58 L335.41,67.02 L335.98,64.43 L336.43,61.82 L336.72,59.43 L336.98,55.47 L336.94,51.49 L336.58,47.29 L335.94,43.36 L335.01,39.50 L334.24,36.96 L333.43,34.70 L331.87,31.04 L330.05,27.51 L327.98,24.12 L325.51,20.70 L322.94,17.66 L320.16,14.82 L318.19,13.04 L316.33,11.52 L313.12,9.18 L309.74,7.09 L307.19,5.72 L303.79,4.17 L301.32,3.21 L298.58,2.30 L294.97,1.34 L292.37,0.82 L289.51,0.40 L286.87,0.14 L282.95,0.00 L231.28,0.00 L228.35,0.18 L226.71,0.43 L225.12,0.82 L223.05,1.51 L222.13,1.89 L220.25,2.83 L219.21,3.45 L218.38,4.00 L216.71,5.30 L215.11,6.81 L213.73,8.40 L213.01,9.38 L212.45,10.21 L211.39,12.07 L210.53,14.00 L210.13,15.12 L209.44,17.71 L209.12,19.84 L209.00,22.21 L209.02,58.62 L209.09,59.27 L209.34,60.55 L209.76,61.79 L210.03,62.39 L210.68,63.52 L211.06,64.05 L211.48,64.56 L212.40,65.48 L213.44,66.28 L214.57,66.93 L215.16,67.20 L216.40,67.62 L217.68,67.88 L218.98,67.97 L229.98,67.99 L231.29,67.90 L232.57,67.65 L233.20,67.46 L234.41,66.96 L234.99,66.65 L236.08,65.93 L236.59,65.51 L237.51,64.59 L237.93,64.08 L238.31,63.55 L238.97,62.42 L239.24,61.82 L239.66,60.58 L239.91,59.29 L240.00,57.99 L240.00,40.08 L240.08,39.32 L240.46,38.42 L241.10,37.68 L241.94,37.20 L242.51,37.04 L242.95,37.00 L282.96,37.01 L284.71,37.16 L286.20,37.45 L287.70,37.90 L289.07,38.46 L290.54,39.25 L291.98,40.24 L293.17,41.26 L294.29,42.44 L295.35,43.83 L296.16,45.17 L296.85,46.64 L297.43,48.34 L297.78,49.93 L297.98,51.71 L297.98,53.34 L297.78,55.08 L297.42,56.71 L296.85,58.37 L296.18,59.78 L295.34,61.18 L294.28,62.57 L293.24,63.68 L292.06,64.70 L290.85,65.56 L289.49,66.33 L288.10,66.95 L286.66,67.43 L285.22,67.76 L283.94,67.93 L282.58,68.00 L249.35,68.02 L248.05,68.19 L247.41,68.34 L246.17,68.76 L245.58,69.03 L244.44,69.69 L243.91,70.07 L242.93,70.93 L242.48,71.41 L241.69,72.44 L241.03,73.58 L240.53,74.79 L240.34,75.41 L240.09,76.69 L240.00,78.00 L240.00,114.05 L239.87,114.87 L239.44,115.75 L238.90,116.32 L238.06,116.80 L237.49,116.96 L236.92,117.00 L146.08,117.00 L145.51,116.96 L144.59,116.64 L144.10,116.32 L143.68,115.90 L143.20,115.06 L143.04,114.49 L143.00,114.05 L142.98,9.38 L142.91,8.73 L142.66,7.45 L142.24,6.21 L141.97,5.62 L141.32,4.48 L140.94,3.95 L140.08,2.97 L139.60,2.52 L138.56,1.73 L137.43,1.07 L136.84,0.80 L136.22,0.57 L134.96,0.23 L133.67,0.06 L111.54,0.03 L110.24,0.20 L109.60,0.34 L108.36,0.76 L107.77,1.03 L106.63,1.69 L105.59,2.48 L105.12,2.93 L73.59,34.41 L73.08,34.80 L72.56,35.06 L71.99,35.21 L71.40,35.25 L70.82,35.18 L70.26,34.99 L69.75,34.69 L69.41,34.41 L37.96,2.96 L36.98,2.10 L35.89,1.37 L35.32,1.06 L34.11,0.56 L32.85,0.22 L31.55,0.05 L9.36,0.03Z"/></svg><b>Consulting</b></a>
+<div class="acts">
+<a class="btn go" href="#contact" data-interest="Free assessment"><span class="cta-l">Get a free assessment</span><span class="cta-s">Free assessment</span></a>
+<button class="menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+</div>
+<noscript><nav class="nojs-nav" aria-label="Main"><a href="#services">Services</a><a href="#work">Work</a><a href="/how-it-works/">How it works</a><a href="#about">About</a><a href="#contact">Contact</a><a href="/workflows/">Workflows</a><a href="/referrals/">Referrals</a><a href="/privacy/">Privacy</a></nav></noscript>
 </header>
-
-<main id="top">
-<section class="hero" aria-labelledby="hero-title">
-  <video class="mapv" id="map-hero" muted loop playsinline autoplay preload="auto" aria-hidden="true" tabindex="-1"></video>
-  <div class="scrim"></div>
-  <div class="wrap top-row">
-    <div>
-      <p class="kicker" id="industries"><span>Websites, automation and practical AI</span><span>Irvine, California</span></p>
-      <h1 id="hero-title"><span class="ln"><span>More customers.</span></span><span class="ln"><span><em>Fewer late nights.</em></span></span></h1>
-      <p class="lead">I work with owner-run businesses on the things that slip when you’re busy: a website that takes bookings, quotes that get a follow-up on day two, invoices that get chased before they’re two months old. I set it up, train your team, and keep it running.</p>
-      <div class="cta">
-        <a class="btn solid" href="#contact" data-interest="Free assessment">Get a free assessment <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        <a class="btn line" href="#services">See services and prices</a>
-      </div>
-      <p class="reassure">Send me your website and I’ll send back three things worth fixing, within one business day. Serving Southern California and businesses nationwide.</p>
-    </div>
-
-    <aside class="sheet" aria-labelledby="sheet-t">
-      <div class="sh-top">
-        <b id="sheet-t">What a free assessment looks like <small>Examples</small></b>
-        <div class="tabs" role="tablist" aria-label="Kind of business" id="tabs">
-          <button type="button" role="tab" aria-selected="true" aria-controls="sheet-list" data-t="dental">Dental office</button>
-          <button type="button" role="tab" aria-selected="false" aria-controls="sheet-list" data-t="restaurant" tabindex="-1">Restaurant</button>
-          <button type="button" role="tab" aria-selected="false" aria-controls="sheet-list" data-t="contractor" tabindex="-1">Contractor</button>
-          <button type="button" role="tab" aria-selected="false" aria-controls="sheet-list" data-t="salon" tabindex="-1">Salon</button>
-        </div>
-      </div>
-      <ol id="sheet-list" role="tabpanel" aria-live="polite">
-        <li><i>1</i><span class="k">Website</span><span class="d">On a phone, the booking button is three screens down.</span><span class="v"><b>Fix:</b> put it at the top of every page.</span></li>
-        <li><i>2</i><span class="k">Insurance</span><span class="d">New patients can’t tell whether you take their plan without calling.</span><span class="v"><b>Fix:</b> list the plans you take, and what a cleaning costs without one.</span></li>
-        <li><i>3</i><span class="k">After hours</span><span class="d">A call at 5:40 rings out, and that patient books somewhere else.</span><span class="v"><b>Fix:</b> a text back inside a minute, with a link to book.</span></li>
-      </ol>
-      <div class="sh-foot">Yours is written about your business, in plain English, with what to fix first.</div>
-    </aside>
-  </div>
-  <div class="wrap">
-    <div class="facts">
-      <div><b>17</b><span>working websites you can open and try</span></div>
-      <div><b>1 day</b><span>from your message to a written assessment</span></div>
-      <div><b>$500</b><span>fixes the first thing, inside a week</span></div>
-    </div>
-  </div>
+<div class="counter" id="counter" aria-hidden="true"><span id="cn">01 / 07</span> <span class="dot">·</span> <span id="cl">Welcome</span></div>
+<div class="scrim" data-scene-through aria-hidden="true"></div>
+<main id="main" tabindex="-1">
+<section class="ch" data-scene-through id="top" aria-labelledby="hero-title">
+<div class="col">
+<p class="kicker"><span>Websites, automation and practical AI</span><span>Irvine, California</span></p>
+<h1 id="hero-title"><span class="ln">More customers.</span><span class="ln">Fewer late nights.</span></h1>
+<p class="lead">I work with owner-run businesses on the things that slip when you’re busy: a website that takes bookings, quotes that get a follow-up on day two, invoices that get chased before they’re two months old. I set it up, train your team, and keep it running.</p>
+<div class="cta">
+<a class="btn go" href="#contact" data-interest="Free assessment">Get a free assessment</a>
+<a class="tlink" href="#services">See services and prices</a>
+</div>
+<p class="reassure">Send me your website and I’ll send back three things worth fixing, within one business day. Serving Southern California and businesses nationwide.</p>
+<dl class="facts"><div><dt>17</dt><dd>working websites you can open and try</dd></div><div><dt>1 day</dt><dd>from your message to a written assessment</dd></div><div><dt>$500</dt><dd>fixes the first thing, inside a week</dd></div></dl>
+</div>
 </section>
-
-<section id="services">
-  <div class="wrap">
-    <div class="sh">
-      <p class="idx rv"><i>01</i> Services</p>
-      <h2 class="rv">Three ways <em>to start.</em></h2>
-      <p class="lead rv d1">Fix one thing for $500, rebuild the website, or connect the tools you already pay for.</p>
-    </div>
-    <div class="svcs">
-      <article class="svc rv" id="quick-win">
-        <div class="who">
-          <h3><i>A</i> Quick Win</h3>
-          <p class="price">$500<small>Fixed scope. Credited toward a larger build when you continue.</small></p>
-          <a class="btn solid sm" href="#contact" data-interest="Quick Win">Find my Quick Win <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-        </div>
-        <div class="what">
-          <p>One thing fixed and working inside a week: online booking, replies to new inquiries, a text back after a missed call, or review requests.</p>
-          <p>A focused one-week setup once access and content are ready.</p>
-        </div>
-        <ul>
-          <li>One clearly defined workflow.</li>
-          <li>Setup using your existing tools where practical.</li>
-          <li>Approved messaging and a guided handoff.</li>
-        </ul>
-      </article>
-      <article class="svc rv" id="website">
-        <div class="who">
-          <h3><i>B</i> Website &amp; Inquiry Setup</h3>
-          <p class="price">From $2,000<small>A written scope and price before anything starts.</small></p>
-          <a class="btn line sm" href="#contact" data-interest="Website &amp; Inquiry Setup">Discuss my website</a>
-        </div>
-        <div class="what">
-          <p>A site that shows what you do, what it costs and how to book, with every inquiry landing somewhere it gets answered.</p>
-          <p><a href="#work">Seventeen of them are below.</a> Open one and use it the way a customer would.</p>
-        </div>
-        <ul>
-          <li>A website designed around your services and customers.</li>
-          <li>Clear contact or booking paths.</li>
-          <li>Inquiry routing and a practical follow-up process.</li>
-          <li>Mobile-friendly pages and a straightforward handoff.</li>
-        </ul>
-      </article>
-      <article class="svc rv" id="workflows-ai">
-        <div class="who">
-          <h3><i>C</i> Connected Workflows &amp; AI</h3>
-          <p class="price">Scoped<small>Priced to the job, in writing, with any software costs named up front.</small></p>
-          <a class="btn line sm" href="#contact" data-interest="Connected Workflows &amp; AI">Discuss my workflow</a>
-        </div>
-        <div class="what">
-          <p>Connect the tools you already use and take the retyping out of the work between them: estimates, document drafts, customer follow-up and a weekly report.</p>
-          <p><a href="/workflows/">Six workflows worth having in a busy business.</a></p>
-        </div>
-        <ul>
-          <li>A focused review of the workflow you want to improve.</li>
-          <li>Automation and AI configured for the task.</li>
-          <li>Clear approvals and useful reporting.</li>
-          <li>Team training and written handoff guidance.</li>
-        </ul>
-      </article>
-    </div>
-    <div class="also rv" id="automations">
-      <div><b>Growth Plan, from $1,000</b><p>For larger projects: workflow research, priorities and a tailored solution preview. The planning fee is credited toward the build.</p></div>
-      <div><b>Website care, from $200 a month</b><p>Hosting, backups, security updates and agreed content changes, so the site stays current after launch.</p></div>
-      <div><b>Founding-client pricing</b><p>Available for the first five businesses, with the scope and rate confirmed in your proposal.</p></div>
-    </div>
-  </div>
+<section class="ch" data-scene-through id="assessment" aria-labelledby="sheet-t">
+<div class="col">
+<h2 id="sheet-t">What a free assessment looks like <small>Examples</small></h2>
+<div class="tabs" role="tablist" aria-label="Kind of business" id="tabs"><button type="button" role="tab" id="tab-dental" aria-selected="true" aria-controls="sheet-panel" data-t="dental">Dental office</button><button type="button" role="tab" id="tab-restaurant" aria-selected="false" aria-controls="sheet-panel" data-t="restaurant" tabindex="-1">Restaurant</button><button type="button" role="tab" id="tab-contractor" aria-selected="false" aria-controls="sheet-panel" data-t="contractor" tabindex="-1">Contractor</button><button type="button" role="tab" id="tab-salon" aria-selected="false" aria-controls="sheet-panel" data-t="salon" tabindex="-1">Salon</button></div>
+<div id="sheet-panel" role="tabpanel" aria-labelledby="tab-dental" aria-live="polite"><ol id="sheet-list"><li><i>1</i><span class="k">Website</span><span class="d">On a phone, the booking button is three screens down.</span><span class="v"><b>Fix:</b> put it at the top of every page.</span></li><li><i>2</i><span class="k">Insurance</span><span class="d">New patients can’t tell whether you take their plan without calling.</span><span class="v"><b>Fix:</b> list the plans you take, and what a cleaning costs without one.</span></li><li><i>3</i><span class="k">After hours</span><span class="d">A call at 5:40 rings out, and that patient books somewhere else.</span><span class="v"><b>Fix:</b> a text back inside a minute, with a link to book.</span></li></ol></div>
+<div class="ex-all"><div class="ex"><h3>Dental office</h3><ol><li><i>1</i><span class="k">Website</span><span class="d">On a phone, the booking button is three screens down.</span><span class="v"><b>Fix:</b> put it at the top of every page.</span></li><li><i>2</i><span class="k">Insurance</span><span class="d">New patients can’t tell whether you take their plan without calling.</span><span class="v"><b>Fix:</b> list the plans you take, and what a cleaning costs without one.</span></li><li><i>3</i><span class="k">After hours</span><span class="d">A call at 5:40 rings out, and that patient books somewhere else.</span><span class="v"><b>Fix:</b> a text back inside a minute, with a link to book.</span></li></ol></div><div class="ex"><h3>Restaurant</h3><ol><li><i>1</i><span class="k">Menu</span><span class="d">The menu is a PDF from last spring. On a phone it has to be pinched to read.</span><span class="v"><b>Fix:</b> put tonight’s menu on the page as text, with prices.</span></li><li><i>2</i><span class="k">Hours</span><span class="d">Google says you close at 9. The door says 10 on Fridays and Saturdays.</span><span class="v"><b>Fix:</b> match your hours everywhere customers look.</span></li><li><i>3</i><span class="k">Private dining</span><span class="d">Requests for the back room land in a shared inbox and wait for whoever sees them.</span><span class="v"><b>Fix:</b> a short form that goes to one person, with a reply the same minute.</span></li></ol></div><div class="ex"><h3>Contractor</h3><ol><li><i>1</i><span class="k">Portfolio</span><span class="d">Your best kitchen is the ninth photo in a gallery with no captions.</span><span class="v"><b>Fix:</b> lead with three finished jobs, each with the scope and how long it took.</span></li><li><i>2</i><span class="k">Estimate form</span><span class="d">The form asks eleven questions before anyone can say what they need.</span><span class="v"><b>Fix:</b> cut it to a name, a phone number and the job.</span></li><li><i>3</i><span class="k">Quotes</span><span class="d">A quote goes out and nobody checks back.</span><span class="v"><b>Fix:</b> a follow-up on day two and day seven, written the way you talk.</span></li></ol></div><div class="ex"><h3>Salon</h3><ol><li><i>1</i><span class="k">Prices</span><span class="d">Your prices are on Instagram but not on the site.</span><span class="v"><b>Fix:</b> one price list on the site, kept current.</span></li><li><i>2</i><span class="k">Hours</span><span class="d">Google says you’re closed Saturdays. Your site says open until 2.</span><span class="v"><b>Fix:</b> match your hours everywhere customers look.</span></li><li><i>3</i><span class="k">No-shows</span><span class="d">A missed appointment costs a chair for an hour, and nobody got a reminder.</span><span class="v"><b>Fix:</b> a text the day before, with one tap to confirm or move.</span></li></ol></div></div>
+<p class="foot-note">Yours is written about your business, in plain English, with what to fix first.</p>
+</div>
 </section>
-
-<section id="work" class="mist">
-  <div class="wrap">
-    <div class="sh">
-      <p class="idx rv"><i>02</i> Work</p>
-      <h2 class="rv">Open one <em>and try it.</em></h2>
-      <p class="lead rv d1">Seventeen working websites and the follow-up systems that run behind them. Book a table, order a drink, design a ring.</p>
-    </div>
-
-    <div class="index" id="case-sites">
-      <div>
-        <ol class="rows" id="rows">
-          <li><a class="row" href="/work/jewelry/#shop" target="_blank" rel="noopener" data-k="jewelry-store" data-x="Open the ring designer|/work/jewelry/builder.html"><img class="th" src="img/jewelry-store.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">01</span><span class="nm">Halden</span><span class="tr">Jewelry store, 3D ring designer</span></a></li>
-          <li><a class="row" href="/work/brokerage/site/" target="_blank" rel="noopener" data-k="brokerage-site"><img class="th" src="img/brokerage-site.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">02</span><span class="nm">Boutique brokerage</span><span class="tr">Real estate</span></a></li>
-          <li><a class="row" href="/work/sites/birchway/" target="_blank" rel="noopener" data-k="site-birchway" data-x="Open the staff side|/work/sites/birchway/#staff"><img class="th" src="img/site-birchway.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">03</span><span class="nm">Birchway Pediatrics</span><span class="tr">Pediatric office</span></a></li>
-          <li><a class="row" href="/work/sites/camino/" target="_blank" rel="noopener" data-k="site-camino" data-x="Open the staff side|/work/sites/camino/#staff"><img class="th" src="img/site-camino.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">04</span><span class="nm">Osteria Camino</span><span class="tr">Italian restaurant</span></a></li>
-          <li><a class="row" href="/work/sites/paperwhale/" target="_blank" rel="noopener" data-k="site-paperwhale" data-x="Open the staff side|/work/sites/paperwhale/#staff"><img class="th" src="img/site-paperwhale.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">05</span><span class="nm">Paperwhale Books</span><span class="tr">Bookstore</span></a></li>
-          <li><a class="row" href="/work/sites/quietwell/" target="_blank" rel="noopener" data-k="site-quietwell"><img class="th" src="img/site-quietwell.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">06</span><span class="nm">Quietwell Aesthetics</span><span class="tr">Med spa</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/little-orbit/" target="_blank" rel="noopener" data-k="site-little-orbit"><img class="th" src="img/site-little-orbit.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">07</span><span class="nm">Little Orbit Tea</span><span class="tr">Boba shop</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/crestline/" target="_blank" rel="noopener" data-k="site-crestline"><img class="th" src="img/site-crestline.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">08</span><span class="nm">Crestline Design-Build</span><span class="tr">Remodeling company</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/cedarline/" target="_blank" rel="noopener" data-k="site-cedarline"><img class="th" src="img/site-cedarline.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">09</span><span class="nm">Cedarline Kitchen</span><span class="tr">Restaurant</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/hollis/" target="_blank" rel="noopener" data-k="site-hollis"><img class="th" src="img/site-hollis.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">10</span><span class="nm">Hollis Flower House</span><span class="tr">Florist</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/bellwood/" target="_blank" rel="noopener" data-k="site-bellwood"><img class="th" src="img/site-bellwood.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">11</span><span class="nm">Bellwood Family Dental</span><span class="tr">Dental office</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/coffee/" target="_blank" rel="noopener" data-k="site-coffee"><img class="th" src="img/site-coffee.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">12</span><span class="nm">Kestrel Hill Coffee Roasters</span><span class="tr">Coffee roaster</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/marlow/" target="_blank" rel="noopener" data-k="site-marlow"><img class="th" src="img/site-marlow.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">13</span><span class="nm">Marlow &amp; Rye Bakery</span><span class="tr">Bakery</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/salon/" target="_blank" rel="noopener" data-k="site-salon"><img class="th" src="img/site-salon.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">14</span><span class="nm">Ostrander Hair Studio</span><span class="tr">Hair salon</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/pilates/" target="_blank" rel="noopener" data-k="site-pilates"><img class="th" src="img/site-pilates.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">15</span><span class="nm">Springline Reformer Studio</span><span class="tr">Pilates studio</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/boutique/" target="_blank" rel="noopener" data-k="site-boutique"><img class="th" src="img/site-boutique.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">16</span><span class="nm">Fig &amp; Fennimore</span><span class="tr">Clothing boutique</span></a></li>
-          <li class="x"><a class="row" href="/work/sites/solace/" target="_blank" rel="noopener" data-k="site-solace"><img class="th" src="img/site-solace.webp" width="1600" height="1000" alt="" loading="lazy" decoding="async"><span class="n">17</span><span class="nm">Solace Studio Dental</span><span class="tr">Dental studio</span></a></li>
-        </ol>
-        <button class="btn line sm more-rows" type="button" id="more-rows">Show all 17 sites</button>
-        <p class="fine note">Every site is live: open one and book, order or browse like a customer would. Screens use sample data; business names and details are fictional.</p>
-      </div>
-      <div class="stage" id="stage" aria-live="polite">
-        <button class="frame" type="button" id="stage-btn" aria-label="View this screenshot larger"><img id="st-a" src="img/jewelry-store.webp" width="1600" height="1000" alt="" decoding="async" loading="lazy"><img id="st-b" class="off" width="1600" height="1000" alt="" decoding="async"><span aria-hidden="true">View larger</span></button>
-        <div class="cap"><div><b id="st-t">Halden · Jewelry store</b><p id="st-d">Engagement rings with prices on every card, and a 3D ring designer: pick the setting, the metal and the stone, and turn the ring to see it from any side.</p></div><div class="lk" id="st-l"><a class="btn solid sm" href="/work/jewelry/#shop" target="_blank" rel="noopener">Open site ↗</a><a class="btn line sm" href="/work/jewelry/builder.html" target="_blank" rel="noopener">Open the ring designer ↗</a></div></div>
-      </div>
-    </div>
-
-    <div class="grp rv" id="case-automations">
-      <h3>Workflows that handle the routine</h3>
-      <p>Inbox replies, lead follow-up, reminders, reviews and invoice chasing, working in the background while you run the business.</p>
-    </div>
-    <div class="flows">
-      <figure class="rv"><button class="shot" type="button" data-k="email-automation"><img decoding="async" src="img/email-automation.webp" width="1600" height="1000" alt="Inbox with a new inquiry and a drafted reply ready to approve" loading="lazy"></button><figcaption><h4>An inbox that answers itself</h4><p>Routine emails get an instant reply; personal ones wait as a draft for you to approve.</p></figcaption></figure>
-      <figure class="rv d1"><button class="shot" type="button" data-k="auto-follow-up"><img decoding="async" src="img/auto-follow-up.webp" width="1600" height="1000" alt="A text conversation beside a follow-up timeline" loading="lazy"></button><figcaption><h4>Inquiries acknowledged right away</h4><p>Every inquiry gets an instant acknowledgment and a friendly follow-up schedule.</p></figcaption></figure>
-      <figure class="rv d2"><button class="shot" type="button" data-k="auto-reminders"><img decoding="async" src="img/auto-reminders.webp" width="1600" height="1000" alt="A weekly calendar of appointments with confirmation status" loading="lazy"></button><figcaption><h4>Appointments that show up</h4><p>Reminders and easy rescheduling by text cut no-shows.</p></figcaption></figure>
-      <figure class="rv"><button class="shot" type="button" data-k="auto-reviews"><img decoding="async" src="img/auto-reviews.webp" width="1600" height="1000" alt="A rating summary with new customer reviews" loading="lazy"></button><figcaption><h4>Feedback that is easy to give</h4><p>A consistent request after every completed job or visit, with a clear route for your team to respond.</p></figcaption></figure>
-      <figure class="rv d1"><button class="shot" type="button" data-k="auto-invoices"><img decoding="async" src="img/auto-invoices.webp" width="1600" height="1000" alt="An overdue summary and a table of open invoices" loading="lazy"></button><figcaption><h4>Invoices that chase themselves</h4><p>Polite reminders with a payment link, stopping once you are paid.</p></figcaption></figure>
-      <figure class="rv d2"><button class="shot" type="button" data-k="site-command-center"><img decoding="async" src="img/site-command-center.webp" width="1600" height="1000" alt="Owner command center with an approval queue and live job profit" loading="lazy"></button><figcaption><h4>An owner’s morning view</h4><p>An approval queue and live job profit in one place.</p></figcaption></figure>
-    </div>
-
-    <div class="grp rv">
-      <h3>Larger systems</h3>
-      <p>Three bigger builds, each with the need, what was built and screens you can open.</p>
-    </div>
-    <div class="cases">
-      <details class="case" id="case-remodeler">
-        <summary>
-          <div><span class="tag">Client project · Home services</span><h4>A connected toolkit for a remodeling business</h4></div>
-          <p>A public website, an office workspace, a job tracker for crews and a set of video ads, in place of a spreadsheet and a crowded inbox.</p>
-          <span class="tg" aria-hidden="true">+</span>
-        </summary>
-        <div class="case-body">
-          <div class="cb-grid">
-            <div><h5>The business need</h5><p>A design-build crew doing kitchens, baths and decks needed one organized place for inquiries, estimates, payments, job costs and marketing, so nothing lives only in someone’s head.</p></div>
-            <div><h5>The solution</h5><ul><li>A public website with service pages and 57 plain-spoken local remodeling guides</li><li>An office workspace for inbox review, estimates, payments and job details</li><li>A mobile layout designed for crews in the field, tracking hours, costs and what each job really earns</li><li>Short video ads in six styles, queued on a weekly posting schedule</li></ul></div>
-            <div><h5>How it supports the team</h5><ul><li>Larger text and five clear groups make the office workspace easy for the owner to use every day</li><li>Customer data stays on the owner’s computer</li><li>The AI drafts and organizes; nothing reaches the books or a customer until the owner approves it</li><li>Careful checks against representative business data before delivery</li></ul></div>
-          </div>
-          <div class="gal">
-            <figure><button class="shot" type="button" data-k="remodel-job"><img decoding="async" src="img/remodel-job.webp" width="1024" height="754" alt="Job page with stages and profit" loading="lazy"></button><figcaption>A job’s stage and real profit.</figcaption></figure>
-            <figure><button class="shot" type="button" data-k="remodel-inbox"><img decoding="async" src="img/remodel-inbox.webp" width="1280" height="800" alt="Inbox items to review" loading="lazy"></button><figcaption>Receipts and leads waiting for approval.</figcaption></figure>
-            <figure><button class="shot" type="button" data-k="ad-studio"><img decoding="async" src="img/ad-studio.webp" width="1280" height="800" alt="Claymation and blueprint video ads" loading="lazy"></button><figcaption>Claymation and blueprint video ads.</figcaption></figure>
-            <figure><button class="shot" type="button" data-k="remodel-office"><img decoding="async" src="img/remodel-office.webp" width="1280" height="800" alt="Office workspace showing today’s list" loading="lazy"></button><figcaption>Office workspace: today’s list.</figcaption></figure>
-          </div>
-          <p class="fine">Screens use sample data.</p>
-        </div>
-      </details>
-      <details class="case" id="case-brokerage">
-        <summary>
-          <div><span class="tag">Custom solution showcase · Real estate</span><h4>A modern website and AI workspace for real estate</h4></div>
-          <p>A rebuilt website and an agent workspace that handle lead follow-up, listing campaigns, market reports and content approvals in one place.</p>
-          <span class="tg" aria-hidden="true">+</span>
-        </summary>
-        <div class="case-body">
-          <div class="cb-grid">
-            <div><h5>The business need</h5><p>An independent boutique brokerage wanted a website that matched the quality of its listings, plus a consistent way to follow up with leads and launch every new listing.</p></div>
-            <div><h5>The solution</h5><ul><li>The existing site rebuilt page for page, with an optional modern redesign and listing search</li><li>A 24/7 lead responder, listing launch kit and review engine</li><li>Social and video tools, plus monthly market reports</li><li>A Team Hub that brings eight AI tools together for agents</li></ul></div>
-            <div><h5>How it supports the team</h5><p>Agents work from one place and approve every lead reply, post and email before it goes out, so the brokerage’s voice stays consistent across every channel.</p></div>
-            <div class="kv"><div><b>8</b><span>AI tools for agents</span></div><div><b>48</b><span>Buyer and area guides</span></div></div>
-          </div>
-          <div class="gal g3">
-            <figure><button class="shot" type="button" data-k="brokerage-site" data-x="Open website|/work/brokerage/site/"><img decoding="async" src="img/brokerage-site.webp" width="1600" height="1000" alt="The redesigned brokerage website" loading="lazy"></button><figcaption>The redesigned website, with listing search.</figcaption></figure>
-            <figure><button class="shot" type="button" data-k="launch-kit" data-x="Open launch kit|/work/brokerage/launch/"><img decoding="async" src="img/launch-kit.webp" width="1280" height="800" alt="Listing launch kit" loading="lazy"></button><figcaption>A full listing campaign from one form.</figcaption></figure>
-            <figure><button class="shot" type="button" data-k="market-reports" data-x="Open reports|/work/brokerage/reports/"><img decoding="async" src="img/market-reports.webp" width="1280" height="800" alt="Market reports" loading="lazy"></button><figcaption>Monthly market reports.</figcaption></figure>
-          </div>
-          <div class="demos"><span>Try the live demos</span><a href="/work/brokerage/site/" target="_blank" rel="noopener">Redesigned website ↗</a><a href="/work/brokerage/hub/" target="_blank" rel="noopener">Team Hub ↗</a><a href="/work/brokerage/responder/" target="_blank" rel="noopener">Lead responder ↗</a><a href="/work/brokerage/reviews/" target="_blank" rel="noopener">Review engine ↗</a><a href="/work/brokerage/launch/" target="_blank" rel="noopener">Listing launch kit ↗</a><a href="/work/brokerage/social/" target="_blank" rel="noopener">Content engine ↗</a><a href="/work/brokerage/ads/" target="_blank" rel="noopener">Listing ads ↗</a><a href="/work/brokerage/staging/" target="_blank" rel="noopener">Virtual staging ↗</a><a href="/work/brokerage/nurture/" target="_blank" rel="noopener">Home value notes ↗</a><a href="/work/brokerage/reports/" target="_blank" rel="noopener">Market reports ↗</a><a href="/work/brokerage/security/" target="_blank" rel="noopener">Site protection ↗</a></div>
-          <p class="fine">Screens use sample data.</p>
-        </div>
-      </details>
-      <details class="case" id="case-permits">
-        <summary>
-          <div><span class="tag">Tool · Contractors</span><h4>A lead map built from new building permits</h4></div>
-          <p>Public permit data from four Southern California cities becomes a lead list for the trades that come after the permit, worked right on the map.</p>
-          <span class="tg" aria-hidden="true">+</span>
-        </summary>
-        <div class="case-body">
-          <div class="cb-grid">
-            <div><h5>The business need</h5><p>The trade that pulls a permit already has the job. Countertop, cabinet, fencing and landscaping companies come next, and they rarely hear about it in time.</p></div>
-            <div><h5>The solution</h5><ul><li>New permits from Los Angeles, Anaheim, Newport Beach and Costa Mesa, refreshed from each city’s public data</li><li>Each permit sorted by what follows it: a kitchen remodel means countertops and cabinets, a pool means fencing and landscaping</li><li>Leads worked on the map: status, notes, follow-up dates and directions</li><li>A postcard preview for each address, as one possible next step</li></ul></div>
-            <div><h5>How it’s used</h5><p>Open the map, filter to your trade and city, and work the list: mark who you’ve contacted, add a note, set a follow-up date and pull up directions.</p></div>
-            <div class="kv"><div><b>11,506</b><span>Permits in the last 45 days</span></div><div><b>2,473</b><span>Of them point to countertop work</span></div></div>
-          </div>
-          <div class="gal g3">
-            <figure><button class="shot" type="button" data-k="permit-map" data-x="Open the permit lead map|/work/permits/"><img decoding="async" src="img/permit-map.webp" width="1600" height="1000" alt="A map of Los Angeles with new building permits marked as leads around Santa Monica" loading="lazy"></button><figcaption>New permits around Santa Monica, marked as leads.</figcaption></figure>
-          </div>
-          <div class="demos"><span>Try the live demo</span><a class="main" href="/work/permits/" target="_blank" rel="noopener">Permit lead map ↗</a></div>
-        </div>
-      </details>
-    </div>
-  </div>
+<section class="ch" data-scene-through id="services" aria-labelledby="services-t">
+<div class="col">
+<p class="seclbl">Services</p>
+<h2 id="services-t">Three ways to start.</h2>
+<p class="lead">Fix one thing for $500, rebuild the website, or connect the tools you already pay for.</p>
+<div class="prices">
+<article class="svc" id="quick-win">
+<div class="svc-top"><h3><i>A</i> Quick Win</h3></div>
+<p class="price">$500</p>
+<p class="note">Fixed scope. Credited toward a larger build when you continue.</p>
+<div class="what"><p>One thing fixed and working inside a week: online booking, replies to new inquiries, a text back after a missed call, or review requests.</p><p>A focused one-week setup once access and content are ready.</p></div>
+<ul><li>One clearly defined workflow.</li><li>Setup using your existing tools where practical.</li><li>Approved messaging and a guided handoff.</li></ul>
+<p class="go-line"><a class="tlink" href="#contact" data-interest="Quick Win">Find my Quick Win</a></p>
+</article>
+<article class="svc" id="website">
+<div class="svc-top"><h3><i>B</i> Website &amp; Inquiry Setup</h3></div>
+<p class="price">From $2,000</p>
+<p class="note">A written scope and price before anything starts.</p>
+<div class="what"><p>A site that shows what you do, what it costs and how to book, with every inquiry landing somewhere it gets answered.</p><p><a href="#work">Seventeen of them are below.</a> Open one and use it the way a customer would.</p></div>
+<ul><li>A website designed around your services and customers.</li><li>Clear contact or booking paths.</li><li>Inquiry routing and a practical follow-up process.</li><li>Mobile-friendly pages and a straightforward handoff.</li></ul>
+<p class="go-line"><a class="tlink" href="#contact" data-interest="Website &amp; Inquiry Setup">Discuss my website</a></p>
+</article>
+<article class="svc" id="workflows-ai">
+<div class="svc-top"><h3><i>C</i> Connected Workflows &amp; AI</h3></div>
+<p class="price word">Scoped</p>
+<p class="note">Priced to the job, in writing, with any software costs named up front.</p>
+<div class="what"><p>Connect the tools you already use and take the retyping out of the work between them: estimates, document drafts, customer follow-up and a weekly report.</p><p><a href="/workflows/">Six workflows worth having in a busy business.</a></p></div>
+<ul><li>A focused review of the workflow you want to improve.</li><li>Automation and AI configured for the task.</li><li>Clear approvals and useful reporting.</li><li>Team training and written handoff guidance.</li></ul>
+<p class="go-line"><a class="tlink" href="#contact" data-interest="Connected Workflows &amp; AI">Discuss my workflow</a></p>
+</article>
+</div>
+<div class="also" id="automations"><div><b>Growth Plan, from $1,000</b><p>For larger projects: workflow research, priorities and a tailored solution preview. The planning fee is credited toward the build.</p></div><div><b>Website care, from $200 a month</b><p>Hosting, backups, security updates and agreed content changes, so the site stays current after launch.</p></div><div><b>Founding-client pricing</b><p>Available for the first five businesses, with the scope and rate confirmed in your proposal.</p></div></div>
+</div>
 </section>
-
-
-<section class="about" id="about">
-  <div class="wrap">
-    <div class="sh">
-      <p class="idx rv"><i>03</i> Meet Myles</p>
-    </div>
-    <div class="cols">
-      <figure class="portrait rv"><img decoding="async" src="img/myles.webp" width="720" height="1080" alt="Myles Parslow" loading="lazy"><figcaption>Myles Parslow · Founder</figcaption></figure>
-      <div class="rv d1">
-        <h2>The person <em>doing the work.</em></h2>
-        <div class="body">
-          <p>I’m Myles Parslow. I started MLP Consulting to build the websites and behind-the-scenes systems that owner-run businesses rarely have time to set up for themselves.</p>
-          <p>I studied philosophy at USC, and I build things. A remodeling company’s office system that reads the inbox, tracks job costs and shows what each job really earned. A real estate website with eight AI tools for its agents. A lead map drawn from more than 11,000 city building permits. The seventeen sites in the work section above.</p>
-          <p>My background is in law-firm conflicts and risk, where a missed detail has consequences and nothing goes out unchecked. I run projects the same way: the scope is written down, you approve what customers see, and the handoff is documented. I’m based in Irvine.</p>
-        </div>
-        <blockquote class="quote">
-          <p>&ldquo;The money is usually leaking somewhere else, like quotes nobody followed up on or invoices that sat for two months before anyone asked.&rdquo;</p>
-          <footer>Myles Parslow in Peekwire · <a href="https://peekwire.com/article/the-automation-advice-that-misses-the-mark-an-interview-with-myles-parslow-of-mlp-consulting" target="_blank" rel="noopener">Read the interview</a></footer>
-        </blockquote>
-      </div>
-    </div>
-  </div>
+<section class="ch" data-scene-through id="work" aria-labelledby="work-t">
+<div class="col">
+<p class="seclbl">Work</p>
+<h2 id="work-t">Open one and try it.</h2>
+<p class="lead">Seventeen working websites and the follow-up systems that run behind them. Book a table, order a drink, design a ring.</p>
+<div id="case-sites">
+<ol class="sites" aria-label="Seventeen working websites">
+<li data-key="jewelry-store">
+<a class="row" href="/work/jewelry/#shop" target="_blank" rel="noopener"><span class="n">01</span><span class="nm">Halden</span><span class="tr">Jewelry store, 3D ring designer</span><img class="th" src="/assets/sites/jewelry-store.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Engagement rings with prices on every card, and a 3D ring designer: pick the setting, the metal and the stone, and turn the ring to see it from any side.</p><a class="more" href="/work/jewelry/builder.html" target="_blank" rel="noopener">Open the ring designer ↗</a></div>
+</li>
+<li data-key="brokerage-site">
+<a class="row" href="/work/brokerage/site/" target="_blank" rel="noopener"><span class="n">02</span><span class="nm">Boutique brokerage</span><span class="tr">Real estate</span><img class="th" src="/assets/sites/brokerage-site.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed.</p></div>
+</li>
+<li data-key="site-birchway">
+<a class="row" href="/work/sites/birchway/" target="_blank" rel="noopener"><span class="n">03</span><span class="nm">Birchway Pediatrics</span><span class="tr">Pediatric office</span><img class="th" src="/assets/sites/site-birchway.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Request a visit by age and reason, see the morning sick-visit slots, and open the staff side: a front desk inbox, reminder and recall automations, and a private assistant that runs on the practice’s own equipment.</p><a class="more" href="/work/sites/birchway/#staff" target="_blank" rel="noopener">Open the staff side ↗</a></div>
+</li>
+<li data-key="site-camino">
+<a class="row" href="/work/sites/camino/" target="_blank" rel="noopener"><span class="n">04</span><span class="nm">Osteria Camino</span><span class="tr">Italian restaurant</span><img class="th" src="/assets/sites/site-camino.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Reserve a table, browse tonight’s menu, and ask about the back room. The staff side holds the reservation book, review replies waiting for approval, and a pre-shift brief.</p><a class="more" href="/work/sites/camino/#staff" target="_blank" rel="noopener">Open the staff side ↗</a></div>
+</li>
+<li data-key="site-paperwhale">
+<a class="row" href="/work/sites/paperwhale/" target="_blank" rel="noopener"><span class="n">05</span><span class="nm">Paperwhale Books</span><span class="tr">Bookstore</span><img class="th" src="/assets/sites/site-paperwhale.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Shop real titles with pickup in about two hours, staff picks and events. The staff side shows orders, special requests, newsletter drafts and a weekly brief for the owner.</p><a class="more" href="/work/sites/paperwhale/#staff" target="_blank" rel="noopener">Open the staff side ↗</a></div>
+</li>
+<li data-key="site-quietwell">
+<a class="row" href="/work/sites/quietwell/" target="_blank" rel="noopener"><span class="n">06</span><span class="nm">Quietwell Aesthetics</span><span class="tr">Med spa</span><img class="th" src="/assets/sites/site-quietwell.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Book in under a minute, a treatment menu with prices on it, a membership plan, and a text line for clients who would rather not call.</p></div>
+</li>
+<li data-key="site-little-orbit">
+<a class="row" href="/work/sites/little-orbit/" target="_blank" rel="noopener"><span class="n">07</span><span class="nm">Little Orbit Tea</span><span class="tr">Boba shop</span><img class="th" src="/assets/sites/site-little-orbit.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Real online ordering: build a drink, choose pickup or delivery, check out and follow the order, plus a rewards card.</p></div>
+</li>
+<li data-key="site-crestline">
+<a class="row" href="/work/sites/crestline/" target="_blank" rel="noopener"><span class="n">08</span><span class="nm">Crestline Design-Build</span><span class="tr">Remodeling company</span><img class="th" src="/assets/sites/site-crestline.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>A cost estimator that returns a real price range in seconds, a text-back with the itemized breakdown, finished projects with timelines, and plain-English permit and cost guides.</p></div>
+</li>
+<li data-key="site-cedarline">
+<a class="row" href="/work/sites/cedarline/" target="_blank" rel="noopener"><span class="n">09</span><span class="nm">Cedarline Kitchen</span><span class="tr">Restaurant</span><img class="th" src="/assets/sites/site-cedarline.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Table reservations, tonight’s menu, and a private dining inquiry for rehearsal dinners, offsites and birthdays.</p></div>
+</li>
+<li data-key="site-hollis">
+<a class="row" href="/work/sites/hollis/" target="_blank" rel="noopener"><span class="n">10</span><span class="nm">Hollis Flower House</span><span class="tr">Florist</span><img class="th" src="/assets/sites/site-hollis.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Same-day delivery with a ZIP check and order cutoff, weekly flower subscriptions, and wedding inquiries.</p></div>
+</li>
+<li data-key="site-bellwood">
+<a class="row" href="/work/sites/bellwood/" target="_blank" rel="noopener"><span class="n">11</span><span class="nm">Bellwood Family Dental</span><span class="tr">Dental office</span><img class="th" src="/assets/sites/site-bellwood.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Next open appointments right on the home page, an insurance check, clear prices for patients without insurance, and a same-day emergency line.</p></div>
+</li>
+<li data-key="site-coffee">
+<a class="row" href="/work/sites/coffee/" target="_blank" rel="noopener"><span class="n">12</span><span class="nm">Kestrel Hill Coffee Roasters</span><span class="tr">Coffee roaster</span><img class="th" src="/assets/sites/site-coffee.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Order ahead to skip the line, a bean club subscription for fresh bags, and live open hours in the header.</p></div>
+</li>
+<li data-key="site-marlow">
+<a class="row" href="/work/sites/marlow/" target="_blank" rel="noopener"><span class="n">13</span><span class="nm">Marlow &amp; Rye Bakery</span><span class="tr">Bakery</span><img class="th" src="/assets/sites/site-marlow.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Today’s bake counted down live as it sells, a four-step cake builder, and weekly standing orders for bread.</p></div>
+</li>
+<li data-key="site-salon">
+<a class="row" href="/work/sites/salon/" target="_blank" rel="noopener"><span class="n">14</span><span class="nm">Ostrander Hair Studio</span><span class="tr">Hair salon</span><img class="th" src="/assets/sites/site-salon.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Pick a service, then a stylist and a time, with straightforward pricing, a texting line and a first-visit offer.</p></div>
+</li>
+<li data-key="site-pilates">
+<a class="row" href="/work/sites/pilates/" target="_blank" rel="noopener"><span class="n">15</span><span class="nm">Springline Reformer Studio</span><span class="tr">Pilates studio</span><img class="th" src="/assets/sites/site-pilates.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>A live class schedule with spots left, intro packs, and membership plans, with an app-style tab bar on phones.</p></div>
+</li>
+<li data-key="site-boutique">
+<a class="row" href="/work/sites/boutique/" target="_blank" rel="noopener"><span class="n">16</span><span class="nm">Fig &amp; Fennimore</span><span class="tr">Clothing boutique</span><img class="th" src="/assets/sites/site-boutique.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>A seasonal lookbook, new arrivals with a cart, a fitting room you can book with a stylist, and an early-look email list.</p></div>
+</li>
+<li data-key="site-solace">
+<a class="row" href="/work/sites/solace/" target="_blank" rel="noopener"><span class="n">17</span><span class="nm">Solace Studio Dental</span><span class="tr">Dental studio</span><img class="th" src="/assets/sites/site-solace.jpg" width="400" height="640" alt="" loading="lazy" decoding="async"><span class="vh"> (opens in a new tab)</span></a>
+<div class="detail"><p>Pick a visit type and a real open time, see what your insurance covers before you arrive, and get intake forms by text.</p></div>
+</li>
+</ol>
+</div>
+<p class="note">Every site is live: open one and book, order or browse like a customer would. Screens use sample data; business names and details are fictional.</p>
+</div>
 </section>
-
-<section class="cta-band" id="contact">
-  <video class="mapv" id="map-cta" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-  <div class="scrim"></div>
-  <div class="wrap">
-    <div class="rv">
-      <p class="idx"><i>04</i> Contact</p>
-      <h2>What would make your business <em>easier to run?</em></h2>
-      <p class="avail">Now booking projects for December.</p>
-      <p class="lead">Tell me what the business does and what’s eating your time. I’ll look at your website and how customers reach you, then send back three things worth fixing first. Questions first? <a href="/how-it-works/">See how a project runs.</a></p>
-      <p style="margin-top:24px"><a class="btn line" href="https://cal.com/mlpconsults/free-check-up" target="_blank" rel="noopener">Prefer to talk? Book a free 30-minute call ↗</a></p>
-      <div class="direct">
-        <div class="mailrow"><a class="addr" id="addr" href="mailto:myles@mlpconsults.com">myles@mlpconsults.com</a><button class="btn line sm" type="button" id="copy">Copy</button></div>
-        <div class="mailrow"><a class="addr" href="tel:+15183069403">(518) 306-9403</a></div>
-      </div>
-    </div>
-    <form id="intake" class="rv d1" novalidate>
+<section class="ch wide" data-scene-through id="case-automations" aria-labelledby="flows-t">
+<div class="col">
+<h2 id="flows-t">Workflows that handle the routine</h2>
+<p class="lead">Inbox replies, lead follow-up, reminders, reviews and invoice chasing, working in the background while you run the business.</p>
+<div class="flows" data-grp><figure><button class="shot" type="button" data-title="Email automation: inbox" data-cap="A new inquiry arrives, gets sorted, and a reply is drafted in your voice, ready for one tap. Sample automation." aria-label="View larger: Email automation: inbox"><img decoding="async" src="/img/email-automation.webp" width="1600" height="1000" alt="Inbox with a new inquiry and a drafted reply ready to approve" loading="lazy"></button><figcaption><h3>An inbox that answers itself</h3><p>Routine emails get an instant reply; personal ones wait as a draft for you to approve.</p></figcaption></figure><figure><button class="shot" type="button" data-title="Inquiries acknowledged right away" data-cap="An inquiry gets an instant text and a follow-up plan runs on schedule; a customer reply pauses that sequence and alerts the right person." aria-label="View larger: Inquiries acknowledged right away"><img decoding="async" src="/img/auto-follow-up.webp" width="1600" height="1000" alt="A text conversation beside a follow-up timeline" loading="lazy"></button><figcaption><h3>Inquiries acknowledged right away</h3><p>Every inquiry gets an instant acknowledgment and a friendly follow-up schedule.</p></figcaption></figure><figure><button class="shot" type="button" data-title="Appointments that show up" data-cap="The week’s calendar with every confirmation tracked, a missed visit already being rebooked, and a reminder text for anyone who has not replied." aria-label="View larger: Appointments that show up"><img decoding="async" src="/img/auto-reminders.webp" width="1600" height="1000" alt="A weekly calendar of appointments with confirmation status" loading="lazy"></button><figcaption><h3>Appointments that show up</h3><p>Reminders and easy rescheduling by text cut no-shows.</p></figcaption></figure><figure><button class="shot" type="button" data-title="Feedback that is easy to give" data-cap="Your rating, the reviews coming in, and the month’s requests, with a clear route for your team to respond." aria-label="View larger: Feedback that is easy to give"><img decoding="async" src="/img/auto-reviews.webp" width="1600" height="1000" alt="A rating summary with new customer reviews" loading="lazy"></button><figcaption><h3>Feedback that is easy to give</h3><p>A consistent request after every completed job or visit, with a clear route for your team to respond.</p></figcaption></figure><figure><button class="shot" type="button" data-title="Invoices that chase themselves" data-cap="What is owed and how old it is, with each invoice’s next step queued and a payment link in every message." aria-label="View larger: Invoices that chase themselves"><img decoding="async" src="/img/auto-invoices.webp" width="1600" height="1000" alt="An overdue summary and a table of open invoices" loading="lazy"></button><figcaption><h3>Invoices that chase themselves</h3><p>Polite reminders with a payment link, stopping once you are paid.</p></figcaption></figure><figure><button class="shot" type="button" data-title="Owner command center" data-cap="Overnight emails sorted, new leads graded, and drafted replies waiting for the owner’s approval, next to live job profit. Nothing goes out until you approve. Sample data." aria-label="View larger: Owner command center"><img decoding="async" src="/img/site-command-center.webp" width="1600" height="1000" alt="Owner command center with an approval queue and live job profit" loading="lazy"></button><figcaption><h3>An owner’s morning view</h3><p>An approval queue and live job profit in one place.</p></figcaption></figure></div>
+</div>
+</section>
+<section class="ch wide" data-scene-through id="systems" aria-labelledby="cases-t">
+<div class="col">
+<h2 id="cases-t">Larger systems</h2>
+<p class="lead">Three bigger builds, each with the need, what was built and screens you can open.</p>
+<div class="cases">
+<details class="case" id="case-remodeler">
+<summary><span class="tag">Client project · Home services</span><h3>A connected toolkit for a remodeling business</h3><p>A public website, an office workspace, a job tracker for crews and a set of video ads, in place of a spreadsheet and a crowded inbox.</p></summary>
+<div class="case-body">
+<div><h4>The business need</h4><p>A design-build crew doing kitchens, baths and decks needed one organized place for inquiries, estimates, payments, job costs and marketing, so nothing lives only in someone’s head.</p></div><div><h4>The solution</h4><ul><li>A public website with service pages and 57 plain-spoken local remodeling guides</li><li>An office workspace for inbox review, estimates, payments and job details</li><li>A mobile layout designed for crews in the field, tracking hours, costs and what each job really earns</li><li>Short video ads in six styles, queued on a weekly posting schedule</li></ul></div><div><h4>How it supports the team</h4><ul><li>Larger text and five clear groups make the office workspace easy for the owner to use every day</li><li>Customer data stays on the owner’s computer</li><li>The AI drafts and organizes; nothing reaches the books or a customer until the owner approves it</li><li>Careful checks against representative business data before delivery</li></ul></div>
+<div class="gal" data-grp><figure><button class="shot" type="button" data-title="Office app: job page" data-cap="Each job’s stage, next step, payments and real profit once crew hours are counted. Sample job." aria-label="View larger: Office app: job page"><img decoding="async" src="/img/remodel-job.webp" width="1024" height="754" alt="Job page with stages and profit" loading="lazy"></button><figcaption>A job’s stage and real profit.</figcaption></figure><figure><button class="shot" type="button" data-title="Office app: inbox review" data-cap="Receipts, payments and new leads read from the business inbox, each waiting for the owner’s approval. Sample data." aria-label="View larger: Office app: inbox review"><img decoding="async" src="/img/remodel-inbox.webp" width="1280" height="800" alt="Inbox items to review" loading="lazy"></button><figcaption>Receipts and leads waiting for approval.</figcaption></figure><figure><button class="shot" type="button" data-title="Video ad studio" data-cap="Short vertical ads for TikTok, Reels and Facebook in claymation and 3D blueprint styles, rendered from the client’s real projects." aria-label="View larger: Video ad studio"><img decoding="async" src="/img/ad-studio.webp" width="1280" height="800" alt="Claymation and blueprint video ads" loading="lazy"></button><figcaption>Claymation and blueprint video ads.</figcaption></figure><figure><button class="shot" type="button" data-title="Office app: today’s list" data-cap="What needs the owner’s attention today, pulled automatically from the business inbox and job list. Sample data." aria-label="View larger: Office app: today’s list"><img decoding="async" src="/img/remodel-office.webp" width="1280" height="800" alt="Office workspace showing today’s list" loading="lazy"></button><figcaption>Office workspace: today’s list.</figcaption></figure></div>
+<p class="fine">Screens use sample data.</p>
+</div>
+</details>
+<details class="case" id="case-brokerage">
+<summary><span class="tag">Custom solution showcase · Real estate</span><h3>A modern website and AI workspace for real estate</h3><p>A rebuilt website and an agent workspace that handle lead follow-up, listing campaigns, market reports and content approvals in one place.</p></summary>
+<div class="case-body">
+<div><h4>The business need</h4><p>An independent boutique brokerage wanted a website that matched the quality of its listings, plus a consistent way to follow up with leads and launch every new listing.</p></div><div><h4>The solution</h4><ul><li>The existing site rebuilt page for page, with an optional modern redesign and listing search</li><li>A 24/7 lead responder, listing launch kit and review engine</li><li>Social and video tools, plus monthly market reports</li><li>A Team Hub that brings eight AI tools together for agents</li></ul></div><div><h4>How it supports the team</h4><p>Agents work from one place and approve every lead reply, post and email before it goes out, so the brokerage’s voice stays consistent across every channel.</p></div><div class="kv"><div><b>8</b><span>AI tools for agents</span></div><div><b>48</b><span>Buyer and area guides</span></div></div>
+<div class="gal" data-grp><figure><button class="shot" type="button" data-title="Brokerage website redesign" data-cap="The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed." data-x="Open website|/work/brokerage/site/" aria-label="View larger: Brokerage website redesign"><img decoding="async" src="/img/brokerage-site.webp" width="1600" height="1000" alt="The redesigned brokerage website" loading="lazy"></button><figcaption>The redesigned website, with listing search.</figcaption></figure><figure><button class="shot" type="button" data-title="Listing launch kit" data-cap="One short form produces the listing page, social posts, an email blast and print pieces for a new listing." data-x="Open launch kit|/work/brokerage/launch/" aria-label="View larger: Listing launch kit"><img decoding="async" src="/img/launch-kit.webp" width="1280" height="800" alt="Listing launch kit" loading="lazy"></button><figcaption>A full listing campaign from one form.</figcaption></figure><figure><button class="shot" type="button" data-title="Monthly market reports" data-cap="Neighborhood prices and trends, drafted each month for agents to review and send to their clients." data-x="Open reports|/work/brokerage/reports/" aria-label="View larger: Monthly market reports"><img decoding="async" src="/img/market-reports.webp" width="1280" height="800" alt="Market reports" loading="lazy"></button><figcaption>Monthly market reports.</figcaption></figure></div>
+<div class="demos"><span>Try the live demos</span><a href="/work/brokerage/site/" target="_blank" rel="noopener">Redesigned website ↗</a><a href="/work/brokerage/hub/" target="_blank" rel="noopener">Team Hub ↗</a><a href="/work/brokerage/responder/" target="_blank" rel="noopener">Lead responder ↗</a><a href="/work/brokerage/reviews/" target="_blank" rel="noopener">Review engine ↗</a><a href="/work/brokerage/launch/" target="_blank" rel="noopener">Listing launch kit ↗</a><a href="/work/brokerage/social/" target="_blank" rel="noopener">Content engine ↗</a><a href="/work/brokerage/ads/" target="_blank" rel="noopener">Listing ads ↗</a><a href="/work/brokerage/staging/" target="_blank" rel="noopener">Virtual staging ↗</a><a href="/work/brokerage/nurture/" target="_blank" rel="noopener">Home value notes ↗</a><a href="/work/brokerage/reports/" target="_blank" rel="noopener">Market reports ↗</a><a href="/work/brokerage/security/" target="_blank" rel="noopener">Site protection ↗</a></div><p class="fine">Screens use sample data.</p>
+</div>
+</details>
+<details class="case" id="case-permits">
+<summary><span class="tag">Tool · Contractors</span><h3>A lead map built from new building permits</h3><p>Public permit data from four Southern California cities becomes a lead list for the trades that come after the permit, worked right on the map.</p></summary>
+<div class="case-body">
+<div><h4>The business need</h4><p>The trade that pulls a permit already has the job. Countertop, cabinet, fencing and landscaping companies come next, and they rarely hear about it in time.</p></div><div><h4>The solution</h4><ul><li>New permits from Los Angeles, Anaheim, Newport Beach and Costa Mesa, refreshed from each city’s public data</li><li>Each permit sorted by what follows it: a kitchen remodel means countertops and cabinets, a pool means fencing and landscaping</li><li>Leads worked on the map: status, notes, follow-up dates and directions</li><li>A postcard preview for each address, as one possible next step</li></ul></div><div><h4>How it’s used</h4><p>Open the map, filter to your trade and city, and work the list: mark who you’ve contacted, add a note, set a follow-up date and pull up directions.</p></div><div class="kv"><div><b>11,506</b><span>Permits in the last 45 days</span></div><div><b>2,473</b><span>Of them point to countertop work</span></div></div>
+<div class="gal" data-grp><figure><button class="shot" type="button" data-title="Permit lead map" data-cap="New building permits from four Southern California cities, sorted by the trade that comes next and worked right on the map." data-x="Open the permit lead map|/work/permits/" aria-label="View larger: Permit lead map"><img decoding="async" src="/img/permit-map.webp" width="1600" height="1000" alt="A map of Los Angeles with new building permits marked as leads around Santa Monica" loading="lazy"></button><figcaption>New permits around Santa Monica, marked as leads.</figcaption></figure></div>
+<div class="demos"><span>Try the live demo</span><a href="/work/permits/" target="_blank" rel="noopener">Permit lead map ↗</a></div>
+</div>
+</details>
+</div>
+<div class="about" id="about">
+<p class="seclbl">Meet Myles</p>
+<h2>The person doing the work.</h2>
+<figure class="portrait"><img decoding="async" src="/img/myles.webp" width="720" height="1080" alt="Myles Parslow" loading="lazy"><figcaption>Myles Parslow · Founder</figcaption></figure>
+<div class="body"><p>I’m Myles Parslow. I started MLP Consulting to build the websites and behind-the-scenes systems that owner-run businesses rarely have time to set up for themselves.</p><p>I studied philosophy at USC, and I build things. A remodeling company’s office system that reads the inbox, tracks job costs and shows what each job really earned. A real estate website with eight AI tools for its agents. A lead map drawn from more than 11,000 city building permits. The seventeen sites in the work section above.</p><p>My background is in law-firm conflicts and risk, where a missed detail has consequences and nothing goes out unchecked. I run projects the same way: the scope is written down, you approve what customers see, and the handoff is documented. I’m based in Irvine.</p></div>
+<blockquote class="quote"><p>“The money is usually leaking somewhere else, like quotes nobody followed up on or invoices that sat for two months before anyone asked.”</p><footer>Myles Parslow in Peekwire · <a href="https://peekwire.com/article/the-automation-advice-that-misses-the-mark-an-interview-with-myles-parslow-of-mlp-consulting" target="_blank" rel="noopener">Read the interview</a></footer></blockquote>
+</div>
+</div>
+</section>
+<section class="ch" data-scene-through id="contact" aria-labelledby="contact-t">
+<div class="col">
+<p class="seclbl">Contact</p>
+<h2 id="contact-t">What would make your business easier to run?</h2>
+<p class="avail">Now booking projects for December.</p>
+<p class="lead">Tell me what the business does and what’s eating your time. I’ll look at your website and how customers reach you, then send back three things worth fixing first. Questions first? <a href="/how-it-works/">See how a project runs.</a></p>
+<p class="cal"><a class="tlink" href="https://cal.com/mlpconsults/free-check-up" target="_blank" rel="noopener">Prefer to talk? Book a free 30-minute call ↗</a></p>
+<div class="direct">
+<div class="mailrow"><a class="addr" id="addr" href="mailto:myles@mlpconsults.com">myles@mlpconsults.com</a><button class="btn line sm" type="button" id="copy">Copy</button></div>
+<div class="mailrow"><a class="addr" href="tel:+15183069403">(518) 306-9403</a></div>
+</div>
+<form id="intake" novalidate>
       <input type="hidden" id="f-interest" name="interest" value="Free assessment">
       <p class="interest" id="interest-line" hidden>Interested in: <b id="interest-val"></b></p>
       <div class="row2">
@@ -704,155 +264,32 @@ dialog.lb::backdrop{background:rgba(6,6,8,.9);backdrop-filter:blur(6px);-webkit-
       <button class="btn solid" type="submit" style="justify-self:start">Get my free assessment</button>
       <div class="done" id="done" role="status" aria-live="polite" hidden></div>
     </form>
-  </div>
+</div>
 </section>
 </main>
-
-<footer class="site">
-  <div class="wrap">
-    <div>
-      <svg class="logo12" viewBox="0 0 337.0 143.0" role="img" aria-label="MLP"><path fill="currentColor" d="M182.98,8.41 L182.69,6.67 L182.07,5.02 L181.48,4.00 L180.36,2.64 L179.00,1.52 L177.44,0.69 L175.76,0.17 L174.59,0.02 L161.00,0.00 L159.83,0.08 L158.67,0.31 L157.56,0.69 L156.50,1.21 L155.07,2.23 L154.23,3.07 L153.52,4.00 L152.93,5.02 L152.48,6.11 L152.08,7.83 L152.00,9.00 L152.00,99.00 L152.17,100.76 L152.69,102.44 L153.21,103.50 L153.86,104.48 L155.07,105.77 L156.00,106.48 L157.02,107.07 L158.11,107.52 L159.24,107.83 L160.41,107.98 L222.00,108.00 L223.76,107.83 L225.44,107.31 L226.50,106.79 L227.93,105.77 L228.77,104.93 L229.48,104.00 L230.07,102.98 L230.52,101.89 L230.83,100.76 L230.98,99.59 L231.00,86.00 L230.83,84.24 L230.31,82.56 L229.48,81.00 L228.36,79.64 L227.00,78.52 L225.98,77.93 L224.89,77.48 L223.76,77.17 L222.59,77.02 L183.00,77.00 L182.98,8.41Z M9.36,0.03 L8.06,0.20 L7.42,0.35 L6.79,0.54 L5.58,1.04 L4.45,1.69 L3.92,2.07 L3.41,2.49 L2.48,3.41 L2.07,3.92 L1.34,5.01 L1.03,5.58 L0.53,6.79 L0.19,8.06 L0.02,9.36 L0.00,10.01 L0.02,133.62 L0.19,134.91 L0.53,136.18 L0.76,136.79 L1.34,137.96 L1.68,138.52 L2.48,139.55 L3.40,140.48 L3.91,140.89 L4.99,141.62 L6.16,142.20 L7.40,142.62 L8.04,142.77 L8.68,142.88 L9.99,142.96 L24.94,142.99 L26.25,142.90 L27.53,142.65 L28.77,142.23 L29.95,141.65 L31.04,140.93 L32.02,140.06 L32.88,139.08 L33.61,137.99 L33.92,137.42 L34.42,136.21 L34.61,135.58 L34.87,134.30 L34.96,132.99 L35.00,57.83 L35.04,57.40 L35.19,56.83 L35.68,55.99 L36.41,55.34 L37.31,54.97 L38.08,54.89 L38.85,55.01 L39.57,55.33 L40.21,55.85 L64.01,82.58 L64.93,83.49 L65.43,83.90 L66.51,84.62 L67.09,84.92 L68.29,85.41 L68.91,85.60 L70.18,85.85 L71.47,85.93 L72.12,85.91 L73.40,85.75 L74.66,85.41 L75.26,85.19 L75.86,84.92 L76.98,84.28 L78.01,83.50 L78.49,83.06 L102.71,55.95 L103.12,55.55 L103.60,55.23 L104.15,55.01 L105.11,54.89 L105.69,54.97 L106.25,55.16 L106.75,55.45 L107.19,55.84 L107.55,56.30 L107.81,56.83 L107.96,57.40 L108.00,57.96 L108.00,132.95 L108.09,134.26 L108.19,134.90 L108.53,136.17 L108.76,136.78 L109.34,137.95 L110.07,139.04 L110.93,140.02 L111.41,140.47 L111.91,140.89 L113.00,141.61 L114.17,142.19 L115.41,142.61 L116.05,142.76 L117.34,142.93 L118.00,142.95 L259.97,143.00 L260.62,142.98 L261.92,142.81 L263.18,142.47 L264.39,141.97 L265.52,141.32 L266.56,140.52 L267.48,139.60 L268.28,138.56 L268.93,137.43 L269.43,136.23 L269.77,134.96 L269.95,133.67 L269.97,133.02 L269.97,119.08 L269.79,117.72 L269.63,117.05 L269.14,115.67 L269.02,115.07 L269.00,111.08 L269.04,110.51 L269.20,109.94 L269.46,109.42 L269.81,108.95 L270.59,108.36 L271.13,108.13 L271.71,108.02 L283.05,108.00 L285.75,107.93 L288.15,107.75 L290.78,107.43 L294.93,106.66 L297.50,106.01 L300.04,105.24 L302.30,104.43 L304.75,103.42 L308.55,101.57 L310.85,100.26 L313.09,98.84 L315.25,97.31 L317.34,95.68 L319.34,93.94 L321.26,92.11 L323.08,90.19 L324.81,88.18 L326.43,86.08 L327.96,83.91 L329.37,81.67 L330.67,79.36 L331.86,76.99 L332.93,74.57 L333.88,72.09 L334.70,69.58 L335.41,67.02 L335.98,64.43 L336.43,61.82 L336.72,59.43 L336.98,55.47 L336.94,51.49 L336.58,47.29 L335.94,43.36 L335.01,39.50 L334.24,36.96 L333.43,34.70 L331.87,31.04 L330.05,27.51 L327.98,24.12 L325.51,20.70 L322.94,17.66 L320.16,14.82 L318.19,13.04 L316.33,11.52 L313.12,9.18 L309.74,7.09 L307.19,5.72 L303.79,4.17 L301.32,3.21 L298.58,2.30 L294.97,1.34 L292.37,0.82 L289.51,0.40 L286.87,0.14 L282.95,0.00 L231.28,0.00 L228.35,0.18 L226.71,0.43 L225.12,0.82 L223.05,1.51 L222.13,1.89 L220.25,2.83 L219.21,3.45 L218.38,4.00 L216.71,5.30 L215.11,6.81 L213.73,8.40 L213.01,9.38 L212.45,10.21 L211.39,12.07 L210.53,14.00 L210.13,15.12 L209.44,17.71 L209.12,19.84 L209.00,22.21 L209.02,58.62 L209.09,59.27 L209.34,60.55 L209.76,61.79 L210.03,62.39 L210.68,63.52 L211.06,64.05 L211.48,64.56 L212.40,65.48 L213.44,66.28 L214.57,66.93 L215.16,67.20 L216.40,67.62 L217.68,67.88 L218.98,67.97 L229.98,67.99 L231.29,67.90 L232.57,67.65 L233.20,67.46 L234.41,66.96 L234.99,66.65 L236.08,65.93 L236.59,65.51 L237.51,64.59 L237.93,64.08 L238.31,63.55 L238.97,62.42 L239.24,61.82 L239.66,60.58 L239.91,59.29 L240.00,57.99 L240.00,40.08 L240.08,39.32 L240.46,38.42 L241.10,37.68 L241.94,37.20 L242.51,37.04 L242.95,37.00 L282.96,37.01 L284.71,37.16 L286.20,37.45 L287.70,37.90 L289.07,38.46 L290.54,39.25 L291.98,40.24 L293.17,41.26 L294.29,42.44 L295.35,43.83 L296.16,45.17 L296.85,46.64 L297.43,48.34 L297.78,49.93 L297.98,51.71 L297.98,53.34 L297.78,55.08 L297.42,56.71 L296.85,58.37 L296.18,59.78 L295.34,61.18 L294.28,62.57 L293.24,63.68 L292.06,64.70 L290.85,65.56 L289.49,66.33 L288.10,66.95 L286.66,67.43 L285.22,67.76 L283.94,67.93 L282.58,68.00 L249.35,68.02 L248.05,68.19 L247.41,68.34 L246.17,68.76 L245.58,69.03 L244.44,69.69 L243.91,70.07 L242.93,70.93 L242.48,71.41 L241.69,72.44 L241.03,73.58 L240.53,74.79 L240.34,75.41 L240.09,76.69 L240.00,78.00 L240.00,114.05 L239.87,114.87 L239.44,115.75 L238.90,116.32 L238.06,116.80 L237.49,116.96 L236.92,117.00 L146.08,117.00 L145.51,116.96 L144.59,116.64 L144.10,116.32 L143.68,115.90 L143.20,115.06 L143.04,114.49 L143.00,114.05 L142.98,9.38 L142.91,8.73 L142.66,7.45 L142.24,6.21 L141.97,5.62 L141.32,4.48 L140.94,3.95 L140.08,2.97 L139.60,2.52 L138.56,1.73 L137.43,1.07 L136.84,0.80 L136.22,0.57 L134.96,0.23 L133.67,0.06 L111.54,0.03 L110.24,0.20 L109.60,0.34 L108.36,0.76 L107.77,1.03 L106.63,1.69 L105.59,2.48 L105.12,2.93 L73.59,34.41 L73.08,34.80 L72.56,35.06 L71.99,35.21 L71.40,35.25 L70.82,35.18 L70.26,34.99 L69.75,34.69 L69.41,34.41 L37.96,2.96 L36.98,2.10 L35.89,1.37 L35.32,1.06 L34.11,0.56 L32.85,0.22 L31.55,0.05 L9.36,0.03Z"/></svg>
-      <p>Websites, automation, and practical AI for owner-run businesses. Irvine, California, working locally and nationwide.</p>
-    </div>
-    <nav aria-label="Footer"><a href="#services">Services</a><a href="#work">Work</a><a href="/how-it-works/">How it works</a><a href="#about">About</a><a href="#contact">Contact</a><a href="/workflows/">Workflows</a><a href="/referrals/" id="referrals">Referrals</a><a href="/privacy/">Privacy</a></nav>
-    <div class="base"><span>Know an owner who could use a hand? <a href="/referrals/">Explore referrals.</a></span><span>© 2026 MLP Consulting</span></div>
-  </div>
+<footer class="foot">
+<div class="foot-in">
+<div>
+<a class="mark" href="#top" aria-label="MLP Consulting, home"><svg class="logo12" viewBox="0 0 337.0 143.0" width="60" height="26" aria-hidden="true"><path fill="currentColor" d="M182.98,8.41 L182.69,6.67 L182.07,5.02 L181.48,4.00 L180.36,2.64 L179.00,1.52 L177.44,0.69 L175.76,0.17 L174.59,0.02 L161.00,0.00 L159.83,0.08 L158.67,0.31 L157.56,0.69 L156.50,1.21 L155.07,2.23 L154.23,3.07 L153.52,4.00 L152.93,5.02 L152.48,6.11 L152.08,7.83 L152.00,9.00 L152.00,99.00 L152.17,100.76 L152.69,102.44 L153.21,103.50 L153.86,104.48 L155.07,105.77 L156.00,106.48 L157.02,107.07 L158.11,107.52 L159.24,107.83 L160.41,107.98 L222.00,108.00 L223.76,107.83 L225.44,107.31 L226.50,106.79 L227.93,105.77 L228.77,104.93 L229.48,104.00 L230.07,102.98 L230.52,101.89 L230.83,100.76 L230.98,99.59 L231.00,86.00 L230.83,84.24 L230.31,82.56 L229.48,81.00 L228.36,79.64 L227.00,78.52 L225.98,77.93 L224.89,77.48 L223.76,77.17 L222.59,77.02 L183.00,77.00 L182.98,8.41Z M9.36,0.03 L8.06,0.20 L7.42,0.35 L6.79,0.54 L5.58,1.04 L4.45,1.69 L3.92,2.07 L3.41,2.49 L2.48,3.41 L2.07,3.92 L1.34,5.01 L1.03,5.58 L0.53,6.79 L0.19,8.06 L0.02,9.36 L0.00,10.01 L0.02,133.62 L0.19,134.91 L0.53,136.18 L0.76,136.79 L1.34,137.96 L1.68,138.52 L2.48,139.55 L3.40,140.48 L3.91,140.89 L4.99,141.62 L6.16,142.20 L7.40,142.62 L8.04,142.77 L8.68,142.88 L9.99,142.96 L24.94,142.99 L26.25,142.90 L27.53,142.65 L28.77,142.23 L29.95,141.65 L31.04,140.93 L32.02,140.06 L32.88,139.08 L33.61,137.99 L33.92,137.42 L34.42,136.21 L34.61,135.58 L34.87,134.30 L34.96,132.99 L35.00,57.83 L35.04,57.40 L35.19,56.83 L35.68,55.99 L36.41,55.34 L37.31,54.97 L38.08,54.89 L38.85,55.01 L39.57,55.33 L40.21,55.85 L64.01,82.58 L64.93,83.49 L65.43,83.90 L66.51,84.62 L67.09,84.92 L68.29,85.41 L68.91,85.60 L70.18,85.85 L71.47,85.93 L72.12,85.91 L73.40,85.75 L74.66,85.41 L75.26,85.19 L75.86,84.92 L76.98,84.28 L78.01,83.50 L78.49,83.06 L102.71,55.95 L103.12,55.55 L103.60,55.23 L104.15,55.01 L105.11,54.89 L105.69,54.97 L106.25,55.16 L106.75,55.45 L107.19,55.84 L107.55,56.30 L107.81,56.83 L107.96,57.40 L108.00,57.96 L108.00,132.95 L108.09,134.26 L108.19,134.90 L108.53,136.17 L108.76,136.78 L109.34,137.95 L110.07,139.04 L110.93,140.02 L111.41,140.47 L111.91,140.89 L113.00,141.61 L114.17,142.19 L115.41,142.61 L116.05,142.76 L117.34,142.93 L118.00,142.95 L259.97,143.00 L260.62,142.98 L261.92,142.81 L263.18,142.47 L264.39,141.97 L265.52,141.32 L266.56,140.52 L267.48,139.60 L268.28,138.56 L268.93,137.43 L269.43,136.23 L269.77,134.96 L269.95,133.67 L269.97,133.02 L269.97,119.08 L269.79,117.72 L269.63,117.05 L269.14,115.67 L269.02,115.07 L269.00,111.08 L269.04,110.51 L269.20,109.94 L269.46,109.42 L269.81,108.95 L270.59,108.36 L271.13,108.13 L271.71,108.02 L283.05,108.00 L285.75,107.93 L288.15,107.75 L290.78,107.43 L294.93,106.66 L297.50,106.01 L300.04,105.24 L302.30,104.43 L304.75,103.42 L308.55,101.57 L310.85,100.26 L313.09,98.84 L315.25,97.31 L317.34,95.68 L319.34,93.94 L321.26,92.11 L323.08,90.19 L324.81,88.18 L326.43,86.08 L327.96,83.91 L329.37,81.67 L330.67,79.36 L331.86,76.99 L332.93,74.57 L333.88,72.09 L334.70,69.58 L335.41,67.02 L335.98,64.43 L336.43,61.82 L336.72,59.43 L336.98,55.47 L336.94,51.49 L336.58,47.29 L335.94,43.36 L335.01,39.50 L334.24,36.96 L333.43,34.70 L331.87,31.04 L330.05,27.51 L327.98,24.12 L325.51,20.70 L322.94,17.66 L320.16,14.82 L318.19,13.04 L316.33,11.52 L313.12,9.18 L309.74,7.09 L307.19,5.72 L303.79,4.17 L301.32,3.21 L298.58,2.30 L294.97,1.34 L292.37,0.82 L289.51,0.40 L286.87,0.14 L282.95,0.00 L231.28,0.00 L228.35,0.18 L226.71,0.43 L225.12,0.82 L223.05,1.51 L222.13,1.89 L220.25,2.83 L219.21,3.45 L218.38,4.00 L216.71,5.30 L215.11,6.81 L213.73,8.40 L213.01,9.38 L212.45,10.21 L211.39,12.07 L210.53,14.00 L210.13,15.12 L209.44,17.71 L209.12,19.84 L209.00,22.21 L209.02,58.62 L209.09,59.27 L209.34,60.55 L209.76,61.79 L210.03,62.39 L210.68,63.52 L211.06,64.05 L211.48,64.56 L212.40,65.48 L213.44,66.28 L214.57,66.93 L215.16,67.20 L216.40,67.62 L217.68,67.88 L218.98,67.97 L229.98,67.99 L231.29,67.90 L232.57,67.65 L233.20,67.46 L234.41,66.96 L234.99,66.65 L236.08,65.93 L236.59,65.51 L237.51,64.59 L237.93,64.08 L238.31,63.55 L238.97,62.42 L239.24,61.82 L239.66,60.58 L239.91,59.29 L240.00,57.99 L240.00,40.08 L240.08,39.32 L240.46,38.42 L241.10,37.68 L241.94,37.20 L242.51,37.04 L242.95,37.00 L282.96,37.01 L284.71,37.16 L286.20,37.45 L287.70,37.90 L289.07,38.46 L290.54,39.25 L291.98,40.24 L293.17,41.26 L294.29,42.44 L295.35,43.83 L296.16,45.17 L296.85,46.64 L297.43,48.34 L297.78,49.93 L297.98,51.71 L297.98,53.34 L297.78,55.08 L297.42,56.71 L296.85,58.37 L296.18,59.78 L295.34,61.18 L294.28,62.57 L293.24,63.68 L292.06,64.70 L290.85,65.56 L289.49,66.33 L288.10,66.95 L286.66,67.43 L285.22,67.76 L283.94,67.93 L282.58,68.00 L249.35,68.02 L248.05,68.19 L247.41,68.34 L246.17,68.76 L245.58,69.03 L244.44,69.69 L243.91,70.07 L242.93,70.93 L242.48,71.41 L241.69,72.44 L241.03,73.58 L240.53,74.79 L240.34,75.41 L240.09,76.69 L240.00,78.00 L240.00,114.05 L239.87,114.87 L239.44,115.75 L238.90,116.32 L238.06,116.80 L237.49,116.96 L236.92,117.00 L146.08,117.00 L145.51,116.96 L144.59,116.64 L144.10,116.32 L143.68,115.90 L143.20,115.06 L143.04,114.49 L143.00,114.05 L142.98,9.38 L142.91,8.73 L142.66,7.45 L142.24,6.21 L141.97,5.62 L141.32,4.48 L140.94,3.95 L140.08,2.97 L139.60,2.52 L138.56,1.73 L137.43,1.07 L136.84,0.80 L136.22,0.57 L134.96,0.23 L133.67,0.06 L111.54,0.03 L110.24,0.20 L109.60,0.34 L108.36,0.76 L107.77,1.03 L106.63,1.69 L105.59,2.48 L105.12,2.93 L73.59,34.41 L73.08,34.80 L72.56,35.06 L71.99,35.21 L71.40,35.25 L70.82,35.18 L70.26,34.99 L69.75,34.69 L69.41,34.41 L37.96,2.96 L36.98,2.10 L35.89,1.37 L35.32,1.06 L34.11,0.56 L32.85,0.22 L31.55,0.05 L9.36,0.03Z"/></svg><b>Consulting</b></a>
+<p>Websites, automation, and practical AI for owner-run businesses. Irvine, California, working locally and nationwide.</p>
+</div>
+<nav aria-label="Footer"><a href="#services">Services</a><a href="#work">Work</a><a href="/how-it-works/">How it works</a><a href="#about">About</a><a href="#contact">Contact</a><a href="/workflows/">Workflows</a><a href="/referrals/" id="referrals">Referrals</a><a href="/privacy/">Privacy</a></nav>
+<div class="base"><span><a href="mailto:myles@mlpconsults.com">myles@mlpconsults.com</a></span><span>Know an owner who could use a hand? <a href="/referrals/">Explore referrals.</a></span><span>© 2026 MLP Consulting</span></div>
+</div>
 </footer>
-
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+<div class="menu-top"><a class="mark" href="#top" aria-label="MLP Consulting, home"><svg class="logo12" viewBox="0 0 337.0 143.0" width="60" height="26" aria-hidden="true"><path fill="currentColor" d="M182.98,8.41 L182.69,6.67 L182.07,5.02 L181.48,4.00 L180.36,2.64 L179.00,1.52 L177.44,0.69 L175.76,0.17 L174.59,0.02 L161.00,0.00 L159.83,0.08 L158.67,0.31 L157.56,0.69 L156.50,1.21 L155.07,2.23 L154.23,3.07 L153.52,4.00 L152.93,5.02 L152.48,6.11 L152.08,7.83 L152.00,9.00 L152.00,99.00 L152.17,100.76 L152.69,102.44 L153.21,103.50 L153.86,104.48 L155.07,105.77 L156.00,106.48 L157.02,107.07 L158.11,107.52 L159.24,107.83 L160.41,107.98 L222.00,108.00 L223.76,107.83 L225.44,107.31 L226.50,106.79 L227.93,105.77 L228.77,104.93 L229.48,104.00 L230.07,102.98 L230.52,101.89 L230.83,100.76 L230.98,99.59 L231.00,86.00 L230.83,84.24 L230.31,82.56 L229.48,81.00 L228.36,79.64 L227.00,78.52 L225.98,77.93 L224.89,77.48 L223.76,77.17 L222.59,77.02 L183.00,77.00 L182.98,8.41Z M9.36,0.03 L8.06,0.20 L7.42,0.35 L6.79,0.54 L5.58,1.04 L4.45,1.69 L3.92,2.07 L3.41,2.49 L2.48,3.41 L2.07,3.92 L1.34,5.01 L1.03,5.58 L0.53,6.79 L0.19,8.06 L0.02,9.36 L0.00,10.01 L0.02,133.62 L0.19,134.91 L0.53,136.18 L0.76,136.79 L1.34,137.96 L1.68,138.52 L2.48,139.55 L3.40,140.48 L3.91,140.89 L4.99,141.62 L6.16,142.20 L7.40,142.62 L8.04,142.77 L8.68,142.88 L9.99,142.96 L24.94,142.99 L26.25,142.90 L27.53,142.65 L28.77,142.23 L29.95,141.65 L31.04,140.93 L32.02,140.06 L32.88,139.08 L33.61,137.99 L33.92,137.42 L34.42,136.21 L34.61,135.58 L34.87,134.30 L34.96,132.99 L35.00,57.83 L35.04,57.40 L35.19,56.83 L35.68,55.99 L36.41,55.34 L37.31,54.97 L38.08,54.89 L38.85,55.01 L39.57,55.33 L40.21,55.85 L64.01,82.58 L64.93,83.49 L65.43,83.90 L66.51,84.62 L67.09,84.92 L68.29,85.41 L68.91,85.60 L70.18,85.85 L71.47,85.93 L72.12,85.91 L73.40,85.75 L74.66,85.41 L75.26,85.19 L75.86,84.92 L76.98,84.28 L78.01,83.50 L78.49,83.06 L102.71,55.95 L103.12,55.55 L103.60,55.23 L104.15,55.01 L105.11,54.89 L105.69,54.97 L106.25,55.16 L106.75,55.45 L107.19,55.84 L107.55,56.30 L107.81,56.83 L107.96,57.40 L108.00,57.96 L108.00,132.95 L108.09,134.26 L108.19,134.90 L108.53,136.17 L108.76,136.78 L109.34,137.95 L110.07,139.04 L110.93,140.02 L111.41,140.47 L111.91,140.89 L113.00,141.61 L114.17,142.19 L115.41,142.61 L116.05,142.76 L117.34,142.93 L118.00,142.95 L259.97,143.00 L260.62,142.98 L261.92,142.81 L263.18,142.47 L264.39,141.97 L265.52,141.32 L266.56,140.52 L267.48,139.60 L268.28,138.56 L268.93,137.43 L269.43,136.23 L269.77,134.96 L269.95,133.67 L269.97,133.02 L269.97,119.08 L269.79,117.72 L269.63,117.05 L269.14,115.67 L269.02,115.07 L269.00,111.08 L269.04,110.51 L269.20,109.94 L269.46,109.42 L269.81,108.95 L270.59,108.36 L271.13,108.13 L271.71,108.02 L283.05,108.00 L285.75,107.93 L288.15,107.75 L290.78,107.43 L294.93,106.66 L297.50,106.01 L300.04,105.24 L302.30,104.43 L304.75,103.42 L308.55,101.57 L310.85,100.26 L313.09,98.84 L315.25,97.31 L317.34,95.68 L319.34,93.94 L321.26,92.11 L323.08,90.19 L324.81,88.18 L326.43,86.08 L327.96,83.91 L329.37,81.67 L330.67,79.36 L331.86,76.99 L332.93,74.57 L333.88,72.09 L334.70,69.58 L335.41,67.02 L335.98,64.43 L336.43,61.82 L336.72,59.43 L336.98,55.47 L336.94,51.49 L336.58,47.29 L335.94,43.36 L335.01,39.50 L334.24,36.96 L333.43,34.70 L331.87,31.04 L330.05,27.51 L327.98,24.12 L325.51,20.70 L322.94,17.66 L320.16,14.82 L318.19,13.04 L316.33,11.52 L313.12,9.18 L309.74,7.09 L307.19,5.72 L303.79,4.17 L301.32,3.21 L298.58,2.30 L294.97,1.34 L292.37,0.82 L289.51,0.40 L286.87,0.14 L282.95,0.00 L231.28,0.00 L228.35,0.18 L226.71,0.43 L225.12,0.82 L223.05,1.51 L222.13,1.89 L220.25,2.83 L219.21,3.45 L218.38,4.00 L216.71,5.30 L215.11,6.81 L213.73,8.40 L213.01,9.38 L212.45,10.21 L211.39,12.07 L210.53,14.00 L210.13,15.12 L209.44,17.71 L209.12,19.84 L209.00,22.21 L209.02,58.62 L209.09,59.27 L209.34,60.55 L209.76,61.79 L210.03,62.39 L210.68,63.52 L211.06,64.05 L211.48,64.56 L212.40,65.48 L213.44,66.28 L214.57,66.93 L215.16,67.20 L216.40,67.62 L217.68,67.88 L218.98,67.97 L229.98,67.99 L231.29,67.90 L232.57,67.65 L233.20,67.46 L234.41,66.96 L234.99,66.65 L236.08,65.93 L236.59,65.51 L237.51,64.59 L237.93,64.08 L238.31,63.55 L238.97,62.42 L239.24,61.82 L239.66,60.58 L239.91,59.29 L240.00,57.99 L240.00,40.08 L240.08,39.32 L240.46,38.42 L241.10,37.68 L241.94,37.20 L242.51,37.04 L242.95,37.00 L282.96,37.01 L284.71,37.16 L286.20,37.45 L287.70,37.90 L289.07,38.46 L290.54,39.25 L291.98,40.24 L293.17,41.26 L294.29,42.44 L295.35,43.83 L296.16,45.17 L296.85,46.64 L297.43,48.34 L297.78,49.93 L297.98,51.71 L297.98,53.34 L297.78,55.08 L297.42,56.71 L296.85,58.37 L296.18,59.78 L295.34,61.18 L294.28,62.57 L293.24,63.68 L292.06,64.70 L290.85,65.56 L289.49,66.33 L288.10,66.95 L286.66,67.43 L285.22,67.76 L283.94,67.93 L282.58,68.00 L249.35,68.02 L248.05,68.19 L247.41,68.34 L246.17,68.76 L245.58,69.03 L244.44,69.69 L243.91,70.07 L242.93,70.93 L242.48,71.41 L241.69,72.44 L241.03,73.58 L240.53,74.79 L240.34,75.41 L240.09,76.69 L240.00,78.00 L240.00,114.05 L239.87,114.87 L239.44,115.75 L238.90,116.32 L238.06,116.80 L237.49,116.96 L236.92,117.00 L146.08,117.00 L145.51,116.96 L144.59,116.64 L144.10,116.32 L143.68,115.90 L143.20,115.06 L143.04,114.49 L143.00,114.05 L142.98,9.38 L142.91,8.73 L142.66,7.45 L142.24,6.21 L141.97,5.62 L141.32,4.48 L140.94,3.95 L140.08,2.97 L139.60,2.52 L138.56,1.73 L137.43,1.07 L136.84,0.80 L136.22,0.57 L134.96,0.23 L133.67,0.06 L111.54,0.03 L110.24,0.20 L109.60,0.34 L108.36,0.76 L107.77,1.03 L106.63,1.69 L105.59,2.48 L105.12,2.93 L73.59,34.41 L73.08,34.80 L72.56,35.06 L71.99,35.21 L71.40,35.25 L70.82,35.18 L70.26,34.99 L69.75,34.69 L69.41,34.41 L37.96,2.96 L36.98,2.10 L35.89,1.37 L35.32,1.06 L34.11,0.56 L32.85,0.22 L31.55,0.05 L9.36,0.03Z"/></svg><b>Consulting</b></a><button class="menu-x" type="button" id="menu-x">Close</button></div>
+<nav aria-label="Menu"><ol><li><a href="#services"><i aria-hidden="true">01</i><span>Services</span></a></li><li><a href="#work"><i aria-hidden="true">02</i><span>Work</span></a></li><li><a href="/how-it-works/"><i aria-hidden="true">03</i><span>How it works</span></a></li><li><a href="#about"><i aria-hidden="true">04</i><span>About</span></a></li><li><a href="#contact"><i aria-hidden="true">05</i><span>Contact</span></a></li><li><a href="/workflows/"><i aria-hidden="true">06</i><span>Workflows</span></a></li><li><a href="/referrals/"><i aria-hidden="true">07</i><span>Referrals</span></a></li><li><a href="/privacy/"><i aria-hidden="true">08</i><span>Privacy</span></a></li></ol></nav>
+</div>
 <dialog class="lb" id="lb" aria-label="Screenshot viewer">
-  <button class="lbx" type="button" aria-label="Close">✕</button>
-  <button class="lbp" type="button" aria-label="Previous screenshot">←</button>
-  <button class="lbq" type="button" aria-label="Next screenshot">→</button>
-  <figure><img decoding="async" id="lbi" alt=""><figcaption><b id="lbt"></b><span id="lbc"></span><span class="lbn" id="lbn"></span><span class="lbl" id="lbl"></span></figcaption></figure>
+<figure><img decoding="async" id="lbi" alt=""><figcaption><b id="lbt"></b><span id="lbc"></span><a id="lbl" target="_blank" rel="noopener" hidden></a>
+<span class="lbnav"><button class="lbp" type="button">Previous</button><span class="lbn" id="lbn"></span><button class="lbq" type="button">Next</button><button class="lbx" type="button">Close</button></span></figcaption></figure>
 </dialog>
-
+<script type="application/json" id="ex-data">{"dental": [["Website", "On a phone, the booking button is three screens down.", "put it at the top of every page."], ["Insurance", "New patients can’t tell whether you take their plan without calling.", "list the plans you take, and what a cleaning costs without one."], ["After hours", "A call at 5:40 rings out, and that patient books somewhere else.", "a text back inside a minute, with a link to book."]], "restaurant": [["Menu", "The menu is a PDF from last spring. On a phone it has to be pinched to read.", "put tonight’s menu on the page as text, with prices."], ["Hours", "Google says you close at 9. The door says 10 on Fridays and Saturdays.", "match your hours everywhere customers look."], ["Private dining", "Requests for the back room land in a shared inbox and wait for whoever sees them.", "a short form that goes to one person, with a reply the same minute."]], "contractor": [["Portfolio", "Your best kitchen is the ninth photo in a gallery with no captions.", "lead with three finished jobs, each with the scope and how long it took."], ["Estimate form", "The form asks eleven questions before anyone can say what they need.", "cut it to a name, a phone number and the job."], ["Quotes", "A quote goes out and nobody checks back.", "a follow-up on day two and day seven, written the way you talk."]], "salon": [["Prices", "Your prices are on Instagram but not on the site.", "one price list on the site, kept current."], ["Hours", "Google says you’re closed Saturdays. Your site says open until 2.", "match your hours everywhere customers look."], ["No-shows", "A missed appointment costs a chair for an hour, and nobody got a reminder.", "a text the day before, with one tap to confirm or move."]]}</script>
+<script src="/assets/site.js"></script>
 <script>
+/* The contact form handler, carried over unchanged from the live site: same fields, same destinations. */
 (function(){
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var $=function(id){return document.getElementById(id);};
-
-  /* ---- Contour map: the live shader (WebGL); a pre-rendered looping video, light and dark, stands in when WebGL is unavailable ---- */
-  var mapVids=[].slice.call(document.querySelectorAll('video.mapv'));
-  function isDark(){var t=document.documentElement.dataset.theme;return t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);}
-  function setMap(){
-    var th=isDark()?'dark':'light',sm=innerWidth<700?'-sm':'';
-    mapVids.forEach(function(v){
-      if(v._live)return;
-      var src='map/map-'+th+sm+'.mp4',post='map/poster-'+th+'.jpg';
-      if(v.getAttribute('poster')!==post)v.setAttribute('poster',post);
-      if(reduce)return;
-      if(v.getAttribute('data-src')!==src){v.setAttribute('data-src',src);v.src=src;if(v._vis)v.play().catch(function(){});}
-    });
-  }
-  var FRAG = [
-  'precision highp float;',
-  'uniform float u_time; uniform vec2 u_res; uniform vec2 u_m; uniform float u_act;',
-  'uniform vec3 u_c1,u_c2,u_c3,u_c4; uniform float u_scale;',
-  'float h21(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
-  'float vn(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h21(i),h21(i+vec2(1.,0.)),f.x),mix(h21(i+vec2(0.,1.)),h21(i+vec2(1.,1.)),f.x),f.y);}',
-  'float fbm(vec2 p){float a=.5,s=0.;mat2 m=mat2(.8,.6,-.6,.8)*2.02;for(int i=0;i<5;i++){s+=a*vn(p);p=m*p;a*=.5;}return s*1.03;}',
-  'vec2 pc(vec2 fc){return (fc*2.-u_res)/min(u_res.x,u_res.y);}',
-  'float hf(vec2 p){float t=u_time*.05;float h=fbm(p*.9+vec2(t,-t*.7)+1.5*vec2(fbm(p*.5+t),fbm(p*.5-t+3.)));',
-  ' vec2 m=pc(u_m*u_res);h+=.14*u_act*exp(-dot(p/(1.6*u_scale)-m,p/(1.6*u_scale)-m)*3.);return h;}',
-  'void main(){vec2 p=pc(gl_FragCoord.xy)*1.6*u_scale;float e=.01;float h=hf(p);',
-  ' vec2 g=vec2(hf(p+vec2(e,0.))-h,hf(p+vec2(0.,e))-h)/e;float lv=h*15.;float idx=floor(lv);float d=abs(fract(lv)-.5);',
-  ' float dist=(.5-d)/(length(g)*15.+.0001);float ln=1.-smoothstep(0.,.0045,dist);float major=mod(idx,5.)<.5?1.:0.;',
-  ' vec3 col=mix(u_c1,u_c2,smoothstep(.25,.8,h));col=mix(col,u_c3,ln*.6);col=mix(col,u_c4,ln*major*.9);',
-  ' vec2 q=gl_FragCoord.xy/u_res-.5;col*=1.-.4*dot(q,q);col+=(h21(gl_FragCoord.xy+fract(u_time)*31.)-.5)/180.;',
-  ' gl_FragColor=vec4(clamp(col,0.,1.),1.);}'].join('\n');
-  var hex=function(h){return [1,3,5].map(function(i){return parseInt(h.substr(i,2),16)/255;});};
-  var liveFns=[];
-  /* Live contour shader. Returns false when WebGL is unavailable, so the video stays as the fallback. */
-  function live(vid,opts){
-    try{
-      var cv=document.createElement('canvas');cv.className='mapc';cv.setAttribute('aria-hidden','true');
-      var gl=cv.getContext('webgl',{antialias:false,premultipliedAlpha:false});if(!gl)return false;
-      function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(o));return o;}
-      var pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FRAG));
-      gl.bindAttribLocation(pr,0,'a');gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return false;gl.useProgram(pr);
-      gl.bindBuffer(gl.ARRAY_BUFFER,gl.createBuffer());gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
-      var U=function(n){return gl.getUniformLocation(pr,n);};
-      function cols(){var cs=getComputedStyle(document.documentElement);[1,2,3,4].forEach(function(i){gl.uniform3fv(U('u_c'+i),hex(cs.getPropertyValue('--map'+i).trim()));});}cols();
-      gl.uniform1f(U('u_scale'),opts.scale||1);
-      vid.parentNode.insertBefore(cv,vid.nextSibling);
-      var m=[.7,.5],tm=[.7,.5],act=0,tact=0,visible=true,raf=0,t0=performance.now()-(opts.offset||0),failed=false;
-      var zone=cv.parentElement;
-      zone.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();tm=[(e.clientX-r.left)/r.width,1-(e.clientY-r.top)/r.height];tact=1;kick();});
-      zone.addEventListener('pointerleave',function(){tact=0;kick();});
-      function fit(){var d=Math.min(1.5,devicePixelRatio||1);cv.width=Math.max(1,cv.clientWidth*d|0);cv.height=Math.max(1,cv.clientHeight*d|0);gl.viewport(0,0,cv.width,cv.height);}
-      function draw(now){
-        m[0]+=(tm[0]-m[0])*.06;m[1]+=(tm[1]-m[1])*.06;act+=(tact-act)*.04;
-        gl.uniform1f(U('u_time'),reduce?40:(now-t0)/1000*(opts.speed||1));
-        gl.uniform2f(U('u_res'),cv.width,cv.height);gl.uniform2f(U('u_m'),m[0],m[1]);gl.uniform1f(U('u_act'),act);
-        gl.drawArrays(gl.TRIANGLES,0,3);
-      }
-      function tick(now){raf=0;if(failed)return;draw(now);if(!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
-      function kick(){if(!raf&&!failed&&!reduce&&visible&&!document.hidden)raf=requestAnimationFrame(tick);}
-      new ResizeObserver(function(){fit();draw(performance.now());}).observe(cv);
-      new IntersectionObserver(function(es){visible=es[es.length-1].isIntersecting;kick();}).observe(cv);
-      document.addEventListener('visibilitychange',kick);
-      /* if the GPU is lost later, fall back to the video */
-      cv.addEventListener('webglcontextlost',function(e){e.preventDefault();failed=true;cv.remove();vid._live=false;vid.style.display='';setMap();});
-      fit();draw(performance.now());kick();
-      liveFns.push(function(){cols();draw(performance.now());});
-      vid._live=true;vid.removeAttribute('src');vid.removeAttribute('data-src');try{vid.load();}catch(e){}vid.style.display='none';
-      return true;
-    }catch(e){console.error(e);return false;}
-  }
-  var liveOn=false;try{liveOn=live(document.getElementById('map-hero'),{scale:1,speed:1});live(document.getElementById('map-cta'),{scale:1.3,speed:.8,offset:60000});}catch(e){}
-  setMap();
-  if('IntersectionObserver' in window&&!reduce){
-    var vio=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;v._vis=e.isIntersecting&&e.intersectionRatio>.12;if(v._live)return;if(v._vis){var p=v.play();if(p&&p.catch)p.catch(function(){});}else v.pause();});},{threshold:[0,.12,.5]});
-    mapVids.forEach(function(v){vio.observe(v);});
-  }
-  addEventListener('resize',function(){clearTimeout(setMap.t);setMap.t=setTimeout(setMap,200);});
-
-  /* ---- theme: follows the visitor's setting; the header button overrides and is remembered ---- */
-  function retheme(){setMap();liveFns.forEach(function(f){f();});}
-  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',retheme);}catch(e){}
-  $('theme').addEventListener('click',function(){
-    var next=isDark()?'light':'dark';document.documentElement.dataset.theme=next;
-    try{localStorage.setItem('mlp-theme',next);}catch(e){}
-    retheme();
-  });
-
-  /* ---- header ---- */
-  var hdr=$('hdr'),mb=$('menu');
-  function setMenu(o){hdr.classList.toggle('menu-open',o);mb.setAttribute('aria-expanded',o);}
-  mb.addEventListener('click',function(){setMenu(!hdr.classList.contains('menu-open'));});
-  document.querySelectorAll('#nav a').forEach(function(a){a.addEventListener('click',function(){setMenu(false);});});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&hdr.classList.contains('menu-open')){setMenu(false);mb.focus();}});
-  function onScroll(){hdr.classList.toggle('solid',scrollY>40);}
-  addEventListener('scroll',onScroll,{passive:true});onScroll();
-
-  /* ---- reveal on scroll ---- */
-  var rvs=document.querySelectorAll('.rv');
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});
-    rvs.forEach(function(el){io.observe(el);});
-  } else rvs.forEach(function(el){el.classList.add('in');});
-
-  /* ---- example assessment: pick a kind of business ---- */
-  var EX={
-    dental:[['Website','On a phone, the booking button is three screens down.','put it at the top of every page.'],['Insurance','New patients can’t tell whether you take their plan without calling.','list the plans you take, and what a cleaning costs without one.'],['After hours','A call at 5:40 rings out, and that patient books somewhere else.','a text back inside a minute, with a link to book.']],
-    restaurant:[['Menu','The menu is a PDF from last spring. On a phone it has to be pinched to read.','put tonight’s menu on the page as text, with prices.'],['Hours','Google says you close at 9. The door says 10 on Fridays and Saturdays.','match your hours everywhere customers look.'],['Private dining','Requests for the back room land in a shared inbox and wait for whoever sees them.','a short form that goes to one person, with a reply the same minute.']],
-    contractor:[['Portfolio','Your best kitchen is the ninth photo in a gallery with no captions.','lead with three finished jobs, each with the scope and how long it took.'],['Estimate form','The form asks eleven questions before anyone can say what they need.','cut it to a name, a phone number and the job.'],['Quotes','A quote goes out and nobody checks back.','a follow-up on day two and day seven, written the way you talk.']],
-    salon:[['Prices','Your prices are on Instagram but not on the site.','one price list on the site, kept current.'],['Hours','Google says you’re closed Saturdays. Your site says open until 2.','match your hours everywhere customers look.'],['No-shows','A missed appointment costs a chair for an hour, and nobody got a reminder.','a text the day before, with one tap to confirm or move.']]
-  };
-  var tabs=[].slice.call(document.querySelectorAll('#tabs button')),sl=$('sheet-list');
-  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
-  function pick(b,focus){
-    tabs.forEach(function(t){var on=t===b;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;});
-    if(focus)b.focus();
-    var rows=EX[b.getAttribute('data-t')],html=rows.map(function(r,i){return '<li><i>'+(i+1)+'</i><span class="k">'+esc(r[0])+'</span><span class="d">'+esc(r[1])+'</span><span class="v"><b>Fix:</b> '+esc(r[2])+'</span></li>';}).join('');
-    if(reduce){sl.innerHTML=html;return;}
-    sl.classList.add('sw');setTimeout(function(){sl.innerHTML=html;sl.classList.remove('sw');},220);
-  }
-  tabs.forEach(function(b,i){
-    b.addEventListener('click',function(){pick(b);});
-    b.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){e.preventDefault();pick(tabs[(i+d+tabs.length)%tabs.length],true);}});
-  });
-
   /* ---- offer buttons preselect the inquiry subject; UTM/source kept for attribution ---- */
   var qs=new URLSearchParams(location.search),interest=document.getElementById('f-interest'),iline=document.getElementById('interest-line'),ival=document.getElementById('interest-val');
   function setInterest(t){if(!t)return;interest.value=t;ival.textContent=t;iline.hidden=(t==='Free assessment');}
@@ -877,7 +314,7 @@ dialog.lb::backdrop{background:rgba(6,6,8,.9);backdrop-filter:blur(6px);-webkit-
       var hs=[['firstname',v('f-name')],['company',v('f-biz')],['website',v('f-site')],['email',v('f-contact')],['message','Interested in: '+v('f-interest')+'\nTiming: '+v('f-when')+'\nBudget: '+v('f-budget')+'\nReferred by: '+v('f-ref')+'\nSource: '+(src||'direct')+'\n\n'+v('f-pain')]]
         .filter(function(x){return x[1];}).map(function(x){return {objectTypeId:'0-1',name:x[0],value:x[1]};});
       var ctx={pageUri:location.href,pageName:document.title};if(hutk)ctx.hutk=hutk;
-      fetch('https://api.hsforms.com/submissions/v3/integration/submit/247871007/41028eeb-eade-4ad2-af4f-d77729628ba6',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:hs,context:ctx})}).catch(function(){});
+      fetch('https://api.hsforms.com/submissions/integration/submit/247871007/41028eeb-eade-4ad2-af4f-d77729628ba6',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fields:hs,context:ctx})}).catch(function(){});
     }catch(err){}
     /* also save the lead in the MLP database (best effort) */
     try{
@@ -888,84 +325,6 @@ dialog.lb::backdrop{background:rgba(6,6,8,.9);backdrop-filter:blur(6px);-webkit-
       .then(function(j){if(!j.success)throw new Error('fail');e.target.reset();setInterest('Free assessment');btn.textContent='Request sent';done.className='done';done.textContent='Thanks, your request is in. I’ll review your business and send your assessment within one business day.';done.hidden=false;})
       .catch(function(){btn.disabled=false;btn.textContent=label;done.className='done err';done.innerHTML='That did not go through. Please email <a href="mailto:myles@mlpconsults.com">myles@mlpconsults.com</a> directly and I will pick it up from there.';done.hidden=false;});
   });
-  document.getElementById('copy').addEventListener('click',function(){
-    var b=this,a=document.getElementById('addr');
-    function sel(){var r=document.createRange();r.selectNodeContents(a);var x=getSelection();x.removeAllRanges();x.addRange(r);b.textContent='Selected';}
-    try{navigator.clipboard.writeText(a.textContent).then(function(){b.textContent='Copied';},sel);}catch(e){sel();}
-  });
-
-  /* ---- screenshots: captions, the work index stage, and the viewer ---- */
-  var CAP={
-    'jewelry-store':['Halden · Jewelry store','Engagement rings with prices on every card, and a 3D ring designer: pick the setting, the metal and the stone, and turn the ring to see it from any side.'],
-    'site-birchway':['Birchway Pediatrics · Pediatric office','Request a visit by age and reason, see the morning sick-visit slots, and open the staff side: a front desk inbox, reminder and recall automations, and a private assistant that runs on the practice’s own equipment.'],
-    'site-camino':['Osteria Camino · Italian restaurant','Reserve a table, browse tonight’s menu, and ask about the back room. The staff side holds the reservation book, review replies waiting for approval, and a pre-shift brief.'],
-    'site-paperwhale':['Paperwhale Books · Bookstore','Shop real titles with pickup in about two hours, staff picks and events. The staff side shows orders, special requests, newsletter drafts and a weekly brief for the owner.'],
-    'site-quietwell':['Quietwell Aesthetics · Med spa','Book in under a minute, a treatment menu with prices on it, a membership plan, and a text line for clients who would rather not call.'],
-    'site-bellwood':['Bellwood Family Dental · Dental office','Next open appointments right on the home page, an insurance check, clear prices for patients without insurance, and a same-day emergency line.'],
-    'site-little-orbit':['Little Orbit Tea · Boba shop','Real online ordering: build a drink, choose pickup or delivery, check out and follow the order, plus a rewards card.'],
-    'site-coffee':['Kestrel Hill Coffee Roasters · Coffee roaster','Order ahead to skip the line, a bean club subscription for fresh bags, and live open hours in the header.'],
-    'site-marlow':['Marlow & Rye Bakery · Bakery','Today’s bake counted down live as it sells, a four-step cake builder, and weekly standing orders for bread.'],
-    'site-cedarline':['Cedarline Kitchen · Restaurant','Table reservations, tonight’s menu, and a private dining inquiry for rehearsal dinners, offsites and birthdays.'],
-    'site-hollis':['Hollis Flower House · Florist','Same-day delivery with a ZIP check and order cutoff, weekly flower subscriptions, and wedding inquiries.'],
-    'site-salon':['Ostrander Hair Studio · Hair salon','Pick a service, then a stylist and a time, with straightforward pricing, a texting line and a first-visit offer.'],
-    'site-crestline':['Crestline Design-Build · Remodeling company','A cost estimator that returns a real price range in seconds, a text-back with the itemized breakdown, finished projects with timelines, and plain-English permit and cost guides.'],
-    'site-solace':['Solace Studio Dental · Dental studio','Pick a visit type and a real open time, see what your insurance covers before you arrive, and get intake forms by text.'],
-    'site-command-center':['Owner command center','Overnight emails sorted, new leads graded, and drafted replies waiting for the owner’s approval, next to live job profit. Nothing goes out until you approve. Sample data.'],
-    'site-pilates':['Springline Reformer Studio · Pilates studio','A live class schedule with spots left, intro packs, and membership plans, with an app-style tab bar on phones.'],
-    'email-automation':['Email automation: inbox','A new inquiry arrives, gets sorted, and a reply is drafted in your voice, ready for one tap. Sample automation.'],
-    'auto-follow-up':['Inquiries acknowledged right away','An inquiry gets an instant text and a follow-up plan runs on schedule; a customer reply pauses that sequence and alerts the right person.'],
-    'auto-reminders':['Appointments that show up','The week’s calendar with every confirmation tracked, a missed visit already being rebooked, and a reminder text for anyone who has not replied.'],
-    'auto-reviews':['Feedback that is easy to give','Your rating, the reviews coming in, and the month’s requests, with a clear route for your team to respond.'],
-    'auto-invoices':['Invoices that chase themselves','What is owed and how old it is, with each invoice’s next step queued and a payment link in every message.'],
-    'site-boutique':['Fig & Fennimore · Clothing boutique','A seasonal lookbook, new arrivals with a cart, a fitting room you can book with a stylist, and an early-look email list.'],
-    'brokerage-site':['Brokerage website redesign','The new home page for a boutique real estate brokerage, with listing search up front. Names and photos changed.'],
-    'lead-responder':['A seller inquiry, answered right away','A homeowner asks a brokerage for a pricing analysis and sees a confirmation immediately, while the agent gets the request with every detail filled in.'],
-    'blog-library':['Local guide library','Buyer and neighborhood guides with clear structure, built to be found and understood in search.'],
-    'ad-studio':['Video ad studio','Short vertical ads for TikTok, Reels and Facebook in claymation and 3D blueprint styles, rendered from the client’s real projects.'],
-    'remodel-office':['Office app: today’s list','What needs the owner’s attention today, pulled automatically from the business inbox and job list. Sample data.'],
-    'team-hub':['Team Hub','One dashboard where staff approve leads, posts and emails before anything goes out, with the week’s numbers at a glance. Sample data.'],
-    'remodel-deck':['A finished rear deck','Completed work from the remodeling company’s portfolio.'],
-    'remodel-job':['Office app: job page','Each job’s stage, next step, payments and real profit once crew hours are counted. Sample job.'],
-    'remodel-inbox':['Office app: inbox review','Receipts, payments and new leads read from the business inbox, each waiting for the owner’s approval. Sample data.'],
-    'security-report':['Website security report','Hidden spam links and out-of-date software found on the brokerage’s old site, explained in plain English with the fix for each.'],
-    'launch-kit':['Listing launch kit','One short form produces the listing page, social posts, an email blast and print pieces for a new listing.'],
-    'market-reports':['Monthly market reports','Neighborhood prices and trends, drafted each month for agents to review and send to their clients.'],
-    'permit-map':['Permit lead map','New building permits from four Southern California cities, sorted by the trade that comes next and worked right on the map.']
-  };
-  var lb=$('lb'),li=$('lbi'),lt=$('lbt'),lc=$('lbc'),ln=$('lbn'),ll=$('lbl');
-  var items=[].slice.call(document.querySelectorAll('[data-k]')),cur=0;
-  function links(el){
-    var out=[];if(el.tagName==='A')out.push(['Open site',el.getAttribute('href')]);
-    (el.getAttribute('data-x')||'').split(';').forEach(function(p){if(p){var q=p.split('|');out.push(q);}});
-    return out;
-  }
-  function linkHtml(el,cls){return links(el).map(function(l,i){return '<a'+(cls?' class="btn sm '+(i?'line':'solid')+'"':'')+' href="'+l[1]+'" target="_blank" rel="noopener">'+esc(l[0])+' ↗</a>';}).join('');}
-  function show(i){
-    cur=(i+items.length)%items.length;var el=items[cur],k=el.getAttribute('data-k'),c=CAP[k]||['',''];
-    li.src='img/'+k+'.webp';li.alt=c[0];lt.textContent=c[0];lc.textContent=c[1];ln.textContent=(cur+1)+' of '+items.length;ll.innerHTML=linkHtml(el);
-  }
-  function open(i){show(i);if(!lb.open)lb.showModal();}
-  items.forEach(function(el,i){el.addEventListener('click',function(e){if(e.metaKey||e.ctrlKey||e.shiftKey)return;e.preventDefault();open(i);});});
-  lb.querySelector('.lbx').onclick=function(){lb.close();};
-  lb.querySelector('.lbp').onclick=function(){show(cur-1);};
-  lb.querySelector('.lbq').onclick=function(){show(cur+1);};
-  lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
-  lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')show(cur-1);else if(e.key==='ArrowRight')show(cur+1);});
-
-  /* work index: hovering or focusing a row puts its site on the stage */
-  var rows=[].slice.call(document.querySelectorAll('#rows .row')),act=-1,sa=$('st-a'),sb=$('st-b'),front=sa;
-  function stage(i){
-    if(i===act)return;act=i;var el=rows[i],k=el.getAttribute('data-k'),c=CAP[k];
-    rows.forEach(function(r,j){r.classList.toggle('on',j===i);});
-    $('st-t').textContent=c[0];$('st-d').textContent=c[1];$('st-l').innerHTML=linkHtml(el,true);
-    var back=front===sa?sb:sa,src='img/'+k+'.webp';
-    back.onload=function(){back.onload=null;back.classList.remove('off');front.classList.add('off');front=back;};
-    back.src=src;if(back.complete&&back.naturalWidth)back.onload();
-  }
-  rows.forEach(function(r,i){r.addEventListener('pointerenter',function(e){if(e.pointerType!=='touch')stage(i);});r.addEventListener('focus',function(){stage(i);});});
-  if(rows.length){rows[0].classList.add('on');act=0;}
-  $('stage-btn').addEventListener('click',function(){open(items.indexOf(rows[Math.max(act,0)]));});
-  $('more-rows').addEventListener('click',function(){$('rows').classList.add('all');var f=document.querySelector('#rows li.x .row');if(f)f.focus();});
 })();
 </script>
 

@@ -1,0 +1,55 @@
+/* MLP Consulting v3 inner pages. Night palette throughout; reuses site.css. */
+.pg{position:relative;isolation:isolate;padding:22vh 0 14vh}
+.pg::before{content:'';position:absolute;top:0;bottom:0;left:0;width:55%;background:linear-gradient(90deg,var(--bg) 0%,color-mix(in srgb,var(--bg) 85%,transparent) 38%,transparent 100%);z-index:-1;pointer-events:none}
+@media(max-width:899px){.pg{padding:16vh 0 12vh}.pg::before{width:100%;background:color-mix(in srgb,var(--bg) 88%,transparent)}}
+.blk{margin-top:16vh}
+.blk.end{padding-bottom:4vh}
+.pg h2+.lead{margin-top:22px}
+.pg .cta{margin:30px 0 0}
+.pg .avail{margin:20px 0 0;color:var(--mut)}
+
+/* how it works */
+.steps{list-style:none;margin:40px 0 0;padding:0}
+.steps li{display:grid;grid-template-columns:64px 1fr;column-gap:10px;padding:26px 0;border-top:1px solid var(--rule)}
+.steps li:last-child{border-bottom:1px solid var(--rule)}
+.steps i{grid-row:1/3;font:500 clamp(40px,4vw,56px)/1 var(--disp);font-style:normal;letter-spacing:-.03em;color:var(--mut)}
+.steps h3{font-size:clamp(24px,2.4vw,32px)}
+.steps p{margin:10px 0 0;color:var(--mut)}
+.prin{margin-top:36px}
+.prin div{padding:24px 0;border-top:1px solid var(--rule)}
+.prin div:last-child{border-bottom:1px solid var(--rule)}
+.prin h3{font-size:clamp(22px,2.2vw,28px)}
+.prin p{margin:10px 0 0;color:var(--mut)}
+.faq{margin-top:36px;border-bottom:1px solid var(--rule)}
+.faq details{border-top:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;position:relative;padding:20px 40px 20px 0;font:500 clamp(20px,2vw,24px)/1.2 var(--disp);letter-spacing:-.02em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';position:absolute;right:4px;top:18px;font:400 28px/1 var(--sans)}
+.faq details[open] summary::after{content:'–'}
+.faq details p{margin:0 0 22px;color:var(--mut);font-size:16.5px}
+
+/* workflows */
+.lanes{margin-top:0}
+.flow{padding:28px 0;border-top:1px solid var(--rule)}
+.flow:last-child{border-bottom:1px solid var(--rule)}
+.flow .when{margin:0 0 10px;color:var(--mut);font-size:14.5px}
+.flow h2{font-size:clamp(26px,2.6vw,36px);margin-bottom:12px}
+.flow p{margin:0 0 .7em}
+.flow .rule{margin:12px 0 0;color:var(--mut);font-size:15.5px}
+.flow .rule strong{color:var(--fg);font-weight:600}
+
+/* referrals */
+.rates{display:grid;gap:0;margin:0}
+.rates div{display:grid;grid-template-columns:minmax(120px,auto) 1fr;gap:20px;align-items:baseline;padding:18px 0;border-top:1px solid var(--rule)}
+.rates div:last-child{border-bottom:1px solid var(--rule)}
+.rates b{font:500 clamp(56px,7vw,96px)/1 var(--disp);letter-spacing:-.03em}
+.rates span{color:var(--mut)}
+@media(max-width:519px){.rates div{grid-template-columns:1fr;gap:4px}}
+.prose{margin-top:34px}
+
+/* privacy */
+.psec{padding:26px 0;border-top:1px solid var(--rule)}
+.psec:last-child{border-bottom:1px solid var(--rule)}
+.psec h2{font-size:clamp(24px,2.4vw,32px);margin-bottom:12px}
+.psec p{margin:0;color:var(--mut)}
+.psec a{color:var(--fg)}
