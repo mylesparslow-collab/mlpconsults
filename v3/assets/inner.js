@@ -17,8 +17,15 @@
       if (scene) {
         scene.setFormation(parseInt(document.body.getAttribute('data-formation'), 10) || 0);
         window.__scene = scene;
-        window.addEventListener('resize', function () { try { scene.resize(); } catch (e) {} });
-        scene.resize();
+        /* keep the scene off the text column, as the homepage does */
+        var clear = function () {
+          var col = document.querySelector('.pg .col');
+          var f = col ? Math.min(0.62, (col.getBoundingClientRect().right + 40) / innerWidth) : 0.42;
+          root.style.setProperty('--clear', f.toFixed(3));
+          try { scene.setClear(f); } catch (e) {}
+        };
+        window.addEventListener('resize', function () { try { scene.resize(); clear(); } catch (e) {} });
+        scene.resize(); clear();
       }
     } catch (e) { scene = null; }
     if (!scene) noGl();
