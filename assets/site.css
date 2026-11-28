@@ -155,6 +155,8 @@ h1 .ln{display:block}
 .detail{padding:0 0 12px 50px;font-size:14.5px;color:var(--mut)}
 .detail p{margin:0 0 6px}
 .detail .more{color:var(--fg);display:inline-block;padding:9px 0}
+.sites-more{display:none}
+@media(max-width:899px){.js .sites.folded li:nth-child(n+7){display:none}.js .sites.folded li:nth-child(6){border-bottom:1px solid var(--rule)}.js .sites-more:not([hidden]){display:inline-flex;margin-top:18px}}
 @media(min-width:900px){
   .js .sites li:not(.on) .detail{position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden;padding:0;white-space:nowrap}
 }

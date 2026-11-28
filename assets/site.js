@@ -161,6 +161,7 @@
   /* ---------- homepage: progress, scene, work index ---------- */
   var names = ['Welcome', 'Free assessment', 'Services', 'Work', 'Automations', 'Larger systems', 'Contact'];
   var cn = $('#cn'), cl = $('#cl');
+  var about = $('#about'), lab = '';
   var scene = null, p = 0, tgt = 0, last = -1, raf = 0, tPrev = 0, chap = -1;
 
   function target() {
@@ -186,10 +187,13 @@
       root.classList.toggle('at-work', Math.abs(p - 3) < 0.3);
     }
     var c = chapterNow();
-    if (c !== chap) {
-      chap = c;
-      if (cn) { cn.textContent = ('0' + (c + 1)).slice(-2) + ' / 07'; cl.textContent = names[c]; }
-      updateClear();
+    /* the bio sits at the end of chapter 6 (the scene has seven formations), so the marker names it while it is on screen */
+    var l = (c === 5 && about && about.getBoundingClientRect().top <= 0.55 * innerHeight) ? 'About' : names[c];
+    if (c !== chap || l !== lab) {
+      var moved = c !== chap;
+      chap = c; lab = l;
+      if (cn) { cn.textContent = ('0' + (c + 1)).slice(-2) + ' / 07'; cl.textContent = l; }
+      if (moved) updateClear();
     }
   }
   /* fraction of the canvas width the scene keeps clear for this chapter's text column */
@@ -245,6 +249,17 @@
     li.addEventListener('focusin', on);
   });
   if (rows[0]) setActive(rows[0]);
+
+  /* work index on phones: the first six sites, the rest one tap away (no script: all seventeen show) */
+  var sl = $('#sites-list'), sm = $('#sites-more');
+  if (sl && sm) {
+    sl.classList.add('folded'); sm.hidden = false;
+    sm.addEventListener('click', function () {
+      sl.classList.toggle('folded', false); sm.hidden = true; sm.setAttribute('aria-expanded', 'true');
+      var nx = $$('li', sl)[6], a = nx && $('a.row', nx);
+      if (a) a.focus();
+    });
+  }
 
   /* scene (optional): the page is complete without it */
   var canvas = $('#scene');
